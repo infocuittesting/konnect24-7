@@ -1,0 +1,76 @@
+<div class="row" style="width:99%;">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <br>
+        <div class="container-fluid">
+           
+                <table class="table table-bordered tableBodyScroll"style="width:100%;margin-left: 33px;" >
+                    <thead style="background-color: #337ab7;color: white;">
+                      <tr>
+                        <th>seq</th>
+                        <th>Confirmation Number</th>
+                        <th>Name</th>
+                        <th>Arrival</th>
+                        <th >Depature</th>
+                        <th>Nights</th>
+                        <th >Room Type</th>
+                        <th>Adult</th>
+                        
+                        <th >Child</th>
+                        <th>Number of rooms</th>
+                        <th >Rooms</th>
+                        <th >Block ID</th>
+                     
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let array of querylist ;let i=index"
+                        [ngClass]="{'backGroundColor':i==selectindex}">
+                          <td>{{i+1}}</td>
+                          <td>{{array.res_confnumber}}</td>
+                          <td>{{array.pf_firstname}}</td>
+                          <td>{{array.res_arrival}}</td>
+                          <td>{{array.res_depature}}</td>
+                          <!-- <td>{{array.rooms_per_day}}</td>
+                          <td>{{array.meeting_space_size}}</td>
+                          <td>{{array.meeting_space_type}}</td> -->
+                          <!-- <td>{{array.attendess}}</td> -->
+                          <td>{{array.res_nights}}</td>
+                          <td>{{array.res_room_type }}</td>
+                          <td>{{array.res_adults}}</td>
+                          <td>{{array.res_child}}</td>
+                          <td>{{array.res_number_of_rooms}}</td>
+                          <td>{{array.res_room}}</td>
+                          <td>{{array.res_block_code}}</td>
+                          
+                          
+                      </tr>
+                    </tbody>
+                    </table>
+                   
+                    </div>
+                    </div>
+                    </div>
+            <!-- button................................. -->
+            
+  <div class ="container-fluid">
+    <div class="row" style="margin-left: 12px;">
+                          <!-- <div class="col-md-2">
+                        <button class="btn btn-primary" style="width:100%" disabled>Extract</button>
+                      </div> -->
+   
+      <div class="col-md-2"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2">
+          <button class="btn btn-success"routerLink="/bcreate"style="width:100%"[disabled]=newblockbut>New</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-Warning"  routerLink = "/business" style="width:100%" [disabled]=blc >Edit</button>
+        </div>
+      <div class="col-md-2">
+        <button class="btn btn-Danger"style="width:100%" routerLink="/mains">Close</button>
+      </div>
+  </div>
+  </div>
+  
+  

@@ -1,0 +1,539 @@
+<!---Alertinsert for orderserviceresponse response-->
+
+<div class="modal fade" id="insertorderservice" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4>Connect 24/7 Hotel</h4>
+      </div>
+      <div class="modal-body">
+        <b align="center">{{roomcard}}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!---Alertupdate for orderserviceresponse response-->
+
+<div class="modal fade" id="updateorderservice" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4>Connect 24/7 Hotel</h4>
+      </div>
+      <div class="modal-body">
+        <b align="center">{{roomcard1}}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!---Alertdelete for orderserviceresponse response-->
+
+<div class="modal fade" id="deleteorderservice" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4>Connect 24/7 Hotel</h4>
+      </div>
+      <div class="modal-body">
+        <b align="center">{{oos3}}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+<br>
+      <div class="container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <form #formset="ngForm">
+              <div class="row">
+
+                <div class="col-lg-1">
+                  <label for="fordate">ForDate</label>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="input-group" [class.has-error]="dates.touched && dates.invalid">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input name="ForDate" type="date" class="form-control" [(ngModel)]="date" #dates="ngModel" required>
+                    <div *ngIf="dates.touched && !dates.valid && dates.errors?.required " ngClass="{ 'has-error' : !dates.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+
+                <div class="col-lg-1">
+                  <b>Room</b>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="input-group" [class.has-error]="rooms.touched && rooms.invalid">
+                    <select name="Room" class="form-control" required style="height:34px;color:black;border-radius:4px;width:200px;color:black;"
+                      [(ngModel)]="orderroom" (ngModelChange)="onSelect6(orderroom)" #rooms="ngModel">
+                      <option *ngFor="let roomnumberlist of roomnumber" [ngValue]="roomnumberlist.rm_room">{{roomnumberlist.rm_room}}
+                        </option>
+                    </select>
+                    <div *ngIf="rooms.touched && !rooms.valid && rooms.errors?.required " ngClass="{ 'has-error' : !rooms.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-1">
+                  <b>RoomClass</b>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="input-group" [class.has-error]="roomcl.touched && roomcl.invalid">
+                    <select name="RoomClass" class="form-control" required style="height:34px;color:black;border-radius:4px;width:200px;color:black;margin-left: 10px;"
+                      [(ngModel)]="class" #roomcl="ngModel">
+                      <option *ngFor="let roomclasslist of roomclass" [ngValue]="roomclasslist.class">{{roomclasslist.class}}
+                        </option>
+                    </select>
+                    <div *ngIf="roomcl.touched && !roomcl.valid && roomcl.errors?.required " ngClass="{ 'has-error' : !roomcl.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+
+
+              </div><br>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <b style="margin-left:50px;"><u>Show </u></b>
+                  <div class="row" id="div2">
+
+                    <div class="col-lg-1">
+
+                      <input name="OutOfOrder" type="checkbox" [(ngModel)]="checkboxflg.checkordr" (change)="filtercheckboxData(checkboxflg.checkordr,'out of order')"
+                        style="width:15px;height:15px;">
+                    </div>
+
+                    <div class="col-lg-3">
+                      <b style="padding-top:5px;">Out Of Order</b>
+                    </div>
+
+                    <div class="col-lg-1">
+                      <input type="checkbox" name="OutOfService" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,'out of service')"
+                        style="width:15px;height:15px;">
+                    </div>
+
+                    <div class="col-lg-3">
+                      <b style="padding-top:35px;">Out Of Service</b>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-3">
+                      <button type="button" class="btn btn-success" (click)="formset.reset();level()">Clear All</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid" >
+        <div class="scrollable">
+          <table class="table table-bordered table-hover table-responsive" >
+            <thead style="background-color:#0077B5;color:white;">
+              <tr>
+                <!-- <th>X</th> -->
+                <th>Room</th>
+                <th>Status</th>
+                <th>From Date</th>
+                <th>Through Date</th>
+                <th>Return As</th>
+                <th>Reason</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let outoforderservicelist of order|filterdata:date:'rm_from_date'; let i= index;" (click)="selectOrdersEdit(outoforderservicelist,i)"
+                [ngClass]="{'backGroundColor':i==selectindex}">
+                <!-- <td><input type="checkbox"></td> -->
+                <td>{{outoforderservicelist?.rm_room}}</td>
+                <td>{{outoforderservicelist?.rm_status}}</td>
+                <td>{{outoforderservicelist?.rm_from_date}}</td>
+                <td>{{outoforderservicelist?.rm_through_date}}</td>
+                <td>{{outoforderservicelist?.rm_return_as}}</td>
+                <td>{{outoforderservicelist?.rm_reason}}</td>
+                <td>{{outoforderservicelist?.rm_description}}</td>
+
+              </tr>
+
+              <!-- <tr>
+              
+              <td></td>
+              <td></td> 
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr> -->
+              <!-- <tr>
+             
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr> -->
+
+              <!-- <tr>
+             
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr> -->
+              <!-- 
+            <tr>
+             
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr> -->
+              <!-- <tr>
+            
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            
+            </tr> -->
+
+
+            </tbody>
+          </table>
+
+        </div>
+      </div><br>
+
+      <div class="container-fluid">
+        <div class="row">
+
+            <button type="button" class="btn btn-info" style=" margin-left: 2%; width:150px;"><b>Details</b></button>
+
+            <button type="button" class="btn btn-success" style="width:150px;"><b>Resv.</b></button>
+
+            <button type="button" class="btn btn-info" style="width:150px;"><b>Copy</b></button>
+
+            <button type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#oos"><b>New</b></button>
+
+            <button type="button" class="btn btn-success" style="width:150px;" data-toggle="modal" data-target="#oosupdate"><b>Edit</b></button>
+
+            <button type="button" class="btn btn-danger" style="width:150px;" (click)="delete(user)" data-toggle="modal" data-target="#deleteorderservice"
+              data-dismiss="modal"><b>Delete</b></button>
+
+            <button type="button" class="btn btn-danger" style="width:150px;" routerLink="/mains"><b>Close</b></button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+
+<div class="modal fade" id="oosupdate" data-backdrop="static" data-keyboard="false" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#0077B5;color:white">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Out Of Order/Service - Edit</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-2"><b>Room No</b></div>
+          <div class="col-lg-2">
+
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-pencil"></i></span>
+              <input type="text" class="form-control" style="width:900%;" [(ngModel)]="user2.rm_room">
+            </div>
+          </div>
+        </div><br>
+
+        <!-- <div class="row">
+            <div class="col-lg-2"><b>From Room</b></div>
+  
+            <div class="col-lg-2">
+                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;">
+                    <option *ngFor="let outoforderlist of orderlist" [ngValue] = "outoforderlist.rm_room">{{outoforderlist.rm_room}} </option>
+                      </select>
+                   </div>
+  
+             <div class="col-lg-1"></div>
+  
+            <div class="col-lg-3"><b>To Room</b></div>
+  
+            <div class="col-lg-2">
+                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;" (ngModelChange)="onSelect1(ordertoroom)">
+                    <option *ngFor="let outofordertolist of ordertolist" [ngValue] = "outofordertolist.rm_room">{{outofordertolist.rm_room}} </option>
+                      </select>
+                    </div>
+   </div><br> -->
+
+
+        <div class="row">
+          <div class="col-lg-2"><b>From Date</b></div>
+
+          <div class="col-lg-2">
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
+              <input type="date" class="form-control" style="width:150px;" [(ngModel)]="user2.rm_from_date">
+            </div>
+          </div>
+
+          <div class="col-lg-1"></div>
+          <div class="col-lg-2" style="padding-left:60px;"><b>To Date</b></div>
+
+          <div class="col-lg-2">
+
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
+              <input type="date" class="form-control" style="width:150px;" [(ngModel)]="user2.rm_through_date">
+            </div>
+          </div>
+
+        </div><br>
+        <div class="row">
+          <div class="col-lg-2"><b>Status</b></div>
+          <div class="col-lg-2">
+
+            <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user2.rm_status">
+              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.room_service_status">{{outoforderservicelist.room_service_status}}
+                </option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-lg-2"><b>Return Status</b></div>
+          <div class="col-lg-2">
+
+            <select required style="height:34px;width:400%;color:black;border-radius:4px;" [(ngModel)]="user2.rm_return_as">
+              <option value="Dirty">Dirty</option>
+              <option value="Clean">Clean</option>
+              <option value="Inspected">Inspected</option>
+              <option value="PickUp">PickUp</option>
+              <option value="Out Of Order">Out Of Order</option>
+              <option value="Out Of Service">Out Of Service</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-lg-2"><b>Reason</b></div>
+
+          <div class="col-lg-2">
+            <div class="input-group">
+              <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user2.rm_reason">
+                <option *ngFor="let outoforderreason of reasonlist" [ngValue]="outoforderreason.mainteanance_reason">{{outoforderreason.mainteanance_reason}}
+                  </option>
+              </select>
+            </div>
+          </div>
+
+
+        </div><br>
+
+
+        <div class="row">
+          <div class="col-lg-2"><b>Remarks</b></div>
+          <div class="col-lg-2">
+
+            <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user2.rm_description"></textarea>
+          </div>
+        </div><br>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(user2)" data-toggle="modal" data-target="#updateorderservice"
+          data-dismiss="modal"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="oos" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#0077B5;color:white">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Out Of Order/Service - New</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-2"><b>Room No</b></div>
+          <div class="col-lg-2">
+
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-pencil"></i></span>
+              <input type="text" class="form-control" style="width:900%;" [(ngModel)]="user.rm_room">
+            </div>
+          </div>
+        </div><br>
+
+        <!-- <div class="row">
+            <div class="col-lg-2"><b>From Room</b></div>
+  
+            <div class="col-lg-2">
+                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;">
+                    <option *ngFor="let outoforderlist of orderlist" [ngValue] = "outoforderlist.rm_room">{{outoforderlist.rm_room}} </option>
+                      </select>
+                   </div>
+  
+             <div class="col-lg-1"></div>
+  
+            <div class="col-lg-3"><b>To Room</b></div>
+  
+            <div class="col-lg-2">
+                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;"  (ngModelChange)="onSelect1(ordertoroom)">
+                    <option *ngFor="let outofordertolist of ordertolist" [ngValue] = "outofordertolist.rm_room">{{outofordertolist.rm_room}} </option>
+                      </select>
+                    </div>
+   </div><br> -->
+
+
+        <div class="row">
+          <div class="col-lg-2"><b>From Date</b></div>
+
+          <div class="col-lg-2">
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
+              <input type="date" class="form-control" [(ngModel)]="user.rm_from_date" style="width:150px;">
+            </div>
+          </div>
+
+          <div class="col-lg-1"></div>
+          <div class="col-lg-2" style="padding-left:60px;"><b>To Date</b></div>
+
+          <div class="col-lg-2">
+
+            <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
+              <input type="date" class="form-control" [(ngModel)]="user.rm_through_date" style="width:150px;">
+            </div>
+          </div>
+
+        </div><br>
+        <div class="row">
+          <div class="col-lg-2"><b>Status</b></div>
+          <div class="col-lg-2">
+
+            <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user.rm_status">
+              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.room_service_status">{{outoforderservicelist.room_service_status}}
+                </option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-lg-2"><b>Return Status</b></div>
+          <div class="col-lg-2">
+
+            <select required style="height:34px;width:400%;color:black;border-radius:4px;" [(ngModel)]="user.rm_return_as">
+              <option value="Dirty">Dirty</option>
+              <option value="Clean">Clean</option>
+              <option value="Inspected">Inspected</option>
+              <option value="PickUp">PickUp</option>
+              <option value="Out Of Order">Out Of Order</option>
+              <option value="Out Of Service">Out Of Service</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-lg-2"><b>Reason</b></div>
+
+          <div class="col-lg-2">
+            <div class="input-group">
+              <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user.rm_reason">
+                <option *ngFor="let outoforderreason of reasonlist" [ngValue]="outoforderreason.mainteanance_reason">{{outoforderreason.mainteanance_reason}}
+                  </option>
+              </select>
+            </div>
+          </div>
+
+
+        </div><br>
+
+
+        <div class="row">
+          <div class="col-lg-2"><b>Remarks</b></div>
+          <div class="col-lg-2">
+
+            <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user.rm_description"></textarea>
+          </div>
+        </div><br>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submit(user)" data-toggle="modal" data-target="#insertorderservice"
+          data-dismiss="modal"><b>Ok</b></button>
+        <!-- <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submit(user)"><b>Ok</b></button> -->
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>

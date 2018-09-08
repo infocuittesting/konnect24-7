@@ -1,0 +1,755 @@
+
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <br>
+<div *ngFor="let editblock of queryedit">
+
+        
+        
+        
+        <br>
+        <div class="container-fluid">
+        <div class="panel panel-primary" style="border:solid 1px;margin-top: -28px;border-color: lightgray">
+          <div class="panel-body" style="margin-top: -22px;max-height: 102px;">
+            <div class="container-fluid">
+              <br>
+  
+              <form action="" #loginForm="ngForm">
+                <div class="row">
+                  <div class="col-md-1">
+                    <label>Block ID {{editblock.block_id}} </label>
+                  </div>
+                  <div class="col-md-2">
+                    <b> Acct/corm*</b>
+                    <div class="input-group">
+                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                      <input type="text" name="accountscom" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="acc_com"
+                        [value]="acc_com" disabled>
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" routerLink="/psearch"  style="height: 34px;" disabled> 
+                          <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <b> Agent*</b>
+                    <div class="input-group">
+                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                      <input type="text" disabled name="Agent Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Travel_Agent" [value]="Travel_Agent"
+                        #firstName="ngModel" style="margin-top: 2px;" required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
+                          <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </button>
+                      </span>
+                    </div>
+  
+                  </div>
+  
+                  <div class="col-md-2">
+                    <b> Source*</b>
+                    <div class="input-group">
+                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                      <input type="text" disabled name="source Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="source_name" [value]="source_name" #firstName="ngModel"
+                        style="margin-top: 2px;"  required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
+                          <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <b>Group*</b>
+                    <div class="input-group">
+                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                      <input type="text" disabled name="group Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Group_name" [value]="Group_name" #firstName="ngModel"
+                        style="margin-top: 2px;"  required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
+                          <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <b> Contact*</b>
+                    <div class="input-group">
+                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                      <input type="text" disabled name="contact Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Contact_name" [value]="Contact_name" #firstName="ngModel"
+                        style="margin-top: 2px;"  required>
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
+                          <i class="glyphicon glyphicon-option-horizontal"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+  
+  
+                </div>
+              </form>
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="container-fluid">
+        <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray" style="margin-top: -8px;">
+          <div class="panel-body" style="max-height: 156px;">
+            <div class="container-fluid">
+  
+  
+              <form action="" #loginForm="ngForm">
+                <div class="col-md-1"></div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="name">Blocks Name</label>
+                      <input type="text"  class="form-control" name="blockname" [value]="editblock.block_name" style="height: 30px;">
+                    </div>
+  
+                  </div>
+  
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="room">Start Date</label>
+                      <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="editblock.start_date">
+                    </div>
+                  </div>
+  
+  
+                  <div class="col-md-2">
+  
+                    <div class="form-group">
+                      <label for="name">Origin</label>
+                      <!-- <span style="text-align: center;"><i>{{editblock.origindescription}}</i></span> -->
+                      <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription" style="height: 30px;">
+                        <option value="" hidden></option>
+                        <option *ngFor="let selectorigin of origin" [ngValue]="selectorigin.origindescription">{{selectorigin.origindescription}} </option>
+                        <!-- selectorigin.origindescription -->
+  
+                      </select>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Status</label>
+                      <select name="state" class="form-control" [(ngModel)]="editblock.status" style="height: 30px;">
+                        <option value="" hidden></option>
+                        <option *ngFor="let selectstatus of blockstatus" [ngValue]="selectstatus.status">{{selectstatus.status}} </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="name">Source</label>
+                      <select class="form-control" name="source" [(ngModel)]="editblock.sourcedescription" style="height: 30px;">
+                        <option value="" hidden></option>
+                        <option *ngFor="let selectsource of source" [ngValue]="selectsource.sourcedescription">{{selectsource.sourcedescription}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+  
+                </div>
+                <div class="col-md-1"></div>
+                <div class="row" *ngFor="let editblock2 of queryedit">
+                  <div class="col-md-2">
+  
+                    <div class="form-group">
+                      <label for="name">Market</label>
+                      <select class="form-control" name="market" [(ngModel)]="editblock.marketgroup_description" style="height: 30px;">
+                        <option value="" hidden></option>
+                        <option *ngFor="let selectmarket of market" [ngValue]="selectmarket.marketgroup_description">{{selectmarket.marketgroup_description}} </option>
+  
+                      </select>
+                    </div>
+                  </div>
+  
+  
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="room">End date</label>
+                      <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="editblock.end_date">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="room">Nights</label>
+                      <input type="text" name="nights" class="form-control input-sm" [(ngModel)]="editblock.nights">
+                    </div>
+                  </div>
+  
+                  <div class="col-md-2">
+                    <label for="Name">Type</label>
+                    <div class="form-group">
+                      <select class="form-control" name="type" [(ngModel)]="editblock.block_type" style="height: 30px;">
+                        <option value="" hidden></option>
+                        <option *ngFor="let selectblocktype of blocktype" [ngValue]="selectblocktype.block_type">{{selectblocktype.block_type}} </option>
+  
+                      </select>
+                    </div>
+                  </div>
+  
+  
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="room">Owner</label>
+                      <input type="text" class="form-control input-sm" name="owner" [(ngModel)]="editblock.owner" style="height: 30px;">
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="row">
+  </div> -->
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="container-fluid">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a data-toggle="tab" href="#Room">Room</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#menu1">Catering</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#menu2">Details</a>
+            </li>
+           
+            <li>
+              <a data-toggle="tab" href="#menu5">Meeting</a>
+            </li>
+  
+  
+          </ul>
+  
+          <div class="tab-content">
+            <div id="Room" class="tab-pane fade in active">
+  
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="room">Block Code </label>
+                        <input type="text" class="form-control input-sm" name="block_code" [value]="editblock.block_code" disabled>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-2">
+                      <b>Rate Code</b>
+                      <div class="form-group">
+                        <select class="form-control input-sm" name="ratecode name" style="margin-top: 4px;" [(ngModel)]="editblock.ratecode">
+                          <option value="" hidden></option>
+                          <option *ngFor="let selectratecode of ratecode" [ngValue]="selectratecode.ratecode">{{selectratecode.ratecode}} </option>
+  
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group" style="width: 100%;">
+                        <label for="room">CutOff Date</label>
+                        <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="editblock.cutoff_date">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="col-md-2">
+                      <div class="form-group" style="margin-top: -18px;">
+                        <label for="room">CutOff Days</label>
+                        <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="editblock.cutoff_days">
+                      </div>
+                    </div>
+  
+                  </div>
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <b>Reservation Type</b>
+                        <select class="form-control input-sm" name="restype" [(ngModel)]="editblock.restype_description">
+                          <option value="" hidden></option>
+                          <option *ngFor="let selectrestype of restype" [ngValue]="selectrestype.restype_description">{{selectrestype.restype_description}} </option>
+  
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="name">Packages</label>
+                        <input type="text" class="form-control input-sm" name="packages" id="" [(ngModel)]="editblock.packages">
+                      </div>
+                    </div>
+  
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="name">Inventory control</label>
+                        <select class="form-control input-sm" name="Invcontrol" id="" [(ngModel)]="editblock.inventory_control">
+                          <option value="" hidden></option>
+                          <option *ngFor="let selectinventory of inventory" [ngValue]="selectinventory.inventory_control">{{selectinventory.inventory_control}} </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="name">Followup Date</label>
+                        <input type="date" class="form-control input-sm" [(ngModel)]="editblock.follow_date">
+                      </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: -45px;">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"
+                          [(ngModel)]="editblock.print_rate">
+                        <label class="custom-control-label" for="customCheck">Print Rate</label>
+                      </div>
+                      <br>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"
+                          [(ngModel)]="editblock.suppress_rate">
+                        <label class="custom-control-label" for="customCheck">Suppress Rate</label>
+                      </div>
+                    </div>
+  
+                  </div>
+                  <div class="row">
+  
+  
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div id="menu1" class="tab-pane fade">
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
+                  <div class="continer">
+                    <div style="border:1px;">
+  
+                      <div class="row">
+                        <div class=col-md-1></div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-left:16px;">
+                            <label for="room">Attendees</label>
+                            <input type="text" class="form-control input-sm" name="attendees" [(ngModel)]="editblock.attenders">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-top:4px;">
+                            <b>ContactNo</b>
+                            <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="editblock.contract_no">
+                          </div>
+  
+                        </div>
+  
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="name">OnSiteName</label>
+                            <input type="text" class="form-control input-sm" id="" name="OnSiteName" [(ngModel)]="editblock.onsite_name">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                          <div class="form-group" style="margin-left: 14px;">
+                            <label for="name">FollowUp Date</label>
+                            <input type="date" class="form-control input-sm" name="Fallow-Up-Date" [(ngModel)]="editblock.followup_date">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="name">Info-Board</label>
+                            <input type="text" class="form-control input-sm" name="info" [(ngModel)]="editblock.info_board">
+                          </div>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 14px;">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkbox" name="checkbox" style="zoom:1.5" [(ngModel)]="editblock.guranteed">
+                            <label for="checkbox">Guranteed</label>
+                          </div>
+  
+                        </div>
+  
+  
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
+                  <div class="continer-fluid">
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Payment Type</label>
+                          <select class="form-control input-sm" name="paytype" [(ngModel)]="editblock.payment_description">
+                            <option value="" hidden></option>
+                            <option *ngFor="let selectpayment of payment" [ngValue]="selectpayment.payment_description">{{selectpayment.payment_description}} </option>
+  
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="from-group">
+                          <label for="name">Commission</label>
+                          <input type="text" class="form-control input-sm " name="Comm" [(ngModel)]="editblock.commission">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">RomingListDue</label>
+                          <input type="date" class="form-control input-sm" name="roaminglist" [(ngModel)]="editblock.rooming_list_duedate">
+                        </div>
+                      </div>
+  
+  
+                    </div>
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Arrival Time</label>
+                          <input type="text" class="form-control input-sm" name="Arrivaltime" [(ngModel)]="editblock.arrivaltime">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">DepartureTime</label>
+                          <input type="text" class="form-control input-sm" name="DepartureTime" [(ngModel)]="editblock.depaturetime">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Total Rooms Per Day</label>
+                          <input type="text" class="form-control input-sm" name="roomsperdays" [(ngModel)]="editblock.total_rooms_perday">
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                            <label class="custom-control-label" for="customCheck">Porterage incl</label>
+                          </div>
+                    </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+  
+            <div id="menu3" class="tab-pane fade" style="background-color: #0077B5;color: white;">
+              <!-- <h3>More</h3>
+                  <p>Some content in menu 1.</p> -->
+            </div>
+            <!-- <h3>Cancel</h3>
+              <p>Some content in menu 4.</p> -->
+            <div id="menu4" class="tab-pane fade">
+  
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
+                  <div class="container-fluid">
+  
+                    <!-- <div class="row" >
+               
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type=""class="form-control form-control-lg"disabled placeholder="Room Cancelation" name="text3">
+                      </div>
+                    </div>
+                      
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <input type=""class="form-control form-control-lg" disabled placeholder="Creating Cancelletion" name="text3">
+                            </div>  
+                        </div>          
+                     </div> -->
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">RoomcancelNo</label>
+                          <input type="text" class="form-control input-sm" [value]="editblock.room_cancel_no" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group" style="width: 100%;">
+                          <label for="name">Reason</label>
+                          <select class="form-control input-sm" id="set1" [(ngModel)]="editblock.room_cancel_reason">
+                            <option value="" hidden></option>
+                            <option *ngFor="let selectcancelreason of cancelreason" [ngValue]="selectcancelreason.room_cancel_reason">{{selectcancelreason.reason}} </option>
+  
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+  
+                        <div class="form-group">
+                          <label for="name">CateringCancelNo</label>
+                          <input type="text" class="form-control input-sm" [value]="editblock.catering_cancel_no" disabled>
+                        </div>
+                      </div>
+  
+                      <div class="col-md-2">
+                        <div class="form-group" style="width:100%;">
+                          <label for="name">Reason</label>
+                          <select class="form-control input-sm" id="set1" [(ngModel)]="editblock.catering_reason_id">
+                            <option value="" hidden></option>
+                            <option *ngFor="let selectcateringreason of cancelreason" [ngValue]="selectcateringreason.catering_reason_id">{{selectcateringreason.reason}} </option>
+  
+                          </select>
+                        </div>
+                      </div>
+  
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Comments</label>
+                          <input type="text" class="form-control input-sm" [(ngModel)]="editblock.room_cancel_comments">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+  
+                        <div class="form-group">
+                          <label for="name">Destination</label>
+                          <input type="text" class="form-control input-sm" [(ngModel)]="editblock.room_cancel_destination">
+                        </div>
+  
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Comments</label>
+                          <input type="text" class="form-control input-sm" [(ngModel)]="editblock.catering_comments">
+                        </div>
+                      </div>
+  
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="menu5" class="tab-pane fade">
+  
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Meeting Size</label>
+                          <input type="text" class="form-control input-sm" name="MeetingSize" [(ngModel)]="editblock.meeting_space">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Space Type</label>
+                          <select class="form-control input-sm" name="SqFeet" [(ngModel)]="editblock.size_type">
+                            <option value="" hidden></option>
+                            <option *ngFor="let selectsizetype of meetingsizetype" [ngValue]="selectsizetype.size_type">{{selectsizetype.size_type}} </option>
+  
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <label for="name">Attendees</label>
+                          <input type="text" class="form-control input-sm" name="Attendees" [(ngModel)]="editblock.attendess">
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <br>
+    <br>
+  
+    <!-- // model reservation screen -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">
+              <b>Pay Master</b>
+            </h4>
+          </div>
+          <div class="modal-body">
+            <p align="center" style="font-size: 15px;">
+              <b>{{paysucess}}, would you like to continue?</b>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/reservationlist">Yes
+              <i class="glyphicon glyphicon-ok"></i>
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">NO
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!-- //label for table  -->
+    <div class="row" style="margin-top: -48px;">
+      <div class="continer">
+        
+        <div class="col-md-3">
+  
+          <label style="margin-left: 25px;">Rooms Revenue </label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- table for revenue -->
+    <div class="row">
+      <div class="continer-fluid">
+       
+        <div class="col-md-6">
+          
+            <table class="table table-bordered table-hover" style="margin-left: 26px;">
+              <thead>
+                <tr>
+                  <th>
+                    <button type="button" class="btn btn-primary"  (click)="RoomrevenueButton()" style="width: 100%;">Cal</button>
+                  </th>
+                  <th>Blocked</th>
+                  <th>Pickup</th>
+                  <th>Available</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let roomrevenues of  queryroomrevenue">
+                  <p align="center">RoomNights</p>
+                  <td>{{roomrevenues.room_nights}}</td>
+                  <td>{{roomrevenues.room_nights_picked}}</td>
+                  <td>{{roomrevenues.room_nights_available}}</td>
+                </tr>
+                <tr *ngFor="let roomrevenues of  queryroomrevenue">
+                  <p align="center">NetRevenue</p>
+                  <td>{{roomrevenues.net_revenue}}</td>
+                  <td>{{roomrevenues.net_revenue_picked}}</td>
+                  <td>{{roomrevenues.net_revenue_available}}</td>
+                </tr>
+                <tr *ngFor="let roomrevenues of  queryroomrevenue">
+                  <p align="center">NetRate</p>
+                  <td>{{roomrevenues.net_rate}}</td>
+                  <td>{{roomrevenues.net_rate_picked}}</td>
+                  <td>{{roomrevenues.net_rate_available}}</td>
+                </tr>
+              </tbody>
+            </table>
+        
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- //buttons -->
+
+        <div class="container-fluid">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:100%" (click)="CreatePaymaster()">Resv</button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary" type="button" style="width:100%" routerLink="/grid" (click)="loadgrid('Grid')">Grid</button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="editblockheader(editblock)">Save</button>
+          </div>
+         
+          <div class="col-md-2">
+            <button class="btn btn-warning" style="width:100%">Close</button>
+          </div>
+        </div>
+
+  
+    <!-- //model for grid button -->
+  
+  
+    <div class="modal fade" id="grid" role="dialog">
+      <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Connect24*7</h4>
+          </div>
+          <div class="modal-body">
+            <p align="center">
+              <b>Are You sure want to Create Reservation</b>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/rominglist">Yes
+              <i class="glyphicon glyphicon-ok"></i>
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">NO
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <!-- ok button response -->
+    <!-- Modal -->
+    <div id="myModal4" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Block</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              <b style="font-size: 20px;">{{blocksuccess}}</b>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-Danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>

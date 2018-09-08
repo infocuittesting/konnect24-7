@@ -1,0 +1,170 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+      <br>
+<div class="container-fluid">
+  <div class="panel panel-primary" style="border-color: lightgray">
+        <div class="panel-body" style="margin-top: -10px;margin-bottom: -15px">
+      <div class="row">
+
+       <div class="col-md-2">
+
+        <label for="email"> Name</label>
+        <input type="text" class="form-control" id="email" name="email">
+       </div>
+
+      <div class="col-md-2">
+         <label for="email">Date</label>
+        <input type="date" class="form-control" id="email" name="date">
+        </div>          
+
+        <div class="col-md-2">
+
+                <label for="email">Department</label>
+                <select class="form-control"  name="Department" id="">
+                    <option value=""> HouseKeeping </option>
+
+                </select>
+        </div>
+        <div class="col-md-2" style="margin-top: 30px">          
+                <label class="checkbox-inline" for="resolve"> <input type="checkbox" style="zoom:1" id="resolve"  name="resolve" [(ngModel)]="checkboxValue" (change)="newFunction()">Resolved</label>
+           </div>
+           <div class="col-md-2" style="margin-top: 30px">
+                <label class="checkbox-inline" for="unresolve"><input type="checkbox" style="zoom:1" id="unresolve"  name="unresolve" [(ngModel)]="checkValue" (change)="fuc()"> Unresolved</label>
+           </div>
+           
+       <div class="col-md-2" style="margin-top: 26px"> 
+            <button class="btn btn-success" style="width: 100%">All </button>  
+       </div>       
+
+          
+      </div>
+      <br>
+      <div class="row">
+
+
+    </div>
+
+</div></div>
+
+<br>
+
+<table class="table table-bordered  tableBodyScroll" style="margin-top: -20px">
+  <thead>
+      <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
+          <th style="width:40px;">Seq</th>
+          <th style="width:138px;"> Name</th> 
+          <th style="width:138px;"> Date</th>         
+          <th style="width:120px;"> Time</th>
+          <th style="width:120px;"> Department</th>
+          <th style="width:140px;">Traces</th>
+          <th style="width:139px;"> Resolved On</th>
+          <th> Resolved By</th>
+      </tr>
+  </thead>
+  <tbody>
+          <tr *ngFor="let list of gettrace|resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
+          (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i==selectindex}"> 
+             <td style="width:40px;">{{i+1}}</td>    
+             <td style="width:138px;">{{list.pf_firstname}}</td>        
+             <td style="width:138px;">{{list.traces_date}}</td>         
+             <td style="width:120px;">{{list.traces_time}}</td>   
+             <td style="width:120px;">{{list.traces_dept_code}}</td>
+             <td style="width:140px;">{{list.traces_trace_text}}</td>  
+             <td style="width:139px;">{{list.resloved_on}}</td>     
+             <td>{{list.resloved_by}}</td>                        
+          </tr>
+              <tr>    
+             <td><input type="checkbox"></td>                
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                        
+          </tr>
+              <tr>     
+             <td><input type="checkbox"></td>    
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                        
+          </tr>
+              <tr>    
+             <td><input type="checkbox"></td>    
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                        
+          </tr>
+              <tr>      
+             <td><input type="checkbox"></td>    
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                        
+          </tr>
+              <tr>
+             <td><input type="checkbox"></td>    
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                             
+          </tr>
+              <tr>     
+             <td><input type="checkbox"></td>    
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>     
+             <td></td>                        
+          </tr>                                                            
+  </tbody>
+</table>
+<br>    
+<div>
+        <button class="btn btn-info" style="width:12%; margin-left:10%;" data-toggle="modal" data-target="#resolvessss" (click)="resolve()" > Resolve </button>    
+        <button class="btn btn-primary"style="width:12%"> New  </button>    
+        <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Resv </button>   
+        <button class="btn btn-info " style="width:12%"> Edit </button>   
+        <button class="btn btn-default disabled" style="width:12%"> Delete </button>        
+        <button class="btn btn-danger" style="width:12%"routerLink="/mains"> Close </button>   
+      
+        </div>
+      <br>
+
+</div>
+
+</div>
+
+
+         <!-- traces start-->
+         <div class="modal fade" id="resolvessss" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" align="center"> Traces Resolve</h4>
+                </div>
+                <div class="modal-body">
+      
+                  <p align="center"><b> {{resolvetrace}}</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Accept End -->      

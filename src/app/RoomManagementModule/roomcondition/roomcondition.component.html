@@ -1,0 +1,266 @@
+<!-- Alertinsert for roomcondition response -->
+
+<div class="modal fade" id="insertroomcondition" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <p align="center">{{newroom}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+
+
+     <!---Alertupdate for roomcondition response-->
+
+     <div class="modal fade" id="updateroomcondition" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4>Connect 24/7 Hotel</h4>
+          </div>
+          <div class="modal-body">
+          <p align="center">{{newroom1}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+
+         <!---Alertdelete for roomcondition response-->
+         <!-- infocuit -->
+         <div class="modal fade" id="deleteroomcondition" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4>Connect 24/7 Hotel</h4>
+              </div>
+              <div class="modal-body">
+              <p align="center">{{newroom2}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <body>
+            <div class="wrapper">
+              <div class="content-wrapper">
+                <br>
+<div class="container-fluid">
+<div class="panel panel-default">
+<div class="panel-body">
+<div class="row" >
+
+<div class="col-lg-3">
+<input type="checkbox" [(ngModel)]="checkboxflg.notreser" (change)="filtercheckboxData(checkboxflg.notreser,'not reserved')"><b style="padding-left:10px;">NotReserved</b><br>
+  <input type="checkbox" [(ngModel)]="checkboxflg.reser" (change)="filtercheckboxData(checkboxflg.reser,'reserved')"><b style="padding-left:10px;">Reserved</b><br>
+
+</div>
+
+<div class="col-lg-3">
+  <input type="checkbox" [(ngModel)]="checkboxflg.checkvacnt" (change)="filtercheckboxData(checkboxflg.checkvacnt,'vaccant')" ><b style="padding-left:10px;">Vaccant</b><br>
+  <input type="checkbox" [(ngModel)]="checkboxflg.checkocc" (change)="filtercheckboxData(checkboxflg.checkocc,'occupied')"><b style="padding-left:10px;">Occupied</b><br>
+  <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" (change)="filtercheckboxData(checkboxflg.checkdue,'due out')"><b style="padding-left:10px;">Due Out</b><br>
+ 
+</div>
+
+<div class="col-lg-3">
+  <div class="col-lg-3"><b>Room</b></div>
+  <div class="col-lg-1"></div> 
+ 
+  <div class="col-lg-2">  
+      <select  required style="height:34px;color:black;border-radius:4px;width:3000%;color:black;" [(ngModel)]="rooms" (ngModelChange)="onSelect5(rooms)">
+          <option *ngFor="let roomconditionlist of roomcondition" [ngValue] = "roomconditionlist.rm_room">{{roomconditionlist.rm_room}} </option>
+            </select>
+      </div><br><br>
+
+      <div class="col-lg-3"><b>Condition</b></div>
+      <div class="col-lg-1"></div> 
+      <div class="col-lg-2">  
+          <select  required style="height:34px;color:black;border-radius:4px;width:3000%;color:black;" [(ngModel)]="rctypeselection" (ngModelChange)="onSelect4(rctypeselection)">
+              <option *ngFor="let conditionlist of condition" [ngValue] = "conditionlist.rm_condition">{{conditionlist.rm_condition}} </option>
+                </select>
+          </div><br><br>
+
+          <div class="col-lg-3"><b>Room Class</b></div>
+       <div class="col-lg-1"></div> 
+          <div class="col-lg-2">  
+              <select  required style="height:34px;color:black;border-radius:4px;width:3000%;color:black;" [(ngModel)]="class" (ngModelChange)="onSelect5(class)">
+                  <option *ngFor="let roomclasses of class" [ngValue] = "roomclasses.class">{{roomclasses.class}} </option>
+                    </select>
+              </div><br><br>
+</div>
+
+</div><br>
+</div>
+</div>
+</div>
+
+<div class="container-fluid" >
+ 
+    <table class="table table-bordered table-responsive table-hover">
+        <thead style="background-color:#0077B5;color:white;">
+          <tr>
+            <!-- <th>X</th> -->
+            <th>Room</th>
+            <th>Room Type</th>
+            <th>Room Status</th>
+             <th>FO Status</th>
+            <th>Features</th>
+           <th>Room Condition</th>
+           <!-- <th>Room Description</th> -->
+          </tr>
+        </thead>
+        <tbody>
+ 
+          <tr *ngFor="let roomcondition of room ; let i=index;"  
+          (click)="selectRoomEdit(roomcondition,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <!-- <td><input type="checkbox"></td> -->
+            <td>{{roomcondition?.rm_room}}</td>
+            <td>{{roomcondition?.rm_room_type}}</td>
+             <td>{{roomcondition?.rm_room_status}}</td>           
+             <td>{{roomcondition?.rm_fo_status}}</td>
+             <td>{{roomcondition?.rm_features}}</td>
+            <td>{{roomcondition?.rm_condition}}</td>
+            </tr>
+
+                  
+        </tbody>
+      </table>
+    
+
+</div><br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-1">
+
+    </div>
+
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-success" style="width:100%;" routerLink="/reservation"><b>Resv.</b></button>
+      </div>
+      <div class="col-lg-2">
+          <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="modal" data-target="#new" [disabled]=new><b>New</b></button>
+        </div>
+        <div class="col-lg-2">
+    
+            <button type="button" class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#newupdate" [disabled]=edit><b>Edit</b></button>
+          </div>
+          <div class="col-lg-2">
+              <button type="button" class="btn btn-warning" style="width:100%;" (click)="delete(user1)" [disabled]=deleted data-toggle="modal" data-target="#deleteroomcondition" data-dismiss="modal"><b>Delete</b></button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
+              </div>
+                              
+              <div class="col-lg-1">
+
+                </div>
+  </div>
+
+</div>
+</div>
+</div>
+</body>
+<div class="modal fade" id="new" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#0077B5;color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Room Conditions-New</h4>
+      </div>
+      <div class="modal-body">
+       
+        <div class="row">
+<div class="col-lg-4">
+<b>Room Condition</b>
+</div>
+
+<div class="col-lg-4">
+  <div class="input-group">
+      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+      <input type="text" name="roomcondition" class="form-control" style="width:220px;"  [(ngModel)]="user1.rm_condition">
+      </div>
+</div>
+
+        </div><br>
+
+        <div class="row" style="padding-left:20px;">
+         <textarea rows="5" cols="77" style="border-radius:4px;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submit(user1)" data-toggle="modal" data-target="#insertroomcondition" data-dismiss="modal"><b>Ok</b></button> -->
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insertroomcondition" data-dismiss="modal" (click)="submit(user1)"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="newupdate" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#0077B5;color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Room Conditions-Edit</h4>
+      </div>
+      <div class="modal-body">
+       
+        <div class="row">
+<div class="col-lg-4">
+<b>Room Condition</b>
+</div>
+
+<div class="col-lg-4">
+  <div class="input-group">
+      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+      <input type="text" class="form-control" style="width:220px;"  [(ngModel)]="rmc">
+      </div>
+</div>
+
+        </div><br>
+
+        <div class="row" style="padding-left:20px;">
+         <textarea rows="5" cols="75" style="border-radius:4px;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(rmc)" data-toggle="modal" data-target="#updateroomcondition"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+  </div>
+</div>

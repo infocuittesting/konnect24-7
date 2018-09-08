@@ -1,0 +1,247 @@
+<body>
+<div class="wrapper">
+  
+  <div class="content-wrapper">
+      <br>
+<div class="container-fluid">
+  <div class="panel panel-primary" style="border-color: lightgray;margin-top: -15px">
+      <div class="panel-body" >
+    <form action="" id="myform">
+    <div class="row" style="margin-top: -15px">
+
+        <div class="col-sm-4">
+           <b> First Name</b> <div class="input-group">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString" style="height: 30px;width: 60%"></div>
+        </div>
+  
+        <div class="col-sm-4">
+  
+            <b>Last Name</b> <div class="input-group">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query" style="height: 30px;width: 60%"></div>
+        </div>
+        
+          <div class="col-sm-4">
+              <b>Company</b> <div class="input-group">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="Company" id="name" class="form-control" style="height: 30px;width: 60%"></div>
+  
+            </div>
+      
+  
+          </div>
+  
+          <div class="row" >
+  
+              <div class="col-lg-4">
+                  <b>Contact</b> <div class="input-group">
+                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+                       <input type="text"name="Contact" class="form-control" style="height: 30px;width: 60%"></div>
+               </div>
+  
+        <div class="col-lg-4">
+            <b>Arrival From</b> <div class="input-group">
+                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                 <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
+         </div>
+   
+         <div class="col-lg-4">
+   
+             <b>Arrival To</b> <div class="input-group">
+                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
+         </div>
+        
+  
+      
+  
+          </div>
+  
+  
+          <div class="row" >
+  
+            <div class="col-lg-4">
+              <b>Group</b> <div class="input-group">
+                   <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                   <input type="text" name="Group" id="name" class="form-control" style="height: 30px;width: 60%"></div>
+           </div>
+           
+        
+              <div class="col-lg-4">
+        
+                  <b>Source</b> <div class="input-group">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                      <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource" style="height: 30px;width: 60%"></div>
+              </div>
+            
+              <div class="col-lg-4">
+                    <b>Agent</b> <div class="input-group">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                      <input type="text" name="Agent" id="name" class="form-control" style="height: 30px;width: 60%"></div>
+        
+                  </div>
+            
+        
+                </div>  
+           
+<br>
+<div class="row" style="margin-top: -10px">
+<div class="col-md-3"></div>
+<div class="col-md-2">
+  <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
+</div>
+<div class="col-md-2">
+  <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
+</div>
+<div class="col-md-2">
+  <button class="btn btn-success" style="width: 100%"routerLink="/reservation">Walk-in </button>   
+</div>
+<div class="col-md-3"></div>
+
+</div>
+</form>
+</div>
+</div>
+</div>
+<div style="margin-left:90%;margin-top: -20px"> 
+  <span>
+    <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+    [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+  
+    <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+    [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+  </span>
+  </div> 
+    <div class="container-fluid" >
+  
+        <table class="table table-bordered table-hover tableBodyScroll">
+          <thead>
+              <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                    <th style="width:50px"> Seq</th>                      
+                    <th style="width:180px"> Name</th>
+                    <th style="width:110px"> Arrival_Date</th>
+                    <th style="width:130px"> Departure_Date</th>
+                    <th style="width:60px" > Room</th>
+                    <th style="width:75px" *ngIf="showMore!=true"> Nights</th>
+                    <th style="width:100px" *ngIf="showMore!=true"> Room_Type</th>
+                    <th style="width:60px" *ngIf="showMore!=true"> Adults</th>                        
+                    <th style="width:60px" *ngIf="showMore!=true"> Child</th>
+                    <th style="width:85px" *ngIf="showMore!=true"> Status</th>
+                    <th  *ngIf="showMore!=true"> Block_Code</th>
+                    <th style="width:100px" *ngIf="showMore==true"> Resv_Type</th>
+                    <th style="width:120px" *ngIf="showMore==true"> Confirm_No</th>
+                    <th style="width:150px" *ngIf="showMore==true"> CreditCard</th>            
+                    <th style="width:80px" *ngIf="showMore==true"> Exp_Date</th>            
+                    <th *ngIf="showMore==true"> Rate</th>
+  <!-- 
+                    <th> Extension</th>
+  
+                    <th> Group</th>
+                    <th> Packages</th>
+                    <th> Rtc</th>
+                    <th> Currency</th>
+                    <th> ETA</th>
+                    <th> Market</th>
+                    <th> Source</th>            
+                    <th> Origin</th>            
+                    <th> Payment</th>            
+                    <th> Guest_Balance</th>            
+                    <th> Disc_Amount</th>            
+                    <th> Disc_perc</th>  
+                    <th> Disc_Reason</th>            
+                    <th> Specials</th>            
+                    <th> Comments</th>            
+                    <th> Item_Inv</th>             -->
+                              
+                  </tr>
+          </thead>
+          <tbody>
+            <!-- <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
+            (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
+            <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+            (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+              <td style="width:50px">{{i+1}}</td> 
+              <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>
+              <td style="width:110px"> {{searched.res_arrival}} </td> 
+              <td style="width:130px"> {{searched.res_depature}} </td>
+              <td style="width:60px" > {{searched.res_room }} </td>
+              <td style="width:75px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
+              <td style="width:100px" *ngIf="showMore!=true"> {{searched.res_room_type |titlecase}} </td>
+              <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
+              <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
+              <td style="width:85px" *ngIf="showMore!=true"> {{searched.res_guest_status|titlecase}} </td>     
+              <td *ngIf="showMore!=true"> {{searched.res_block_code}}</td>    
+              <td style="width:100px" *ngIf="showMore==true"> {{searched.res_res_type |titlecase}}</td>     
+              <td style="width:120px" *ngIf="showMore==true"> {{searched.res_confnumber}} </td>
+              <td style="width:150px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
+              <td style="width:80px" *ngIf="showMore==true"> {{searched.res_exp_date}}</td>     
+              <td *ngIf="showMore==true"> {{searched.res_rate}}</td>     
+  <!-- 
+              <td></td>     
+              <td> {{searched.res_packages}}</td>     
+              <td> {{searched.res_rtc |titlecase}}</td>     
+              <td> {{searched.res_currency |titlecase}}</td>     
+              <td> {{searched.res_eta}}</td>
+              <td> {{searched.res_market |titlecase}}</td> 
+              <td> {{searched.res_source |titlecase}}</td>     
+              <td> {{searched.res_origin |titlecase}}</td>     
+              <td> {{searched.res_payment |titlecase}}</td>     
+              <td> {{searched.res_guest_balance}}</td>     
+              <td> {{searched.res_disc_amount}}</td>     
+              <td> {{searched.res_disc_perc}}</td>
+              <td> {{searched.res_disc_reason |titlecase}}</td>     
+              <td> {{searched.res_specials |titlecase}}</td>     
+              <td> {{searched.res_comments |titlecase}}</td>     
+              <td> {{searched.res_item_inv}}</td> -->
+            </tr>
+                                                                                                                              
+          </tbody>
+        </table>
+  
+    </div>
+<br>
+
+<div>
+  <button class="btn btn-info" style="width:15%;margin-left: 2%" routerLink="/reservation">New </button>    
+  <button class="btn btn-primary"style="width:15%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin" [disabled]=chin>Check-in </button>    
+  <button class="btn btn-success" style="width:15%">Reg. Card </button>   
+  <button class="btn btn-info" style="width:15%" routerLink="/psearch"> Profile </button>   
+  <button class="btn btn-primary" style="width:15%" routerLink="/reservationoption" [disabled]=option> Options</button>   
+  <button class="btn btn-danger" style="width:15%" routerLink="/mains"> Close </button>   
+
+  </div>
+
+<br><br>
+</div>
+</div>
+</body>
+
+
+<!---checkin-->
+
+        <!-- Checkin modal -->
+      
+        <div class="modal fade" id="Checkin" role="dialog" >
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="width:150%;margin-left: -100px;margin-top: 225px">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="text-align: center;">Checkin Status</h4>
+                          </div>
+                    <div class="modal-body">  
+                        <div>    
+                    <p align="center"><b> {{status}} </b></p>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  
+               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+      <!-- Checkin end -->

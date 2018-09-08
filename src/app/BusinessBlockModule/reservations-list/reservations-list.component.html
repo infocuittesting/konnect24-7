@@ -1,0 +1,163 @@
+
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+      <div class="continer-fluid">
+        <br>
+          <table class="table table-bordered table-hover fixtab"  >
+            <thead style="background-color: #0077B5;color:white;">
+              <tr>
+                <th>Reservation ID</th>
+                
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Nights</th>
+                <th>Rmtype</th>
+                <th>Created By</th>
+                <th>Room</th>
+                <th>blockcode</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= "let resvlist of querypay;let i = index"  (click)="ReservationsListComponent(resvlist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                <td>{{resvlist.res_id}}</td>
+                
+                <td>{{resvlist.res_arrival}}</td>
+                <td>{{resvlist.res_depature}}</td>
+                <td>{{resvlist.res_nights}}</td>
+                <td>{{resvlist.res_room_type}}</td>
+                <td>{{resvlist.created_by}}</td>
+                <td>{{resvlist.res_number_of_rooms}}</td>
+                <td>{{resvlist.res_block_code}}</td>
+                <td>{{resvlist.res_guest_status}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        
+      </div>
+
+        <div class="continer-fluid">
+          <br>
+            <div class="row">
+            <div classs="col-md-2"></div>
+            <div class="col-md-2"></div>
+            
+              <div class="col-md-2">
+                  <button class="btn btn-primary" style="width:100%" routerLink="/rominglist" [disabled]=gro>RomingList</button>
+  
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success"routerLink="/business" style="width:100%">New</button>
+                  </div>
+                  <div class="col-md-2">
+                      <button class="btn btn-body"routerLink="/bcreate" style="width:100%">Edit</button>
+                    </div>
+  
+                    <div class="col-md-2">
+                        <button class="btn btn-danger"routerLink="/mains" style="width:100%">Close</button>
+                      </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+      <!-- GroupOptionsScreen -->
+  
+           <!-- // model reservation screen -->
+           <!-- <div class="modal fade" id="groupoptions" role="dialog">
+            <div class="modal-dialog model-lg">
+            
+              
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">GroupOptions</h4>
+                </div>
+                <div class="modal-body">
+               <div class="row">
+                 
+                 <div class="col-md-10">
+                   <div class="continer-fluid">
+                    <div class="panel panel-primary" style="width: 122%;">
+                      <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary" routerLink="/rominglist" data-dismiss="modal" style="width:100%;height: 70px;">RoomingList</button>
+                             </div>
+                             <div class="col-md-6">
+                                <button class="btn btn-info" routerLink="/reservation" disabled data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-secondary" data-dismiss="modal" disabled model-center style="width:100%;height: 70px;">RoomAssin</button>
+                             </div>
+                             <div class="col-md-6">
+                                <button class="btn btn-white" data-dismiss="modal" disabled model-center style="width:100%;height: 70px;">RoomStatus</button>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary" model-center style="width:100%;height: 70px;" data-toggle="modal" data-target="#Registrationcards">PrintRegistrationCards</button>
+                             </div>
+                             <div class="col-md-6">
+                                <button class="btn btn-warning" disabled model-center style="width:100%;height: 70px;">NewPostMaster</button>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-secondary" disabled model-center style="width:100%;height: 70px;">Delete</button>
+                             </div>
+                             <div class="col-md-6">
+                                <button class="btn btn-dark" disabled model-center style="width:100%;height: 70px;">CutKeys</button>
+                             </div>
+                        </div>
+  
+                      </div>
+                    </div>
+                   </div>
+                 </div>
+               </div>                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"style="width: 115px;" data-dismiss="modal" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+                
+                </div>
+              </div>
+              
+            </div>
+        </div> -->
+  
+  
+        <!-- print Registration cards model screen -->
+  
+  
+        <div class="modal fade" id="Registrationcards" role="dialog">
+                <div class="modal-dialog model-lg">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content"  style="width: 99%;">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <img id="myImg" src="assets/images/registationcard.png" alt="Snow" style="width:100%;max-width:auto"> -->
+                      <div class="continer-fluid">
+                       <div class="row">
+                        <!-- <legend>Registrationcard</legend> -->
+                        <h6 style="align-content: center;">Registrationcard</h6>
+                       </div>
+                     </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"  >Yes <i class="glyphicon glyphicon-ok"></i></button>             
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>             
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>

@@ -1,0 +1,198 @@
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+    
+    
+      <br>
+        <div class="container-fluid">
+                <table class="table table-bordered tableBodyScroll">
+                    <thead style="background-color: #337ab7;color: white;">
+                      <tr>
+                        <th >Conf No</th>
+                        <th>Name</th>
+                        <th>Arrival</th>
+                        <th>Depature</th>
+                        <th>Nights</th>
+                        <th style="width:100px;">Room Type</th>
+                        <th>Adult</th>
+                        <th>Child</th>
+                        <th style="width:100px;">No of rooms</th>
+                        <th>Rooms</th>
+                        <th>Block ID</th>
+                        <th width=10% ></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                         <!-- <td>
+                          <select   style="width:100%;" [(ngModel)]="confnumber">
+                            <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                         </select>
+                         </td> -->
+  
+                            <td><input style="width:100px;height: 25px;" name = "confnumber" type="text" [(ngModel)]="confnumber" disabled/></td>
+                        
+                            <td><input style="width: 100px;height: 25px;" pattern="^[a-z A-Z]+$"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
+                            <td><input type="text" style="width: 100%;height: 25px;"  name = "arrival"  [(ngModel)]="Arrival" disabled [value]="arrive"/></td>
+                            <td><input type="text" style="width: 100%;height: 25px;"  name = "depature"  [(ngModel)]="Depature" disabled [value]="depature"/></td>
+                            <td><input style="width: 100%;height: 25px;"  name = "nights" type="text" [(ngModel)]="nights" disabled [value]="nightss" /></td>
+                            <td>
+                             <select name="romnm"  style="width:100px;" [(ngModel)]="roomtype" >
+                              <option  *ngFor="let roomtype of show_room_type" [ngValue] = "roomtype">{{roomtype}}</option>
+                             </select>
+                            </td>
+                            <!-- <td><input style="width: 100%;height: 25px;"  name = "roomtype" type="text" [(ngModel)]="roomtype" /></td> -->
+                            <td><input style="width: 100%;height: 25px;"  name = "adult" type="text" [(ngModel)]="adult" /></td>
+  
+                            <td><input style="width: 100%;height: 25px;"  name = "child" type="text" [(ngModel)]="child" /></td>
+                            <td><input style="width:100px;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms"/></td>
+                            
+                            <td><input style="width: 100%;height: 25px;"  name = "rooms" type="text" [(ngModel)]="rooms" disabled /></td>
+                            <td><input style="width: 100%;height: 25px;"  name = "blockid" type="text" [(ngModel)]="blockid" [value]="blockid" disabled/></td>
+                          <td style="width: 86px;"><span>
+                              <i style="padding-left: 34px;cursor: pointer;" (click)="size(roomtype)" (click)="addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)"
+                              class="fa fa-plus-circle" aria-hidden="true"></i>
+                           </span>
+                          </td>
+  
+                           </tr>
+                          <tr *ngFor="let room of savedetails ; let i=index;">
+  
+                              <td><label *ngIf="room.editFlag==false">{{room.confnumber}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.confnumber" disabled></td>
+                              <td><label *ngIf="room.editFlag==false">{{room.pf_firstname}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.pf_firstname"></td>
+  
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_arrival}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_arrival"[value]="res_arrival" disabled></td>
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_depature}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_depature"[value]="res_depature" disabled></td>
+        
+                              <td><label *ngIf="room.editFlag==false">{{room.res_nights}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_nights" [value]="res_nights" disabled></td>
+                                <!-- <td>
+                                  <select name="room_select"  style="width:100%;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_room_type" >
+                                   <option  *ngFor="let roomtype of show_room_type" [ngValue] = "res_room_type" *ngIf="room.editFlag==false">{{room.res_room_type}}</option>
+                                  </select>
+                                 </td> -->
+                                 <td >
+                                  <select name="room_type"  style="width:100%;" [(ngModel)]="room.res_room_type"  >
+                                   <option  *ngFor="let roomtype of show_room_type" [ngValue] = "room.res_room_type" >{{roomtype}}</option>
+                                  </select>
+                                 </td>
+                              <!-- <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_room_type"></td>
+         -->
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_adults}}</label>
+                                <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_adults"></td>
+        
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_child}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_child"></td>
+        
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_number_of_rooms}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_number_of_rooms"></td>
+                                
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_rooms}}</label>
+                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_rooms" disabled></td>
+  
+                              <td ><label *ngIf="room.editFlag==false">{{room.res_block_code}}</label>
+                                    <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_block_code" [value]="res_block_code" disabled></td>
+                                    
+                               <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
+                                <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
+                                (click)="editrows(i,room)"></i>
+                                <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
+                                (click)="saveRows(i,room)"></i>
+                              </span></td> 
+                                                          
+  
+                            </tr>
+  
+                    </tbody>
+                  </table>        
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <form>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <label>Reservation</label>
+              
+                  <div class="custom-control custom-radio" style="width:50%;zoom:1.0">
+                    <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
+                    <label class="custom-control-label" for="customRadio">New</label>
+                  </div> 
+                </div>
+                <div class="col-md-1">
+              <br>
+                        <div class="custom-control custom-radio" style="margin-left:-130%;margin-top: 7px;width:50%;zoom:1.0">
+                          <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
+                          <label class="custom-control-label" for="customRadio">All</label>
+                        </div> 
+                      
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <label>Profile</label>
+                        
+                            <div class="custom-control custom-checkbox" style="zoom:1.0;">
+                              <input type="checkbox"  class="custom-control-input" id="customCheck" name="example1">
+                              <label class="custom-control-label" for="customCheck">Search Guest Profile</label>
+                            </div>
+                          </div>
+                          </form> -->
+                 
+        </div>
+        </div>
+        <div class="container-fluid">
+          <br>
+            <div class="row" style="margin-left: 10px;">
+              <div class="col-md-2">
+                <button class="btn btn-primary"routerLink="/profile" style="width:100%"disabled>Profile</button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-info" style="width:100%" disabled>QuickSplit</button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-default" style="width:100%" disabled>Grids</button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-danger" style="width:100%" disabled>BLock</button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="UpdateRoomingList()" (click)="CreateGroupReservation()">save</button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-warning"  routerLink="/mains"style="width:100%">Close</button>
+              </div> 
+  
+            </div>
+            </div>
+        </div>
+        </div>
+        </body>
+  
+        <!-- Modal -->
+  <div id="myModal4" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Reservation</h4>
+        </div>
+        <div class="modal-body">
+          <p><b style="font-size: 15px;">{{resgroup}}</b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-Danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+              
+  
+  

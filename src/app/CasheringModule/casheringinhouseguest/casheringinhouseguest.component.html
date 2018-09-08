@@ -1,0 +1,688 @@
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <br>
+  
+
+        <div class="container-fluid">
+          <div class="panel panel-default" style="margin-left:15px;margin-right:20px;" >
+              <form style="margin-left:15px">
+                <div class="row" style="margin-top:10px">
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room">Room</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group" [class.has-error]="roomval.dirty && !roomval.valid">
+                          <input type="text" class="form-control input-sm" [(ngModel)]="mainroom" pattern="^[0-9]+$" #roomval="ngModel" name="room"
+                            style="height:27px;width: 83%;">
+                          <div *ngIf="roomval.dirty && !roomval.valid && roomval.errors.pattern " ngClass="{ 'has-error' : !roomval.valid && submitAttempt }">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room">Name</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group" [class.has-error]="nameval.dirty && !nameval.valid">
+                          <input type="text" class="form-control input-sm" [(ngModel)]="mainpersonname" pattern="[a-zA-Z][a-zA-Z ]*" #nameval="ngModel"
+                            name="personname" style="height:27px;width: 83%;">
+                          <div *ngIf="nameval.dirty && !nameval.valid && nameval.errors.pattern " ngClass="{ 'has-error' : !nameval.valid && submitAttempt }">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room">Group</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm" style="height:27px;width:83%;margin-left: 25px">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room" style="margin-left: -5px">Company</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm" [(ngModel)]="company" name="company" style="height:27px;width: 83%;margin-left: 20px">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" >
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room" style="margin-top: -10px">Party</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm" style="height:27px;width:83%;margin-top: -10px;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room" style="margin-top: -10px">Block</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <input type="text" class="form-control input-sm" style="height:27px;width: 83%;margin-top: -10px">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="room" style="margin-top: -10px">Res.Type</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <select class="form-control input-sm" name="restyp" id="se" style="width:83%;height:27px;margin-left: 25px;margin-top: -10px"
+                            [(ngModel)]="restyp" (ngModelChange)="onSelect(restyp)" placeholder="select">
+                            <option value="" hidden></option>
+                            <option *ngFor="let restypelist of resty" [ngValue]="restypelist.restype_description">{{restypelist.restype_description}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-3">
+                                <div class="row">
+                                  <div class="col-md-2"></div>
+                                  <div class="col-md-1">
+                                      <input type="checkbox" class="form-control input-sm" style="width:15px;height:15px;">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">            
+                                        <label for="room">Open Balance</label>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div> -->
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <label style="margin-top: -5px"><b><u>Arrival</u></b></label>
+                  </div>
+                  <div class="col-md-3">
+                    <label style="margin-top: -5px"><b><u>Departure</u></b></label>
+                  </div>
+                  <div class="col-md-3">
+                    <label style="margin-top: -5px"><b><u>Status</u></b></label>
+                  </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label for="room">From</label>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="date" name="arrivalfrom" class="form-control input-sm" style="width:83%;height:27px;" [(ngModel)]="startDate"
+                                (change)="filterDatefrmList(startDate,endDate)">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label for="room">From</label>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="date" name="depfrom" class="form-control input-sm" style="width:83%;height:27px;" [(ngModel)]="startDatedep"
+                                (change)="filterDatefrmdep(startDatedep,endDatedep)">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox" [(ngModel)]="checkboxflg.checkin" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkin,'checkin')"
+                          name="chkin">
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <label>CHECKIN</label>
+                      </div>
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox" [(ngModel)]="checkboxflg.checkout" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkout,'Check out')"
+                          name="chkoutt">
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <label>CHECKOUT</label>
+                      </div>
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <button type="reset" class="btn btn-success" style="border-radius: 6px;margin-top: 0px;width: 115px;height: 30px;" (click)="clear()">
+                          <b>Clear</b>
+                        </button>
+                      </div>
+
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkdue,'due out')" name="chkdue"> -->
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <!-- <label>Due Out</label> -->
+                      </div>
+
+
+                      <!-- <div class="col-md-3 col-sm-3 col-xs-3">
+                                  <label>Checked Out</label>
+                                </div> -->
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label for="room" style="margin-top: -10px">To</label>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="date" name="arrivalto" class="form-control input-sm" style="width:83%;height:27px;margin-top: -10px" [(ngModel)]="endDate"
+                                (change)="filterDatefrmList(startDate,endDate)">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label for="room" style="margin-top: -10px">To</label>
+                          </div>
+                          <div class="col-md-9">
+                            <div class="form-group">
+                              <input type="date" name="depto" class="form-control input-sm" style="width:83%;height:27px;margin-top: -10px" [(ngModel)]="endDatedep"
+                                (change)="filterDatefrmdep(startDatedep,endDatedep)">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkdue,'due out')"
+                          name="chkdue" style="margin-top: -10px">
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <label style="margin-top: -10px">DUE OUT</label>
+                      </div>
+
+
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkcancel" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcancel,'CANCELLATION')" name="checkcan"> -->
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <!-- <label>Cancellations</label> -->
+                      </div>
+
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+
+                        <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkopen" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkopen,'OPEN FOLIO  ')" name="checkopn"> -->
+                      </div>
+                      <!-- <div class="col-md-2 col-sm-2 col-xs-2">
+                                <label>OpenFolio</label>
+                              </div> -->
+                      <!-- <div class="col-md-1 col-sm-1 col-xs-1">
+                                <button type="button"  class="btn btn-success" style="border-radius: 6px;"><b>Clear
+                                </b></button>
+                              </div> -->
+                    </div>
+
+                  </div>
+
+                </div>
+              </form>
+
+          </div>
+          <br>
+
+          <div class="container-fluid">
+
+            <table class="table table-bordered table-hover tableBodyScroll" >
+              <thead style="background-color:#0077B5;color:white;">
+                <tr>
+                  <th>Room</th>
+                  <th>Name</th>
+
+                  <th>Arrival</th>
+                  <th>Departure</th>
+                  <th>Balance</th>
+                  <th>Status</th>
+                  <th>ResType</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let dell of housetable |filterdata: mainpersonname :'pf_firstname' |  filterdata: mainroom :'res_room'|  filterdata: company :'Company';let i=index "
+                  (click)="selectMembersEdit(dell,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                  <td>{{dell?.res_room}}</td>
+                  <td>{{dell?.pf_firstname}}</td>
+
+                  <td>{{dell?.res_arrival}}</td>
+                  <td>{{dell?.res_depature}}</td>
+                  <td>{{dell?.res_guest_balance}}</td>
+                  <td>{{dell?.res_guest_status}}</td>
+                  <td>{{dell?.res_res_type}}</td>
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+
+          </div>
+
+
+          <div class="container">
+            <form class="form-inline">
+
+              <div class="row" style="margin-top: 30px;">
+                <div class="col-md-1"></div>
+                <button type="button" class="btn btn-primary" style="width:110px;margin-left:10%;" routerLink="/billing" [disabled]=siva><b>Billing</b></button>
+
+                <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" [disabled]=disone (click)="checkoutfun()"
+                  data-toggle="modal" data-target="#checkoutzeroalert"><b>C/O zero</b></button>
+
+                <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout"
+                  [disabled]=distwo><b>Check Out</b></button>
+                <!-- <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout" ><b>Check Out</b></button>             -->
+
+                <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/mains"><b>Close</b></button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+  
+    </div>
+  </div>
+</body>
+
+<!-- *********************************************************************************************************** -->
+
+<!--alert after checkout zero modal-->
+
+<div class="modal fade" style="text-align: center;padding: 0!important;" id="checkoutzeroalert" role="dialog">
+  <div class="vertical-alignment-helper" style="display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style=" width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>{{zerosuccessmsg}}{{zerofailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ******************************************alert for checkout zero ends************************************************************************* -->
+
+
+<!-- checkout Modal -->
+<div class="modal fade" style="text-align: center;padding: 0!important;" id="checkout" role="dialog">
+  <div class="vertical-alignment-helper" style="display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align:middle;">
+
+      <!-- checkout Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin:0 auto;">
+        <div class="modal-header" style="background-color: #0077B5;color:white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Payment </h4>
+        </div>
+        <div class="modal-body">
+          <form #coForm="ngForm">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+
+                      <div class="col-sm-6">
+                        <b>Payment Code</b>
+                      </div>
+                      <div class="col-sm-6">
+                        <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="checkout.selected" (change)="selectoption(checkout.selected)">
+                          <option value="" hidden></option>
+                          <option *ngFor="let paycodelist of paycode" [ngValue]="paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3" style="color:#0077B5;">
+                    <div *ngIf="showdiv=='1'">cash</div>
+                    <div *ngIf="showdiv=='2'">credit card</div>
+                    <div *ngIf="showdiv=='3'">Direct Bill</div>
+                  </div>
+
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Currency</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <select name="cur" style="height:30px;width:150%;" class="form-control" [(ngModel)]="checkout.currency" (change)="selectoption1(checkout.currency)">
+                        <option value="" hidden></option>
+                        <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Amount</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="balnc">
+                    </div>
+                  </div>
+                  <div class="col-sm-3" style="color:#0077B5;" style="margin-top: 8px;">
+                    <div *ngIf="showdivv=='1'">RUB</div>
+                    <div *ngIf="showdivv=='2'">EUR</div>
+                    <div *ngIf="showdivv=='3'">USD</div>
+                    <div *ngIf="showdivv=='4'">INR</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row" *ngIf="showdiv=='1'">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Reference</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="reff" style="width:150%;height:30px;" [(ngModel)]="checkout.ref">
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="showdiv=='2'">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Credit card No.</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="cardnum" style="width:150%;height:30px;" [(ngModel)]="checkout.cardno">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="col-sm-2">
+                      <b>Expiry Date</b>
+                    </div>
+
+                    <div class="col-sm-10">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="checkout.PF_Expiration_Month"> </app-monthpicker>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="checkout.PF_Expiration_Year"></app-yearpicker>
+                          {{checkout.PF_Expiration_Month}}
+                          <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="showdiv=='3'">
+                  <div class="col-sm-3">
+                    <b>Supplement</b>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="sup" style="width:150%;height:30px;" [(ngModel)]="checkout.supp">
+                  </div>
+                </div><br>
+                <div class="row" *ngIf="showdiv=='3'">
+                  <div class="col-sm-3">
+                    <b>Reference</b>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="referen" style="width:150%;height:30px;" [(ngModel)]="checkout.ref">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer" style="margin-top: -36px;">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(checkout,balnc);coForm.reset()"
+            data-toggle="modal" data-target="#checkoutalert"><b>Post</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close();coForm.reset()"><b>Close</b></button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!--**************************************************************checkout Modal ends**************************************************************************************-->
+
+<!--alert after checkout payment modal-->
+
+<div class="modal fade" style="text-align: center;padding: 0!important;" id="checkoutalert" role="dialog">
+  <div class="vertical-alignment-helper" style="display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style=" display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style=" width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>{{successmsg}}{{failuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ******************************************alert for checkout payment ends************************************************************************* -->
+
+
+
+
+<!-- foliohistory Modal content-->
+<div class="modal fade" style="text-align: center;padding: 0!important;" id="foliohistorymodal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content" style=" width:inherit;height:inherit;margin: 0 auto;">
+      <div class="modal-header" style="background-color: #0077B5;color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 style="margin-bottom: -6px;margin-top: 0px">Folio History</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <b align="center">{{profile}}</b> -->
+
+
+        <div class="container" style="width:99%;">
+          <div class="jumbotron" style="background-color:white;margin-top:-15px;margin-bottom: -4%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="room">Date</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <input type="date" class="form-control input-sm" [(ngModel)]="hisdate" name="hdate" style="height:27px;width:100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="room">Folio.No</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input type="text" class="form-control input-sm" [(ngModel)]="foliono" name="hisfolio" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="room">Name</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <input type="text" class="form-control input-sm" [(ngModel)]="hisname" name="hname" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="room">Room</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <input type="text" class="form-control input-sm" [(ngModel)]="hisroom" name="hroom" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div class="container-fluid">
+            <div class="scroll2" style=" height:40%;width:100%;overflow-x: auto;overflow-y: auto; ">
+              <div class="responsive-table">
+                <table class="table table-bordered table-hover">
+                  <thead style="background-color: #0077B5;color:white;">
+                    <tr>
+                      <th>Folio.No</th>
+                      <th>Room</th>
+                      <th>Date</th>
+                      <th>Name</th>
+                      <th>Wnd</th>
+                      <th>Folio Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody style="font-size:12px;">
+                    <tr *ngFor="let folioitem of foliohis|filterdata: hisname :'pf_firstname' |  filterdata: hisdate :'posting_date'|  filterdata: foliono :'folio_no'|  filterdata: hisroom :'res_room';let i=index ">
+                      <td>{{folioitem.folio_no}}</td>
+                      <td>{{folioitem.res_room}}</td>
+                      <td>{{folioitem.posting_date}}</td>
+                      <td>{{folioitem.pf_firstname}}</td>
+                      <td>{{folioitem.post_window}}</td>
+                      <td>{{folioitem.total_amount}}</td>
+                    </tr>
+                  </tbody>
+
+
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-danger" style="width: 10%;" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ********************************************************foliohistory modal ends********************************************************************************** -->

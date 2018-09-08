@@ -1,0 +1,302 @@
+    <!---Alert response-->
+
+    <div class="modal fade" id="myModal1" role="dialog">
+      <div class="modal-dialog vertical-align-center modal-sm">
+          <div >
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <p align="center">{{profile}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="navigatepages()"><b>Close</b></button>
+        </div>
+        </div>
+        </div>
+        
+      </div>
+      </div>
+    
+       <div class="wrapper">
+          <div class="content-wrapper">
+          
+            <div class="container">
+          
+              <ul class="nav nav-tabs">
+                <li><a data-toggle="tab" routerLink="/individualprofile">Individual Profile</a></li>
+                <li class="active"><a data-toggle="tab" >Company Profile</a></li>
+                
+              </ul>
+             
+            </div><br>
+            <div class="container-fluid">
+              <ul class="nav nav-tabs">
+                <li class="active" data-toggle="tab"><a>More Fields</a></li>
+                <li><a>Stats & Info</a></li>
+                <li><a>Contact</a></li>
+                <!-- <li><a>Search</a></li> -->
+                
+                </ul>
+              </div><br>
+    
+    <div class="container-fluid">
+        <div class="panel panel-primary"style="border-color: lightgray">
+            <div class="panel-heading"><b>Address Information</b><b style="margin-left:50% ">Internal Information</b></div>
+            <div class="panel-body">
+              <form action="" #group="ngForm">
+    <div class="row">
+    
+    <div class="col-lg-6">
+  
+    <div class="row">
+    <div class="col-lg-3">
+      <b>Account</b>
+    </div>
+      <div class="col-lg-3">
+      <div class="input-group" [class.has-error]="accounts.touched && accounts.invalid">
+        <input type="text" id="account" name="account" pattern="^[ A-Za-z0-9_@./#&+-]*$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account" #accounts="ngModel" required>
+        <div *ngIf="accounts.touched && !accounts.valid && accounts.errors?.required && accounts.errors.pattern " ngClass="{ 'has-error' : !accounts.valid && submitAttempt }"></div>
+      </div>
+      </div>
+    </div><br>
+    
+    <div class="row">
+    <div class="col-lg-3">
+    <b>Address</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <div class="input-group">
+        <textarea id="address" name="address" row="1" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Company_Address"></textarea></div>
+    </div>
+    
+    </div><br>
+    
+    <div class="row" >
+    <div class="col-lg-3">
+    <b>Bussiness Address</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <div class="input-group">
+    <textarea id="business" row="3" class="form-control" name="business"style="width:250px;" [(ngModel)]="user.PF_Business_Address"></textarea></div>
+    </div>
+    
+    </div>
+  
+    <div class="row" style="padding-top:10px;">
+    <div class="col-lg-3">
+    <b>City</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <div class="input-group">
+        <select name="city" id="city" name="city" class="form-control" style="width:250px;" [(ngModel)]="user.PF_City">
+            <option *ngFor="let arr of itl" [ngValue]="arr.city">{{arr.city}}</option>
+          </select>
+        </div>
+    </div>
+    
+    </div>
+    
+    <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>Postal Code</b>
+    </div>
+    
+      <div class="col-lg-3">
+      <div class="input-group">
+    
+      <select name="postal" id="zipcode" name="postalcode" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode">
+      <option *ngFor="let list of cury" [ngValue]="list.postalcode">{{list.postalcode}}</option>
+    </select>		
+          </div>
+    </div>
+    </div>
+    
+    <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>Country/State</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <table>
+    <tr>
+    <td>	<select name="country" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_Country">
+    <option *ngFor="let companyprofile of country1" [ngValue] = "companyprofile.country">{{companyprofile.country}} </option></select></td>
+    
+    <td style="padding-left:5px;">
+      <select name="state" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_State">
+    <option *ngFor="let companystate of state1" [ngValue] = "companystate.state">{{companystate.state}} </option></select></td>
+    </tr>
+    </table>
+    </div>
+    </div>
+    </div>
+    
+    <div class="col-lg-6">
+  
+    <div class="row">
+    <div class="col-lg-3">
+    <b>Owner</b>
+    </div>
+    <div class="col-lg-3">
+    
+    <input type="text" name="owner" required style="height:34px;width:250px;" [(ngModel)]="user.PF_Owner">
+  
+    
+    </div>
+    </div>
+    <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>Territory</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <div class="input-group">
+        <input type="text" id="territory" name="territory" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory"></div>
+    </div>
+    </div>
+    
+    <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>Type</b>
+    </div>
+    <div class="col-lg-3" >
+      <div class="input-group" [class.has-error]="Types1.touched && Types1.invalid">
+      <select name="Type" class="form-control" style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type" #Types1="ngModel" required>
+        <option *ngFor="let companyprofiletype1 of type" [ngValue] = "companyprofiletype1.profiletype">{{companyprofiletype1.profiletype}} </option>
+       </select>
+       <div *ngIf="Types1.touched && !Types1.valid && Types1.errors?.required" ngClass="{ 'has-error' : !Types1.valid && submitAttempt }"></div>                                
+      </div>
+       </div>
+    </div>
+    
+    
+      <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>Ref. Currency</b>
+    </div>
+    <div class="col-lg-3">
+    
+    <select name="currency"  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Ref_Currency">
+      <option *ngFor="let individualcurrency of currency" [ngValue] = "individualcurrency.currency">{{individualcurrency.currency}} </option></select>
+    </div>
+    </div>
+    
+    
+      <div class="row" style="padding-top:5px;">
+    <div class="col-lg-3">
+    <b>A/R No</b>
+    </div>
+    
+    <div class="col-lg-3">
+    <div class="input-group">
+        <input type="text" id="arno" name="arno" class="form-control" style="width:250px;" [(ngModel)]="user.PF_AR_Number"></div>
+    </div>
+    </div>
+    
+  
+    <div class="row" style="padding-top:5px;">
+      <div class="col-lg-3">                                          
+        <b>Communications</b>
+        </div>
+        <div class="col-lg-3">                                             
+          <select name="Comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication1">
+          <option> Home </option>                                             
+      </select>
+      </div>
+        <div class="col-lg-3">
+          <div class="input-group" [class.has-error]="communitype1.touched && communitype1.invalid">
+            <input type="text" name="commtype" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype1" #communitype1="ngModel" required>
+        <div *ngIf="communitype1.touched && !communitype1.valid && communitype1.errors?.required && communitype1.errors.pattern " ngClass="{ 'has-error' : !communitype1.valid && submitAttempt }"></div>
+        </div>
+        </div> 
+        </div>
+  
+        <div class="row" style="padding-top:5px;">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3">
+            <select name="comm2"  required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication2">
+            <option> Business</option>
+          </select>
+          </div>
+          <div class="col-lg-3">
+            <div class="input-group" [class.has-error]="communitype2.touched && communitype2.invalid">
+              <input type="text" name="com2" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype2" #communitype2="ngModel" required>
+        <div *ngIf="communitype2.touched && !communitype2.valid && communitype2.errors?.required && communitype2.errors.pattern " ngClass="{ 'has-error' : !communitype2.valid && submitAttempt }"></div>
+        </div>
+          </div>
+        </div>
+  
+        <div class="row" style="padding-top:5px;">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3">
+            <select name="comm3" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication3">
+            <option>Email</option>
+             </select>
+          </div>
+          <div class="col-lg-3">
+            <div class="input-group" [class.has-error]="communitype3.touched && communitype3.invalid">
+              <input type="email"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype3" #communitype3="ngModel" required>
+        <div *ngIf="communitype3.touched && !communitype3.valid && communitype3.errors?.required && communitype3.errors.pattern " ngClass="{ 'has-error' : !communitype3.valid && submitAttempt }"></div>
+        </div>
+          </div>
+        </div>		
+  
+    </div>
+    
+    </div>
+  </form>
+    
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    <div class="container-fluid">
+    
+    
+    <div class="row">
+    <div class="col-lg-3"></div>
+    
+    <div class="col-lg-2">
+    <button type="button" class="btn btn-info" (click)="submit(user)" style="width:160px;" data-toggle="modal" data-target="#myModal1"><b>Ok</b></button>
+    </div>
+    <div class="col-lg-2">
+    <button type="button" class="btn btn-primary" style="width:160px;" (click)="cleardata()"><b>Reset</b></button>
+    </div>
+    <div class="col-lg-2">
+    <button type="button" class="btn btn-success" (click)="updateCompanyProfile()" style="width:160px;"><b>Save</b></button>
+    </div>
+    <div class="col-lg-3"></div>
+    
+    <!-- <div class="col-lg-2">
+    <button type="button" class="btn btn-default" style="width:160px;"><b>Options</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+    </div> -->
+    <!-- <div class="col-lg-2">
+    <button type="button" class="btn btn-danger" style="width:160px;"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+    </div> -->
+    
+    <!-- <div class="col-lg-2">
+    <button type="button" class="btn btn-danger" (click)="deleteCompanyProfile()" style="width:160px;"><b>Delete</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button>
+    </div> -->
+    
+    </div>
+    
+    
+    </div>
+    
+    
+    </div>
+    </div>
+    
+    
+    
+    

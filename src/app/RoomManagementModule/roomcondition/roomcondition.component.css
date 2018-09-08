@@ -1,0 +1,31 @@
+
+
+
+
+.scroll{
+
+    height:35%;
+    width:100%;
+    overflow-x: auto;
+    overflow-y: auto;
+
+}
+
+tbody {
+    display:block;
+    height:260px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+thead {
+    width: calc( 100% - 1em )
+}
+
+
+.backGroundColor{
+    background-color:#D3D3D3;
+}

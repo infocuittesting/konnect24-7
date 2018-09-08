@@ -1,0 +1,419 @@
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <br>
+    <div class="container-fluid">
+    <div class="row" style="margin-top: 110px;">
+      <div class="col-md-2"></div>
+     <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+        <div class="panel">
+        <div class="panel-body" data-toggle="modal" data-target="#changes">
+        <div class="text-center">  
+        <img src="assets/images/changes.jpg" alt="change" style="border-radius:50%;">
+        </div>
+        <h4  align="center">Change</h4>
+        <p  align="center"><small>Business block notes</small></p>
+        </div>
+        <div class="panel-footer">
+        <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Cheanges</small></p>
+        <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> </small></p>
+        </div>
+        </div>
+        </div>
+  
+        <div class="col-md-1"></div>
+      <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+        <div class="panel">
+        <div class="panel-body" data-toggle="modal" data-target="#myModal1">
+        <div class="text-center">  
+        <img src="assets/images/notes.png" alt="change" style="border-radius:50%;">
+        </div>
+        <h4  align="center">Notes</h4>
+        <p  align="center"><small>Business block Notes</small></p>
+        </div>
+        <div class="panel-footer">
+        <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Note Type</small></p>
+        <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i>Title</small></p>
+        </div>
+        </div>
+        </div>
+  
+        <div class="col-md-1"></div>
+      <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+        <div class="panel">
+        <div class="panel-body" data-toggle="modal" data-target="#myModal2">
+        <div class="text-center">  
+        <img src="assets/images/Exit-game.png" alt="change" style="border-radius:50%;">
+        </div>
+        <h4  align="center">Cancel A Group</h4>
+        <p  align="center"><small>Business block Cancel</small></p>
+        </div>
+        <div class="panel-footer">
+        <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Cancelation NO</small></p>
+        <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Reason</small></p>
+        </div>
+        </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:80px"></div>
+      <div class="row" style="margin-top:75px"></div>
+    </div>  
+    </div>
+  </div>
+ </body>
+  <!-- // model -->
+  <div class="modal fade" id="changes" role="dialog">
+      <div class="modal-dialog modal-lg">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Activity Log</h4>
+         <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+        </div>
+        <div class="modal-body">
+        <!-- <b align="center">{{profile}}</b> -->
+        <!-- <b>hai</b> -->
+        <div class="container-fluid">
+    
+      <table class="table table bordered table-hover">
+        
+        <thead style="background-color: #0077B5;color:white;overflow-x:auto;">
+          <tr>
+            <th>User</th>
+            <th>Time</th>
+            <th> Date</th>
+            <th> Action Type</th>
+            <th> Description</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let arry of tableschanges">
+          <td>{{arry.user_role}}</td>
+          <td>{{arry.time}}</td>
+          <td>{{arry.date}}</td>
+          <td>{{arry.action_type_id}}</td>
+          <td>{{arry.description}}</td>
+        </tr>
+        <!-- <tr>
+          <td>venky</td>
+          <td>18:02</td>
+          <td>7/17/2018</td>
+          <td>programing</td>
+          <td>good boy</td>
+        </tr> -->
+      </tbody>
+        </table>
+       
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+        </div>
+      </div>
+      </div>
+      
+       <!-- second model notes -->
+       <div class="modal fade" id="myModal1" role="dialog">
+          <div class="modal-dialog model-lg">
+          
+            <!--Third Modal content-->
+            <div class="modal-content"  style="width:131%;margin-left: -131px;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Notes</h4>
+              <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+            </div>
+            <div class="modal-body" style="margin-top: -36px;">
+              <div class="container-fluid"  >
+                <form action="">
+              <div class="row" style="width: 70%;">
+                <br>
+                  <div class="col-md-4" >
+                      <label for=""> Date</label>
+                    <div class="form-group">
+                      <input type="text" [value]="now" name="Date" [(ngModel)]="now"class="form-Control" [(ngModel)]="notes.notesdate" style="width:119%;">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="name" style="margin-left: 13px;">Note Type</label>
+                    <div class="form-group" [class.has-error]="Any.touched && Any.invalid">
+                      <select class="from-control" name="Note" id="name" style="height: 34px;width:181px;margin-left: 13px;" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
+                        <option *ngFor="let option of roomtype" [ngValue]="option.id">{{option.notetype}}</option>
+                      </select>
+                      <div *ngIf="Any.touched && !Any.valid && Any.errors?.required " ngClass="{ 'has-error' : !Any.valid && submitAttempt }">
+                        </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </form>
+                <span class="help-block" >
+                 
+                  </span>
+                  <div class="row">
+                    <div class="col-md-8">
+                        <label for="name">Title</label>
+                      <div class="from-group">
+                        <input type="text" class="from-control input-sm" placeholder="Group Billing Instructions" name="title"style="width:500px;margin-left: 0px;"[(ngModel)]="notes.title">
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                  <br>
+                  <div class="container" style="width: 95%;margin-left:-10px;">
+                  
+                      <label  style="margin-top: -29px;margin-left: 8px;">Description</label>
+                     <textarea name="Description" id="" cols="10" rows="5"style="width:108%;height: 108px;margin-left:5px;"[(ngModel)]="notes.description" placeholder="i want create create note"></textarea> 
+                   
+                  </div>
+              
+            
+            </div>
+            <div class="modal-footer" style="margin-top: -16px;">
+              <button type="button" class="btn btn-success" data-dismiss="modal" style="width:100px;" (click)="insertnotes(notes)" data-toggle="modal" data-target="#myModal4"><b>ok </b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"style="width:100px;"><b>Close</b><span class="glyphicon glyphicon-remove" style="margin-left: 4px;"></span></button>
+            </div>
+            </div>
+            
+          </div>
+          </div> 
+     
+  
+        <!-- fourth model  -->
+  
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog modal-lg" style="margin-top: 52px;">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="width:88%;margin-left: 39px;">
+              <div class="modal-header" style="margin-top: -16px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4>Cancel A Group</h4>
+               <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+              </div>
+              <div class="modal-body">
+              <!-- <b align="center">{{profile}}</b> -->
+              
+              <div class="continer-fluid" >            
+                <div class="row" style="margin-top: -13px;">
+                  <div class="col-md-4" style="margin-left:10px;">
+                      <div class="form-group" style="width:82%;">
+                          <label for="room">Block Id</label>
+                          <input type="text" disabled class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id" >
+                      </div>
+                </div>
+                <div class="col-md-4" style="margin-left:10px;">
+                  <div class="form-group" style="width:82%;" [class.has-error]="Reason.touched && Reason.invalid">
+                      <label for="name">Reason</label>
+                    <select class="form-control input-sm" id="sel1"name="Reason" style="width:216px;"[(ngModel)]="cancel.reason_id"(ngModelChange)="onSelect(cancel.reason_id)" #Reason="ngModel" required>
+                      <option *ngFor="let option of reason" 
+            [ngValue]="option.id"> 
+            {{option.reason}}
+            <div *ngIf="Reason.touched && !Reason.valid && Reason.errors?.required " ngClass="{ 'has-error' : !Reason.valid && submitAttempt }">
+            </div>
+                     </select>
+                   </div>
+            </div>
+              </div>
+                <!-- <div class="row">
+              
+            </div> -->
+            </div>
+            <div class="continer" style="margin-top: 28px;">
+              <div class="form-group"  [class.has-error]="Description.touched && Description.invalid">
+                  <label style="margin-top: -29px;">Description</label>
+                <textarea class="form-control" name="Description" id="Description" name="Description" cols="10" rows="8"style="width: 99%;height: 83px;;margin-left: 3px;"[(ngModel)]="cancel.description" #Description="ngModel" required></textarea>
+                <div *ngIf="Description.touched && !Description.valid && Description.errors?.required " ngClass="{ 'has-error' : !Description.valid && submitAttempt }">
+                </div>
+              </div>
+            </div>
+            <div class="from-group" style="width:150px; margin-top: 2px;">
+              <label for="text">Destination</label>
+              <select class="from-control input-sm" id="set3" style="width:150px"[(ngModel)]="cancel.Destination">
+                <option>Marriot</option>
+                <option>hotelpms</option>
+                <option>hotel360</option>
+                
+              </select>
+            </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal"style="width:100px;"data-toggle="modal"data-target="#myModal5" (click)="function(cancel)"><b> ok  </b></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100px"><b>Close</b></button>
+              </div>
+              </div>
+              
+            </div>
+            </div>
+  
+        <!-- // popUp -->
+        <div class="modal fade" id="myModal4" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="width: 99%;margin-top: 31%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4>Connect 24/7 Hotel</h4>
+            </div>
+            <div class="modal-body">
+            <b align="center">{{notenumber}}</b>
+            <!-- <label style="margin-left: 111px;">{{notenumber}}</label> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+            </div>
+            </div>
+            
+          </div>
+          </div>
+  
+             <!-- Folio History -->
+  
+             <div class="modal fade" id="" role="dialog">
+              <div class="modal-dialog ">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="width:160%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <h4>Folio History</h4>
+                </div>
+                <div class="modal-body">
+                <!-- <b align="center">{{profile}}</b> -->
+                 
+                  
+            <div class="continer-fluid" style="background-color: #0077B5;color: white;Width:99%;">
+              <br>
+                    <div class="row" style="width:99%">
+                        <div class="col-md-4">
+                        <div class="from-group" style="margin-left: 3%;">
+                        <label for="name">Date</label>
+                        <input type="date" class="from-control input-sm" style="width: 66%;">
+                        </div>
+  
+                     </div>
+                    <div class="col-md-4">
+                    <div class="from-group">
+                      <label for="name">Folio.No</label>
+                      <input type="text" class="from-control input-sm">
+                    </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="from-group">
+                            <label for="name">FirstName</label>
+                            <input type="text" class="from-control input-sm">
+                          </div>
+                          </div>
+                      </div>
+                      <br>
+                    <div class="row">
+                    <div class="col-md-4">
+                       <div class="from-group">
+                         <label for="name">Room</label>
+                         <input type="text"class="from-control input-sm">
+                       </div>
+                      </div>
+                      <div class="col-md-4">
+                         <div class="from-group" style="margin-left: 4px;">
+                           <label for="name">Name</label>
+                           <input type="text" class="from-control input-sm">
+                         </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-3">
+                          <div class="custom-control custom-checkbox"style="margin-left: 5px;">
+                              <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                              <label class="custom-control-label" for="customCheck">Check Out</label>
+                            </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                              <label class="custom-control-label" for="customCheck">Passer By</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                <label class="custom-control-label" for="customCheck">AR</label>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                  <label class="custom-control-label" for="customCheck">NoShow</label>
+                                </div>
+                            </div>
+                    </div>
+                   </div>
+                   <br>
+                   <div class="continer-fluid">
+                     <div class="responsive-table">
+                       <table class="table table-bordered table-hover">
+                         <thead style="background-color: #0077B5;color:white;">
+                           <tr>
+                             <th>Folio.No</th>
+                              <th>Date</th>
+                              <th>Name</th>
+                              <th>Wnd</th>
+                              <th>Folio Amount</th>
+                              <th>Payee Name</th>
+                              <th>Invoice</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>102</td>
+                                  <td>7/22/2018</td>
+                                  <td>Venkat</td>
+                                  <td>2</td>
+                                  <td>10000</td>
+                                  <td>50000</td>
+                                  <td>on process</td>
+                                </tr>
+                              </tbody>
+                           
+                        
+                       </table>
+                     </div>
+                   </div>
+                 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"style="width: 10%;" data-dismiss="modal"><b>Folio</b></button>
+                  <button type="button" class="btn btn-danger" style="width: 10%;" data-dismiss="modal"><b>Close</b></button>
+                </div>
+                </div>
+                
+              </div>
+              </div>
+           
+  
+            <div class="modal fade" id="myModal5" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content"  style="width: 99%;margin-top: 31%;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cancel A Group</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p align="center">{{cancelnumber}}</p>
+                  </div>
+                  <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/rominglist">Yes <i class="glyphicon glyphicon-ok"></i></button>              -->
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close<i class="glyphicon glyphicon-remove"></i></button>             
+                  </div>
+                </div>
+                
+              </div>
+          </div>

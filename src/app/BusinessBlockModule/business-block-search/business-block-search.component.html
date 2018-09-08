@@ -1,0 +1,266 @@
+
+
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <br>
+     <!-- <div class="row"> --> 
+     <form #ClearAll="ngForm">  
+    <div class="container-fluid" >
+     <div class="panel panel-default" >
+       <div class="panel-body" >
+      <div class="row">
+          <div class="col-md-2"><label for="room" style="margin-top: 26px;">Block Name</label></div>
+          <div class ="col-md-3">
+              
+              <div class="form-group" style="width:82%;">
+                  <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
+                  <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
+                </div>
+              </div>
+            </div>
+          <div class="col-md-2"><label for="room" style="margin-top: 27px;margin-left: -134px;">Start Date</label></div>
+          <div class="col-lg-3" style="margin-left: -233px;">
+             <div class="input-group" style="margin-top: 20px;" [class.has-error]="Arrivalfrom.touched && Arrivalfrom.invalid">
+                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                 <input type="date"id="Arrivalfrom" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" #Arrivalfrom="ngModel" required></div>
+                 <div *ngIf="Arrivalfrom.touched && !Arrivalfrom.valid && Arrivalfrom.errors?.required " ngClass="{ 'has-error' : !Arrivalfrom.valid && submitAttempt }">
+                </div>
+         </div>
+              <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
+              <div class ="col-md-3">
+             <div class="form-group" style="width:82%;">
+          <select class="form-control input-sm" name="Status"id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSel(status)" >
+            <option *ngFor="let option of roomtype" 
+             [ngValue]="option.status"> 
+             {{option.status}}</option>
+            
+           </select>
+         </div>
+    
+  </div>
+      </div>
+     <div class="row">
+        <div class ="col-md-2"> <label for="room">Block Code</label></div>
+    <div class ="col-md-3" style="margin-left: -89px;">
+      <div class="form-group" style="width:82%;"[class.has-error]="Block.touched && Block.invalid">
+      <input type="text"name="BlockCode"id="BlockCode" class="form-control input-sm" [(ngModel)]="BlockCode" #Block="ngModel" required >
+      <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
+      </div>
+  </div>
+   </div>
+   <div class="col-md-2 "><label for="room" style="margin-left: -42px;">End Date</label></div>
+   <div class="col-lg-3" style="margin-left: -144px;">
+ 
+     <div class="input-group"[class.has-error]="Arrivalto.touched && Arrivalto.invalid">
+        <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+        <input type="date" name="Arrivalto" class="form-control"[(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"#Arrivalto="ngModel" required></div>
+        <div *ngIf="Arrivalto.touched && !Arrivalto.valid && Arrivalto.errors?.required " ngClass="{ 'has-error' : !Arrivalto.valid && submitAttempt }">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-success" style="width:92%;margin-left: 92px;" (click)="cleartab();ClearAll.reset()">Clear All</button>
+      </div>
+     </div>
+    </div>
+  </div>
+   </div>
+  
+
+
+
+<div class="container=container-fluid"  >
+    <div style="margin-left: 95%">
+        <span>
+            <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+            [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+          
+            <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+            [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+          </span>
+
+    </div>
+ 
+    <table class="table table-bordered table-hover tableBodyScroll" >  
+      <thead style="background-color: #0077B5;color:white; "  >
+        <tr>
+          <th style="width:40px">Seq</th>
+          <th style="width:80px">Blockid</th>
+          <th style="width:100px">StartDate</th>
+          <th style="width:65px">Nights</th>
+          <th style="width:100px">EndDate</th>
+          <!-- <th> RoomsperDay</th>
+          <th> MeetingSpaceSize</th>
+          <th> MeetingSpaceType</th> -->
+          <!-- <th> Attdence</th> -->
+          <th style="width:100px">BlockCode</th>
+          <th style="width:100px">BlockStatus</th>
+          <th style="width:80px">profile</th>
+          <th style="width:90px" >RateCode</th>
+          <th style="width: 150px" *ngIf="showMore!=true">BlockName</th>
+          <th *ngIf="showMore!=true">Market</th>
+          <th style="width: 120px"*ngIf="showMore==true">Source</th>
+          <th *ngIf="showMore==true">Owner</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let array of tableschanges | filterdata: Name :'block_name'|filterdata: BlockCode :'block_code';let i=index"
+         (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <td style="width:40px">{{i+1}}</td>
+            <td style="width:80px">{{array.block_id}}</td>
+            <td style="width:100px">{{array.start_date}}</td>
+            <td style="width:65px">{{array.nights}}</td>
+            <td style="width:100px">{{array.end_date}}</td>
+            <!-- <td>{{array.rooms_per_day}}</td>
+            <td>{{array.meeting_space_size}}</td>
+            <td>{{array.meeting_space_type}}</td> -->
+            <!-- <td>{{array.attendess}}</td> -->
+            <td style="width:100px">{{array.block_code|titlecase }}</td>
+            <td style="width:100px">{{array.status|titlecase }}</td>
+            <td style="width:80px">{{array.pf_id|titlecase }}</td>
+            <td style="width:90px">{{array.rate_description|titlecase }}</td>
+            <td style="width:150px" *ngIf="showMore!=true">{{array.block_name|titlecase }}</td>
+            <td *ngIf="showMore!=true">{{array.marketgroup_description|titlecase }}</td>
+            <td  style="width: 120px"*ngIf="showMore==true">{{array.sourcedescription|titlecase }}</td>
+            <td *ngIf="showMore==true">{{array.owner|uppercase}}</td>
+            
+        </tr>
+      </tbody>
+    </table>
+ 
+</div>
+</form>
+<br>
+<div class ="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+  <button class="btn btn-primary" style="width:100%" disabled>Extract</button>
+</div>
+<div class="col-md-2">
+    <button class="btn btn-default" style="width:100%" disabled>Events</button>
+  </div>
+  <div class="col-md-2">
+      <button class="btn btn-danger"routerLink="/options"style="width:100%"[disabled]=blockopt>Options</button>
+    </div>
+  <div class="col-md-2">
+     <button class="btn btn-success"routerLink="/bcreate"style="width:100%"[disabled]=newblockbut>New</button>
+  </div>
+  <div class="col-md-2">
+   <button class="btn btn-warning"  routerLink = "/editblock" style="width:100%" [disabled]=blc >Edit</button>
+   </div>
+ <div class="col-md-2">
+   <button class="btn btn-danger"style="width:100%" data-toggle="modal" data-target="#groupoptions" [disabled]=grop>Group Options</button>
+ </div>
+</div>
+</div>
+
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog model-lg">
+  
+    <!-- Modal content-->
+    <div class="modal-content"style="width:100%; margin-left:0%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Connect24*7</h4>
+      </div>
+      <div class="modal-body">
+        <div class="continer-fluid">
+          <div col-md-10>
+            <div class="row">
+              <div col-md-4>        <!-- <p align="center"><b>Are You sure want to Create Reservation</b></p> -->
+        <div class="from-group" style="width:82%;margin-left: 43px;">
+          <label for="name">BlockStatus</label>
+          <select class="from-control class=input-sm" id="name" name="BlockStatus"style="width:150px; height: 5%;"[(ngModel)]="BlockStatus" (ngModelChange)="onSelect(BlockStatus)">
+            <option *ngFor="let option of roomtype" 
+            [ngValue]="option.id"> 
+            {{option.status}}
+    </option>
+                     
+          </select>
+
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="">Yes <i class="glyphicon glyphicon-ok"></i></button>             
+          <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>             
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</body>
+
+ <!-- GroupOptionsScreen -->
+
+         <!-- // model reservation screen -->
+         <div class="modal fade" id="groupoptions" role="dialog">
+          <div class="modal-dialog model-lg">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">GroupOptions</h4>
+              </div>
+              <div class="modal-body">
+             <div class="row">
+               <!-- <legend>Group Options</legend> -->
+               <div class="col-md-10">
+                 <div class="continer-fluid">
+                  <div class="panel panel-primary" style="width: 122%;">
+                    <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-primary" routerLink="/queryreservation" data-dismiss="modal" style="width:100%;height: 70px;" >RoomingList</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-info" routerLink="/reservation" data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-secondary" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomAssin</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-white" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomStatus</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-primary" model-center style="width:100%;height: 70px;">PrintRegistrationCards</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-warning" model-center style="width:100%;height: 70px;">NewPostMaster</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-secondary" model-center style="width:100%;height: 70px;">Delete</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-dark" model-center style="width:100%;height: 70px;">CutKeys</button>
+                           </div>
+                      </div>
+
+                    </div>
+                  </div>
+                 </div>
+               </div>
+             </div>                
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger"style="width: 115px;" data-dismiss="modal" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+                  <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>              -->
+              </div>
+            </div>
+            
+          </div>
+      </div>
+  
+

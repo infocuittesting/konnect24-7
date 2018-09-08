@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Our Custom CSS -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="width:100%">  
+  <div class="wrapper">
+    
+    <div class="content-wrapper">
+  <div class="container-fluid" style="padding-top:9px;">
+    <div class="panel panel-default" >
+      <div class="panel-body" style="max-height: 224px;margin-top: -19px;">
+   <div  style="padding-top:10px;padding-bottom:20px;">
+    <form action="">
+   <div class="row">
+
+      <div class="col-sm-3">
+         <b> First Name</b> <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+              <input type="text" id="name" name="FirstName" class="form-control" [(ngModel)]="queryString"></div>
+      </div>
+
+      <div class="col-sm-3">
+
+          <b>Last Name</b> <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+              <input type="text" id="name" name="LastName" class="form-control"[(ngModel)]="query"></div>
+      </div>
+	  
+      <div class="col-lg-3">    
+        <b>Source</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+            <input type="text" id="name" name="Source" class="form-control" [(ngModel)]="qsource"></div>
+     </div>
+
+        <div class="col-lg-3">
+        <b>Contact</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" name="Contact" class="form-control"></div>
+        </div>
+  
+        </div>
+
+        <div class="row" style="padding-top:20px;">
+
+            
+
+      <div class="col-lg-3">
+          <b>Arrival From</b> <div class="input-group">
+               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+               <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+       </div>
+ 
+       <div class="col-lg-3">
+ 
+           <b>Arrival To</b> <div class="input-group">
+               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+               <input type="date" name="Arrivalto" class="form-control"[(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+       </div>   
+       <div class="col-lg-3">
+          <b>Group</b> <div class="input-group">
+               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+               <input type="text" id="name" name="Group" class="form-control"></div>
+       </div>
+       <div class="col-sm-3">
+        <b>Company</b> <div class="input-group">
+          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+          <input type="text" id="name" name="Company" class="form-control"></div>
+
+      </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-lg-3">
+                  <b>Agent</b> <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                    <input type="text" id="name" name="Agent" class="form-control"></div>
+               </div>
+               <br>
+               <div class="col-md-4"></div>
+               <div class="col-lg-2">
+                  <button type="button" class="btn btn-success" routerLink="/advancedsearch" style="width:100%;"><b>Advanced</b></button>
+             </div>
+ 
+             <div class="col-lg-2">
+               <button type="reset"  class="btn btn-warning" style="width:100%;"><b>Clear</b></button>
+             </div> 
+       </div>
+      <br>
+	   
+      </form>
+  </div>
+</div>
+</div>
+  </div>
+  <div style="margin-left:90%"> 
+<span>
+  <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+  [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+
+  <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+  [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+</span>
+</div> 
+  <div class="container-fluid" >
+
+      <table class="table table-bordered table-hover tableBodyScroll">
+        <thead>
+            <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                  <th style="width:50px"> Seq</th>                      
+                  <th style="width:180px"> Name</th>
+                  <th style="width:110px"> Arrival_Date</th>
+                  <th style="width:130px"> Departure_Date</th>
+                  <th style="width:75px" *ngIf="showMore!=true"> Nights</th>
+                  <th style="width:100px" *ngIf="showMore!=true"> Room_Type</th>
+                  <th style="width:60px" *ngIf="showMore!=true"> Adults</th>                        
+                  <th style="width:60px" *ngIf="showMore!=true"> Child</th>
+                  <th style="width:85px" *ngIf="showMore!=true"> Status</th>
+                  <th style="width:110px" *ngIf="showMore!=true"> Block_Code</th>
+                  <th *ngIf="showMore!=true"> Rate_Code</th>                    
+                  <th style="width:60px"  *ngIf="showMore==true"> Room</th>
+                  <th style="width:100px" *ngIf="showMore==true"> Resv_Type</th>
+                  <th style="width:130px" *ngIf="showMore==true"> Confirm_No</th>
+                  <th style="width:155px" *ngIf="showMore==true"> CreditCard</th>            
+                  <th style="width:90px" *ngIf="showMore==true"> Exp_Date</th>            
+                  <th *ngIf="showMore==true"> Rate</th>
+<!-- 
+                  <th> Extension</th>
+
+                  <th> Group</th>
+                  <th> Packages</th>
+                  <th> Rtc</th>
+                  <th> Currency</th>
+                  <th> ETA</th>
+                  <th> Market</th>
+                  <th> Source</th>            
+                  <th> Origin</th>            
+                  <th> Payment</th>            
+                  <th> Guest_Balance</th>            
+                  <th> Disc_Amount</th>            
+                  <th> Disc_perc</th>  
+                  <th> Disc_Reason</th>            
+                  <th> Specials</th>            
+                  <th> Comments</th>            
+                  <th> Item_Inv</th>             -->
+                            
+                </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
+          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+          <!-- <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
+            <td style="width:50px">{{i+1}}</td> 
+            <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>
+            <td style="width:110px"> {{searched.res_arrival}} </td> 
+            <td style="width:130px"> {{searched.res_depature}} </td>
+            <td style="width:75px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
+            <td style="width:100px" *ngIf="showMore!=true"> {{searched.res_room_type |titlecase}} </td>
+            <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
+            <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
+            <td style="width:85px" *ngIf="showMore!=true"> {{searched.res_guest_status|titlecase}} </td>     
+            <td style="width:110px" *ngIf="showMore!=true"> {{searched.res_block_code}}</td> 
+            <td *ngIf="showMore!=true"> {{searched.res_rate_code}}</td>     
+            <td style="width:60px"  *ngIf="showMore==true"> {{searched.res_room }} </td>
+            <td style="width:100px" *ngIf="showMore==true"> {{searched.res_res_type |titlecase}}</td>     
+            <td style="width:130px" *ngIf="showMore==true"> {{searched.res_confnumber}} </td>
+            <td style="width:155px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
+            <td style="width:90px" *ngIf="showMore==true"> {{searched.res_exp_date}}</td>     
+            <td *ngIf="showMore==true"> {{searched.res_rate}}</td>     
+<!-- 
+            <td></td>     
+            <td> {{searched.res_packages}}</td>     
+            <td> {{searched.res_rtc |titlecase}}</td>     
+            <td> {{searched.res_currency |titlecase}}</td>     
+            <td> {{searched.res_eta}}</td>
+            <td> {{searched.res_market |titlecase}}</td> 
+            <td> {{searched.res_source |titlecase}}</td>     
+            <td> {{searched.res_origin |titlecase}}</td>     
+            <td> {{searched.res_payment |titlecase}}</td>     
+            <td> {{searched.res_guest_balance}}</td>     
+            <td> {{searched.res_disc_amount}}</td>     
+            <td> {{searched.res_disc_perc}}</td>
+            <td> {{searched.res_disc_reason |titlecase}}</td>     
+            <td> {{searched.res_specials |titlecase}}</td>     
+            <td> {{searched.res_comments |titlecase}}</td>     
+            <td> {{searched.res_item_inv}}</td> -->
+          </tr>
+                                                                                                                            
+        </tbody>
+      </table>
+
+  </div>
+  <br>
+  <div class="container-fluid">
+   <div class="row" >
+        <button type="button" class="btn btn-primary"routerLink="/reservation" style="width:140px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
+        
+              <button type="button" class="btn btn-danger"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>
+
+               <button type="button" class="btn btn-warning"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#reinstate" data-dismiss="modal" [disabled]=rein ><b>Reinstate</b></button>
+
+               <button type="button" class="btn btn-primary"routerLink="/psearch" style="width:140px;margin-left: 5px;"  [disabled]=profile ><b>Profile</b></button>
+
+               <button routerLink="/reservationoption" class="btn btn-info"  style="width:140px;margin-left: 5px;"  [disabled]=option ><b>Options</b></button>
+
+               <button type="button" class="btn btn-info" (click)="subaccp()" data-toggle="modal" data-target="#accept"style="width:140px;margin-left: 5px;" [disabled]=wait ><b>Accept Waitlist</b></button>
+
+               <button type="button" class="btn btn-danger" routerLink="/mains"  style="width:140px;margin-left: 5px;"><b>Close</b></button>
+
+   </div>
+  <br>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
+
+     <!-- cancel start-->
+     <div class="modal fade" id="cancel" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+      
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Reservation Cancel</h4>
+          </div>
+          <form action="">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-8">
+                <form action="">
+                  <div class="row">
+                    <div class="col-lg-2"> <label for="">Reason</label></div>
+                    <div class="col-lg-10">
+                      <div class="input-group">
+                          <select name="Reason" class="form-control" placeholder="" [(ngModel)]="cans.Cancel_reason">
+                            <option *ngFor="let lists of arry " [ngValue]="lists.reason">{{lists.reason}}</option>
+                            </select>
+                      </div>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                      <div class="col-lg-2"> <label for="">Reason Description</label></div>
+                      <div class="col-lg-10">
+                        <textarea name="ReasonDes" id="" cols=" 38" rows="3" [(ngModel)]="cans.Cancel_description"></textarea>
+                      </div>
+                    </div>                  
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" type="reset" class="btn btn-success" style="padding-left:5px;" data-toggle="modal" data-target="#cancel1" data-dismiss="modal" (click)="subcancel(cans)"><b>Ok</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+              <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+          </div>
+        </form>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- cancel End -->   
+
+         <!-- cancel start-->
+         <div class="modal fade" id="cancel1" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> Reservation Cancel</h4>
+              </div>
+              <div class="modal-body">
+    
+                  <p align="center"><b> {{user3}}</b></p>
+                  <p align="center"><b> {{cansl}}</b></p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+        <!-- cancel End --> 
+
+
+         <!-- Reinstate start-->
+         <div class="modal fade" id="reinstate" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Reservation Reinstate</h4>
+                </div>
+                <div class="modal-body">
+                  <p align="center"><b>Are you Sure you want to Reinstate ?</b></p>
+                  <br>
+                  <div class="text-center">
+                 <button type="button" class="btn btn-success"style="padding-left:5px;"data-toggle="modal" data-target="#reinstate1" data-dismiss="modal" (click)="subrein()"><b>Yes</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                 <button type="button" class="btn btn-danger"style="padding-left:5px;"data-dismiss="modal"><b>No</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- reinstate End -->   
+
+         <!-- reinstate start-->
+         <div class="modal fade" id="reinstate1" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Reservation Reinstate</h4>
+                </div>
+                <div class="modal-body">
+      
+                  <p align="center"><b> {{reinreturn}}</b></p>
+                  <p align="center"><b> {{reinstates}}</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Reinstate End -->         
+
+         <!-- Accept start-->
+         <div class="modal fade" id="accept" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> Aceept Waitlist</h4>
+              </div>
+              <div class="modal-body">
+    
+                <p align="center"><b> {{Acceptreturn}}</b></p>
+                <p align="center"><b> {{AcceptState}}</b></p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+        <!-- Accept End -->                

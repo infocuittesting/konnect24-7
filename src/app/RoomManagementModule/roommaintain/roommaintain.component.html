@@ -1,0 +1,411 @@
+ <!---Alertinsert for roommaintenance response-->
+
+ <div class="modal fade" id="roommaintainresponse" role="dialog">
+    <div class="modal-dialog" style="margin-top: 135px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <b align="center">{{roomcard}}</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+   <!---Alertdelete for roommaintenance response-->
+  
+  <div class="modal fade" id="roommaintaindeleteresponse" role="dialog">
+    <div class="modal-dialog" style="margin-top: 135px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <b align="center">{{roomcard3}}</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+   <!---Alertinsert for roommaintenance response-->
+  
+  <div class="modal fade" id="resolveresponse" role="dialog">
+    <div class="modal-dialog" style="margin-top: 135px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <b align="center">{{resolving}}</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+   <!---Alertupdate for roommaintenance response-->
+  
+  <div class="modal fade" id="roomupdatemaintainresponse" role="dialog">
+    <div class="modal-dialog" style="margin-top: 135px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <b align="center">{{roomcard1}}</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
+  <div class="modal fade" id="roommaintenance" role="dialog">
+  <div class="modal-dialog" style="margin-top: 77px;">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#0077B5;color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Room Maintenance - New</h4>
+      </div>
+      <div class="modal-body">
+   <div class="row">
+     <div class="col-lg-2"><b>Room</b></div>
+  
+     <div class="col-lg-2">
+        <select  required style="height:34px;color:black;border-radius:4px;width:360%;color:black;" [(ngModel)]="user.rm_room">
+            <option *ngFor="let selectroomlist of room" [ngValue] ="selectroomlist.rm_room">{{selectroomlist.rm_room}} </option>
+              </select>
+    
+    </div>
+   </div><br>
+  
+  
+   <div class="row">
+      <div class="col-lg-2"><b>Reason</b></div>
+  
+      <div class="col-lg-2">
+          <select [(ngModel)]="user.rm_mainteanance_reason"  required style="height:34px;width:250px;color:black;">
+              <option *ngFor="let roommaintainreason of reason" 
+              [ngValue] = "roommaintainreason.mainteanance_reason">
+              {{roommaintainreason.mainteanance_reason}} 
+            </option>
+             </select>
+     
+     </div>
+    </div><br>
+  
+  
+    <div class="row">
+        <div class="col-lg-2"><b>Remarks</b></div>
+   
+        <div class="col-lg-2">
+          <textarea rows="5" cols="60" [(ngModel)]="user.rm_mainteanance_remarks"></textarea>
+       
+       </div>
+      </div><br>
+  
+  
+  
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="submit(user)" data-dismiss="modal" data-toggle="modal" data-target="#roommaintainresponse"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  
+  <div class="modal fade" id="roomupdatemaintenance" role="dialog">
+    <div class="modal-dialog" style="margin-top: 77px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#0077B5;color:white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Room Maintenance - New</h4>
+        </div>
+        <div class="modal-body">
+     <div class="row">
+       <!-- <div class="col-lg-2"><b>Room</b></div> -->
+  
+       <div class="col-lg-2">
+          <!-- <select  required style="height:34px;color:black;border-radius:4px;width:360%;color:black;" [(ngModel)]="user1.rm_room">
+              <option *ngFor="let selectroomlist of room" [ngValue] ="selectroomlist.rm_room">{{selectroomlist.rm_room}} </option>
+                </select> -->
+      
+      </div>
+     </div><br>
+  
+  
+     <div class="row">
+        <div class="col-lg-2"><b>Reason</b></div>
+   
+        <div class="col-lg-2">
+            <select [(ngModel)]="user1.rm_mainteanance_reason"  required style="height:34px;width:250px;color:black;">
+                <option *ngFor="let roommaintainreason of reason" 
+                [ngValue] = "roommaintainreason.mainteanance_reason">
+                {{roommaintainreason.mainteanance_reason}} 
+              </option>
+               </select>
+       
+       </div>
+      </div><br>
+  
+  
+      <div class="row">
+          <div class="col-lg-2"><b>Remarks</b></div>
+     
+          <div class="col-lg-2">
+            <textarea rows="5" cols="60" [(ngModel)]="user1.rm_mainteanance_remarks"></textarea>
+         
+         </div>
+        </div><br>
+  
+  
+  
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="update(user1)" data-dismiss="modal" data-toggle="modal" data-target="#roomupdatemaintainresponse"><b>Ok</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <body>
+      <div class="wrapper">
+        <div class="content-wrapper">
+      <br>
+  <div class="container-fluid">
+    <div class="panel panel-default">
+    <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-1">
+  <b>Room</b>
+      </div>
+  
+      <div class="col-lg-3">
+          <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-home"></i></span>
+               <input type="text" class="form-control" [(ngModel)]="roomnumber">
+             </div>
+      </div>
+  
+      <div class="col-lg-1">
+  
+      </div>
+  
+      <div class="col-lg-2">
+        <b style="margin-left: 58px;">Room Class</b>
+      </div>
+  
+      <div class="col-lg-3">
+          <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="class" (ngModelChange)="onSelect6(class)">
+              <option *ngFor="let roomclasslist of roomclass" [ngValue] = "roomclasslist.class">{{roomclasslist.class}} </option>
+                </select>
+      </div>
+  
+    </div><br>
+  
+    <div class="row" style="padding-left:15px;"><b>Show</b></div>
+  <div class="row">
+  
+  <div class="col-lg-6">
+    <form>
+        <label class="radio-inline">
+          <input type="radio" name="optradio"><b>All</b>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" [(ngModel)]="checkboxflg.checksup" (change)="filtercheckboxData(checkboxflg.checksup,'SUPERVISOR')"><b>Resolved</b>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" [(ngModel)]="checkboxflg.checkunsup" (change)="filtercheckboxData(checkboxflg.checkunsup,'unsupervised')"><b>UnResolved</b>
+        </label>
+      </form>
+    </div>
+    <div class="col-lg-3"></div> 
+    <div class="col-lg-2">
+      <!-- <button type="button" class="btn btn-warning"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button> -->
+    </div>
+    </div>
+  
+  </div>
+  </div>
+  </div>
+  
+  
+  <div class="container-fluid" >
+    
+        <table class="table table-bordered table-hover table-responsive">
+            <thead style="background-color:#0077B5;color:white;">
+              <tr>
+                <th style="width:60px">Room</th>
+                <th>Type</th>
+                <th>RoomStatus</th>
+                 <th>FOStatus</th>
+                <th>Reason</th>
+                <th>LastChange</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>ResolvedOn</th>
+                <th>ResolvedBy</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let roommaintainlist of main | filterdata: roomnumber :'rm_room'; let i=index " 
+              (click)="selectMembersMaintain(roommaintainlist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                <td style="width:60px">{{roommaintainlist.rm_room}}</td>
+                   <td>{{roommaintainlist.rm_room_type}}</td>
+                 <td>{{roommaintainlist.rm_room_status}}</td>
+                  <td>{{roommaintainlist.rm_fo_status}}</td>
+                 <td>{{roommaintainlist.rm_mainteanance_reason}}</td>
+                 <td>{{roommaintainlist.rm_last_change}}</td>
+                <td>{{roommaintainlist.emp_firstname}}</td>
+                 <td>{{roommaintainlist.emp_lastname}}</td>
+                <td>{{roommaintainlist.rm_resolvedon}}</td>
+                  <td>{{roommaintainlist.rm_resolvedby}}</td>
+                  <td>{{roommaintainlist.rm_mainteanance_remarks}}</td>
+              </tr>
+             
+              <tr style="height:40px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+             
+              <tr style="height:40px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height:40px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height:40px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="height:40px;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+             
+             
+            </tbody>
+          </table>
+        
+        
+    </div><br>
+  
+    <div class="container-fluid" >
+      <div class="row">
+  
+      <div class="col-lg-2">
+        <button type="button" class="btn btn-info" style="width:160px;"><b>Print</b></button>
+      </div>
+  
+      <div class="col-lg-2">
+          <button type="button" class="btn btn-info" style="width:160px;" (click) ="resolveroom(user)" data-toggle="modal" data-target="#resolveresponse"><b>Resolve</b></button>
+        </div>
+  
+        <div class="col-lg-2">
+            <button type="button" class="btn btn-primary" style="width:160px;" data-toggle="modal" data-target="#roommaintenance"><b>New</b></button>
+          </div>
+  
+          <div class="col-lg-2">
+              <button type="button" class="btn btn-success" style="width:160px;" data-toggle="modal" data-target="#roomupdatemaintenance"><b>Edit</b></button>
+            </div>
+  
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-danger" style="width:160px;" (click)="delete(user)" data-toggle="modal" data-target="#roommaintaindeleteresponse"><b>Delete</b></button>
+              </div>
+  
+              <div class="col-lg-2">
+                  <button type="button" class="btn btn-danger" style="width:160px;"><b>Close</b></button>
+                </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+</body>

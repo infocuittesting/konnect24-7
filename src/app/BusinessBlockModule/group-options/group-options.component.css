@@ -1,0 +1,47 @@
+.panel{
+	height:auto; 
+	width:auto;
+	border:1px solid gray;
+	margin-top:25px;
+	}
+	
+.panel-footer{
+     background-color:PowderBlue;
+	 height:73px;
+	 border-top:1px solid Dimgray;
+	}
+	
+.panel:hover{
+      box-shadow: 5px 0px 40px rgba(0,0,0, .3);	
+	  }		
+.panel-body{
+height:175px;
+}  
+ .panel-body img{
+         height:80px;
+		 width:80px;
+		 /* margin-top:10px;
+		 margin-left: 30%; */
+		 }
+		  
+	 
+.panel p{
+          font-size:13px;
+         }		 
+.modal-lg {
+	max-width:auto !important;
+}
+table{
+
+	font-size:16px;
+   
+   }
+  
+   .table-responsive {
+  
+	height:30%;
+	width:100%;
+	 overflow-x: auto; 
+	  overflow-y: auto; 
+   } 
+  

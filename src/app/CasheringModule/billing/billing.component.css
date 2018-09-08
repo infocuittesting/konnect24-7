@@ -1,0 +1,84 @@
+/* .modal {
+    text-align: left;
+  padding: 0!important;
+} */
+/* .vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+} */
+
+/* .vertical-align-center {
+   
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+/* .modal-content { */
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    /* width:inherit;
+    height:inherit; 
+    margin: 0 auto;
+} */
+
+/* .scrollhid{
+    overflow-x: hidden;
+} */
+.backGroundColor{
+    background-color:lightgrey;
+}
+/* hr{
+    margin-top:5px !important;
+    margin-bottom: 5px !important;
+} */
+.form-control{
+    height:30px;
+}
+/* .table-responsive {
+
+    height:45%;
+    width:100%;
+    overflow-x: auto;
+     overflow-y: auto; 
+   } */
+   /* .scrollable {
+    height: 20%;
+    width: 100%;
+    overflow-y: auto; 
+} */
+
+   /* .scrollable3{
+
+    height:60%;
+    width:100%;
+    overflow-x: auto;
+    overflow-y: auto;
+   } */
+   
+   .tableBodyScroll tbody {
+    display:block;
+    max-height:250px;
+    overflow-y:scroll;
+    table-layout:fixed;
+    }
+    .tableBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    }
+
+    
+.fixtab,.fixtab1, tbody {
+    display:block;
+    height:290px;
+    overflow:auto;
+}
+.fixtab,.fixtab1, thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+.fixtab thead {
+    width: calc( 100% - 1em )
+}
+

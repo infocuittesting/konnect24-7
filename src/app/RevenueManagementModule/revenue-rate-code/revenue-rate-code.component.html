@@ -1,0 +1,150 @@
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+  
+      <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
+              <div class="panel panel-primary">
+                      <div class="panel-body">
+                          <form id="ratecode" #ratecodeform=ngForm>
+                         <div class="row">
+                              
+                           <div class="col-md-3">
+                              <div class="row">
+                                
+                                  <div class="col-md-5">
+                                  <b>Ratecode</b>
+                                  </div>
+                                  <div class="col-md-4">
+                                  <select name="rtc" class="form-control input-sm"  [(ngModel)]="rateselfil" (ngModelChange)="onSel(rateselfil)" style="width:120px;height: 26px;" [disabled]=ratecodedis >
+  -                                  <option value="" hidden></option>
+  -                                       <option *ngFor="let ratecdlist of ratcode" [ngValue] = "ratecdlist.rate_code">{{ratecdlist?.rate_code}}</option>   
+                                  </select>
+                                  </div>
+                              </div>
+                            </div>
+                           
+                            <div class="col-md-3">
+                              <div class="col-md-5" style="margin-left:-25px">
+                                <b>SellDate</b>
+                              </div>
+                              <div class="col-md-4">
+                                  <input name="beginselldate" type="date" [(ngModel)]="seldate" class="form-control input-sm" style="width:130px;height: 27px;" >                                  
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="col-md-5">
+                                  <b>RateCategory</b>
+                                </div>
+                                <div class="col-md-4" style="margin-left: 25px">
+                                  <select name="mtc" class="form-control input-sm" [(ngModel)]="ratecatfil" (ngModelChange)="onSelcat(ratecatfil)"  style="width:120px;height: 26px;">
+                                    <option value="" hidden></option>
+                                    <option  *ngFor="let roomtypelist of ratecategory" [ngValue]="roomtypelist.rate_category" >{{roomtypelist.rate_category}}</option>    
+                                    </select>
+                                </div>
+                              </div>
+                              
+                            <div class="col-md-3">
+                               
+                                    <button type="reset" class="btn btn-Primary" style="width:100px;height: 27px;margin-left: 55px;font-size: 12px;" (click)="clear();ratecodeform.reset();"><b>ClearAll</b></button>
+                               
+                            </div>  
+                          </div>
+                      
+                         
+                          
+                      </form>
+                      </div>
+                  </div> 
+      </div>
+      <div class="table-responsive" style="padding-top:20px;padding-left:50px;margin-top: -15px">
+          <div >
+                  <form id="ratecode" #ratecodeform1=ngForm>
+              <table class="table table-bordered table-hover" style="width:100%;">
+                <thead style="background-color:#0077B5;color:white;">
+                  <tr>
+                      <th>Rate Code</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Start sell Date</th>
+                      <th>End Sell Date</th>
+                  </tr>
+                </thead>
+                <tbody style="font-size: 12px">                                 
+                    <tr *ngFor="let mainrate of mainratecode | filterdata: seldate :'begin_sell_date'; let i=index "  (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
+                        <td>{{mainrate?.rate_code}}</td>     
+                        <td>{{mainrate?.rate_description}} </td>
+                        <td>{{mainrate?.rate_category}}</td>
+                        <td>{{mainrate?.begin_sell_date}}</td>
+                        <td>{{mainrate?.end_sell_date}}</td>
+                    </tr>
+                </tbody>
+              </table>
+              </form>
+          </div>
+       
+        </div>
+      
+        <br>
+        <div class="row" style="margin-left:10%;margin-top: 10px">
+                        
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success" style="width:110px;" [disabled]=okbutn><b>Ok</b></button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-Primary" style="width:110px;" disabled><b>Copy</b></button>
+            </div>
+             <div class="col-md-2">
+                <button type="button" class="btn btn-Info" (click)="loadrevenue('New')" [disabled]=edbutns style="width:110px;"><b>New</b></button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn (click)="loadrevenue('Edit')"><b>Edit</b></button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-Warning" style="width:110px;" routerLink="/mains"><b>Close</b></button>
+            </div>
+            <!-- <div class="col-md-2">
+                <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
+            </div> -->
+        </div>
+  </div>
+</div>
+</body>
+
+
+
+
+
+<!-- <****************************room type model**********************************> -->
+
+<!-- alert after delete button -->
+<div class="modal fade" id="afterdel" role="dialog">
+    <div class="vertical-alignment-helper">  
+    <div class="modal-dialog vertical-align-center modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+            
+            <p>{{delalert}}</p>
+            <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+        </div>
+        
+            
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>  
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+
+<!--  **************************************************alert after delete button ends*******************************-->

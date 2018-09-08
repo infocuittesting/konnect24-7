@@ -1,0 +1,632 @@
+<body>
+<div class="wrapper">
+  <div class="content-wrapper">
+
+
+      <br>
+      
+    <div class="container-fluid">
+         <div class="panel panel-primary" >
+           <div class="panel-body">
+             
+          <div class="row">
+              <form #venkat="ngForm">
+              
+            <div class="col-md-1"><label for="name">Date</label></div>
+          <div class="col-md-3">
+            <div class="form-group" style="margin-left: -6px;width: 215px;">
+              <input type="date" class="form-control input-sm" name="date" style="margin-left: -21px;" [(ngModel)]="date">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-warning" style="width:100%; height: 29px;margin-left: 302px;" (click)="venkat.reset()">Clear All</button>
+          </div>
+          <!-- <div class="col-md-3">
+            <div class="form-group">
+              <label for="Display">Display</label>
+              <select class="form-control input-sm"name="Display">
+                <option>Current</option>
+                <option>...</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div> -->
+          <!-- <div class="col-md-3">
+            <div class="form-group">
+              <label for="name">Currency</label>
+              <select class="form-control input-sm" name="Currency">
+                <option>IND</option>
+                <option>USD</option>
+                <option>AUS</option>
+              </select>
+
+            </div>
+          </div> -->
+        </form>
+          
+    </div>
+  </div>
+  </div>
+  </div>
+
+   <!-- //table for grid -->
+    
+    
+        <div class="container-fluid">
+          <!-- <div class="table-responsive" style="width:100%;"> -->
+            <table class="table table-bordered table-hover">
+              <thead style="background-color: #0077B5;color:white;">
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Kngn</th>
+                  <th>Kngs</th>
+                  <th>Ksbn</th>
+                  <th>Ksbs</th>
+                  <th>Sjsn</th>
+                  <th>Sdbn</th>
+                  <th>Sjss</th>
+                  <!-- <th>Comp</th> -->
+                </tr>
+              </thead>
+                <tbody>
+                  <tr *ngFor="let grid of gridvalues | filterdata: date :'curnt_date';let i=index "(click)="selectgridvalues(grid,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                    <td>{{grid.curnt_date}}</td>
+                    <td>{{grid.grid_type_desc}}</td>
+                    <td>{{grid.kngn}}</td>
+                    <td>{{grid.kngs}}</td>
+                    <td>{{grid.ksbn}}</td>
+                    <td>{{grid.ksbs}}</td>
+                    <td>{{grid.sjsn}}</td>
+                    <td>{{grid.sdbn}}</td>
+                    <td>{{grid.sjss}}</td>
+                    <!-- <td>10</td> -->
+                  </tr>
+                </tbody>
+              
+            </table>
+          <!-- </div> -->
+        </div>
+      
+      
+        <div class="container-fluid">
+          <div class="col-md-3"></div>
+          <div class="col-md-2">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style="width:100%">Range</button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#myModalgrid" style="width:100%" >Edir Grid</button>
+          </div>
+          <div class="col-md-2">
+              <button class="btn btn-warning" type="button" style="width:100%" routerLink="/bcreate">Close</button>
+            
+            </div>
+            <div class="col-md-3"></div>          
+        </div>
+      
+    </div>
+  </div>
+  </body>
+      <!-- //BlockRangeSettings -->
+
+           <!-- // model reservation screen -->
+           <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog model-lg">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="width: 150%; margin-left: -143px;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Block Range</h4>
+                  </div>
+                  <div class="modal-body">
+            
+                      <div class="row">
+                          <div class="continer-fluid">
+                          <div class="col-md-2"></div>
+                          <div class="col-md-5">
+                           
+                              <div class="panel panel-primary" style="border:solid 1px; margin-left: -117px;border-color: lightgray">
+                                  <legend style="margin-left:0px;background-color: #0077B5;color:white" >Date Range</legend>
+                                  <div class="panel-body" style="margin-top: -6%;">
+                                      <div class="row">
+                                    <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">Start Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">End Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">Nights</label>
+                                      <input type="text" class="form-control input-sm" name="Form" [(ngModel)]="nights">
+                                    </div>
+                                  </div>
+                                      </div>
+                                     
+                                      <!-- <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">Core</label>
+                                              </div> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">ShoulderBegin</label>
+                                              </div> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">ShoulderEnd</label>
+                                              </div> 
+                                        </div>
+                                      </div> -->
+                                      <br>
+                                      <div class="row">
+                                          <div class="col-sm-1">
+                                            <label for="sun"><input type="checkbox" [value]="mon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.sunday"/> SUN</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"/> MON</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="tue"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.tuesday"/> TUE</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox"[value]="wed"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.wednesday"/> WED</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="thu"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.thursday"/> THU</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox"[value]="fri"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.friday"/> FRI</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="sat"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.saturday"/> SAT</label>
+                                          </div>
+                                      </div>
+                              </div>
+                          </div>
+                     <div class="panel panel-primary" style="height: 244px;border:solid 1px; margin-left:-116px;border-color: lightgray">
+                              <legend style="margin-left:0px;background-color: #0077B5;color:white" >Room Type</legend>
+                              <div class="panel-body">
+                                  <div class="col-md-5">
+                                    <div class="form-group">
+                                      <label for="RoomType">RoomType</label>
+                                      <select class="form-control input-sm" name="Roomtype" [(ngModel)]="range.roomtype">
+                                          <option *ngFor="let option of roomtype_select" 
+                                                      [ngValue]="option"> 
+                                                      {{option.type}}
+                                          </option>
+                                          </select> 
+                                    </div>
+                               
+                                </div>
+                                 <!-- <div class="row">
+                                  <div class="col-md-4">
+                                      <button class="btn btn-success" style="width:100%">ALL</button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-warning" style="width:100%">NONE</button>
+                                      </div>
+                                    </div> -->
+                              
+                            </div> 
+                        </div>
+                        <div class="row">
+                            
+                        </div>
+                        </div>
+                        <div class="col-md-5"  >
+                            <div class="panel panel-primary" style="border:solid 1px; margin-left: -27px;border-color: lightgray">
+                                <legend style="margin-left:0px;background-color: #0077B5;color:white" >Occupancy</legend>
+                                <div class="panel-body" style="margin-top: -10%;">
+                             
+                                  <div class="continer">
+                                    <div class="col-md-10">
+                                      <label>No.of Rooms</label>
+                                      <div class="row">
+                                     <div class="col-md-3">
+                                       <div class="form-group"style="width: 100px;" >
+                                         <label for="name">Occupancy1</label>
+                                         <input type="number" class="form-control input-sm" name="Occu_pency1"[(ngModel)]="Occupency1">
+                                       </div>
+                                     </div>
+
+                                     <div class="col-md-3">
+                                        <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                          <label for="name">Rate1</label>
+                                          <input type="number" class="form-control input-sm" name="rate_1"[(ngModel)]="Rate1">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                          <div class="form-group"style="width: 100px;" >
+                                            <label for="name">Occupancy2</label>
+                                            <input type="number" class="form-control input-sm" name="Occu_pency2"[(ngModel)]="Occupency2" >
+                                          </div>
+                                        </div>
+   
+                                        <div class="col-md-3">
+                                           <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                             <label for="name">Rate2</label>
+                                             <input type="number" class="form-control input-sm" name="rate_2"[(ngModel)]="Rate2">
+                                           </div>
+                                         </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3">
+                                            <div class="form-group"style="width: 100px;" >
+                                              <label for="name">Occupancy3</label>
+                                              <input type="number" class="form-control input-sm" name="Occup_ency3"[(ngModel)]="Occupency3">
+                                            </div>
+                                          </div>
+     
+                                          <div class="col-md-3">
+                                             <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                               <label for="name">Rate3</label>
+                                               <input type="number" class="form-control input-sm" name="rate_3"[(ngModel)]="Rate3">
+                                             </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3">
+                                            <div class="form-group"style="width: 100px;" >
+                                              <label for="name">Occupancy4</label>
+                                              <input type="number" class="form-control input-sm" name="Occu_pency4"[(ngModel)]="Occupency4">
+                                            </div>
+                                          </div>
+     
+                                          <div class="col-md-3">
+                                             <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                               <label for="name">Rate4</label>
+                                               <input type="number" class="form-control input-sm" name="rate_4"[(ngModel)]="Rate4">
+                                             </div>
+                                           </div>
+                                         </div>
+                                         <div class="row">
+                                            <div class="col-md-3"  >
+                                              <div class="form-group" [class.has-error]="tota_room==true"  style="width: 100px;" >
+                                                <label for="name">Total Rooms</label>
+                                                <input type="number" class="form-control input-sm" name="total_room" value="{{(Occupency1+Occupency2+Occupency3+Occupency4)}}"  [(ngModel)]="totalrooms">
+                                                <div *ngIf="tota_room==true"  ngClass="{ 'has-error' : tota_room==true}"></div>
+                                              </div>
+                                            </div>
+       
+                                            <div class="col-md-3">
+                                               <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                                 <label for="name">Add.Rate</label>
+                                                 <input type="number" class="form-control input-sm" name="add_rate"value="{{Rate4+Rate3+Rate2+Rate1}}" [(ngModel)]="addrates">
+                                               </div>
+                                             </div>
+                                           </div>
+                                           <!-- <div class="row">
+                                              <div class="col-md-3">
+                                                <div class="form-group"style="width: 149px;" >
+                                                  <label for="name">Occupency1</label>
+                                                  <input type="date" class="form-control input-sm" name="Occupency">
+                                                </div>
+                                              </div>
+                                              </div>
+                                             <div class="row">
+                                              <div class="col-md-3">
+                                                 <div class="form-group"style="margin-left: 0px;width: 100px;" >
+                                                   <label for="name">CutofDAys</label>
+                                                   <input type="text" class="form-control input-sm" name="Occupency" style="margin-left: 0px; width: 150px;">
+                                                 </div>
+                                               </div>
+                                              </div> -->
+                                         
+                                              
+                                             <!-- //buttons -->
+                                          <div class="row">
+                                          
+                                          <div class="col-md-2" style="width: 45%;">
+                                            <button class="btn btn-primary"style="width:100%;"data-dismiss="model"(click)="rangegrids(range,Occupency1,Occupency2,Occupency3,Occupency4,Rate1,Rate2,Rate3,Rate4)">Ok</button>
+                                          </div>
+                                         <div class="col-md-2" style="width: 45%;">
+                                              <button class="btn btn-success"style="width:100%;margin-left: 24px;" data-dismiss="modal"   (click)="savebutton()">Save</button>
+                                            
+                                            </div>
+                                           </div>
+                                           <!-- <div class="row">
+                                              <div class="col-md-2" style="width: 45%;">
+                                                <button class="btn btn-light"style="width:100%">Options</button>
+                                              </div>
+                                               </div> -->
+                                          
+                                          
+                                </div>
+                                </div>
+                                <div class="continer">
+                                   
+                                </div>
+                                  
+                       </div>   
+                        </div>
+                        </div>
+                  </div>
+                  <div class="modal-footer" style="max-height: 79%;">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+                      <!-- <button type="button" class="btn btn-danger"[routerLink] = '/editgrid' data-dismiss="modal">edit grid<i class="glyphicon glyphicon-remove"></i></button>              -->
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+              </div>
+              </div>
+              
+
+<!-- edit grid screennnnnn -->
+<div class="modal fade" id="myModalgrid" role="dialog">
+  <div class="modal-dialog model-lg">
+  
+    <!-- Modal content-->
+    <div class="modal-content" style="width: 150%;" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Block Range</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="row">
+              <div class="continer-fluid">
+              <div class="col-md-2"></div>
+              <div class="col-md-5">
+               
+                  <div class="panel panel-primary" style="border:solid 1px; margin-left: -117px;border-color: lightgray">
+                      <legend style="margin-left:0px;background-color: #0077B5;color:white" >Date Range</legend>
+                      <div class="panel-body">
+                          <div class="row">
+                        <div class="col-md-4"> 
+                          <div class="form-group">
+                          <label for="name">Start Date</label>
+                          <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4"> 
+                          <div class="form-group">
+                          <label for="name">End Date</label>
+                          <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4"> 
+                          <div class="form-group">
+                          <label for="name">Nights</label>
+                          <input type="text" class="form-control input-sm" name="Form" [(ngModel)]="nights" disabled>
+                        </div>
+                      </div>
+                          </div>
+                         
+                          <!-- <div class="row">
+                            <div class="col-md-3">
+                                <div class="custom-control">
+                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                    <label class="custom-control-label" for="customRadio">Core</label>
+                                  </div> 
+                            </div>
+                            <div class="col-md-3">
+                                <div class="custom-control">
+                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                    <label class="custom-control-label" for="customRadio">ShoulderBegin</label>
+                                  </div> 
+                            </div>
+                            <div class="col-md-3">
+                                <div class="custom-control">
+                                    <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                    <label class="custom-control-label" for="customRadio">ShoulderEnd</label>
+                                  </div> 
+                            </div>
+                          </div> -->
+                          <br>
+                          <div class="row" *ngFor="let editgrid of selected_values">
+                              <div class="col-sm-1">
+                                <label for="sun"><input type="checkbox" [value]="editgridmon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.sunday"/> SUN</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox" [value]="editgridmon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.monday"/> MON</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox" [value]="editgridtue"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.tuesday"/> TUE</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox"[value]="editgridwed"  style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.wednesday"/> WED</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox" [value]="editgridthu"  style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.thursday"/> THU</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox"[value]="editgridfri"  style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.friday"/> FRI</label>
+                              </div>
+                              <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox" [value]="editgridsat"  style="margin-left:0px;zoom:1.5"[(ngModel)]="editgrid.saturday"/> SAT</label>
+                              </div>
+                          </div>
+                  </div>
+              </div>
+         <div class="panel panel-primary" style="height: 244px;border:solid 1px; margin-left:-116px;border-color: lightgray">
+                  <legend style="margin-left:0px;background-color: #0077B5;color:white" >Room Type</legend>
+                  <div class="panel-body">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label for="RoomType">RoomType</label>
+                          <select class="form-control input-sm" name="Room_type"(change) ="selectdropdown(room_val)" [(ngModel)]="room_val">
+                              <option *ngFor="let room_val of selected_roomtype" 
+                                          [ngValue]="room_val"> 
+                                          {{room_val.type}}
+                              </option>
+                              </select> 
+                        </div>
+                   
+                    </div>
+                     <!-- <div class="row">
+                      <div class="col-md-4">
+                          <button class="btn btn-success" style="width:100%">ALL</button>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning" style="width:100%">NONE</button>
+                          </div>
+                        </div> -->
+                  
+                </div> 
+            </div>
+            <div class="row">
+                
+            </div>
+            </div>
+            <div class="col-md-5" *ngFor="let editgrid of selected_values" >
+                <div class="panel panel-primary" style="border:solid 1px; margin-left: -27px;border-color: lightgray">
+                    <legend style="margin-left:0px;background-color: #0077B5;color:white" >Occupancy</legend>
+                    <div class="panel-body">
+                 
+                      <div class="continer">
+                        <div class="col-md-10">
+                          <label>No.of Rooms</label>
+                          <div class="row">
+                         <div class="col-md-3">
+                           <div class="form-group"style="width: 100px;" >
+                             <label for="name">Occupancy1</label>
+                             <input type="number" class="form-control input-sm" name="edit_Occu_pency1"[(ngModel)]="editgrid.occupancy_one">
+                           </div>
+                         </div>
+
+                         <div class="col-md-3">
+                            <div class="form-group"style="margin-left: 78px;width: 100px;">
+                              <label for="name">Rate1</label>
+                              <input type="number" class="form-control input-sm" name="edit_rate_1"[(ngModel)]="editgrid.rate_one">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                              <div class="form-group"style="width: 100px;" >
+                                <label for="name">Occupancy2</label>
+                                <input type="number" class="form-control input-sm" name="edit_Occu_pency2"[(ngModel)]="editgrid.occupancy_two" >
+                              </div>
+                            </div>
+
+                            <div class="col-md-3">
+                               <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                 <label for="name">Rate2</label>
+                                 <input type="number" class="form-control input-sm" name="edit_rate_2"[(ngModel)]="editgrid.rate_two">
+                               </div>
+                             </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group"style="width: 100px;" >
+                                  <label for="name">Occupancy3</label>
+                                  <input type="number" class="form-control input-sm" name="edit_Occup_ency3"[(ngModel)]="editgrid.occupancy_three">
+                                </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                 <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                   <label for="name">Rate3</label>
+                                   <input type="number" class="form-control input-sm" name="edit_rate_3"[(ngModel)]="editgrid.rate_three">
+                                 </div>
+                               </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group"style="width: 100px;" >
+                                  <label for="name">Occupancy4</label>
+                                  <input type="number" class="form-control input-sm" name="edit_Occu_pency4"[(ngModel)]="editgrid.occupancy_four">
+                                </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                 <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                   <label for="name">Rate4</label>
+                                   <input type="number" class="form-control input-sm" name="edit_rate_4"[(ngModel)]="editgrid.rate_four">
+                                 </div>
+                               </div>
+                             </div>
+                             <div class="row">
+                                <div class="col-md-3"  >
+                                  <div class="form-group" [class.has-error]="tota_room==true"  style="width: 100px;" >
+                                    <label for="name">Total Rooms</label>
+                                    <input type="number" class="form-control input-sm" name="edit_total_room" value="{{editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four}}"  [(ngModel)]="editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four">
+                                    <div *ngIf="tota_room==true"  ngClass="{ 'has-error' : tota_room==true}"></div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                   <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                     <label for="name">Add.Rate</label>
+                                     <input type="number" class="form-control input-sm" name="add_rate"value="{{Rate4+Rate3+Rate2+Rate1}}" [(ngModel)]="addrates" disabled>
+                                   </div>
+                                 </div>
+                               </div>
+                               <!-- <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group"style="width: 149px;" >
+                                      <label for="name">Occupency1</label>
+                                      <input type="date" class="form-control input-sm" name="Occupency">
+                                    </div>
+                                  </div>
+                                  </div>
+                                 <div class="row">
+                                  <div class="col-md-3">
+                                     <div class="form-group"style="margin-left: 0px;width: 100px;" >
+                                       <label for="name">CutofDAys</label>
+                                       <input type="text" class="form-control input-sm" name="Occupency" style="margin-left: 0px; width: 150px;">
+                                     </div>
+                                   </div>
+                                  </div> -->
+                             
+                                  
+                                 <!-- //buttons -->
+                              <div class="row">
+                              
+                              <div class="col-md-2" style="width: 45%;">
+                                <button class="btn btn-primary"style="width:100%;"data-dismiss="model"(click)="editrangegrids(editgrid)">Ok</button>
+                              </div>
+                             <div class="col-md-2" style="width: 45%;">
+                                  <button class="btn btn-success"style="width:100%;margin-left: 24px;"data-dismiss="model"  (click)="editsavebutton()">Save</button>
+                                
+                                </div>
+                               </div>
+                               <!-- <div class="row">
+                                  <div class="col-md-2" style="width: 45%;">
+                                    <button class="btn btn-light"style="width:100%">Options</button>
+                                  </div>
+                                   </div> -->
+                              
+                              
+                    </div>
+                    </div>
+                    <div class="continer">
+                       
+                    </div>
+                      
+           </div>   
+            </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="closegrid()" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+          <!-- <button type="button" class="btn btn-danger"[routerLink] = '/editgrid' data-dismiss="modal">edit grid<i class="glyphicon glyphicon-remove"></i></button>              -->
+      </div>
+    </div>
+    
+  </div>
+</div>
+

@@ -1,0 +1,100 @@
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <br>
+      <div class="container-fluid" >
+        <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="room">Date</label>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-group">            
+                    <input type="date" class="form-control input-sm" [(ngModel)]="hisdate" name="hdate" style="height:27px;width:100%;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="room">Folio.No</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">            
+                      <input type="text" class="form-control input-sm" [(ngModel)]="foliono" name="hisfolio" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+                  
+              </div>
+
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="room">Name</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">            
+                      <input type="text" class="form-control input-sm"  [(ngModel)]="hisname" name="hname" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+                  
+              </div>
+            
+              <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="room">Room</label>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="form-group">            
+                        <input type="text" class="form-control input-sm" [(ngModel)]="hisroom" name="hroom" style="height:27px;width:75%;">
+                      </div>
+                    </div>
+                  </div>
+                    
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+            <br>
+            <div class="container-fluid">
+                <div class="responsive-table">
+                  <table class="table table-bordered table-hover">
+                    <thead style="background-color: #0077B5;color:white;">
+                      <tr>
+                        <th>Folio.No</th>
+                        <th>Room</th>                      
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Wnd</th>
+                        <th>Folio Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size:12px;">
+                      <tr *ngFor="let folioitem of foliohis|filterdata: hisname :'pf_firstname' |  filterdata: hisdate :'posting_date'|  filterdata: foliono :'folio_no'|  filterdata: hisroom :'res_room';let i=index ">
+                        <td>{{folioitem.folio_no}}</td>
+                        <td>{{folioitem.res_room}}</td>
+                        <td>{{folioitem.posting_date}}</td>
+                        <td>{{folioitem.pf_firstname}}</td>
+                        <td>{{folioitem.post_window}}</td>
+                        <td>{{folioitem.total_amount}}</td>
+                      </tr>
+                    </tbody>
+                      
+                    
+                  </table>
+                </div> 
+            </div>
+          
+          
+    </div>
+  </div>
+</body>

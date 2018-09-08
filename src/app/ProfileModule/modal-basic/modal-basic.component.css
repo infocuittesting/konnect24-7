@@ -1,0 +1,66 @@
+.panel{
+	height:auto; 
+	width:auto;
+	border:1px solid gray;
+	margin-top:25px;
+	}
+	
+.panel-footer{
+     background-color:PowderBlue;
+	 height:58px;
+	 border-top:1px solid Dimgray;
+	}
+	
+.panel:hover{
+      box-shadow: 5px 0px 40px rgba(0,0,0, .3);	
+	  }		
+.panel-body{
+height:160px;
+}  
+ .panel-body img{
+         height:80px;
+		 width:80px;
+		 }
+		  
+	 
+.panel p{
+          font-size:13px;
+         }		 
+/* .modal-lg {
+	max-width:auto !important;
+} */
+
+
+#negotiation{
+	height:35%;
+    width:100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.backGroundColor{
+	background-color:#D3D3D3;
+}
+
+.modal {
+    text-align: center;
+  padding: 0!important;
+}
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+

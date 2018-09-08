@@ -1,0 +1,286 @@
+
+<!--Pdf -->
+
+<div class="modal fade" id="myModal" role="dialog"> 
+  <div class="modal-dialog">
+  <div class="modal-content" style="width:180%;height:80%;margin-left: -35%;"> 
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">House Keeping Detail Report</h4>
+      </div>
+      <div class="modal-body" #myModal>
+          <!-- <div class="scrollable"> -->
+            <div class="scrollable">
+              <table class="table"> 
+                <thead style="background-color:#0077B5;color:white;">
+                  <tr>
+                    <th >X</th>
+                    <th>Room</th>
+                    <th>Room Type</th>
+                    <th>Room Status</th>
+                    <th>FO status</th>
+                    <th>Reservation Status</th>
+                    <th>Floor</th>
+                    <th>Room Class</th>
+                    <th>AM/PM</th>
+                    <th>Features</th>
+                    
+                  </tr>
+                </thead>
+                <!-- <tbody> -->
+                  <tr *ngFor="let housekeepinglist of house ; let i = index">
+                    <td >{{i+1}}</td>
+                    <td>{{housekeepinglist.rm_room}}</td>
+                    <td>{{housekeepinglist.rm_room_type}}</td>
+                    <td>{{housekeepinglist.rm_room_status}}</td>
+                    <td>{{housekeepinglist.rm_fo_status}}</td>
+                    <td>{{housekeepinglist.rm_reservation_status}}</td>
+                    <td>{{housekeepinglist.rm_floor}}</td>
+                    <td>{{housekeepinglist.rm_room_class}}</td>
+                    <td>{{housekeepinglist.rm_am_pm}}</td>
+                    <td>{{housekeepinglist.rm_features}}</td>
+                   </tr>
+            
+                <!-- </tbody> -->
+              </table>
+            </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="downloadPDF()"><b>Download as Pdf</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<!---Alertinsert for changeroom response-->
+
+<div class="modal fade" id="changeroomresponse" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+   <h4>Connect 24/7 Hotel</h4>
+  </div>
+  <div class="modal-body">
+  <b align="center">{{roomlist}}</b>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<div class="modal fade" id="change" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header" style="background-color:#0077B5;color:white;">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Quick Change Room Status</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+   <div class="col-lg-1">
+    <input type="radio" name="optradio" style="height:20px;width:20px;" (click)="sample('roomlist')">
+   </div>
+   <div class="col-lg-3">
+
+    <b>Room List</b>
+   </div>
+
+   <div class="col-lg-6">
+      <input type="text" [(ngModel)]="user.RM_Room">
+   </div>
+
+  </div><br>
+
+  <div class="row">
+
+    <div class="col-lg-1">
+        <input type="radio" name="optradio" style="height:20px;width:20px;" (click)="sample('fromtoroom')"> 
+    </div>
+
+    <div class="col-lg-3">
+     <b>From Room</b>
+    </div>
+   <div class="col-lg-2">
+      <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.From_Room">
+          <option *ngFor="let fromroomlist of fromroom" [ngValue] = "fromroomlist.rm_room">{{fromroomlist.rm_room}} </option>
+            </select>
+   </div>
+
+
+   <div class="col-lg-2">
+      <b>To Room</b>
+     </div>
+    <div class="col-lg-2">
+        <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.To_Room">
+            <option *ngFor="let toroomlist of toroom" [ngValue] = "toroomlist.rm_room">{{toroomlist.rm_room}} </option>
+              </select>
+    </div>
+
+  </div><br>
+
+
+
+
+    <div class="row">
+        <div class="col-lg-1">
+         <!-- <input type="radio" name="optradio" style="height:20px;width:20px;"> -->
+        </div>
+        <div class="col-lg-3">
+
+         <b>Change Room Status</b>
+        </div>
+
+        <div class="col-lg-6">
+           <select  required style="height:34px;width:100%;color:black;border-radius:4px;" [(ngModel)]="user.RM_Room_Status">
+               <option value = "Clean" >Clean</option>
+               <option value = "Dirty" >Dirty</option>
+               <option value = "Inspected" >Inspected</option>
+               <option value = "Pick Up" >Pick Up</option>
+               <option value = "Out Of Order" >Out Of Order</option>
+               <option value = "Out Of Service" >Out Of Service</option>
+               </select>
+        </div>
+
+       </div>
+ 
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="housekeepingstatus(user)" data-toggle="modal" data-target="#changeroomresponse" data-dismiss="modal"><b>OK</b></button>
+  <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="wrapper">
+  <div class="content-wrapper">
+    <br>
+<div class="container-fluid" >
+<div class="panel panel-default" >
+  <div class="panel body" style="margin-bottom:0px;">
+  <div class="row">
+<div class="col-lg-6">
+<b  style="margin-left:20px"><u>Room Status</u></b>
+<div class="row">
+
+<div class="col-lg-3" style="margin-left:20px">
+<input type="checkbox" [(ngModel)]="checkboxflg.checkcln" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcln,'clean')" name="clean"><b style="padding-left:10px;">Clean</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkDir" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkDir,'dirty')" name="dirty"><b style="padding-left:10px;">Dirty</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkpkup" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkpkup,'pick up')" name="pickup"><b style="padding-left:10px;">Pick Up</b><br>
+</div>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkser" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkser,'Out Of Service')" name="outofservice"><b style="padding-left:10px;">Out Of Service</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkord" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkord,'Out Of Order')" name="outoforder"><b style="padding-left:10px;">Out Of Order</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkinp" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkinp,'Inspected')" name="inspected"><b style="padding-left:10px;">Inspected</b><br>
+</div>
+</div>
+
+<!-- <pre>Selected items: <span  style="padding-right:10px;">{{checked.value}}</span></pre>   -->
+<div class="col-lg-6">
+<b><u>FO Status</u></b>
+</div>
+
+<div class="col-lg-4" id="div2">
+<input type="checkbox" [(ngModel)]="checkboxflg.checkvac" (change)="filtercheckboxData1(checkboxflg.checkvac,'vaccant')"><b style="padding-left:10px;">Vaccant</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkocc" (change)="filtercheckboxData1(checkboxflg.checkocc,'occupied')"><b style="padding-left:10px;">Occupied</b><br>
+
+</div>
+</div><br>
+
+
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-2"></div>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-success" style="width:100%;margin-top: -94px;" (click)="selectandClearAll('sel')"><b>Select All</b></button>
+        </div>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-danger" style="width:100%;margin-top: -94px; margin-left: -20px;" (click)="selectandClearAll('clr')"><b>Clear All</b></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<br>
+
+
+
+<div class="container-fluid">
+<div class="scrollable">
+
+<table class="table table-bordered table-responsive table-hover">
+<thead style="background-color:#0077B5;color:white;">
+<tr>
+  <th style="width:30px">X</th>
+  <th>Room</th>
+  <th>Room Type</th>
+  <th>Room Status</th>
+  <th>FO status</th>
+  <th>Reservation Status</th>
+  <th>Floor</th>
+  <th>Room Class</th>
+  <th>AM/PM</th>
+  <th>Features</th>
+  
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index "
+(click)="selectMembersEdit(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+  
+  <td style="width:30px"><input type="checkbox" (checked)="exist(housekeepinglist)" (click)="toggleSelection(housekeepinglist)"></td>
+  <td>{{housekeepinglist.rm_room}}</td>
+  <td>{{housekeepinglist.rm_room_type}}</td>
+  <td>{{housekeepinglist.rm_room_status}}</td>
+  <td>{{housekeepinglist.rm_fo_status}}</td>
+  <td>{{housekeepinglist.rm_reservation_status}}</td>
+  <td>{{housekeepinglist.rm_floor}}</td>
+  <td>{{housekeepinglist.rm_room_class}}</td>
+  <td>{{housekeepinglist.rm_am_pm}}</td>
+  <td>{{housekeepinglist.rm_features}}</td>
+ </tr>
+
+</tbody>
+</table>
+</div>
+</div><br>
+
+<div class="container-fluid">
+<div class="row">
+
+<button type="button" class="btn btn-info" style="width:10%;margin-left: 2%;" routerLink="/reservation"><b>Resv.</b></button>
+
+
+
+<button type="button" class="btn btn-default" style="width:10%;margin-left: 4%;" disabled><b>Details</b></button>
+
+<button type="button" class="btn btn-warning" style="width:10%;margin-left: 4%;" data-toggle="modal" data-target="#myModal"><b>Report</b></button>
+
+<button type="button" class="btn btn-primary" style="width:10%;margin-left: 4%;" disabled><b>Statistics</b></button>
+
+<button type="button" class="btn btn-info" style="width:10%;margin-left: 4%;" (click)="roomassign()" routerLink="/roomassignment" (click)="cleardata()" [disabled]=ok><b>Ok</b></button>
+
+<button type="button" class="btn btn-success" style="width:10%;margin-left: 4%;" data-toggle="modal" data-target="#change" data-dismiss="modal"><b>Change</b></button>
+
+  <button type="button" class="btn btn-danger" style="width:10%;margin-left: 4%;" routerLink="/mains"><b>Close</b></button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+

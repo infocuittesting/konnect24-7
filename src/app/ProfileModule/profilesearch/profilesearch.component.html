@@ -1,0 +1,196 @@
+<body>
+  
+ <div class="wrapper">
+
+  <div class="content-wrapper">
+    
+ <div class="container-fluid">
+  <div class="panel panel-primary" style="margin-top: 10px;border:solid 1px;border-color: lightgray" >
+  <div class="panel-body" style="margin-left: 10px">
+ <div class="container-fluid" style="padding-top:50px;">
+ <div  style="padding-top:10px;padding-bottom:20px;">
+  <!-- <form #f="ngForm">    -->
+     <div class="row" style="margin-top: -75px">
+
+     <div class="col-sm-4">
+        <b>First Name</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+             <input type="text" [(ngModel)]="queryString" class="form-control" name="queryString" style="height: 30px;width: 215px;"></div>
+     </div>
+
+     <div class="col-sm-4">
+
+         <b>Last Name</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+             <input type="text" [(ngModel)]="lastname" class="form-control" name="lastname" style="height: 30px;width: 215px;"></div>
+     </div>
+   
+     <div class="col-sm-4">
+           <b>Mobile No</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" class="form-control" [(ngModel)]="mobile" style="height: 30px;width: 215px;"></div>
+
+         </div>
+   
+
+       </div>
+
+   
+   
+   <div class="row" style="padding-top:10px;margin-top: -10px;">
+   
+   <div class="col-lg-4">
+    <b>City</b> <div class="input-group">
+             
+      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>  
+             <input type="text" [(ngModel)]="city" class="form-control"  name="city" style="height: 30px;width: 215px;">
+
+       </div>
+     </div>
+
+     <div class="col-lg-4">
+         <b>Postal Code</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>              
+            <input type="text" [(ngModel)]="postal" class="form-control"  class="form-control" style="height: 30px;width: 215px;">
+
+            </div>
+          </div>
+   
+   <div class="col-lg-4">
+     <b>View By</b>
+     <div class="input-group">
+     <select [(ngModel)]="pftypeselection" (ngModelChange)="onSelect(pftypeselection)" style="width:255px;height:30px;color:black;"> 
+      <option *ngFor="let option of options" 
+              [ngValue]="option.profiletype"> 
+              {{option.profiletype}}
+      </option>
+ </select>
+</div>
+   </div>
+   
+</div>
+
+
+
+<div class="row" style="padding-top:8px;margin-bottom: -20px">
+
+<div class="col-lg-4">
+ 
+<input type="checkbox"><b style="padding-left:5px;">Neg.Rates</b>
+</div>
+<!-- <div class="col-lg-3"></div> -->
+<div class="col-lg-4">
+ 
+   <input type="checkbox"><b style="padding-left:5px;">Show Inactive</b>
+ </div>
+         
+     <div class="col-lg-2">
+   <!-- <button type="button" class="btn btn-warning" routerLink="/stables"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button> -->
+</div>
+
+ <div class="col-lg-4">
+<button type="reset" class="btn btn-warning" style="height: 35px;width: 110px" (click)="clear()"><b>Clear</b></button>
+</div> 
+</div></div></div>
+  <!-- </form>  -->
+ </div>
+
+ </div>
+
+ </div>
+ <div style="margin-left:90%;margin-top: -18px"> 
+  <span>
+    <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+    [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+  
+    <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+    [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+  </span>
+  </div> 
+
+ <div class="container-fluid">
+   <table class="table table-bordered table-hover tableBodyScroll">
+     <thead style="background-color:#0077B5;color:white;">
+       <tr>
+          <th style="width:40px">No</th>
+          <th style="width:120px">FirstName</th>
+          <th style="width:120px">LastName</th>
+          <th style="width:100px">Language</th>
+          <th style="width:50px">Title</th>
+          <th style="width:120px">MobileNo</th>
+          <th style="width:160px" *ngIf="showMore!=true">Address</th>
+          <th style="width:85px" *ngIf="showMore!=true">City</th> 
+          <th style="width:120px" *ngIf="showMore!=true">Country</th>
+          <th *ngIf="showMore!=true">State</th>
+          <th style="width:80px" *ngIf="showMore==true">VIP</th>
+          <th style="width:120px" *ngIf="showMore==true">ProfileType</th>
+          <th style="width:85px" *ngIf="showMore==true">Currency</th>
+          <th *ngIf="showMore==true">Account</th>
+        
+       </tr>
+     </thead>
+     <tbody>
+       <tr  *ngFor="let profilesearch of profile1| filterdata: queryString :'pf_firstname'| filterdata: lastname :'pf_lastname'| filterdata: city :'pf_city'
+      | filterdata: postal :'pf_postalcode' |  filterdata: mobile :'pf_mobileno'; let i = index " 
+      (click)="selectMembersEdit(profilesearch,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+       <td style="width:40px">{{i+1}}</td>
+       <td style="width:120px">{{profilesearch?.pf_firstname |titlecase}}</td>
+       <td style="width:120px">{{profilesearch?.pf_lastname |titlecase}}</td>
+       <td style="width:100px">{{profilesearch?.pf_language  |titlecase}}</td>
+       <td style="width:50px">{{profilesearch?.pf_title |titlecase}}</td>
+       <td style="width:120px">{{profilesearch?.pf_mobileno}}</td>
+       <td style="width:160px" *ngIf="showMore!=true">{{profilesearch?.pf_company_address }}</td>
+       <td style="width:85px" *ngIf="showMore!=true">{{profilesearch?.pf_city |titlecase}}</td>
+       <td style="width:120px" *ngIf="showMore!=true">{{profilesearch?.pf_company_country |titlecase}}</td>
+       <td *ngIf="showMore!=true">{{profilesearch?.pf_company_state |titlecase}}</td>
+       <td style="width:80px" *ngIf="showMore==true">{{profilesearch?.pf_individual_vip |titlecase}}</td>
+       <td style="width:120px" *ngIf="showMore==true">{{profilesearch?.pf_type}}</td>
+       <td style="width:85px" *ngIf="showMore==true">{{profilesearch?.pf_ref_currency}}</td>
+       <td  *ngIf="showMore==true">{{profilesearch?.pf_account}}</td>
+        </tr>
+       
+     </tbody>
+   </table>
+
+</div>    <br> 
+ <div class="container-fluid">
+  <div class="row">
+    <!-- <div class="col-lg-1"></div> -->
+<div class="col-lg-2">
+ <button type="button" class="btn btn-warning" style="width:160px;"><b>Enrollment</b></button>
+ <!-- <button type="button" class="btn btn-success" (click)="clearSearch()"><b>Clear</b></button> -->
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-success" routerLink="/reservation" style="width:160px;" [disabled]=res><b>Reservation</b></button>
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-primary" routerLink="/individualprofile" style="width:160px;"  [disabled]=new><b>New</b></button>
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-info" routerLink="/modal-basic" style="width:160px;"  [disabled]=option><b>Options</b></button>
+</div>
+
+<div class="col-lg-2">
+  <button type="button" class="btn btn-success" style="width:160px;" (click)="navigatepages()" [disabled]=ok><b>Ok</b></button>
+</div>
+
+<div class="col-lg-2">
+    <button type="button" class="btn btn-warning" routerLink="/modal-basic" style="width:160px;" [disabled]=edit><b>Edit</b></button>
+   </div>
+   
+
+<!-- <div class="col-lg-2">
+ <button type="button" class="btn btn-danger" style="width:160px;"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+</div> -->
+
+
+
+  </div>
+ 
+ </div>
+</div>
+</div>
+</body>

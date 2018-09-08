@@ -1,0 +1,364 @@
+<body>
+    <div class="wrapper">
+      <div class="content-wrapper">
+    
+    
+  <div class ="container-fluid">
+      <div class="jumbotron"style="background-color: #0077B5;color: white; margin-left: 6px;margin-top: 22px;width:99%">
+    <div class="row">
+        
+    <div class="col-md-4">
+        <b> Acct/corn*</b>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+          <span class="input-group-btn" >
+              <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+          </span>
+  
+      </div>
+      <b> Agent *</b>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+          <span class="input-group-btn" >
+              <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+          </span>
+  
+      </div>
+       
+  
+    </div>
+    <div class ="col-md-4">
+        <b> Source *</b>
+        <div class="input-group">
+          <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+          <span class="input-group-btn" >
+              <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+          </span>
+  
+      </div>
+  
+      <b>Group  *</b>
+      <div class="input-group">
+        <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+            <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+        <span class="input-group-btn" >
+            <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+        </span>
+  
+    </div>
+      
+      </div>
+      <div class=" col-md-4">
+          <b> Contact *</b>
+          <div class="input-group">
+            <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+            <span class="input-group-btn" >
+                <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+            </span>
+    
+        </div>
+      </div>
+        </div>
+        </div>
+  </div>
+  <br>
+  
+  <div class ="container-fluid">
+          <div class="panel panel-primary" style="background-color: #0077B5;color: white;">
+                  <div class="panel-body">
+              
+    <div class="row">
+  <div class="col-md-4">
+  
+      <div class="row" style="padding-top:5px;">
+          <div class="col-lg-3"style="margin-top: 25px;">
+  
+            <b>Start Date</b>
+  
+          </div>
+  
+          <div class="col-lg-2" style="padding-left:55px;margin-top: 18px;margin-left: -36px;">
+              <div class="input-group">
+                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+                  [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
+                  <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
+                </div>
+            </div>
+      
+  
+  
+  
+  </div>
+  
+  <div class="col-md-2">
+          <div class="form-group" style="width:82%;">
+             <label for="name">Roomtype</label>
+           <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtypeselection" (ngModelChange)="onSelect(roomtypeselection)">
+              <option *ngFor="let option of roomtype" 
+              [ngValue]="option"> 
+              {{option.type}}
+      </option>
+              <!-- <option>800 </option> -->
+            </select>
+            
+          </div>
+         </div>
+     
+         <div class="col-md-2">
+             <div class="form-group" style="width:82%;"></div>
+               <label for="">count</label>
+              <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;" [(ngModel)]="user.count">          
+             </div>
+             <div class="col-md-2">
+    
+              <div class="form-group" style="width:82%;">
+                  <label for="name">Meeting Size</label>
+                  <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:211px;"[(ngModel)]="user.meeting_size"> 
+                
+               </div>
+              </div>
+              
+              <div class="col-md-2" style="margin-top: 17px;">
+                  <div class="form-group" style="width:82%;">
+                    <label for=""></label>
+                    <select class="form-control input-sm" id="sel1" style="width: 150px;"[(ngModel)]="user.meeting_size_type">
+                      <option> Square Feet</option>
+                      <option> Square Meter</option>
+                      <option> Square Cent</option>
+                      
+                    </select>
+                  </div>
+                 </div>
+  </div>
+            </div>
+      
+  
+  
+  <div class="row">
+      <div class="col-md-4">
+          <!-- <div class="form-group" style="width:52%;">
+              <label for="room">Nights</label>
+              <input type="text" class="form-control input-sm" >
+          </div> -->
+           <div class="row" style="padding-top:5px;">
+              <div class="col-lg-3" style="margin-top: 17px;">
+      
+                <b>End Date</b>
+      
+              </div>
+      
+              <div class="col-lg-2">
+                  <div class="input-group" style="padding-left: 6px;;margin-top: 18px;">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
+                      (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
+                      <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
+                    </div>
+                </div> 
+  
+          
+        </div>
+  
+      
+  
+   
+    <!-- <div class="col-md-4">
+        <div class="form-group" style="width:82%;">
+         <label for="name">Rate Code</label>
+       <select class="form-control input-sm" id="sel1" style="width:150px;">
+          <option>... </option>
+          <option>... </option>
+          <option>... </option>
+          <option>... </option>
+        </select>
+      </div>
+  </div> -->
+  <br>
+  <div class="col-md-2">
+          <div class="form-group" style="width:82%;">
+             <label for="name"></label>
+           <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtype1selection" (ngModelChange)="onSelect(roomtype1selection)">
+              <option *ngFor="let option of roomtype" 
+              [ngValue]="option"> 
+              {{option.type}}
+      </option>
+              <!-- <option>800 </option> -->
+            </select>
+          </div>
+         </div>
+         <div class="col-md-2">
+             <div class="form-group" style="width:82%;">
+               <label for=""></label>
+              <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.count2">          
+             </div>
+            </div>
+  <div class="col-md-4" style="margin-top: -19px;">
+          <div class="form-group" style="width: 82px;">
+             <label for="name">Attdence</label>
+  
+            <div class="col-sm-3">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                    <span class="glyphicon glyphicon-minus"></span>
+                  </button>
+                  </span>
+                  <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                  <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                  </span>
+              </div>
+          </div>
+          </div>
+       </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4">
+          <!-- <div class="form-group" style="width:53%;">
+              <label for="room">End Date</label>
+              <input type="date" class="form-control input-sm">
+          </div> -->
+          
+  
+                <div class="row" style="padding-top:5px;">
+                  <div class="col-lg-2" style="margin-top: 23px;">
+                      
+                    <b>Nights</b>
+                      
+                  </div>
+                      
+                      <div class="col-lg-2">
+                       <div class="input-group" style="padding-left:40px;margin-top: 16px;">
+                          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
+                          <input type="text" name="nights" class="form-control" style="width:176px" [(ngModel)]="user.RES_Nights" /></div>
+                       </div>
+                      </div>
+  </div>
+  <br>
+  <div class="col-md-2">
+          <div class="form-group" style="width:82%;">
+             <label for="name"></label>
+           <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtype2selection" (ngModelChange)="onSelect(roomtype2selection)">
+              <option *ngFor="let option of roomtype" 
+              [ngValue]="option"> 
+              {{option.type}}
+      </option>
+              <!-- <option>800 </option> -->
+            </select>
+            
+          </div>
+         </div>
+     
+         <div class="col-md-2">
+             <div class="form-group" style="width:82%;">
+               <label for=""></label>
+              <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.count3">          
+             </div>
+            </div>
+  
+            <div class="col-md-4">
+              <!-- <div class="form-group" style="width:82%;">
+                  <label for="room">#Nights</label>
+                  <input type="text" class="form-control input-sm" >
+              </div> -->
+               <div class="form-group" style="width:52%;margin-top: -19px;">
+                 <label for="room">Rooms Per Day</label>
+                 <input type="text" class="form-control input-sm"[(ngModel)]="user.roomperday">
+                </div>
+          </div>
+  
+    </div>
+    <div class="row">
+    
+      
+  
+       <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+              <div class="col-md-4"></div>
+  
+                      <div class="col-md-4"></div>
+          </div>
+    </div>
+    
+  
+   <br>
+  <div class="row">
+          <button class="btn btn-primary" style="width:200px;margin-left:-3px;"(click)="inquirygrid(user)"(click)="onSelect()">Inquiry Grid</button>
+        </div>
+      </div>
+    <div  *ngIf="showSelected" class="conainer-fluid">
+  
+      <div  class="responsive-table">
+        <table class="table table-bordered table-hover"style="input-sm;">
+          <thead style="background-color:#0077B5;color:wheat;">
+           
+            <tr>
+       
+              
+              <th>Kngn</th>
+              <th>Sdbn</th>
+              <th>Ksbn</th>
+              <th>Kngs</th>
+              <th>Ksbs</th>
+              <th>Sjsn</th>
+              <th>Sjss</th>
+              <th>Comp</th>
+              <th>Day</th>
+              <th>Total</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let grid of inquirygridtable; let i = index">
+                  <!-- <td></td>   -->
+                  <td>{{grid.KNGN}}</td>
+                  <td>{{grid.SDBN}}</td>
+                  <td>{{grid.KSBN}}</td>
+                  <td>{{grid.KNGS}}</td>
+                  <td>{{grid.KSBS}}</td>
+                  <td>{{grid.SJSN}}</td>
+                  <td>{{grid.SJSS}}</td>
+                  <td>{{grid.COMP}}</td>
+                  <td>{{grid.days}}</td>
+                  <td>{{grid.total}}</td>
+              </tr>
+       
+          </tbody>
+        </table>
+  
+    </div>
+    </div>
+  
+    <br>
+    
+    <div class ="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+    <button class="btn btn-primary" style="width:100%">Avalability</button>
+  </div>
+  <div class="col-md-2">
+      <button class="btn btn-success" style="width:100%">Bus.block</button>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-info" style="width:100%">Reset</button>
+      </div>
+      <div class="col-md-2">
+          <button class="btn btn-success" style="width:100%" (click)="veronica(user)">Ok</button>
+      </div>
+      <div class="col-md-2">
+          <button class="btn btn-danger" style="width:100%">Close</button>
+        </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </body>
+  

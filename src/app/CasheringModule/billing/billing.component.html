@@ -1,0 +1,1434 @@
+<!-- <div class="scrollhid" style="overflow-x: hidden;"> -->
+
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+
+<br>
+
+        <div class="container-fluid">
+          <div class="panel panel-primary" style="border-color: lightgray;margin-bottom: 10px">
+            <div class="panel-body" style="    margin-bottom: -45px;margin-top: -13px;">
+              <div class="jumbotron jumbotron-fluid" style="background-color: white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;width:98%;">
+
+
+                <form style="margin-bottom:1px;margin-left: -155px;margin-bottom: -20px;">
+                  <div class="row" *ngFor="let tryitem of navigat;let i=index" style="margin-top: -20px;margin-right: -217px">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                      <label for="room">Balance</label>
+                      <div class="form-group">
+                        <input type="text" name="balance1" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="tryitem.res_guest_balance"
+                          disabled>
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="name">Arrival</label>
+                      <div class="form-group">
+                        <input type="text" name="bilar" class="form-control input-sm" style="height:27px;width: 70%;" [(ngModel)]="tryitem.res_arrival"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="group">Company</label>
+                      <div class="form-group">
+
+                        <input type="text" name="bilcmpny" class="form-control input-sm" style="height:27px;width: 70%;" disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="group">Rate code</label>
+                      <div class="form-group">
+
+                        <input type="text" class="form-control input-sm" name="bilrtcd" style="height:27px;width: 70%;" [(ngModel)]="tryitem.res_rate_code"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="company">Prs</label>
+                      <div class="form-group">
+
+                        <input type="text" class="form-control input-sm" name="bilper" style="height:27px;width:70%;" [(ngModel)]="tryitem.res_adults"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                  </div>
+
+                  <div class="row" *ngFor="let secondatmpt of navigat;let i=index" style="margin-right: -217px">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-2">
+                      <label for="room" style="margin-top: -15px">Status</label>
+                      <div class="form-group">
+                        <input type="text" name="bilstat" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_guest_status"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="name" style="margin-top: -15px">Departure</label>
+                      <div class="form-group">
+                        <input type="text" name="bildep" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="secondatmpt.res_depature"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="group" style="margin-top: -15px">Group</label>
+                      <div class="form-group">
+                        <input type="text" name="bilgrp" class="form-control input-sm" style="height:27px;width:70%;" disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="group" style="margin-top: -15px">Rate</label>
+                      <div class="form-group">
+                        <input type="text" name="bilrat" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_rate"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="company" style="margin-top: -15px">Room Type</label>
+                      <div class="form-group">
+                        <input type="text" name="bilrmtyp" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_room_type"
+                          disabled>
+                      </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      <div class="row" *ngFor="let window of windowbal">
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <label style="margin-left:8%;margin-top: -10px;">(1) {{name}}</label>
+          </div>
+          <div class="col-md-5"></div>
+          <div class="col-md-1" style="margin-left:-12%;margin-top: -10px;">
+            <label>Balance:{{window.w1_total}}</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <label style="margin-top: -10px;">(2) {{name}}</label>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-3">
+            <label style="margin-top: -10px;">Balance:{{window.w2_total}}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <label> {{name}}</label>
+    </div>
+    <div class="col-sm-2">
+      <label>{{window.w1_total}}</label>
+    </div> 
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+        <label>{{name}}</label>
+    </div>   
+    <div class="col-sm-2">
+        <label>{{window.w2_total}}</label>
+      </div>  -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div style="margin-left:80%">
+              <span>
+                <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore!=true}"
+                  (click)="showLessBut()"></i>
+
+                <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore!=false}"
+                  (click)="showMoreBut()"></i>
+              </span>
+            </div>
+            <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
+              <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
+                <table class="table table-bordered table-hover fixtab">
+                  <thead style="background-color:#0077B5;color:white;font-size:14px;width:100%;">
+                    <tr>
+                      <th>Posting_Date</th>
+                      <th *ngIf="showMore!=true">Code</th>
+                      <th *ngIf="showMore!=true">Description</th>
+                      <th *ngIf="showMore==true">Amount</th>
+                      <th *ngIf="showMore!=true">ChequeNumber</th>
+                      <th *ngIf="showMore==true">Quantity</th>
+                      <th *ngIf="showMore==true">Supplement</th>
+                      <th *ngIf="showMore==true">Reference</th>
+
+                    </tr>
+                  </thead>
+                  <tbody style="font-size:small;">
+                    <contextmenu #contextmenu style="width:70%;">
+                      <div class="dropdown open">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
+                          <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)="window_button()">Transfer
+                            to another window</a><br>
+
+                          <!-- <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                  </div> -->
+
+                        </div>
+                      </div>
+                    </contextmenu>
+
+                    <tr *ngFor="let item of vaal1; let i=index" (click)="selectMembersEditt(item,i)" [ngClass]="{'backGroundColor':i==selectindexx}"
+                      [contextmenu]="[contextmenu, {item: item}]">
+
+                      <td>{{item.posting_date}}</td>
+                      <td *ngIf="showMore!=true">{{item.posting_code}}</td>
+                      <td *ngIf="showMore!=true">{{item.posting_code_description}}</td>
+                      <td *ngIf="showMore==true">{{item.posting_amount}}</td>
+                      <td *ngIf="showMore!=true">{{item.checkno}}</td>
+                      <td *ngIf="showMore==true">{{item.posting_quantity}}</td>
+                      <td *ngIf="showMore==true">{{item.posting_supplement }}</td>
+                      <td *ngIf="showMore==true">{{item.posting_reference }}</td>
+
+
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div style="margin-left:80%">
+              <span>
+                <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore1!=true}"
+                  (click)="showLessBut1()"></i>
+
+                <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore1!=false}"
+                  (click)="showMoreBut1()"></i>
+              </span>
+            </div>
+            <div class="container" style="width:101%;margin-left:-30px;">
+              <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
+                <table class="table table-bordered table-hover fixtab1">
+                  <thead style="background-color:#0077B5;color:white;font-size:14px;">
+                    <tr>
+                      <th>Posting_Date</th>
+                      <th *ngIf="showMore1!=true">Code</th>
+                      <th *ngIf="showMore1!=true">Description</th>
+                      <th *ngIf="showMore1==true">Amount</th>
+                      <th *ngIf="showMore1!=true">ChequeNumber</th>
+                      <th *ngIf="showMore1==true">Quantity</th>
+                      <th *ngIf="showMore1==true">Supplement</th>
+                      <th *ngIf="showMore1==true">Reference</th>
+
+                    </tr>
+                  </thead>
+                  <tbody style="font-size:small;">
+                    <contextmenu #contextmenu style="width:70%;">
+                      <div class="dropdown open">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
+                          <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)="window_button()">Transfer
+                            to another window</a><br>
+
+
+
+                          <!-- <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div> -->
+                        </div>
+                      </div>
+                    </contextmenu>
+
+                    <tr *ngFor="let itemm of vaal2; let i=index" (click)="vaalvaalfunc(itemm,i)" [ngClass]="{'backGroundColor':i==sidx}" [contextmenu]="[contextmenu, {itemm: itemm}]">
+
+                      <td>{{itemm.posting_date}}</td>
+                      <td *ngIf="showMore1!=true">{{itemm.posting_code}}</td>
+                      <td *ngIf="showMore1!=true">{{itemm.posting_code_description}}</td>
+                      <td *ngIf="showMore1==true">{{itemm.posting_amount}}</td>
+                      <td *ngIf="showMore1!=true">{{itemm.checkno}}</td>
+                      <td *ngIf="showMore1==true">{{itemm.posting_quantity}}</td>
+                      <td *ngIf="showMore1==true">{{itemm.posting_supplement }}</td>
+                      <td *ngIf="showMore1==true">{{itemm.posting_reference }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <br>
+      <div class="row">
+
+        <form class="form-inline">
+
+          <div class="row" style="margin-top: -40px;">
+
+            <button type="button" id="post" class="btn btn-success" style="width:110px;margin-left:5%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
+
+            <button type="button" class="btn btn-default" style="width:110px;margin-left:2%;" data-target="#editmodal" data-toggle="modal"
+              [disabled]=edtvar><b>Edit</b></button>
+
+            <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" disabled><b>Folio</b></button>
+
+            <button type="button" class="btn btn-warning" style="width:110px;margin-left:2%;" data-target="#postinghistory" data-toggle="modal"><b>History</b></button>
+
+            <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#paymentmodal"><b>Payment</b></button>
+
+            <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;" disabled><b>Settlement</b></button>
+
+            <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal"
+              disabled><b>Reinstate</b></button>
+
+            <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
+
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+<!-- </div> -->
+
+<!-- *********************************************************************************************************** -->
+
+
+
+<!--alert for Transfer to another room-->
+
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertowindowalert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Which window do you want to transfer?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]=butn1 (click)="transfertowindow('win1')">Window
+            1</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]=butn2 (click)="transfertowindow('win2')">Window
+            2</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ******************************************alert for Transfer to another room ends************************************************************************* -->
+
+
+
+
+<!--  post option Modal -->
+
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-lg" style="display: table-cell;vertical-align: middle;">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+          </button>
+          <h3 class="modal-title" id="myModalLabel" style="text-align: center"><b>Transaction Posting</b></h3>
+
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered ">
+                <thead>
+                  <tr style="background-color: #337ab7;color: white;">
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Qty</th>
+                    <th>Window</th>
+                    <th>Arr.Code</th>
+
+                    <th>Check_No</th>
+                    <th>Supplement</th>
+                    <th>Reference</th>
+                    <th width=10%></th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <select style="width:100%;" [(ngModel)]="add.Code">
+                        <option *ngFor="let ratecdlist of pscd_dd" [ngValue]="ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                      </select>
+                    </td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Amount" /></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Qty" /></td>
+                    <td>
+                      <select style="width: 100%;height: 25px;" [(ngModel)]="add.Windowno">
+                        <option value="" hidden>select value</option>
+                        <option value="101">1</option>
+                        <option value="102">2</option>
+                      </select>
+                      <!-- <input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Windowno"/> -->
+                    </td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Arr_Code" /></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Check_No" /></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Supplement" /></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Reference" /></td>
+                    <td style="width: 86px;"><span>
+                        <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(add)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                      </span></td>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr>
+                                              <td>
+                                                <select   style="width:100%;" [(ngModel)]="add.Code">
+                                                   <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                                                </select>
+                                              </td>
+                                              <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Amount" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Qty" /></td>
+                                              <td>
+                                                  <select style="width: 100%;height: 25px;"[(ngModel)]="add.Windowno">
+                                                      <option value="" hidden>select value</option>
+                                                      <option value="101">1</option>
+                                                      <option value="102">2</option>
+                                                    </select>
+                                              </td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>                  
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Check_No" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Supplement" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Reference" /></td>
+                                              <td style="width: 86px;"><span>
+                                                <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(add)"
+                                                class="fa fa-plus-circle" aria-hidden="true"></i>
+                                             </span></td>
+                  
+                                             </tr> -->
+                  <tr *ngFor="let room of showdetails ; let i=index;">
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Post_code_id}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id" disabled></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_des" disabled></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_amount"></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Posting_quantity}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_quantity"></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
+                      <select style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window">
+                        <option value="" hidden>select value</option>
+                        <option value="101">1</option>
+                        <option value="102">2</option>
+                      </select>
+                      <!-- <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"> -->
+                    </td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Arrangement_code"></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Checkno}}</label>
+                      <input type="number" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Checkno"></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Posting_supplement}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_supplement"></td>
+
+                    <td><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
+                      <input type="text" style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_reference"></td>
+
+
+                    <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true" (click)="deleterows(i)"></i>
+                        &nbsp;&nbsp;&nbsp;
+                        <i style="cursor: pointer;" *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true" (click)="editrows(i,room)"></i>
+                        <i style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true" (click)="saveButton(i,room)"></i>
+                      </span></td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <table style="margin-bottom: -200px;">
+            <tr>
+              <td class="col-sm-2" style="width:20%;">
+                <label style="margin-left:10px;">Total Posting</label>
+              </td>
+              <td class="col-sm-1">
+                <input style="width:200%;height:25px;margin-left: -131%;" type="text" disabled [(ngModel)]="totalPos" />
+              </td>
+              <td class="col-sm-2">
+                <label style="margin-left:17%;">Total Amount</label>
+              </td>
+              <td class="col-sm-1">
+                <input style="width:200%;height:25px;" type="text" disabled [(ngModel)]="totalamt" />
+              </td>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <button type="button" style="width:110px;margin-left:2%;" class="btn btn-primary" (click)="saveroomDetails()" data-toggle="modal"
+                  data-target="#postingchargealert" data-dismiss="modal">Post</button>
+              </div>
+              <div class="col-sm-3" style="margin-left:4%;">
+                <button type="button" style="width:110px;margin-left:2%;margin-bottom:20%;" class="btn btn-danger" data-dismiss="modal" (click)="clearpost()">Close</button>
+              </div>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ************************************************************posting modal ends******************************************************** -->
+<!--alert after posting modal-->
+
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="postingchargealert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>{{postsuccessmsg}}{{postfailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ******************************************alert for posting modal ends************************************************************************* -->
+
+<!--posting history modal  -->
+
+<div class="modal fade" style="text-align: left;margin-top:-5px;padding: 0!important;" id="postinghistory" tabindex="-1"
+  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+        </button>
+        <h3 class="modal-title" id="myModalLabel" style="text-align: center;margin-top: -15px;"><b>Posting History</b></h3>
+
+      </div>
+      <div class="modal-body" style="margin-top: -15px;">
+        <div class="container-fluid" style="margin-top: -12px;">
+          <!-- <div class="scrollable2"> -->
+          <!-- <div class="table-responsive" style=" height:45%;width:100%;overflow-x:auto;overflow-y:auto;">                                                              -->
+          <table class="table table-bordered table-hover tableBodyScroll" style="font-size:12px;">
+            <thead style="background-color:#0077B5;color:white;">
+              <tr>
+                <th>Action</th>
+                <th>Revenue Date</th>
+                <th>posting code</th>
+                <th>User</th>
+                <th>Name</th>
+                <th>Reason</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let firstitem of house; let i=index" (click)="selecthistory(firstitem,i)" [ngClass]="{'backGroundColor':i==selectind}">
+                <td>{{firstitem?.posting_action}}</td>
+
+                <td>{{firstitem?.revenue_date}}</td>
+                <td>{{firstitem?.posting_date}}</td>
+                <td>{{firstitem?.user_role}}</td>
+                <td>{{firstitem?.user_name}}</td>
+                <td>{{firstitem?.posting_reason}}</td>
+                <td>{{firstitem?.posting_description}}</td>
+              </tr>
+
+            </tbody>
+          </table><br>
+          <!-- </div> -->
+        </div>
+        <!-- </div> -->
+
+        <div class="row">
+          <div class="col-md-6" style="margin-top: -40px;">
+            <div class="container-fluid">
+              <b>Original</b>
+              <div style="margin-top: -10px;">
+                <div style="margin-left:80%">
+                  <span>
+                    <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore2!=true}"
+                      (click)="showLessBut2()"></i>
+
+                    <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMore2!=false}"
+                      (click)="showMoreBut2()"></i>
+                  </span>
+                </div>
+                <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
+                <table class="table table-bordered table-hover" style="font-size:12px;">
+                  <thead style="background-color:#0077B5;color:white;">
+                    <tr>
+                      <th>Action</th>
+                      <th *ngIf="showMore2!=true">Revenue_Date</th>
+                      <th *ngIf="showMore2!=true">posting_code</th>
+                      <th *ngIf="showMore2!=true">User</th>
+                      <th *ngIf="showMore2==true">Name</th>
+                      <th *ngIf="showMore2==true">Reason</th>
+                      <th *ngIf="showMore2==true">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let hisitem of hist1;">
+                      <td>{{hisitem?.posting_action}}</td>
+
+                      <td *ngIf="showMore2!=true">{{hisitem?.revenue_date}}</td>
+                      <td *ngIf="showMore2!=true">{{hisitem?.posting_date}}</td>
+                      <td *ngIf="showMore2!=true">{{hisitem?.user_role}}</td>
+                      <td *ngIf="showMore2==true">{{hisitem?.user_name}}</td>
+                      <td *ngIf="showMore2==true">{{hisitem?.posting_reason}}</td>
+                      <td *ngIf="showMore2==true">{{hisitem?.posting_description}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+          <div class="col-md-6" style="margin-top: -40px;">
+            <div class="container-fluid">
+              <b>Changes</b>
+              <div style="margin-top: -10px;">
+                <div style="margin-left:80%">
+                  <span>
+                    <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMoretable!=true}"
+                      (click)="showLessButtable()"></i>
+
+                    <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer" [ngClass]="{disabling:showMoretable!=false}"
+                      (click)="showMoreButtable()"></i>
+                  </span>
+                </div>
+                <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
+                <table class="table table-bordered table-hover" style="font-size:12px;">
+                  <thead style="background-color:#0077B5;color:white;">
+                    <tr>
+                      <th>Action</th>
+                      <th *ngIf="showMoretable!=true">Revenue_Date</th>
+                      <th *ngIf="showMoretable!=true">posting_code</th>
+                      <th *ngIf="showMoretable==true">User</th>
+                      <th *ngIf="showMoretable==true">Name</th>
+                      <th *ngIf="showMoretable==true">Reason</th>
+                      <th *ngIf="showMoretable==true">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngFor="let postitem of home1">
+                      <th>{{postitem?.posting_action}} </th>
+                      <td *ngIf="showMoretable!=true">{{postitem?.revenue_date}}</td>
+                      <td *ngIf="showMoretable!=true">{{postitem?.posting_date}}</td>
+                      <td *ngIf="showMoretable!=true">{{postitem?.user_role}}</td>
+                      <td *ngIf="showMoretable==true">{{postitem?.user_name}}</td>
+                      <td *ngIf="showMoretable==true">{{postitem?.posting_reason}}</td>
+                      <td *ngIf="showMoretable==true">{{postitem?.posting_description}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+      <div class="modal-footer" style="margin-top:-40px;margin-bottom: -5px;">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- *******************************************posting history modal ends************************************************************************** -->
+
+<!--  Edit Modal -->
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;margin-bottom: -12px;text-align: center;margin-top: -10px;height: 46px;">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+          </button>
+          <h4 class="modal-title" id="myModalLabel"><b>Edit Transaction Details</b></h4>
+
+        </div>
+        <form #editform="ngForm">
+          <div class="modal-body">
+            <div class="row">
+
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Room</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="editroom" class="form-control" [(ngModel)]="room" style="width:160px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:5px;">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Name</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="editname" class="form-control" [(ngModel)]="name" style="width:160px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Code</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="editcode" class="form-control" [(ngModel)]="poscd" style="width:160px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="col-sm-6">
+                    <b>Amount</b>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group" [class.has-error]="edamt.dirty && !edamt.valid">
+                      <input type="text" name="editamount" class="form-control" [(ngModel)]="amt" pattern="^[0-9]+$" #edamt="ngModel" style="width:160px;"
+                        required>
+                      <div *ngIf="edamt.dirty && !edamt.valid && edamt.errors.pattern " ngClass="{ 'has-error' : !edamt.valid && submitAttempt }">
+                      </div>
+                      <div *ngIf="edamt.dirty && !edamt.valid && edamt.errors.required " ngClass="{ 'has-error' : !edamt.valid && submitAttempt }">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6" style="padding-top:5px;">
+                    <b>Quantity</b>
+                  </div>
+                  <div class="col-sm-6" style="padding-top:5px;">
+                    <div class="form-group" [class.has-error]="edquant.dirty && !edquant.valid">
+                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" pattern="^[0-9]+$" #edquant="ngModel" style="width:160px;"
+                        required>
+                      <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.pattern " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">
+                      </div>
+                      <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <!-- <div class="form-group">
+                              <div class="col-sm-6" style="padding-top:5px;">
+                                  <b>Amount</b>
+                                </div>
+                                <div class="col-sm-6" style="padding-top:5px;">
+                                    <input type="text" name="editamount" class="form-control" [(ngModel)]="amount"  disabled>
+                                </div>
+                                </div> -->
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <textarea style="margin-left:4%;" class="form-control" name="txtarea" rows="5" id="comment" disabled>USD</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Cashier</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="editcash" class="form-control" style="width:160px;" disabled>
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="form-group">
+                    <div class="col-sm-6" style="padding-top:5px;">
+                      <b>Folio.No</b>
+                    </div>
+                    <div class="col-sm-6" style="padding-top:5px;">
+                      <input type="text" name="editfolio" class="form-control" style="width:160px;" disabled>
+                    </div>
+                  </div>
+
+
+
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                  <div class="col-md-4" style="margin-left:5%;">
+                    <label>Arr.code</label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group" [class.has-error]="edarval.touched && !edarval.valid">
+                      <select style="width:70%;height:100%;" name="arrcode" class="form-control" #edarval="ngModel" [(ngModel)]="ed_arcode" required>
+                        <option value="" hidden>select value</option>
+                        <option value="101">1</option>
+                        <option value="102">2</option>
+                        <option value="103">3</option>
+                        <option value="104">4</option>
+                      </select>
+                      <div *ngIf="edarval.touched && !edarval.valid && edarval.errors.required" ngClass="{ 'has-error' : !edarval.valid && submitAttempt }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Posting Date</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="date" name="editpostdat" class="form-control" style="width:160px;" [(ngModel)]="posdt" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:5px;">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Revenue Date</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="date" name="editrevendat" class="form-control" style="width:160px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                      <b>Article</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="article" style="width:160px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="col-sm-6" style="padding-top:5px;">
+                      <b>Credit Card No.</b>
+                    </div>
+                    <div class="col-sm-6" style="padding-top:5px;">
+                      <input type="text" name="editcredit" class="form-control" style="width:160px;" [(ngModel)]="creditcd" disabled>
+                    </div>
+                    <br>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="col-md-4" style="padding-top:5px;">
+                      <label style="margin-left: 10px;">Exp.Date</label>
+                    </div>
+
+                    <div class="col-md-6" style="padding-top:5px;">
+                      <input type="text" name="editexpdate" class="form-control" [(ngModel)]="creditexpdt" style="margin-left: 10px;" disabled>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:5px;">
+                <div class="col-sm-6">
+                  <div class="col-sm-6">
+                    <b>Supplement</b>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group" [class.has-error]="edsupval.dirty && !edsupval.valid">
+                      <input type="text" name="editsupple" class="form-control" style="width:160px;" pattern="[a-zA-Z][a-zA-Z ]*" #edsupval="ngModel"
+                        [(ngModel)]="supple" required>
+                      <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">
+                      </div>
+                      <div *ngIf="edsupval.dirty && !edsupval.valid && edsupval.errors.pattern " ngClass="{ 'has-error' : !edsupval.valid && submitAttempt }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:5px;">
+                <div class="col-sm-6">
+                  <div class="col-sm-6">
+                    <b>Reference</b>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group" [class.has-error]="edrefval.dirty && !edrefval.valid">
+                      <input type="text" name="editreference" class="form-control" style="width:160px;" [(ngModel)]="ref" pattern="[a-zA-Z][a-zA-Z ]*"
+                        #edrefval="ngModel" required>
+                      <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">
+                      </div>
+                      <div *ngIf="edrefval.dirty && !edrefval.valid && edrefval.errors.pattern " ngClass="{ 'has-error' : !edrefval.valid && submitAttempt }">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-3">
+                    <label style="margin-left: 25px;">Covers</label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <input type="text" name="editcovers" class="form-control" style="width: 40%;margin-left: 124px;margin-top: -30px;">
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <div class="row" style="padding-top:5px;">
+                <div class="col-md-6">
+
+                  <div class="col-sm-6">
+                    <b>Cheque No.</b>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group" [class.has-error]="edchqval.dirty && !edchqval.valid">
+                      <input type="text" name="editcheque" class="form-control" [(ngModel)]="cqno" pattern="^[0-9]+$" #edchqval="ngModel" style="width:160px;"
+                        required>
+                      <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">
+                      </div>
+                      <div *ngIf="edchqval.dirty && !edchqval.valid && edchqval.errors.pattern " ngClass="{ 'has-error' : !edchqval.valid && submitAttempt }">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-6" style="margin-left: 421px;margin-top: -33px;">
+                        <button type="button" class="btn btn-success" style="margin-left: -152px;" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)"
+                          data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+
+              
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- **********************************************edit modal ends********************************************************* -->
+
+<!--alert after edit posting payment Modal -->
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="afteredit" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p> {{editsuccessmsg}}{{editfailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--****************************** after edit posting payment ends************************************************************ -->
+
+
+
+
+<!--Reinstate modal-->
+
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="reinstatemodal" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure want to reinstate? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ******************************************reinstate ends*************************************************************** -->
+<!-- transfer to another room modal -->
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertransaction" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;"><b>Transfer To Another Room</b></h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-10">
+              <!-- <div class="panel panel-default">
+                  <div class="panel-body"> -->
+              <form>
+                <div class="form-group">
+                  <div class="row" style="margin-left: 10px">
+
+                    <div class="col-md-3">
+
+                      <label class="radio-inline">
+                        <input type="radio" id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp" style="margin-left:-39px;"><b>GroupedPosting</b>
+                      </label></div>
+
+
+
+
+                    <div class="col-md-3">
+
+                      <label class="radio-inline">
+                        <input type="radio" id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp" style="margin-left:10px;">                        <b
+                          style="margin-left: 50px">EnterFolio</b>
+                      </label></div>
+
+
+
+                    <!-- <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>MarkedPostings</label> 
+                            </div>
+                          </div>  
+  
+                          <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>PartialPostings</label> 
+                            </div>
+                          </div>   -->
+
+
+
+                    <div class="col-md-3">
+
+                      <label class="radio-inline">
+                        <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp" style="margin-left:50px;"><b
+                          style="margin-left: 90px">CheckNumber</b>
+                      </label></div>
+
+
+
+                  </div>
+                </div>
+              </form>
+
+              <!-- </div>
+                </div> -->
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <b> </b>
+                  </div>
+
+                  <div class="col-sm-2" style="margin-left:2%;">
+                    <b>To Room</b>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <select name="toroom" class="form-control" style="width:50%;height:100%;" [(ngModel)]="toroomno">
+                      <option value="" hidden>select value</option>
+                      <option *ngFor="let selectroomlist of roomnum" [ngValue]="selectroomlist.rm_room">{{selectroomlist.rm_room}}
+                        </option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <b>{{room}}</b><br>
+                  <b></b>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-1"><br>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+            <div class="col-sm-5">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <b>{{toroomno}}</b><br>
+                  <b></b>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#aftertransfer" (click)="transferroom(toroomno,transtyp)"><b>Transfer</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--********************************************** transfer to another room modal******************************************************************* -->
+<!--after transfer to another room Modal -->
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="aftertransfer" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p> {{transroomsuccessmsg}}{{transroomfailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--****************************** after transfer to another room ends************************************************************ -->
+
+<!-- payment Modal in billing -->
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentmodal" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
+
+      <!-- payment  Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center">Payment </h4>
+        </div>
+        <form #heroForm="ngForm">
+          <div class="modal-body">
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+
+                      <div class="col-sm-6">
+                        <b>Payment Code</b>
+                      </div>
+                      <div class="col-sm-6">
+                        <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="selected" (change)="selectoption(selected)">
+                          <option value="" hidden>select value</option>
+                          <option *ngFor="let paycodelist of paycode" [ngValue]="paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
+                        </select>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3" style="color:#0077B5;" style="margin-left: 15px;">
+                    <div *ngIf="showdiv=='1'">cash</div>
+                    <div *ngIf="showdiv=='2'">credit card</div>
+                    <div *ngIf="showdiv=='3'">Direct Bill</div>
+                  </div>
+
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b style="margin-left: 17px;">Currency</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency" (change)="selectoption1(currency)">
+                        <option value="" hidden>select value</option>
+                        <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b style="margin-left: 20px;">Amount</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="amount">
+                    </div>
+                  </div>
+                  <div class="col-sm-3" style="color:#0077B5;" style="margin-left: 15px;">
+                    <div *ngIf="showdivv=='1'">RUB</div>
+                    <div *ngIf="showdivv=='2'">EUR</div>
+                    <div *ngIf="showdivv=='3'">USD</div>
+                    <div *ngIf="showdivv=='4'">INR</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row" *ngIf="showdiv=='1'">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b style="margin-left: 8px;">Reference</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="reff" style="width:150%;height:30px;" [(ngModel)]="ref">
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="showdiv=='2'">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Credit card No.</b>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="cardnum" style="width:150%;height:30px;" [(ngModel)]="cardno">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="col-sm-2">
+                      <b>Expiry Date</b>
+                    </div>
+
+                    <div class="col-sm-10">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="PF_Expiration_Month"> </app-monthpicker>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="PF_Expiration_Year"></app-yearpicker>
+                          {{PF_Expiration_Month}}
+                          <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="showdiv=='3'">
+                  <div class="col-sm-3">
+                    <b>Supplement</b>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="sup" style="width:90%;height:30px;" [(ngModel)]="supp">
+                  </div>
+                </div><br>
+                <div class="row" *ngIf="showdiv=='9003'">
+                  <div class="col-sm-3">
+                    <b>Reference</b>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control" name="referen" style="width:150%;height:30px;" [(ngModel)]="ref">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer" style="margin-top: -36px;">
+            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(selected,currency,amount,ref,supp,cardno); heroForm.reset()"
+              data-target="#paymentalert" data-toggle="modal"><b>Post</b></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close();heroForm.reset()"><b>Close</b></button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!--**************************************************************payment Modal ends**************************************************************************************-->
+<!--alert after payment modal-->
+
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentalert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
+
+      <!-- Modal content-->
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>{{paysuccessmsg}}{{payfailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ******************************************alert for payment ends************************************************************************* -->

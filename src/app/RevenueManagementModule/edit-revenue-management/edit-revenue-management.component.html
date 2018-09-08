@@ -1,0 +1,535 @@
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+  
+      <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
+              <div class="panel panel-primary">
+                      <div class="panel-body">
+                              
+                          <div class="row">
+                              <div class="col-sm-3">
+                              <b>Rate code</b>
+                              </div>
+                              <div class="col-sm-3">
+                              <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="editratedetaills.ratecodedrop" >
+-                                    <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
+                              </select>
+                              </div>
+                              <div class="col-sm-3" style="margin-left: -90px">
+                                      {{editblock.ratecodedrop}} 
+                                      </div>
+                          </div>
+                          
+                      </div>
+                  </div>
+      </div>
+    <div class="container-fluid" style="padding-top:-5px;padding-left:50px;"> 
+<!-- Rate details tab content -->
+<ul class="nav nav-tabs">
+        <li class="active" (click)="tabname(1);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days" ><b>1-6Days</b></a></li>
+        <li  (click)="tabname(2);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days">7-13Days</a></li>
+        <li (click)="tabname(3);ratetabb.reset()" ><a data-toggle="tab" href="#1-5Days" >14-20Days</a></li>
+        <li  (click)="tabname(4);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days">21+Days</a></li>
+  </ul>
+  <div class="tab-content clearfix">
+      <div id="1-5Days" class="tab-pane fade in active" style="margin-top:10px;">
+        <form id="ratedetForm" #ratetabb=ngForm>
+          <div class="row">
+          </div> 
+        <div class="row">
+        <div class="col-sm-5">
+            
+              <!-- <div class="panel panel-primary">
+                  <div class="panel-body">
+                          
+                      <div class="row">
+                          <div class="col-sm-3">
+                          <b>Rate code</b>
+                          </div>
+                          <div class="col-sm-3">
+                          <select class="form-control input-sm"  style="width:150px;">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                          </select>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
+
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">        
+          <legend style="margin-left:5px" >Dates</legend>
+                <div class="panel-body">
+                  <div class="row" style="margin-top:-25px">
+                      <div class="col-md-3">
+                          <b>SeasonCode</b>
+                          <div class="form-group">
+                          <div class="form-group" [class.has-error]="SeasonCode1.touched && SeasonCode1.invalid">                                                                                        
+                              <select  name="SeasonCode" class="form-control"  #SeasonCode1="ngModel" class="form-control input-sm" [(ngModel)]="editratedetaills.seasoncod"  style="width:95px;height:27px;" required>
+                                  <!-- <option *ngFor="let rate of arrysec " [ngValue]="rate.season_code_id">{{rate.season_code}}</option> -->
+                                  <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>                                      
+                              </select>
+                               <div *ngIf="SeasonCode1.touched && !SeasonCode1.valid && SeasonCode1.errors?.required " ngClass="{ 'has-error' : !SeasonCode1.valid && submitAttempt }">                                    
+                          </div></div></div>
+                          </div>
+                          <div class="col-md-1"></div>
+                        <div class="col-md-4">
+                            <b>StartDate</b>
+                            <div class="form-group">            
+                                  <input type="date" name="stdt" [min]="date" class="form-control input-sm" [(ngModel)]="editratedetaills.start_date" >
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                              <b style="margin-left:30px">EndDate</b>
+                          
+                              <div class="form-group">            
+                                  <input type="date" name="enddt" [min]="editratedetaills.start_date" class="form-control input-sm"  [(ngModel)]="editratedetaills.end_date">
+                              </div>
+                          </div>
+                    
+                     
+                      </div>
+                      <!-- <div class="col-md-6">
+                              <div class="col-sm-1">
+                                      <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
+                                       MON</label>
+                              </div>
+                              <div class="col-sm-1" style="margin-left:10px;">
+                                      <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
+                                       TUE</label>
+                              </div>
+                              <div class="col-sm-1" style="margin-left:10px ">
+                                      <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
+                                      WED</label> 
+                              </div>
+                              <div class="col-sm-1" style="margin-left:10px ">
+                                      <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
+                                       THU</label>
+                              </div>
+                              <div class="col-sm-1" style="margin-left:10px ">
+                                      <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
+                                      FRI</label>
+                              </div>
+                              <div class="col-sm-1" style="margin-left:10px ">
+                                      <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
+                                      SAT</label>
+                               </div>
+                               <div class="col-sm-1" style="margin-left:10px ">
+                                      <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
+                                      SUN</label>
+                              </div>
+                      </div> -->
+                  
+                    <div class="row" >
+
+                    </div>
+                    
+                    <div class="row">
+                    
+                          <div class="col-sm-1">
+                                  <label for="mon"><input type="checkbox" name="mondy" id="mondy" style="margin-left:10px;" [(ngModel)]="editratedetaills.mon" />
+                                   MON</label>
+                          </div>
+                          <div class="col-sm-1" style="margin-left:10px;">
+                                  <label for="tue"><input type="checkbox" id="tuesdy" name="tuesdy"  style="margin-left:10px;" [(ngModel)]="editratedetaills.tue" />
+                                   TUE</label>
+                          </div>
+                          <div class="col-sm-1" style="margin-left:10px ">
+                                  <label for="wed"><input type="checkbox" id="wednesdy" name="wednesdy" style="margin-left:10px;"  [(ngModel)]="editratedetaills.wed"/>
+                                  WED</label> 
+                          </div>
+                          <div class="col-sm-1" style="margin-left:10px ">
+                                  <label for="thur"><input type="checkbox" id="thursdy" name="thursdy" style="margin-left:10px;" [(ngModel)]="editratedetaills.thu" />
+                                   THU</label>
+                          </div>
+                          <div class="col-sm-1" style="margin-left:10px ">
+                                  <label for="fri"><input type="checkbox" id="fridy"  name="fridy" style="margin-left:10px;" [(ngModel)]="editratedetaills.fri"/>
+                                  FRI</label>
+                          </div>
+                          <div class="col-sm-1" style="margin-left:10px ">
+                                  <label for="sat"><input type="checkbox" id="sat" name="saturdy" style="margin-left:10px;" [(ngModel)]="editratedetaills.sat"/>
+                                  SAT</label>
+                           </div>
+                           <div class="col-sm-1" style="margin-left:10px ">
+                                  <label for="sun"><input type="checkbox" id="sun" name="sundy" style="margin-left:10px;" [(ngModel)]="editratedetaills.sun" />
+                                  SUN</label>
+                          </div>
+                      </div>
+             
+                </div>
+</div>
+          
+          <!-- Attribute panel -->
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray"> 
+          <legend style="margin-left:5px" >Amounts</legend>
+          <div class="panel-body">
+         
+             
+                  <div class="row" style="margin-top:-25px">
+                      <div class="col-md-3">
+                          <b>1 Adults</b>
+                      
+                          <div class="form-group">
+                              <div class="form-group" [class.has-error]="onead.touched && onead.invalid">                                                                                                                                    
+                              <input type="text" name="1adul"  id="onead" #onead="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_adult_amount" required>
+                              <div *ngIf="onead.touched && !onead.valid && onead.errors?.required " ngClass="{ 'has-error' : !onead.valid && submitAttempt }">                                                              
+                          </div></div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                                <b>2 Adults</b>                                   
+                                <div class="form-group">
+                                   <div class="form-group" [class.has-error]="twoadd.touched && twoadd.invalid">                                                                                                                                                                                      
+                                    <input type="text" name="twoadd" id="twoadd" #twoadd="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_adult_amount" required>
+                                 <div *ngIf="twoadd.touched && !twoadd.valid && twoadd.errors?.required " ngClass="{ 'has-error' : !twoadd.valid && submitAttempt }">                                                                                               
+                                  </div> </div></div>                          
+                        </div>
+                        <div class="col-md-3">
+                                <b>3 Adults</b>
+                                <div class="form-group">
+                                   <div class="form-group" [class.has-error]="threead.touched && threead.invalid">                                                                                                                                                                                                                                        
+                                    <input type="text" name="threead" id="threead" #threead="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.three_adult_amount" required>
+                                    <div *ngIf="threead.touched && !threead.valid && threead.errors?.required " ngClass="{ 'has-error' : !threead.valid && submitAttempt }">                                                                                                                                 
+                                  </div></div></div>
+                        </div> 
+                        <div class="col-md-3">
+                                <b>4 Adults</b>
+                                <div class="form-group">
+                                   <div class="form-group" [class.has-error]="fouradu.touched && fouradu.invalid">                                                                                                                                                                                                                                                                                          
+                                    <input type="text" name="fouradu" id="fouradu" #fouradu="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.four_adult_amount" required>
+                                    <div *ngIf="fouradu.touched && !fouradu.valid && fouradu.errors?.required " ngClass="{ 'has-error' : !fouradu.valid && submitAttempt }">                                                                                                                                                                       
+                                </div></div></div>
+                        </div>
+                        <!-- <div class="col-md-3" style="margin-top:-17px">
+                                <b>5 Adults</b>  
+                                    <div class="form-group">            
+                                        <input type="text" class="form-control input-sm" >
+                                    </div>
+                         </div> -->
+                         <div class="col-md-3" style="margin-top:-17px">
+                                <b>ExtraAdults</b>
+                                <div class="form-group">
+                                   <div class="form-group" [class.has-error]="extra.touched && extra.invalid">                                                                                                                                                                                                                                                                                                                                            
+                                    <input type="text" name="extra" id="extra" #extra="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.extra_adult_amount" required>
+                                    <div *ngIf="extra.touched && !extra.valid && extra.errors?.required " ngClass="{ 'has-error' : !extra.valid && submitAttempt }">                                                                                                                                                                                                             
+                                </div></div></div>
+                            </div>
+                  </div>
+
+              
+         
+<!--  -->
+             
+
+                  <div class="row">
+                        <div class="col-md-3" style="margin-top:-17px">
+                          <b>1 child</b>
+                          <div class="form-group">
+                              <div class="form-group" [class.has-error]="onechild.touched && onechild.invalid">                                                                                                                                                                                                                                                                                                                                                                                        
+                              <input type="text" name="onechild" id="onechild" #onechild="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_child_amount" required>
+                              <div *ngIf="onechild.touched && !onechild.valid && onechild.errors?.required " ngClass="{ 'has-error' : !onechild.valid && submitAttempt }">                                                                                                                                                                                                                                         
+                          </div></div></div>
+                        </div>
+                        <div class="col-md-3" style="margin-top:-17px">
+                                <b>2 child</b>
+                                <div class="form-group">
+                                    <div class="form-group" [class.has-error]="twochildd.touched && twochildd.invalid">                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                    <input type="text" name="twochildd" id="twochildd" #twochildd="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_child_amount" required >
+                                    <div *ngIf="twochildd.touched && !twochildd.valid && twochildd.errors?.required " ngClass="{ 'has-error' : !twochildd.valid && submitAttempt }">                                                                                                                                                                                                                                                                           
+                                  </div></div></div>
+                        </div>
+                        <div class="col-md-3" style="margin-top:-17px">
+                                <b>Extrachild</b>
+                                <div class="form-group">
+                                      <div class="form-group" [class.has-error]="extrachild.touched && extrachild.invalid">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                    <input type="text" name="extrachild" id="extrachild" #extrachild="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%"  [(ngModel)]="editratedetaills.extra_child_amount" required>
+                                    <div *ngIf="extrachild.touched && !extrachild.valid && extrachild.errors?.required " ngClass="{ 'has-error' : !extrachild.valid && submitAttempt }">                                                                                                                                                                                                                                                                                                             
+                                  </div></div></div>
+                        </div>
+                        <!-- <div class="col-md-3" style="margin-top:-17px">
+                                <b>4 children</b>
+                                <div class="form-group">            
+                                    <input type="text" class="form-control input-sm" >
+                                </div>
+                        </div> -->
+
+
+                  </div>
+          </div>
+</div>
+      
+
+                
+
+        </div>
+
+<!-- Amounts panel -->
+
+        <div class="col-sm-7">
+
+
+                     <!-- table content -->
+                     <div class="table-responsive"  style="margin-top:0px">
+                      <div class="scroll">
+                          <div  >
+                        
+                          <table class="table table-bordered table-hover" style="width:100%;">
+                          
+                            <thead style="background-color:#0077B5;color:white;">
+                              <tr>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Room Types</th>
+                              </tr>
+                            </thead>
+                            <tbody style="font-size:12px;">
+                                <ng-container *ngFor="let dettable of ratedettabl; let i=index">
+                              <tr *ngIf="dettable.rate_tier_id == currentTab" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                                  <td>{{dettable.start_date}}</td>     
+                                  <td>{{dettable.end_date}} </td>
+                                  <td>{{dettable.rooms_id}}</td>
+                              </tr></ng-container>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+                        </div><br><br>
+                        <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-bottom:15px"> 
+                              <legend style="margin-left:5px" >Attributes</legend>
+                              <div class="panel-body"  style="margin-bottom:-10px;margin-bottom:-0.5px;">
+                                  <div class="row" style="margin-top:-10px;">
+                                          <div class="col-md-2">
+                                              <b>RoomTypes</b></div>
+                                              <div class="col-md-3">
+                                                      <div class="input-group">
+                                                              <span class="input-group-addon" data-toggle="modal" data-target="#ratedetrmtypeday1"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                                          <input name="roomtypeid" class="form-control input-sm"  style="width:180%;height: 27px;" [(ngModel)]="editratedetaills.roomtypedet" type="text" [value]="rmtype2" disabled>
+                                                                <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                                            <!-- </select> -->
+                                                        </div> 
+                                          </div>
+                                          <!-- <div class="col-md-3">
+                                                <b>Market</b>
+                                                <div class="form-group">            
+                                                    <select name="mark1" class="form-control input-sm" style="width:100%;">
+                                                        <option>{{rateheader.market_id}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                    <b>Source</b>
+                                                    <div class="form-group">            
+                                                        <select name="srcsour" class="form-control input-sm" style="width:100%;">
+                                                           {{rateheader.source_id}}
+                                                        </select>
+                                                    </div>
+                                                </div> -->
+
+              
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                        </div>
+                                          
+              
+                                          
+              
+                              </div> </div> 
+
+            
+       
+</div>
+
+        
+
+    </div>
+
+   
+
+        
+
+        <div class="col-md-2">
+            <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" ><b>Changes</b></button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"  data-target="#deletetet" (click)="ratdetfun()"><b>Delete</b></button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
+        </div>
+        <div class="col-md-2">
+              <button type="reset" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#tetmodel"  [disabled]="!ratetabb.valid" (click)="ratedetins(editratedetaills);" ><b>Save</b></button>              
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" routerLink="/revenue"><b>Close</b></button>
+        </div>
+
+
+      </form >
+      </div>
+      
+
+    </div>
+<!-- **************************************rate details tab ends ************************************************-->
+<div class="modal fade" id="ratedetrmtypeday1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="vertical-alignment-helper">    
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLongTitle" style="text-align: center;margin-bottom: -30px;">Select Room Types</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+              <div class="table-responsive">
+                  <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                          <th>X</th>
+                          <th> Room Type</th> 
+                          <th> Description</th>
+                          
+                      </thead> 
+                      <tbody> 
+                          <tr *ngFor="let pack of room">
+                              <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
+                              
+                              <td>{{pack.type}} </td>
+                              <td>{{pack.description}}</td>
+                          </tr>
+                          
+                      </tbody>
+                  </table>
+                  </div>
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+          </div>
+      </div>
+  </div>  
+</div>
+<div class="modal fade" id="ratedetrmtypeday2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="vertical-alignment-helper">    
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body">
+                  <div class="table-responsive">
+                      <table class="table-hover table-bordered table-striped" style="width:100%;">
+                          <thead style="background-color: #0077B5; color: white">
+                              <th>seq</th>
+                              <th> Room Type</th> 
+                              <th> Description</th>
+                              <th>X</th>
+                          </thead> 
+                          <tbody> 
+                              <tr *ngFor="let packk of room">
+                                  <td> <input type="checkbox" (checked)="exist3(packk)" (click)="toggleSelection3(packk)"> </td>                                
+                                  <td>{{packk.id}}</td>
+                                  <td>{{packk.type}} </td>
+                                  <td>{{packk.description}}</td>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                  </div>
+              </div>
+          </div>
+      </div>  
+  </div>
+    </div>
+
+  </div>
+</div>  
+</body>
+
+<!-- alert after ratedetails save  -->
+
+
+<!--  **************************************************alert after ratedetails save ends*******************************-->
+<div class="modal fade" id="tetmodel" role="dialog">
+  <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Rate Tier message</b></h4>
+      </div>
+      <div class="modal-body">
+          <p>{{ratedetalert}}</p>       
+      </div>
+      
+          
+      <div class="modal-footer">
+          <button type="reset" class="btn btn-info" data-dismiss="modal" (click)="ratetabb.reset()">OK</button>
+      </div>  
+      </div>
+  
+  </div>
+  </div>
+</div>
+<div class="modal fade" id="delmodel" role="dialog">
+  <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Rate Tier Message</b></h4>
+      </div>
+      <div class="modal-body">
+          <p>{{delratalert}}</p>       
+      </div>
+      
+          
+      <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+      </div>  
+      </div>
+  
+  </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deletetet" role="dialog">
+      <div class="vertical-alignment-helper">  
+      <div class="modal-dialog vertical-align-center modal-sm">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Rate Tier message</b></h4>
+          </div>
+          <div class="modal-body">
+              <p>{{delratalert}}</p>       
+          </div>
+          
+              
+          <div class="modal-footer">
+              <button type="reset" class="btn btn-info" data-dismiss="modal" (click)="ratetabb.reset()">OK</button>
+          </div>  
+          </div>
+      
+      </div>
+      </div>
+  </div>

@@ -1,0 +1,207 @@
+<body>
+<div class="wrapper">
+  <div class="content-wrapper">
+<br>
+    <div class="container-fluid">
+      <div class="panel panel-primary" style="border-color: lightgray;">
+        <div class="panel-body" >
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <label for="email">First Name</label>
+              <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel"
+                style="height: 30px;width:90% ">
+              <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:205px;">
+                <div *ngIf=firstName.errors.pattern>first name should contain only alphabets </div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <label for="email">Last Name</label>
+              <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="email" [(ngModel)]="lastName" name="email" #LastNAMEE="ngModel">
+              <div class="alert alert-danger" *ngIf="LastNAMEE.touched && !LastNAMEE.valid" style="width:205px;">
+                <div *ngIf=LastNAMEE.errors.pattern>last name should contain only alphabets </div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <label for="email">Room Type</label>
+              <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)">
+                <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="room">Room</label>
+              <select name="Room" class="form-control" id="room" [(ngModel)]="roomno" (ngModelChange)="onSelected(roomno)">
+                <option *ngFor="let litsrm of room" [ngValue]="litsrm.rm_room">{{litsrm.rm_room}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="roomclass">Room Class</label>
+              <select name="RoomClass" class="form-control" id="roomclass" [(ngModel)]="roomclass" (ngModelChange)="onSelectclass(roomclass)">
+                <option *ngFor="let litsclss of class1" [ngValue]="litsclss.class">{{litsclss.class}}</option>
+              </select>
+            </div>
+            <div class="col-md-1"></div>
+
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <table class="table table-bordered tableBodyScroll" style="margin-top: -25px">
+        <thead>
+          <tr class="table table-primary" style="background-color: #0077B5;color:white; ">
+            <th style="width:50px;">x</th>
+            <th style="width:150px;"> Name</th>
+            <th style="width:75px;"> Q_Time</th>
+            <th style="width:85px;"> Queue</th>
+            <th style="width:110px;"> Queue_Date</th>
+            <th style="width:100px;"> Mobile_No</th>
+            <th style="width:65px;"> Room</th>
+            <th style="width:102px;"> Room_Type</th>
+            <th style="width:107px;"> Room_Class</th>
+            <th style="width:97px;"> FO_Status</th>
+            <th> Room_Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'; let i = index"
+            (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <td style="width:50px;"> {{i+1}}</td>
+            <td style="width:150px;"> {{checkin.pf_firstname}}</td>
+            <td style="width:75px;"> {{checkin.rm_qtime}}</td>
+            <td style="width:85px;"> {{checkin.rm_queue}}</td>
+            <td style="width:110px;"> {{checkin.rm_queue_date}}</td>
+            <td style="width:100px;"> {{checkin.pf_mobileno}}</td>
+            <td style="width:65px;"> {{checkin.res_room}}</td>
+            <td style="width:102px;"> {{checkin?.rm_room_type}}</td>
+            <td style="width:107px;"> {{checkin.rm_room_class}}</td>
+            <td style="width:97px;"> {{checkin.rm_fo_status}}</td>
+            <td> {{checkin.rm_room_status}}</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      <br>
+
+      <div>
+        <button class="btn btn-info" style="width:10%; margin-left:7%;" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin">
+        Check In <i class="fa fa-sign-in"></i></button>
+        <button class="btn btn-default disabled" style="width:10%">Priority <i class="fa fa-square"></i> </button>
+        <button class="btn btn-warning" style="width:14%" routerLink="/reservation">Resv <i class="fa fa-tasks"></i></button>
+        <button class="btn btn-default disabled" style="width:10%">Details <i class="fa fa-credit-card"></i></button>
+        <button class="btn btn-info" style="width:10%"> Statistics <i class="fa fa-user"></i></button>
+        <button class="btn btn-primary" style="width:10%" data-toggle="modal" data-target="#report"> Report <i class="fa fa-caret-square-o-down"></i></button>
+        <button class="btn btn-danger" style="width:10%" routerLink="/mains"> Close <i class="fa fa-close"></i></button>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+</body>
+
+    <!---managing the queue-->
+
+    <!-- Checkin modal -->
+
+    <div class="modal fade" id="Checkin" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width:150%;margin-left: -120px;margin-top: 210px">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="text-align: center">Checkin Status</h4>
+          </div>
+          <div class="modal-body">
+            <div>
+              <p align="center"><b> {{status}} </b></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove"
+                style="padding-left:5px;"></span></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Checkin end -->
+
+
+    <!-- Report Start -->
+    <div class="modal fade" id="report" data-backdrop="static" data-keyboard="false" role="dialog" #report>
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-45%;margin-top: 10%; width:190%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="text-align: center">Managing Queue Report</h4>
+          </div>
+          <div class="modal-body">
+            <div id="content" #content style="font-size:20px">
+
+              <table class="table table-bordered ">
+                <thead>
+                  <tr class="table table-primary" style="background-color: #0077B5;color:white; ">
+                    <th> </th>
+                    <th>Reservation_Id</th>
+                    <th> Name</th>
+                    <th> Q_Time</th>
+                    <th> Queue</th>
+                    <th> Queue_Date</th>
+                    <th> Mobile_No</th>
+                    <th> Room</th>
+                    <th> Room_Type</th>
+                    <th> Room_Class</th>
+                    <th> FO_Status</th>
+                    <th> Room_Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'| filterdata: roomtype : 'Room_Class'; let i = index"
+                    (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                    <td>{{i+1}}</td>
+                    <td>{{checkin.res_id}}</td>
+                    <td>{{checkin.pf_firstname}}</td>
+                    <td>{{checkin.rm_qtime}}</td>
+                    <td>{{checkin.rm_queue}}</td>
+                    <td>{{checkin.rm_queue_date}}</td>
+                    <td>{{checkin.pf_mobileno}}</td>
+                    <td>{{checkin.res_room}}</td>
+                    <td>{{checkin?.rm_room_type}}</td>
+                    <td>{{checkin.rm_room_class}}</td>
+                    <td>{{checkin.rm_fo_status}}</td>
+                    <td> {{checkin.rm_room_status}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+
+
+            <br>
+          </div>
+          <div class="modal-footer">
+            <table>
+              <tr>
+                <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="downloadPDF()"><b>Download</b><span
+                      class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+                <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span
+                      class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Report end -->

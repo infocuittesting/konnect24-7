@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Connect 24*7</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Our Custom CSS -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="wrapper">
+   
+    <div class="content-wrapper" >
+  <div class="container-fluid" style="padding-top:20px; margin-left: 22px;">
+  <div class="panel panel-default">
+    <div class="panel-body" style="max-height: 218px;">
+    <div  style="padding-top:0px;">
+        <form action="" #loginForm="ngForm">
+    <div class="row">
+        <div class="col-lg-3">
+
+         <b> First Name *</b>
+              <div class="input-group">
+                <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+                <span class="input-group-btn" >
+                  <button class="btn btn-primary btn" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal" style="margin-top: -5px;"></i></button>
+                </span>
+
+            </div>
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.pattern" style="width:420px;">first name should contain only alphabets </div>
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.required" style="width:420px;">first name is required </div>
+      </div>
+
+      <div class="col-lg-3">
+
+          <b>Last Name</b> <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+              <input type="text" name="Last Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="Pf_lastname" #lastName="ngModel"></div>
+              <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid && lastName.errors.pattern" style="width:478px;">last name should contain only alphabets </div>
+      </div>
+	  
+      <div class="col-lg-3">
+        <b>Language</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+            <input type="text" name="Language" class="form-control"[(ngModel)]="Pf_language"></div>
+     </div> 
+     <div class="col-lg-3">
+        <b>Contact</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" name="Contact" class="form-control"></div>
+     </div>
+
+        </div>
+
+        <div class="row">
+	    <div class="col-lg-3">
+        <b>Phone</b> <div class="input-group">
+          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+          <input type="text"name="Phone" pattern="^(0|[1-9][0-9]*)$" class="form-control" [(ngModel)]="PF_Mobileno" #phone="ngModel"></div>
+          <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid && phone.errors.pattern" style="width:205px;">phone number should contain only numbers </div>
+
+      </div>
+      <div class="col-lg-3">
+        <b>Title</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+            <input type="text" name="Title" class="form-control"[(ngModel)]="Pf_title"></div>
+      </div>  
+      <div class="col-lg-3">
+          <b>Group</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
+            <input type="text"name="Group" class="form-control"></div>
+        </div>  
+        <div class="col-lg-3">
+            <b>Source</b><div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
+             <input type="text"name="Source" class="form-control"></div>
+         </div>
+
+        </div>
+    
+        
+      <div class="row" style="margin-top: 10;">
+         <div class="col-lg-3">
+          <b>Country</b> <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+              <input type="text" name="Country" class="form-control"[(ngModel)]="Pf_country"></div>
+         </div>
+         <div class="col-lg-3">
+            <b>Company</b> <div class="input-group">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
+              <input type="text"name="company" class="form-control"></div>
+         </div>
+
+         <div class="col-lg-3">
+          <b>Agent</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
+            <input type="text"name="Agent" class="form-control"></div>
+         </div>         
+    
+          <div class="col-lg-3">
+            <b>VIP</b> <div class="input-group">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip"></div>
+         </div>
+        </div>
+        </form>
+  </div>
+</div>
+</div>
+  </div>
+
+
+  <div class="container-fluid"  style="margin-left: 23px;">
+      <form #rese="ngForm">
+      <div class="panel panel-default">
+          <div class="panel-body">
+
+    <div class="row">
+
+
+      <div class="col-lg-4">              
+                <div class="row" style="padding-top:5px;">
+        <div class="col-lg-2">
+
+          <label for="arrival">Arrival</label> 
+
+        </div>
+
+        <div class="col-lg-2" style="padding-left:55px;">
+            <div class="input-group" [class.has-error]="arrivaldate.touched && arrivaldate.invalid">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input type="date" [min]="date" name="arrival" #arrivaldate="ngModel" required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+                [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
+                <div *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors?.required " ngClass="{ 'has-error' : !arrivaldate.valid && submitAttempt }"></div>
+              </div>
+          </div>
+
+
+          <div class="row" style="padding-top:5px;">
+              <div class="col-lg-2">
+      
+                <b>Departure</b>
+      
+              </div>
+      
+              <div class="col-lg-2">
+                  <div class="input-group" style="padding-left:40px;" [class.has-error]="departuredate.touched && departuredate.invalid">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input [min]="user.RES_Arrival" type="date" name="departure" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Depature"
+                      (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
+                      <div *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors?.required " ngClass="{ 'has-error' : !departuredate.valid && submitAttempt }"></div>
+                    </div>
+                </div>
+
+
+       <div class="row" style="padding-top:5px;">
+        <div class="col-lg-2">
+            
+          <b>Nights</b>
+            
+        </div>
+            
+            <div class="col-lg-2">
+             <div class="input-group" style="padding-left:40px;">
+                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
+                <input type="text" name="nights" class="form-control" style="width:176px" [(ngModel)]="user.RES_Nights" /></div>
+             </div>
+            </div>
+
+       <div class="row" style="padding-top:5px;">
+        <div class="col-lg-2">         
+        <b>Room_No.</b>          
+        </div>
+
+		<div class="col-lg-2">
+         <div class="input-group" style="padding-left:40px;">
+           <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
+           <input type="text" name="roomno" class="form-control" style="width:176px;"   disabled></div>
+         </div>
+        </div>
+
+        <div class="row" style="padding-top:5px;">
+         <div class="col-lg-2">               
+          <b>No.of_Rooms</b>             
+         </div>
+     
+     	 <div class="col-lg-2">
+         <div class="input-group" style="padding-left:40px;" [class.has-error]="roomno.touched && roomno.invalid">
+         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
+          <input type="text" name="noofrooms" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Number_Of_Rooms"  #roomno="ngModel" required></div>
+          <div *ngIf="roomno.touched && !roomno.valid && roomno.errors?.required  && roomno.errors.pattern" ngClass="{ 'has-error' : !roomno.valid && submitAttempt }"></div>
+        </div>
+         </div>
+
+        <div class="row" style="padding-top:5px;">
+        <div class="col-lg-2">
+		<b>Adults/Child</b>                              
+		</div>                              
+		<div class="col-lg-2">
+          <div class="input-group" style="padding-left:40px;" [class.has-error]="adult.touched && adult.invalid">         
+          <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Adults"  #adult="ngModel" required>
+          <div *ngIf="adult.touched && !adult.valid && adult.errors?.required  && adult.errors.pattern" ngClass="{ 'has-error' : !adult.valid && submitAttempt }"></div>
+          </div>
+          </div>
+          <div class="input-group" style="padding-left:105px;">
+          <input type="text" name="child" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Child" >
+          </div>  
+		  </div>
+		  
+          <div class="row" style="padding-top:5px;">
+           <div class="col-lg-2">
+            <b>Room_Types</b>                        
+			</div>                                    
+			<div class="col-lg-2">
+			<div class="input-group" style="padding-left:40px;" [class.has-error]="type.touched && type.invalid">
+			<select name="roomtype" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Room_Type" #type="ngModel" required>
+        <option *ngFor="let roomtypelist of roomtype" [ngValue] = "roomtypelist.type"> {{roomtypelist.type}}</option> 
+      </select>
+      <div *ngIf="type.touched && !type.valid && type.errors?.required  && type.errors.pattern" ngClass="{ 'has-error' : !type.valid && submitAttempt }"></div>      
+            </div>            
+			</div>
+			</div>
+		<div class="row" style="padding-top:5px;">
+           <div class="col-lg-2">                               
+		   <b>RTC</b>                                          
+		   </div>
+	   <div class="col-lg-2">
+       <div class="input-group" style="padding-left:40px;">
+         <select name="rtc" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_RTC">
+          <option *ngFor="let roomtypelist of roomtype" [ngValue] = "roomtypelist.type" > {{roomtypelist.type}}</option> 
+        </select>
+        </div>
+        
+        </div>
+        </div>
+
+       <div class="row" style="padding-top:5px;">
+        <div class="col-lg-2">                  
+		<b>Rate_Code</b>                                                
+		</div>		
+        <div class="col-lg-2">
+		<div class="input-group" style="padding-left:40px;" [class.has-error]="ratecode.touched && ratecode.invalid">
+		<select required class="form-control" name="ratecodes"style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel">
+		<option *ngFor="let tablelist of tableschanges" [ngValue] = "tablelist.ratecode"> {{tablelist.ratecode}}</option>                                                             
+    </select>
+    <div *ngIf="ratecode.touched && !ratecode.valid && ratecode.errors?.required  && ratecode.errors.pattern" ngClass="{ 'has-error' : !ratecode.valid && submitAttempt }"></div>      
+  </div>
+		</div>
+    </div>
+    <div class="row" style="padding-top:5px;">
+      <div class="col-lg-2">
+          
+        <b>Rate</b>
+          
+      </div>
+          
+          <div class="col-lg-2">
+           <div class="input-group" style="padding-left:40px;">
+              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
+              <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate"></div>
+           </div>
+          </div>
+
+           
+
+
+</div>
+    
+        <div class="col-lg-4">			
+			<div class="row" style="padding-top:5px;">
+			<div class="col-lg-2">                
+			<b>Extension</b>                
+			</div>                
+          <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <input type="text" name="extension" required style="width:216px;height:34px;border-radius:4px;color:black;" disabled>
+		  </div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                      
+		  <b>Res.Type</b>
+		  </div>    
+		  <div class="col-lg-2">
+          <div class="input-group" style="padding-left:40px;"[class.has-error]="restype_description.touched &&restype_description.invalid">
+          <select name="restype" class="form-control" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Res_Type" #restype_description="ngModel">
+            <option *ngFor="let restypelist of restype" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>                                          
+          </select>
+          <div *ngIf="restype_description.touched && !restype_description.valid &&restype_description.errors?.required  && restype_description.errors.pattern" ngClass="{ 'has-error' : !restype_description.valid && submitAttempt }"></div>      
+          </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">
+		  <b>Market</b>
+		  </div>                           
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="markets.touched && markets.invalid">
+		  <select name="market" required style="width:216px;height:34px;border-radius:4px;color:black;" class="form-control" [(ngModel)]="user.RES_Market" #markets="ngModel">
+		  <option *ngFor="let marketlist of marketpro" [ngValue] = "marketlist.marketgroup_description">{{marketlist.marketgroup_description}} </option>
+      </select>
+      <div *ngIf="markets.touched && !markets.valid && markets.errors?.required  && markets.errors.pattern" ngClass="{ 'has-error' : !markets.valid && submitAttempt }"></div>            
+          </div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                                  
+		  <b>Source</b>
+		  </div>                                  
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="sourcedescription.touched && sourcedescription.invalid" >
+		  <select name="source" required class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;"[(ngModel)]="user.RES_Source" #sourcedescription="ngModel">
+        <option *ngFor="let sourcelist of source" [ngValue] = "sourcelist.sourcedescription">{{sourcelist.sourcedescription}}</option>                                          
+      </select>
+      <div *ngIf="sourcedescription.touched && !sourcedescription.valid && sourcedescription.errors?.required  && sourcedescription.errors.pattern" ngClass="{ 'has-error' : !sourcedescription.valid && submitAttempt }"></div>
+    </div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                                        
+		  <b>Origin</b>                                        
+		  </div>       
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <select name="origin" required style="width:216px;height:34px;border-radius:4px;color:black;"[(ngModel)]="user.RES_Origin">
+        <option *ngFor="let originlist of origin" [ngValue] = "originlist.origindescription">{{originlist.origindescription }}</option>                                                                                                     
+		  </select>
+		  </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                            
+		  <b>Payment</b>
+		  </div>                                              
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="payment_description.touched && payment_description.invalid">
+          <span class="input-group-addon" style="background-color:#0077B5;color:white;"data-toggle="modal" data-target="#payment"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+          <!-- <input type="text" required style="width:178px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Payment"> -->
+        <select name="payment" required style="width:178px;height:34px;border-radius:4px;color:black;" class="form-control" [(ngModel)]="user.RES_Payment" #payment_description="ngModel">  
+          <option *ngFor="let paymentlist of payment" [ngValue] = "paymentlist.payment_description">{{paymentlist.payment_description}}</option>                                                                                                                                                                       
+      </select>
+      <div *ngIf="payment_description.touched && !payment_description.valid && payment_description.errors?.required  && payment_description.errors.pattern" ngClass="{ 'has-error' : !payment_description.valid && submitAttempt }"></div>            
+    </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">
+		  <b>Block_Code</b>                                                    
+		  </div>
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <input type="text" name="blockcode" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Block_Code" disabled>
+		  </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                                                                
+		  <b>ETA</b>
+		  </div>                                                                
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span> -->
+      <input type="text" [value]="now" name="eta" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="now" disabled></div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+          <div class="col-lg-2">
+          <b>Credit_Card</b>
+          </div>
+          <div class="col-lg-2">
+          <div class="input-group" style="padding-left:40px;" [class.has-error]="creditcards.touched && creditcards.invalid">
+          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+          <input name="creditcard" type="text" minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Creditcard_Number" #creditcards="ngModel" required></div>
+          <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.valid && submitAttempt }"></div>             
+          </div>
+          </div> 
+       <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                                                                      
+		  <b>Expire_Date</b>                                                                      
+		  </div>                                                                      
+		  <div class="col-lg-1" style="margin-left: 40px;">
+          <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Month" style="width:100%;"> </app-monthpicker>
+          </div> 
+          <div class="col-lg-1" style="margin-left: 85px;">
+          <app-yearpicker name="ExpiryDate" (change)="onYearChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Year"  style="width:100%;"></app-yearpicker>
+
+		  </div>
+		  </div>                                          
+	
+		  
+          </div>
+
+
+          <div class="col-lg-4">
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                  
+		  <b>Packages</b>                  
+		  </div>                  
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+	  	  <input name="Packages" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" disabled>
+      </div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">                        
+		  <b>Special</b>                        
+		  </div>
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <!-- <input type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Specials"> -->
+      <input name="special" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Specials">
+
+      </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">
+		  <b>Comments</b>
+		  </div>
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <textarea name="comments" id=""  style="width:216px;border-radius:4px;color:black;" rows="3" [(ngModel)]="user.RES_Comments"></textarea>      
+		  </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:12px;">
+		  <div class="col-lg-2">
+		  <b>Item_Inv.</b>
+		  </div>
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <input name="item" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Item_Inv">
+    </div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:5px;">
+		  <div class="col-lg-2">
+		  <b>Reason</b>
+		  </div>                                          
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+      <input type="text" name="reasons" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Disc_Reason">
+		  </div>
+		  </div>
+		  </div>
+		  <div class="row" style="padding-top:6px;">
+		  <div class="col-lg-2">                                                
+		  <b>Guest_Bal.</b>                                                
+		  </div>                                                
+		  <div class="col-lg-2">
+		  <div class="input-group" style="padding-left:40px;">
+		  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+		  <input type="text" name="guestbal" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Guest_Balance"></div>
+		  </div>
+		  </div>
+
+		  <div class="row" style="padding-top:6px;">
+		  <div class="col-lg-2">                                                            
+		  <b>Currency.</b>
+		  </div>
+      <div class="col-lg-2">
+        <div class="input-group" style="padding-left:40px;">
+          <select name="currency" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Currency">
+            <option *ngFor="let cl of getc" [ngValue] = "cl.currency">{{cl.currency}}</option>                                          
+          </select>
+        </div>
+        </div>
+		  </div>
+        <div class="row" style="padding-top:5px;">
+          <div class="col-lg-2">
+          <b>Disc.Amount</b>
+          </div>                                          
+          <div class="col-lg-2">
+          <div class="input-group" style="padding-left:40px;">
+          <input name="amount" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;"  [(ngModel)]="user.RES_Disc_Amount">
+          </div>
+          </div>
+          </div>   
+          <div class="row" style="padding-top:5px;">
+            <div class="col-lg-2">
+            <b>Disc.%</b>
+            </div>                                          
+            <div class="col-lg-2">
+            <div class="input-group" style="padding-left:40px;">
+            <input name="pecentage" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Disc_perc">
+            </div>
+            </div>
+            </div>                                  
+               
+        </div>
+    </div>
+
+</div>
+</div>
+<div class="row">
+
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-2" style="padding-left:10px;">
+      <button type="button" class="btn btn-success" style="width:150px;" data-toggle="modal" data-target="#myModal" [disabled]="!loginForm.valid"><b>Save</b></button>
+    </div>
+      <div class="col-lg-2">
+        <button type="button" type="button" class="btn btn-warning" style="width:150px;" (click)="submit(user);rese.reset()" data-toggle="modal" data-target="#myModal1" [disabled]="!loginForm.valid"><b>Ok</b></button>
+      </div>
+
+        <div class="col-lg-2" style="padding-left:10px;">
+            <button type="button" type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#waitlist1" (click)="submitwait(user);rese.reset()"><b>Waitlist</b></button>
+          </div>
+
+          <div class="col-lg-2" style="padding-left:10px;">
+              <button type="button" class="btn btn-danger" style="width:150px;" routerLink="/mains"><b>Close</b></button>
+            </div>
+
+            <div class="col-lg-2">
+
+              </div>
+  </div>
+</form>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <h4 class="modal-title">Modal Header</h4> -->
+            </div>
+            <div class="modal-body">
+              <p align="center"><b>Record Saved</b></p>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close <i class="glyphicon glyphicon-remove"></i></button>             
+            </div>
+          </div>
+          
+        </div>
+	  </div>
+	  
+	  <div class="modal fade" id="myModal1" role="dialog"  vertical-align="center">
+        <div class="modal-dialog" >
+        
+          <!-- Modal content-->
+          <div class="modal-content" style="margin-top: 30%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" align="center">Creating Reservation</h4>
+            </div>
+            <div class="modal-body">
+              <p align="center"><b> {{usera}}</b></p>
+              <p align="center"><b> {{confim}}</b></p>
+            </div>
+            <div class="modal-footer">
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                    <button type="button"  class="btn btn-danger" data-dismiss="modal" (click)="clearsession()" >Close</button>             
+              </div>
+              <div class="col-md-5"></div>
+               </div>
+          </div>
+          
+        </div>
+      </div>	
+
+ 	  <div class="modal fade" id="payment" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <h4 class="modal-title">Modal Header</h4> -->
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table-hover table-bordered table-striped" style="width:100%;">
+                  <thead style="background-color: #0077B5; color: white">
+                    <th> X </th>
+                    <th> Payment Type</th>
+                    <th> tr.code</th>
+                    <th> Description</th>
+                    <th> </th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let paymentlist of payment let i=index;">
+                        <td> {{i+1}} </td>
+                        <td> {{paymentlist.paymenttype}}</td>
+                        <td> {{paymentlist.transactioncode}}</td>
+                        <td> {{paymentlist.payment_description}}</td>
+                        <td> <input type="checkbox"> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>             
+            </div>
+          </div>
+          
+        </div>
+      </div>	   
+</body>
+</html>
+
+              <!-- Waitlist Start-->
+              <div class="modal fade" id="waitlist1" role="dialog" vertical-align="center">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content " style="margin-top: 30%;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" align="center">Reservation Waitlist</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p align="center"><b>{{user1}}</b></p>                             
+                      </div>
+                      <div class="modal-footer">
+                          <div class="col-md-5"></div>
+                          <div class="col-md-2">
+                      <button type="button" (click)="clearsession()" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+               <!-- Waitlist End-->
