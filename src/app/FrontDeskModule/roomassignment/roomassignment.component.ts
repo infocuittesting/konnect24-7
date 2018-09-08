@@ -60,7 +60,10 @@ checkinProfile(){
   
   this.RoomassignmentService.checkinProfile(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.Return;
+    this.status=resp.ReturnCode;
+    if(this.status=="RUS"){
+      this.status="The Check is conformed for "+this.Name;
+    }
   });
 
 }

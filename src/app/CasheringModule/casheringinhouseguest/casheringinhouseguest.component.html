@@ -75,11 +75,11 @@
                   <div class="col-md-3">
                     <div class="row">
                       <div class="col-md-3">
-                        <label for="room" style="margin-top: -10px">Party</label>
+                        <label for="room">Party</label>
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm" style="height:27px;width:83%;margin-top: -10px;">
+                          <input type="text" class="form-control input-sm" style="height:27px;width:83%;">
                         </div>
                       </div>
                     </div>
@@ -89,11 +89,11 @@
                   <div class="col-md-3">
                     <div class="row">
                       <div class="col-md-3">
-                        <label for="room" style="margin-top: -10px">Block</label>
+                        <label for="room">Block</label>
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">
-                          <input type="text" class="form-control input-sm" style="height:27px;width: 83%;margin-top: -10px">
+                          <input type="text" class="form-control input-sm" style="height:27px;width: 83%;">
                         </div>
                       </div>
                     </div>
@@ -102,11 +102,11 @@
                   <div class="col-md-3">
                     <div class="row">
                       <div class="col-md-3">
-                        <label for="room" style="margin-top: -10px">Res.Type</label>
+                        <label for="room" >Res.Type</label>
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">
-                          <select class="form-control input-sm" name="restyp" id="se" style="width:83%;height:27px;margin-left: 25px;margin-top: -10px"
+                          <select class="form-control input-sm" name="restyp" id="se" style="width:83%;height:27px;margin-left: 25px;"
                             [(ngModel)]="restyp" (ngModelChange)="onSelect(restyp)" placeholder="select">
                             <option value="" hidden></option>
                             <option *ngFor="let restypelist of resty" [ngValue]="restypelist.restype_description">{{restypelist.restype_description}}</option>
@@ -225,11 +225,11 @@
                       <div class="col-md-6">
                         <div class="row">
                           <div class="col-md-3">
-                            <label for="room" style="margin-top: -10px">To</label>
+                            <label for="room" >To</label>
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">
-                              <input type="date" name="arrivalto" class="form-control input-sm" style="width:83%;height:27px;margin-top: -10px" [(ngModel)]="endDate"
+                              <input type="date" name="arrivalto" class="form-control input-sm" style="width:83%;height:27px;" [(ngModel)]="endDate"
                                 (change)="filterDatefrmList(startDate,endDate)">
                             </div>
                           </div>
@@ -239,11 +239,11 @@
                       <div class="col-md-6">
                         <div class="row">
                           <div class="col-md-3">
-                            <label for="room" style="margin-top: -10px">To</label>
+                            <label for="room">To</label>
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">
-                              <input type="date" name="depto" class="form-control input-sm" style="width:83%;height:27px;margin-top: -10px" [(ngModel)]="endDatedep"
+                              <input type="date" name="depto" class="form-control input-sm" style="width:83%;height:27px;" [(ngModel)]="endDatedep"
                                 (change)="filterDatefrmdep(startDatedep,endDatedep)">
                             </div>
                           </div>

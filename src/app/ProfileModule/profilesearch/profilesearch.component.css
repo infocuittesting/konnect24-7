@@ -1,8 +1,8 @@
 
 .tableBodyScroll tbody {
     display:block;
-    height: 250px;
-    max-height:250px;
+    height: 260px;
+    max-height:260px;
     overflow-y:scroll;
     table-layout:fixed;
     }
