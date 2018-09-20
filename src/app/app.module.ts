@@ -11,10 +11,7 @@ import { Ng2Webstorage } from "ngx-webstorage";
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
-import { StarterHeaderComponent } from './starter/starter-header/starter-header.component';
-import { StarterLeftSideComponent } from './starter/starter-left-side/starter-left-side.component';
-import { StarterContentComponent } from './starter/starter-content/starter-content.component';
-import { StarterControlSidebarComponent } from './starter/starter-control-sidebar/starter-control-sidebar.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminLeftSideComponent } from './admin/admin-left-side/admin-left-side.component';
@@ -110,10 +107,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
 
         //Starter
         StarterComponent,
-        StarterHeaderComponent,
-        StarterLeftSideComponent,
-        StarterContentComponent,
-        StarterControlSidebarComponent,
+
 
         //Reservation
         ReservationComponent,

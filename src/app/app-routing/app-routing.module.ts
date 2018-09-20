@@ -68,7 +68,7 @@ import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', redirectTo: 'mains', pathMatch: 'full' },
+      { path: '', component: StarterComponent  },
       { path: 'mains', component: StarterComponent },
       //Reservation
       { path: 'reservation', component: ReservationComponent },
@@ -130,3 +130,8 @@ import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [IndividualprofileComponent,ReservationComponent,ModalBasicComponent,ReservationoptionComponent,StarterComponent,
+  ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
+,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,EditGridRoomsComponent,EditBusinessBlockComponent,
+GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent]
