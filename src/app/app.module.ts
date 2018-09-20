@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2Webstorage } from "ngx-webstorage";
-
+import { AmChartsModule } from "amcharts3-angular2";
 // import { ReservationService } from './ReservationModule/reservation/reservation.service';
 
 
@@ -185,6 +185,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
         Ng2Webstorage,
         AppRoutingModule,
         ContextmenuModule,
+        AmChartsModule
         // HotkeyModule.forRoot()
 
     ],

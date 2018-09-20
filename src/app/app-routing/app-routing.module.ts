@@ -68,7 +68,7 @@ import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', component: StarterComponent  },
+      { path: '', component: StarterComponent},
       { path: 'mains', component: StarterComponent },
       //Reservation
       { path: 'reservation', component: ReservationComponent },
