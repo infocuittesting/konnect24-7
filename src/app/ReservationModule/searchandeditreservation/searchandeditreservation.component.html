@@ -89,7 +89,7 @@
                <br>
                <div class="col-md-4"></div>
                <div class="col-lg-2">
-                  <button type="button" class="btn btn-success" routerLink="/advancedsearch" style="width:100%;"><b>Advanced</b></button>
+                  <button type="button" class="btn btn-primary" routerLink="/advancedsearch" style="width:100%;"><b>Advanced</b></button>
              </div>
  
              <div class="col-lg-2">
@@ -204,17 +204,18 @@
   <br>
   <div class="container-fluid">
    <div class="row" >
+     
         <button type="button" class="btn btn-primary"routerLink="/reservation" style="width:140px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
         
               <button type="button" class="btn btn-danger"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>
 
                <button type="button" class="btn btn-warning"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#reinstate" data-dismiss="modal" [disabled]=rein ><b>Reinstate</b></button>
 
-               <button type="button" class="btn btn-primary"routerLink="/psearch" style="width:140px;margin-left: 5px;"  [disabled]=profile ><b>Profile</b></button>
+               <button type="button" class="btn btn-info"routerLink="/psearch" style="width:140px;margin-left: 5px;"  [disabled]=profile ><b>Profile</b></button>
 
-               <button routerLink="/reservationoption" class="btn btn-info"  style="width:140px;margin-left: 5px;"  [disabled]=option ><b>Options</b></button>
+               <button routerLink="/reservationoption" class="btn btn-primary"  style="width:140px;margin-left: 5px;"  [disabled]=option ><b>Options</b></button>
 
-               <button type="button" class="btn btn-info" (click)="subaccp()" data-toggle="modal" data-target="#accept"style="width:140px;margin-left: 5px;" [disabled]=wait ><b>Accept Waitlist</b></button>
+               <button type="button" class="btn btn-success" (click)="subaccp()" data-toggle="modal" data-target="#accept"style="width:140px;margin-left: 5px;" [disabled]=wait ><b>Accept Waitlist</b></button>
 
                <button type="button" class="btn btn-danger" routerLink="/mains"  style="width:140px;margin-left: 5px;"><b>Close</b></button>
 
