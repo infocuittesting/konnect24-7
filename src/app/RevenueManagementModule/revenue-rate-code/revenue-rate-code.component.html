@@ -1,4 +1,4 @@
-<body>
+
   <div class="wrapper">
     <div class="content-wrapper">
   
@@ -45,7 +45,7 @@
                               
                             <div class="col-md-3">
                                
-                                    <button type="reset" class="btn btn-Primary" style="width:100px;height: 27px;margin-left: 55px;font-size: 12px;" (click)="clear();ratecodeform.reset();"><b>ClearAll</b></button>
+                                    <button type="reset" class="btn btn-danger" style="width:100px;height: 27px;margin-left: 55px;font-size: 12px;" (click)="clear();ratecodeform.reset();"><b>ClearAll</b></button>
                                
                             </div>  
                           </div>
@@ -85,25 +85,25 @@
         </div>
       
         <br>
-        <div class="row" style="margin-left:10%;margin-top: 10px">
+        <div class="row" style="margin-left: 12px;">
                         
             <div class="col-md-2">
-                <button type="button" class="btn btn-success" style="width:110px;" [disabled]=okbutn><b>Ok</b></button>
+                <button type="button" class="btn btn-success" style="width:100%;" [disabled]=okbutn><b>Ok</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-Primary" style="width:110px;" disabled><b>Copy</b></button>
+                <button type="button" class="btn btn-primary" style="width:100%;" disabled><b>Copy</b></button>
             </div>
              <div class="col-md-2">
-                <button type="button" class="btn btn-Info" (click)="loadrevenue('New')" [disabled]=edbutns style="width:110px;"><b>New</b></button>
+                <button type="button" class="btn btn-info" (click)="loadrevenue('New')" [disabled]=edbutns style="width:100%;"><b>New</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn (click)="loadrevenue('Edit')"><b>Edit</b></button>
+                <button type="button" class="btn btn-primary" style="width:100%;" [disabled]=edbutn (click)="loadrevenue('Edit')"><b>Edit</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
+                <button type="button" class="btn btn-warning" style="width:100%;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-Warning" style="width:110px;" routerLink="/mains"><b>Close</b></button>
+                <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
             </div>
             <!-- <div class="col-md-2">
                 <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
@@ -111,7 +111,7 @@
         </div>
   </div>
 </div>
-</body>
+
 
 
 
