@@ -5,7 +5,9 @@ import * as jsPDF from 'jspdf';
 import { Router } from "@angular/router";
 import { ReservationoptionService } from "./reservationoption.service";
 import { SessionStorageService } from "ngx-webstorage";
-import { DatePipe } from '@angular/common';  
+import { DatePipe } from '@angular/common'; 
+
+ import { ToasterServiceService } from '../../toaster-service.service'; 
 
 @Component({
   selector: 'app-reservationoption',
@@ -58,8 +60,11 @@ export class ReservationoptionComponent implements OnInit {
   public history=[];
   find={};
 
-  constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService ) { }
- 
+  constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
+   Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
 
     //filter data in table  using checkbox
     checkboxflg=[];
@@ -199,6 +204,7 @@ this.checkedvalue1=chk1.values;
      this.pri=users333.ReturnCode;
      if(this.pri=="RIS"){
        this.pri="Privilleges is created for "+this.Name;
+       this.Success(this.pri);
      }  
       },
       );  
@@ -259,7 +265,7 @@ submitdep(inputt):void {
       this.pppService.getdeposit()
       .subscribe((resp: any) => {
         this.deptarry=resp.ReturnValue;
-        console.log(this.deptarry)
+        console.log("workinggggggg",this.deptarry)
       });
  this.resdepos=" ";
     },
@@ -411,12 +417,13 @@ queueProfile(){
 // fixed start
 
 public tra;
-submitrate():void {
+submitrate() {
     this.pppService.Fixedrate()
     .subscribe( (user333:any )=> {
       this.tra = user333.ReturnCode;
       if(this.tra=="RIS"){
         this.tra="Fixed Rate is created for "+this.Name;
+        console.log("working fine",this.tra)
       }
     },
       );  
