@@ -159,6 +159,7 @@ alertsub(inputt) {
       this.user3=resp.ReturnCode; 
       if(this.user3=="RIS"){
         this.user3="Alert is Created for " +this.Name;
+        this.Success(this.user3);
       }
      this.alerts=" ";
     },
@@ -169,12 +170,14 @@ alertsub(inputt) {
     fixed:any=[];     
     public fixs;
      fix(inputt) {
-       console.log(inputt);
+       console.log("Fixed charges workinggggggg",inputt);
          this.pppService.Fixedcharges(inputt)
          .subscribe(( user333:any )=> {
           this.fixs=user333.ReturnCode;
           if(this.fixs =="RIS"){
             this.fixs = "Fixed Charges is Created for "+this.Name;
+            this.Success(this.fixs);
+            console.log("workingggggg",this.fixs)
           }
           else{
             this.fixs = " Please Enter Valid Date";
@@ -307,6 +310,8 @@ subdele() {
       this.delereturn=resp.ReturnCode;
       if(this.delereturn=="RDS"){
         this.delereturn="Reservation Deleted for " +this.Name;
+        console.log("workingggggggg",this.delereturn)
+        this.Success(this.delereturn);
       }
     },
     );  
@@ -325,7 +330,7 @@ submit(inputt) {
       this.inscredit = user333.ReturnCode;
       if(this.inscredit == "RIS"){
         this.inscredit = "Credit Card is Created for "+this.Name;
-
+        this.Success(this.inscredit);
         let paramss={
           "pf_id":this.session.retrieve("id1"),
        }
@@ -353,7 +358,7 @@ submit1(inputt) {
       if(this.inscredit == "RUS"){
         console.log(this.inscredit);
         this.inscredit = "Credit Card Updated for "+this.Name;
-
+        this.Success(this.ic1);
         let paramss={
           "pf_id":this.session.retrieve("id1"),
        }

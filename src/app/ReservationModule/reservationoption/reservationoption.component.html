@@ -19,7 +19,7 @@
               <table>
               <tr>
               <td><b style="margin-left: 10px;">Code</b></td>
-            <td style="padding-left:60px;">
+            <td style="padding-left:50px;">
           <div class="input-group" [class.has-error]="codes.touched && codes.invalid">       
               <select id="curr" name="code" class="form-control" [(ngModel)]="alerts.RES_Alert_Code" #codes="ngModel" required style="height:30px;border-radius:4px;width:191px;color:black;">
               <option *ngFor="let alcode of clist" [ngValue] = "alcode.alertcode"> {{alcode.alertcode}} </option>
@@ -60,7 +60,7 @@
           </div>
           <div class="modal-footer">
 
-               <button type="button" class="btn btn-success"style="margin-left: 70%;" data-toggle="modal" data-target="#alert1" data-dismiss="modal" (click)="alertsub(alerts)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+               <button type="button" class="btn btn-success"style="margin-left: 70%;" data-dismiss="modal"  (click)="alertsub(alerts)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
              <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
 
           </div>
@@ -71,7 +71,7 @@
     <!-- Alert End -->
 
      <!-- Alert start-->
-     <div class="modal fade" id="alert1" role="dialog">
+     <div class="modal fade" id="" role="dialog">
       <div class="modal-dialog">
       
         <!-- Modal content-->
@@ -566,7 +566,8 @@
   <!-- </form> -->
         </div>
         <div class="modal-footer">
-            <button type="reset" class="btn btn-success" (click)="submit1(ic1)" data-toggle="modal" data-target="#credin"  data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn-btn-primary" data-dismiss="madal" (click)="sbmit1(ic1)">OK</button>
+            <!-- <button type="reset" class="btn btn-success" (click)="submit1(ic1)"   data-dismiss="modal"><b>Ok</b></button> -->
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
       </form>
@@ -577,7 +578,7 @@
 <!--Credit Card insert end-->
 
      <!-- creditinsert response start-->
-     <div class="modal fade" id="credin" role="dialog">
+     <div class="modal fade" id="" role="dialog">
       <div class="modal-dialog">
       
         <!-- Modal content-->
@@ -639,7 +640,7 @@
                   <p align="center"><b>Are you Sure you want to Delete Reservation ?</b></p>
                   <br>
                   <div class="text-center">
-                 <button type="button" class="btn btn-success"style="padding-left:5px;"data-toggle="modal" data-target="#delete1" data-dismiss="modal" (click)="subdele()"><b>Yes</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                 <button type="button" class="btn btn-success"style="padding-left:5px;" data-dismiss="modal" (click)="subdele()"><b>Yes</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
                  <button type="button" class="btn btn-danger"style="padding-left:5px;"data-dismiss="modal"><b>No</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
                 </div>
               </div>
@@ -777,7 +778,7 @@
                  </div>            
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="fix(fixed)" data-dismiss="modal"data-toggle="modal" data-target="#f1"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+            <button type="button" class="btn btn-success" (click)="fix(fixed)" data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
           </div>
         </div>
@@ -787,7 +788,7 @@
      <!-- fixed charges End -->
 
        <!-- Fixed charges resp start-->
-       <div class="modal fade" id="f1" role="dialog">
+       <div class="modal fade" id="" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -848,7 +849,7 @@
      </div>
      <div class="modal-footer">
        <!-- <button type="button" class="btn btn-primary" (click)="Success('Privilaegs',pri)">Ok</button> -->
-        <button type="button" class="btn btn-success" style="margin-left: 300px;" (click)="submits(privillege)" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+        <button type="button" class="btn btn-success" style="margin-left: 300px;" (click)="submits(privillege)" data-dismiss="modal" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>    
      </div>
           </div>
@@ -916,8 +917,10 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Move to Room</h4>
           </div>
-          <div class="modal-body" style="max-height: 60%; overflow-y:scroll;">
-              <div class="container-fluid">
+          <div class="modal-body" style="max-height: 60%; overflow-y:scroll;height: 421px;">
+            <div class="panel panel-default"> 
+              <div class="panel-body">
+            <div class="container-fluid">
                   <div  style="padding-top:20px;">
                   
                 <div class="row">
@@ -972,7 +975,8 @@
                   
                   
                   </div>
-                  
+                </div>
+                </div> 
                   <div class="container-fluid">                  
                   <div class="container-fluid" style="width:101%;padding-left:1px;">
                   <div class="table-responsive">
