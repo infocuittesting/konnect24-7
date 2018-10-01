@@ -224,6 +224,7 @@ this.pppService.waitli(input)
   this.waitlist = user333.ReturnCode;
   if(this.waitlist=="RIS"){
     this.waitlist=" Waitlist Reason is created for "+this.Name;
+    this.Success(this.waitlist);
   }
 });
 }
@@ -246,6 +247,7 @@ submittrace(input) {
       this.tracess = user333.ReturnCode;
       if(this.tracess=="RIS"){
         this.tracess=" Traces is Add for "+this.Name;
+        this.Success(this.tracess);
       }
  
     });  
@@ -264,6 +266,7 @@ submitdep(inputt):void {
       this.resdepo = user333.ReturnCode;
       if(this.resdepo=="RIS"){
         this.resdepo=" Deposit is Add For "+ this.Name;
+        this.Success(this.resdepo);
       }
       this.pppService.getdeposit()
       .subscribe((resp: any) => {
@@ -429,6 +432,8 @@ submitrate() {
       if(this.tra=="RIS"){
         this.tra="Fixed Rate is created for "+this.Name;
         console.log("working fine",this.tra)
+        this.Success(this.tra);
+        console.log("workinggggggg")
       }
     },
       );  

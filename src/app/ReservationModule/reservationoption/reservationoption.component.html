@@ -918,8 +918,10 @@
             <h4 class="modal-title">Move to Room</h4>
           </div>
           <div class="modal-body" style="max-height: 60%; overflow-y:scroll;height: 421px;">
-            <div class="panel panel-default"> 
-              <div class="panel-body">
+            <div class="continer">
+              <div class="row" style="margin-top: -39px;">
+            <div class="panel panel-default" style="max-height: 93px;"> 
+              <div class="panel-body" style="margin-top: -35px;margin-top: -34px;">
             <div class="container-fluid">
                   <div  style="padding-top:20px;">
                   
@@ -976,7 +978,9 @@
                   
                   </div>
                 </div>
-                </div> 
+                </div>
+              </div>
+              </div> 
                   <div class="container-fluid">                  
                   <div class="container-fluid" style="width:101%;padding-left:1px;">
                   <div class="table-responsive">
@@ -1247,7 +1251,7 @@
           </div>
           <div class="modal-footer">
 
-               <button type="button" class="btn btn-success"style="margin-left: 70%;" data-toggle="modal" data-target="#depo" data-dismiss="modal" (click)="submitdep(resdepos)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+               <button type="button" class="btn btn-success"style="margin-left: 70%;"  data-dismiss="modal" (click)="submitdep(resdepos)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
              <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
 
           </div>
@@ -1664,7 +1668,7 @@
               </div>
                 <div class="modal-footer">
                    <div class="row">
-                  <button type="button" class="btn btn-success" data-dismiss="modal"  data-toggle="modal" data-target="#fr" (click)="submitrate()" style="margin-left: 65%"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+                  <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submitrate()" style="margin-left: 65%"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
               </div>
             </div>
@@ -1787,7 +1791,7 @@
           
 
             <div class="modal-footer" style="margin-top: -27px;">
-                <button type="button" class="btn btn-success"data-toggle="modal" data-target="#trac"  data-dismiss="modal" (click)="submittrace(find)" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+                <button type="button" class="btn btn-success"  data-dismiss="modal" (click)="submittrace(find)" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
             </div>
           </div>
@@ -1874,11 +1878,11 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer" style="margin-left: 658px;">
                 <table>
                   <tr>
-                 <td style="padding-left:65px;"> <button type="button" class="btn btn-success" (click)="submitwait(waitls)" data-toggle="modal" data-target="#wai1" data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button></td>
-                <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+                 <td style="padding-left:65px;"> <button type="button" class="btn btn-success" (click)="submitwait(waitls)"  data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px; width:80%;"></span></button></td>
+                <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;width:80%;"></span></button></td>
               </tr>
               </table>
               </div>
@@ -1929,7 +1933,7 @@
       <div class="modal-body">
           <div class="container" style="width: 100%; margin-top: -39px;">
               <div  style="margin-top: 30px;">
-              <table class="table table-hover table-bordered" >
+              <table class="tableBodyScroll table-hover table-bordered" >
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
                   <th>Name</th>
