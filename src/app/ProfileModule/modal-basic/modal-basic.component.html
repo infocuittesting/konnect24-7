@@ -74,18 +74,20 @@
   <div class="modal-dialog">
 
 
-    <div class="modal-content" style="margin-top: 270px">
-      <div class="modal-header">
+    <div class="modal-content" style="margin-top: 94px">
+      <div class="modal-header" style="height: 77px;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4>Connect 24/7 Hotel</h4>
+        <h4 style="margin-left: -425px;">Connect 24/7 Hotel</h4>
+        <p style="margin-left: -405px;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+
       </div>
       <div class="modal-body">
         <b align="center">Are sure you want to Delete the profile ?</b>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="deletesClick()" data-toggle="modal" data-target="#profilerecordresponse1"
-          data-dismiss="modal"><b>Ok</b></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        <button type="button" class="btn btn-success" (click)="deletesClick()" 
+          data-dismiss="modal" style="width: 61px;">Ok</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -413,13 +415,14 @@
     <div class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Changes</h4>
-        <b> <button type="button" class="close" data-dismiss="modal">&times;</button></b>
+      <div class="modal-header" style="padding-top: -9px;">
+        <h4 class="modal-title" style="margin-left: -516px;">Changes</h4>
+        <p style="margin-left: -405px;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+      
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
+      <div class="modal-body" style="margin-top: -8px;">
         <div id="negotiation">
           <table class="table table-hover table-bordered" style="margin-left: 5%;width:90%;">
             <thead style="background-color:#0077B5;color:white;">
@@ -465,18 +468,18 @@
 <div class="modal" id="credit">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left:20%;">
+      <div class="modal-content" style="width:68%;margin-left:16%;margin-top: -229px;">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Credit Card</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="margin-left: -92%;">Credit Card</h4>
+          <p style="margin-left: -83%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
           <div>
-            <table class="table table-hover table-bordered" style="width: 90%;margin-left: 2%;">
+            <table class="table table-hover table-bordered" style="width: 99%;margin-left: 2%;">
               <thead style="background-color: steelblue; color: white;">
                 <tr>
                   <th>Seq.</th>
@@ -510,12 +513,14 @@
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer" style="padding-right:150px;">
-          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#insert"><b>Add New</b></button>
-          <button class="btn btn-secondary" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse"
-            [disabled]=delet><b>Delete</b></button>
-          <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#updatecard" [disabled]=edit><b>Edit</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        <div class="modal-footer">
+      
+          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#insert" style="width:80px">Add New</button>
+          <button class="btn btn-info" type="button" style="width:80px" (click)="deletecreditClick(flag)" 
+            [disabled]=delet>Delete</button>
+          <button class="btn btn-warning" type="button" style="width:80px" data-toggle="modal" data-target="#updatecard" [disabled]=edit style="width:80px">Edit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:80px">Close</button>
+      
         </div>
 
       </div>
@@ -597,7 +602,7 @@
               <!-- </form> -->
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="submit(mbc);rese.reset()" data-toggle="modal" data-target="#cardresponse"
+              <button type="button" class="btn btn-success" (click)="submit(mbc);rese.reset()"
                 data-dismiss="modal"><b>Ok</b></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
             </div>
@@ -620,18 +625,18 @@
 <div class="modal" id="future">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left:20%;">
+      <div class="modal-content" style="width:70%;margin-left:16%;    margin-top: -176px;">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Feature</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="margin-left: -96%;">Future</h4>
+        <p style="margin-left: -77%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
           <div>
-            <table class="table table-hover table-bordered" style="width: 95%;margin-left: 2%;">
+            <table class="table table-hover table-bordered" style="width: 99%;margin-left: 2%;">
               <thead style="background-color:#0077B5;color:white;">
                 <tr width="100%">
                   <th>Arrival</th>
@@ -668,9 +673,9 @@
         <div class="modal-footer">
 
 
-          <button type="button" class="btn btn-primary" routerLink="/reservation" data-dismiss="modal"><b>New</b></button>
-          <button type="button" class="btn btn-warning"><b>Edit</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-primary" routerLink="/reservation" data-dismiss="modal" style="width: 91px;">New</button>
+          <button type="button" class="btn btn-warning"  style="width: 91px;">Edit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"  style="width: 91px;">Close</button>
 
         </div>
 
@@ -685,18 +690,18 @@
 <div class="modal" id="history">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left:20%;">
+      <div class="modal-content" style="width:70%;margin-left:15%;margin-top: -228px;">
 
         <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">History</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header" style="height: 61px;">
+          <h4 class="modal-title" style="margin-left: -95%;">History</h4>
+        <p style="margin-left: -80%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body" style="overflow-y: scroll; max-height:350px;">
 
-          <table class="table table-hover table-bordered " style="width: 90%;margin-left:5%;">
+          <table class="table table-hover table-bordered " style="width: 100%;margin-left:0;">
             <thead style="background-color:#0077B5;color:white;">
               <tr>
                 <th>Arrival</th>
@@ -732,7 +737,7 @@
         <!-- Modal footer -->
         <div class="modal-footer" style="padding-left:160px;">
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
         </div>
 
       </div>
@@ -745,12 +750,13 @@
 <div class="modal" id="merge">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left:20%;">
+      <div class="modal-content" style="width:70%;margin-left:20%;margin-top: 15px;">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Merge</h4>
-          <button type="button" class="close" data-dismiss="modal"><b>&times;</b></button>
+          <h4 class="modal-title" style="margin-left: -97%;">Merge</h4>
+        <p style="    margin-left: -81%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+         
         </div>
 
         <!-- Modal body -->
@@ -861,8 +867,8 @@
         <!-- Modal footer -->
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-success"><b>Merge</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-success" style="width:91;">Merge</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91;">Close</button>
 
         </div>
 
@@ -879,13 +885,12 @@
 <div class="modal" id="notes">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left:20%;">
+      <div class="modal-content" style="width:70%;margin-left: 17%;margin-top: 17px;">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Notes</h4>
-
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" >Notes</h4>
+        <p ><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
@@ -918,8 +923,8 @@
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
 
-                  <th>Note Type</th>
-                  <th>Note Title</th>
+                  <th style="text-align: center;">Note Type</th>
+                  <th style="text-align: center;">Note Title</th>
 
 
 
@@ -965,12 +970,12 @@
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer" style="padding-right:150px;">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert2"><b>Add New</b></button>
-          <button type="button" class="btn btn-secondary" (click)="deletenotesClick()" data-toggle="modal" data-target="#notesdeleteresponse"
-            data-dismiss="modal" [disabled]=notedelete><b>Delete</b></button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update2" [disabled]=noteedit><b>Edit</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert2" style="width:91px;">Add New</button>
+          <button type="button" class="btn btn-secondary" (click)="deletenotesClick()" 
+            data-dismiss="modal" [disabled]=notedelete style="width:91px;">Delete</button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update2" [disabled]=noteedit style="width:91px;">Edit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
         </div>
 
       </div>
@@ -1029,7 +1034,7 @@
 
           </div>
           <div class="modal-footer">
-            <button type="reset" class="btn btn-success" (click)="notesinsert(user1)" data-toggle="modal" data-target="#notesresponse"
+            <button type="reset" class="btn btn-success" (click)="notesinsert(user1)" 
               data-dismiss="modal"><b>Ok</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
@@ -1113,13 +1118,14 @@
 <div class="modal" id="negotiated">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width: 55%;">
+      <div class="modal-content" style="width: 55%; margin-top: -68px;">
 
         <!-- Modal Header -->
 
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Negotiated</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header" style="height: 61px;">
+          <h4 class="modal-title" style="margin-left: -91%;" >Negotiated</h4>
+        <p style="margin-left: -76%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+          
         </div>
 
         <!-- Modal body -->
@@ -1197,15 +1203,15 @@
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer" style="padding-right:50px;">
+        <div class="modal-footer" >
 
-          <button type="button" class="btn btn-info"><b>Detail</b></button>
+          <button type="button" class="btn btn-info" style="width:91px;"><b>Detail</b></button>
 
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update3" [disabled]=negoteedit><b>Edit</b></button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert1"><b>Add New</b></button>
-          <button type="button" class="btn btn-danger" (click)="deletenegotesClick()" data-toggle="modal" data-target="#negodeleteresponse"
-            data-dismiss="modal" [disabled]=negotedelete><b>Delete</b></button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#update3" [disabled]=negoteedit style="width:91px;">Edit</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insert1" style="width:91px;">Add New</button>
+          <button type="button" class="btn btn-warning" (click)="deletenegotesClick()" data-toggle="modal" data-target="#negodeleteresponse"
+            data-dismiss="modal" [disabled]=negotedelete style="width:91px;">Delete</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
 
         </div>
 

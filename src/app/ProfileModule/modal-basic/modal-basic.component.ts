@@ -5,6 +5,8 @@ import { ProfilesearchService } from '../profilesearch/profilesearch.service';
 import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as moment from 'moment';
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 
 import { Router } from "@angular/router";
@@ -17,6 +19,9 @@ import { SessionStorageService } from "ngx-webstorage";
   providers:[ModalService]
 })
 export class ModalBasicComponent implements OnInit {
+  
+  public Id = this.session.retrieve("id");
+  public Name = this.session.retrieve("pf_fname");
 
   public now:any;
   public tables =[];
@@ -46,14 +51,16 @@ export class ModalBasicComponent implements OnInit {
 
   
   constructor(private pppService:ModalService,private route:Router
-    ,public session:SessionStorageService ) { 
+    ,public session:SessionStorageService,private toasterService:ToasterServiceService ) { 
 this.negotes = this.negotes1;
 this.prefer = this.prefer1;
 this.prefer = this.prefer2;
 this.negotes = this.nego;
-
-
 }
+Success(message){
+  //  console.log("message",message);
+   this.toasterService.success(message);
+ }
 
 private month:any;
 private year:any;
@@ -183,6 +190,7 @@ getcreditexpiry(){
         this.mbc="";
         if(this.card=="RIS"){
           this.card="Creditcard is Add";
+          this.Success(this.card);
         }
         
         let paramss={
@@ -272,6 +280,7 @@ getcreditexpiry(){
             this.profilenotes=user335.ReturnCode;
             if(this.profilenotes=="RIS"){
               this.profilenotes="Special Notes is Add for the Guest";
+              this.Success(this.profilenotes);
             }
           },
           );  
@@ -339,7 +348,7 @@ changeClick(flag){
   .subscribe((resp: any) => {
     this.tables=resp.ReturnValue;
    
-    console.log(this.tables);
+    console.log("working fine",this.tables);
  
 });
 }
@@ -457,6 +466,8 @@ deletecreditClick(){
   this.delcard=user313.ReturnCode;
   if(this.delcard=="RDS"){
     this.delcard=" The Creditcard detail is deleted";
+    this.Success(this.delcard);
+    console.log("working",this.delcard)
   }
 
   let paramss={
@@ -519,6 +530,8 @@ deletenotesClick(){
   this.delcard2=user315.ReturnCode;
   if(this.delcard2=="RDS"){
     this.delcard2="Notes is Deleted ";
+    this.Success(this.delcard2);
+    console.log("workingggggggggggg",this.delcard2)
   }
   let paramss={
     "pf_id":this.session.retrieve("id"),
@@ -683,6 +696,7 @@ deletesClick(flag){
    this.profile2=resp.ReturnCode;
    if(this.profile2=="RDS"){
     this.profile2="The profile is Deleted";
+    this.Success(this.profile2);
    }
     // console.log("creditcard details");
     //  console.log(this.credit);
