@@ -885,12 +885,12 @@
 <div class="modal" id="notes">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content" style="width:70%;margin-left: 17%;margin-top: 17px;">
+      <div class="modal-content" style="width:70%;margin-left: 15%;margin-top: -59px;">
 
         <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" >Notes</h4>
-        <p ><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+        <div class="modal-header" style="height: 62px;">
+          <h4 class="modal-title" style="margin-left: -98%;">Notes</h4>
+        <p style="margin-left: -82%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
@@ -1035,8 +1035,8 @@
           </div>
           <div class="modal-footer">
             <button type="reset" class="btn btn-success" (click)="notesinsert(user1)" 
-              data-dismiss="modal"><b>Ok</b></button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+              data-dismiss="modal" style="width:91px">Ok</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px">Close</button>
           </div>
         </form>
       </div>
@@ -1343,8 +1343,8 @@
 
         <!-- Modal Header -->
         <div class="modal-header" style="margin-bottom: -25px">
-          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Preference</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="margin-left: -88%;">Preference</h4>
+        <p style="margin-left: -76%;"><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
 
         <!-- Modal body -->
@@ -1410,20 +1410,21 @@
 
               </tbody>
             </table>
-
-            <b style="padding-left:15px;">Description</b>
+            <div class="row">
+            <label style="margin-left: -466px;"><b>Description</b></label>
+            </div>
             <textarea rows="4" style=" width:95%; margin-left: 2%;background-color: white;">
               </textarea>
           </div>
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer" style="padding-right:100px;">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert3"><b>Add New</b></button>
-          <button type="button" class="btn btn-secondary" (click)="deletepreferClick(flag)" data-toggle="modal" data-target="#preferdeleteresponse"
-            data-dismiss="modal" [disabled]=prefdelete><b>Delete</b></button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update4" [disabled]=prefedit><b>Edit</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert3" style="width:91px;">Add New</button>
+          <button type="button" class="btn btn-secondary" (click)="deletepreferClick(flag)"
+            data-dismiss="modal" [disabled]=prefdelete style="width:91px;">Delete</button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update4" [disabled]=prefedit style="width:91px;">Edit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
         </div>
 
       </div>
@@ -1487,9 +1488,9 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="preferinsert(user3)" data-toggle="modal" data-target="#preferresponse"
-            data-dismiss="modal"><b>Ok</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-success" (click)="preferinsert(user3)" 
+            data-dismiss="modal" style="width:91px;">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
         </div>
       </div>
 
@@ -1553,9 +1554,9 @@
       </div> -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="preferupdate(user7)" data-toggle="modal" data-target="#preferupdateresponse"
-            data-dismiss="modal"><b>Ok</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+          <button type="button" class="btn btn-success" (click)="preferupdate(user7)" 
+            data-dismiss="modal" style="width:91px;">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
         </div>
       </div>
 

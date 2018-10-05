@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  RoomconditionService } from './roomcondition.service';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 
 @Component({
@@ -14,10 +16,15 @@ import { SessionStorageService } from "ngx-webstorage";
 })
 export class RoomconditionComponent implements OnInit {
 
-  constructor(private pService: RoomconditionService,private route:Router,public session:SessionStorageService) { 
+  constructor(private pService: RoomconditionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService) { 
     this.room = this.roomData;
     this.room = this.roomData1;
   }
+
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
   public room:any = [
   ];
 rm_condition;
@@ -52,6 +59,7 @@ roomData1 = [];
         this.newroom=user333.ReturnCode;
         if(this.newroom == "RIS"){
          this.newroom =" The Room Condition is Generated for "+this.rmid;
+         this.Success(this.newroom);
           this.pService. getroomcondition()
           .subscribe((resp: any) => {
           this.room = resp.ReturnValue;
@@ -70,6 +78,7 @@ roomData1 = [];
               this.newroom1=user334.ReturnCode;
               if(this.newroom1== "RUS"){
              this.newroom1="Room condition is Changed for "+this.rmid;
+             this.Success(this.newroom1);
               }
               this.pService.getroomcondition()
               .subscribe((resp: any) => {

@@ -6,98 +6,83 @@
   <div class="panel panel-primary" style="border-color: lightgray;margin-top: -15px">
       <div class="panel-body" >
     <form action="" id="myform">
+      <div class="col-md-12">
     <div class="row" style="margin-top: -15px">
-
-        <div class="col-sm-4">
+        <div class="col-md-2">
            <b> First Name</b> <div class="input-group">
-                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString" style="height: 30px;width: 60%"></div>
+                <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString" style="height: 30px;width:172px"></div>
         </div>
   
-        <div class="col-sm-4">
+        <div class="col-md-2">
   
             <b>Last Name</b> <div class="input-group">
-                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query" style="height: 30px;width: 60%"></div>
+                <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query" style="height: 30px;width: 172px"></div>
         </div>
         
-          <div class="col-sm-4">
+          <div class="col-md-2" >
               <b>Company</b> <div class="input-group">
-                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="Company" id="name" class="form-control" style="height: 30px;width: 60%"></div>
+                <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+                <input type="text" name="Company" id="name" class="form-control" style="height: 30px;width:172px"></div>
   
             </div>
-      
-  
-          </div>
-  
-          <div class="row" >
-  
-              <div class="col-lg-4">
-                  <b>Contact</b> <div class="input-group">
-                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                       <input type="text"name="Contact" class="form-control" style="height: 30px;width: 60%"></div>
-               </div>
-  
-        <div class="col-lg-4">
-            <b>Arrival From</b> <div class="input-group">
-                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
-         </div>
-   
-         <div class="col-lg-4">
-   
-             <b>Arrival To</b> <div class="input-group">
-                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
-         </div>
-        
-  
-      
-  
-          </div>
-  
-  
-          <div class="row" >
-  
-            <div class="col-lg-4">
-              <b>Group</b> <div class="input-group">
-                   <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                   <input type="text" name="Group" id="name" class="form-control" style="height: 30px;width: 60%"></div>
+
+            <div class="col-md-2" >
+              <b>Contact</b> <div class="input-group">
+                   <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span> -->
+                   <input type="text"name="Contact" class="form-control" style="height: 30px;width: 172px"></div>
            </div>
-           
+           <div class="col-md-2">
+            <b>Group</b> <div class="input-group">
+                 <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span> -->
+                 <input type="text" name="Group" id="name" class="form-control" style="height: 30px;width: 172px"></div>
+         </div>
+         <div class="col-md-2">
         
-              <div class="col-lg-4">
-        
-                  <b>Source</b> <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource" style="height: 30px;width: 60%"></div>
-              </div>
-            
-              <div class="col-lg-4">
-                    <b>Agent</b> <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Agent" id="name" class="form-control" style="height: 30px;width: 60%"></div>
-        
-                  </div>
-            
-        
-                </div>  
+            <b>Source</b> <div class="input-group">
+                <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span> -->
+                <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource" style="height: 30px;width: 172px"></div>
+        </div>
+     </div>
+  
+          <div class="row" >  
+              <div class="col-md-2 ">
+                  <b>Arrival From</b> <div class="input-group">
+                       <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span> -->
+                       <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 172px"></div>
+               </div>    
+         <div class="col-md-2"> 
+             <b>Arrival To</b> <div class="input-group">
+                 <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span> -->
+                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width:172px"></div>
+         </div>
+      <div class="col-md-2">
+            <b>Agent</b> <div class="input-group">
+              <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span> -->
+              <input type="text" name="Agent" id="name" class="form-control" style="height: 30px;width: 172px"></div>
+
+          </div>
+          <div class="col-md-2" style="margin-top: 18px;">
+              <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
+            </div>
+            <div class="col-md-2" style="margin-top: 18px;">
+              <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
+            </div>
+            <div class="col-md-2" style="margin-top: 18px;">
+              <button class="btn btn-success" style="width: 100%"routerLink="/reservation">Walk-in </button>   
+            </div>
+          </div>
+  
+
            
 <br>
 <div class="row" style="margin-top: -10px">
 <div class="col-md-3"></div>
-<div class="col-md-2">
-  <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
-</div>
-<div class="col-md-2">
-  <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
-</div>
-<div class="col-md-2">
-  <button class="btn btn-success" style="width: 100%"routerLink="/reservation">Walk-in </button>   
-</div>
+
 <div class="col-md-3"></div>
 
+</div>
 </div>
 </form>
 </div>

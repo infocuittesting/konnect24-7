@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import * as jsPDF from 'jspdf';
 import { SessionStorageService } from "ngx-webstorage";
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 
 
@@ -96,8 +98,12 @@ user24={};
 user={};
 
 
-  constructor(private roomService: HousekeepingService, private route: Router,public session:SessionStorageService) { }
+  constructor(private roomService: HousekeepingService, private route: Router,public session:SessionStorageService,private toasterService:ToasterServiceService) { }
 
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
   public rmid:any;
   public rmtype:any;
 

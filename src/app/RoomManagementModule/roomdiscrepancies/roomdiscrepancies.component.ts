@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoomdiscrepencyService  } from './roomdiscrepency.service';
 import { Router } from "@angular/router";
 import * as jsPDF from 'jspdf';
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 @Component({
   selector: 'app-roomdiscrepancies',
@@ -106,7 +108,12 @@ export class RoomdiscrepanciesComponent implements OnInit {
   public list = [];
   public class1 = [];
   public floor = [];
-  constructor(private pService: RoomdiscrepencyService,private route:Router) { }
+  constructor(private pService: RoomdiscrepencyService,private route:Router,private toasterService:ToasterServiceService) { }
+
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
 
   ngOnInit() {
 

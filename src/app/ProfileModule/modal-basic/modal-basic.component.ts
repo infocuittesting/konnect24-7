@@ -312,6 +312,8 @@ getcreditexpiry(){
               this.profileprefer=user336.ReturnCode;
               if(this.profileprefer=="RIS"){
                 this.profileprefer="Preferences is Add for the Guest";
+                this.Success(this.profileprefer);
+                console.log("workingggggggggg",this.profileprefer)
               }
             },
             );  
@@ -328,6 +330,7 @@ getcreditexpiry(){
                 this.profileprefer1=user339.ReturnCode;
                 if(this.profileprefer1=="RUS"){
                   this.profileprefer1="The Preferences is Updated for the Guest";
+                  this.Success(this.profileprefer1);
                 }
               },
               );  
@@ -563,6 +566,7 @@ deletepreferClick(){
   this.delcard7=user415.ReturnCode;
   if(this.delcard7=="RDS"){
     this.delcard7="Preferences is Deleted for the Guest";
+    this.Success(this.delcard7);
   }
   let paramss={
     "pf_id":this.session.retrieve("id"),

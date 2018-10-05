@@ -5,8 +5,8 @@ table{
    }
    .tableBodyScroll tbody {
     display:block;
-    height:200px;
-    max-height:200px;
+    height:280px;
+    max-height:280px;
     overflow-y:scroll;
     table-layout:fixed;
     }
