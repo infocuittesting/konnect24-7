@@ -4,6 +4,8 @@ import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 
 
@@ -95,7 +97,11 @@ export class RoommaintainComponent implements OnInit {
   roomcard=[];
   
   constructor(private maintainService: RoommaintainService,private route:Router,
-    public session:SessionStorageService) { }
+    public session:SessionStorageService,private toasterService:ToasterServiceService) { }
+    Success(message){
+      //  console.log("message",message);
+       this.toasterService.success(message);
+     }
 
   user={};
   user1={};
@@ -116,7 +122,10 @@ resolving=[];
         .subscribe(( user333:any)=> {
           this.user33 = user333;
           this.roomcard=user333.Return;
-          if(user333.Return == "Record Inserted Successfully"){
+          if(user333.Return == "Record Inserted Successfully")
+          this.Success(this.roomcard);
+          console.log("workingggggggggggggg",this.roomcard)
+          {
             console.log("checking return value is success or not")
             this.maintainService.roommaintenance()
             .subscribe((resp: any) => {
@@ -134,7 +143,9 @@ resolving=[];
               .subscribe(( user335:any)=> {
                 this.user35 = user335;
                 this.roomcard1=user335.Return;
-                if(user335.Return == "Record Updated Successfully"){
+                if(user335.Return == "Record Updated Successfully")
+                this.Success(this.roomcard1);
+                {
                   console.log("checking return value is success or not")
                   this.maintainService.roommaintenance()
                   .subscribe((resp: any) => {
@@ -183,6 +194,7 @@ room = [];
   this.maintainService.roommaintenance()
   .subscribe((resp: any) => {
    this.main=resp.ReturnValue;
+   console.log("workinggggggggggggggggggggg",this.main)
 
 });
 
