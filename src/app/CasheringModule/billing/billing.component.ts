@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import {BillingService} from './billing.service';
 // import { ContextMenuService } from 'angular2-contextmenu/src/contextMenu.service';
 // import { ContextMenuComponent } from 'angular2-contextmenu/src/contextMenu.component';
+import { ToasterServiceService } from '../../toaster-service.service'; 
 
 @Component({
   selector: 'app-billing',
@@ -80,7 +81,11 @@ public company;
   showMore1=false;
   showMore2=false;
   showMoretable=false;
-   constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router) { }
+   constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router,private toasterService:ToasterServiceService) { }
+   Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
   public listmark:any=[];
 
     //show more
@@ -198,6 +203,8 @@ transfertowindow(args)
         //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
          if(this.letter=="RIS"){
            this.paysuccessmsg="payment was done successfully";
+           console.log("workingggggggggggggggggg",this.paysuccessmsg)
+           this.Success(this.paysuccessmsg);
          }
          else{
            this.payfailuremsg="Unable to update";
@@ -293,6 +300,8 @@ saveroomDetails(postdetails)
        if(this.billing=="RIS")
        {
         this.postsuccessmsg="Payment was posted successfully";
+        console.log("workingggggggggggg",this.postsuccessmsg)
+        this.Success(this.postsuccessmsg);
        }
       else
       {

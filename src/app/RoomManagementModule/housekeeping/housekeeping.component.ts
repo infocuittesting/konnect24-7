@@ -285,6 +285,8 @@ selectandClearAll(flag){
       this.roomlist=user233.ReturnCode;
       if(this.roomlist == "RUS"){
         this.roomlist="The Room Status is changed to "+inputt.RM_Room_Status;
+        this.Success(this.roomlist);
+        console.log("workingggggggggggggggg",this.roomlist)
         this.roomService.gethousekeepingdata()
         .subscribe((resp: any) => {
         this.house = resp.ReturnValue;

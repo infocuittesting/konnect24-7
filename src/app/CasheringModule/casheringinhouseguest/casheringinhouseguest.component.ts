@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Route } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 import { CasheringinhouseguestService} from './casheringinhouseguest.service';
+import { ToasterServiceService } from '../../toaster-service.service'; 
 
 @Component({
   selector: 'app-casheringinhouseguest',
@@ -56,10 +57,14 @@ public folio=[
 ];
 
 
-  constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router) { 
+  constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router,private toasterService:ToasterServiceService) { 
     this.orderr=this.housetable;
     this.housetable1=this.housetable;
   }
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
 public money=[];
 public paycode=[];
 public housetable=[];
@@ -227,6 +232,8 @@ checkoutpost(arg1,balnc)
         if(this.letter=="RIS")
         {
           this.successmsg="payment was done successfully";
+          console.log("workinggggggggggggggggg",this.successmsg)
+          this.Success(this.successmsg);
         }
         else   
         {
