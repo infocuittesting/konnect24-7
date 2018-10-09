@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { RevenuemanagementService } from "./revenuemanagement.service"
 import { SessionStorageService } from "ngx-webstorage";
 import * as moment from 'moment';
+import { ToasterServiceService } from '../../toaster-service.service'; 
+
 
 
 @Component({
@@ -49,10 +51,14 @@ export class RevenuemanagementComponent implements OnInit {
 
 
   public date: any = new Date().toJSON().split('T')[0];
-  constructor(public session: SessionStorageService, private RevenuemanagementService: RevenuemanagementService, private route: Router, private fb: FormBuilder) {
+  constructor(public session: SessionStorageService, private RevenuemanagementService: RevenuemanagementService,private toasterService:ToasterServiceService, private route: Router, private fb: FormBuilder) {
     this.negotiatecode = this.ncode;
 
   }
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
 
 
   funcat(roomtypelist) {
@@ -197,9 +203,12 @@ export class RevenuemanagementComponent implements OnInit {
         console.log("sucalert and fail", this.sucalert, this.failalert);
         if (this.newnegovar == 'RIS') {
           this.sucalert = "negotiated created successfully";
+          this.Success(this.sucalert);
+          console.log("",this.sucalert)
         }
         else {
           this.sucalert = "sorry,currently can't able to create negotiated rate";
+         this.Success(this.sucalert);
         }
         this.RevenuemanagementService.NegotiatedRate()
           .subscribe((resp: any) => {
@@ -316,9 +325,11 @@ export class RevenuemanagementComponent implements OnInit {
         this.editvar = resp.ReturnCode;
         if (this.editvar == 'RUS') {
           this.negoeditalert = "negotiated updated successfully";
+          this.Success(this.negoeditalert);
         }
         else {
           this.negoeditalert = "can't able to update";
+          this.Success(this.negoeditalert);
         }
 
       });

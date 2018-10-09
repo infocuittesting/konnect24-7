@@ -662,21 +662,22 @@
   
             
               <div class="row">
+                  <div class="col-md-1"></div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
+                <button type="button" class="btn btn-info" style="width:140px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeating()" ><b>Repeat</b></button>
+                <button type="button" class="btn btn-primary" style="width:140px;" data-toggle="modal" (click)="repeating()" ><b>Repeat</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
+                <button type="button" class="btn btn-warning" style="width:140px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
             </div>
             <div class="col-md-2">
-              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" (click)="ratedetins(ratecodedrop,editratedetail);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
+              <button type="button" class="btn btn-success" style="width:140px;" data-toggle="modal" (click)="ratedetins(ratecodedrop,editratedetail);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
               <!-- <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#afterratedetsave" (click)="ratedetins(editblockdetails);ratedetForm.reset()" ><b>Save</b></button> -->
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()" routerLink="/revenueratecode"><b>Close</b></button>
+                <button type="button" class="btn btn-danger" style="width:140px;" (click)="ratedetForm.reset()" routerLink="/revenueratecode"><b>Close</b></button>
             </div></div>
     
     
@@ -777,19 +778,19 @@
                         <div class="row" style="margin-left:10%;">
                             
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-Info" style="width:110px;" disabled><b>Detail</b></button>
+                                <button type="button" class="btn btn-info" style="width:110px;" disabled><b>Detail</b></button>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
+                                <button type="button" class="btn btn-primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-danger" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" ><b>Edit</b></button>
+                                <button type="button" class="btn btn-success" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" ><b>Edit</b></button>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-Warning" style="width:110px;" (click)="negodel()" data-toggle="modal" data-target="#afterdelnegotiate" [disabled]=delbut><b>Delete </b></button>
+                                <button type="button" class="btn btn-warning" style="width:110px;" (click)="negodel()" data-toggle="modal" data-target="#afterdelnegotiate" [disabled]=delbut><b>Delete </b></button>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-Success" style="width:110px;" routerLink="/revenueratecode"><b>Close</b></button>
+                                <button type="button" class="btn btn-danger" style="width:110px;" routerLink="/revenueratecode"><b>Close</b></button>
                             </div>
                         </div>
     <!-- *************************************************************************************************************************** -->
@@ -906,7 +907,7 @@
                       </div>
                       </form>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#afternewnegotiate"  (click)="newnego(user);negoForm.reset()" data-dismiss="modal">Save</button>
+                          <button type="button" class="btn btn-success"    (click)="newnego(user);negoForm.reset()" data-dismiss="modal">Save</button>
                           <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="negoForm.reset()">Close</button>                                            
                       </div>
   
@@ -920,7 +921,7 @@
   <!-- alert after new negotiated insert  -->
   <div class="modal fade" id="afternewnegotiate" role="dialog">
           <div class="vertical-alignment-helper">  
-          <div class="modal-dialog vertical-align-center modal-sm">
+          <div class="modal-dialog vertical-align-center modal-lg">
           
               <!-- Modal content-->
               <div class="modal-content">
@@ -1012,8 +1013,8 @@
                       </div>
                       </form>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#aftereditnegotiate"  (click)="editnego(bgsd);editForm.reset()" data-dismiss="modal">Save</button>
-                          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editForm.reset()">Close</button>                                            
+                          <button type="button" class="btn btn-success"    (click)="editnego(bgsd);editForm.reset()" data-dismiss="modal" style="width:91px;">Save</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editForm.reset()" style="width:91px;">Close</button>                                            
                       </div>
   
   

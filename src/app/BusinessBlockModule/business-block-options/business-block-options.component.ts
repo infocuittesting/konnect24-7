@@ -5,6 +5,7 @@ import {BusinessBlockOptionsService} from './business-block-options.service'
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 import * as moment from 'moment';
+import { ToasterServiceService } from '../../toaster-service.service'; 
 
 
 
@@ -31,7 +32,12 @@ export class BusinessBlockOptionsComponent implements OnInit {
  public roomtype=[];
  public reason=[];
  public now;
-  constructor(private blockservice:BusinessBlockOptionsService,private route:Router,public session:SessionStorageService ) { }
+  constructor(private blockservice:BusinessBlockOptionsService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
+
  insertnotes(args){
    console.log(args);
    this.blockservice.insertbusinessblock(args)
@@ -41,6 +47,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
     if(this.return == "RIS"){
       this.notenumber="The notes is created for block id "+this.session.retrieve("blockid");
       console.log("service working fine");
+      this.Success(this.notenumber);
     }
     else{
       console.log("service failure");
@@ -57,6 +64,8 @@ export class BusinessBlockOptionsComponent implements OnInit {
   if(this.cancelmessage == "RIS"){
     this.cancelnumber="The group cancellaton number is "+this.cancelnumber;
     console.log("service working fine");
+    this.Success(this.cancelnumber);
+    console.log("workingggggggggggg",this.cancelnumber)
   }
   else{
     console.log("service failure");

@@ -10,6 +10,23 @@
 	 height:73px;
 	 border-top:1px solid Dimgray;
 	}
+	.vertical-alignment-helper {
+		display:table;
+		height: 100%;
+		width: 100%;
+	}
+	.vertical-align-center {
+		/* To center vertically */
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.modal-content {
+		/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+		width:inherit;
+		height:inherit;
+		/* To center horizontally */
+		margin: 0 auto;
+	}
 	
 .panel:hover{
       box-shadow: 5px 0px 40px rgba(0,0,0, .3);	
@@ -23,7 +40,10 @@ height:175px;
 		 /* margin-top:10px;
 		 margin-left: 30%; */
 		 }
-		  
+		 .modal {
+			text-align: left;
+		  padding: 0!important;
+		}	  
 	 
 .panel p{
           font-size:13px;
