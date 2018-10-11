@@ -1,3 +1,25 @@
+.modal {
+	text-align: left;
+	padding: 0!important;
+  }
+  .vertical-alignment-helper {
+	  display:table;
+	  height: 100%;
+	  width: 100%;
+  }
+  .vertical-align-center {
+	  /* To center vertically */
+	  display: table-cell;
+	  vertical-align: middle;
+  }
+  .modal-content {
+	  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+	  width:inherit;
+	  height:inherit;
+	  /* To center horizontally */
+	  margin: 0 auto;
+  }
+
 .disabled{
 	cursor:not-allowed;
 }
@@ -59,3 +81,7 @@ height:160px;
 	width:100%;
 	table-layout:fixed;
 	}  */
+	.modal-open {
+		overflow: auto !important;
+		padding-right: 0px !important;
+	}

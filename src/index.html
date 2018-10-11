@@ -30,6 +30,12 @@
       <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
       <script src="https://www.amcharts.com/lib/3/pie.js"></script>
       <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+      <script>
+      $(document.body).on('hide.bs.modal,hidden.bs.modal', function () {
+   $('body').css('padding-right','0');
+});
+      </script>
 </head>
 <body>
   <app-root></app-root>
