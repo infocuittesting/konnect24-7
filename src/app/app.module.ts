@@ -88,6 +88,11 @@ import { GuestservicestatusComponent } from './RoomManagementModule/guestservice
 import { OutoforderserviceComponent } from './RoomManagementModule/outoforderservice/outoforderservice.component';
 import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roommaintain.component';
 
+//Account receivable
+import { NewaraccountComponent } from './Accountreceivable/newaraccount/newaraccount.component';
+import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintenance/accountmaintenance.component';
+import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
+
 
 @NgModule({
     declarations: [
@@ -168,6 +173,9 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
         RevenueRateCodeComponent,
         EditRevenueManagementComponent,
         RevenuemanagementComponent,
+        NewaraccountComponent,
+        AccountmaintenanceComponent,
+        InvoiceComponent,
 
     ],
     imports: [

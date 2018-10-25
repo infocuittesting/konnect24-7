@@ -63,6 +63,12 @@ import { EditBusinessBlockComponent } from './../BusinessBlockModule/edit-busine
 import { QueryReservationListComponent} from './../BusinessBlockModule/query-reservation-list/query-reservation-list.component'
 import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component'; 
 
+//Account receivable
+import { NewaraccountComponent } from './../Accountreceivable/newaraccount/newaraccount.component';
+import { AccountmaintenanceComponent } from './../Accountreceivable/accountmaintenance/accountmaintenance.component';
+import { InvoiceComponent } from './../Accountreceivable/invoice/invoice.component';
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -121,7 +127,11 @@ import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms
       { path: "editblock", component: EditBusinessBlockComponent },
       { path: "queryreservation", component: QueryReservationListComponent },
       { path: "editgrid", component: EditGridRoomsComponent },
-
+      
+      // Account receivable
+      { path:"newaraccount",component:NewaraccountComponent},
+      { path:"AccountMaintenance",component:AccountmaintenanceComponent},
+      { path:"Invoice",component:InvoiceComponent},
     ])
   ],
   declarations: [],
@@ -132,4 +142,6 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,EditGridRoomsComponent,EditBusinessBlockComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
+RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
+InvoiceComponent]
