@@ -45,7 +45,8 @@ import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
 import { FoliohistoryComponent } from './CasheringModule/foliohistory/foliohistory.component';
 import { ContextmenuModule } from 'ng2-contextmenu';
-
+//reports
+import { ReportsComponent } from './reports/reports.component';
 //BusinessBlockModule
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
@@ -87,6 +88,7 @@ import { RoomhistoryComponent } from './RoomManagementModule/roomhistory/roomhis
 import { GuestservicestatusComponent } from './RoomManagementModule/guestservicestatus/guestservicestatus.component';
 import { OutoforderserviceComponent } from './RoomManagementModule/outoforderservice/outoforderservice.component';
 import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roommaintain.component';
+
 
 
 @NgModule({
@@ -133,7 +135,8 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
         BillingComponent,
         CasheringinhouseguestComponent,
         FoliohistoryComponent,
-
+      //reports
+      ReportsComponent,
         //BusinessBlock
 
         BlockRangeSettingComponent,
@@ -168,6 +171,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
         RevenueRateCodeComponent,
         EditRevenueManagementComponent,
         RevenuemanagementComponent,
+        ReportsComponent,
 
     ],
     imports: [

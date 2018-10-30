@@ -48,7 +48,8 @@ import { FoliohistoryComponent } from './../CasheringModule/foliohistory/foliohi
 import { EditRevenueManagementComponent } from './../RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 import { RevenueRateCodeComponent } from './../RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
 import { RevenuemanagementComponent } from './../RevenueManagementModule/revenuemanagement/revenuemanagement.component';
-
+//reports
+import { ReportsComponent } from '../reports/reports.component';
 //BusinessBlockModule
 import { BusinessBlockOptionsComponent } from './../BusinessBlockModule/business-block-options/business-block-options.component';
 import { BusinessBlockSearchComponent } from './../BusinessBlockModule/business-block-search/business-block-search.component';
@@ -106,7 +107,9 @@ import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms
       { path: 'revenue', component: RevenuemanagementComponent },
       { path: 'revenueratecode', component: RevenueRateCodeComponent },
       { path: 'ratetier', component: EditRevenueManagementComponent },
+      //reports
 
+      { path:'reports', component:ReportsComponent},
 
       //BusinessBLockSearch
       { path: 'business', component: BusinessBlockSearchComponent },

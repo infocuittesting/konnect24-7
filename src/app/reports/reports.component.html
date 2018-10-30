@@ -1,0 +1,430 @@
+<div class="wrapper">
+    <div class="content-wrapper">
+    <div class="col-md-1"></div>
+      <div class="row">
+    <div class="col-md-4">
+    <b style="font-size:20px;">Reports</b>
+   <div class="form-group">
+       <select class="form-control" name="reports" id="rerorts" style="width:69%;" [(ngModel)]="Droupdownvalue" (change)="showhiderestriction(Droupdownvalue)">
+           <option>--None--</option>
+           <option value="Reservation">Reservation</option>
+           <option value="Profile">Profile</option>
+           <option value="Front Desk">Front Desk</option>
+           <option value="Room Management">Room Management</option>
+           <option value="Cashiering">Cashiering</option>
+           <option value="Revenue Management">Revenue Management</option>
+           <option value="Business Block">Business Block</option>
+           <option value="Packages">Packages</option>
+       </select>
+   </div>
+    </div>
+    </div>
+    <div *ngIf="resv == true">
+        <div class="container">
+            <div class="row">
+                    <div class=" col-md-6">
+                    <div class="card" >
+                            <!-- <div class="card-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                            </div> -->
+                            <div class="card-body">
+                                <b style="font-size: 20px;margin-left: 12px;">Total Reservation</b>
+                                <div id="resvchart" [style.width.%]="100" [style.height.px]="350" ></div>
+                                <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                            </div>
+        
+                            
+        
+                        </div>
+                    </div>
+
+                    <div class=" col-md-6">
+                            <div class="card" >
+                                    <!-- <div class="card-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                    </div> -->
+                                    <div class="card-body">
+                                            <b style="font-size: 20px;margin-left: 12px;">Due times</b>
+                                        <div id="resvchart1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                        <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                    </div>
+                
+                                    
+                
+                                </div>
+                            </div>
+        </div>
+       <br>      
+        <div class="row">
+            <div class="card" >
+                <!-- <div class="card-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                </div> -->
+                <div class="card-body">
+                    <b style="font-size: 20px;margin-left: 12px;">Total Reservation</b>
+                    <div id="ganttchat" [style.width.%]="100" [style.height.px]="350" ></div>
+                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                </div>
+
+                
+
+            </div>
+            <!-- <div id="ganttchat"></div> -->
+        </div>
+    </div>
+    </div>
+    <div *ngIf="prof ==true">
+        <div class="container">
+            <div class="row">
+                    <div class=" col-md-6">
+                            <div class="card" >
+                                    <!-- <div class="card-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                    </div> -->
+                                    <div class="card-body">
+                                            <b style="font-size: 20px;margin-left: 12px;">Total Profile</b>
+                                        <div id="profile" [style.width.%]="100" [style.height.px]="350" ></div>
+                                        <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" col-md-6">
+                                    <div class="card" >
+                                            <!-- <div class="card-heading">
+                                                <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                            </div> -->
+                                            <div class="card-body">
+                                                    <b style="font-size: 20px;margin-left: 12px;">Individual Profile</b>
+                                                <div id="profile1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                                <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+            </div>
+            <br>
+            <div class="row">
+                    <div class=" col-md-6">
+                            <div class="card" >
+                                    <!-- <div class="card-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                    </div> -->
+                                    <div class="card-body">
+                                            <b style="font-size: 20px;margin-left: 12px;">Travel Agent</b>
+                                        <div id="profile2" [style.width.%]="100" [style.height.px]="350" ></div>
+                                        <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                    </div>
+                                </div>
+                            </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- //frontdesk -->
+    <div *ngIf="frontdesk == true">
+        <div class="container">
+          <div class="row">
+            <div class=" col-md-6">
+                <div class="card" >
+                        <!-- <div class="card-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                        </div> -->
+                        <div class="card-body">
+                                <b style="font-size: 20px;margin-left: 12px;">Checkin vs CheckOut</b>
+                            <div id="Frontdesk" [style.width.%]="100" [style.height.px]="350" ></div>
+                            <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                        </div>
+    
+                        
+    
+                    </div>
+                </div>
+
+
+                <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">Resolved vs UnResolved</b>
+                                    <div id="Frontdesk1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+            
+                                
+            
+                            </div>
+                        </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class=" col-md-12">
+                <div class="card" >
+                        <!-- <div class="card-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                        </div> -->
+                        <div class="card-body">
+                                <b style="font-size: 20px;margin-left: 12px;">Checkin vs CheckOut</b>
+                            <div id="waterfall" [style.width.%]="100" [style.height.px]="350" ></div>
+                            <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                        </div>
+    
+                        
+    
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div> 
+    <div *ngIf="cashering == true">
+       <div class="container">
+           <div class="row">
+                <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">Billing</b>
+                                    <div id="cashring" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+            
+                                
+            
+                            </div>
+                 </div>
+
+                 <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">Payable Time</b>
+                                    <div id="cashring1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+            
+                                
+            
+                            </div>
+                 </div>
+                </div>
+                   <br>
+                   <div class="row">
+                 <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">zero balance count</b>
+                                    <div id="Roomtransver" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+            
+                                
+            
+                            </div>
+                 </div>
+                </div>
+          
+       </div>
+    </div>
+
+  <!-- //Revenue Management -->
+     <div *ngIf="revenue == true">
+         <div class="container">
+                <div class="row">
+                        <div class=" col-md-6">
+                                <div class="card" >
+                                        <!-- <div class="card-heading">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                        </div> -->
+                                        <div class="card-body">
+                                                <b style="font-size: 20px;margin-left: 12px;">Rate Tair</b>
+                                            <div id="revenue" [style.width.%]="100" [style.height.px]="350" ></div>
+                                            <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                        </div>
+                    
+                                        
+                    
+                                    </div>
+                         </div>
+        
+                         <div class=" col-md-6">
+                                <div class="card" >
+                                        <!-- <div class="card-heading">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                        </div> -->
+                                        <div class="card-body">
+                                                <b style="font-size: 20px;margin-left: 12px;">Rate Codes</b>
+                                            <div id="revenue1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                            <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                        </div>
+                    
+                                        
+                    
+                                    </div>
+                         </div>
+                        </div>
+                           <br>
+                           <br>
+                           <div class="row">
+                          <div class=" col-md-12">
+                                <div class="card" >
+                                        <!-- <div class="card-heading">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                        </div> -->
+                                        <div class="card-body">
+                                                <b style="font-size: 20px;margin-left: 12px;"> Rate tair</b>
+                                            <div id="revenue2" [style.width.%]="100" [style.height.px]="350" ></div>
+                                            <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                        </div>
+                    
+                                        
+                    
+                                    </div>
+                         </div>
+                        </div>
+         </div>
+     </div>
+
+         <!-- businessblocks -->
+
+         <div *ngIf="blocks == true">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">BLock Status</b>
+                                    <div id="blocks" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+                            </div>
+                 </div>
+                
+
+                <div class=" col-md-6">
+                    <div class="card" >
+                            <!-- <div class="card-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                            </div> -->
+                            <div class="card-body">
+                                    <b style="font-size: 20px;margin-left: 12px;">Inquiry vs Tendative</b>
+                                <div id="blocks1" [style.width.%]="100" [style.height.px]="350" ></div>
+                                <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                            </div>
+                        </div>
+             </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-md-12">
+                    <div class="card">
+                          <h4 style="text-align: center;">Arrived Room Status(in Month)</h4>
+                  
+                              <div id="blocksstatistics"  style="width:103%;height:450px;"></div>   
+                        
+                    </div>
+                  </div>  -->
+
+            </div>
+            </div>
+            
+            
+            </div>
+
+            <!-- //Roommanagement -->
+            <div *ngIf="roommanage == true">
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-md-6">
+                            <div class="card" >
+                                    <!-- <div class="card-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                    </div> -->
+                                    <div class="card-body">
+                                            <b style="font-size: 20px;margin-left: 12px;">roomdiscription</b>
+                                        <div id="roomdisk" [style.width.%]="100" [style.height.px]="350" ></div>
+                                        <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                    </div>
+                                </div>
+                     </div>
+                     <div class=" col-md-6">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">fecility</b>
+                                    <div id="fecility" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+                            </div>
+                 </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class=" col-md-12">
+                            <div class="card" >
+                                    <!-- <div class="card-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                    </div> -->
+                                    <div class="card-body">
+                                            <b style="font-size: 20px;margin-left: 12px;">House Keeping</b>
+                                        <div id="HouseKeeping" [style.width.%]="100" [style.height.px]="350" ></div>
+                                        <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                    </div>
+                                </div>
+                     </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                     <div class=" col-md-12">
+                        <div class="card" >
+                                <!-- <div class="card-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                </div> -->
+                                <div class="card-body">
+                                        <b style="font-size: 20px;margin-left: 12px;">Room Maintenance</b>
+                                    <div id="RoomMaintenance" [style.width.%]="100" [style.height.px]="350" ></div>
+                                    <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                </div>
+                            </div>
+                 </div>
+                </div>
+                   
+                    <br>
+                    <div class="row">
+                            <div class=" col-md-12">
+                                    <div class="card" >
+                                            <!-- <div class="card-heading">
+                                                <i class="fa fa-bar-chart-o fa-fw"></i>Donut Chart Example
+                                            </div> -->
+                                            <div class="card-body">
+                                                    <b style="font-size: 20px;margin-left: 12px;">Guestservices</b>
+                                                <div id="guestservices" [style.width.%]="100" [style.height.px]="350" ></div>
+                                                <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
+                                            </div>
+                                        </div>
+                             </div>    
+
+                    </div>
+                    
+
+                    </div>
+                </div>
+                
+            <div *ngIf="packages == true">
+                <h3>hello darling</h3>
+            </div>
+         </div>
+        </div>
