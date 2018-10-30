@@ -89,6 +89,11 @@ import { GuestservicestatusComponent } from './RoomManagementModule/guestservice
 import { OutoforderserviceComponent } from './RoomManagementModule/outoforderservice/outoforderservice.component';
 import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roommaintain.component';
 
+//Account receivable
+import { NewaraccountComponent } from './Accountreceivable/newaraccount/newaraccount.component';
+import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintenance/accountmaintenance.component';
+import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
+
 
 
 @NgModule({
@@ -171,7 +176,13 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
         RevenueRateCodeComponent,
         EditRevenueManagementComponent,
         RevenuemanagementComponent,
+<<<<<<< HEAD
         ReportsComponent,
+=======
+        NewaraccountComponent,
+        AccountmaintenanceComponent,
+        InvoiceComponent,
+>>>>>>> 35952b8533e234c6f38a251da93eac30ad67f793
 
     ],
     imports: [
