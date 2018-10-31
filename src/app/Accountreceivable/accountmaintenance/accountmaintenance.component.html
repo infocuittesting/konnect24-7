@@ -1,148 +1,372 @@
 <body>
-    <div class="wrapper">
-        <div class="content-wrapper">
-          <br>
-          <div class="container-fluid">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <b>Date</b>
-                      <div class="input-group">
-                        <input type="date" name="" id="" style="height:34px;width:250px;">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <b>Folio No</b>
-                      <div class="input-group">
-                        <input type="text" name="" id="" style="height:34px;width:250px;">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <b>Invoice No</b>
-                      <div class="input-group">
-                        <input type="text" name="" id="" style="height:34px;width:250px;">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <b>Account Balance</b>
-                      <div class="input-group">
-                        <input type="text" name="" id="" style="height:34px;width:250px;">
-                      </div>
-                    </div>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <br>
+      <div class="container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <form action="">
+              <div class="row">
+                <div class="col-md-3">
+                  <b>Date</b>
+                  <div class="input-group">
+                    <input type="date" name="" id="" style="height:34px;width:250px;">
                   </div>
-                  <div class="row" style="margin-top:10px;">
-                    <div class="col-md-3">
-                      <div class="input-group">
-                        <label for=""><input type="radio" name="" id=""> All Invoice</label>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="input-group">
-                        <label for=""><input type="radio" name="" id=""> Open Invoice</label>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="input-group">
-                        <label for=""><input type="checkbox" name="" id=""> Payment Only</label>
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <button type="button" class="btn btn-warning">Clear</button>
-                    </div>
+                </div>
+                <div class="col-md-3">
+                  <b>Folio No</b>
+                  <div class="input-group">
+                    <input type="text" name="" id="" style="height:34px;width:250px;">
                   </div>
-                </form>
+                </div>
+                <div class="col-md-3">
+                  <b>Invoice No</b>
+                  <div class="input-group">
+                    <input type="text" name="" id="" style="height:34px;width:250px;">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <b>Account Balance</b>
+                  <div class="input-group">
+                    <input type="text" name="" id="" style="height:34px;width:250px;">
+                  </div>
+                </div>
               </div>
-            </div>
-            <br>
-            <table class="table table-bordered table-hover">
-              <thead style="background-color: #0077B5;color: white">
-                <tr>
-                  <th>Seq</th>
-                  <th>Name</th>
-                  <th>Date</th>
-                  <th>Folio NO</th>
-                  <th>Invoice No</th>
-                  <th>Amount</th>
-                  <th>Open</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>padmanabhan</td>
-                  <td>10/10/2018</td>
-                  <td>300</td>
-                  <td>1</td>
-                  <td>140</td>
-                  <td>150</td>
-                </tr>
-              </tbody>
-      
-            </table>
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-10">
-                <button type="button" class="btn btn-info" style="width:130px"> New</button>
-                <button type="button" class="btn btn-success" style="width:130px;margin-left: 10px">Edit</button>
-                <button type="button" class="btn btn-info" style="width:130px;margin-left: 10px" routerLink="/Invoice">Invoice</button>
-                <button type="button" class="btn btn-warning" style="width:130px;margin-left: 10px">Payment</button>
-                <button type="button" class="btn btn-primary" style="width:130px;margin-left: 10px">Compress</button>
-                <button type="button" class="btn btn-info" style="width:130px;margin-left: 10px">Options</button>
-                <button type="button" class="btn btn-danger" style="width:130px;margin-left: 10px">close</button>
+              <div class="row" style="margin-top:10px;">
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <label for=""><input type="radio" name="" id=""> All Invoice</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <label for=""><input type="radio" name="" id=""> Open Invoice</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <label for=""><input type="checkbox" name="" id=""> Payment Only</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-warning">Clear</button>
+                </div>
               </div>
-              <div class="col-md-1"></div>
-            </div>
+            </form>
           </div>
-          <br>
-          <br>
         </div>
-      </div> 
+        <br>
+        <table class="table table-bordered table-hover">
+          <thead style="background-color: #0077B5;color: white">
+            <tr>
+              <th>Seq</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Folio NO</th>
+              <th>Invoice No</th>
+              <th>Amount</th>
+              <th>Open</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>padmanabhan</td>
+              <td>10/10/2018</td>
+              <td>300</td>
+              <td>1</td>
+              <td>140</td>
+              <td>150</td>
+            </tr>
+          </tbody>
+
+        </table>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <button type="button" class="btn btn-info" style="width:110px" data-target="#invoice" data-toggle="modal">
+              New</button>
+            <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px">Edit</button>
+            <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Invoice">Invoice</button>
+            <button type="button" class="btn btn-warning" style="width:110px;margin-left: 10px" data-target="#pay"
+              data-toggle="modal">Payment</button>
+            <button type="button" class="btn btn-primary" style="width:110px;margin-left: 10px"  data-target="#Compress1"
+            data-toggle="modal">Compress</button>
+            <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Accountoptions">Options</button>
+            <button type="button" class="btn btn-danger" style="width:110px;margin-left: 10px">close</button>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
 </body>
 
+<!-- New Invoice start-->
+<div class="modal fade" id="invoice" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"> New Invoice</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p><b> Guest</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:250px;">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p><b> Market</b></p>
+            <div class="input-group">
+              <select name="" id="" style="height:34px;width:250px;">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="col-md-6">
+            <p><b> Source</b></p>
+            <div class="input-group">
+              <select name="" id="" style="height:34px;width:250px;">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p><b> Room Class</b></p>
+            <div class="input-group">
+              <select name="" id="" style="height:34px;width:250px;">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="col-md-6">
+            <p><b> Invoice supplement</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:250px;">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p><b> Invoice Reference</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:250px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- New Invoice End -->
+
+<!-- payment start-->
+<div class="modal fade" id="pay" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="width:220%;margin-left: -60%">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"> Payment</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <p><b>Payment Code</b></p>
+            <div class="input-group">
+              <select name="" id="" style="height:34px;width:200px;">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <p><b>Currency</b></p>
+            <div class="input-group">
+              <select name="" id="" style="height:34px;width:200px;">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <p><b>Amount</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:210px;">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <p><b>supplement</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:210px;">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <p><b>Reference</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:200px;">
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <label for=""><input type="checkbox" name="" id=""> Apply Payment</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <label for=""><input type="checkbox" name="" id="">Unallocated Payment</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <label for=""><input type="checkbox" name="" id="">Apply Payment to oldest charges</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <label for=""><input type="checkbox" name="" id="">Apply Payment to marked charges</label>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <label for=""><input type="checkbox" name="" id="">Apply Payment selectively</label>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal"><b>Post</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Payment End -->
+
+<!-- New Invoice start-->
+<div class="modal fade" id="Compress1" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"> Compress Invoice</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <p><b> Account Name</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:150px;">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p><b> Amount</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:150px;">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p><b> Market</b></p>
+            <div class="input-group">
+              <textarea name="" id="" style="height:34px;width:150px;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="col-md-12">
+            <p><b> Source</b></p>
+            <div class="input-group">
+              <textarea name="" id="" style="height:34px;width:550px;"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal"><b>Ok</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- New Invoice End -->
