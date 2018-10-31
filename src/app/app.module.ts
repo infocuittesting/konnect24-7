@@ -176,13 +176,9 @@ import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component'
         RevenueRateCodeComponent,
         EditRevenueManagementComponent,
         RevenuemanagementComponent,
-<<<<<<< HEAD
-        ReportsComponent,
-=======
         NewaraccountComponent,
         AccountmaintenanceComponent,
         InvoiceComponent,
->>>>>>> 35952b8533e234c6f38a251da93eac30ad67f793
 
     ],
     imports: [
