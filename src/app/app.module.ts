@@ -92,6 +92,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
 import { NewaraccountComponent } from './Accountreceivable/newaraccount/newaraccount.component';
 import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintenance/accountmaintenance.component';
 import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
+import { AccountoptionsComponent } from './Accountreceivable/accountoptions/accountoptions.component';
 
 
 @NgModule({
@@ -176,6 +177,7 @@ import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component'
         NewaraccountComponent,
         AccountmaintenanceComponent,
         InvoiceComponent,
+        AccountoptionsComponent,
 
     ],
     imports: [

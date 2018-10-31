@@ -117,14 +117,14 @@
         <thead>
             <tr class="table table-primary" style="background-color: #0077B5;color: white">
                   <th style="width:50px"> Seq</th>                      
-                  <th style="width:180px"> Name</th>
+                  <th style="width:160px"> Name</th>
                   <th style="width:110px"> Arrival_Date</th>
                   <th style="width:130px"> Departure_Date</th>
                   <th style="width:75px" *ngIf="showMore!=true"> Nights</th>
                   <th style="width:100px" *ngIf="showMore!=true"> Room_Type</th>
                   <th style="width:60px" *ngIf="showMore!=true"> Adults</th>                        
                   <th style="width:60px" *ngIf="showMore!=true"> Child</th>
-                  <th style="width:85px" *ngIf="showMore!=true"> Status</th>
+                  <th style="width:105px" *ngIf="showMore!=true"> Status</th>
                   <th style="width:110px" *ngIf="showMore!=true"> Block_Code</th>
                   <th *ngIf="showMore!=true"> Rate_Code</th>                    
                   <th style="width:60px"  *ngIf="showMore==true"> Room</th>
@@ -161,14 +161,14 @@
           <!-- <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
             <td style="width:50px">{{i+1}}</td> 
-            <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>
+            <td style="width:160px"> {{searched.pf_firstname|titlecase}}</td>
             <td style="width:110px"> {{searched.res_arrival}} </td> 
             <td style="width:130px"> {{searched.res_depature}} </td>
             <td style="width:75px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
             <td style="width:100px" *ngIf="showMore!=true"> {{searched.res_room_type |titlecase}} </td>
             <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
             <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
-            <td style="width:85px" *ngIf="showMore!=true"> {{searched.res_guest_status|titlecase}} </td>     
+            <td style="width:105px" *ngIf="showMore!=true"> {{searched.res_guest_status|titlecase}} </td>     
             <td style="width:110px" *ngIf="showMore!=true"> {{searched.res_block_code}}</td> 
             <td *ngIf="showMore!=true"> {{searched.res_rate_code}}</td>     
             <td style="width:60px"  *ngIf="showMore==true"> {{searched.res_room }} </td>
