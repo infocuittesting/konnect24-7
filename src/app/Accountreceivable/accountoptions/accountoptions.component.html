@@ -184,7 +184,7 @@
         <!--alert-->
         <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
           <div class="panel">
-            <div class="panel-body" data-toggle="modal" data-target="#alert">
+            <div class="panel-body" data-toggle="modal" data-target="#traces">
               <div class="text-center">
                 <img src="assets/images/traces.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
               </div>
@@ -202,7 +202,7 @@
         <!--alert-->
         <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
           <div class="panel">
-            <div class="panel-body" data-toggle="modal" data-target="#alert">
+            <div class="panel-body" data-toggle="modal" data-target="#YearView">
               <div class="text-center">
                 <img src="assets/images/year.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
               </div>
@@ -221,12 +221,12 @@
                <!--alert-->
                <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
                   <div class="panel">
-                    <div class="panel-body" data-toggle="modal" data-target="#alert">
+                    <div class="panel-body" data-toggle="modal" data-target="#payhistory">
                       <div class="text-center">
-                        <img src="assets/images/year.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
+                        <img src="assets/images/closeinvoice.jpg" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
                       </div>
-                      <h4 align="center">YearView</h4>
-                      <p align="center"><small>YearView Alert!</small></p>
+                      <h4 align="center">Pay History</h4>
+                      <p align="center"><small>Pay History Alert!</small></p>
                     </div>
                     <div class="panel-footer">
                       <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Admin Alert!</small></p>
@@ -240,10 +240,10 @@
             <div class="panel">
               <div class="panel-body" data-toggle="modal" data-target="#alert">
                 <div class="text-center">
-                  <img src="assets/images/year.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
+                  <img src="assets/images/Foliohistory.jpg" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
                 </div>
-                <h4 align="center">YearView</h4>
-                <p align="center"><small>YearView Alert!</small></p>
+                <h4 align="center">Folio History</h4>
+                <p align="center"><small>Folio History Alert!</small></p>
               </div>
               <div class="panel-footer">
                 <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Admin Alert!</small></p>
@@ -255,12 +255,12 @@
                   <!--alert-->
         <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
             <div class="panel">
-              <div class="panel-body" data-toggle="modal" data-target="#alert">
+              <div class="panel-body" data-toggle="modal" data-target="#Transfer">
                 <div class="text-center">
-                  <img src="assets/images/year.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
+                  <img src="assets/images/Transfer.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
                 </div>
-                <h4 align="center">YearView</h4>
-                <p align="center"><small>YearView Alert!</small></p>
+                <h4 align="center">Transfer</h4>
+                <p align="center"><small>Transfer Alert!</small></p>
               </div>
               <div class="panel-footer">
                 <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Admin Alert!</small></p>
@@ -275,6 +275,464 @@
   </div>
 </div>
 
+
+<!-- // pay history modal start -->
+<!-- Modal -->
+<div id="payhistory" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="width: 120%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Pay History</h4>
+      </div>
+      <div class="modal-body">
+       <div class="container-fluid">
+         <div class="card">
+         <div class="row">
+           <div class="col-md-4">
+           <div class="form-group" style="margin-left: 10px;">
+             <label for="name">From Date</label>
+             <input type="date" class="form-control" id="Fromdate" name="From date" > 
+           </div>
+          </div>
+         
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">Invoice No</label>
+              <input type="number" class="form-control" id="invoiceno" name="invoiceno" >
+            </div>
+          </div>
+         </div>
+        </div>
+        <br>
+         <div class="row">
+           <table  class="table table-bordered table-hover">
+             <thead class="table" style="background-color: #0077B5;color: white">
+               <tr>
+               <td>Invoive</td>
+               <td>Type</td>
+               <td>Trn Code</td>
+               <td>Description</td>
+               <td>PostDate</td>
+               <td>Amount</td>
+               <td>App.Amt</td>
+               <td>reference</td>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>1001</td>
+                 <td>no</td>
+                 <td>1000</td>
+                 <td>hello</td>
+                 <td>10-31-2018</td>
+                 <td>10000</td>
+                 <td>123</td>
+                 <td>No reference</td>
+               </tr>
+               <tr>
+                  <td>1002</td>
+                  <td>no</td>
+                  <td>1000</td>
+                  <td>hello</td>
+                  <td>10-31-2018</td>
+                  <td>10000</td>
+                  <td>123</td>
+                  <td>No reference</td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td>no</td>
+                    <td>1000</td>
+                    <td>hello</td>
+                    <td>10-31-2018</td>
+                    <td>10000</td>
+                    <td>123</td>
+                    <td>No reference</td>
+                  </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+   <!-- Transfer -->
+
+   <!-- Modal -->
+<div id="Transfer" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 85%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Transfer</h4>
+        </div>
+        <div class="modal-body">
+        <div class="container-fluid">
+          <div class="card" >
+          <div class="row" style="padding: 10px 10px 0px 10px;">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="name">Account Name</label>
+                <input type="text" class="from-group" id="Account name" name="name">
+              </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                  <label for="name">From Account NO</label>
+                  <input type="text" class="from-group" id="Account name" name="name">
+                </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="name">To Account No</label>
+                    <input type="text" class="from-group" id="Account name" name="name">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="name">Account Type</label>
+                      <select  class="from-control input-sm" id="Account name" name="name" style="width: 146px;">
+                        <option>hello</option>
+                        <option>hello</option>
+                        <option>hello</option>
+                      </select>
+                    </div>
+                  </div>
+          </div>
+          <div class="row" style="padding: 0px 10px 10px 10px;">
+              <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="name">Amount</label>
+                    <input type="number" class="from-group" id="Account name" name="name">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="name">Text</label>
+                      <input type="text" class="from-group" id="Account name" name="name">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="name">Supplement</label>
+                        <input type="text" class="from-group" id="Account name" name="name">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    <div class="row">
+                    <div class="col-md-3">
+                        <div class="radio" >
+                            <label><input type="radio" name="optradio" checked>all</label>
+                          </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" checked>Openbalance</label>
+                          </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" checked>New Balance</label>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <table class="table table-bordered table-hover">
+                      <thead class="table" style="background-color: #0077B5;color: white">
+                       <tr>
+                         <td>Account Name</td>
+                         <td>Account No</td>
+                         <td>Balance</td>
+                         <td>content</td>
+                         <td>type</td>
+                         <td>city</td>
+                       </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Venkat</td>
+                          <td>3204145568</td>
+                          <td>12345</td>
+                          <td>hello</td>
+                          <td>employee</td>
+                          <td>chennai</td>
+                        </tr>
+
+                        <tr>
+                            <td>Venkat</td>
+                            <td>3204145568</td>
+                            <td>12345</td>
+                            <td>hello</td>
+                            <td>employee</td>
+                            <td>chennai</td>
+                          </tr>
+
+                          <tr>
+                              <td>Venkat</td>
+                              <td>3204145568</td>
+                              <td>12345</td>
+                              <td>hello</td>
+                              <td>employee</td>
+                              <td>chennai</td>
+                            </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+          
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" style="width: 60px;">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+
+
+
+   <!-- YearView -->
+           
+   <div id="YearView" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 120%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <table class="table table-bordered table-hover">
+                <thead class="table" style="background-color: #0077B5;color: white">
+                 <tr>
+                   <td>period</td>
+                   <td>Debits</td>
+                   <td>Credits</td>
+                   <td>Balance</td>
+                 </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>mar 2002</td>
+                    <td>1000</td>
+                    <td>100000</td>
+                    <td>1000000</td>
+                  </tr>
+                  <tr>
+                      <td>mar 2002</td>
+                      <td>1000</td>
+                      <td>100000</td>
+                      <td>1000000</td>
+                    </tr>
+                    <tr>
+                        <td>mar 2002</td>
+                        <td>1000</td>
+                        <td>100000</td>
+                        <td>1000000</td>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+   
+    <!-- //traces modal start -->
+
+    <div id="traces" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Traces</h4>
+          </div>
+          <div class="modal-body">
+           <div class="continer">
+             <div class="card">
+             <div class="row" style=" padding: 13px;">
+              <div class="col-md-3">
+                 <label for="name">Date</label>
+                <div class="form-group">
+                  <input type="date" class="from-control" id="date" name="date">
+                </div>
+              </div>
+              <div class="col-md-3">
+                  <label for="name">Account Name</label>
+                 <div class="form-group">
+                   <input type="text" class="from-control" id="date" name="date">
+                 </div>
+               </div>
+                  <div class="col-md-2">
+                      <div class="radio">
+                          <label><input type="radio" name="optradio" checked>All Taraces</label>
+                        </div>
+                  
+                  
+                      <div class="radio">
+                          <label><input type="radio" name="optradio" checked>Resolves Traces</label>
+                        </div>
+                  
+                
+                      <div class="radio">
+                          <label><input type="radio" name="optradio" checked>Unresolved Traces</label>
+                        </div>
+                  
+                      </div>
+             </div>
+            </div>
+            <br>
+            <div class="row">
+              <table class="table table-bordered table-hover">
+                <thead class="table" style="background-color: #0077B5;color: white">
+                  <tr>
+                    <td>Name</td>
+                    <td>Trace On</td>
+                    <td>Resolved On</td>
+                    <td>Resolved By</td>
+                    <td>Created By</td>
+                    <td>Created On</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hotal groups</td>
+                    <td>10/31/2018</td>
+                    <td></td>
+                    <td>Unresolved</td>
+                    <td>supervisor</td>
+                    <td>10/31/2018</td>
+                  </tr>
+                  <tr>
+                      <td>Hotal groups</td>
+                      <td>10/31/2018</td>
+                      <td></td>
+                      <td>Unresolved</td>
+                      <td>supervisor</td>
+                      <td>10/31/2018</td>
+                    </tr>
+                    <tr>
+                        <td>Hotal groups</td>
+                        <td>10/31/2018</td>
+                        <td></td>
+                        <td>Unresolved</td>
+                        <td>supervisor</td>
+                        <td>10/31/2018</td>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+           </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row" align="center">
+              <button type="button" class="btn btn-primary" style="width:100px;">Resolve All</button>
+              <button type="button" class="btn btn-warning" style="width:100px;">Resolve</button>
+              <button type="button" class="btn btn-success"style="width:100px;"data-toggle="modal" data-target="#tracecsnew" >New</button>
+            <button type="button" class="btn btn-default"  style="width:100px;">Edit</button>
+            <button type="button" class="btn btn-danger" style="width:100px;" data-dismiss="modal">Close</button>
+          </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
+    <!-- //Traces options -->
+
+    <div id="tracecsnew" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">TTraces</h4>
+            </div>
+            <div class="modal-body">
+          <div class="container-fluid">
+           <div class="row">
+             <table class="table table-bordered table-hover">
+               <thead class="table" style="background-color: #0077B5;color: white">
+                <tr>
+                <td>Account Name</td>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>hell darling</td>
+                </tr>
+                <tr>
+                    <td>hell darling</td>
+                  </tr>
+                  <tr>
+                      <td>hell darling</td>
+                    </tr>
+              </tbody>
+              
+             </table>
+           </div>
+           <div class="row">
+             <div class="col-md-4">
+             <div class="form-group">
+               <label for=name>Trace On </label>
+               <input type="date" class="form-control" id="trace on" name="trace on">
+             </div>
+            </div>
+           </div>
+           <div class="row">
+             <div class="col-md-12">
+                <div class="form-group">
+                    <label for="comment">Trace Text</label>
+                    <textarea class="form-control" rows="3" style="width:100%;" id="comment"></textarea>
+                  </div>
+             </div>
+           </div>
+          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      Example Explained
+
+
+
+
+
+
+
 <!-- Aging start-->
 <div class="modal fade" id="aging" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog">
@@ -288,7 +746,7 @@
         <div class="modal-body">
           <div class="row" style="padding:10px;">
           <table class="table table-bordered table-hover">
-            <thead class="table" style="background-color: #0077B5;color: white">
+            <thead  class="table" style="background-color: #0077B5;color: white">
               <tr>
                 <th>Levels</th>
                 <th>Open</th>
