@@ -12,33 +12,60 @@ export class ReportsService {
   statisticsDetails(): Observable<object[]> {
 
    
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    return this.http.post('https://hotel360.herokuapp.com/futurebooking', options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-  statisticsDetails1(): Observable<object[]> {
+
+  historybooking(): Observable<object[]> {
 
    
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    return this.http.post('https://hotel360.herokuapp.com/HistoryBooking', options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-  profile(): Observable<object[]> {
+   getroomdetails(startdate,enddate): Observable<object[]> {
+      
+    let body = {
 
-   
+      "from_date": startdate,
+      "to_date": enddate
+    } 
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+
+    return this.http.post('https://hotel360.herokuapp.com/GetReservationNoshowreport',body,options)
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
+
+  profile( startdate, enddate): Observable<object[]> {
+    let body = {
+
+      "from_date": startdate,
+      "to_date": enddate
+    } 
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+
+
+    return this.http.post('https://hotel360.herokuapp.com/GetProfileReport',body,options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
   profile1(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
@@ -47,7 +74,7 @@ export class ReportsService {
 
   profile2(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
@@ -57,7 +84,7 @@ export class ReportsService {
   // Front Desk
   frontdesk(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
@@ -65,38 +92,52 @@ export class ReportsService {
   }
 
 
-  frontdesk1(): Observable<object[]> {
+  frontdesk1(startdate,enddate): Observable<object[]> {
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
+    }
 
-   
-
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('https://hotel360.herokuapp.com/GetFrontDeskReport',body,options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
   //cashering
-     
-  cashering(): Observable<object[]> {
 
-   
+  cashering(startdate,enddate): Observable<object[]> {
 
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
+    }
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post('https://hotel360.herokuapp.com/GetZerobalanceaccount',body,options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-  cashering1(): Observable<object[]> {
+  casheringtotalcount( startdate,enddate): Observable<object[]> {
 
-   
-
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
+    }
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+   console.log("go to total amount")
+    return this.http.post('https://hotel360.herokuapp.com/Cashiergettotalamount',body,options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
   Roomtransver(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
@@ -104,110 +145,138 @@ export class ReportsService {
   }
 
   // RevenueManagement
-  
+
   revenue(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
-  
+
   revenue1(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-  
+
   revenue2(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-   
+
   businessblocks(): Observable<object[]> {
 
-   
+
 
     return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-  businessblocks1(): Observable<object[]> {
+  businessblocks1(startdate, enddate): Observable<object[]> {
 
-   
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
 
-    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
+    }
+
+    return this.http.post('https://hotel360.herokuapp.com/GetBusinessBlock', body, options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
   }
 
-   //statistics details
-   statistics(statisticsddata: any): Observable<object[]> {
+  //statistics details
+  statistics(statisticsddata: any): Observable<object[]> {
 
     const headers = new Headers({ 'Content-Type': 'application/json' })
     const options = new RequestOptions({ headers: headers });
     //let body = { "userKey": dashbrddata };
 
-    return this.http.post('https://ivrinfocuit.herokuapp.com/QueryStatistics', statisticsddata , options)
+    return this.http.post('https://ivrinfocuit.herokuapp.com/QueryStatistics', statisticsddata, options)
       .map(this.extractData)
     //.catch(this.handleErrorObservable);
-  } 
+  }
 
 
 
-    // Room management
-    roomdisk(): Observable<object[]> {
+  // Room management
+  roomdisk(): Observable<object[]> {
 
-   
 
-      return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
-        .map(this.extractData)
-      //.catch(this.handleErrorObservable);
+
+    return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
+
+  fecility( startdate, enddate): Observable<object[]> {
+     
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
     }
+
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    //let body = { "userKey": dashbrddata };
+
+
+    return this.http.post('https://hotel360.herokuapp.com/',body,options)
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
+  Roomconditions(  startdate, enddate): Observable<object[]> {
+              
+    let body = {
+      "from_date": startdate,
+      "to_date": enddate
+    }
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    //let body = { "userKey": dashbrddata };
     
-    fecility(): Observable<object[]> {
 
-   
+    return this.http.post('https://hotel360.herokuapp.com/GetRoomcondition',body,options)
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
+  roommaintence(): Observable<object[]> {
 
-      return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
-        .map(this.extractData)
-      //.catch(this.handleErrorObservable);
-    }
-    Roomconditions(): Observable<object[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    //let body = { "userKey": dashbrddata };
 
-   
 
-      return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
-        .map(this.extractData)
-      //.catch(this.handleErrorObservable);
-    }
-    roommaintence(): Observable<object[]> {
 
-   
+    return this.http.post('https://hotel360.herokuapp.com/GetRoomHousekeeping',options)
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
+  //guastservice
+  gestservices(): Observable<object[]> {
 
-      return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
-        .map(this.extractData)
-      //.catch(this.handleErrorObservable);
-    }
-    gestservices(): Observable<object[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    //let body = { "userKey": dashbrddata };
 
-   
-
-      return this.http.get('https://hotel360.herokuapp.com/Reservationdonutchart')
-        .map(this.extractData)
-      //.catch(this.handleErrorObservable);
-    }
+    return this.http.post('https://hotel360.herokuapp.com/GetFrontofficestatus',options)
+      .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+  }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---====' + res);
