@@ -62,67 +62,24 @@
               <th>Seq</th>
               <th>Name</th>
               <th>Date</th>
-              <th>Folio NO</th>
+              <th>Folio No</th>
               <th>Invoice No</th>
               <th>Amount</th>
               <th>Open</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
+            <tr *ngFor="let ar_table_value of ac_maintain_tabl ;let i=index "
+            (click)="selectMembersEdit(ar_table_value,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+              <td>{{i}}</td>
+              <td>{{ar_table_value.account_name}}</td>
+              <td>{{ar_table_value.invoice_date}}</td>
+              <td>{{ar_table_value.folio_no}}</td>
+              <td>{{ar_table_value.invoice_no}}</td>
+              <td>{{ar_table_value.invoice_amount}}</td>
+              <td>{{ar_table_value.open_amount}}</td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>padmanabhan</td>
-              <td>10/10/2018</td>
-              <td>300</td>
-              <td>1</td>
-              <td>140</td>
-              <td>150</td>
-            </tr>
+           
           </tbody>
 
         </table>
