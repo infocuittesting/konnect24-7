@@ -69,7 +69,7 @@ import { NewaraccountComponent } from './../Accountreceivable/newaraccount/newar
 import { AccountmaintenanceComponent } from './../Accountreceivable/accountmaintenance/accountmaintenance.component';
 import { InvoiceComponent } from './../Accountreceivable/invoice/invoice.component';
 import { AccountoptionsComponent } from './../Accountreceivable/accountoptions/accountoptions.component';
-
+import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setupaccount.component';
 
 @NgModule({
   imports: [
@@ -137,6 +137,7 @@ import { AccountoptionsComponent } from './../Accountreceivable/accountoptions/a
       { path:"AccountMaintenance",component:AccountmaintenanceComponent},
       { path:"Invoice",component:InvoiceComponent},
       { path:"Accountoptions",component:AccountoptionsComponent},
+      {path:"Setupaccount",component:SetupaccountComponent}
     ])
   ],
   declarations: [],
@@ -149,4 +150,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent]

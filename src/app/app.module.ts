@@ -94,6 +94,7 @@ import { NewaraccountComponent } from './Accountreceivable/newaraccount/newaracc
 import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintenance/accountmaintenance.component';
 import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
 import { AccountoptionsComponent } from './Accountreceivable/accountoptions/accountoptions.component';
+import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupaccount.component';
 
 
 
@@ -181,6 +182,7 @@ import { AccountoptionsComponent } from './Accountreceivable/accountoptions/acco
         AccountmaintenanceComponent,
         InvoiceComponent,
         AccountoptionsComponent,
+        SetupaccountComponent,
 
     ],
     imports: [
