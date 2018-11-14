@@ -11,3 +11,8 @@ thead, tbody tr {
 thead {
     width: calc( 100% - 1em )
 }
+
+.modal-open {
+    overflow: auto !important;
+    padding-right: 0px !important;
+}

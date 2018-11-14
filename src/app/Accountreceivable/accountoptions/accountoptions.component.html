@@ -790,7 +790,7 @@
 <!-- Aging End -->
 
 <!-- Notes start-->
-<div class="modal fade" id="Notes" data-backdrop="static" data-keyboard="false" role="dialog">
+<div class="modal modal-open" id="Notes" data-backdrop="static" data-keyboard="false" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -844,8 +844,8 @@
       <div class="modal-footer ">
 
         <div class="text-center">
-        <button type="button" class="btn btn-info" data-dismiss="modal" style="width:100px"><b>New</b></button>
-        <button type="button" class="btn btn-sucess" data-dismiss="modal" style="width:100px"><b>Edit</b></button>
+        <button type="button" class="btn btn-info"  style="width:100px" data-toggle="modal" data-target="#myModal"><b>New</b></button>
+        <button type="button" class="btn btn-sucess"  style="width:100px" data-toggle="modal" data-target="#edit"><b>Edit</b></button>
         <button type="button" class="btn btn-warning" data-dismiss="modal" style="width:100px"><b>Delete</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100px"><b>Close</b></button>
       </div>
@@ -855,6 +855,115 @@
   </div>
 </div>
 <!-- Notes End -->
+   <!-- newmodalbutton -->
+   <div id="myModal" class="modal modal-open" role="dialog">
+    <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-3" style="margin-left: 128px;">
+           <div class="form-group">
+             <label for="name">Date</label>
+             <input type="test" class="form-control" id="name" name="date">
+           </div>
+          </div>
+         </div>
+         <div class="row">
+            <div class="col-md-3" style="margin-left: 128px;">
+            <div class="form-group">
+              <label for="name">Notes Type</label>
+              <input type="test" class="form-control" id="name" name="date">
+            </div>
+           </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3" style="margin-left: 128px;">
+              <div class="form-group">
+                <label for="name">Notes Title</label>
+                <input type="test" class="form-control" id="name" name="date">
+              </div>
+             </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3" style="margin-left: 128px;">
+                <div class="form-group">
+                  <label for="name">Description</label>
+                  <input type="test" class="form-control" id="name" name="date">
+                </div>
+               </div>
+              </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Editmodalstart -->
+<div id="edit" class="modal modal-open" role="dialog">
+    <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-3" style="margin-left: 128px;">
+           <div class="form-group">
+             <label for="name">Date</label>
+             <input type="test" class="form-control" id="name" name="date">
+           </div>
+          </div>
+         </div>
+         <div class="row">
+            <div class="col-md-3" style="margin-left: 128px;">
+            <div class="form-group">
+              <label for="name">Notes Type</label>
+              <input type="test" class="form-control" id="name" name="date">
+            </div>
+           </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3" style="margin-left: 128px;">
+              <div class="form-group">
+                <label for="name">Notes Title</label>
+                <input type="test" class="form-control" id="name" name="date">
+              </div>
+             </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3" style="margin-left: 128px;">
+                <div class="form-group">
+                  <label for="name">Description</label>
+                  <input type="test" class="form-control" id="name" name="date">
+                </div>
+               </div>
+              </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- post History start-->
 <div class="modal fade" id="post" data-backdrop="static" data-keyboard="false" role="dialog">
