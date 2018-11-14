@@ -70,8 +70,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let ar_table_value of ac_maintain_tabl ;let i=index "
-            (click)="selectMembersEdit(ar_table_value,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-              <td>{{i}}</td>
+            (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}">
+              <td>{{i+1}}</td>
               <td>{{ar_table_value.account_name}}</td>
               <td>{{ar_table_value.invoice_date}}</td>
               <td>{{ar_table_value.folio_no}}</td>
@@ -88,8 +88,8 @@
           <div class="col-md-10">
             <button type="button" class="btn btn-info" style="width:110px" data-target="#invoice" data-toggle="modal">
               New</button>
-            <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px">Edit</button>
-            <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Invoice">Invoice</button>
+            <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px" [disabled]="enablebut">Edit</button>
+            <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Invoice" [disabled]="enablebut">Invoice</button>
             <button type="button" class="btn btn-warning" style="width:110px;margin-left: 10px" data-target="#pay"
               data-toggle="modal">Payment</button>
             <button type="button" class="btn btn-primary" style="width:110px;margin-left: 10px"  data-target="#Compress1"

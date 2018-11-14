@@ -46,7 +46,6 @@ export class AccountoptionsComponent implements OnInit {
     this.curdate=this.datePipe.transform(this.curdate,'yyyy-MM-dd')
     // console.log("current date",this.curdate)
 
-// refresh traces table records //
     this.AccountoptionsService.acc_traces_new(newtrace,this.curdate)
     .subscribe((resp: any) => {
       this.insertresp=resp.ReturnCode
@@ -54,6 +53,7 @@ export class AccountoptionsComponent implements OnInit {
         var message="new trace created successfully"
         this.toasterService.success(message);
       }
+  // refresh traces table records //
       this.AccountoptionsService.acc_traces_table()
     .subscribe((resp: any) => {
      this.acc_trace_val=resp.ReturnValue;  
@@ -61,4 +61,38 @@ export class AccountoptionsComponent implements OnInit {
    });
   }
  
+
+  // on clicking traces table values
+  public createdon:any
+  public trace_txt:any
+  public disabltrace=true
+  selecttracesvalue(value,index){
+ this.disabltrace=false
+console.log("trace selecting table value",value)
+this.createdon=value.created_on
+this.trace_txt=value.trace_text
+
+  } 
+
+//clicking edit traces-->ok 
+  edittracefun(createdon,trace_txt){
+    console.log("after clicking ok in edit",createdon,trace_txt)
+    this.curdate=new Date()    
+    this.curdate=this.datePipe.transform(this.curdate,'yyyy-MM-dd')
+    // console.log("current date",this.curdate)
+
+    this.AccountoptionsService.acc_traces_edit(createdon,trace_txt,this.curdate)
+    .subscribe((resp: any) => {
+      this.insertresp=resp.ReturnCode
+      if(this.insertresp=='RUS'){
+        var message="trace updated successfully"
+        this.toasterService.success(message);
+      }
+  // refresh traces table records //
+      this.AccountoptionsService.acc_traces_table()
+    .subscribe((resp: any) => {
+     this.acc_trace_val=resp.ReturnValue;  
+   });
+   });
+  }
 }
