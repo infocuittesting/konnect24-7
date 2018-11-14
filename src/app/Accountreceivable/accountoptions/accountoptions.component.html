@@ -668,8 +668,9 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">TTraces</h4>
+              <h4 class="modal-title">New Traces</h4>
             </div>
+            <form #heroForm="ngForm">
             <div class="modal-body">
           <div class="container-fluid">
            <div class="row">
@@ -681,14 +682,9 @@
             </thead>
               <tbody>
                 <tr>
-                  <td>hell darling</td>
+                  <td>{{traces_account_name}}</td>
                 </tr>
-                <tr>
-                    <td>hell darling</td>
-                  </tr>
-                  <tr>
-                      <td>hell darling</td>
-                    </tr>
+                
               </tbody>
               
              </table>
@@ -697,7 +693,7 @@
              <div class="col-md-4">
              <div class="form-group">
                <label for=name>Trace On </label>
-               <input type="date" class="form-control" id="trace on" name="trace on">
+               <input type="date" class="form-control" id="trace on" name="trace_on" [(ngModel)]="newtrace.traceon">
              </div>
             </div>
            </div>
@@ -705,21 +701,23 @@
              <div class="col-md-12">
                 <div class="form-group">
                     <label for="comment">Trace Text</label>
-                    <textarea class="form-control" rows="3" style="width:100%;" id="comment"></textarea>
+                    <textarea class="form-control" rows="3" style="width:100%;" id="comment" name="tracetxt" [(ngModel)]="newtrace.tracetxt"></textarea>
                   </div>
              </div>
            </div>
           </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="newtracefun(newtrace);heroForm.reset()">Ok</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
+
+          </form>
           </div>
       
         </div>
       </div>
-      Example Explained
+     
 
 
 
