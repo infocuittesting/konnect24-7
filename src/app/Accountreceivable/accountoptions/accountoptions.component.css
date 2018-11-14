@@ -42,4 +42,11 @@ height:160px;
   .input{
 
 	border-radius: 5px; 
-  }		
+  }	
+  
+  .modal-open {
+    overflow: auto !important;
+    padding-right: 0px !important;
+}
+  
+
