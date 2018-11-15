@@ -45,6 +45,7 @@ export class NewaraccountComponent implements OnInit {
 
   selectMembersEdit(details,index){
     this.session.store("account_number",details.account_number.toString());
+    this.session.store("pf_account_name",details.pf_account.toString());
     this.enable_select=false;
   }
 

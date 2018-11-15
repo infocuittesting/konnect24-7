@@ -16,13 +16,20 @@ export class AccountmaintenanceComponent implements OnInit {
   constructor(private AccountmaintenanceService: AccountmaintenanceService, public session:SessionStorageService,private route:Router,private toasterService:ToasterServiceService) { }
 
   public ac_maintain_tabl=[];
+  public enablebut=true;
   ngOnInit() {
-
     this.AccountmaintenanceService.account_table()
     .subscribe((resp: any) => { 
      this.ac_maintain_tabl=resp.ReturnValue;
      console.log("account maintain table valuessssssss",this.ac_maintain_tabl)
    });
+  }
+
+  selectMembersEdit(index,value){
+    this.enablebut=false
+    console.log("indexand value of account maintain",index,value)
+    this.session.store("invoice_no",value.invoice_no)
+
   }
 
 }

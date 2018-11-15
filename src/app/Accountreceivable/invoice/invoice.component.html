@@ -59,7 +59,7 @@
             </div>
             <div class="row" style="margin-top:10px;">
               <div class="col-md-3">
-                <b>Account NO.</b>
+                <b>Account No.</b>
                 <div class="input-group">
                   <input type="text" name="" id="" style="height:34px;width:200px;">
                 </div>
@@ -101,83 +101,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
+          <tr *ngFor="let invoice_val of invoice_tab ;let i=index "
+          (click)="selectMembersEdit(i,invoice_val)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <td>{{i+1}}</td>
+            <td>{{invoice_val.posting_date}}</td>
+            <td>{{invoice_val.arrangement_code}}</td>
+            <td>{{invoice_val.posting_code_description}}</td>
+            <td>{{invoice_val.posting_amount}}</td>
+            <td>{{invoice_val.posting_supplement}}</td>
+            <td>{{invoice_val.posting_reference}}</td>
+            <td></td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td>1000</td>
-            <td>HSIA Sale</td>
-            <td>500</td>
-            <td>any</td>
-            <td> </td>
-            <td> </td>
-          </tr>
+          
         </tbody>
       </table>
       <div class="row">
           <div class="col-md-2"> <button type="button" class="btn btn-info" style="width:100%">Post</button></div>
-          <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:100%" data-toggle="modal" data-target="#Adjust">Adjust</button></div>
+          <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:100%" data-toggle="modal" data-target="#Adjust" [disabled]="disablbut">Adjust</button></div>
           <div class="col-md-2"> <button type="button" class="btn btn-success" style="width:100%">Folio</button></div>
-          <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:100%">Edit</button></div>
+          <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:100%" [disabled]="disablbut">Edit</button></div>
           <div class="col-md-2"> <button type="button" class="btn btn-primary" style="width:100%">Profile</button></div>
           <div class="col-md-2"> <button type="button" class="btn btn-danger" style="width:100%">close</button></div>
       </div>
@@ -189,14 +131,15 @@
 
 <!-- Modal -->
 <div id="Adjust" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
   
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Adjust Trn codes posting</h4>
         </div>
+        <form #adjstForm="ngForm"> 
         <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
@@ -205,29 +148,74 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> Trn.Code</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="trncode" disabled>
               </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                   <label> Begin Date</label>
-                  <input type="date" class="form-control" id="name" name="name">
+                  <input type="date" class="form-control" id="name" name="name" [(ngModel)]="begin_date" disabled>
                 </div>
               </div>
               <div class="col-md-4">
                   <div class="form-group">
                     <label> EndDate</label>
-                    <input type="date" class="form-control" id="name" name="name">
+                    <input type="date" class="form-control" id="name" name="name" [(ngModel)]="end_date" disabled>
                   </div>
                 </div>
               </div>
               </div>
           </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="radio">
+                <label> <label><input type="radio" name="optradio" value="1" [(ngModel)]="adjust.adjust_typ">Amount</label></label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="radio">
+                <label> <label><input type="radio" name="optradio" value="2" [(ngModel)]="adjust.adjust_typ">Percentage</label></label>
+              </div>
+            </div>
+          
+          <div class="col-md-4">
+            <div class="form-group" style="margin-top: -11px;">
+              <label for="name"></label>
+              <input type="text" class="form-control input-sm" id="name" name="name" [(ngModel)]="adjust.amount">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" style="margin-left: 20px;">
+            <div class="form-group">
+              <label for="name">Reason Code</label>
+              <select class="form-control" id="name" name="Reason" [(ngModel)]="adjust.reasn_code">
+                <option>COM </option>
+               
+              </select>
+            </div>
+          </div>
+         
+          <div class="col-md-4" style="margin-top: 30px;">
+            <p></p>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+            <div class="form-group" style="margin-left: 28px;width: 93%;">
+              <label >Reason Text</label>
+              <textarea class="form-control" row="4" id="name" name="name" [(ngModel)]="adjust.reasn_txt"></textarea>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
         </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="adjustfun(adjust);adjstForm.reset()" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          
         </div>
+      </form>
       </div>
   
     </div>
