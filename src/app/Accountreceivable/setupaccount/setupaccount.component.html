@@ -8,10 +8,10 @@
     </div>      
       <div class="col-md-4" style="margin-left: -155px;">
           <div class="form-group">
-        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" >
-          <option>hello dar</option>
-          <option>hello dar</option>
-          <option>hello dar</option>
+        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="blockstatus" (ngModelChange)="onSelect(blockstatus)" >
+          <option *ngFor="let option of roomtype" 
+          [ngValue]="option.Status"> 
+          {{option.Status}}</option>
         </select>
       </div>
     </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-4" style="margin-left: -61px;">
     <div class="form-group">
-      <input type="text" class="form-control input-sm" id="name" name="Account Num">
+      <input type="number" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.account_type_id">
     </div>
     </div>
     <div class="col-md-2">
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-4" style="margin-left: -70px;">
         <div class="form-group">
-            <input type="text" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;">
+            <input type="number" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Account.credit_limit">
           </div>
     </div>
     <div class="col-md-4">
@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-6" style="margin-left: -153px;">
         <div class="form-group">
-            <input type="number" class="form-control input-sm" id="name" name="Account Num">
+            <input type="number" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.contact">
           </div>
     </div>
   </div>
@@ -65,13 +65,13 @@
   </div>
   <div class="col-md-3">
     <div class="form-group">
-      <input type="text" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;">
+      <input type="number" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;" [(ngModel)]="Account.phone">
     </div>
 
   </div>
   <div class="col-md-3">
     <div class="form-group">
-      <input type="text" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;">
+      <input type="text" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;" [(ngModel)]="Account.fax">
     </div>
 
   </div>
@@ -82,7 +82,7 @@
     <label>Email</label>
     </div>
     <div class="col-md-4">
-      <input type="email" class="form-control input-sm" id="email" name="email" style="margin-left: -60px;">
+      <input type="email" class="form-control input-sm" id="email" name="email" style="margin-left: -60px;" [(ngModel)]="Account.email">
     </div>
 
   </div>
@@ -92,7 +92,7 @@
     <label>AR Address</label>
   </div>
   <div class="col-md-4" style="margin-left: -59px">
-      <textarea class="form-control" rows="4" id="comment" style="width: 530px;"></textarea>
+      <textarea class="form-control" rows="4" id="comment" style="width: 530px;" [(ngModel)]="Account.ar_address"></textarea>
   </div>
 </div>
 <br>
@@ -101,7 +101,7 @@
     <label>City</label>
     </div>
     <div class="col-md-4">
-      <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;">
+      <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.city">
     </div>
 
   </div>
@@ -111,7 +111,7 @@
       <label>Postal Code</label>
       </div>
       <div class="col-md-4">
-        <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;">
+        <input type="number" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.postal_code">
       </div>
   
     </div>
@@ -121,19 +121,19 @@
        <label>country/State</label>
      </div>
      <div class="col-md-3">
-        <select  class="form-control input-sm" id="city" name="city" style="margin-left: -60px;">
+        <select  class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.country_id">
         <option>hello</option>
         <option>hello</option>
       </select>
      </div>
 
      <div class="col-md-3">
-        <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" placeholder="CA">
+        <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" placeholder="CA" [(ngModel)]="Account.state_id">
      </div>
 
     </div>
    <br>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-2">
         <label>Reference Currency</label>
       </div>
@@ -153,9 +153,9 @@
         <input type="text" class="form-control input-sm" id="sent" name="sent">
       </div>
     </div>
-    </div>
+    </div> -->
     <br>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-2">
           <label>Last Reminder Sent </label>
         </div>
@@ -172,9 +172,9 @@
           <input type="text" class="form-control input-sm" id="sent" name="sent">
         </div>
       </div>
-      </div>
+      </div> -->
       <br>
-      <div class="row">
+      <!-- <div class="row">
           <div class="col-md-2">
             <label>Last Reminder Text </label>
           </div>
@@ -191,16 +191,16 @@
             <input type="text" class="form-control input-sm" id="sent" name="sent">
           </div>
         </div>
-        </div>
+        </div> -->
         <div class="row">
-          <div class="col-md-4" style="margin-left: 121px;">
+          <!-- <div class="col-md-4" style="margin-left: 121px;">
               <div class="checkbox">
                   <label><input type="checkbox" value="">Include in Batch Stmt</label>
                 </div>
-          </div>
+          </div> -->
           <div class="col-md-4" style="    margin-left: 98px;">
               <div class="checkbox">
-                  <label><input type="checkbox" value="">Permenent Account</label>
+                  <label><input type="checkbox" value=""  [(ngModel)]="Account.permanent_account">Permenent Account</label>
                 </div>
           </div>
         </div>
@@ -208,7 +208,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-4"></div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-success" Style="width:80%;">OK</button>
+            <button type="button" class="btn btn-success" Style="width:80%;" (click)="update(Account)">OK</button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" Style="width:80%;" routerLink="/newaraccount">Close</button>
