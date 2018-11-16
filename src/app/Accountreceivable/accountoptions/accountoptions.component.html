@@ -102,7 +102,7 @@
                 <img src="assets/images/note.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
               </div>
               <h4 align="center">Notes</h4>
-              <p align="center"><small>Acoount Notes Alert!</small></p>
+              <p align="center"><small>Account Notes Alert!</small></p>
             </div>
             <div class="panel-footer">
               <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Notes Changes!</small></p>
@@ -319,47 +319,22 @@
            <table  class="table table-bordered table-hover">
              <thead class="table" style="background-color: #0077B5;color: white">
                <tr>
-               <td>Invoive</td>
-               <td>Type</td>
+               <td>Invoice</td>
                <td>Trn Code</td>
                <td>Description</td>
                <td>PostDate</td>
                <td>Amount</td>
-               <td>App.Amt</td>
-               <td>reference</td>
                </tr>
              </thead>
              <tbody>
-               <tr>
-                 <td>1001</td>
-                 <td>no</td>
-                 <td>1000</td>
-                 <td>hello</td>
-                 <td>10-31-2018</td>
-                 <td>10000</td>
-                 <td>123</td>
-                 <td>No reference</td>
+               <tr  *ngFor="let pay_table_value of payhis_tabl_val ;let i=index ">
+                 <td>{{pay_table_value.invoice_id}}</td>
+                 <td>{{pay_table_value.payment_code}}</td>
+                 <td>{{pay_table_value.payment_type}}</td>
+                 <td>{{pay_table_value.post_date}}</td>
+                 <td>{{pay_table_value.payment_amount}}</td>
                </tr>
-               <tr>
-                  <td>1002</td>
-                  <td>no</td>
-                  <td>1000</td>
-                  <td>hello</td>
-                  <td>10-31-2018</td>
-                  <td>10000</td>
-                  <td>123</td>
-                  <td>No reference</td>
-                </tr>
-                <tr>
-                    <td>1003</td>
-                    <td>no</td>
-                    <td>1000</td>
-                    <td>hello</td>
-                    <td>10-31-2018</td>
-                    <td>10000</td>
-                    <td>123</td>
-                    <td>No reference</td>
-                  </tr>
+              
              </tbody>
            </table>
          </div>
@@ -397,7 +372,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                  <label for="name">From Account NO</label>
+                  <label for="name">From Account No</label>
                   <input type="text" class="from-group" id="Account name" name="name">
                 </div>
               </div>
@@ -600,12 +575,12 @@
                </div>
                   <div class="col-md-2">
                       <div class="radio">
-                          <label><input type="radio" name="optradio" checked>All Taraces</label>
+                          <label><input type="radio" name="optradio" checked>All Traces</label>
                         </div>
                   
                   
                       <div class="radio">
-                          <label><input type="radio" name="optradio" checked>Resolves Traces</label>
+                          <label><input type="radio" name="optradio" checked>Resolved Traces</label>
                         </div>
                   
                 
@@ -631,7 +606,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let traces_table_value of acc_trace_val ;let i=index "
-                  (click)="selecttracesvalue(traces_table_value,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                  (click)="selecttracesvalue(traces_table_value,i)" [ngClass]="{'backGroundColor':i==traceselectindex}">
                     <td>{{traces_table_value.emp_firstname}}</td>
                     <td>{{traces_table_value.trace_on}}</td>
                     <td>{{traces_table_value.acc_resolved_on}}</td>
@@ -650,8 +625,9 @@
               <button type="button" class="btn btn-primary" style="width:100px;">Resolve All</button>
               <button type="button" class="btn btn-warning" style="width:100px;">Resolve</button>
               <button type="button" class="btn btn-success"style="width:100px;" data-toggle="modal" data-target="#tracecsnew" >New</button>
-            <button type="button" class="btn btn-default"  style="width:100px;" data-toggle="modal" data-target="#edittrace" [disabled]=disabltrace>Edit</button>
-            <button type="button" class="btn btn-danger" style="width:100px;" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default"  style="width:100px;" data-toggle="modal" data-target="#edittrace" [disabled]=disabltrace>Edit</button>
+              <button type="button" class="btn btn-danger"  style="width:100px;" [disabled]=disabltrace (click)="deletetracefun()">Delete</button>
+              <button type="button" class="btn btn-danger" style="width:100px;" data-dismiss="modal">Close</button>
           </div>
           </div>
         </div>
@@ -667,7 +643,7 @@
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" (click)="traceForm.reset()">&times;</button>
               <h4 class="modal-title">New Traces</h4>
             </div>
             <form #traceForm="ngForm">
@@ -693,7 +669,7 @@
              <div class="col-md-4">
              <div class="form-group">
                <label for=name>Trace On </label>
-               <input type="date" class="form-control" id="trace on" name="trace_on" [(ngModel)]="newtrace.traceon">
+               <input type="date" class="form-control" id="trace on" name="trace_on" [(ngModel)]="newtrace.traceon" required>
              </div>
             </div>
            </div>
@@ -701,15 +677,15 @@
              <div class="col-md-12">
                 <div class="form-group">
                     <label for="comment">Trace Text</label>
-                    <textarea class="form-control" rows="3" style="width:100%;" id="comment" name="tracetxt" [(ngModel)]="newtrace.tracetxt"></textarea>
+                    <textarea class="form-control" rows="3" style="width:100%;" id="comment" name="tracetxt" [(ngModel)]="newtrace.tracetxt" required></textarea>
                   </div>
              </div>
            </div>
           </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="newtracefun(newtrace);traceForm.reset()">Ok</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="newtracefun(newtrace);traceForm.reset()" [disabled]="!traceForm.valid">Ok</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="traceForm.reset()">Close</button>
             </div>
 
           </form>
@@ -728,7 +704,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">New Traces</h4>
+              <h4 class="modal-title">Edit Traces</h4>
             </div>
             <form #traceeditForm="ngForm">
             <div class="modal-body">
@@ -768,7 +744,7 @@
           </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edittracefun(createdon,trace_txt);traceeditForm.reset()">Ok</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edittracefun(createdon,trace_txt);">Ok</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 
@@ -865,31 +841,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>10-02-2018</td>
-                <td>Credit Status</td>
-                <td>10-02-2018 by supervisor</td>
+              <tr *ngFor="let notes_value of notes_tabl_val ;let i=index "
+              (click)="selectnotesvalue(notes_value,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                <td>{{notes_value.ar_note_date}}</td>
+                <td>{{notes_value.ar_note_title}}</td>
+                <td>{{notes_value.modified_on}}</td>
               </tr>
-              <tr>
-                <td>10-02-2018</td>
-                <td>Credit Status</td>
-                <td>10-02-2018 by supervisor</td>
-              </tr>
-              <tr>
-                <td>10-02-2018</td>
-                <td>Credit Status</td>
-                <td>10-02-2018 by supervisor</td>
-              </tr>
-              <tr>
-                <td>10-02-2018</td>
-                <td>Credit Status</td>
-                <td>10-02-2018 by supervisor</td>
-              </tr>
-              <tr>
-                <td>10-02-2018</td>
-                <td>Credit Status</td>
-                <td>10-02-2018 by supervisor</td>
-              </tr>
+             
             </tbody>
           </table>
           <p><b>Description</b></p>
@@ -900,8 +858,8 @@
 
         <div class="text-center">
         <button type="button" class="btn btn-info"  style="width:100px" data-toggle="modal" data-target="#myModal"><b>New</b></button>
-        <button type="button" class="btn btn-sucess"  style="width:100px" data-toggle="modal" data-target="#edit"><b>Edit</b></button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" style="width:100px"><b>Delete</b></button>
+        <button type="button" class="btn btn-sucess"  style="width:100px" data-toggle="modal" data-target="#editnotes" [disabled]="disablnote"><b>Edit</b></button>
+        <button type="button" class="btn btn-warning" style="width:100px" [disabled]="disablnote" (click)="deletenotefun()"><b>Delete</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100px"><b>Close</b></button>
       </div>
       </div>
@@ -916,32 +874,33 @@
      <!-- Modal content-->
      <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="notesForm.reset()">&times;</button>
+        <h4 class="modal-title">New Notes</h4>
       </div>
+      <form #notesForm="ngForm">
       <div class="modal-body">
        <div class="container">
          <div class="row">
            <div class="col-md-3" style="margin-left: 128px;">
            <div class="form-group">
              <label for="name">Date</label>
-             <input type="test" class="form-control" id="name" name="date">
+             <input type="date" class="form-control" id="name" name="date" [(ngModel)]="newnotes.date" required>
            </div>
           </div>
          </div>
-         <div class="row">
+         <!-- <div class="row">
             <div class="col-md-3" style="margin-left: 128px;">
             <div class="form-group">
               <label for="name">Notes Type</label>
               <input type="test" class="form-control" id="name" name="date">
             </div>
            </div>
-          </div>
+          </div> -->
           <div class="row">
               <div class="col-md-3" style="margin-left: 128px;">
               <div class="form-group">
                 <label for="name">Notes Title</label>
-                <input type="test" class="form-control" id="name" name="date">
+                <input type="test" class="form-control" id="name" name="title" [(ngModel)]="newnotes.title" required>
               </div>
              </div>
             </div>
@@ -949,30 +908,34 @@
                 <div class="col-md-3" style="margin-left: 128px;">
                 <div class="form-group">
                   <label for="name">Description</label>
-                  <input type="test" class="form-control" id="name" name="date">
+                  <input type="test" class="form-control" id="name" name="des" [(ngModel)]="newnotes.desc" required>
                 </div>
                </div>
               </div>
        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="newnotesfun(newnotes);notesForm.reset()" [disabled]="!notesForm.valid">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="notesForm.reset()">Close</button>
       </div>
+    </form>
     </div>
 
   </div>
 </div>
 
-<!-- Editmodalstart -->
-<div id="edit" class="modal modal-open" role="dialog">
+<!-- Edit notes modalstart -->
+<div id="editnotes" class="modal modal-open" role="dialog">
     <div class="modal-dialog">
      <!-- Modal content-->
      <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
+<<<<<<< HEAD
         <h4 class="modal-title">Edit Modal</h4>
+=======
+        <h4 class="modal-title">Edit Notes</h4>
+>>>>>>> 84fac97a41246a4715671f423d301bbe49d03422
       </div>
       <div class="modal-body">
        <div class="container">
@@ -980,23 +943,23 @@
            <div class="col-md-3" style="margin-left: 128px;">
            <div class="form-group">
              <label for="name">Date</label>
-             <input type="test" class="form-control" id="name" name="date">
+             <input type="date" class="form-control" id="name" name="date" [(ngModel)]="editnotedate">
            </div>
           </div>
          </div>
-         <div class="row">
+         <!-- <div class="row">
             <div class="col-md-3" style="margin-left: 128px;">
             <div class="form-group">
               <label for="name">Notes Type</label>
               <input type="test" class="form-control" id="name" name="date">
             </div>
            </div>
-          </div>
+          </div> -->
           <div class="row">
               <div class="col-md-3" style="margin-left: 128px;">
               <div class="form-group">
                 <label for="name">Notes Title</label>
-                <input type="test" class="form-control" id="name" name="date">
+                <input type="test" class="form-control" id="name" name="title" [(ngModel)]="editnotetitle">
               </div>
              </div>
             </div>
@@ -1004,14 +967,14 @@
                 <div class="col-md-3" style="margin-left: 128px;">
                 <div class="form-group">
                   <label for="name">Description</label>
-                  <input type="test" class="form-control" id="name" name="date">
+                  <input type="test" class="form-control" id="name" name="des" [(ngModel)]="editnotedesc">
                 </div>
                </div>
               </div>
        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editnotesfun(editnotedate,editnotetitle,editnotedesc)">OK</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
       </div>
@@ -1032,7 +995,7 @@
       </div>
       <div class="modal-body">
         <div class="row" style="padding:10px;">
-          <table class="table table-bordered table-hover">
+          <table class="table table-bordered table-hover table-responsive">
             <thead class="table" style="background-color: #0077B5;color: white">
               <tr>
                 <th>Action</th>
@@ -1043,41 +1006,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>All postings to the AR account display</td>
-                <td>Credit Status</td>
-                <td>10-02-2018</td>
-                <td>17:34</td>
-                <td>supervisor</td>
+              <tr *ngFor="let posthis of posthis_tabl_val ;let i=index ">
+                <td>{{posthis.acc_action}}</td>
+                <td>{{posthis.acc_posting_reason}}</td>
+                <td>{{posthis.acc_post_date}}</td>
+                <td>{{posthis.acc_posting_time}}</td>
+                <td>{{posthis.emp_firstname}}</td>
               </tr>
-              <tr>
-                <td>All postings to the AR account display</td>
-                <td>Credit Status</td>
-                <td>10-02-2018</td>
-                <td>17:34</td>
-                <td>supervisor</td>
-              </tr>
-              <tr>
-                <td>All postings to the AR account display</td>
-                <td>Credit Status</td>
-                <td>10-02-2018</td>
-                <td>17:34</td>
-                <td>supervisor</td>
-              </tr>
-              <tr>
-                <td>All postings to the AR account display</td>
-                <td>Credit Status</td>
-                <td>10-02-2018</td>
-                <td>17:34</td>
-                <td>supervisor</td>
-              </tr>
-              <tr>
-                <td>All postings to the AR account display</td>
-                <td>Credit Status</td>
-                <td>10-02-2018</td>
-                <td>17:34</td>
-                <td>konnect </td>
-              </tr>
+            
             </tbody>
           </table>
           <div class="col-md-6">

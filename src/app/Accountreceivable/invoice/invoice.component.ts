@@ -19,17 +19,26 @@ export class InvoiceComponent implements OnInit {
  
   public disablbut=true;
   public invoice_tab=[];
+  public reasndropdown=[];
   ngOnInit() {
     this.InvoiceService.invoice_table()
     .subscribe((resp: any) => { 
      this.invoice_tab=resp.ReturnValue;
-     console.log("invoice table valuessssssss",this.invoice_tab)
+    //  console.log("invoice table valuessssssss",this.invoice_tab)
    });
+
+   this.InvoiceService.adjst_reasondropdown()
+   .subscribe((resp: any) => { 
+    this.reasndropdown=resp.ReturnValue;
+    console.log("reason dropdownvalues",this.reasndropdown)
+  });
   }
 
   //on clicking table values
   public acc_bill:any 
+  selectindex
   selectMembersEdit(index,value){
+    this.selectindex=index
     this.disablbut=false
     this.acc_bill=value.account_bill
     console.log(this.acc_bill)

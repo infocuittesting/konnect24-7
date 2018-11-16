@@ -25,10 +25,13 @@ export class AccountmaintenanceComponent implements OnInit {
    });
   }
 
+  selectindex
   selectMembersEdit(index,value){
     this.enablebut=false
+    this.selectindex=index
     console.log("indexand value of account maintain",index,value)
     this.session.store("invoice_no",value.invoice_no)
+    
 
   }
 

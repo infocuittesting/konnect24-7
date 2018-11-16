@@ -23,7 +23,11 @@ export class AccountoptionsComponent implements OnInit {
      this.toasterService.success(message);
    }
 
-  acc_trace_val=[];
+  public acc_trace_val=[]
+  public notes_tabl_val=[]
+  public payhis_tabl_val=[]
+  public posthis_tabl_val=[]
+  
   public traces_account_name:any
   public curdate:any
   newtrace={};
@@ -33,9 +37,31 @@ export class AccountoptionsComponent implements OnInit {
  
      this.acc_trace_val=resp.ReturnValue;
     //  console.log("trace table valuessssssss",this.acc_trace_val)
-     this.traces_account_name=this.session.retrieve("pf_account_name")
-    
+     this.traces_account_name=this.session.retrieve("pf_account_name")  
    });
+
+   this.AccountoptionsService.ar_notes_table()
+   .subscribe((resp: any) => {
+    this.notes_tabl_val=resp.ReturnValue;
+   
+  });
+
+
+  this.AccountoptionsService.payhis_table()
+  .subscribe((resp: any) => {
+   this.payhis_tabl_val=resp.ReturnValue;
+   console.log("payhis table",this.payhis_tabl_val)
+  
+ });
+
+
+ this.AccountoptionsService.posthis_table()
+ .subscribe((resp: any) => {
+  this.posthis_tabl_val=resp.ReturnValue;
+  console.log("posthis table",this.posthis_tabl_val)
+ 
+});
+
   }
 
 // insert new trace//
@@ -50,7 +76,7 @@ export class AccountoptionsComponent implements OnInit {
     .subscribe((resp: any) => {
       this.insertresp=resp.ReturnCode
       if(this.insertresp=='RIS'){
-        var message="new trace created successfully"
+        var message="New Trace Created Successfully"
         this.toasterService.success(message);
       }
   // refresh traces table records //
@@ -65,18 +91,22 @@ export class AccountoptionsComponent implements OnInit {
   // on clicking traces table values
   public createdon:any
   public trace_txt:any
+  public trace_id:any
   public disabltrace=true
+  traceselectindex
   selecttracesvalue(value,index){
  this.disabltrace=false
+ this.traceselectindex=index
 console.log("trace selecting table value",value)
 this.createdon=value.created_on
 this.trace_txt=value.trace_text
-
+this.trace_id=value.account_traces_id
+console.log("trave id after clicking the value",this.trace_id)
   } 
 
 //clicking edit traces-->ok 
   edittracefun(createdon,trace_txt){
-    console.log("after clicking ok in edit",createdon,trace_txt)
+    console.log("after clicking ok in edittrace",createdon,trace_txt)
     this.curdate=new Date()    
     this.curdate=this.datePipe.transform(this.curdate,'yyyy-MM-dd')
     // console.log("current date",this.curdate)
@@ -85,14 +115,122 @@ this.trace_txt=value.trace_text
     .subscribe((resp: any) => {
       this.insertresp=resp.ReturnCode
       if(this.insertresp=='RUS'){
-        var message="trace updated successfully"
+        var message="Trace Updated Successfully"
         this.toasterService.success(message);
       }
   // refresh traces table records //
+    this.acc_trace_val=[];
       this.AccountoptionsService.acc_traces_table()
     .subscribe((resp: any) => {
      this.acc_trace_val=resp.ReturnValue;  
    });
    });
   }
+
+  deletetracefun(){
+    this.AccountoptionsService.Trace_delete(this.trace_id)
+    .subscribe((resp: any) => {
+      this.insertresp=resp.ReturnCode
+      if(this.insertresp=='RDS'){
+        var message="Trace Deleted Successfully"
+        this.toasterService.success(message);
+      }
+  // refresh traces table records //
+    this.acc_trace_val=[];
+      this.AccountoptionsService.acc_traces_table()
+    .subscribe((resp: any) => {
+     this.acc_trace_val=resp.ReturnValue;  
+   });
+   });
+  }
+//---------------------trace ends---------------//
+
+//-------------------notes starts--------------//
+
+// insert new arnotes
+newnotes={}
+newnotesfun(newnotes)
+{
+  console.log("values",newnotes)
+  this.AccountoptionsService.ar_notes_new(newnotes)
+  .subscribe((resp: any) => {
+     var notesinsertresp=resp.ReturnCode
+    if(notesinsertresp=='RIS'){
+      var message="Notes Created Successfully"
+      this.toasterService.success(message);
+    }
+// refresh notes table records //
+  this.notes_tabl_val=[];
+    this.AccountoptionsService.ar_notes_table()
+  .subscribe((resp: any) => {
+    this.notes_tabl_val=resp.ReturnValue;  
+ });
+ });
 }
+
+
+// on clicking table values in notes
+public disablnote=true
+public notes_id:any
+public editnotedate:any
+public editnotetitle:any
+public editnotedesc:any
+selectindex;
+selectnotesvalue(value,index)
+{
+  this.selectindex=index;
+  this.disablnote=false
+  console.log("value in notes table row",value)
+  this.notes_id=value.ar_notes_id
+  this.editnotedate=value.ar_note_date
+  this.editnotetitle=value.ar_note_title
+  this.editnotedesc=value.ar_note_description
+  }
+
+
+// edit arnotes
+editnotes={}
+editnotesfun(editnotedate,editnotetitle,editnotedesc)
+{
+  console.log("after clicking ok in editnotes",editnotedate,editnotetitle,editnotedesc)
+  this.AccountoptionsService.ar_notes_edit(editnotedate,editnotetitle,editnotedesc,this.notes_id)
+  .subscribe((resp: any) => {
+    var insertresp=resp.ReturnCode
+    if(insertresp=='RUS'){
+      var message="Notes Updated Successfully"
+      this.toasterService.success(message);
+    }
+// refresh notes table records //
+this.notes_tabl_val=[];
+this.AccountoptionsService.ar_notes_table()
+.subscribe((resp: any) => {
+this.notes_tabl_val=resp.ReturnValue;  
+});
+ });
+}
+
+
+// delete notes
+deletenotefun()
+{
+this.AccountoptionsService.ar_notes_delete(this.notes_id)
+.subscribe((resp: any) => {
+  var insertresp=resp.ReturnCode
+  if(insertresp=='RDS'){
+    var message="Notes Deleted Successfully"
+    this.toasterService.success(message);
+  }  
+// refresh notes table records //
+this.notes_tabl_val=[];
+this.AccountoptionsService.ar_notes_table()
+.subscribe((resp: any) => {
+this.notes_tabl_val=resp.ReturnValue;  
+});
+
+});
+}
+
+
+
+}
+
