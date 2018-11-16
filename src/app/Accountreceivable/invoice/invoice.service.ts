@@ -35,6 +35,14 @@ invoice_table():  Observable<object[]> {
           .map(this.extractData)
      }
  
+
+// reason code dropdown
+     adjst_reasondropdown():  Observable<object[]> {    
+      let body={
+      }
+         return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_REASONDropdown',body)
+            .map(this.extractData)
+       }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

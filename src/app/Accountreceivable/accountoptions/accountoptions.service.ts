@@ -9,7 +9,8 @@ export class AccountoptionsService {
 
   constructor(private http: Http,public session:SessionStorageService) { }
 
-
+//-----------------------trace starts  ------------------------//
+// trace table
   acc_traces_table():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -63,6 +64,125 @@ export class AccountoptionsService {
        .map(this.extractData)
   
   }
+
+    // Trace delete
+    Trace_delete(trace_id):  Observable<object[]> {
+       
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })
+      console.log("trace id",trace_id)
+     let body={  
+        "traces_id":String(trace_id)
+     }
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_DELETE_AccountTraces',body,options)
+         .map(this.extractData)
+    
+    }
+  //----------------- trace ends--------------------------//
+
+// -------------------AR notes starts-----------------------------//
+
+
+ar_notes_table():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  console.log("session account number",this.session.retrieve("account_number"))
+ let body={  
+    "account_number":this.session.retrieve("account_number")   
+ }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_ArNotes',body,options)
+     .map(this.extractData)
+
+}
+
+
+  // insert new notes
+  ar_notes_new(newnotes):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    
+   let body={
+    "account_number":this.session.retrieve("account_number") ,
+    "ar_note_date":newnotes.date, 
+    "ar_note_title":newnotes.title,
+    "ar_note_description":newnotes.desc
+  }
+  console.log("insert notes json inputs",body)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_ArNotes',body,options)
+       .map(this.extractData)
+  
+  }
+
+  // edit new notes
+  ar_notes_edit(editnotedate,editnotetitle,editnotedesc,notes_id):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    
+   let body={
+    "account_number":this.session.retrieve("account_number") ,
+    "ar_note_date":editnotedate, 
+    "ar_note_title":editnotetitle,
+    "ar_note_description":editnotedesc,
+    "ar_notes_id":notes_id,
+    "modified_by":1
+  }
+  console.log("update notes json inputs",body)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_UPDATE_ArNotes',body,options)
+       .map(this.extractData)
+  
+  }
+
+  // ar notes delete
+  ar_notes_delete(notes_id):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    console.log("session account number",this.session.retrieve("account_number"))
+   let body={  
+      "account_number":this.session.retrieve("account_number"),
+      "ar_notes_id":notes_id   
+   }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_DELETE_ArNotes',body,options)
+       .map(this.extractData)
+  
+  }
+
+  //------------------- ar notes ends---------------//
+
+  //------------------- pay history ---------------//
+
+  payhis_table():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    console.log("session account number for payhistory",this.session.retrieve("account_number"))
+   let body={  
+      "account_no":this.session.retrieve("account_number")   
+   }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountPayHistory',body,options)
+       .map(this.extractData)
+  
+  }
+
+  // post history
+  posthis_table():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    console.log("session account number for posthistory",this.session.retrieve("invoice_number"))
+   
+   let body={  
+    "invoice_no":this.session.retrieve("invoice_no") 
+   }
+   console.log("posthisbodyyyyy",body)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountPostHistory',body,options)
+       .map(this.extractData)
+  
+  }
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

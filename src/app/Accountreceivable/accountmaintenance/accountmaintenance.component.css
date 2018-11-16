@@ -16,3 +16,6 @@ thead {
     overflow: auto !important;
     padding-right: 0px !important;
 }
+.backGroundColor{
+    background-color:lightgrey;
+}
