@@ -9,11 +9,12 @@ import { SessionStorageService } from "ngx-webstorage";
   providers:[SetupaccountService]
 })
 export class SetupaccountComponent implements OnInit {
-
+  public Account:any= {};
   public Id = this.session.retrieve("id");
+  
+// console.log("accountnum",this.accountnum);
   public user41 ={};
   public setupdate:any;
-  public Account= [];
   public statetype=[];
   public roomtype=[];
   public count=[];
@@ -21,8 +22,42 @@ export class SetupaccountComponent implements OnInit {
   public PF_Firstname;
 
   constructor(private pService: SetupaccountService, public session:SessionStorageService ) { }
-
+  public routerconfig:any;
   ngOnInit() {
+  this.routerconfig = this.session.retrieve("araccount");
+  if(this.routerconfig == "edit"){
+  this.Account.account_number = this.session.retrieve("account_number");
+  this.Account.credit_limit = this.session.retrieve("credit_limit");
+  this.Account.accountnum = this.session.retrieve("account_number");
+  this.Account.contact = this.session.retrieve("contact");
+  this.Account.phone = this.session.retrieve("phone");
+  this.Account.email = this.session.retrieve("email");
+  this.Account.ar_address = this.session.retrieve("ar_address");
+  this.Account.city = this.session.retrieve("city");
+  this.Account.postal_code = this.session.retrieve("postal_code");
+  this.Account.country_id = this.session.retrieve("country_id");
+  this.Account.state_id = this.session.retrieve("state_id");
+  this.Account.permanent_account = this.session.retrieve("permanent_account");
+}else{
+  this.session.clear("araccount");
+}
+
+//session clear
+this.session.clear("credit_limit");
+this.session.clear("account_number");
+this.session.clear("contact");
+this.session.clear("phone");
+this.session.clear("email");
+this.session.clear("ar_address");
+this.session.clear("city");
+this.session.clear("postal_code");
+this.session.clear("country_id");
+this.session.clear("state_id");
+this.session.clear("permanent_account");
+// this.session.clear("credit_limit");
+
+
+
     this.PF_Firstname= this.session.retrieve("pf_fname");
     this.pService.blockstatus()
     .subscribe((resp: any) => {
@@ -69,7 +104,22 @@ export class SetupaccountComponent implements OnInit {
 
   update1(inputt){
 
-    console.log(inputt);
+    console.log("account inputttttt in ok button",inputt);
+    if(inputt.flagged==true){
+      inputt.flagged=1
+    }
+    else{
+      inputt.flagged=0
+    }
+
+    if(inputt.permanent_account==true){
+      inputt.permanent_account=1
+    }
+    else{
+      inputt.permanent_account=0
+    }
+
+  console.log("input after condition",inputt)
    this.pService.accountsetupupdate(inputt)
    .subscribe(( user349:any)=> {
      this.user41 = user349;

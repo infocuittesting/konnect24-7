@@ -30,9 +30,9 @@ export class SetupaccountService {
             "postal_code":String(input.postal_code),
             "country_id":String(input.country_id),
             "state_id":String(input.state_id),
-            "permanent_account":0,
+            "permanent_account":input.permanent_account,
             "currency_id":1,
-            "flagged":0,
+            "flagged":input.flagged,
             "created_by":1,
           
 

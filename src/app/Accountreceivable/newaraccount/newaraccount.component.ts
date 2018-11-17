@@ -47,7 +47,35 @@ selectindex
     this.selectindex=index
     this.session.store("account_number",details.account_number.toString());
     this.session.store("pf_account_name",details.pf_account.toString());
+    //setup account
+    this.session.store("account_number",details.account_number.toString());
+    this.session.store("credit_limit",details.credit_limit);
+    this.session.store("contact",details.contact.toString());
+    this.session.store("phone",details.phone.toString());
+    this.session.store("email",details.pf_account.toString());
+    this.session.store("ar_address",details.ar_address.toString());
+    this.session.store("city",details.city.toString());
+    this.session.store("postal_code",details.postal_code.toString());
+    this.session.store("country_id",details.country_id.toString());
+    this.session.store("state_id",details.state_id);
+    this.session.store("permanent_account",details.permanent_account);
+  
+
+
+
+
+
     this.enable_select=false;
   }
+  newsetupaccount(){
+    this.session.store("araccount","new");
+    this.route.navigate(['psearch/']);
 
+  }
+
+  editsetupaccount(){
+    this.session.store("araccount","edit");
+    this.route.navigate(['Setupaccount/']);
+
+  }
 }
