@@ -47,6 +47,16 @@ export class AccountmaintenanceService {
         return this.http.post('https://hotel360.herokuapp.com/Select_Class',options)
            .map(this.extractData)
       }
+      // posting code dropdown for posting payment
+      postingcodedropdown():  Observable<object[]> {      
+        const headers = new Headers({'Content-Type':'application/json'})
+        const options = new RequestOptions({ headers: headers })       
+        return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+           .map(this.extractData)
+      
+      }
+
+
 // insert new accountinvoice
       insert_accountin(newinvoice):  Observable<object[]> {    
         let body={
@@ -64,6 +74,38 @@ export class AccountmaintenanceService {
               .map(this.extractData)
          }
        
+    // insert post in payment button
+         payment_button(newinvoice):  Observable<object[]> {    
+          let body={
+
+            "payment_code_id":newinvoice.paycode,
+            "currency_id":newinvoice.paycurrency,
+            "posting_amount":Number(newinvoice.payamount),
+            "posting_supplement":newinvoice.pay_supplement ,
+            "posting_reference":newinvoice.pay_reference,
+            "invoice_payment_type_id":"5",
+            "account_no":this.session.retrieve("account_number")
+          }
+            
+             return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_Billingpayment ',body)
+                .map(this.extractData)
+           }
+         
+           postingbill(poscdid):  Observable<object[]> {
+       
+            const headers = new Headers({'Content-Type':'application/json'})
+            const options = new RequestOptions({ headers: headers })
+            let body={
+
+              "bills":poscdid
+            
+              }
+             console.log("final input",JSON.stringify(body));
+          
+            return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEGUESTBILLING',body,options)
+               .map(this.extractData)
+          
+          }
      private extractData(res: Response) {
        //alert('hai20')
        console.log('res========---===='+res);
