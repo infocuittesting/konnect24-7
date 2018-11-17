@@ -82,7 +82,7 @@
       <div class="row">
         
         <div class="col-md-2"> <button type="button" class="btn btn-info" style="width:140px" routerLink="/Accountoptions" [disabled]="enable_select">Options</button></div>
-        <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:140px">Delete</button></div>
+        <div class="col-md-2"> <button type="button" class="btn btn-warning" style="width:140px" data-toggle="modal" data-target="#delete">Delete</button></div>
         <div class="col-md-2"> <button type="button" class="btn btn-primary" style="width:140px"  (click)="newsetupaccount()">New</button></div>
         <div class="col-md-2"> <button type="button" class="btn btn-info" style="width:140px" (click)="editsetupaccount()">Edit</button></div>
         <div class="col-md-2"> <button type="button" class="btn btn-success" style="width:140px" routerLink="/AccountMaintenance" [disabled]="enable_select">Select</button></div>
@@ -92,5 +92,27 @@
     </div>
     <br>
     <br>
+  </div>
+</div>
+
+<!-- //delete modal start -->
+<div id="delete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+      <b>Are you want delete this record</b>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="delete()">ok</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>

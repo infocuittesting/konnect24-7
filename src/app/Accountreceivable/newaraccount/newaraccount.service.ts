@@ -17,6 +17,29 @@ export class NewaraccountService {
   }
 
 
+  accountdelete(prof_id):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    console.log('delete service working')
+
+    // console.log("pfid",this.id);
+    let body=
+          {
+            // "profile_id":this.session.retrieve("id"),
+            "profile_id":String(prof_id),
+          
+    
+}
+
+       console.log("delete",JSON.stringify(body));
+       return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_DELETE_AccountSetup',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+
+
+
  
   private extractData(res: Response) {
     //alert('hai20')

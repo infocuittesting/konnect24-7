@@ -14,8 +14,20 @@ import { ToasterServiceService } from '../../toaster-service.service';
 export class NewaraccountComponent implements OnInit {
 
   constructor(private NewaraccountService: NewaraccountService, public session:SessionStorageService,private route:Router,private toasterService:ToasterServiceService) { }
+  Success(message){
+    //  console.log("message",message);
+     this.toasterService.success(message);
+   }
   mini = false;
   onerecord = false;
+  public user41 ={};
+  public setupdate:any;
+  public statetype=[];
+  public roomtype=[];
+  public count=[];
+  public confim;
+  public PF_Firstname;
+
   showhiderestriction(param){
     // if(param == "all"){
     // this.mini = false;
@@ -42,12 +54,14 @@ export class NewaraccountComponent implements OnInit {
      console.log("table valuessssssss",this.res_table)
    });
   }
+
+  public prof_id:any
 selectindex
   selectMembersEdit(details,index){
     this.selectindex=index
-    this.session.store("account_number",details.account_number.toString());
-    this.session.store("pf_account_name",details.pf_account.toString());
+    console.log("selected ar_account table value",details)
     //setup account
+
     this.session.store("account_number",details.account_number.toString());
     this.session.store("credit_limit",details.credit_limit);
     this.session.store("contact",details.contact.toString());
@@ -59,6 +73,7 @@ selectindex
     this.session.store("country_id",details.country_id.toString());
     this.session.store("state_id",details.state_id);
     this.session.store("permanent_account",details.permanent_account);
+    this.prof_id=details.profile_id
   
 
 
@@ -78,4 +93,28 @@ selectindex
     this.route.navigate(['Setupaccount/']);
 
   }
+
+delete(inputt){
+
+    console.log("service working",inputt);
+   this.NewaraccountService.accountdelete(this.prof_id)
+   .subscribe(( user349:any)=> {
+     this.user41 = user349;
+     this.setupdate=user349.Return;
+     console.log("delete working fine",this.setupdate)
+     if(this.setupdate == "RDS"){
+       console.log("delete woking ",this.setupdate)
+      this.setupdate = "new ar  account  is deletes for "+this.PF_Firstname;
+      this.Success(this.setupdate);
+      // this.setupdate= "The Confirmation Number is:"+this.confim;
+      console.log("return value",this.setupdate)
+
+    }
+    else{
+      this.setupdate="Pf Account has deleted";
+    }
+   },
+  
+    );  
+     }
 }

@@ -21,7 +21,7 @@ export class SetupaccountService {
           {
             "profile_id":this.session.retrieve("id"),
             "account_type_id":(input.account_type_id),
-            "credit_limit":100.0,
+            "credit_limit":input.credit_limit,
             "contact":String(input.contact),
             "phone":String(input.phone),
             "email":input.email,
@@ -56,7 +56,7 @@ console.log("jsonnnnn",JSON.stringify(body));
           {
             "profile_id":this.session.retrieve("id"),
             "account_type_id":(input.account_type_id),
-            "credit_limit":100.0,
+            "credit_limit":input.credit_limit,
             "contact":String(input.contact),
             "phone":String(input.phone),
             "email":input.email,

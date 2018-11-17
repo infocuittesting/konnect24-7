@@ -78,6 +78,8 @@ this.session.clear("permanent_account");
      console.log("working fine country",this.count);
     });
   }
+
+
   update(inputt){
 
     console.log(inputt);
@@ -105,6 +107,7 @@ this.session.clear("permanent_account");
   update1(inputt){
 
     console.log("account inputttttt in ok button",inputt);
+    
     if(inputt.flagged==true){
       inputt.flagged=1
     }
@@ -126,13 +129,13 @@ this.session.clear("permanent_account");
      this.setupdate=user349.Return;
      console.log(" update service working fine",this.setupdate)
      if(this.setupdate == "RUS"){
-       console.log("service woking ",this.setupdate)
+       console.log(" update service woking ",this.setupdate)
       this.setupdate = "setup rate account  is Updated for "+this.PF_Firstname;
       this.setupdate= "The Confirmation Number is:"+this.confim;
 
     }
     else{
-      this.setupdate="setaccount  is Already updated Exist";
+      this.setupdate="setaccount  is Already updated ";
     }
    },
   

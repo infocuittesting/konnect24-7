@@ -205,7 +205,7 @@
           </div> -->
           <div class="col-md-4" style="    margin-left: 98px;">
               <div class="checkbox">
-                  <label><input type="checkbox" value="PA"  name="per_acc" [(ngModel)]="Account.permanent_account">Permenent Account</label>
+                  <label><input type="checkbox" value="PA" checked name="per_acc" [(ngModel)]="Account.permanent_account" >Permenent Account</label>
                 </div>
           </div>
         </div>
@@ -213,7 +213,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-2"></div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-warning" Style="width:80%;"data-toggle="modal" data-target="#update" (click)="update(Account)">update</button> 
+            <button type="button" class="btn btn-warning" Style="width:80%;"data-toggle="modal" data-target="#update" (click)="update1(Account)">update</button> 
           </div>
           <div class="col-md-2">
             <button type="button" class="btn btn-success" Style="width:80%;"data-toggle="modal" data-target="#myModal" (click)="update1(Account)">OK</button>
