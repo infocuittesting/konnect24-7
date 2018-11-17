@@ -8,10 +8,10 @@
     </div>      
       <div class="col-md-4" style="margin-left: -155px;">
           <div class="form-group">
-        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="blockstatus" (ngModelChange)="onSelect(blockstatus)" >
+        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(blockstatus)" >
           <option *ngFor="let option of roomtype" 
-          [ngValue]="option.Status"> 
-          {{option.Status}}</option>
+          [ngValue]="option.reason_id"> 
+          {{option.reason_code}}</option>
         </select>
       </div>
     </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-4" style="margin-left: -61px;">
     <div class="form-group">
-      <input type="number" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.account_type_id">
+      <input type="text" class="form-control input-sm" id="name" name="Account Num" >
     </div>
     </div>
     <div class="col-md-2">
@@ -40,12 +40,12 @@
     </div>
     <div class="col-md-4" style="margin-left: -70px;">
         <div class="form-group">
-            <input type="number" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Account.credit_limit">
+            <input type="text" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Account.credit_limit">
           </div>
     </div>
     <div class="col-md-4">
         <div class="checkbox">
-            <label><input type="checkbox" value="" checkbox-bootstrap checkbox-lg>Flagged</label>
+            <label><input type="checkbox" value="" checkbox-bootstrap checkbox-lg [(ngModel)]="Account.flagged">Flagged</label>
          </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-6" style="margin-left: -153px;">
         <div class="form-group">
-            <input type="number" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.contact">
+            <input type="text" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.contact">
           </div>
     </div>
   </div>
@@ -121,14 +121,19 @@
        <label>country/State</label>
      </div>
      <div class="col-md-3">
-        <select  class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.country_id">
-        <option>hello</option>
-        <option>hello</option>
+        <select  class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.state_id" (ngModelChange)="onSelect(state)" >
+          <option *ngFor="let option of statetype" 
+          [ngValue]="option.id"> 
+          {{option.state}}</option>
       </select>
      </div>
 
      <div class="col-md-3">
-        <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" placeholder="CA" [(ngModel)]="Account.state_id">
+        <select type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" placeholder="CA" [(ngModel)]="Account.country_id" (ngModelChange)="onSelect(country)">
+          <option *ngFor="let option of count" 
+          [ngValue]="option.id"> 
+          {{option.country}}</option>
+        </select>
      </div>
 
     </div>
@@ -206,9 +211,12 @@
         </div>
         <div class="row">
           <div class="col-md-4"></div>
-          <div class="col-md-4"></div>
+          <div class="col-md-2"></div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-success" Style="width:80%;" (click)="update(Account)">OK</button>
+            <button type="button" class="btn btn-warning" Style="width:80%;"data-toggle="modal" data-target="#update" (click)="update(Account)">update</button> 
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-success" Style="width:80%;"data-toggle="modal" data-target="#myModal" (click)="update1(Account)">OK</button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" Style="width:80%;" routerLink="/newaraccount">Close</button>
@@ -221,4 +229,45 @@
   </div>
 
 </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p align="center"><b>{{setupdate}}</b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="update" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p align="center"><b>{{setupdate}}</b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>

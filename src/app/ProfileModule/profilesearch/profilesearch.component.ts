@@ -186,6 +186,7 @@ public checkpftype;
 selectMembersEdit(details,index){
 this.selectindex=index;
 this.pfid=details.pf_id;
+console.log("profileeeeeeeeeeee",this.pfid)
 this.checkpftype = details.pf_type;
 console.log("check the condition"+this.checkpftype)
 if(this.pfid==details.pf_id){
