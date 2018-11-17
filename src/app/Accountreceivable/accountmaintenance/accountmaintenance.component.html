@@ -121,16 +121,14 @@
           <div class="col-md-6">
             <p><b> Guest</b></p>
             <div class="input-group">
-              <input type="text" name="" id="" style="height:34px;width:250px;">
+              <input type="text" name="" id="" style="height:34px;width:250px;" [(ngModel)]="newinvoice.guest" required>
             </div>
           </div>
           <div class="col-md-6">
             <p><b> Market</b></p>
             <div class="input-group">
-              <select name="" id="" style="height:34px;width:250px;">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+              <select style="height:34px;width:250px;" id="name" name="newmarkt" [(ngModel)]="newinvoice.market_code" required>
+                <option *ngFor="let mark of market_val" [ngValue]="mark.id">{{mark.marketgroup}}</option>
               </select>
             </div>
           </div>
@@ -139,20 +137,16 @@
           <div class="col-md-6">
             <p><b> Source</b></p>
             <div class="input-group">
-              <select name="" id="" style="height:34px;width:250px;">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+              <select name="" id="" style="height:34px;width:250px;" name="newsour" [(ngModel)]="newinvoice.source_code" required>
+                <option *ngFor="let src of source_val" [ngValue]="src.id">{{src.sourcecode}}</option>
               </select>
             </div>
           </div>
           <div class="col-md-6">
             <p><b> Room Class</b></p>
             <div class="input-group">
-              <select name="" id="" style="height:34px;width:250px;">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+              <select name="" id="" style="height:34px;width:250px;" [(ngModel)]="newinvoice.roomclass_code" required>
+                <option *ngFor="let rmcls of room_cls_val" [ngValue]="rmcls.id">{{rmcls.class}}</option>
               </select>
             </div>
           </div>
@@ -161,19 +155,19 @@
           <div class="col-md-6">
             <p><b> Invoice supplement</b></p>
             <div class="input-group">
-              <input type="text" name="" id="" style="height:34px;width:250px;">
+              <input type="text" name="" id="" style="height:34px;width:250px;" [(ngModel)]="newinvoice.supp" required> 
             </div>
           </div>
           <div class="col-md-6">
             <p><b> Invoice Reference</b></p>
             <div class="input-group">
-              <input type="text" name="" id="" style="height:34px;width:250px;">
+              <input type="text" name="" id="" style="height:34px;width:250px;" [(ngModel)]="newinvoice.refr" required>
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#billing"><b>Ok</b></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#billing" (click)="newinvoicefun(newinvoice)"><b>Ok</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
 
       </div>
