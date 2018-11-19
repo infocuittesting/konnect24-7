@@ -102,7 +102,7 @@ export class AccountmaintenanceService {
               }
              console.log("final input",JSON.stringify(body));
           
-            return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEGUESTBILLING',body,options)
+            return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_Billingpost',body,options)
                .map(this.extractData)
           
           }

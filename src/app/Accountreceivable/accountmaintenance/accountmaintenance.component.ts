@@ -153,7 +153,8 @@ paycode={}
 
       this.postdetails.push({
         // "business_id":this.session.retrieve("business_id"),
-        "Post_code_id":this.codeidarr[0].posting_code_id,
+        "account_no":this.session.retrieve("account_number"),
+        "Post_code_id":String(this.codeidarr[0].posting_code_id),
         // "Post_des":add.Description,
         "Posting_amount":add.Amount,
         "Posting_quantity":add.Qty,
@@ -229,7 +230,6 @@ saveroomDetails(postdetails)
 
   // calling invoice create service
   
-  console.log("new invoice values",this.newinvoice_inp)
   this.AccountmaintenanceService.insert_accountin(this.newinvoice_inp)
   .subscribe((resp: any) => {
   var insertresp=resp.ReturnCode;
@@ -241,39 +241,33 @@ saveroomDetails(postdetails)
 
 
     for(var i in this.postdetails){
-      this.postdetails[i]["invoice_no"]=this.invoice_num
+      this.postdetails[i]["invoice_no"]=String(this.invoice_num)
     }
 
     console.log("postdetailssssssssssssssssssss after for loop",this.postdetails)
 
-        console.log("postdetailssssssssssss",this.postdetails,this.totalPos,this.totalamt);
         this.AccountmaintenanceService.postingbill(this.postdetails)
         .subscribe((resp: any) => {
         var billing=resp.ReturnCode;
-        console.log("return of billing",billing);
+        console.log("return of billingggggggggggggggggg",billing);
         if(billing=="RIS")
         {
-          var postsuccessmsg="Payment was posted successfully";
-          console.log("workingggggggggggg",postsuccessmsg)
-          this.Success(postsuccessmsg);
+          var message="New Invoice Created Successfully"
+          this.toasterService.success(message);
         }
-        else
-        {
-          var postfailuremsg="Currently we are unable to process your request. please try again later";
-        }
+        console.log("return of billing outside",billing);
+
+
+          // refresh traces table records //
+        this.AccountmaintenanceService.account_table()
+        .subscribe((resp: any) => { 
+        this.ac_maintain_tabl=resp.ReturnValue;
+        console.log("account maintain table value",this.ac_maintain_tabl)
+      });
+        
       });
   }
   console.log("invoice numberrrrrrrr from service out",this.invoice_num)
-
-  
-
-
-  // refresh traces table records //
-  // this.AccountmaintenanceService.account_table()
-  // .subscribe((resp: any) => { 
-  //  this.ac_maintain_tabl=resp.ReturnValue;
-  //  console.log("account maintain table value",this.ac_maintain_tabl)
-//  });
  });
 
       

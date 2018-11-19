@@ -61,6 +61,7 @@
             <tr>
               <th>Seq</th>
               <th>Name</th>
+              <th>Account number</th>
               <th>Date</th>
               <th>Folio No</th>
               <th>Invoice No</th>
@@ -73,6 +74,7 @@
             (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}">
               <td>{{i+1}}</td>
               <td>{{ar_table_value.account_name}}</td>
+              <td>{{ar_table_value.account_number}}</td>
               <td>{{ar_table_value.invoice_date}}</td>
               <td>{{ar_table_value.folio_no}}</td>
               <td>{{ar_table_value.invoice_no}}</td>
@@ -91,7 +93,7 @@
             <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px" [disabled]="enablebut">Edit</button>
             <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Invoice" [disabled]="enablebut">Invoice</button>
             <button type="button" class="btn btn-warning" style="width:110px;margin-left: 10px" data-target="#pay"
-              data-toggle="modal">Payment</button>
+              data-toggle="modal" [disabled]="enablebut">Payment</button>
             <button type="button" class="btn btn-primary" style="width:110px;margin-left: 10px"  data-target="#Compress1"
             data-toggle="modal">Compress</button>
             <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Accountoptions">Options</button>
