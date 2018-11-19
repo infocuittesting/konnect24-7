@@ -90,7 +90,7 @@ export class AccountmaintenanceService {
              return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_Billingpayment ',body)
                 .map(this.extractData)
            }
-         
+    //Posting bills in invoice-->post  
            postingbill(poscdid):  Observable<object[]> {
        
             const headers = new Headers({'Content-Type':'application/json'})
@@ -106,6 +106,16 @@ export class AccountmaintenanceService {
                .map(this.extractData)
           
           }
+// unapply table values
+          unapply_table(invoice_num):  Observable<object[]> {    
+            let body={
+              "account_no":this.session.retrieve("account_number"),
+              "invoice_no":invoice_num
+            }
+               return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_UnappyPayment',body)
+                  .map(this.extractData)
+             }
+      
      private extractData(res: Response) {
        //alert('hai20')
        console.log('res========---===='+res);
