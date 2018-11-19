@@ -63,7 +63,7 @@ this.AccountmaintenanceService.currency_dropdown()
  this.curr_val=resp.ReturnValue;
  console.log("roomdropdown valuess",this.room_cls_val)
 });
-   //postingcode dropdown
+ 
    this.AccountmaintenanceService.postingcodedropdown()
    .subscribe((resp: any) => {
        this.pscd_dd=resp.ReturnValue;
@@ -86,21 +86,7 @@ this.AccountmaintenanceService.currency_dropdown()
   newinvoicefun(newinvoice){
   console.log("new invoice values on clicking",newinvoice)
   this.newinvoice_inp=newinvoice
-  // this.AccountmaintenanceService.insert_accountin(newinvoice)
-  // .subscribe((resp: any) => {
-  // var insertresp=resp.ReturnCode
-  // if(insertresp=='RIS'){
-  //   var message="New Invoice Created Successfully"
-  //   this.toasterService.success(message);
-  // }
 
-//   // refresh traces table records //
-//   this.AccountmaintenanceService.account_table()
-//   .subscribe((resp: any) => { 
-//    this.ac_maintain_tabl=resp.ReturnValue;
-//    console.log("account maintain table value",this.ac_maintain_tabl)
-//  });
-//  });
   }
 
 paycode={}
@@ -272,4 +258,7 @@ saveroomDetails(postdetails)
 
       
     }
+
+
+    // ---------------------------post and new invoice ends-----------------//
 }

@@ -500,7 +500,7 @@
         <div class="modal-content" style="width: 120%;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">Year View</h4>
           </div>
           <div class="modal-body">
           <div class="container-fluid">
@@ -515,24 +515,12 @@
                  </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>mar 2002</td>
-                    <td>1000</td>
-                    <td>100000</td>
-                    <td>1000000</td>
+                  <tr *ngFor="let year_table_value of yearview_val ;let i=index ">
+                    <td>{{year_table_value.period}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{year_table_value.Balance}}</td>
                   </tr>
-                  <tr>
-                      <td>mar 2002</td>
-                      <td>1000</td>
-                      <td>100000</td>
-                      <td>1000000</td>
-                    </tr>
-                    <tr>
-                        <td>mar 2002</td>
-                        <td>1000</td>
-                        <td>100000</td>
-                        <td>1000000</td>
-                      </tr>
                 </tbody>
               </table>
             </div>
