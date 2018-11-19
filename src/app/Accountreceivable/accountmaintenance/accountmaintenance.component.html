@@ -58,7 +58,7 @@
         <br>
         <table class="table table-bordered table-hover">
           <thead style="background-color: #0077B5;color: white">
-            <tr>
+            <tr >
               <th>Seq</th>
               <th>Name</th>
               <th>Date</th>
@@ -69,8 +69,25 @@
             </tr>
           </thead>
           <tbody>
+              <contextmenu #contextmenu style="width:70%;">
+                  <div class="dropdown open">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" data-toggle="modal" href="#unapply">Unapply</a><br>
+                      <a class="dropdown-item" data-toggle="modal" href="#tr" (click)="window_button()">compress
+                        </a><br>
+
+                      <!-- <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div> -->
+
+                    </div>
+                  </div>
+                </contextmenu>
             <tr *ngFor="let ar_table_value of ac_maintain_tabl ;let i=index "
-            (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}">
+            (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}"
+            [contextmenu]="[contextmenu,{item:item}]">
               <td>{{i+1}}</td>
               <td>{{ar_table_value.account_name}}</td>
               <td>{{ar_table_value.invoice_date}}</td>
@@ -475,3 +492,91 @@
   </div>
 </div>
 <!-- New Invoice End -->
+
+
+<!-- The Modal -->
+<div class="modal" id="unapply">
+    <div class="modal-dialog">
+      <div class="modal-content modal-lg">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+           <div class="container-fluid">
+             <div class="row">
+               <table class="table table-bordered table-hover">
+               <thead>
+                 <tr style="background-color: #337ab7;color: white;">
+                   <td>Invoice</td>
+                   <td>Code</td>
+                   <td>Description</td>
+                   <td>Date</td>
+                   <td>Amount</td>
+                   <td>Applied Amount</td>
+                   <td>Reference</td>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>1001</td>
+                   <td>123</td>
+                   <td>hello loosse</td>
+                   <td>12/12/2018</td>
+                   <td>10000</td>
+                   <td>20000</td>
+                   <td>101</td>
+                 </tr>
+
+                 <tr>
+                    <td>1001</td>
+                    <td>123</td>
+                    <td>hello loosse</td>
+                    <td>12/12/2018</td>
+                    <td>10000</td>
+                    <td>20000</td>
+                    <td>101</td>
+                  </tr>
+
+                  <tr>
+                      <td>1001</td>
+                      <td>123</td>
+                      <td>hello loosse</td>
+                      <td>12/12/2018</td>
+                      <td>10000</td>
+                      <td>20000</td>
+                      <td>101</td>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>123</td>
+                        <td>hello loosse</td>
+                        <td>12/12/2018</td>
+                        <td>10000</td>
+                        <td>20000</td>
+                        <td>101</td>
+                      </tr>
+               </tbody>
+
+               </table>
+
+             </div>
+           </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="row">
+          <button type="button" class="btn btn-warning" >Unapply</button>
+          <button type="button" class="btn btn-primary">Unapply All</button>
+          <button type="button" class="btn btn-danger"  data-dismiss="modal">Close</button>
+        </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
