@@ -133,7 +133,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" align="center"> New Invoice</h4>
+        <h4 class="modal-title" align="center">New Invoice</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -393,7 +393,7 @@
                 </div>
            </div>
            <div class="col-md-3" style="margin-left: 41px;">
-             <b>US Doller</b>
+             <b>US Dollar</b>
            </div>
            
          </div>
@@ -435,12 +435,12 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style="margin-top: 10px">
               <b>Apply Payment</b>
             </div>
             <div class="col-md-3">
-              <div class="radio">
-              <input type="radio" name="optradio" >
+              <div class="radio" >
+              <input type="radio" name="optradio" style="MARGIN-LEFT: -3PX;" >
               </div>
             </div>
           </div>
@@ -542,49 +542,20 @@
                    <td>Description</td>
                    <td>Date</td>
                    <td>Amount</td>
-                   <td>Applied Amount</td>
                    <td>Reference</td>
                  </tr>
                </thead>
                <tbody>
-                 <tr>
-                   <td>1001</td>
-                   <td>123</td>
-                   <td>hello loosse</td>
-                   <td>12/12/2018</td>
-                   <td>10000</td>
-                   <td>20000</td>
-                   <td>101</td>
+                 <tr *ngFor="let unapp_table_value of unapp_tabl ;let i=index "
+                 (click)="select_unapply_Edit(i,unapp_table_value)" [ngClass]="{'backGroundColor':i==selectindexx}"
+                 [contextmenu]="[contextmenu,{item:item}]">
+                   <td>{{unapp_table_value.invoice_no}}</td>
+                   <td>{{unapp_table_value.payment_code}}</td>
+                   <td>{{unapp_table_value.payment_type}}</td>
+                   <td>{{unapp_table_value.posting_date}}</td>
+                   <td>{{unapp_table_value.posting_amount}}</td>
+                   <td>{{unapp_table_value.posting_reference}}</td>
                  </tr>
-
-                 <tr>
-                    <td>1001</td>
-                    <td>123</td>
-                    <td>hello loosse</td>
-                    <td>12/12/2018</td>
-                    <td>10000</td>
-                    <td>20000</td>
-                    <td>101</td>
-                  </tr>
-
-                  <tr>
-                      <td>1001</td>
-                      <td>123</td>
-                      <td>hello loosse</td>
-                      <td>12/12/2018</td>
-                      <td>10000</td>
-                      <td>20000</td>
-                      <td>101</td>
-                    </tr>
-                    <tr>
-                        <td>1001</td>
-                        <td>123</td>
-                        <td>hello loosse</td>
-                        <td>12/12/2018</td>
-                        <td>10000</td>
-                        <td>20000</td>
-                        <td>101</td>
-                      </tr>
                </tbody>
 
                </table>
@@ -596,7 +567,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <div class="row">
-          <button type="button" class="btn btn-warning" >Unapply</button>
+          <button type="button" class="btn btn-warning" (click)="unapp_butfun()">Unapply</button>
           <button type="button" class="btn btn-primary">Unapply All</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>

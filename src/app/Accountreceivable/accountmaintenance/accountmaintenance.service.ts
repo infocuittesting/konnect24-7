@@ -17,44 +17,44 @@ export class AccountmaintenanceService {
           .map(this.extractData)
      }
   //  market dropdown value
-    market_dropdown():  Observable<object[]> {    
-         return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Market')
-            .map(this.extractData)
-       }
+  market_dropdown():  Observable<object[]> {    
+        return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Market')
+          .map(this.extractData)
+      }
    
  //  source dropdown value
-    source_dropdown():  Observable<object[]> {    
-        return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Source')
-           .map(this.extractData)
-      }
-
-     //  payment dropdown value
-     payment_dropdown():  Observable<object[]> {    
-      return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Payment')
-         .map(this.extractData)
-    }
-
-      //  payment dropdown value
-      currency_dropdown():  Observable<object[]> {    
-      return this.http.get('https://hotel360.herokuapp.com/Profile/profilecurrency')
+  source_dropdown():  Observable<object[]> {    
+      return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Source')
           .map(this.extractData)
     }
 
+    //  payment dropdown value
+    payment_dropdown():  Observable<object[]> {    
+    return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Payment')
+        .map(this.extractData)
+    }
+
+    //  payment dropdown value
+    currency_dropdown():  Observable<object[]> {    
+    return this.http.get('https://hotel360.herokuapp.com/Profile/profilecurrency')
+        .map(this.extractData)
+    }
+
 //  room class dropdown value
-      room_class_dropdown():  Observable<object[]> {   
-        const headers = new Headers({'Content-Type':'application/json'})
-        const options = new RequestOptions({ headers: headers }) 
-        return this.http.post('https://hotel360.herokuapp.com/Select_Class',options)
-           .map(this.extractData)
-      }
-      // posting code dropdown for posting payment
-      postingcodedropdown():  Observable<object[]> {      
-        const headers = new Headers({'Content-Type':'application/json'})
-        const options = new RequestOptions({ headers: headers })       
-        return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
-           .map(this.extractData)
-      
-      }
+    room_class_dropdown():  Observable<object[]> {   
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers }) 
+      return this.http.post('https://hotel360.herokuapp.com/Select_Class',options)
+          .map(this.extractData)
+    }
+  // posting code dropdown for posting payment
+    postingcodedropdown():  Observable<object[]> {      
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })       
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+          .map(this.extractData)
+    
+    }
 
 
 // insert new accountinvoice
@@ -114,7 +114,19 @@ export class AccountmaintenanceService {
             }
                return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_UnappyPayment',body)
                   .map(this.extractData)
-             }
+            }
+// unapply button 
+            unapply_button(unapply_value):  Observable<object[]> {    
+            let body={
+              "posting_payment_id":String(unapply_value.posting_payment_id),
+              "posting_amount":unapply_value.posting_amount,
+              "account_no":this.session.retrieve("account_number"),
+              "invoice_no":unapply_value.invoice_no
+            }
+            console.log("json_body_unapply",body)
+                return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_UNApplyPayment',body)
+                  .map(this.extractData)
+            }
       
      private extractData(res: Response) {
        //alert('hai20')

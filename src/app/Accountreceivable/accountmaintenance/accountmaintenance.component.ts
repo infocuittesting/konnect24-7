@@ -92,8 +92,29 @@ export class AccountmaintenanceComponent implements OnInit {
       });
   }
 
+//On unapply table row click
+selectindexx:any
+public unapp_val=[];
+select_unapply_Edit(index,value){
+  this.selectindexx=index
+  console.log("clicking unapply table row",value)
+  this.unapp_val =value
 
-  // create new invoice button
+} 
+
+// unapply button click
+unapp_butfun(){
+  this.AccountmaintenanceService.unapply_button(this.unapp_val)
+  .subscribe((resp: any) => {
+    var insertresp=resp.ReturnCode
+    if(insertresp=='RUS'){
+      var message="Payment unapplied Successfully"
+      this.toasterService.success(message);
+    }
+    });
+}
+
+// create new invoice button
   newinvoice={}
   public newinvoice_inp=[];
   newinvoicefun(newinvoice){
