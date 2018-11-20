@@ -147,7 +147,7 @@ ar_notes_table():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
-    console.log("session account number",this.session.retrieve("account_number"))
+    // console.log("session account number",this.session.retrieve("account_number"))
    let body={  
       "account_number":this.session.retrieve("account_number"),
       "ar_notes_id":notes_id   
@@ -165,7 +165,7 @@ ar_notes_table():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
-    console.log("session account number for payhistory",this.session.retrieve("account_number"))
+    // console.log("session account number for payhistory",this.session.retrieve("account_number"))
    let body={  
       "account_no":this.session.retrieve("account_number")   
    }
@@ -174,18 +174,30 @@ ar_notes_table():  Observable<object[]> {
   
   }
 
-  // post history
+  // ---------------------post history-----------//
   posthis_table():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
-    console.log("session account number for posthistory",this.session.retrieve("invoice_number"))
+    // console.log("session account number for posthistory",this.session.retrieve("invoice_number"))
    
    let body={  
     "invoice_no":this.session.retrieve("invoice_no") 
    }
    console.log("posthisbodyyyyy",body)
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountPostHistory',body,options)
+       .map(this.extractData)
+  
+  }
+
+  // ----------------------Yearview-------------//
+  yearview_table():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })   
+ 
+   
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_YearViewAmount',options)
        .map(this.extractData)
   
   }

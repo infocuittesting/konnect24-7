@@ -27,9 +27,14 @@ export class AccountoptionsComponent implements OnInit {
   public notes_tabl_val=[]
   public payhis_tabl_val=[]
   public posthis_tabl_val=[]
+<<<<<<< HEAD
   public tableschanges =[]
   public tableschanges_new=[]
  
+=======
+  public yearview_val=[]
+  
+>>>>>>> ff23ed84e1f548917c0f72b14ae147b64aa4d7b3
   
   public traces_account_name:any
   public curdate:any
@@ -37,20 +42,20 @@ export class AccountoptionsComponent implements OnInit {
   ngOnInit() {
     this.AccountoptionsService.acc_traces_table()
     .subscribe((resp: any) => {
- 
-     this.acc_trace_val=resp.ReturnValue;
+
+      this.acc_trace_val=resp.ReturnValue;
     //  console.log("trace table valuessssssss",this.acc_trace_val)
-     this.traces_account_name=this.session.retrieve("pf_account_name")  
-   });
+      this.traces_account_name=this.session.retrieve("pf_account_name")  
+    });
 
-   this.AccountoptionsService.ar_notes_table()
-   .subscribe((resp: any) => {
+    this.AccountoptionsService.ar_notes_table()
+    .subscribe((resp: any) => {
     this.notes_tabl_val=resp.ReturnValue;
-   
-  });
+    });
 
  
 
+<<<<<<< HEAD
   this.AccountoptionsService.payhis_table()
   .subscribe((resp: any) => {
    this.payhis_tabl_val=resp.ReturnValue;
@@ -68,7 +73,30 @@ export class AccountoptionsComponent implements OnInit {
    console.log("new table records after filter",this.tableschanges_new)
   //  this.someData=resp.ReturnValue;
  });
+=======
+    this.AccountoptionsService.payhis_table()
+    .subscribe((resp: any) => {
+    this.payhis_tabl_val=resp.ReturnValue;
+    console.log("payhis table",this.payhis_tabl_val)
+    });
 
+
+    this.AccountoptionsService.posthis_table()
+    .subscribe((resp: any) => {
+    this.posthis_tabl_val=resp.ReturnValue;
+    console.log("posthis table",this.posthis_tabl_val)
+    });
+>>>>>>> ff23ed84e1f548917c0f72b14ae147b64aa4d7b3
+
+    this.AccountoptionsService.ar_notes_table()
+    .subscribe((resp: any) => {
+    this.notes_tabl_val=resp.ReturnValue;
+    });
+
+    this.AccountoptionsService.yearview_table()
+    .subscribe((resp: any) => {
+    this.yearview_val=resp.ReturnValue;
+    });
   }
 
 // insert new trace//
