@@ -56,6 +56,24 @@ export class AccountmaintenanceService {
     
     }
 
+    // compress button
+    compress(comp,invoice_num,openamt,invoiceamt):  Observable<object[]> {    
+      let body={
+        "account_number":this.session.retrieve("account_number"),
+        "account_name":comp.account_name,
+        "market_id":String(comp.market_code),
+        "source_id":String(comp.source_code),
+        "room_class_id":String(comp.roomclass_code),
+        "invoice_supplement":comp.supplement,
+        "reference":comp.reference,
+        "open_amount":openamt,
+        "invoice_amount":invoiceamt,
+        "invoice_no":invoice_num
+      }
+      console.log("json body for compress",body)
+         return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_CompressInvoice',body)
+            .map(this.extractData)
+      }
 
 // insert new accountinvoice
       insert_accountin(newinvoice):  Observable<object[]> {    

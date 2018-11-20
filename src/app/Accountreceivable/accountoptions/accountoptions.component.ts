@@ -27,14 +27,11 @@ export class AccountoptionsComponent implements OnInit {
   public notes_tabl_val=[]
   public payhis_tabl_val=[]
   public posthis_tabl_val=[]
-<<<<<<< HEAD
   public tableschanges =[]
   public tableschanges_new=[]
  
-=======
   public yearview_val=[]
   
->>>>>>> ff23ed84e1f548917c0f72b14ae147b64aa4d7b3
   
   public traces_account_name:any
   public curdate:any
@@ -55,7 +52,6 @@ export class AccountoptionsComponent implements OnInit {
 
  
 
-<<<<<<< HEAD
   this.AccountoptionsService.payhis_table()
   .subscribe((resp: any) => {
    this.payhis_tabl_val=resp.ReturnValue;
@@ -73,7 +69,6 @@ export class AccountoptionsComponent implements OnInit {
    console.log("new table records after filter",this.tableschanges_new)
   //  this.someData=resp.ReturnValue;
  });
-=======
     this.AccountoptionsService.payhis_table()
     .subscribe((resp: any) => {
     this.payhis_tabl_val=resp.ReturnValue;
@@ -86,7 +81,6 @@ export class AccountoptionsComponent implements OnInit {
     this.posthis_tabl_val=resp.ReturnValue;
     console.log("posthis table",this.posthis_tabl_val)
     });
->>>>>>> ff23ed84e1f548917c0f72b14ae147b64aa4d7b3
 
     this.AccountoptionsService.ar_notes_table()
     .subscribe((resp: any) => {

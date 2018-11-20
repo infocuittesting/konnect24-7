@@ -59,6 +59,7 @@
         <table class="table table-bordered table-hover">
           <thead style="background-color: #0077B5;color: white">
             <tr >
+              <th>X</th>
               <th>Seq</th>
               <th>Name</th>
               <th>Account number</th>
@@ -77,18 +78,15 @@
                       <a class="dropdown-item" data-toggle="modal" href="#tr" (click)="window_button()">compress
                         </a><br>
 
-                      <!-- <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-                <a class="dropdown-item" href="#">Link 3</a>
-              </div> -->
-
                     </div>
                   </div>
                 </contextmenu>
             <tr *ngFor="let ar_table_value of ac_maintain_tabl ;let i=index "
             (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}"
             [contextmenu]="[contextmenu,{item:item}]">
+              <td> 
+                <input type="checkbox"  id="one" (checked)="exist(ar_table_value)" (click)="toggleSelection(ar_table_value)">           
+              </td>
               <td>{{i+1}}</td>
               <td>{{ar_table_value.account_name}}</td>
               <td>{{ar_table_value.account_number}}</td>
@@ -346,9 +344,9 @@
            </div>
            <div class="col-md-4">
               <div class="input-group">
-                  <select name="pay_code" id="paycode" style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" (change)="change_pay_val(paycode.paycode)" required>
+                <select name="pay_code" id="paycode" style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" (change)="change_pay_val(paycode.paycode)" required>
                   <option *ngFor="let paymnt of payment_val" [ngValue]="paymnt.id">{{paymnt.paymenttype}}</option>
-                  </select>
+                </select>
                 </div>
            </div>
            <div class="col-md-3" style="margin-left: 42px;" *ngFor="let pay_desc of payment_code_desc">
@@ -446,7 +444,7 @@
 </div>
 <!-- Payment End -->
 
-<!-- New Invoice start-->
+<!-- compress modal starts-->
 <div class="modal fade" id="Compress1" role="dialog">
   <div class="modal-dialog">
 
@@ -461,33 +459,57 @@
           <div class="col-md-4">
             <p><b> Account Name</b></p>
             <div class="input-group">
-              <input type="text" name="" id="" style="height:34px;width:150px;">
+              <input type="text" name="" id="" style="height:34px;width:150px;" [(ngModel)]="comp.account_name">
             </div>
           </div>
           <div class="col-md-4">
             <p><b> Amount</b></p>
             <div class="input-group">
-              <input type="text" name="" id="" style="height:34px;width:150px;">
+              <input type="text" name="" id="" style="height:34px;width:150px;" [(ngModel)]="open_amt" disabled>
             </div>
           </div>
           <div class="col-md-4">
             <p><b> Market</b></p>
             <div class="input-group">
-              <textarea name="" id="" style="height:34px;width:150px;"></textarea>
+                <select style="height:34px;width:150px;" id="name" name="newmarkt" [(ngModel)]="comp.market_code" required>
+                  <option *ngFor="let mark of market_val" [ngValue]="mark.id">{{mark.marketgroup}}</option>
+                </select>
             </div>
           </div>
         </div>
         <div class="row" style="margin-top:10px">
-          <div class="col-md-12">
+          <div class="col-md-4">
             <p><b> Source</b></p>
+            <select name="" id="" style="height:34px;width:150px;" name="newsour" [(ngModel)]="comp.source_code" required>
+              <option *ngFor="let src of source_val" [ngValue]="src.id">{{src.sourcecode}}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <p><b> Room Class</b></p>
             <div class="input-group">
-              <textarea name="" id="" style="height:34px;width:550px;"></textarea>
+              <select name="" id="" style="height:34px;width:150px;" [(ngModel)]="comp.roomclass_code" required>
+                <option *ngFor="let rmcls of room_cls_val" [ngValue]="rmcls.id">{{rmcls.class}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p><b> Supplement</b></p>
+            <div class="input-group">
+              <input type="text" name="" id="" style="height:34px;width:150px;" [(ngModel)]="comp.supplement">
             </div>
           </div>
         </div>
+        <div class="row" style="margin-top:10px">
+            <div class="col-md-4">
+                <p><b> Reference</b></p>
+                <div class="input-group">
+                  <input type="text" name="" id="" style="height:34px;width:150px;" [(ngModel)]="comp.reference">                  
+                </div>
+              </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal"><b>Ok</b></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="compressfun(comp)"><b>Ok</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
 
       </div>
@@ -526,8 +548,7 @@
                </thead>
                <tbody>
                  <tr *ngFor="let unapp_table_value of unapp_tabl ;let i=index "
-                 (click)="select_unapply_Edit(i,unapp_table_value)" [ngClass]="{'backGroundColor':i==selectindexx}"
-                 [contextmenu]="[contextmenu,{item:item}]">
+                 (click)="select_unapply_Edit(i,unapp_table_value)" [ngClass]="{'backGroundColor':i==selectindexx}">
                    <td>{{unapp_table_value.invoice_no}}</td>
                    <td>{{unapp_table_value.payment_code}}</td>
                    <td>{{unapp_table_value.payment_type}}</td>

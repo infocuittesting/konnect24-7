@@ -80,6 +80,61 @@ export class AccountmaintenanceComponent implements OnInit {
 
 }
 
+  //selecting values from multiple checkboxes in account maintainance table
+  selected = [];
+  selected_id = [];
+  idx: any;
+  public invoicenos: any;
+  public rmtype: any;
+  exist(item) {
+    this.selected.indexOf(item) > -1;
+  }
+
+public open_amt=0
+public invoice_amt=0
+  toggleSelection(item) {
+    this.idx = this.selected.indexOf(item);
+    // this.room_type += item.type
+    console.log(item)
+    console.log("string", item.type)
+    if (this.idx > -1) {
+      this.selected.splice(this.idx, 1);
+      this.selected_id.splice(this.idx, 1);
+    }
+    else {
+      this.selected.push(item);
+      this.selected_id.push(item.invoice_no);
+      this.open_amt+=item.open_amount
+      this.invoice_amt+=item.invoice_amount
+    }
+
+    this.invoicenos = this.selected_id;
+    console.log("invoice number", this.invoicenos);
+    console.log("invoice and open amount", this.open_amt,this.invoice_amt);
+
+  }
+
+comp={}
+compressfun(comp){
+  console.log("compressssssss values from html",comp)
+  this.AccountmaintenanceService.compress(comp,this.invoicenos,this.open_amt,this.invoice_amt)
+  .subscribe((resp: any) => {
+  var insertresp=resp.ReturnCode
+  if(insertresp=='RIS'){
+    var message="Invoice Compressed Successfully"
+    this.toasterService.success(message);
+    
+    // refresh account maintain table records //
+    this.AccountmaintenanceService.account_table()
+    .subscribe((resp: any) => { 
+    this.ac_maintain_tabl=resp.ReturnValue;
+    // console.log("account maintain table value",this.ac_maintain_tabl)
+  });
+  }
+  
+ });
+}
+
 // selecting any row values in account maintainance
   public unapp_tabl=[];
   selectindex
@@ -95,7 +150,7 @@ export class AccountmaintenanceComponent implements OnInit {
     this.AccountmaintenanceService.unapply_table(this.invoice_num)
     .subscribe((resp: any) => {
         this.unapp_tabl=resp.ReturnValue;
-          console.log("unapply table values",this.unapp_tabl);
+          // console.log("unapply table values",this.unapp_tabl);
       });
   }
 
@@ -163,7 +218,7 @@ paycode={}
       var message="Payment Posted Successfully"
       this.toasterService.success(message);
       
-      // refresh traces table records //
+      // refresh account maintain table records //
       this.AccountmaintenanceService.account_table()
       .subscribe((resp: any) => { 
       this.ac_maintain_tabl=resp.ReturnValue;
