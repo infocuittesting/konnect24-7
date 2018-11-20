@@ -446,32 +446,15 @@
                        </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Venkat</td>
-                          <td>3204145568</td>
-                          <td>12345</td>
-                          <td>hello</td>
-                          <td>employee</td>
-                          <td>chennai</td>
+                        <tr *ngFor="let Transfer of tableschanges_new ;let i=index "
+                        (click)="selectMembersEdit(Transfer,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                          <td>{{Transfer.contact}}</td>
+                          <td>{{Transfer.account_number}}</td>
+                          <td>{{Transfer.account_balance}}</td>
+                          <td>{{Transfer.contact}}</td>
+                          <td>{{Transfer.account_type}}</td>
+                          <td>{{Transfer.city}}</td>
                         </tr>
-
-                        <tr>
-                            <td>Venkat</td>
-                            <td>3204145568</td>
-                            <td>12345</td>
-                            <td>hello</td>
-                            <td>employee</td>
-                            <td>chennai</td>
-                          </tr>
-
-                          <tr>
-                              <td>Venkat</td>
-                              <td>3204145568</td>
-                              <td>12345</td>
-                              <td>hello</td>
-                              <td>employee</td>
-                              <td>chennai</td>
-                            </tr>
                       </tbody>
                     </table>
 
