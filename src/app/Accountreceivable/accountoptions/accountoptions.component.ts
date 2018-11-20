@@ -27,6 +27,9 @@ export class AccountoptionsComponent implements OnInit {
   public notes_tabl_val=[]
   public payhis_tabl_val=[]
   public posthis_tabl_val=[]
+  public tableschanges =[]
+  public tableschanges_new=[]
+ 
   
   public traces_account_name:any
   public curdate:any
@@ -46,21 +49,25 @@ export class AccountoptionsComponent implements OnInit {
    
   });
 
+ 
 
   this.AccountoptionsService.payhis_table()
   .subscribe((resp: any) => {
    this.payhis_tabl_val=resp.ReturnValue;
-   console.log("payhis table",this.payhis_tabl_val)
+  //  console.log("payhis table",this.payhis_tabl_val)
   
  });
 
 
- this.AccountoptionsService.posthis_table()
+ this. AccountoptionsService.bsearchtable()
  .subscribe((resp: any) => {
-  this.posthis_tabl_val=resp.ReturnValue;
-  console.log("posthis table",this.posthis_tabl_val)
- 
-});
+   this.tableschanges=resp.ReturnValue;
+   console.log("table account setup working",this.tableschanges)
+   var acc=this.session.retrieve("account_number")
+   this.tableschanges_new=this.tableschanges.filter(trans=>trans.account_number!=acc)
+   console.log("new table records after filter",this.tableschanges_new)
+  //  this.someData=resp.ReturnValue;
+ });
 
   }
 
