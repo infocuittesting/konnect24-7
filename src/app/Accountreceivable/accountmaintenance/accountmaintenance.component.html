@@ -186,7 +186,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#billing" (click)="newinvoicefun(newinvoice)"><b>Ok</b></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#post" (click)="newinvoicefun(newinvoice)"><b>Ok</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
 
       </div>
@@ -195,17 +195,17 @@
   </div>
 </div>
 
-<!-- //new billing modal -->
+<!-- //new post modal -->
 
-<!-- Modal -->
-<div id="billing" class="modal modal-open" role="dialog">
+<!-- post Modal -->
+<div id="post" class="modal modal-open" role="dialog">
     <div class="modal-dialog modal-lg">
   
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Post</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -252,32 +252,7 @@
             </tr>
           </thead>
           <tbody>
-            <!-- <tr>
-                                        <td>
-                                          <select   style="width:100%;" [(ngModel)]="add.Code">
-                                             <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
-                                          </select>
-                                        </td>
-                                        <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Amount" /></td>
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Qty" /></td>
-                                        <td>
-                                            <select style="width: 100%;height: 25px;"[(ngModel)]="add.Windowno">
-                                                <option value="" hidden>select value</option>
-                                                <option value="101">1</option>
-                                                <option value="102">2</option>
-                                              </select>
-                                        </td>
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>                  
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Check_No" /></td>
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Supplement" /></td>
-                                        <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Reference" /></td>
-                                        <td style="width: 86px;"><span>
-                                          <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(add)"
-                                          class="fa fa-plus-circle" aria-hidden="true"></i>
-                                       </span></td>
-            
-                                       </tr> -->
+         
             <tr *ngFor="let room of showdetails ; let i=index;">
 
               <td><label *ngIf="room.editFlag==false">{{room.Post_code_id}}</label>
@@ -371,13 +346,13 @@
            </div>
            <div class="col-md-4">
               <div class="input-group">
-                  <select name="pay_code" id="paycode" style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" required>
+                  <select name="pay_code" id="paycode" style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" (change)="change_pay_val(paycode.paycode)" required>
                   <option *ngFor="let paymnt of payment_val" [ngValue]="paymnt.id">{{paymnt.paymenttype}}</option>
                   </select>
                 </div>
            </div>
-           <div class="col-md-3" style="margin-left: 42px;">
-             <b>Check</b>
+           <div class="col-md-3" style="margin-left: 42px;" *ngFor="let pay_desc of payment_code_desc">
+             <b>{{pay_desc.payment_description}}</b>
            </div>
          </div>
          <div class="row">
@@ -387,13 +362,13 @@
            </div>
            <div class="col-md-4">
               <div class="input-group">
-                  <select name="pay_cur" id="paycurr" style="height:34px;width:200px;" [(ngModel)]="paycode.paycurrency" required>
+                  <select name="pay_cur" id="paycurr" style="height:34px;width:200px;" [(ngModel)]="paycode.paycurrency" (change)="change_curr_val(paycode.paycurrency)" required>
                     <option *ngFor="let curren of curr_val" [ngValue]="curren.id">{{curren.currency}}</option>
                   </select>
                 </div>
            </div>
-           <div class="col-md-3" style="margin-left: 41px;">
-             <b>US Dollar</b>
+           <div class="col-md-3" style="margin-left: 41px;" *ngFor="let cur_desc of currency_desc">
+             <b>{{cur_desc.currency_description}}</b>
            </div>
            
          </div>
@@ -407,8 +382,8 @@
                   <input type="text" name="pay_amt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" required>
                 </div>
            </div>
-           <div class="col-md-3" style="margin-left: 43px;">
-             <b>USD</b>
+           <div class="col-md-3" style="margin-left: 43px;" *ngFor="let cur_desc of currency_desc">
+             <b>{{cur_desc.currency}}</b>
            </div>
 
          </div>
@@ -419,7 +394,7 @@
            </div>
            <div class="col-md-6">
              <div class="form-group">
-               <input type="text" class="form-control" id="supplememt" name="supplememt">
+               <input type="text" class="form-control" id="supplememt" name="supplememt"  [(ngModel)]="paycode.pay_supplement">
              </div>
            </div>
          </div>
@@ -430,19 +405,23 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control" id="supplememt" name="supplememt">
+                <input type="text" class="form-control" id="supplememt" name="supplememt"  [(ngModel)]="paycode.pay_reference">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3" style="margin-top: 10px">
-              <b>Apply Payment</b>
-            </div>
-            <div class="col-md-3">
-              <div class="radio" >
-              <input type="radio" name="optradio" style="MARGIN-LEFT: -3PX;" >
-              </div>
-            </div>
+            <!-- <div class="col-md-3" style="margin-top: 10px" *ngFor="let items of pay_type let i=index">
+              <b>{{items.invoice_payment_type_description}}</b>
+            </div> -->
+           
+                <div class="radio" *ngFor="let items of pay_type let i=index" >
+              
+                  <input type="radio" value="{{items.invoice_payment_type_id}}" name="optradio" style="width: 2rem;height: 1.5rem;margin-left:10px;" (change)="radiobuttonchange(items,$event)" [(ngModel)]="paycode.paymnt_type_id"><label  style="margin-left:10px;">{{items.invoice_payment_type_description}}</label>
+
+              <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" [ngModel]="item.invoice_payment_type_id"> -->
+              <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" name="{{item.invoice_payment_type_id}}" [ngModel]="item.invoice_payment_type_id"  id="{{items.invoice_payment_type_id}}"> -->
+                  </div>
+            
           </div>
 
          
@@ -456,7 +435,7 @@
        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success"  (click)="paymentfun(paycode);paymentForm.reset()" [disabled]="!paymentForm.valid" data-dismiss="modal"><b>Post</b></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal"  (click)="paymentfun(paycode);paymentForm.reset()" [disabled]="!paymentForm.valid" ><b>Post</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="paymentForm.reset()"><b>Close</b></button>
 
       </div>

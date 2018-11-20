@@ -25,6 +25,7 @@ export class AccountmaintenanceComponent implements OnInit {
   public payment_val=[];
   public curr_val=[];
   public pscd_dd=[];
+  public pay_type=[];
   public enablebut=true;
   ngOnInit() {
     this.AccountmaintenanceService.account_table()
@@ -55,21 +56,27 @@ export class AccountmaintenanceComponent implements OnInit {
     this.AccountmaintenanceService.payment_dropdown()
     .subscribe((resp: any) => { 
     this.payment_val=resp.ReturnValue;
-    console.log("roomdropdown valuess",this.room_cls_val)
+    console.log("payment dropdown valuess",this.payment_val)
     });
 
     this.AccountmaintenanceService.currency_dropdown()
     .subscribe((resp: any) => { 
     this.curr_val=resp.ReturnValue;
-    console.log("roomdropdown valuess",this.room_cls_val)
+    console.log("currency dropdown valuess",this.curr_val)
     });
  
    this.AccountmaintenanceService.postingcodedropdown()
    .subscribe((resp: any) => {
        this.pscd_dd=resp.ReturnValue;
-       //  console.log(this.pscd_dd);
+        console.log("posting code dropdown",this.pscd_dd);
     });
-
+    
+  // payment type in payment button
+    this.AccountmaintenanceService.paymenttype_dropdown()
+    .subscribe((resp: any) => {
+        this.pay_type=resp.ReturnValue;
+         console.log("payment type dropdown values for payment",this.pay_type);
+     });
 
 }
 
@@ -122,16 +129,48 @@ unapp_butfun(){
   this.newinvoice_inp=newinvoice
   }
 
+// changing payment dropdown
+public payment_code_desc=[];
+change_pay_val(paycode){
+  console.log("paymentttttttt",paycode)
+  this.payment_code_desc = this.payment_val.filter(
+    book => book.id ==paycode)
+    console.log("filtering the payment code first",this.payment_code_desc)
+}
+
+// changing payment dropdown
+public currency_desc=[];
+
+change_curr_val(curcode){
+  console.log("currencyyyyyy",curcode)
+  this.currency_desc = this.curr_val.filter(
+    book => book.id ==curcode)
+    console.log("filtering the currency code first",this.currency_desc)
+}
+
+
+// payment-->post button
 paycode={}
-  paymentfun(paycode){
-    console.log("paycodeeeeee from payment button",paycode)
-    this.AccountmaintenanceService.payment_button(paycode)
+
+  paymentfun(paycode){     
+    this.payment_code_desc=[]; 
+    this.currency_desc=[];
+    // console.log("paycodeeeeee from payment button",paycode)
+    this.AccountmaintenanceService.payment_button(paycode,this.invoice_num)
     .subscribe((resp: any) => {
     var insertresp=resp.ReturnCode
     if(insertresp=='RIS'){
       var message="Payment Posted Successfully"
       this.toasterService.success(message);
+      
+      // refresh traces table records //
+      this.AccountmaintenanceService.account_table()
+      .subscribe((resp: any) => { 
+      this.ac_maintain_tabl=resp.ReturnValue;
+      console.log("account maintain table value",this.ac_maintain_tabl)
+    });
     }
+    
    });
   }
   room={}

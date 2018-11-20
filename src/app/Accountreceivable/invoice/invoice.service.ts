@@ -43,6 +43,32 @@ invoice_table():  Observable<object[]> {
          return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_REASONDropdown',body)
             .map(this.extractData)
        }
+
+         // posting code dropdown for posting payment
+    postingcodedropdown():  Observable<object[]> {      
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })       
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+          .map(this.extractData)
+    
+    }
+
+        //Posting bills in invoice-->post  
+        postingbill(poscdid):  Observable<object[]> {
+       
+          const headers = new Headers({'Content-Type':'application/json'})
+          const options = new RequestOptions({ headers: headers })
+          let body={
+
+            "bills":poscdid
+          
+            }
+           console.log("final input",JSON.stringify(body));
+        
+          return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_Billingpost',body,options)
+             .map(this.extractData)
+        
+        }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

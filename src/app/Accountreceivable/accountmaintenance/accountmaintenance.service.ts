@@ -74,8 +74,15 @@ export class AccountmaintenanceService {
               .map(this.extractData)
          }
        
+    //  room class dropdown value
+    paymenttype_dropdown():  Observable<object[]> {   
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers }) 
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_InvoicePaymentDropdown',options)
+          .map(this.extractData)
+    }
     // insert post in payment button
-         payment_button(newinvoice):  Observable<object[]> {    
+         payment_button(newinvoice,invoice_num):  Observable<object[]> {    
           let body={
 
             "payment_code_id":newinvoice.paycode,
@@ -83,11 +90,12 @@ export class AccountmaintenanceService {
             "posting_amount":Number(newinvoice.payamount),
             "posting_supplement":newinvoice.pay_supplement ,
             "posting_reference":newinvoice.pay_reference,
-            "invoice_payment_type_id":"5",
-            "account_no":this.session.retrieve("account_number")
+            "invoice_payment_type_id":newinvoice.paymnt_type_id,
+            "account_no":this.session.retrieve("account_number"),
+            "invoice_no":invoice_num
           }
-            
-             return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_Billingpayment ',body)
+          console.log("final input for payment ",JSON.stringify(body));
+             return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_ApplyPaymentSelectiviely',body)
                 .map(this.extractData)
            }
     //Posting bills in invoice-->post  
@@ -127,6 +135,8 @@ export class AccountmaintenanceService {
                 return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_UNApplyPayment',body)
                   .map(this.extractData)
             }
+
+
       
      private extractData(res: Response) {
        //alert('hai20')
