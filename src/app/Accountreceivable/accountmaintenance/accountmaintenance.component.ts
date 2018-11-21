@@ -93,6 +93,8 @@ export class AccountmaintenanceComponent implements OnInit {
 public open_amt=0
 public invoice_amt=0
   toggleSelection(item) {
+    this.enablebut=false
+    this.invoice_num=item.invoice_no
     this.idx = this.selected.indexOf(item);
     // this.room_type += item.type
     console.log(item)
@@ -135,6 +137,26 @@ compressfun(comp){
  });
 }
 
+
+// uncompress
+uncompress(){
+  this.AccountmaintenanceService.uncompress(this.invoicenos)
+  .subscribe((resp: any) => {
+  var insertresp=resp.ReturnCode
+  if(insertresp=='RDS'){
+    var message="Invoice UnCompressed Successfully"
+    this.toasterService.success(message);
+    
+    // refresh account maintain table records //
+    this.AccountmaintenanceService.account_table()
+    .subscribe((resp: any) => { 
+    this.ac_maintain_tabl=resp.ReturnValue;
+    // console.log("account maintain table value",this.ac_maintain_tabl)
+  });
+  }
+  
+ });
+}
 // selecting any row values in account maintainance
   public unapp_tabl=[];
   selectindex

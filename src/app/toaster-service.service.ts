@@ -25,7 +25,7 @@ setting(){
     "positionClass": "toast-top-full-width",
     "preventDuplicates": false,
     "onclick": null,
-    "showDuration": "3000",
+    "showDuration": "10000",
     "hideDuration": "1000",
     "timeOut": "5000",
     "extendedTimeOut": "1000",

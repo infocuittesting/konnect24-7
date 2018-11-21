@@ -75,19 +75,19 @@
                   <div class="dropdown open">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" data-toggle="modal" href="#unapply">Unapply</a><br>
-                      <a class="dropdown-item" data-toggle="modal" href="#tr" (click)="window_button()">compress
+                      <a class="dropdown-item" data-toggle="modal" href="#uncompress">uncompress
                         </a><br>
 
                     </div>
                   </div>
                 </contextmenu>
             <tr *ngFor="let ar_table_value of ac_maintain_tabl ;let i=index "
-            (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex}"
+            (click)="selectMembersEdit(i,ar_table_value)" [ngClass]="{'backGroundColor':i==selectindex,'backgroundcolorgreenchange':ar_table_value.acc_invoice_satus=='Compress'}"
             [contextmenu]="[contextmenu,{item:item}]">
-              <td> 
+              <td > 
                 <input type="checkbox"  id="one" (checked)="exist(ar_table_value)" (click)="toggleSelection(ar_table_value)">           
               </td>
-              <td>{{i+1}}</td>
+              <td >{{i+1}}</td>
               <td>{{ar_table_value.account_name}}</td>
               <td>{{ar_table_value.account_number}}</td>
               <td>{{ar_table_value.invoice_date}}</td>
@@ -420,13 +420,7 @@
               <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" name="{{item.invoice_payment_type_id}}" [ngModel]="item.invoice_payment_type_id"  id="{{items.invoice_payment_type_id}}"> -->
                   </div>
             
-          </div>
-
-         
-          
-          
-          
-          
+          </div>  
         
           <hr>
          
@@ -518,6 +512,28 @@
   </div>
 </div>
 <!-- New Invoice End -->
+
+<!-- uncompress confirmation modal -->
+<div id="uncompress" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Uncompress</h4>
+      </div>
+      <div class="modal-body">
+        <b>Are you sure do you want to uncompress?</b>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="uncompress()">OK</button>        
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <!-- The Modal -->
