@@ -75,6 +75,17 @@ export class AccountmaintenanceService {
             .map(this.extractData)
       }
 
+    // uncompress 
+    uncompress(invoice_num):  Observable<object[]> {    
+      let body={
+        "account_number":this.session.retrieve("account_number"),
+        "invoice_no":invoice_num
+      }
+      console.log("json body for compress",body)
+         return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_DELETE_UnCompressInvoice',body)
+            .map(this.extractData)
+      }
+
 // insert new accountinvoice
       insert_accountin(newinvoice):  Observable<object[]> {    
         let body={
