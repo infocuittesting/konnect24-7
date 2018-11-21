@@ -9,28 +9,28 @@
               <div class="col-md-3">
                 <b>Account Name</b>
                 <div class="input-group">
-                  <input type="text" name="" id="" style="height:34px;width:200px;">
+                  <input type="text" name="name" id="name" style="height:34px;width:200px;" [(ngModel)]="Name">
                 </div>
               </div>
               <div class="col-md-3">
                 <b>From Account No</b>
                 <div class="input-group">
-                  <input type="text" name="" id="" style="height:34px;width:200px;">
+                  <input type="text" name="name" id="name" style="height:34px;width:200px;" [(ngModel)]="AccountNo">
                 </div>
               </div>
               <div class="col-md-3">
                 <b>To Account No</b>
                 <div class="input-group">
-                  <input type="text" name="" id="" style="height:34px;width:200px;">
+                  <input type="text" name="name" id="name" style="height:34px;width:200px;" [(ngModel)]="toAccountNo">
                 </div>
               </div>
               <div class="col-md-3">
                 <b>Account Type</b>
                 <div class="input-group">
-                  <select name="" id="" style="height:34px;width:200px;">
-                    <option value="">Saving Account</option>
-                    <option value=""> Current Account</option>
-                    <option value=""></option>
+                  <select name="accounttype" id=" accounttype" style="height:34px;width:200px;" [(ngModel)]="accounttype" (change)="onSel(accounttype)">
+                    <option *ngFor="let option of market_val" 
+                    [ngValue]="option.account_type"> 
+                    {{option.account_type}}</option>
                   </select>
                 </div>
               </div>
@@ -38,17 +38,17 @@
             <div class="row" style="margin-top:10px;">
               <div class="col-md-3">
                 <div class="input-group">
-                  <label for=""><input type="radio" name="" id=""> All</label>
+                  <label for=""><input type="radio" name="name" id="name"> All</label>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="input-group">
-                  <label for=""><input type="radio" name="" id=""> Open Balance</label>
+                  <label for=""><input type="radio" name="name" id="name"> Open Balance</label>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="input-group">
-                  <label for=""><input type="radio" name="" id=""> No Balance</label>
+                  <label for=""><input type="radio" name="name" id="name"> No Balance</label>
                 </div>
               </div>
             </div>
@@ -67,7 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let ar_table_value of res_table ;let i=index "
+          <tr *ngFor="let ar_table_value of res_table | filterdata: Name :'pf_account' | filterdata: AccountNo :'account_number' | filterdata: toAccountNo :'account_number';let i=index "
           (click)="selectMembersEdit(ar_table_value,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td>{{ar_table_value?.pf_account}}</td>
             <td>{{ar_table_value?.account_number}}</td>

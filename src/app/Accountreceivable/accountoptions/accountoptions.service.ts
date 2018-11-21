@@ -86,6 +86,25 @@ export class AccountoptionsService {
     
     }
   //----------------- trace ends--------------------------//
+//tranfer data option
+Transferdata(input:any,to_acc):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  console.log("invoice")
+ let body={  
+    // "traces_id":String(trace_id)
+    // "invoice_no":this.session.retrieve("invoice_no"),
+    "From_account":String(this.session.retrieve("account_number")),
+	   "Invoice_no":this.session.retrieve("Invoice_no"),
+     "To_aacount":String(to_acc)
+ }
+ console.log("json body for transfer",JSON.stringify(body));
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_ARTransfer',body,options)
+     .map(this.extractData)
+
+}
+
 
 // -------------------AR notes starts-----------------------------//
 

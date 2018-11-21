@@ -20,7 +20,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   public mainratecode=[];
   public showMore;
   public ClearAll=[];
-  public filterdata;
+  public filterdata=[];
  
   
   public =[];

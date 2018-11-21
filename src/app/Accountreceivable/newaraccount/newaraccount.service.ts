@@ -16,6 +16,13 @@ export class NewaraccountService {
        .map(this.extractData)
   }
 
+  accounttype_dropdown():  Observable<object[]> {    
+    let body={}
+       return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountTypeDropdown',body)
+          .map(this.extractData)
+     }
+   
+
 
   accountdelete(prof_id):  Observable<object[]> {
        

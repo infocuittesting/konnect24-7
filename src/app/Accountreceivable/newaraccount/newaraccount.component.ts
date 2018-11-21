@@ -27,6 +27,9 @@ export class NewaraccountComponent implements OnInit {
   public count=[];
   public confim;
   public PF_Firstname;
+  public market_val=[];
+  public someData=[];
+  public filterdata=[];
 
   showhiderestriction(param){
     // if(param == "all"){
@@ -51,8 +54,22 @@ export class NewaraccountComponent implements OnInit {
     .subscribe((resp: any) => {
  
      this.res_table=resp.ReturnValue;
+     this.filterdata = this.res_table;
      console.log("table valuessssssss",this.res_table)
    });
+
+   this.NewaraccountService.accounttype_dropdown()
+   .subscribe((resp: any) => { 
+    this.market_val=resp.ReturnValue;
+    console.log("accounttype dropdown valuess",this.market_val)
+    });
+  }
+
+  onSel(val){
+    console.log("whole table",JSON.stringify(this.res_table));
+    console.log("droup down filter working fine",val);
+    // this.res_table = this.someData.filter(x => x.status == val)
+    this.res_table=this.filterdata.filter(x => x.account_type == val)
   }
 
   public prof_id:any

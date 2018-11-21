@@ -29,6 +29,7 @@ export class AccountoptionsComponent implements OnInit {
   public posthis_tabl_val=[]
   public tableschanges =[]
   public tableschanges_new=[]
+  public Transfer=[]
  
   public yearview_val=[]
   
@@ -121,6 +122,7 @@ export class AccountoptionsComponent implements OnInit {
   public createdon:any
   public trace_txt:any
   public trace_id:any
+
   public disabltrace=true
   traceselectindex
   selecttracesvalue(value,index){
@@ -173,7 +175,27 @@ console.log("trave id after clicking the value",this.trace_id)
    });
   }
 //---------------------trace ends---------------//
+//transfer options
+public to_acc:any
+selectTransEdit(value,index){
+console.log("selecting a transfer table row",value)
+this.to_acc=value.account_number
+}
+// transfer table data
+public invoice_no:any
+//  this.invoice_no=value.account_traces_id
+transferfun(){
+  this.AccountoptionsService.Transferdata(this.invoice_no,this.to_acc)
+  .subscribe((resp: any) => {
+    this.insertresp=resp.ReturnCode
+    console.log("transfer service working fine",this.insertresp)
+    if(this.insertresp=='RIS'){
+      var message="Transfer Successfully"
+      // this.toasterService.success(message);
+    }
 
+ });
+}
 //-------------------notes starts--------------//
 
 // insert new arnotes
