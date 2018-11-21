@@ -4,6 +4,7 @@ import { Route } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 import { AccountmaintenanceService} from './accountmaintenance.service';
 import { ToasterServiceService } from '../../toaster-service.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-accountmaintenance',
@@ -131,6 +132,10 @@ compressfun(comp){
     .subscribe((resp: any) => { 
     this.ac_maintain_tabl=resp.ReturnValue;
     // console.log("account maintain table value",this.ac_maintain_tabl)
+    this.invoicenos=[];
+    this.selected_id=[];
+    this.open_amt=0
+    this.invoice_amt=0
   });
   }
   
@@ -152,6 +157,10 @@ uncompress(){
     .subscribe((resp: any) => { 
     this.ac_maintain_tabl=resp.ReturnValue;
     // console.log("account maintain table value",this.ac_maintain_tabl)
+
+    this.invoicenos=[];
+    this.selected_id=[];
+
   });
   }
   
