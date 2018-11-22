@@ -21,7 +21,17 @@ export class InvoiceComponent implements OnInit {
   public invoice_tab=[];
   public reasndropdown=[];
   public pscd_dd=[];
+  public acc_no=[];
+  public acc_name=[];
+  public amount=[];
+  public invoice=[];
   ngOnInit() {
+
+    this.acc_no=this.session.retrieve("acc_no")
+    this.acc_name=this.session.retrieve("acc_name")
+    this.amount=this.session.retrieve("amount")
+    this.invoice=this.session.retrieve("invoice_no")
+    console.log("session values",this.acc_no,this.acc_name,this.amount,this.invoice)
     this.InvoiceService.invoice_table()
     .subscribe((resp: any) => { 
      this.invoice_tab=resp.ReturnValue;
@@ -39,7 +49,10 @@ export class InvoiceComponent implements OnInit {
       this.pscd_dd=resp.ReturnValue;
        console.log("posting code dropdown",this.pscd_dd);
    });
+  
+
   }
+
 
   //on clicking table values
   public acc_bill:any 

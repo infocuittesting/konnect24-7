@@ -8,8 +8,9 @@
     </div>      
       <div class="col-md-4" style="margin-left: -155px;">
           <div class="form-group">
-        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(blockstatus)" >
-          <option *ngFor="let option of roomtype" 
+        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(Account.account_type_id)" >
+        <!-- <a><button type="button" class="btn btn-default">new </button></a> -->
+            <option *ngFor="let option of roomtype" 
           [ngValue]="option.reason_id"> 
           {{option.reason_code}}</option>
         </select>
@@ -271,3 +272,27 @@
 
   </div>
 </div>
+
+    <!--insert new value in account type dropdown modal -->
+  <div id="ddmodal" #dropmodal class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">New Account Type</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-4">
+            <label>Type Name</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control input-sm" id="typname" name="typenam" style="margin-left: -60px;" >                     
+          </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
