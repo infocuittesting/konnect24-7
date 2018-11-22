@@ -30,6 +30,8 @@ export class AccountoptionsComponent implements OnInit {
   public tableschanges =[]
   public tableschanges_new=[]
   public Transfer=[]
+  public market_val=[]
+  public filterdata=[]
  
   public yearview_val=[]
   
@@ -59,6 +61,12 @@ export class AccountoptionsComponent implements OnInit {
   //  console.log("payhis table",this.payhis_tabl_val)
   
  });
+ 
+ this.AccountoptionsService.accounttype_dropdown()
+   .subscribe((resp: any) => { 
+    this.market_val=resp.ReturnValue;
+    console.log("accounttype dropdown valuess",this.market_val)
+    });
 
   this. AccountoptionsService.transfer_table()
   .subscribe((resp: any) => {
@@ -91,6 +99,14 @@ export class AccountoptionsComponent implements OnInit {
     .subscribe((resp: any) => {
     this.yearview_val=resp.ReturnValue;
     });
+
+    
+  }
+  onSel(val){
+    console.log("whole table",JSON.stringify(this.tableschanges_new));
+    console.log("droup down filter working fine",val);
+    // this.res_table = this.someData.filter(x => x.status == val)
+    this.tableschanges_new=this.filterdata.filter(x => x.account_type == val)
   }
 
 // insert new trace//

@@ -8,11 +8,15 @@
     </div>      
       <div class="col-md-4" style="margin-left: -155px;">
           <div class="form-group">
-        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(Account.account_type_id)" >
+        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;"
+        [class.has-error]="Block.touched && Block.invalid" 
+        [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(Account.account_type_id)"  required>
         <!-- <a><button type="button" class="btn btn-default">new </button></a> -->
             <option *ngFor="let option of roomtype" 
           [ngValue]="option.reason_id"> 
           {{option.reason_code}}</option>
+          <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
+          </div>
         </select>
       </div>
     </div>
