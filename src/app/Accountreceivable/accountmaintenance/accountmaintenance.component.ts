@@ -20,6 +20,7 @@ export class AccountmaintenanceComponent implements OnInit {
      this.toasterService.success(message);
 }
   public ac_maintain_tabl=[];
+  public filterdata=[];
   public market_val=[];
   public source_val=[];
   public room_cls_val=[];
@@ -32,6 +33,7 @@ export class AccountmaintenanceComponent implements OnInit {
     this.AccountmaintenanceService.account_table()
 .subscribe((resp: any) => {
      this.ac_maintain_tabl=resp.ReturnValue;
+      this.filterdata=this.ac_maintain_tabl
      console.log("account maintain table valuessssssss",this.ac_maintain_tabl)
 });
 
@@ -80,6 +82,26 @@ export class AccountmaintenanceComponent implements OnInit {
 });
 
 }
+
+// filtering radio button in account maintainance screen 
+radio_bt_fil(val){
+    
+  // console.log("radio button value",val)
+  // console.log("table valuess inside condition",this.ac_maintain_tabl)
+  if(val=='open_inv'){
+    this.ac_maintain_tabl=this.filterdata.filter(i=>i.open_amount!=0)
+    // console.log(this.ac_maintain_tabl)
+  }
+  if(val=='pay_oly'){
+    this.ac_maintain_tabl=this.filterdata.filter(i=>i.open_amount==0)
+    // console.log(this.ac_maintain_tabl)
+  }
+  if(val=='all_inv'){
+    this.ac_maintain_tabl=this.filterdata
+    // console.log(this.ac_maintain_tabl)
+  }
+ 
+   }
 
   //selecting values from multiple checkboxes in account maintainance table
   selected = [];
@@ -136,15 +158,9 @@ compressfun(comp){
     this.selected_id=[];
     this.open_amt=0
     this.invoice_amt=0
-<<<<<<< HEAD
-});
-}
-});
-=======
   });
   }
  });
->>>>>>> f0d9403552fa06871c6cc740f484881acee91366
 }
 
 
@@ -180,12 +196,9 @@ uncompress(){
     console.log("indexand value of account maintain",index,value)
     this.session.store("invoice_no",value.invoice_no)
     this.session.store("amount",value.open_amount)
-<<<<<<< HEAD
-=======
     this.session.store("acc_name",value.account_name)
     this.session.store("acc_no",value.account_number)
 
->>>>>>> f0d9403552fa06871c6cc740f484881acee91366
     this.invoice_num=value.invoice_no
   
 
