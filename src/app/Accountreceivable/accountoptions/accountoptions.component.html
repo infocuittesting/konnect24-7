@@ -302,14 +302,14 @@
            <div class="col-md-4">
            <div class="form-group" style="margin-left: 10px;">
              <label for="name">From Date</label>
-             <input type="date" class="form-control" id="Fromdate" name="From date" > 
+             <input type="date" class="form-control" id="Fromdate" name="From date" [(ngModel)]="Invoice"> 
            </div>
           </div>
          
           <div class="col-md-4">
             <div class="form-group">
               <label for="name">Invoice No</label>
-              <input type="number" class="form-control" id="invoiceno" name="invoiceno" >
+              <input type="text" class="form-control" id="invoiceno" name="invoiceno" [(ngModel)]="Invoiceno">
             </div>
           </div>
          </div>
@@ -327,7 +327,7 @@
                </tr>
              </thead>
              <tbody>
-               <tr  *ngFor="let pay_table_value of payhis_tabl_val ;let i=index ">
+               <tr  *ngFor="let pay_table_value of payhis_tabl_val  | filterdata: Invoice :'post_date' | filterdata: Invoiceno :'invoice_id';let i=index ">
                  <td>{{pay_table_value.invoice_id}}</td>
                  <td>{{pay_table_value.payment_code}}</td>
                  <td>{{pay_table_value.payment_type}}</td>
@@ -367,28 +367,28 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="name">Account Name</label>
-                <input type="text" class="from-group" id="Account name" name="name">
+                <input type="text" class="from-group" id="Account name" name="name" [(ngModel)]="accountname">
               </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">From Account No</label>
-                  <input type="text" class="from-group" id="Account name" name="name">
+                  <input type="text" class="from-group" id="Account name" name="name"  [(ngModel)]="accountno" >
                 </div>
               </div>
               <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">To Account No</label>
-                    <input type="text" class="from-group" id="Account name" name="name">
+                    <input type="text" class="from-group" id="Account name" name="name"  [(ngModel)]="accountno">
                   </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                       <label for="name">Account Type</label>
-                      <select  class="from-control input-sm" id="Account name" name="name" style="width: 146px;">
-                        <option>hello</option>
-                        <option>hello</option>
-                        <option>hello</option>
+                      <select  class="from-control input-sm" id="Account name" name="name" style="width: 146px;" [(ngModel)]="accounttype" (change)="onSel(accounttype)">
+                        <option *ngFor="let option of market_val" 
+                        [ngValue]="option.account_type"> 
+                        {{option.account_type}}</option>
                       </select>
                     </div>
                   </div>
@@ -397,7 +397,7 @@
               <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">Amount</label>
-                    <input type="number" class="from-group" id="Account name" name="name">
+                    <input type="number" class="from-group" id="Account name" name="name" [(ngModel)]="amount">
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -446,7 +446,7 @@
                        </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let Transfer of tableschanges_new ;let i=index "
+                        <tr *ngFor="let Transfer of tableschanges_new   | filterdata: accountname :'contact' | filterdata: amount :'account_balance';let i=index "
                         (click)="selectTransEdit(Transfer,i)" [ngClass]="{'backGroundColor':i==selectindex}"
                          [contextmenu]="[contextmenu,{item:item}]">
                           <td>{{Transfer.contact}}</td>

@@ -221,6 +221,12 @@ ar_notes_table():  Observable<object[]> {
   
   }
 
+  accounttype_dropdown():  Observable<object[]> {    
+    let body={}
+       return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountTypeDropdown',body)
+          .map(this.extractData)
+     }
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);
