@@ -174,6 +174,7 @@ selectandClearAll(flag){
       }
     this.house=[];
     console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
+    console.log("checkbox filter ",this.filtercheckboxList);
     for(var j=0;j<this.copy.length;j++){
       if(this.filtercheckboxList.includes(this.copy[j].rm_room_status)){
         this.house.push(this.copy[j]);

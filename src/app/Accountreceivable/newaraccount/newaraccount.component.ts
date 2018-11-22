@@ -24,7 +24,7 @@ export class NewaraccountComponent implements OnInit {
   public setupdate:any;
   public statetype=[];
   public roomtype=[];
-  public count=[];
+  // public count=[];
   public confim;
   public PF_Firstname;
   public market_val=[];
@@ -134,4 +134,40 @@ delete(inputt){
   
     );  
      }
+      //filter data in table  using checkbox
+  checkboxflg=[];
+  house = [];
+  count=0;
+  copy=[];
+  filtercheckboxList:any=[];
+  filtercheckboxData(ngmodel, flag) {
+    if (ngmodel == true) {
+         this.filtercheckboxList.push(flag);
+    }else{
+      for(var i=0;i<this.filtercheckboxList.length;i++){
+        if(flag==this.filtercheckboxList[i]){
+          this.filtercheckboxList.splice(i,1);
+          break;
+        }
+      }
+    }
+    //final list for table
+    if(this.filtercheckboxList!=null && this.filtercheckboxList.length>0){
+     
+      if(this.count==0){
+        this.count++;
+     this.copy =JSON.parse(JSON.stringify(this.res_table))
+      }
+    this.res_table=[];
+    console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
+
+    for(var j=0;j<this.copy.length;j++){
+      if(this.filtercheckboxList.includes(this.copy[j].account_balance)){
+        this.res_table.push(this.copy[j]);
+      }
+    }
+  }else{
+    this.res_table=this.copy; 
+  }
+  }
 }
