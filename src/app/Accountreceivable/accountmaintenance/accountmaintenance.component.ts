@@ -100,7 +100,6 @@ radio_bt_fil(val){
     this.ac_maintain_tabl=this.filterdata
     // console.log(this.ac_maintain_tabl)
   }
- 
    }
 
   //selecting values from multiple checkboxes in account maintainance table
