@@ -138,7 +138,6 @@ compressfun(comp){
     this.invoice_amt=0
   });
   }
-  
  });
 }
 
@@ -174,6 +173,10 @@ uncompress(){
     this.selectindex=index
     console.log("indexand value of account maintain",index,value)
     this.session.store("invoice_no",value.invoice_no)
+    this.session.store("amount",value.open_amount)
+    this.session.store("acc_name",value.account_name)
+    this.session.store("acc_no",value.account_number)
+
     this.invoice_num=value.invoice_no
   
 

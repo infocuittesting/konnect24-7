@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { SetupaccountService } from './setupaccount.service';
 import { SessionStorageService } from "ngx-webstorage";
 
+// @ViewChild('dropmodal') dropmodal :CommonModalComponent;
 @Component({
+  
   selector: 'app-setupaccount',
   templateUrl: './setupaccount.component.html',
   styleUrls: ['./setupaccount.component.css'],
   providers:[SetupaccountService]
 })
+// @ViewChild('childModalOption1') childModalOption1 :Component;{}
 export class SetupaccountComponent implements OnInit {
   public Account:any= {};
   public Id = this.session.retrieve("id");
@@ -142,5 +145,11 @@ this.session.clear("permanent_account");
     );  
      }
   
- 
+     public dropmodal:any
+     onSelect(value){
+      console.log("value on clicking the drodown",value)
+      if(value=='ddmodal'){
+        this.dropmodal.show()
+      }
+     }
 }
