@@ -41,12 +41,11 @@ export class AccountoptionsService {
   }
   console.log("insert trace json inputs",body)
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_AR_POST_INSERT_AccountTraces',body,options)
-       .map(this.extractData)
-       
+       .map(this.extractData)    
   }
 
 
-  bsearchtable():  Observable<object[]> {    
+  transfer_table():  Observable<object[]> {    
     let body={}
        return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountSetup',body)
           .map(this.extractData)

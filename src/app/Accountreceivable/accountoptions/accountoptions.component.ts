@@ -68,16 +68,14 @@ export class AccountoptionsComponent implements OnInit {
     console.log("accounttype dropdown valuess",this.market_val)
     });
 
-
- this. AccountoptionsService.bsearchtable()
- .subscribe((resp: any) => {
-   this.tableschanges=resp.ReturnValue;
-   console.log("table account setup working",this.tableschanges)
-   var acc=this.session.retrieve("account_number")
-   this.tableschanges_new=this.tableschanges.filter(trans=>trans.account_number!=acc)
-   console.log("new table records after filter",this.tableschanges_new)
-   this.filterdata = this.tableschanges_new;
-  //  this.someData=resp.ReturnValue;
+  this. AccountoptionsService.transfer_table()
+  .subscribe((resp: any) => {
+    this.tableschanges=resp.ReturnValue;
+    console.log("table account setup working",this.tableschanges)
+    var acc=this.session.retrieve("account_number")
+    this.tableschanges_new=this.tableschanges.filter(trans=>trans.account_number!=acc)
+    console.log("new table records after filter",this.tableschanges_new)
+    //  this.someData=resp.ReturnValue;
  });
     this.AccountoptionsService.payhis_table()
     .subscribe((resp: any) => {

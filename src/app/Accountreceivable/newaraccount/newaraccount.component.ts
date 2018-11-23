@@ -47,6 +47,7 @@ export class NewaraccountComponent implements OnInit {
     }
   }
   public res_table=[];
+  public temp_tabl_val=[];
   public enable_select=true
   ngOnInit() {
 
@@ -63,7 +64,31 @@ export class NewaraccountComponent implements OnInit {
     this.market_val=resp.ReturnValue;
     console.log("accounttype dropdown valuess",this.market_val)
     });
+    
   }
+
+
+// filtering radio buttons in ar account screen
+  radio_bt_fil(val){
+    
+    // console.log("radio button value",val)
+    // console.log("radio button value",this.temp_tabl_val)
+    // console.log("table valuess inside condition",this.res_table)
+    if(val=='open'){
+      this.res_table=this.filterdata.filter(i=>i.account_balance!=0)
+      // console.log(this.res_table)
+    }
+    if(val=='no_bl'){
+      this.res_table=this.filterdata.filter(i=>i.account_balance==0)
+      // console.log(this.res_table)
+    }
+    if(val=='all_ar'){
+      this.res_table=this.filterdata
+    }
+   
+     }
+   
+
 
   onSel(val){
     console.log("whole table",JSON.stringify(this.res_table));
