@@ -9,13 +9,13 @@
       <div class="col-md-4" style="margin-left: -155px;">
           <div class="form-group">
         <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;"
-        [class.has-error]="Block.touched && Block.invalid" 
+        [class.has-error]="Account.touched && Account.invalid" 
         [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(Account.account_type_id)"  required>
         <!-- <a><button type="button" class="btn btn-default">new </button></a> -->
             <option *ngFor="let option of roomtype" 
           [ngValue]="option.reason_id"> 
           {{option.reason_code}}</option>
-          <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
+          <div *ngIf="Account.touched && !Account.valid && Account.errors?.required " ngClass="{ 'has-error' : !Account.valid && submitAttempt }">
           </div>
         </select>
       </div>
@@ -31,8 +31,10 @@
       </div>
     </div>
     <div class="col-md-4" style="margin-left: -61px;">
-    <div class="form-group">
-      <input type="text" class="form-control input-sm" id="name" name="Account Num" [(ngModel)] ="Account.account_number">
+    <div class="form-group" [class.has-error]="AccountNumber.touched && AccountNumber.invalid">
+      <input type="text" class="form-control input-sm" id="name" name="Account Num"    [(ngModel)] ="Account.account_number"#AccountNumber="ngModel" required>
+      <div *ngIf="AccountNumber.touched && !AccountNumber.valid && AccountNumber.errors?.required " ngClass="{ 'has-error' : !AccountNumber.valid && submitAttempt }">
+      </div>
     </div>
     </div>
     <div class="col-md-2">
@@ -44,9 +46,11 @@
       <label for="name">Credit Limit</label>
     </div>
     <div class="col-md-4" style="margin-left: -70px;">
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Account.credit_limit">
-        </div>
+        <div class="form-group" [class.has-error]="CreditLimit.touched && CreditLimit.invalid">
+            <input type="text" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Credit.credit_limit" #CreditLimit="ngModel" required>
+            <div *ngIf="CreditLimit.touched && !CreditLimit.valid && CreditLimit.errors?.required " ngClass="{ 'has-error' : !CreditLimit.valid && submitAttempt }">
+            </div>
+          </div>
     </div>
     <div class="col-md-4">
         <div class="checkbox">
