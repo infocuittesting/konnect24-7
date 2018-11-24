@@ -179,10 +179,12 @@
             </div>
           
           <div class="col-md-4">
-            <div class="form-group" style="margin-top: -11px;">
+            <div class="form-group" style="margin-top: -11px;" [class.has-error]="bear.touched && bear.invalid">
               <label for="name"></label>
-              <input type="text" class="form-control input-sm" id="name" name="name" [(ngModel)]="adjust.amount">
+            <input type="text" class="form-control input-sm" id="bear" name="bear" [(ngModel)]="adjust.amount" #bear="ngModel" required>
+            <div *ngIf="bear.touched && !bear.valid && bear.errors?.required " ngClass="{ 'has-error' : !bear.valid && submitAttempt }">                                                                    
             </div>
+          </div>
           </div>
           <div class="row">
             <div class="col-md-4" style="margin-left: 20px;">

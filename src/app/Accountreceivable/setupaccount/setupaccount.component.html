@@ -1,152 +1,178 @@
 <div class="wrapper">
-<div class="content-wrapper">
-  <br>
-  <div class="container-fluid">
+  <div class="content-wrapper">
+    <br>
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-      <label for="name">Account Type</label>
-    </div>      
-      <div class="col-md-4" style="margin-left: -155px;">
+          <label for="name">Account Type*</label>
+        </div>
+        <div class="col-md-4" style="margin-left: -155px;" [class.has-error]="accounttypesetup.touched && accounttypesetup.invalid">
           <div class="form-group">
-        <select  class="form-control input-sm" id="Account" name="Account" style="width: 100%;"
-        [class.has-error]="Account.touched && Account.invalid" 
-        [(ngModel)]="Account.account_type_id" (ngModelChange)="onSelect(Account.account_type_id)"  required>
-        <!-- <a><button type="button" class="btn btn-default">new </button></a> -->
-            <option *ngFor="let option of roomtype" 
-          [ngValue]="option.reason_id"> 
-          {{option.reason_code}}</option>
-          <div *ngIf="Account.touched && !Account.valid && Account.errors?.required " ngClass="{ 'has-error' : !Account.valid && submitAttempt }">
+            <select class="form-control input-sm" id="Account" name="Account" style="width: 100%;" [(ngModel)]="Account.account_type_id"
+              (ngModelChange)="onSelect(Account.account_type_id)" #accounttypesetup="ngModel" required>
+              <option *ngFor="let option of roomtype" [ngValue]="option.reason_id">
+                {{option.reason_code}}</option>
+            </select>
+            <div *ngIf="accounttypesetup.touched && !accounttypesetup.valid && accounttypesetup.errors?.required "
+              ngClass="{ 'has-error' : !accounttypesetup.valid && submitAttempt }">
+            </div>
           </div>
-        </select>
+        </div>
+        <div class="col-md-4">
+          <p>Corporate Accounts</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="name">Account Number*</label>
+          </div>
+        </div>
+        <div class="col-md-4" style="margin-left: -61px;" [class.has-error]="accountnosetup.touched && accountnosetup.invalid">
+          <div class="form-group">
+            <input type="text" id="accountno" name="accountno" class="form-control input-sm" [(ngModel)]="Account.account_number"
+              #accountnosetup="ngModel" required>
+            <div *ngIf="accountnosetup.touched && !accountnosetup.valid && accountnosetup.errors?.required " ngClass="{ 'has-error' : !accountnosetup.valid && submitAttempt }">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <p>Status</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <label for="name">Credit Limit</label>
+        </div>
+        <div class="col-md-4" style="margin-left: -70px;" [class.has-error]="creditsetup.touched && creditsetup.invalid">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" id="credit" name="credit" style="width: 342px; margin-left: 10px;"
+            [(ngModel)]="Account.credit_limit" #creditsetup="ngModel" required>
+          <div *ngIf="creditsetup.touched && !creditsetup.valid && creditsetup.errors?.required " ngClass="{ 'has-error' : !creditsetup.valid && submitAttempt }">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="checkbox">
+          <label><input type="checkbox" value="fl" name="checkflag" [(ngModel)]="Account.flagged">Flagged</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <p>Corporate Accounts</p>
+    <div class="row">
+      <div class="col-md-3">
+        <label label for="name">Contact </label>
+      </div>
+      <div class="col-md-6" style="margin-left: -153px;" [class.has-error]="contactsetup.touched && contactsetup.invalid">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" id="contact" name="contact" [(ngModel)]="Account.contact"
+            #contactsetup="ngModel" required>
+          <div *ngIf="contactsetup.touched && !contactsetup.valid && contactsetup.errors?.required " ngClass="{ 'has-error' : !contactsetup.valid && submitAttempt }">
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>Phone/Fax</label>
+      </div>
+      <div class="col-md-3" [class.has-error]="phonesetup.touched && phonesetup.invalid">
+        <div class="form-group">
+          <input type="number" class="form-control input-sm" id="phone" name="phone" style="margin-left: -153px;"
+            [(ngModel)]="Account.phone" #phonesetup="ngModel" required>
+          <div *ngIf="phonesetup.touched && !phonesetup.valid && phonesetup.errors?.required " ngClass="{ 'has-error' : !phonesetup.valid && submitAttempt }">
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3" [class.has-error]="faxsetup.touched && faxsetup.invalid">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" id="fax" name="fax" style="margin-left: -153px;" [(ngModel)]="Account.fax"
+            #faxsetup="ngModel" required>
+          <div *ngIf="faxsetup.touched && !faxsetup.valid && faxsetup.errors?.required " ngClass="{ 'has-error' : !faxsetup.valid && submitAttempt }">
+          </div>
+        </div>
+
+      </div>
+
     </div>
     <div class="row">
       <div class="col-md-2">
-      <div class="form-group">
-        <label for="name">Account Number</label>
+        <label>Email</label>
       </div>
-    </div>
-    <div class="col-md-4" style="margin-left: -61px;">
-    <div class="form-group" [class.has-error]="AccountNumber.touched && AccountNumber.invalid">
-      <input type="text" class="form-control input-sm" id="name" name="Account Num"    [(ngModel)] ="Account.account_number"#AccountNumber="ngModel" required>
-      <div *ngIf="AccountNumber.touched && !AccountNumber.valid && AccountNumber.errors?.required " ngClass="{ 'has-error' : !AccountNumber.valid && submitAttempt }">
+      <div class="col-md-4" [class.has-error]="emailsetup.touched && emailsetup.invalid">
+        <input type="email" class="form-control input-sm" id="email" name="email" style="margin-left: -60px;"
+          [(ngModel)]="Account.email" #emailsetup="ngModel" required>
+        <div *ngIf="emailsetup.touched && !emailsetup.valid && emailsetup.errors?.required " ngClass="{ 'has-error' : !emailsetup.valid && submitAttempt }">
+        </div>
       </div>
-    </div>
-    </div>
-    <div class="col-md-2">
-    <p>Status</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <label for="name">Credit Limit</label>
-    </div>
-    <div class="col-md-4" style="margin-left: -70px;">
-        <div class="form-group" [class.has-error]="CreditLimit.touched && CreditLimit.invalid">
-            <input type="text" class="form-control input-sm" id="name" name="Account Num" style="width: 342px; margin-left: 10px;" [(ngModel)]="Credit.credit_limit" #CreditLimit="ngModel" required>
-            <div *ngIf="CreditLimit.touched && !CreditLimit.valid && CreditLimit.errors?.required " ngClass="{ 'has-error' : !CreditLimit.valid && submitAttempt }">
-            </div>
-          </div>
-    </div>
-    <div class="col-md-4">
-        <div class="checkbox">
-            <label><input type="checkbox" value="fl" name="checkflag" [(ngModel)]="Account.flagged">Flagged</label>
-         </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
-      <label label for="name">Contact </label>
-    </div>
-    <div class="col-md-6" style="margin-left: -153px;">
-        <div class="form-group">
-            <input type="text" class="form-control input-sm" id="name" name="Account Num" [(ngModel)]="Account.contact">
-          </div>
-    </div>
-  </div>
-  <div class="row">
-  <div class="col-md-3">
-     <label>Phone/Fax</label>
-  </div>
-  <div class="col-md-3">
-    <div class="form-group">
-      <input type="number" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;" [(ngModel)]="Account.phone">
-    </div>
 
-  </div>
-  <div class="col-md-3">
-    <div class="form-group">
-      <input type="text" class="form-control input-sm" id="name" name="Phone/Fax" style="margin-left: -153px;" [(ngModel)]="Account.fax">
-    </div>
-
-  </div>
-
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-    <label>Email</label>
-    </div>
-    <div class="col-md-4">
-      <input type="email" class="form-control input-sm" id="email" name="email" style="margin-left: -60px;" [(ngModel)]="Account.email">
-    </div>
-
-  </div>
-  <br>
-  <div class="row">
-  <div class="col-md-2">
-    <label>AR Address</label>
-  </div>
-  <div class="col-md-4" style="margin-left: -59px">
-      <textarea class="form-control" rows="4" id="comment" style="width: 530px;" [(ngModel)]="Account.ar_address"></textarea>
-  </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-md-2">
-    <label>City</label>
-    </div>
-    <div class="col-md-4">
-      <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.city">
-    </div>
-
-  </div>
-  <br>
-  <div class="row">
-      <div class="col-md-2">
-      <label>Postal Code</label>
-      </div>
-      <div class="col-md-4">
-        <input type="number" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.postal_code">
-      </div>
-  
     </div>
     <br>
     <div class="row">
-     <div class="col-md-2">
-       <label>country/State</label>
-     </div>
-     <div class="col-md-3">
-        <select  class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.state_id" (ngModelChange)="onSelect(state)" >
-          <option *ngFor="let option of statetype" 
-          [ngValue]="option.id"> 
-          {{option.state}}</option>
-      </select>
-     </div>
-
-     <div class="col-md-3">
-        <select type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" placeholder="CA" [(ngModel)]="Account.country_id" (ngModelChange)="onSelect(country)">
-          <option *ngFor="let option of count" 
-          [ngValue]="option.id"> 
-          {{option.country}}</option>
-        </select>
-     </div>
+      <div class="col-md-2">
+        <label>AR Address</label>
+      </div>
+      <div class="col-md-4" style="margin-left: -59px" [class.has-error]="addresssetup.touched && addresssetup.invalid">
+        <textarea id="address" name="address" class="form-control" rows="4" style="width: 530px;" [(ngModel)]="Account.ar_address"
+          #addresssetup="ngModel" required></textarea>
+        <div *ngIf="addresssetup.touched && !addresssetup.valid && addresssetup.errors?.required " ngClass="{ 'has-error' : !addresssetup.valid && submitAttempt }">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <label>City</label>
+      </div>
+      <div class="col-md-4" [class.has-error]="citysetup.touched && citysetup.invalid">
+        <input type="text" class="form-control input-sm" id="city" name="city" style="margin-left: -60px;" [(ngModel)]="Account.city"
+          #citysetup="ngModel" required>
+        <div *ngIf="citysetup.touched && !citysetup.valid && citysetup.errors?.required " ngClass="{ 'has-error' : !citysetup.valid && submitAttempt }">
+        </div>
+      </div>
 
     </div>
-   <br>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Postal Code</label>
+      </div>
+      <div class="col-md-4" [class.has-error]="postalsetup.touched && postalsetup.invalid">
+        <input type="number" class="form-control input-sm" id="postal" name="postal" style="margin-left: -60px;"
+          [(ngModel)]="Account.postal_code" #postalsetup="ngModel" required>
+        <div *ngIf="postalsetup.touched && !postalsetup.valid && postalsetup.errors?.required " ngClass="{ 'has-error' : !postalsetup.valid && submitAttempt }">
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <label>country/State</label>
+      </div>
+      <div class="col-md-3" [class.has-error]="statesetup.touched && countrysetup.invalid">
+        <select class="form-control input-sm" id="state" name="state" style="margin-left: -60px;" [(ngModel)]="Account.state_id"
+          (ngModelChange)="onSelect(state)" #statesetup="ngModel" required>
+          <option *ngFor="let option of statetype" [ngValue]="option.id">
+            {{option.state}}</option>
+        </select>
+        <div *ngIf="statesetup.touched && !statesetup.valid && statesetup.errors?.required " ngClass="{ 'has-error' : !statesetup.valid && submitAttempt }">
+        </div>
+      </div>
+
+      <div class="col-md-3" [class.has-error]="countrysetup.touched && countrysetup.invalid">
+        <select type="text" class="form-control input-sm" id="state" name="state" style="margin-left: -60px;"
+          placeholder="CA" [(ngModel)]="Account.country_id" (ngModelChange)="onSelect(country)" #countrysetup="ngModel"
+          required>
+          <option *ngFor="let option of count" [ngValue]="option.id">
+            {{option.country}}</option>
+        </select>
+        <div *ngIf="countrysetup.touched && !countrysetup.valid && countrysetup.errors?.required " ngClass="{ 'has-error' : !countrysetup.valid && submitAttempt }">
+        </div>
+      </div>
+
+    </div>
+    <br>
     <!-- <div class="row">
       <div class="col-md-2">
         <label>Reference Currency</label>
@@ -187,8 +213,8 @@
         </div>
       </div>
       </div> -->
-      <br>
-      <!-- <div class="row">
+    <br>
+    <!-- <div class="row">
           <div class="col-md-2">
             <label>Last Reminder Text </label>
           </div>
@@ -206,35 +232,38 @@
           </div>
         </div>
         </div> -->
-        <div class="row">
-          <!-- <div class="col-md-4" style="margin-left: 121px;">
+    <div class="row">
+      <!-- <div class="col-md-4" style="margin-left: 121px;">
               <div class="checkbox">
                   <label><input type="checkbox" value="">Include in Batch Stmt</label>
                 </div>
           </div> -->
-          <div class="col-md-4" style="    margin-left: 98px;">
-              <div class="checkbox">
-                  <label><input type="checkbox" value="PA" checked name="per_acc" [(ngModel)]="Account.permanent_account" >Permenent Account</label>
-                </div>
-          </div>
+      <div class="col-md-4" style="    margin-left: 98px;">
+        <div class="checkbox">
+          <label><input type="checkbox" value="PA" checked name="per_acc" [(ngModel)]="Account.permanent_account">Permenent
+            Account</label>
         </div>
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-2"></div>
-          <div class="col-md-2">
-            <button type="button" class="btn btn-warning" Style="width:80%;"data-toggle="modal" data-target="#update" (click)="update1(Account)">update</button> 
-          </div>
-          <div class="col-md-2">
-            <button type="button" class="btn btn-success" Style="width:80%;"data-toggle="modal" data-target="#myModal" (click)="update1(Account)">OK</button>
-          </div>
-          <div class="col-md-2">
-              <button type="button" class="btn btn-danger" Style="width:80%;" routerLink="/newaraccount">Close</button>
-            </div>
-        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2">
+          <button  *ngIf="showupdate==true" type="button" class="btn btn-warning" Style="width:80%;" data-toggle="modal" data-target="#update"
+          (click)="update1(Account)">update</button>
+        <button *ngIf="showupdate!=true"btype="button" class="btn btn-success" Style="width:80%;" data-toggle="modal" data-target="#myModal"
+          (click)="update1(Account)">OK</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger" Style="width:80%;" routerLink="/newaraccount">Close</button>
+      </div>
+    </div>
 
 
 
-  
+
   </div>
 
 </div>
@@ -281,26 +310,26 @@
   </div>
 </div>
 
-    <!--insert new value in account type dropdown modal -->
-  <div id="ddmodal" #dropmodal class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Account Type</h4>
+<!--insert new value in account type dropdown modal -->
+<div id="ddmodal" #dropmodal class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Account Type</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-4">
+          <label>Type Name</label>
         </div>
-        <div class="modal-body">
-          <div class="col-md-4">
-            <label>Type Name</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control input-sm" id="typname" name="typenam" style="margin-left: -60px;" >                     
-          </div> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="col-md-6">
+          <input type="text" class="form-control input-sm" id="typname" name="typenam" style="margin-left: -60px;">
         </div>
       </div>
-  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
+
   </div>
+</div>

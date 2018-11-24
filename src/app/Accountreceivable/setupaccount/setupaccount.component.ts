@@ -23,12 +23,15 @@ export class SetupaccountComponent implements OnInit {
   public count=[];
   public confim;
   public PF_Firstname;
+  public showupdate=false;
 
   constructor(private pService: SetupaccountService, public session:SessionStorageService ) { }
   public routerconfig:any;
   ngOnInit() {
+   this.Account.PF_Firstname=this.session.retrieve("PF_Firstname")
   this.routerconfig = this.session.retrieve("araccount");
   if(this.routerconfig == "edit"){
+
   this.Account.account_number = this.session.retrieve("account_number");
   this.Account.credit_limit = this.session.retrieve("credit_limit");
   this.Account.accountnum = this.session.retrieve("account_number");
@@ -41,6 +44,7 @@ export class SetupaccountComponent implements OnInit {
   this.Account.country_id = this.session.retrieve("country_id");
   this.Account.state_id = this.session.retrieve("state_id");
   this.Account.permanent_account = this.session.retrieve("permanent_account");
+  this.showupdate = true;
 }else{
   this.session.clear("araccount");
 }
@@ -65,7 +69,7 @@ this.session.clear("permanent_account");
     this.pService.blockstatus()
     .subscribe((resp: any) => {
     this.roomtype=resp.ReturnValue;
-     console.log("service working fine",this.roomtype);
+     console.log("account type working fine",this.roomtype);
     });
 
 
@@ -91,10 +95,10 @@ this.session.clear("permanent_account");
      this.user41 = user349;
      this.setupdate=user349.Return;
      console.log("service working fine",this.setupdate)
-     if(this.setupdate == "RAI"){
+     if(this.setupdate == "RIS"){
        console.log("service woking ",this.setupdate)
-      this.setupdate = "setup rate account  is Created for "+this.PF_Firstname;
-      this.setupdate= "The Confirmation Number is:"+this.confim;
+      this.setupdate = "setup rate account  is Updated for "+this.PF_Firstname;
+      // this.setupdate= "The Confirmation Number is:"+this.confim;
 
     }
     else{
@@ -129,12 +133,12 @@ this.session.clear("permanent_account");
    this.pService.accountsetupupdate(inputt)
    .subscribe(( user349:any)=> {
      this.user41 = user349;
-     this.setupdate=user349.Return;
+     this.setupdate=user349.ReturnCode;
      console.log(" update service working fine",this.setupdate)
      if(this.setupdate == "RUS"){
        console.log(" update service woking ",this.setupdate)
-      this.setupdate = "setup rate account  is Updated for "+this.PF_Firstname;
-      this.setupdate= "The Confirmation Number is:"+this.confim;
+      this.setupdate = "setup rate account  is Updated successfully";
+      // this.setupdate= "The Confirmation Number is:"+this.confim;
 
     }
     else{
