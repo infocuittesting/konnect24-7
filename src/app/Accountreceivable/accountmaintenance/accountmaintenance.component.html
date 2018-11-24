@@ -14,7 +14,7 @@
   <div class="col-md-3">
   <b>Folio No</b>
   <div class="input-group">
-  <input type="text" name="" id="" style="height:34px;width:250px;">
+  <input type="text" class="form-control" name="Folio" id="Folio"  [(ngModel)]="ac_folio"  style="height:34px;width:250px;">
   </div>
   </div>
   <div class="col-md-3">
@@ -33,17 +33,17 @@
   <div class="row" style="margin-top:10px;">
   <div class="col-md-3">
   <div class="input-group">
-  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('all_inv')"> All Invoice</label>
+  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('all_inv')" > All Invoice</label>
   </div>
   </div>
   <div class="col-md-3">
   <div class="input-group">
-  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('open_inv')"> Open Invoice</label>
+  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('open_inv')" > Open Invoice</label>
   </div>
   </div>
   <div class="col-md-3">
   <div class="input-group">
-  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('pay_oly')"> Payment Only</label>
+  <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('pay_oly')" > Payment Only</label>
   </div>
   </div>
   <div class="col-md-3">
@@ -374,8 +374,11 @@
   <b>Amount</b>
   </div>
   <div class="col-md-4">
-  <div class="input-group">
-  <input type="text" name="pay_amt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" required>
+  <div class="input-group"  [class.has-error]="edrefval.dirty && !edrefval.valid">
+  <input type="text" name="pay_amt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" #edrefval="ngModel" pattern="[a-zA-Z][a-zA-Z ]*" required>
+  <div *ngIf="edrefval.dirty && !edrefval.valid && edrefval.errors.required " ngClass="{ 'has-error' : !edrefval.valid && submitAttempt }">
+</div>
+                  
   </div>
   </div>
   <div class="col-md-3" style="margin-left: 43px;" *ngFor="let cur_desc of currency_desc">
@@ -390,7 +393,7 @@
   </div>
   <div class="col-md-6">
   <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement">
+  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement" required>
   </div>
   </div>
   </div>
@@ -401,7 +404,7 @@
   </div>
   <div class="col-md-6">
   <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_reference">
+  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_reference" required>
   </div>
   </div>
   </div>
@@ -412,7 +415,7 @@
   
   <div class="radio" *ngFor="let items of pay_type let i=index" >
   
-  <input type="radio" value="{{items.invoice_payment_type_id}}" name="optradio" style="width: 2rem;height: 1.5rem;margin-left:10px;" (change)="radiobuttonchange(items,$event)" [(ngModel)]="paycode.paymnt_type_id"><label style="margin-left:10px;">{{items.invoice_payment_type_description}}</label>
+  <input type="radio" value="{{items.invoice_payment_type_id}}" name="optradio" style="width: 2rem;height: 1.5rem;margin-left:10px;" (change)="radiobuttonchange(items,$event)" [(ngModel)]="paycode.paymnt_type_id" required><label style="margin-left:10px;">{{items.invoice_payment_type_description}}</label>
  
   <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" [ngModel]="item.invoice_payment_type_id"> -->
   <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" name="{{item.invoice_payment_type_id}}" [ngModel]="item.invoice_payment_type_id" id="{{items.invoice_payment_type_id}}"> -->

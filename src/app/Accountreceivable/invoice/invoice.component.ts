@@ -53,6 +53,7 @@ export class InvoiceComponent implements OnInit {
 
   }
 
+  
 
   //on clicking table values
   public acc_bill:any 
