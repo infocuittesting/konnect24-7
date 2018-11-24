@@ -90,14 +90,14 @@ this.session.clear("permanent_account");
   update(inputt){
 
     console.log(inputt);
-   this.pService.accountsetup(inputt)
+   this.pService.setupaccountinsert(inputt)
    .subscribe(( user349:any)=> {
      this.user41 = user349;
-     this.setupdate=user349.Return;
+     this.setupdate=user349.ReturnCode;
      console.log("service working fine",this.setupdate)
      if(this.setupdate == "RIS"){
        console.log("service woking ",this.setupdate)
-      this.setupdate = "setup rate account  is Updated for "+this.PF_Firstname;
+      this.setupdate = "setup rate account record inserted successfully";
       // this.setupdate= "The Confirmation Number is:"+this.confim;
 
     }

@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form action="">
+          <form #newaraccount="ngForm">
             <div class="row">
               <div class="col-md-3">
                 <b>Account Name</b>
@@ -50,6 +50,9 @@
                 <div class="input-group">
                   <label for=""><input type="radio" name="name" id="name" (change)="radio_bt_fil('no_bl')"> No Balance</label>
                 </div>
+              </div>
+              <div class="col-md-3">
+                  <button type="button" class="btn btn-warning" style="width:71px"(click)="newaraccount.reset()" >clear</button>
               </div>
             </div>
           </form>

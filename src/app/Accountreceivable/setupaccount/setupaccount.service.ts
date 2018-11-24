@@ -10,7 +10,7 @@ export class SetupaccountService {
 
   constructor(private http: Http,public session:SessionStorageService) { }
 
-  accountsetup(input:any):  Observable<object[]> {
+  setupaccountinsert(input:any):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });
