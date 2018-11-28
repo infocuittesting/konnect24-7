@@ -195,4 +195,12 @@ delete(inputt){
     this.res_table=this.copy; 
   }
   }
+  routeaccountoption(){
+    this.session.store("showoption","false");
+    this.route.navigate(['Accountoptions/']);
+  }
+  routeaccountmaintenance(){
+    this.session.store("showoption","true");
+    this.route.navigate(['AccountMaintenance/']); 
+  }
 }

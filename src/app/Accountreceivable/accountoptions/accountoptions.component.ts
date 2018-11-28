@@ -22,7 +22,7 @@ export class AccountoptionsComponent implements OnInit {
     //  console.log("message",message);
      this.toasterService.success(message);
    }
-
+  public showoption;
   public acc_trace_val=[]
   public notes_tabl_val=[]
   public payhis_tabl_val=[]
@@ -39,7 +39,14 @@ export class AccountoptionsComponent implements OnInit {
   public traces_account_name:any
   public curdate:any
   newtrace={};
+  public hideshowoption = false;
   ngOnInit() {
+    this.showoption = this.session.retrieve("showoption");
+    if(this.showoption == "true"){
+      this.hideshowoption = true;
+    }else{
+      this.hideshowoption = false;
+    }
     this.AccountoptionsService.acc_traces_table()
     .subscribe((resp: any) => {
 

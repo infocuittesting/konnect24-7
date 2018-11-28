@@ -340,11 +340,13 @@
   <div class="col-md-3">
   <b>Payment Code</b>
   </div>
-  <div class="col-md-4">
-  <div class="input-group">
-  <select name="pay_code" id="paycode" style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" (change)="change_pay_val(paycode.paycode)" required>
+  <div class="col-md-4" [class.has-error]="paymentcode.touched && paymentcode.invalid">
+  <div class="form-group">
+  <select  class="form-control input-sm" id="paymentcode" name="paymentcode"style="height:34px;width:200px;" [(ngModel)]="paycode.paycode" (change)="change_pay_val(paycode.paycode)" #paymentcode="ngModel" required>
   <option *ngFor="let paymnt of payment_val" [ngValue]="paymnt.id">{{paymnt.paymenttype}}</option>
   </select>
+  <div *ngIf="paymentcode.touched && !paymentcode.valid && paymentcode.errors?.required " ngClass="{ 'has-error' : !paymentcode.valid && submitAttempt }">
+  </div>
   </div>
   </div>
   <div class="col-md-3" style="margin-left: 42px;" *ngFor="let pay_desc of payment_code_desc">
@@ -357,7 +359,7 @@
   <b>Currency</b>
   </div>
   <div class="col-md-4">
-  <div class="input-group">
+  <div class="form-group">
   <select name="pay_cur" id="paycurr" style="height:34px;width:200px;" [(ngModel)]="paycode.paycurrency" (change)="change_curr_val(paycode.paycurrency)" required>
   <option *ngFor="let curren of curr_val" [ngValue]="curren.id">{{curren.currency}}</option>
   </select>
@@ -374,8 +376,10 @@
   <b>Amount</b>
   </div>
   <div class="col-md-4">
-  <div class="input-group">
-  <input type="text" name="pay_amt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" required>
+  <div class="form-group" [class.has-error]="payment.touched && payment.invalid">
+    <input type="text" class="form-control input-sm" name="paymt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" #payment="ngModel" required>
+    <div *ngIf="payment.touched && !payment.valid && payment.errors?.required " ngClass="{ 'has-error' : !payment.valid && submitAttempt }">
+    </div>
   </div>
   </div>
   <div class="col-md-3" style="margin-left: 43px;" *ngFor="let cur_desc of currency_desc">
@@ -389,9 +393,11 @@
   <b>Supplement</b>
   </div>
   <div class="col-md-6">
-  <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement">
+  <div class="form-group" [class.has-error]="supplement.touched && supplement.invalid">
+  <input type="text" class="form-control input-sm" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement" #supplement="ngModel" required>
+  <div *ngIf="supplement.touched && !supplement.valid && supplement.errors?.required " ngClass="{ 'has-error' : !supplement.valid && submitAttempt }">
   </div>
+ </div>
   </div>
   </div>
   <div class="row">
@@ -400,8 +406,10 @@
   <b>Reference</b>
   </div>
   <div class="col-md-6">
-  <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_reference">
+  <div class="form-group" [class.has-error]="reference.touched && reference.invalid">
+    <input type="text" class="form-control input-sm" id="reference" name="reference" [(ngModel)]="paycode.pay_reference" #reference="ngModel"required>
+    <div *ngIf="reference.touched && !reference.valid && reference.errors?.required " ngClass="{ 'has-error' : !reference.valid && submitAttempt }">
+    </div>
   </div>
   </div>
   </div>
@@ -412,7 +420,7 @@
   
   <div class="radio" *ngFor="let items of pay_type let i=index" >
   
-  <input type="radio" value="{{items.invoice_payment_type_id}}" name="optradio" style="width: 2rem;height: 1.5rem;margin-left:10px;" (change)="radiobuttonchange(items,$event)" [(ngModel)]="paycode.paymnt_type_id"><label style="margin-left:10px;">{{items.invoice_payment_type_description}}</label>
+  <input type="radio" value="{{items.invoice_payment_type_id}}" name="optradio" style="width: 2rem;height: 1.5rem;margin-left:10px;" (change)="radiobuttonchange(items,$event)" [(ngModel)]="paycode.paymnt_type_id" required><label style="margin-left:10px;">{{items.invoice_payment_type_description}}</label>
  
   <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" [ngModel]="item.invoice_payment_type_id"> -->
   <!-- <input type="radio" name="optradio" style="MARGIN-LEFT:-3PX;" name="{{item.invoice_payment_type_id}}" [ngModel]="item.invoice_payment_type_id" id="{{items.invoice_payment_type_id}}"> -->
