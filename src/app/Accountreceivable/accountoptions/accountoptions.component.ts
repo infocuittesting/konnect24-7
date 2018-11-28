@@ -82,6 +82,7 @@ export class AccountoptionsComponent implements OnInit {
     var acc=this.session.retrieve("account_number")
     this.tableschanges_new=this.tableschanges.filter(trans=>trans.account_number!=acc)
     console.log("new table records after filter",this.tableschanges_new)
+    this.filterdata=this.tableschanges_new;
     //  this.someData=resp.ReturnValue;
  });
     this.AccountoptionsService.payhis_table()
@@ -105,10 +106,30 @@ export class AccountoptionsComponent implements OnInit {
     this.AccountoptionsService.yearview_table()
     .subscribe((resp: any) => {
     this.yearview_val=resp.ReturnValue;
-    });
-
-    
+    });   
   }
+
+  // filtering radio button in account maintainance screen 
+radio_bt_fil(val){
+    
+  // console.log("radio button value",val)
+  // console.log("table valuess inside condition",this.ac_maintain_tabl)
+  if(val=='open_bal'){
+    this.tableschanges_new=this.filterdata.filter(i=>i.account_balance!=0)
+    // console.log(this.ac_maintain_tabl)
+  }
+  if(val=='no_bal'){
+    this.tableschanges_new=this.filterdata.filter(i=>i.account_balance==0)
+    // console.log(this.ac_maintain_tabl)
+  }
+  if(val=='all_acc'){
+    this.tableschanges_new=this.filterdata
+    // console.log(this.ac_maintain_tabl)
+  }
+ 
+   } 
+
+  // dropdown filter in transfer table
   onSel(val){
     console.log("whole table",JSON.stringify(this.tableschanges_new));
     console.log("droup down filter working fine",val);
