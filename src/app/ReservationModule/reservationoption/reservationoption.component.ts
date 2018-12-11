@@ -408,19 +408,26 @@ delcredit(){
 
 }
 //queue
-status={};
-queno={};
+status:any;
+queno:any;
 queueProfile(){
   let inputparms={
     "Res_id":this.session.retrieve("id"),
     "rm_room":this.session.retrieve("id2"),
     "Res_unique_id":this.session.retrieve("uniq")
   }
-  
+
   this.pppService.resqueue(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.Return;
-    this.queno=resp.QueueNumber;
+    
+    if(resp.ReturnCode=="PQTR"){
+      this.status=" ";
+      this.queno=resp.Return;
+    }else{
+      this.status=resp.Return;
+      this.queno="Queue Number is"+ resp.QueueNumber;
+    }
+    
   });
 
 }
@@ -608,6 +615,9 @@ public  downloadPDF(){
 
   doc.save('a4.pdf');
 }
+
+
+
 }
 
 

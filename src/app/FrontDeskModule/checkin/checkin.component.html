@@ -70,7 +70,7 @@
               <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
             </div>
             <div class="col-md-2" style="margin-top: 18px;">
-              <button class="btn btn-success" style="width: 100%"routerLink="/reservation">Walk-in </button>   
+              <button class="btn btn-success" style="width: 100%" (click)="loadcheckin('Walk-in')">Walk-in </button>   
             </div>
           </div>
   
@@ -104,19 +104,19 @@
               <tr class="table table-primary" style="background-color: #0077B5;color: white">
                     <th style="width:50px"> Seq</th>                      
                     <th style="width:180px"> Name</th>
-                    <th style="width:110px"> Arrival_Date</th>
-                    <th style="width:130px"> Departure_Date</th>
+                    <th style="width:110px"> Arrival Date</th>
+                    <th style="width:130px"> Departure Date</th>
                     <th style="width:60px" > Room</th>
                     <th style="width:75px" *ngIf="showMore!=true"> Nights</th>
-                    <th style="width:100px" *ngIf="showMore!=true"> Room_Type</th>
+                    <th style="width:100px" *ngIf="showMore!=true"> Room Type</th>
                     <th style="width:60px" *ngIf="showMore!=true"> Adults</th>                        
                     <th style="width:60px" *ngIf="showMore!=true"> Child</th>
                     <th style="width:85px" *ngIf="showMore!=true"> Status</th>
-                    <th  *ngIf="showMore!=true"> Block_Code</th>
-                    <th style="width:100px" *ngIf="showMore==true"> Resv_Type</th>
-                    <th style="width:120px" *ngIf="showMore==true"> Confirm_No</th>
+                    <th  *ngIf="showMore!=true"> Block Code</th>
+                    <th style="width:100px" *ngIf="showMore==true"> Resv Type</th>
+                    <th style="width:120px" *ngIf="showMore==true"> Confirm No</th>
                     <th style="width:150px" *ngIf="showMore==true"> CreditCard</th>            
-                    <th style="width:80px" *ngIf="showMore==true"> Exp_Date</th>            
+                    <th style="width:80px" *ngIf="showMore==true"> Exp Date</th>            
                     <th *ngIf="showMore==true"> Rate</th>
   <!-- 
                     <th> Extension</th>

@@ -96,7 +96,7 @@ import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component'
 import { AccountoptionsComponent } from './Accountreceivable/accountoptions/accountoptions.component';
 import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupaccount.component';
 
-
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 @NgModule({
     declarations: [
@@ -183,8 +183,7 @@ import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupacc
         InvoiceComponent,
         AccountoptionsComponent,
         SetupaccountComponent,
-
-    ],
+        SearchfilterPipe    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

@@ -46,8 +46,14 @@ export class ReservationComponent implements OnInit {
     // this.date = new Date().toISOString().slice(11,19);
   }
   clearsession(){
-    this.session.clear();
+    
+    console.log("consoleeeeeeeeeeeeeeeee" + this.session.retrieve("checknav"))
+    if (this.session.retrieve("checknav") == "Walk-in") {
+      this.route.navigate(['checkin/']);
+    
   }
+  this.session.clear();
+}
 //getting value for expirydate and merging it in a variable   
   private month:any;
   private year:any;

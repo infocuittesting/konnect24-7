@@ -20,18 +20,23 @@
          <label for="email">Group</label>  
          <input type="text" class="form-control" id=""  name="text">
          </div>
-
-         <div class="col-md-2">
-            <label for="email">Room Type</label>
-            <input type="text" class="form-control" id="room_type" name="room_type" [(ngModel)]="qrtype">
-       </div>
+      
        <div class="col-md-2">
-          <label for="email">Res. Type</label>
-           <input type="text" class="form-control" id="type"  name="type" [(ngModel)]="restype">
+        <label for="email">Room Type</label>
+        <select name="room_type" class="form-control" id="room_type" [(ngModel)]="qrtype">
+          <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>
+        </select>
+      </div>
+
+       <div class="col-md-2">
+          <label for="res">Res. Type</label>
+          <select name="res_type" class="form-control" id="res_type" [(ngModel)]="restype">
+            <option *ngFor="let res of res_type_list" [ngValue]="res.restype_description">{{res.restype_description}}</option>
+          </select>
           </div>
                       <div class="col-md-2">
                       <label for="email"> VIP</label>
-                      <input type="text" class="form-control" id="vip" name="vip">
+                      <input type="text" class="form-control" id="vip" name="vip" [(ngModel)]="vip">
               </div>
               <div class="col-md-2">
                       <label for="email"> Date</label>                 
@@ -69,38 +74,39 @@
         <th style="width:40px"> Seq</th>             
         <th style="width:170px"> Name</th>
         <th style="width:60px"> Room</th>
-        <th style="width:90px"> Hk_Status</th>
-        <th style="width:115px"> Room_Status</th> 
-        <th style="width:105px" *ngIf="showMore!=true"> Arrival_Date</th>
-        <th style="width:130px" *ngIf="showMore!=true"> Departure_Date </th>
+        <th style="width:90px"> Hk Status</th>
+        <th style="width:105px" *ngIf="showMore!=true"> Arrival Date</th>
+        <th style="width:130px" *ngIf="showMore!=true"> Departure Date </th>
         <th style="width:60px" *ngIf="showMore!=true"> Nights </th>
         <th style="width:60px" *ngIf="showMore!=true"> Adults </th>                        
         <th style="width:60px" *ngIf="showMore!=true"> Child </th>
         <th style="width:60px" *ngIf="showMore!=true"> Rate </th>
-        <th *ngIf="showMore!=true"> Room_Type </th>
-        <th style="width:90px" *ngIf="showMore==true"> Status </th>
-        <th style="width:110px" *ngIf="showMore==true"> Block_Code </th>
-        <th style="width:110px" *ngIf="showMore==true"> Resv_Type </th>         
+        <th style="width:117px" *ngIf="showMore!=true">Guest Status</th>
+
+        <th *ngIf="showMore!=true"> Room Type </th>
+        <th style="width:90px" *ngIf="showMore==true"> VIP </th>
+        <th style="width:110px" *ngIf="showMore==true"> Block Code </th>
+        <th style="width:110px" *ngIf="showMore==true"> Res Type </th>         
         <th style="width:150px" *ngIf="showMore==true"> CreditCard </th>            
-        <th *ngIf="showMore==true"> Exp_Date </th>                       
+        <th *ngIf="showMore==true"> Exp Date </th>                       
       </tr>
   </thead>
   <tbody>
-        <tr *ngFor="let searched of searchandedit | filterdata: restype :'res_res_type' | filterdata: queryString :'pf_firstname'| filterdata: qdate :'res_arrival'| filterdata: qrtype :'res_room_type'; let i = index"
+        <tr *ngFor="let searched of searchandedit | searchfilter :{pf_firstname:queryString}| searchfilter :{res_room_type:qrtype}| searchfilter :{res_res_type:restype} | searchfilter :{pf_individual_vip:vip} | searchfilter :{res_arrival:qdate}; let i = index"
          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
                 <td style="width:40px"> {{i+1}}</td> 
                 <td style="width:170px">  {{searched.pf_firstname}}</td>
                 <td style="width:60px"> {{searched.res_room}} </td>
-                <td style="width:90px"> {{searched.rm_hk_status}}</td>
-                <td style="width:115px"> {{searched.rm_room_status}}</td>
+                <td style="width:90px" [ngClass]="{'colorchange':searched.rm_room_status=='dirty','colorchange_clean':searched.rm_room_status=='Clean','colorchange_Inspected':searched.rm_room_status=='Inspected','colorchange_Pickup':searched.rm_room_status=='Pick Up','colorchange_ofs':searched.rm_room_status=='Out Of Service','colorchange_ofo':searched.rm_room_status=='Out Of Order'}"> {{searched.rm_room_status}}</td>              
                 <td style="width:105px" *ngIf="showMore!=true"> {{searched.res_arrival}} </td> 
                 <td style="width:130px" *ngIf="showMore!=true"> {{searched.res_depature}} </td>
                 <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
                 <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
                 <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
-                <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_rate}}</td>     
+                <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_rate}}</td>
+                <td  *ngIf="showMore!=true">{{searched.res_guest_status}}</td>     
                 <td *ngIf="showMore!=true"> {{searched.res_room_type}} </td>
-                <td style="width:90px" *ngIf="showMore==true"> {{searched.res_guest_status}} </td>            
+                <td style="width:90px" *ngIf="showMore==true"> {{searched.pf_individual_vip}} </td>            
                 <td style="width:110px" *ngIf="showMore==true"> {{searched.res_block_code}}</td> 
                 <td style="width:110px" *ngIf="showMore==true"> {{searched.res_res_type}}</td>          
                 <td style="width:150px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
@@ -113,11 +119,11 @@
 
 <div class="row" style="margin-top: -15px;text-align: center"> 
   <button class="btn btn-info" style="width:11%; margin-left:5%;" routerLink="/housekeeping" [disabled]=assign> Assign <i class="fa fa-sign-in"></i></button>    
-  <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"  [disabled]=unass> Unassign <i class="fa fa-sign-in"></i> </button>    
+  <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"  [disabled]=edbutn> Unassign <i class="fa fa-sign-in"></i> </button>    
   <button class="btn btn-primary disabled" style="width:11%"> Auto <i class="fa fa-tasks"></i></button>     
   <button class="btn btn-default" style="width:11%" routerLink="/reservation"> Profile <i class="fa fa-user"></i></button>   
   <button class="btn btn-warning" style="width:11%" routerLink="/reservation"> Resv. <i class="fa fa-caret-square-o-down"></i></button>   
-  <button class="btn btn-success" style="width:11%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"  [disabled]=chin> Check In <i class="fa fa-sign-in"></i></button>   
+  <button class="btn btn-success" style="width:11%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"  [disabled]=checkin> Check In <i class="fa fa-sign-in"></i></button>   
   <button class="btn btn-danger" style="width:11%" routerLink="/mains"> Close <i class="fa fa-close"></i></button>   
 
   </div>
