@@ -82,7 +82,7 @@
         <div class="col-lg-3">
             <b>Source</b><div class="input-group">
              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
-             <input type="text"name="Source" class="form-control"></div>
+             <input type="text"name="Source" class="form-control" [(ngModel)]="res_source"></div>
          </div>
 
         </div>
@@ -282,7 +282,7 @@
 			</div>                
           <div class="col-lg-2">
 		  <div class="input-group" style="padding-left:40px;">
-		  <input type="text" name="extension" required style="width:216px;height:34px;border-radius:4px;color:black;" disabled>
+		  <input type="text" name="extension" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="res_extension" disabled>
 		  </div>
 		  </div>
 		  </div>
@@ -410,7 +410,7 @@
 		  </div>                  
 		  <div class="col-lg-2">
 		  <div class="input-group" style="padding-left:40px;">
-	  	  <input name="Packages" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" disabled>
+	  	  <input name="Packages" type="text" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="RES_packages" disabled>
       </div>
 		  </div>
 		  </div>

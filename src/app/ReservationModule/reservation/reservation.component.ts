@@ -25,7 +25,9 @@ export class ReservationComponent implements OnInit {
   public Pf_title;
   public Pf_country;
   public Pf_vip;
-
+  public res_arrival;
+  public res_extension;
+  public res_source;
 
   public tableschanges =[];
   public language =[];
@@ -39,6 +41,7 @@ export class ReservationComponent implements OnInit {
   public marketpro =[];
   
   public user1;
+  public RES_packages;
 
   public now:any;
   public date:any = new Date().toJSON().split('T')[0];
@@ -147,8 +150,63 @@ else{
     //  }
 
      ngOnInit() {
+       if(this.session.retrieve("Frontdesk_checkin") == "Edit"){
+        this.PF_Firstname= this.session.retrieve("pf_fname");
+        this.user.RES_Arrival = this.session.retrieve("res_arrival");
+        this.user.RES_Depature = this.session.retrieve("depature");
+        this.user.RES_Nights = this.session.retrieve("res_nights");
+        this.user.RES_Adults = this.session.retrieve("res_adults");
+        this.user.RES_child = this.session.retrieve("res_child");
+        this.user.RES_Number_Of_Rooms = this.session.retrieve("res_number_of_rooms");
+        this.user.RES_Room_Type = this.session.retrieve("res_room_type");
+        this.user.RES_Rate_Code = this.session.retrieve("res_rate_code");
+        this.user.RES_Rate = this.session.retrieve("res_rate");
+        this.RES_packages = this.session.retrieve("res_packages");
+        this.user.RES_Block_Code = this.session.retrieve("res_block_code");
+        this.user.RES_RTC = this.session.retrieve("res_rtc");
+
+        this.res_extension = this.session.retrieve("res_extension");
+        this.user.RES_Currency = this.session.retrieve("res_currency");
+        this.user.RES_Res_Type = this.session.retrieve("res_res_type");
+        this.user.RES_Market = this.session.retrieve("res_market");
+        this.res_source = this.session.retrieve("res_source");
+        this.user.RES_Origin = this.session.retrieve("res_origin");
+        this.user.RES_Payment = this.session.retrieve("res_payment");
+        this.user.RES_Creditcard_Number = this.session.retrieve("res_creditcard_number");
+        
+        this.user.RES_RTC = this.session.retrieve("res_exp_date");
+        
+        this.user.RES_Guest_Balance = this.session.retrieve("res_guest_balance");
+        this.user.RES_Disc_Amount = this.session.retrieve("res_disc_amount");
+        this.user.RES_Disc_perc = this.session.retrieve("res_disc_perc");
+        this.user.RES_Disc_Reason = this.session.retrieve("res_disc_reason");
+        this.user.RES_Specials = this.session.retrieve("res_specials");
+        this.user.RES_Item_Inv = this.session.retrieve("res_item_inv");
+        this.user.PF_Mobileno = this.session.retrieve("pf_mobileno");
+
+
+
+
+
+
+
+
+
+        
+          
+       }
+       if(this.session.retrieve("Frontdesk_checkin") == "Walkin"){
+        this.session.clear("pf_fname");
+        this.session.clear("pf_lastname");
+        this.session.clear("pf_language");
+        this.session.clear("pf_mobileno");
+        this.session.clear("pf_title");
+        this.session.clear("pf_individual_country");
+        this.session.clear("pf_individual_vip");
+       }
       //  this.navtag.navigate ="Rev";
        this.session.store("navigate","Rev");
+
        this.PF_Firstname= this.session.retrieve("pf_fname");
        this.Pf_lastname = this.session.retrieve("pf_lastname");
        this.Pf_language = this.session.retrieve("pf_language");
@@ -204,6 +262,10 @@ else{
       });                   
     }  
     ngOnDestroy(){
+      
+
+
+      this.user.RES_Arrival="";
       //Timer clear for ETA input
       if(this.now){
         clearInterval(this.now);

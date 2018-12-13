@@ -187,12 +187,13 @@
 <br>
 
 <div>
-  <button class="btn btn-info" style="width:15%;margin-left: 2%" routerLink="/reservation">New </button>    
-  <button class="btn btn-primary"style="width:15%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin" [disabled]=chin>Check-in </button>    
-  <button class="btn btn-warning" style="width:15%">Reg. Card </button>   
-  <button class="btn btn-info" style="width:15%" routerLink="/psearch"> Profile </button>   
-  <button class="btn btn-default" style="width:15%" routerLink="/reservationoption" [disabled]=option> Options</button>   
-  <button class="btn btn-danger" style="width:15%" routerLink="/mains"> Close </button>   
+  <button class="btn btn-info" style="width:10%;margin-left: 12%;margin-right: -2%" routerLink="/reservation">New </button>
+  <button class="btn btn-info" style="width:10%;margin-left: 2%" (click)="loadcheckin('Edit')" [disabled]=edit>Edit </button>        
+  <button class="btn btn-primary"style="width:10%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin" [disabled]=chin>Check-in </button>    
+  <button class="btn btn-warning" style="width:10%">Reg. Card </button>   
+  <button class="btn btn-info" style="width:10%" routerLink="/psearch"> Profile </button>   
+  <button class="btn btn-default" style="width:10%" routerLink="/reservationoption" [disabled]=option> Options</button>   
+  <button class="btn btn-danger" style="width:10%" routerLink="/mains"> Close </button>   
 
   </div>
 
