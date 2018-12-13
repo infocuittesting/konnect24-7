@@ -127,12 +127,25 @@ Roommove(input:any):  Observable<object[]> {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });
     let body={
-      "Res_id":this.session.retrieve("id")
+      "Res_id":this.session.retrieve("id"),
     }
     return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_POST_Select_QueryReservationActivitylog',body,options)
        .map(this.extractData)
 }
 
+
+
+// changes activity log
+getaccompany():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+    "res_id":this.session.retrieve("id"),
+    "res_unique_id":this.session.retrieve("uniq"),
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryAccompanyingGuest',body,options)
+     .map(this.extractData)
+}
 
 Delete(input:any):  Observable<object[]> {    
   const headers = new Headers();

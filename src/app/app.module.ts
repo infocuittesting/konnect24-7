@@ -95,6 +95,7 @@ import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintena
 import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
 import { AccountoptionsComponent } from './Accountreceivable/accountoptions/accountoptions.component';
 import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupaccount.component';
+import { ProfilestatisticsComponent } from './ProfileModule/profilestatistics/profilestatistics.component';
 
 
 
@@ -183,6 +184,7 @@ import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupacc
         InvoiceComponent,
         AccountoptionsComponent,
         SetupaccountComponent,
+        ProfilestatisticsComponent,
 
     ],
     imports: [

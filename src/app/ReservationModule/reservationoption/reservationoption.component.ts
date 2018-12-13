@@ -59,6 +59,7 @@ export class ReservationoptionComponent implements OnInit {
   public arrycdt=[];
   public deptarry=[];
   public history=[];
+  public listaccompay:any =[];
   find={};
 
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
@@ -477,6 +478,12 @@ privil:any;
      this.pppService.gettransaction()
    .subscribe((resp: any) => {
      this.listtc=resp.ReturnValue;
+   });
+
+//Get accompany
+   this.pppService.getaccompany()
+   .subscribe((resp: any) => {
+     this.listaccompay=resp.ReturnValue;
    });
 
    this.pppService.getroomtype()
