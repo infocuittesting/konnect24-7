@@ -71,7 +71,7 @@ onSelected(val){
 roomclass
 onSelectclass(val){
   console.log(val.toLowerCase());
-  this.search = this.someData.filter(x => x.rm_room_class == val.toLowerCase())
+  this.search = this.someData.filter(x => x.roomclass == val.toLowerCase())
   console.log(this.search);
 }
   //checkin
@@ -119,6 +119,8 @@ this.pService.roomclassdropdown()
 });
 
 }
+edbutn=true;
+flag = false;
 
 selectindex=null;
 selectMembersEdit(details,index){
@@ -128,6 +130,18 @@ this.session.store("id1",details.pf_id.toString());
 this.session.store("id2",details.res_room.toString());
 this.session.store("uniq",details.res_unique_id.toString());
 console.log(this.session.retrieve("id"));
+if(details.res_guest_status=="due in" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out"){
+  this.flag=true;
+  this.edbutn=true;
+  this.selectindex=index; 
+
+}else{
+  this.flag=false;
+    this.selectindex=null;
+    this.edbutn=false;
+}
+
+
 }
 
 }

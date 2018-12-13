@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import {TracesService} from './traces.service';
+import { SessionStorageService } from "ngx-webstorage";
+import { ToasterServiceService } from '../../toaster-service.service';
 @Component({
   selector: 'app-traces',
   templateUrl: './traces.component.html',
@@ -9,7 +11,7 @@ import {TracesService} from './traces.service';
 })
 export class TracesComponent implements OnInit {
 
-  constructor(private TracesService:TracesService) { }
+  constructor(private TracesService:TracesService,public session:SessionStorageService, public toaster:ToasterServiceService) { }
 public gettrace;
 checkboxValue;
 checkValue;
@@ -37,12 +39,21 @@ checkValue;
   resid;
   uid;
   trace;
-  selectindex=null;
+  selectindex ;
+  traces_id ;
+  res_id ;
+
   selected(details,index){
     this.selectindex=index;
   this.resid=details.res_id;
   this.uid=details.res_unique_id;
   this.trace=details.traces_id;
+  this.traces_id=details.traces_id;
+  this.res_id=details.res_id;
+  //this.session.store("traces_id",details.traces_id.toString());
+  //this.session.store("res_id",details.res_id.toString());
+  console.log("traces_id",details.traces_id)
+  console.log("res_id",details.res_id)
   }
 
   //resolve
@@ -66,5 +77,27 @@ checkValue;
  });
 
 }
+
+public deletetrace
+deletetraces(){
+  let body={
+    "traces_id":this.traces_id,
+    "res_id":this.res_id
+  }
+ this.TracesService.deletetraces(body)
+ .subscribe((resp: any) => {
+  this.deletetrace=resp.Returncode;
+  if(this.deletetrace=="RDS"){
+    this.deletetrace="Traces is Deleted successfully";
+    this.toaster.success("Traces is Deleted successfully");
+    this.TracesService.Trace()
+    .subscribe((resp: any) => {
+     this.gettrace=resp.ReturnValue;
+   });
+  }
+});
+
+}
+
 
 }

@@ -13,10 +13,32 @@ export class RoomassignmentService {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });
-    return this.http.get('https://hotel360.herokuapp.com/HOTEL_RES_GET_SELECT_QueryReservationSearch')
+    return this.http.get('https://hotel360.herokuapp.com/HOTEL_FD_POST_SELECT_QueryRoomAssignment')
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }
+
+// room types
+
+roomtype():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  
+ 
+  return this.http.post('https://hotel360.herokuapp.com/Select_Room_Type',options)
+     .map(this.extractData)
+     //.catch(this.handleErrorObservable);
+}
+
+// res type
+
+getrestype():  Observable<object[]> {    
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Restype')
+     .map(this.extractData)
+}
 
 //unassigning profile
   unassignProfile(insertdata:any):  Observable<object[]> {

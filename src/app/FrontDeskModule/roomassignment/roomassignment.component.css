@@ -23,5 +23,21 @@ table{
    .backgroundcolor{
        background-color: lightgrey;
    }
-
-   
+   .colorchange{
+       color:red;
+   }
+   .colorchange_clean{
+       color: blueviolet
+   }
+   .colorchange_Inspected{
+       color:brown
+   }
+   .colorchange_Pickup{
+       color:green
+   }
+   .colorchange_ofo{
+       color: blueviolet
+   }
+   .colorchange_ofs{
+       color: pink
+   }

@@ -9,12 +9,12 @@
        <div class="col-md-2">
 
         <label for="email"> Name</label>
-        <input type="text" class="form-control" id="email" name="email">
+        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="name">
        </div>
 
       <div class="col-md-2">
          <label for="email">Date</label>
-        <input type="date" class="form-control" id="email" name="date">
+        <input type="date" class="form-control" id="email" name="date" [(ngModel)]="tdate">
         </div>          
 
         <div class="col-md-2">
@@ -48,7 +48,7 @@
 
 <br>
 
-<table class="table table-bordered  tableBodyScroll" style="margin-top: -20px">
+<table class="table table-bordered  table-hover tableBodyScroll" style="margin-top: -20px">
   <thead>
       <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
           <th style="width:40px;">Seq</th>
@@ -62,8 +62,8 @@
       </tr>
   </thead>
   <tbody>
-          <tr *ngFor="let list of gettrace|resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
-          (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i==selectindex}"> 
+          <tr *ngFor="let list of gettrace | searchfilter :{pf_firstname:name} | searchfilter :{traces_date:tdate} | resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
+          (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i=='selectindex'}"> 
              <td style="width:40px;">{{i+1}}</td>    
              <td style="width:138px;">{{list.pf_firstname}}</td>        
              <td style="width:138px;">{{list.traces_date}}</td>         
@@ -72,61 +72,7 @@
              <td style="width:140px;">{{list.traces_trace_text}}</td>  
              <td style="width:139px;">{{list.resloved_on}}</td>     
              <td>{{list.resloved_by}}</td>                        
-          </tr>
-              <tr>    
-             <td><input type="checkbox"></td>                
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                        
-          </tr>
-              <tr>     
-             <td><input type="checkbox"></td>    
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                        
-          </tr>
-              <tr>    
-             <td><input type="checkbox"></td>    
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                        
-          </tr>
-              <tr>      
-             <td><input type="checkbox"></td>    
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                        
-          </tr>
-              <tr>
-             <td><input type="checkbox"></td>    
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                             
-          </tr>
-              <tr>     
-             <td><input type="checkbox"></td>    
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>     
-             <td></td>                        
-          </tr>                                                            
+          </tr>                                                          
   </tbody>
 </table>
 <br>    
@@ -135,7 +81,7 @@
         <button class="btn btn-success"style="width:12%"> New  </button>    
         <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Resv </button>   
         <button class="btn btn-info " style="width:12%"> Edit </button>   
-        <button class="btn btn-primary " disabled style="width:12%"> Delete </button>        
+        <button class="btn btn-primary " class="btn btn-warning" style="width:12%" (click)="deletetraces()"> Delete </button>        
         <button class="btn btn-danger" style="width:12%"routerLink="/mains"> Close </button>   
       
         </div>

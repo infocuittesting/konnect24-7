@@ -97,7 +97,7 @@ import { AccountoptionsComponent } from './Accountreceivable/accountoptions/acco
 import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupaccount.component';
 import { ProfilestatisticsComponent } from './ProfileModule/profilestatistics/profilestatistics.component';
 
-
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 @NgModule({
     declarations: [
@@ -184,9 +184,13 @@ import { ProfilestatisticsComponent } from './ProfileModule/profilestatistics/pr
         InvoiceComponent,
         AccountoptionsComponent,
         SetupaccountComponent,
+<<<<<<< HEAD
         ProfilestatisticsComponent,
 
     ],
+=======
+        SearchfilterPipe    ],
+>>>>>>> a251505b3b6a23bcf25281db4b544950e373a2b1
     imports: [
         BrowserModule,
         AppRoutingModule,
