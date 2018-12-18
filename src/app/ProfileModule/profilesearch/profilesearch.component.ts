@@ -181,10 +181,18 @@ option=true;
 ok=true;
 edit=true;
 pfid;
+
+profile_id:any;
+
 selectindex=null;
 public checkpftype;
 selectMembersEdit(details,index){
 this.selectindex=index;
+
+this.profile_id=details.pf_id;
+console.log("profile_idddddddddddddddd",this.profile_id)
+
+
 this.pfid=details.pf_id;
 console.log("profileeeeeeeeeeee",this.pfid)
 this.checkpftype = details.pf_type;
@@ -233,6 +241,8 @@ this.session.store("pf_title",details.pf_title);
 this.session.store("pf_mobileno",details.pf_mobileno.toString());
 this.session.store("pf_individual_country",details.pf_individual_country);
 this.session.store("pf_individual_vip",details.pf_individual_vip);
+
+this.session.store("profile_id",this.profile_id)
 
 console.log("guruuuuuuuuuuu",details.pf_account);
 

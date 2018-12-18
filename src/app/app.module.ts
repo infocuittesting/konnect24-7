@@ -170,6 +170,7 @@ import { SearchfilterPipe } from './searchfilter.pipe';
         ProfileComponent,
         ModalBasicComponent,
         IndividualprofileComponent,
+        ProfilestatisticsComponent,
         // ProfileService,
         // ModalService,
         // IndividualService,

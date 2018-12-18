@@ -20,10 +20,11 @@
         <div class="col-md-2">
 
                 <label for="email">Department</label>
-                <select class="form-control"  name="Department" id="">
-                    <option value=""> HouseKeeping </option>
-
-                </select>
+                <select name="depcode" id="depcode" style="width:150px;height:35px;border-radius:4px;" class="form-control"
+                [(ngModel)]="trace_dept_code">
+                <option></option>
+                <option *ngFor="let depcode of deptdrop" >{{depcode.department}}</option>
+              </select>
         </div>
         <div class="col-md-2" style="margin-top: 30px">          
                 <label class="checkbox-inline" for="resolve"> <input type="checkbox" style="zoom:1" id="resolve"  name="resolve" [(ngModel)]="checkboxValue" (change)="newFunction()">Resolved</label>
@@ -62,7 +63,7 @@
       </tr>
   </thead>
   <tbody>
-          <tr *ngFor="let list of gettrace | searchfilter :{pf_firstname:name} | searchfilter :{traces_date:tdate} | resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
+          <tr *ngFor="let list of gettrace | searchfilter :{pf_firstname:name} | searchfilter :{traces_dept_code:trace_dept_code} | searchfilter :{traces_date:tdate} | resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
           (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i=='selectindex'}"> 
              <td style="width:40px;">{{i+1}}</td>    
              <td style="width:138px;">{{list.pf_firstname}}</td>        
@@ -78,9 +79,9 @@
 <br>    
 <div>
         <button class="btn btn-info" style="width:12%; margin-left:10%;" data-toggle="modal" data-target="#resolvessss" (click)="resolve()" > Resolve </button>    
-        <button class="btn btn-success"style="width:12%"> New  </button>    
+        <button class="btn btn-success"style="width:12%" data-toggle="modal" data-target="#tracesmodel" [disabled]=ednew> New  </button>    
         <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Resv </button>   
-        <button class="btn btn-info " style="width:12%"> Edit </button>   
+        <button class="btn btn-info " style="width:12%" data-toggle="modal" data-target="#modeledit" [disabled]=ednew> Edit </button>   
         <button class="btn btn-primary " class="btn btn-warning" style="width:12%" (click)="deletetraces()"> Delete </button>        
         <button class="btn btn-danger" style="width:12%"routerLink="/mains"> Close </button>   
       
@@ -114,3 +115,155 @@
             </div>
           </div> 
           <!-- Accept End -->      
+  <!-- traces new button model screen-->
+  <div class="modal fade" id="tracesmodel" data-backdrop="static" data-keyboard="false" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-32%;width:155%;">
+        <div class="modal-body">
+          <div class="container" style="width:100%;">
+            <div style="margin-top: 30px;"> 
+              <form #ratedetForm=ngForm>  
+              <div class="row">
+                <div class="col-md-4">
+                  <label> From Date </label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="FromDate" id="email" class="form-control" style="width:160px;" [(ngModel)]="trac.from_date"></div>
+                </div>
+  
+                <div class="col-md-4">
+                  <label>To Date</label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="todate" id="email" class="form-control" style="width:160px;" [(ngModel)]="trac.to_date"></div>
+                </div>
+  
+  
+                <div class="col-md-4">
+                  <label>Time</label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-time"></i></span>
+                    <input type="time" name="time" id="email" class="form-control" style="width:160px;" [(ngModel)]="trac.time"></div>
+                </div>
+              </div>
+              <div class="row">
+  
+                <div class="col-md-4">
+                  <b>Dept.Code</b>
+                  <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
+                    <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;" class="form-control"
+                      [(ngModel)]="trace.dept_code" #creditcardno="ngModel">
+                      <option *ngFor="let codedep of gettracedrop" >{{codedep.department}}</option>
+                    </select>
+                    <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <label>Trace_Text</label>
+                  <div class="input-group" [class.has-error]="trace.touched && trace.invalid">
+                    <textarea name="des" cols="70" rows="4" style="border-radius:4px;" class="form-control" required
+                      #trace="ngModel" [(ngModel)]="trac.straces_text"></textarea>
+                    <div *ngIf="trace.touched && !trace.valid && trace.errors?.required" ngClass="{ 'has-error' : !trace.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="modal-footer" style="margin-top: -27px;">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="Insertguest(trac);ratedetForm.reset()"><b>Ok</b><span
+              class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove"
+              style="padding-left:5px;"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--traces new button model screen end -->
+
+  <!-- traces edit button model screen -->
+
+
+  <div class="modal fade" id="modeledit" data-backdrop="static" data-keyboard="false" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-32%;width:155%;">
+        <div class="modal-body">
+          <div class="container" style="width:100%;">
+            <div style="margin-top: 30px;"> 
+              <form #modeledit=ngForm>  
+              <div class="row">
+                <div class="col-md-4">
+                  <label> From Date </label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="modelicon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="modelDate" id="modelDate" class="form-control" style="width:160px;" [(ngModel)]="fromvalue" disabled></div>
+                </div>
+  
+                <div class="col-md-4">
+                  <label>To Date</label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="modeltodate" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="modeltodate" id="modeltodate" class="form-control" style="width:160px;" [(ngModel)]="tovalue" disabled></div>
+                </div>
+  
+  
+                <div class="col-md-4">
+                  <label>Time</label>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="modeltime" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-time"></i></span>
+                    <input type="time" name="modeltime" id="modeltime" class="form-control" style="width:160px;" [(ngModel)]="motime"></div>
+                </div>
+              </div>
+              <div class="row">
+  
+                <div class="col-md-4">
+                  <b>Dept.Code</b>
+                  <div class="input-group" [class.has-error]="modelcode.touched && modelcode.invalid">
+                    <select name="modelcode" id="modelcode" required style="width:200px;height:30px;border-radius:4px;" class="form-control"
+                      [(ngModel)]="deptmodel" #modelcode="ngModel">
+                      <option *ngFor="let codedep of gettracedrop" >{{codedep.department}}</option>
+                    </select>
+                    <div *ngIf="modelcode.touched && !modelcode.valid && modelcode.errors?.required" ngClass="{ 'has-error' : !modelcode.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <label>Trace_Text</label>
+                  <div class="input-group" [class.has-error]="modelfront.touched && modelfront.invalid">
+                    <textarea name="des" cols="70" rows="4" style="border-radius:4px;" class="form-control" required
+                      #modelfront="ngModel" [(ngModel)]="fronttext"></textarea>
+                    <div *ngIf="modelfront.touched && !modelfront.valid && modelfront.errors?.required" ngClass="{ 'has-error' : !modelfront.valid && submitAttempt }"></div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="modal-footer" style="margin-top: -27px;">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="Updateguest(motime,deptmodel,fronttext)"><b>Ok</b><span
+              class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove"
+              style="padding-left:5px;"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--traces edit button model end -->
