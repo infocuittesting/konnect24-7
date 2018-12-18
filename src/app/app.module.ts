@@ -99,6 +99,9 @@ import { ProfilestatisticsComponent } from './ProfileModule/profilestatistics/pr
 
 import { SearchfilterPipe } from './searchfilter.pipe';
 
+//End of day Module
+import { EndofdayComponent } from './Endofday/endofday/endofday.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -188,7 +191,9 @@ import { SearchfilterPipe } from './searchfilter.pipe';
         ProfilestatisticsComponent,
 
         //filterpipe
-        SearchfilterPipe
+        SearchfilterPipe,
+
+        EndofdayComponent
 
     ],
     imports: [

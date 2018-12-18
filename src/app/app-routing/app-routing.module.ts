@@ -73,6 +73,9 @@ import { InvoiceComponent } from './../Accountreceivable/invoice/invoice.compone
 import { AccountoptionsComponent } from './../Accountreceivable/accountoptions/accountoptions.component';
 import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setupaccount.component';
 
+//End of day
+import { EndofdayComponent } from './../Endofday/endofday/endofday.component';
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -140,7 +143,10 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
       { path:"AccountMaintenance",component:AccountmaintenanceComponent},
       { path:"Invoice",component:InvoiceComponent},
       { path:"Accountoptions",component:AccountoptionsComponent},
-      {path:"Setupaccount",component:SetupaccountComponent}
+      {path:"Setupaccount",component:SetupaccountComponent},
+
+      //end of day
+      {path:'endofday',component: EndofdayComponent}
     ])
   ],
   declarations: [],
@@ -153,4 +159,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent]
