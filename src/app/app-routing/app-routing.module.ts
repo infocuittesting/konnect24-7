@@ -16,6 +16,8 @@ import { ProfileComponent } from './../ProfileModule/profile/profile.component';
 import { ProfilesearchComponent } from './../ProfileModule/profilesearch/profilesearch.component';
 import { IndividualprofileComponent } from './../ProfileModule/individualprofile/individualprofile.component';
 import { ModalBasicComponent } from './../ProfileModule/modal-basic/modal-basic.component';
+import { ProfilestatisticsComponent } from './../ProfileModule/profilestatistics/profilestatistics.component';
+
 
 //FrontDesk
 import { ArrivalComponent } from './../FrontDeskModule/arrival/arrival.component';
@@ -86,6 +88,7 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
       { path: 'psearch', component: ProfilesearchComponent },
       { path: 'individualprofile', component: IndividualprofileComponent },
       { path: 'modal-basic', component: ModalBasicComponent },
+      {path: 'profilestatistics',component:ProfilestatisticsComponent},
       //Frontdesk
       { path: 'arrival', component: ArrivalComponent },
       { path: 'roomassignment', component: RoomassignmentComponent },
@@ -150,4 +153,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent,SetupaccountComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent]

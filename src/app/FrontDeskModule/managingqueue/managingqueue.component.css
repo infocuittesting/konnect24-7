@@ -4,18 +4,7 @@ table{
    
    }
 
-.tableBodyScroll tbody {
-    display:block;
-    height: 340px;
-    max-height:340px;
-    overflow-y:scroll;
-    table-layout:fixed;
-    }
-    .tableBodyScroll thead, tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;
-    } 
+ 
     
  .backgroundcolor{
         background-color: lightgrey;

@@ -39,6 +39,7 @@ export class ManagingqueueComponent implements OnInit {
 
     doc.fromHTML(content.innerHTML,15,15,{
       'width':250,
+      'height':100,
       'elementHandlers': specialElementHandlers
     });
 
