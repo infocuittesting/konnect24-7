@@ -19,8 +19,14 @@ import * as $ from 'jquery';
 export class ReservationoptionComponent implements OnInit {
   
   @ViewChild('content') content:ElementRef;
-
-
+  showroom = false;
+  //show and hide
+   showlessBut(){
+       this.showroom=false;
+     }
+showmoreBut(){
+  this.showroom=true;
+}
   public Id = this.session.retrieve("id");
   public Name = this.session.retrieve("name");
   public Arrival = this.session.retrieve("arrival");

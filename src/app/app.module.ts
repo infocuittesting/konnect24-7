@@ -184,13 +184,12 @@ import { SearchfilterPipe } from './searchfilter.pipe';
         InvoiceComponent,
         AccountoptionsComponent,
         SetupaccountComponent,
-<<<<<<< HEAD
         ProfilestatisticsComponent,
 
+        //filterpipe
+        SearchfilterPipe
+
     ],
-=======
-        SearchfilterPipe    ],
->>>>>>> a251505b3b6a23bcf25281db4b544950e373a2b1
     imports: [
         BrowserModule,
         AppRoutingModule,
