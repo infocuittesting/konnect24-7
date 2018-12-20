@@ -1,3 +1,538 @@
-<p>
-  endofday works!
-</p>
+<div class="wrapper">
+  <div class="content-wrapper">
+      <br>
+      <div class="container">
+        <div class="row">
+      <div class="col-md-3">
+      <b style="font-size:20px;margin-left: 175%">EndofDayRouting</b>
+      <br>
+      <br>
+     <div class="form-group">
+         <select class="form-control" name="reports" id="rerorts" style="width:125%;margin-left: 150%" [(ngModel)]="Droupdownvalueee" (change)="showhiderestriction(Droupdownvalueee)">
+             <option>--None--</option>
+             <option value="Reservation">Country Check</option>
+             <option value="Profile">Departure Not Checked Out</option>
+             <option value="FrontDesk">Roll The Business Date</option>
+             <option value="RoomManagement">Posting Room and Tax</option>
+             <option value="Cashiering">Run Additional Procedures</option>
+             <option value="Printfinalrate">Print Final Reports</option>
+         </select>
+     </div>
+      </div>
+      </div>
+      </div>
+      <div *ngIf="resv == true">
+        <div>
+        <table class="table table-bordered  table-hover tableBodyScroll" style="margin-top: -20px">
+          <thead>
+              <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
+                  <th style="width:138px;"> Name</th> 
+                  <th style="width:138px;"> Room</th>         
+                  <th style="width:120px;"> Country</th>
+              </tr>
+          </thead>
+          <tbody>
+                  <tr>    
+                     <td style="width:138px;">siva</td>        
+                     <td style="width:138px;">100</td>         
+                     <td style="width:120px;">India</td>       
+                  </tr>
+                  <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>  
+                   <tr>    
+                      <td style="width:138px;">siva</td>        
+                      <td style="width:138px;">100</td>         
+                      <td style="width:120px;">India</td>       
+                   </tr>                                                            
+          </tbody>
+        </table>
+        <div style="text-align:center" >
+        <button class="btn btn-info" style="width:12%; margin-left:10%;" > Resv </button>    
+        <button class="btn btn-success"style="width:12%" > Print  </button>    
+        <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Edit </button>   
+        <button class="btn btn-info " style="width:12%" > Close </button>   
+      </div>
+       </div>
+      </div>
+      <div *ngIf="profile == true">
+          <div class="container-fluid">
+              <div class="panel panel-primary" style="border-color: lightgray;">
+                  <div class="panel-body">
+            
+                <div class="row" style="margin-top: -10px;margin-bottom: -10px">
+                    <div class="col-md-2">
+                        <label for=""> Room</label>
+                        <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
+                        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
+                        <div *ngIf=firstName.errors.pattern>name should contain only alphabets </div>
+                        </div>    
+                </div>
+            
+                    <div class="col-md-2">
+                     <label for="email">Block</label>  
+                     <input type="text" class="form-control" id=""  name="text">
+                     </div>
+                  
+                   <div class="col-md-2">
+                    <label for="email">Name</label>
+                    <input type="text" class="form-control" id=""  name="text">
+                  </div>
+            
+                   <div class="col-md-2">
+                      <label for="res">Pay. Type</label>
+                      <select name="res_type" class="form-control" id="res_type" [(ngModel)]="restype">
+                        <option *ngFor="let res of res_type_list" [ngValue]="res.restype_description">{{res.restype_description}}</option>
+                      </select>
+                      </div>
+                                  <div class="col-md-2">
+                                  <label for="email"> Party</label>
+                                  <input type="text" class="form-control" id="vip" name="vip" [(ngModel)]="vip">
+                          </div>
+                          <div class="col-md-2">
+                                  <label for="email"> Company</label>                 
+                              <input id="type" type="text" class="form-control" name="date"style="border-radius:5px;" [(ngModel)]="qdate">
+                          </div>    
+                </div>
+            
+                  <div class="row">
+            
+            
+                   
+            
+            
+            <br>
+              
+               
+                                <div class="col-md-5">                 
+                                  </div>       
+                 
+            
+            </div></div></div>
+            <table class="table table-bordered table-hover tableBodyScroll">
+              <thead>    
+                  <tr class="table table-primary" style="background-color: #0077B5;color: white ">
+                    <th style="width:170px"> Room</th>
+                    <th style="width:60px"> Name</th>
+                    <th style="width:90px"> Arrival</th>
+                    <th style="width:130px"> Departure</th>
+                    <th style="width:60px"> Balance </th>
+                    <th style="width:60px"> Status </th>                        
+                    <th style="width:60px"> Company </th>
+                    <th style="width:60px"> Group </th>
+                   </tr>
+              </thead>
+              <tbody>
+                  <tr>    
+                      <td style="width:138px;">100</td>        
+                      <td style="width:138px;">siva</td>         
+                      <td style="width:120px;">18-12-2018</td>
+                      <td style="width:120px;">18-12-2018</td>
+                      <td style="width:120px;">1000</td>
+                      <td style="width:120px;">single</td>
+                      <td style="width:120px;">Infocuit</td>
+                      <td style="width:120px;">programer</td>
+
+                   </tr>
+                   <tr>    
+                      <td style="width:138px;">100</td>        
+                      <td style="width:138px;">siva</td>         
+                      <td style="width:120px;">18-12-2018</td>
+                      <td style="width:120px;">18-12-2018</td>
+                      <td style="width:120px;">1000</td>
+                      <td style="width:120px;">single</td>
+                      <td style="width:120px;">Infocuit</td>
+                      <td style="width:120px;">programer</td>
+   
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+       
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+       
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+       
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+             
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td> 
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+        
+                    </tr>  
+                    <tr>    
+                        <td style="width:138px;">100</td>        
+                        <td style="width:138px;">siva</td>         
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">18-12-2018</td>
+                        <td style="width:120px;">1000</td>
+                        <td style="width:120px;">single</td>
+                        <td style="width:120px;">Infocuit</td>
+                        <td style="width:120px;">programer</td>
+        
+                    </tr>                                   
+            
+              </tbody>
+            </table>
+            <br>
+            
+            <div class="row" style="margin-top: -15px;"> 
+              <button class="btn btn-info" style="width:11%; margin-left:5%;" > Search </button>    
+              <button class="btn btn-Warning"style="width:11%"> Advanced</button>    
+              <button class="btn btn-primary disabled" style="width:11%"> Clear </button>     
+              <button class="btn btn-default" style="width:11%"> Res</button>   
+              <button class="btn btn-success" style="width:11%"> Billing </button>   
+              <button class="btn btn-danger" style="width:11%" > C/O Zero</button>   
+              <button class="btn btn-danger" style="width:11%" > Checkout</button>   
+              <button class="btn btn-danger" style="width:11%" > Close</button>   
+              </div>
+            
+            </div>
+      </div>
+      <div *ngIf="FrontDesk == true">
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="row" style="margin:60px 20px 60px 20px">
+                   <div align="center">Sivanandha Started Gurukulam all over the World</div> 
+                </div>
+            </div>
+        </div>    
+      </div>
+      <div *ngIf="RoomManagement == true">
+            <div class="container-fluid">
+                <div class="panel panel-default" style="border-color: lightgray;">
+                    <div class="panel-body">
+              
+                  <div class="row" style="margin-top: -10px;margin-bottom: -10px">
+                      <div class="col-md-2">
+                          <label for="" style="margin-top: 6px;"> Business Date</label>
+                      </div>
+                          <div class="col-md-2">
+                          <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                  </div>
+              
+                      <div class="col-md-2">
+                       <label for="email" style="margin-top: 6px;" style="    margin-top: 10px;margin-left: -55px;">User</label>  
+                    </div>
+                       <div class="col-md-2">
+                       <input type="text" class="form-control" id="tax"  name="text" style="margin-left: -175px;">
+                       </div>
+                       <div class="col-md-2">
+                            <label for="email" style="margin-top: 6px;" style="    margin-top: 10px;margin-left: -185px;">Iteration</label>  
+                         </div>
+                            <div class="col-md-2">
+                            <input type="text" class="form-control" id="tax"  name="text" style="margin-left: -285px;">
+                            </div>
+                     
+                 
+                  </div><br>
+                  <div class="row" style="margin:10px">
+                    <div class="col-lg-8">
+                      <textarea name="text" id="text" cols="100%" rows="20"></textarea>
+                    </div>
+                    <div class="col-lg-2" style="float: bottom">
+                    <button class="btn btn-info" style="width:100%;" > Cancel </button>    
+                    </div>
+                    <div class="col-lg-2"  style="float: bottom">
+                    <button class="btn btn-Warning"style="width:100%"> Close</button>    
+                   </div>
+                  </div>
+ 
+             </div></div>              
+              </div>
+        </div>
+        <div *ngIf="Cashiering ==true">
+                <div class="container-fluid">
+                        <div class="panel panel-default" style="border-color: lightgray;">
+                            <div class="panel-body">
+                      
+                          <div class="row" style="margin-top: -10px;margin-bottom: -10px">
+                              <div class="col-md-2">
+                                  <label for="" style="margin-top: 6px;"> Business Date</label>
+                              </div>
+                                  <div class="col-md-2">
+                                  <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                          </div>
+                      
+                              <div class="col-md-2">
+                               <label for="email" style="margin-top: 6px;" style="    margin-top: 10px;margin-left: -55px;">User</label>  
+                            </div>
+                               <div class="col-md-2">
+                               <input type="text" class="form-control" id="tax"  name="text" style="margin-left: -175px;">
+                               </div>
+                               <div class="col-md-2">
+                                    <button class="btn btn-info " style="width: 55%;margin-top: 6px;text-align: right;margin-left: 255px;" > Close </button>   
+                               </div>
+                         
+                          </div><br><br><br><br>
+                          <table class="table table-bordered  table-hover tableBodyScroll" style="margin-top: -20px">
+                                <thead>
+                                    <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
+                                        <th style="width:138px;"> Action</th> 
+                                        <th style="width:138px;"> Iteration</th>         
+                                        <th style="width:120px;"> Started</th>
+                                        <th style="width:120px;"> Fineshed</th>
+                                        <th style="width:120px;"> Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>    
+                                           <td style="width:138px;">Reservation no show</td>        
+                                           <td style="width:138px;">1</td>         
+                                           <td style="width:120px;">03:20:20</td>       
+                                           <td style="width:120px;">03:20:20</td>       
+                                           <td style="width:120px;">Completed</td>       
+                                        </tr>
+                                        <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td> 
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>  
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>      
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>       
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>       
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>      
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>      
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>       
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>      
+                                         </tr>  
+                                         <tr>    
+                                                <td style="width:138px;">Reservation no show</td>        
+                                                <td style="width:138px;">1</td>         
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">03:20:20</td>       
+                                                <td style="width:120px;">Completed</td>      
+                                         </tr>                                                            
+                                </tbody>
+                              </table>
+                     </div></div>              
+                      </div>
+        </div>
+        <div *ngIf="Printfinalrate ==true">
+            <div class="container-fluid">
+                    <div class="panel panel-default" style="border-color: lightgray;">
+                        <div class="panel-body">
+                  
+                      <div class="row" style="margin-top: -10px;margin-bottom: -10px">
+                          <div class="col-md-2">
+                              <label for="" style="margin-top: 6px;"> Business Date</label>
+                          </div>
+                              <div class="col-md-2">
+                              <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                      </div>
+                  
+                          <div class="col-md-2">
+                           <label for="email" style="margin-top: 6px;" style="    margin-top: 10px;margin-left: -55px;">User</label>  
+                        </div>
+                           <div class="col-md-2">
+                           <input type="text" class="form-control" id="tax"  name="text" style="margin-left: -175px;">
+                           </div>
+                           <div class="col-md-2">
+                                <button class="btn btn-info " style="width: 55%;margin-top: 6px;text-align: right;margin-left: 255px;" > Close </button>   
+                           </div>
+                     
+                      </div><br><br><br><br>
+                      <table class="table table-bordered  table-hover tableBodyScroll" style="margin-top: -20px">
+                            <thead>
+                                <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
+                                    <th style="width:138px;"> RoomName</th> 
+                                    <th style="width:120px;"> Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>    
+                                       <td style="width:138px;">on Night Audit</td>        
+                                       <td style="width:138px;">Running</td>               
+                                    </tr>
+                                    <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td> 
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>  
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>      
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>      
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>       
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>      
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>      
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>       
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>      
+                                     </tr>  
+                                     <tr>    
+                                        <td style="width:138px;">on Night Audit</td>        
+                                        <td style="width:138px;">Running</td>       
+                                     </tr>                                                            
+                            </tbody>
+                          </table>
+                 </div></div>              
+                  </div>
+    </div>
+
+
+      </div>
+
+</div>
+
+       <!-- Accept End -->      
