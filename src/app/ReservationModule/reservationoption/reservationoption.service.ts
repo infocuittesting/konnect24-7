@@ -135,7 +135,7 @@ Roommove(input:any):  Observable<object[]> {
 
 
 
-// changes activity log
+// accompany data
 getaccompany():  Observable<object[]> {   
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
@@ -147,6 +147,19 @@ getaccompany():  Observable<object[]> {
      .map(this.extractData)
 }
 
+// accompany Rate
+getratesummary():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+    "res_id":this.session.retrieve("id"),
+    "res_unique_id":this.session.retrieve("uniq"),
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryRateInfo',body,options)
+     .map(this.extractData)
+}
+
+//delete reservation
 Delete(input:any):  Observable<object[]> {    
   const headers = new Headers();
    headers.append('Content-Type','application/json');
@@ -219,6 +232,21 @@ getdeposit():  Observable<object[]> {
  }
 
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryDeposit',param,options)
+     .map(this.extractData)
+}
+//accopany
+accompanyinsert(param):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_AttachAcompanyingGuest',param,options)
+     .map(this.extractData)
+}
+
+//dtach accompany
+accompanydelete(param):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_DetachAcompanyingGuest',param,options)
      .map(this.extractData)
 }
 

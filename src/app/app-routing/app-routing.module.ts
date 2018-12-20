@@ -36,6 +36,7 @@ import { RoomconditionComponent } from './../RoomManagementModule/roomcondition/
 import { RoomdiscrepanciesComponent } from './../RoomManagementModule/roomdiscrepancies/roomdiscrepancies.component';
 import { RoomhistoryComponent } from './../RoomManagementModule/roomhistory/roomhistory.component';
 import { RoommaintainComponent } from './../RoomManagementModule/roommaintain/roommaintain.component';
+import { RoomoccupancyComponent } from './../RoomManagementModule/roomoccupancy/roomoccupancy.component';
 
 //Packages
 import { PackagesComponent } from './../PackagesModule/packages/packages.component';
@@ -109,6 +110,7 @@ import { EndofdayComponent } from './../Endofday/endofday/endofday.component';
       { path: 'oos', component: OutoforderserviceComponent },
       { path: 'roomcondn', component: RoomconditionComponent },
       { path: 'roommaintenance', component: RoommaintainComponent },
+      { path: 'occupancygraph', component: RoomoccupancyComponent},
       //packages Module
       { path: "packages", component: PackagesComponent },
       { path: "packagecodenew", component: PackagesnewComponent },
@@ -159,4 +161,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent, RoomoccupancyComponent]

@@ -19,14 +19,6 @@ import * as $ from 'jquery';
 export class ReservationoptionComponent implements OnInit {
   
   @ViewChild('content') content:ElementRef;
-  showroom = false;
-  //show and hide
-   showlessBut(){
-       this.showroom=false;
-     }
-showmoreBut(){
-  this.showroom=true;
-}
   public Id = this.session.retrieve("id");
   public Name = this.session.retrieve("name");
   public Arrival = this.session.retrieve("arrival");
@@ -47,6 +39,15 @@ showmoreBut(){
   public Discreasons=this.session.retrieve("Discreasons");
   public DiscAmount=this.session.retrieve("DiscAmount");
   public Currency=this.session.retrieve("Currency");
+  public uniqres=this.session.retrieve("uniq");
+  //for accompany guest
+  public aname = this.session.retrieve("pf_fname");
+  public lastnam =this.session.retrieve("pf_lastname");
+  public accname:any;
+  public profid =this.session.retrieve("profileid");
+  public acccountry=this.session.retrieve("pf_individual_country");
+  public accdob=this.session.retrieve("dateofbirth");
+   
   public house:any;
   public tableschanges =[];
   public alist =[];
@@ -66,6 +67,9 @@ showmoreBut(){
   public deptarry=[];
   public history=[];
   public listaccompay:any =[];
+  public listrate;
+  public StayTotal;
+  public rate;
   find={};
 
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
@@ -438,6 +442,7 @@ queueProfile(){
   });
 
 }
+
 // fixed start
 
 public tra;
@@ -455,10 +460,86 @@ submitrate() {
       );  
       this.route.navigate(['reservationoption/']);
    }
+//accompany insert
+public acco;
+subaccin(){
+  if(this.accdob==null){
+    this.accdob=" ";
+  }else{
+    this.accdob=this.accdob;
+  }
+  let body={
+    "res_id":this.Id,
+    "res_unique_id":this.uniqres,
+    "pf_id":this.profid,
+    "accompanying_name":this.accname,
+    "accompanying_city":this.acccountry,
+    "accompanying_birthday":this.accdob
+  }
+  console.log("testttst",body)
+  this.pppService.accompanyinsert(body).subscribe((resp:any)=>{
+  this.acco=resp.Returncode;
+  if(this.acco=="RIS"){
+    this.acco="Accompany Guest is add Successfully";
+    this.session.clear("pf_fname");
+    this.session.clear("pf_lastname");
+  
+    this.session.clear("profileid");
+    this.session.clear("pf_individual_country");
+    this.session.clear("dateofbirth");
+    this.accname="";
+    this.acccountry="";
+    this.accdob='';
+    this.pppService.getaccompany()
+    .subscribe((resp: any) => {
+      this.listaccompay=resp.ReturnValue;
+    });
+  }
 
-   
+})
+}
+
+//select table row in accompany 
+public accid;
+selectMembersEdit(details){
+  this.accid= details.accompanying_id;
+}
+
+//accompany Detach
+public detac;
+detach(){
+  let body={
+    "res_id":this.session.retrieve("id"),
+    "res_unique_id":this.uniqres,
+    "accompanying_id":this.accid
+  }
+  this.pppService.accompanydelete(body).subscribe((resp:any)=>{
+    this.detac=resp.Returncode;
+    if(this.detac=="RDS"){
+      this.acco="Accompany Guest is Detached Successfully ";
+      this.pppService.getaccompany()
+      .subscribe((resp: any) => {
+        this.listaccompay=resp.ReturnValue;
+      });
+    }
+  })
+}   
+
+//Select date
+selectEdit(details){
+this.rate=details.RateCode +"Rate $10 flat off standard rate" ;
+}
 privil:any;
   ngOnInit() {
+    if(this.aname==null && this.lastnam==null){
+      this.aname=" ";
+      this.lastnam=" ";
+      this.accname=this.aname+" "+this.lastnam;
+    }
+    else{
+      this.accname=this.aname+" "+this.lastnam;
+    }
+    console.log("testttttttttt",this.accname);
     this.pppService.gethousekeepingdata()
     .subscribe((resp: any) => {
       this.house = resp.ReturnValue;
@@ -497,6 +578,13 @@ privil:any;
    this.pppService.getaccompany()
    .subscribe((resp: any) => {
      this.listaccompay=resp.ReturnValue;
+   });
+
+   //Get rate summary
+   this.pppService.getratesummary()
+   .subscribe((resp: any) => {
+     this.listrate=resp.ReturnValue;
+     this.StayTotal=resp.StayTotal;
    });
 
    this.pppService.getroomtype()
@@ -629,7 +717,11 @@ public  downloadPDF(){
   doc.save('a4.pdf');
 }
 
-
+//navigationnroute
+navi(){
+   //  this.navtag.navigate ="Rev";
+   this.session.store("navigate","Revopt");
+}
 
 }
 

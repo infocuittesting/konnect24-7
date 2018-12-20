@@ -1987,19 +1987,24 @@
               </tr>
             </thead>
             <tbody style="background-color:white;">
-              <tr *ngFor="let acc of listaccompay">
-                <td>{{acc.accompanying_name}}</td>
-                <td>{{acc.accompanying_city}}</td>
-                <td>{{acc.accompanying_birthday}}</td>
+              <tr *ngFor="let arrlist of listaccompay;" (click)="selectMembersEdit(arrlist)">
+                <td>{{arrlist.accompanying_name}}</td>
+                <td>{{arrlist.accompanying_city}}</td>
+                <td>{{arrlist.accompanying_birthday}}</td>
+              </tr>
+              <tr>
+                <td>{{accname}}</td>
+                <td>{{acccountry}}</td>
+                <td>{{accdob}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" routerLink="/psearch" data-dismiss="modal"><b>Profile</b></button>
-        <button type="button" class="btn btn-info"><b>Attach</b></button>
-        <button type="button" class="btn btn-primary"><b>Detach</b></button>
+        <button type="button" class="btn btn-success" routerLink="/psearch" (click)="navi()" data-dismiss="modal"><b>Profile</b></button>
+        <button type="button" class="btn btn-info" (click)="subaccin()"><b>Attach</b></button>
+        <button type="button" class="btn btn-primary" (click)="detach()"><b>Detach</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
     </div>
@@ -2013,7 +2018,7 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content" style=" margin-top: 5%;width:150%;margin-left: -15%">
+    <div class="modal-content" style=" margin-top: 2%;width:150%;margin-left: -15%">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"> Room Routing</h4>
@@ -2021,7 +2026,7 @@
       </div>
 
       <div class="modal-body">
-        <div style="margin-top: 20px;">
+      
           <div class="panel panel-default">
             <div class="row" style="margin:20px">
               <div class="col-lg-2 col-md-2">
@@ -2038,20 +2043,59 @@
                 </div>
               </div>
             </div>
+            <div class="row" style="margin:20px">
+              <table class="table table-hover table-bordered" >
+                <thead style="background-color:#0077B5;color:white;">
+                  <tr>
+                    <th colspan="2">Date</th>
+                    <th>Rate Code</th>
+                    <th>Room Revenue</th>
+                    <th>Packages</th>
+                    <th>Total</th>
+                    <th>Generates</th>
+                    <th>Grand total</th>
+                  </tr>
+                </thead>
+                <tbody style="background-color:white;">
+                  <tr *ngFor="let listdata of listrate" (click)="selectEdit(listdata)">
+                    <td>{{listdata.Days}}</td>
+                    <td>{{listdata.Date}}</td>
+                    <td>{{listdata.RateCode}}</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                    <td>0</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                    <td>0</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                  </tr>
+                  <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total</b></td>
+                    <td>{{StayTotal}}</td>
+                    <td><b>stay Total</b></td>
+                    <td>{{StayTotal}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           <div class="row" style="margin:10px 20px 10px 20px">
+            <label>Exchange Rate</label>
+            <div class="input-group">
+              <textarea name="Exchange" id="" rows="1" cols="134" style="height:34px">{{rate}}</textarea>            
+             </div>
+           </div>
+           <div class="row" style="margin:10px 20px 20px 20px">
+            <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-info" style="min-width:100%"> Long Info</button></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-primary" style="min-width:100%"> Details</button></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-danger" style="min-width:100%" data-dismiss="modal"> Close</button></div>
+            <div class="col-lg-3 col-md-3"></div>
+           </div>
           </div>
-        </div>
+        
       </div>
-      <div class="modal-footer">
-        <div *ngIf="showroom!=true">
-          <button type="button" class="btn btn-info"><b>Ok</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-        </div>
-        <div *ngIf="showroom==true">
-          <button type="button" class="btn btn-info"><b>Ok</b></button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-        </div>
-      </div>
-
     </div>
 
   </div>
@@ -2179,12 +2223,6 @@
             </div>
           </div><!-- column 1 for 1 row -->
           <!-- <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  -->
-
-
-
-
-
-
         </div>
         <!--End of row-->
         <br>
@@ -2415,15 +2453,14 @@
             <div class="panel">
               <div class="panel-body" data-toggle="modal" data-target="#traces">
                 <div class="text-center">
-                  <img src="assets/images/FindaJob_Icon.png" alt="alert" style="border-radius:50%; border:solid 8px lightgray ;">
+                  <img src="assets/images/calendar.jpg" alt="alert" style="border-radius:50%; border:solid 8px lightgray ;">
                 </div>
-                <h4 align="center"> Traces </h4>
-                <p align="center"><small>Traces Dirty Room</small></p>
+                <h4 align="center"> Calendar</h4>
+                <p align="center"><small>Calender Event</small></p>
               </div>
               <div class="panel-footer">
-                <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Traces for
-                    check-in</small></p>
-                <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Traces Alert!</small></p>
+                <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Event List</small></p>
+                <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Calendar Status!</small></p>
               </div>
             </div>
           </div><!-- column 1 for 1 row -->

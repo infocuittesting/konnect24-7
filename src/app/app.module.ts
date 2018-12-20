@@ -101,6 +101,7 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 
 //End of day Module
 import { EndofdayComponent } from './Endofday/endofday/endofday.component';
+import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roomoccupancy.component';
 
 @NgModule({
     declarations: [
@@ -193,7 +194,9 @@ import { EndofdayComponent } from './Endofday/endofday/endofday.component';
         //filterpipe
         SearchfilterPipe,
 
-        EndofdayComponent
+        EndofdayComponent,
+
+        RoomoccupancyComponent
 
     ],
     imports: [
