@@ -713,32 +713,24 @@
         <h4 class="modal-title">Privileges</h4>
         <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
       </div>
-      <div class="modal-body">
-        <div class="container" style="width:100%">
-          <br>
-          <div style="background-color: white;">
-            <!-- <div class="panel-heading"><b></b> <span class="glyphicon glyphicon-remove" style="padding-left:590px;"></span></div> -->
-            <div class="panel panel-primary">
-              <div class="panel-body">
-                <table>
-                  <tr *ngFor="let privillege of privil">
-                    <td style="padding-left:35px;">
-                      <input type="checkbox" style="width:20px;height:20px;" (click)="checkboxfun1(privillege)"
-                        [(ngModel)]="privillege.val">
-                      {{privillege.values}}
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="padding-left:35px;"><input type="time" style="border-radius:4px;color:black;"
-                        [(ngModel)]="privillege.checkouttime"></td>
-                  </tr>
-
-                </table>
+      <div class="modal-body"> 
+            <div class="panel panel-default">
+              <div style="margin:20px 0px 20px 50px">
+                <div class="row"  *ngFor="let privillege of listprivileges">
+                  <div class="input-group">
+                  <label for=""> <input type="checkbox" name="check" value="{{privillege.privileges_id}}" style="width:20px;height:20px;" (change)="checkboxfun1(privillege)"
+                    >{{privillege.privileges_desc}}</label> 
+                  </div>
+                </div>
+               
+                <div class="row" >
+                  <div class="input-group">
+                  <label for=""><input type="time" style="border-radius:4px;color:black;"
+                    [(ngModel)]="privillege.checkouttime"></label> 
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-primary" (click)="Success('Privilaegs',pri)">Ok</button> -->

@@ -69,6 +69,7 @@ export class ReservationoptionComponent implements OnInit {
   public listaccompay:any =[];
   public listrate;
   public StayTotal;
+  public listprivileges;
   public rate;
   find={};
 
@@ -205,15 +206,16 @@ alertsub(inputt) {
 
 
 //privileges option service     
-checkedvalue1:String;
+checkedvalue1=[];
      checkboxfun1(chk1){
-this.checkedvalue1=chk1.values;
+this.checkedvalue1.push(chk1.privileges_id);
+console.log("tesssssssss",this.checkedvalue1)
      }
  pri;
     privillege=[];    
   submits(inputt):void {
     console.log(inputt);
-    let body= {'privileges_key': this.checkedvalue1 + " | Scheduled check out at " +inputt.checkouttime };
+    let body= {'privileges_key_id': this.checkedvalue1,"schedule_time":inputt.checkouttime };
       this.pppService.privileges (body)
       .subscribe((users333:any) => {
      this.pri=users333.ReturnCode;
@@ -527,9 +529,9 @@ detach(){
 
 //Select date
 selectEdit(details){
-this.rate=details.RateCode +"Rate $10 flat off standard rate" ;
+this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
 }
-privil:any;
+// privil:any;
   ngOnInit() {
     if(this.aname==null && this.lastnam==null){
       this.aname=" ";
@@ -545,8 +547,8 @@ privil:any;
       this.house = resp.ReturnValue;
 
     });
-    this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
-    { val:false, values:"Pre Stay Charging"}]
+    // this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
+    // { val:false, values:"Pre Stay Charging"}]
 
  this.pppService.getchaTables1()
    .subscribe((resp: any) => {
@@ -573,6 +575,13 @@ privil:any;
    .subscribe((resp: any) => {
      this.listtc=resp.ReturnValue;
    });
+
+
+//Get privileges
+this.pppService.getprivileges()
+.subscribe((resp: any) => {
+  this.listprivileges=resp.ReturnValue;
+});
 
 //Get accompany
    this.pppService.getaccompany()

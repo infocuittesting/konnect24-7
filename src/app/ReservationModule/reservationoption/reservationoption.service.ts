@@ -53,15 +53,16 @@ alert(input:any):  Observable<object[]> {
           .map(this.extractData)
    }
 
-
 // privileges start
    privileges(inputss:any):  Observable<object[]> {
+    
     const headers = new Headers();
      headers.append('Content-Type','application/json');
      const options = new RequestOptions({ headers: headers });
      console.log('working');
-     let body={"res_id":this.session.retrieve("id"),"privileges_key":inputss.privileges_key,"res_unique_id":this.session.retrieve("uniq")
-   };
+     var id_number = this.session.retrieve("id")
+     let body={"res_id":parseInt(id_number),"privileges_key_id":inputss.privileges_key_id,"schedule_time":inputss.schedule_time
+   };console.log("ppppppppppppp",body)
      return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_Insert_UpdateGuestPrivileges',body,options)
         .map(this.extractData)
  }
@@ -299,6 +300,15 @@ gethistory(insertdata:any):  Observable<object[]> {
   const options = new RequestOptions({ headers: headers });
 
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryHistoryReservation',insertdata,options)
+     .map(this.extractData)
+}
+
+
+// getprivileges
+getprivileges():  Observable<object[]> {      
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers }); 
+  return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Privileges')
      .map(this.extractData)
 }
 

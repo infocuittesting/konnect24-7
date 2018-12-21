@@ -215,7 +215,20 @@
           <input type="text" name="child" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Child" >
           </div>  
 		  </div>
-		  
+      <div class="row" style="padding-top:5px;">
+          <div class="col-lg-2">
+              
+            <b>Rate</b>
+              
+          </div>
+              
+              <div class="col-lg-2">
+               <div class="input-group" style="padding-left:40px;">
+                  <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate">
+                  <span class="input-group-addon" style="background-color:#0077B5;color:white;" data-toggle="modal" data-target="#ratequery"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                </div>
+               </div>
+              </div>
           <div class="row" style="padding-top:5px;">
            <div class="col-lg-2">
             <b>Room_Types</b>                        
@@ -256,19 +269,7 @@
   </div>
 		</div>
     </div>
-    <div class="row" style="padding-top:5px;">
-      <div class="col-lg-2">
-          
-        <b>Rate</b>
-          
-      </div>
-          
-          <div class="col-lg-2">
-           <div class="input-group" style="padding-left:40px;">
-              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
-              <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate"></div>
-           </div>
-          </div>
+
 
            
 
@@ -536,10 +537,7 @@
 </div>
 </div>
 
-
-
-
-
+<!-- *****************Save Mode start*********************** -->
 <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
         
@@ -559,7 +557,12 @@
           
         </div>
 	  </div>
-	  
+    <!-- ************Save Model End************* -->
+
+
+    <!--***************************************************  -->
+     <!--**********Respone msg of reervation************* -->
+
 	  <div class="modal fade" id="myModal1" role="dialog"  vertical-align="center">
         <div class="modal-dialog" >
         
@@ -584,7 +587,11 @@
           
         </div>
       </div>	
+     <!--**********Respone msg of reervation end************* -->
+    <!-- ************************************************** -->
 
+    <!--***************************************************  -->
+     <!--**********payment modal start reervation************* -->
  	  <div class="modal fade" id="payment" role="dialog">
         <div class="modal-dialog">
         
@@ -623,6 +630,51 @@
           
         </div>
       </div>	   
+         <!--**********payment modalmsg of reervation end************* -->
+    <!-- ************************************************** -->
+
+     <!--***************************************************  -->
+     <!--**********payment modal start reervation************* -->
+ 	  <div class="modal fade" id="ratequery" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Rate Query</h4>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table-hover table-bordered table-striped" style="width:100%;">
+                  <thead style="background-color: #0077B5; color: white">
+                    <th> X </th>
+                    <th> Payment Type</th>
+                    <th> tr.code</th>
+                    <th> Description</th>
+                    <th> </th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let paymentlist of payment let i=index;">
+                        <td> {{i+1}} </td>
+                        <td> {{paymentlist.paymenttype}}</td>
+                        <td> {{paymentlist.transactioncode}}</td>
+                        <td> {{paymentlist.payment_description}}</td>
+                        <td> <input type="checkbox"> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>             
+            </div>
+          </div>
+          
+        </div>
+      </div>	   
+         <!--**********payment modalmsg of reervation end************* -->
+    <!-- ************************************************** -->   
 </body>
 </html>
 
