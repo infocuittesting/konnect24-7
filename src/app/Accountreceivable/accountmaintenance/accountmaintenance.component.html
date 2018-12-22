@@ -376,18 +376,10 @@
   <b>Amount</b>
   </div>
   <div class="col-md-4">
-<<<<<<< HEAD
   <div class="form-group" [class.has-error]="payment.touched && payment.invalid">
     <input type="text" class="form-control input-sm" name="paymt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" #payment="ngModel" required>
     <div *ngIf="payment.touched && !payment.valid && payment.errors?.required " ngClass="{ 'has-error' : !payment.valid && submitAttempt }">
     </div>
-=======
-  <div class="input-group"  [class.has-error]="edrefval.dirty && !edrefval.valid">
-  <input type="text" name="pay_amt" id="payamt" style="height:34px;width:202px;" [(ngModel)]="paycode.payamount" #edrefval="ngModel" pattern="[a-zA-Z][a-zA-Z ]*" required>
-  <div *ngIf="edrefval.dirty && !edrefval.valid && edrefval.errors.required " ngClass="{ 'has-error' : !edrefval.valid && submitAttempt }">
-</div>
-                  
->>>>>>> 236b43687f548eefac1a39b58d766569836465ab
   </div>
   </div>
   <div class="col-md-3" style="margin-left: 43px;" *ngFor="let cur_desc of currency_desc">
@@ -401,14 +393,9 @@
   <b>Supplement</b>
   </div>
   <div class="col-md-6">
-<<<<<<< HEAD
   <div class="form-group" [class.has-error]="supplement.touched && supplement.invalid">
   <input type="text" class="form-control input-sm" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement" #supplement="ngModel" required>
   <div *ngIf="supplement.touched && !supplement.valid && supplement.errors?.required " ngClass="{ 'has-error' : !supplement.valid && submitAttempt }">
-=======
-  <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_supplement" required>
->>>>>>> 236b43687f548eefac1a39b58d766569836465ab
   </div>
  </div>
   </div>
@@ -419,15 +406,10 @@
   <b>Reference</b>
   </div>
   <div class="col-md-6">
-<<<<<<< HEAD
   <div class="form-group" [class.has-error]="reference.touched && reference.invalid">
     <input type="text" class="form-control input-sm" id="reference" name="reference" [(ngModel)]="paycode.pay_reference" #reference="ngModel"required>
     <div *ngIf="reference.touched && !reference.valid && reference.errors?.required " ngClass="{ 'has-error' : !reference.valid && submitAttempt }">
     </div>
-=======
-  <div class="form-group">
-  <input type="text" class="form-control" id="supplememt" name="supplememt" [(ngModel)]="paycode.pay_reference" required>
->>>>>>> 236b43687f548eefac1a39b58d766569836465ab
   </div>
   </div>
   </div>
