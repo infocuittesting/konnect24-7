@@ -68,11 +68,22 @@ checkinProfile(){
 
 }
 
+public list=[]
+public res_type_list=[]
+
 ngOnInit() {
 
   this.RoomassignmentService.searchedit()
   .subscribe((resp: any) => {
    this.searchandedit=resp.ReturnValue;
+ });
+ this.RoomassignmentService.roomtype()
+ .subscribe((resp: any) => {
+  this.list=resp.ReturnValue;
+ });
+ this.RoomassignmentService.getrestype()
+ .subscribe((resp: any) => {
+   this.res_type_list=resp.ReturnValue;
  });
 
 }
@@ -83,9 +94,36 @@ public assign=true;
 public unass=true;
 public rmrsid;
 selectindex=null;
+edbutn=true;
+checkin = true;
+flag = false;
+flag_chin = false
 selectMembersEdit(details,index){
 this.selectindex=index;
 this.rmrsid=details.res_id;
+
+if(details.res_guest_status=="due in" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out"){
+  this.flag_chin=true;
+  this.checkin=true;
+  this.selectindex=index; 
+
+}else{
+  this.flag_chin=false;
+    this.selectindex=null;
+    this.checkin=false;
+}
+
+if(details.res_guest_status=="no show"){
+  this.flag=true;
+  this.edbutn=false;
+  this.selectindex=index; 
+
+}else{
+  this.flag=false;
+    this.selectindex=null;
+    this.edbutn=true;
+}
+
 if(this.rmrsid=details.res_id){
   this.assign=false;
   this.unass=false;
@@ -102,5 +140,7 @@ this.session.store("rmpfid",details.pf_id.toString());
 this.session.store("uniq",details.res_unique_id.toString());
 
 }
+
+
 
 }

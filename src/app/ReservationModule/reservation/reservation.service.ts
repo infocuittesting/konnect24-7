@@ -54,7 +54,7 @@ export class ReservationService {
              "RES_Disc_perc":input.RES_Disc_perc,
              "PF_Firstname":this.session.retrieve("pf_fname")+ this.session.retrieve("Pf_lastname"),
              "PF_Mobileno": this.session.retrieve("pf_mobileno"),
-             "pf_id": this.session.retrieve("id")
+             "pf_id": this.session.retrieve("pf_id")
             };      
 
           console.log(JSON.stringify(body));
@@ -103,7 +103,7 @@ export class ReservationService {
          "RES_Disc_perc":input.RES_Disc_perc,
          "PF_Firstname":this.session.retrieve("pf_fname")+" "+ this.session.retrieve("Pf_lastname"),
          "PF_Mobileno": this.session.retrieve("pf_mobileno"),
-         "pf_id": this.session.retrieve("id")
+         "pf_id": this.session.retrieve("pf_id")
         };
       
        return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_WaitlistReservation',body,options)

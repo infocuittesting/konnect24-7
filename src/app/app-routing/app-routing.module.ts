@@ -16,6 +16,8 @@ import { ProfileComponent } from './../ProfileModule/profile/profile.component';
 import { ProfilesearchComponent } from './../ProfileModule/profilesearch/profilesearch.component';
 import { IndividualprofileComponent } from './../ProfileModule/individualprofile/individualprofile.component';
 import { ModalBasicComponent } from './../ProfileModule/modal-basic/modal-basic.component';
+import { ProfilestatisticsComponent } from './../ProfileModule/profilestatistics/profilestatistics.component';
+
 
 //FrontDesk
 import { ArrivalComponent } from './../FrontDeskModule/arrival/arrival.component';
@@ -34,6 +36,7 @@ import { RoomconditionComponent } from './../RoomManagementModule/roomcondition/
 import { RoomdiscrepanciesComponent } from './../RoomManagementModule/roomdiscrepancies/roomdiscrepancies.component';
 import { RoomhistoryComponent } from './../RoomManagementModule/roomhistory/roomhistory.component';
 import { RoommaintainComponent } from './../RoomManagementModule/roommaintain/roommaintain.component';
+import { RoomoccupancyComponent } from './../RoomManagementModule/roomoccupancy/roomoccupancy.component';
 
 //Packages
 import { PackagesComponent } from './../PackagesModule/packages/packages.component';
@@ -71,6 +74,9 @@ import { InvoiceComponent } from './../Accountreceivable/invoice/invoice.compone
 import { AccountoptionsComponent } from './../Accountreceivable/accountoptions/accountoptions.component';
 import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setupaccount.component';
 
+//End of day
+import { EndofdayComponent } from './../Endofday/endofday/endofday.component';
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -86,6 +92,7 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
       { path: 'psearch', component: ProfilesearchComponent },
       { path: 'individualprofile', component: IndividualprofileComponent },
       { path: 'modal-basic', component: ModalBasicComponent },
+      {path: 'profilestatistics',component:ProfilestatisticsComponent},
       //Frontdesk
       { path: 'arrival', component: ArrivalComponent },
       { path: 'roomassignment', component: RoomassignmentComponent },
@@ -103,6 +110,7 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
       { path: 'oos', component: OutoforderserviceComponent },
       { path: 'roomcondn', component: RoomconditionComponent },
       { path: 'roommaintenance', component: RoommaintainComponent },
+      { path: 'occupancygraph', component: RoomoccupancyComponent},
       //packages Module
       { path: "packages", component: PackagesComponent },
       { path: "packagecodenew", component: PackagesnewComponent },
@@ -137,7 +145,10 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
       { path:"AccountMaintenance",component:AccountmaintenanceComponent},
       { path:"Invoice",component:InvoiceComponent},
       { path:"Accountoptions",component:AccountoptionsComponent},
-      {path:"Setupaccount",component:SetupaccountComponent}
+      {path:"Setupaccount",component:SetupaccountComponent},
+
+      //end of day
+      {path:'endofday',component: EndofdayComponent}
     ])
   ],
   declarations: [],
@@ -150,4 +161,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent,SetupaccountComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent, RoomoccupancyComponent]

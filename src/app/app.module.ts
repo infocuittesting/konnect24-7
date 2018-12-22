@@ -95,8 +95,13 @@ import { AccountmaintenanceComponent } from './Accountreceivable/accountmaintena
 import { InvoiceComponent } from './Accountreceivable/invoice/invoice.component';
 import { AccountoptionsComponent } from './Accountreceivable/accountoptions/accountoptions.component';
 import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupaccount.component';
+import { ProfilestatisticsComponent } from './ProfileModule/profilestatistics/profilestatistics.component';
 
+import { SearchfilterPipe } from './searchfilter.pipe';
 
+//End of day Module
+import { EndofdayComponent } from './Endofday/endofday/endofday.component';
+import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roomoccupancy.component';
 
 @NgModule({
     declarations: [
@@ -169,6 +174,7 @@ import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupacc
         ProfileComponent,
         ModalBasicComponent,
         IndividualprofileComponent,
+        ProfilestatisticsComponent,
         // ProfileService,
         // ModalService,
         // IndividualService,
@@ -183,6 +189,14 @@ import { SetupaccountComponent } from './Accountreceivable/setupaccount/setupacc
         InvoiceComponent,
         AccountoptionsComponent,
         SetupaccountComponent,
+        ProfilestatisticsComponent,
+
+        //filterpipe
+        SearchfilterPipe,
+
+        EndofdayComponent,
+
+        RoomoccupancyComponent
 
     ],
     imports: [

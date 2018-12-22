@@ -1,0 +1,340 @@
+
+  <div class="content-wrapper">
+      <div class="container" >
+
+          <ul class="nav nav-tabs" >
+            <li data-toggle="tab" routerLink="/individualprofile" ><a>Individual Profile</a></li>
+            <li><a data-toggle="tab" routerLink="/profile">Company Profile</a></li>
+            <li class="active"><a data-toggle="tab">profile statistics</a></li>
+  
+            
+          </ul>
+       
+    </div><br>
+    <div class="container-fluid">
+      <div class="panel panel-primary" style="margin-top: 10px;border:solid 1px;border-color: lightgray">
+        <div class="panel-body" style="margin-left: 10px">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+                <b>Statistics</b>
+              </div>
+              <div class="col-md-4">
+                <b>This Year</b>
+              </div>
+              <div class="col-md-1" style="margin-left: -115px;">
+                <b>Last Year</b>
+              </div>
+            </div><br><br>
+
+            <div class="row">
+              <div class="col-md-1">
+                <label>Room_Nights</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Room_Nights" disabled >
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Room_Nights1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Arrival_Rooms</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Arrival_Rooms" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Arrival_Rooms1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Cancel_Rooms</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Cancel_Rooms" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Cancel_Rooms1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>No_ShowRooms</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.No_Show_Res" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.No_Show_Res" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Day_UseRooms</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Total_Revenue</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3" style="margin-top:5px;">
+                  <input type="checkbox" name="restrected" id="restrected" disabled>
+                  <label><b style="margin-top:10px">Restricted</b></label>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Room_Revenue</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Room_Revenue" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Room_Revenue1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>F&B_Revenue</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Extra_Revenue</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <b>Languages</b>
+                </div>
+
+                <div class="col-md-2">
+                  <select name="name" id="name" class="form-control " style="width: 95%;height: 32px;">
+                    <option>Tamil</option>
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>French</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Non_Revenue</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <b>AJR_NO</b>
+                </div>
+
+                <div class="col-md-2">
+                  <select name="name" id="name" class="form-control " style="width: 95%;height: 32px;">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Res_Nights</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Res_Arrival</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Cancel_Res</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Cancel_Res" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.Cancel_Res1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>No_ShowRes</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.No_Show_Res" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" [(ngModel)]="editblock.No_Show_Res1" disabled>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                <label>Day_UseRes</label>
+              </div>
+              <div style="margin-left:10%">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control input-sm" name="Statistics" id="Statistics" disabled>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn btn-success" style="width:130%" routerLink="/psearch">Ok</button>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn btn-primary" routerLink="/psearch">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

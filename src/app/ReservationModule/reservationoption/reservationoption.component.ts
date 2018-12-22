@@ -19,8 +19,6 @@ import * as $ from 'jquery';
 export class ReservationoptionComponent implements OnInit {
   
   @ViewChild('content') content:ElementRef;
-
-
   public Id = this.session.retrieve("id");
   public Name = this.session.retrieve("name");
   public Arrival = this.session.retrieve("arrival");
@@ -41,6 +39,15 @@ export class ReservationoptionComponent implements OnInit {
   public Discreasons=this.session.retrieve("Discreasons");
   public DiscAmount=this.session.retrieve("DiscAmount");
   public Currency=this.session.retrieve("Currency");
+  public uniqres=this.session.retrieve("uniq");
+  //for accompany guest
+  public aname = this.session.retrieve("pf_fname");
+  public lastnam =this.session.retrieve("pf_lastname");
+  public accname:any;
+  public profid =this.session.retrieve("profileid");
+  public acccountry=this.session.retrieve("pf_individual_country");
+  public accdob=this.session.retrieve("dateofbirth");
+   
   public house:any;
   public tableschanges =[];
   public alist =[];
@@ -59,6 +66,11 @@ export class ReservationoptionComponent implements OnInit {
   public arrycdt=[];
   public deptarry=[];
   public history=[];
+  public listaccompay:any =[];
+  public listrate;
+  public StayTotal;
+  public listprivileges;
+  public rate;
   find={};
 
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
@@ -194,15 +206,16 @@ alertsub(inputt) {
 
 
 //privileges option service     
-checkedvalue1:String;
+checkedvalue1=[];
      checkboxfun1(chk1){
-this.checkedvalue1=chk1.values;
+this.checkedvalue1.push(chk1.privileges_id);
+console.log("tesssssssss",this.checkedvalue1)
      }
  pri;
     privillege=[];    
   submits(inputt):void {
     console.log(inputt);
-    let body= {'privileges_key': this.checkedvalue1 + " | Scheduled check out at " +inputt.checkouttime };
+    let body= {'privileges_key_id': this.checkedvalue1,"schedule_time":inputt.checkouttime };
       this.pppService.privileges (body)
       .subscribe((users333:any) => {
      this.pri=users333.ReturnCode;
@@ -408,22 +421,30 @@ delcredit(){
 
 }
 //queue
-status={};
-queno={};
+status:any;
+queno:any;
 queueProfile(){
   let inputparms={
     "Res_id":this.session.retrieve("id"),
     "rm_room":this.session.retrieve("id2"),
     "Res_unique_id":this.session.retrieve("uniq")
   }
-  
+
   this.pppService.resqueue(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.Return;
-    this.queno=resp.QueueNumber;
+    
+    if(resp.ReturnCode=="PQTR"){
+      this.status=" ";
+      this.queno=resp.Return;
+    }else{
+      this.status=resp.Return;
+      this.queno="Queue Number is"+ resp.QueueNumber;
+    }
+    
   });
 
 }
+
 // fixed start
 
 public tra;
@@ -441,17 +462,93 @@ submitrate() {
       );  
       this.route.navigate(['reservationoption/']);
    }
+//accompany insert
+public acco;
+subaccin(){
+  if(this.accdob==null){
+    this.accdob=" ";
+  }else{
+    this.accdob=this.accdob;
+  }
+  let body={
+    "res_id":this.Id,
+    "res_unique_id":this.uniqres,
+    "pf_id":this.profid,
+    "accompanying_name":this.accname,
+    "accompanying_city":this.acccountry,
+    "accompanying_birthday":this.accdob
+  }
+  console.log("testttst",body)
+  this.pppService.accompanyinsert(body).subscribe((resp:any)=>{
+  this.acco=resp.Returncode;
+  if(this.acco=="RIS"){
+    this.acco="Accompany Guest is add Successfully";
+    this.session.clear("pf_fname");
+    this.session.clear("pf_lastname");
+  
+    this.session.clear("profileid");
+    this.session.clear("pf_individual_country");
+    this.session.clear("dateofbirth");
+    this.accname="";
+    this.acccountry="";
+    this.accdob='';
+    this.pppService.getaccompany()
+    .subscribe((resp: any) => {
+      this.listaccompay=resp.ReturnValue;
+    });
+  }
 
-   
-privil:any;
+})
+}
+
+//select table row in accompany 
+public accid;
+selectMembersEdit(details){
+  this.accid= details.accompanying_id;
+}
+
+//accompany Detach
+public detac;
+detach(){
+  let body={
+    "res_id":this.session.retrieve("id"),
+    "res_unique_id":this.uniqres,
+    "accompanying_id":this.accid
+  }
+  this.pppService.accompanydelete(body).subscribe((resp:any)=>{
+    this.detac=resp.Returncode;
+    if(this.detac=="RDS"){
+      this.acco="Accompany Guest is Detached Successfully ";
+      this.pppService.getaccompany()
+      .subscribe((resp: any) => {
+        this.listaccompay=resp.ReturnValue;
+      });
+    }
+  })
+}   
+
+//Select date
+selectEdit(details){
+this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
+}
+// privil:any;
   ngOnInit() {
+    if(this.aname==null && this.lastnam==null){
+      this.aname=" ";
+      this.lastnam=" ";
+      this.accname=this.aname+" "+this.lastnam;
+    }
+    else{
+      this.accname=this.aname+" "+this.lastnam;
+    }
+    console.log("testttttttttt",this.accname);
     this.pppService.gethousekeepingdata()
     .subscribe((resp: any) => {
       this.house = resp.ReturnValue;
 
     });
-    this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
-    { val:false, values:"Pre Stay Charging"}]
+    // this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
+    // { val:false, values:"Pre Stay Charging"}]
 
  this.pppService.getchaTables1()
    .subscribe((resp: any) => {
@@ -477,6 +574,26 @@ privil:any;
      this.pppService.gettransaction()
    .subscribe((resp: any) => {
      this.listtc=resp.ReturnValue;
+   });
+
+
+//Get privileges
+this.pppService.getprivileges()
+.subscribe((resp: any) => {
+  this.listprivileges=resp.ReturnValue;
+});
+
+//Get accompany
+   this.pppService.getaccompany()
+   .subscribe((resp: any) => {
+     this.listaccompay=resp.ReturnValue;
+   });
+
+   //Get rate summary
+   this.pppService.getratesummary()
+   .subscribe((resp: any) => {
+     this.listrate=resp.ReturnValue;
+     this.StayTotal=resp.StayTotal;
    });
 
    this.pppService.getroomtype()
@@ -608,6 +725,13 @@ public  downloadPDF(){
 
   doc.save('a4.pdf');
 }
+
+//navigationnroute
+navi(){
+   //  this.navtag.navigate ="Rev";
+   this.session.store("navigate","Revopt");
+}
+
 }
 
 

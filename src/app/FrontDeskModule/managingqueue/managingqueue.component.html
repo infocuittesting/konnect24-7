@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-2">
-              <label for="email">First Name</label>
+              <label for="email"> Name</label>
               <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel"
                 style="height: 30px;width:90% ">
               <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:205px;">
@@ -16,17 +16,18 @@
               </div>
             </div>
 
-            <div class="col-md-2">
+          <!-- 
+  <div class="col-md-2">
               <label for="email">Last Name</label>
               <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="email" [(ngModel)]="lastName" name="email" #LastNAMEE="ngModel">
               <div class="alert alert-danger" *ngIf="LastNAMEE.touched && !LastNAMEE.valid" style="width:205px;">
                 <div *ngIf=LastNAMEE.errors.pattern>last name should contain only alphabets </div>
               </div>
-            </div>
+            </div>-->
 
             <div class="col-md-2">
               <label for="email">Room Type</label>
-              <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)">
+              <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype">
                 <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>
               </select>
             </div>
@@ -49,37 +50,43 @@
       </div>
 
       <br>
-      <table class="table table-bordered tableBodyScroll" style="margin-top: -25px">
+      <table class="table table-bordered table-hover tableBodyScroll" style="margin-top: -25px">
         <thead>
           <tr class="table table-primary" style="background-color: #0077B5;color:white; ">
             <th style="width:50px;">x</th>
             <th style="width:150px;"> Name</th>
-            <th style="width:75px;"> Q_Time</th>
+            <th style="width:75px;"> Q Time</th>
             <th style="width:85px;"> Queue</th>
-            <th style="width:110px;"> Queue_Date</th>
-            <th style="width:100px;"> Mobile_No</th>
+            
+            <!--<th style="width:110px;"> Queue_Date</th>-->
+            
+             <th style="width:100px;"> Mobile No</th>
             <th style="width:65px;"> Room</th>
-            <th style="width:102px;"> Room_Type</th>
-            <th style="width:107px;"> Room_Class</th>
-            <th style="width:97px;"> FO_Status</th>
-            <th> Room_Status</th>
+            <th style="width:102px;"> Room Type</th>
+            <th style="width:107px;"> Room Class</th>
+            <th style="width:97px;"> FO Status</th>
+            <th style="width:115px;"> Guest Status</th>
+            <th> Room Status</th>
           </tr>
         </thead>
         <tbody>
 
-          <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'; let i = index"
+          <tr *ngFor="let checkin of search | searchfilter :{res_room_type:roomtype} | searchfilter: {pf_firstname:queryString}; let i = index"
             (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:50px;"> {{i+1}}</td>
             <td style="width:150px;"> {{checkin.pf_firstname}}</td>
             <td style="width:75px;"> {{checkin.rm_qtime}}</td>
             <td style="width:85px;"> {{checkin.rm_queue}}</td>
-            <td style="width:110px;"> {{checkin.rm_queue_date}}</td>
+            
+            <!-- <td style="width:110px;"> {{checkin.rm_queue_date}}</td>-->
+            
             <td style="width:100px;"> {{checkin.pf_mobileno}}</td>
             <td style="width:65px;"> {{checkin.res_room}}</td>
-            <td style="width:102px;"> {{checkin?.rm_room_type}}</td>
-            <td style="width:107px;"> {{checkin.rm_room_class}}</td>
-            <td style="width:97px;"> {{checkin.rm_fo_status}}</td>
-            <td> {{checkin.rm_room_status}}</td>
+            <td style="width:102px;"> {{checkin.res_room_type}}</td>
+            <td style="width:107px;"> {{checkin?.roomclass}}</td>
+            <td style="width:97px;"> {{checkin.frontoffice}}</td>
+            <td style="width:115px;"> {{checkin.res_guest_status}}</td>
+            <td> {{checkin.roomstatus}}</td>
           </tr>
 
 
@@ -88,7 +95,7 @@
       <br>
 
       <div class="row" style="margin-right: -1px;">
-        <button class="btn btn-info" style="width:13%; margin-left:7%;" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin">
+        <button class="btn btn-info" style="width:13%; margin-left:7%;" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin" [disabled]=edbutn>
         Check In <i class="fa fa-sign-in"></i></button>
         <button class="btn btn-default disabled" style="width:13%">Priority <i class="fa fa-square"></i> </button>
         <button class="btn btn-warning" style="width:13%" routerLink="/reservation">Resv <i class="fa fa-tasks"></i></button>
@@ -151,18 +158,18 @@
               <table class="table table-bordered ">
                 <thead>
                   <tr class="table table-primary" style="background-color: #0077B5;color:white; ">
-                    <th> </th>
-                    <th>Reservation_Id</th>
+                    <th>SN</th>
+                    <th>Reservation Id</th>
                     <th> Name</th>
-                    <th> Q_Time</th>
+                    <th> Q Time</th>
                     <th> Queue</th>
-                    <th> Queue_Date</th>
-                    <th> Mobile_No</th>
+                    <th> Queue Date</th>
+                    <th> Mobile No</th>
                     <th> Room</th>
-                    <th> Room_Type</th>
-                    <th> Room_Class</th>
-                    <th> FO_Status</th>
-                    <th> Room_Status</th>
+                    <th> Room Type</th>
+                    <th> Room Class</th>
+                    <th> FO Status</th>
+                    <th> Room Status</th>
                   </tr>
                 </thead>
                 <tbody>

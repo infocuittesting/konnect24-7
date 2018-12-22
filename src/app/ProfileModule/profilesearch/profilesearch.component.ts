@@ -40,6 +40,9 @@ navigatepages(){
     
     this.route.navigate(['bcreate/']);
   }
+  else if(this.navtag =="Revopt"){
+    this.route.navigate(['reservationoption/']);
+  }
   // else if(this.navtag == "agentBlock"){
     
   //   console.log("agent navigate to blov")
@@ -181,10 +184,18 @@ option=true;
 ok=true;
 edit=true;
 pfid;
+
+profile_id:any;
+
 selectindex=null;
 public checkpftype;
 selectMembersEdit(details,index){
 this.selectindex=index;
+
+this.profile_id=details.pf_id;
+console.log("profile_idddddddddddddddd",this.profile_id)
+
+
 this.pfid=details.pf_id;
 console.log("profileeeeeeeeeeee",this.pfid)
 this.checkpftype = details.pf_type;
@@ -224,15 +235,18 @@ if(this.checkpftype == "Travel Agent"){
   else if(this.checkpftype == "Group"){
     this.session.store("Groupval",details.pf_account);
   }
-this.session.store("id",details.pf_id);
+this.session.store("pf_id",details.pf_id);
 this.session.store("pf_fname",details.pf_firstname);
 this.session.store("pf_lastname",details.pf_lastname);
 this.session.store("pf_language",details.pf_language);
 this.session.store("pf_title",details.pf_title);
+this.session.store("profileid",details.pf_id);
 
 this.session.store("pf_mobileno",details.pf_mobileno.toString());
 this.session.store("pf_individual_country",details.pf_individual_country);
 this.session.store("pf_individual_vip",details.pf_individual_vip);
+this.session.store("dateofbirth",details.pf_date_of_birth)
+
 
 console.log("guruuuuuuuuuuu",details.pf_account);
 

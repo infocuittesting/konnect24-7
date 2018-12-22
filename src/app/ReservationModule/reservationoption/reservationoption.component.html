@@ -154,7 +154,7 @@
 
 <!-- confirmation start -->
 <div class="modal fade" id="confirm" data-backdrop="static" data-keyboard="false" role="dialog">
-  <div class="modal-dialog" style="height: 65%;">
+  <div class="modal-dialog" style="height: 90%;">
     <!-- Modal content-->
     <div class="modal-content" style="margin-left:-15%;width:140%;">
       <div class="modal-header">
@@ -713,32 +713,24 @@
         <h4 class="modal-title">Privileges</h4>
         <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
       </div>
-      <div class="modal-body">
-        <div class="container" style="width:100%">
-          <br>
-          <div style="background-color: white;">
-            <!-- <div class="panel-heading"><b></b> <span class="glyphicon glyphicon-remove" style="padding-left:590px;"></span></div> -->
-            <div class="panel panel-primary">
-              <div class="panel-body">
-                <table>
-                  <tr *ngFor="let privillege of privil">
-                    <td style="padding-left:35px;">
-                      <input type="checkbox" style="width:20px;height:20px;" (click)="checkboxfun1(privillege)"
-                        [(ngModel)]="privillege.val">
-                      {{privillege.values}}
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td style="padding-left:35px;"><input type="time" style="border-radius:4px;color:black;"
-                        [(ngModel)]="privillege.checkouttime"></td>
-                  </tr>
-
-                </table>
+      <div class="modal-body"> 
+            <div class="panel panel-default">
+              <div style="margin:20px 0px 20px 50px">
+                <div class="row"  *ngFor="let privillege of listprivileges">
+                  <div class="input-group">
+                  <label for=""> <input type="checkbox" name="check" value="{{privillege.privileges_id}}" style="width:20px;height:20px;" (change)="checkboxfun1(privillege)"
+                    >{{privillege.privileges_desc}}</label> 
+                  </div>
+                </div>
+               
+                <div class="row" >
+                  <div class="input-group">
+                  <label for=""><input type="time" style="border-radius:4px;color:black;"
+                    [(ngModel)]="privillege.checkouttime"></label> 
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-primary" (click)="Success('Privilaegs',pri)">Ok</button> -->
@@ -790,10 +782,22 @@
       </div>
       <div class="modal-body">
 
-        <p align="center"><b> {{status}}</b></p>
-        <p align="center"><b> Queue Number is: {{queno}}</b></p>
+        <h3>
+          <p align="center">Place Reservation On Queue</p>
+        </h3>
 
+        <!-- 
+ <p align="center"><b> {{status}}</b></p>
+        <p align="center"><b> Queue Number is: {{queno}}</b></p> -->
+
+        <br>
+        <div class="text-center">
+          <button type="button" class="btn btn-success" style="margin:0px 2 5px;" data-toggle="modal" data-target="#yes"
+            data-dismiss="modal" (click)="queueProfile()"><b>Yes</b></button>
+          <button type="button" class="btn btn-success" style="margin:0px 2 5px;" data-toggle="modal" data-dismiss="modal"><b>No</b></button>
+        </div>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" style="padding-left:5px;" data-dismiss="modal"><b>Close</b><span
             class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
@@ -804,6 +808,38 @@
   </div>
 </div>
 <!-- Queue End -->
+
+<!--  Queue yes or no model-->
+
+<div class="modal fade" id="yes" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:136%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Reservation Queue</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <p align="center"><b>{{queno}}</b></p>
+
+        <br>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" style="padding-left:5px;" data-dismiss="modal"><b>Close</b><span
+            class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
 <!-- room move -->
 <div class="modal fade" id="room1" data-backdrop="static" data-keyboard="false" role="dialog">
@@ -1879,7 +1915,7 @@
       <div class="modal-body">
         <div class="container" style="width: 100%; margin-top: -39px;">
           <div style="margin-top: 30px;">
-            <table class="tableBodyScroll table-hover table-bordered">
+            <table class="tableBodyScroll table-hover table-bordered" style="width: 100%;">
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
                   <th>Name</th>
@@ -1921,6 +1957,165 @@
 </div>
 <!--History End-->
 
+<!-- Accompany Guest start-->
+<div class="modal fade" id="acc" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style=" margin-top: 15%; ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Accompany Guest</h4>
+        <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+      </div>
+      <div class="modal-body">
+        <div style="margin-top: 20px;">
+          <table class="table table-hover table-bordered" style="width: 100%;">
+            <thead style="background-color:#0077B5;color:white;">
+              <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Birthday</th>
+              </tr>
+            </thead>
+            <tbody style="background-color:white;">
+              <tr *ngFor="let arrlist of listaccompay;" (click)="selectMembersEdit(arrlist)">
+                <td>{{arrlist.accompanying_name}}</td>
+                <td>{{arrlist.accompanying_city}}</td>
+                <td>{{arrlist.accompanying_birthday}}</td>
+              </tr>
+              <tr>
+                <td>{{accname}}</td>
+                <td>{{acccountry}}</td>
+                <td>{{accdob}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" routerLink="/psearch" (click)="navi()" data-dismiss="modal"><b>Profile</b></button>
+        <button type="button" class="btn btn-info" (click)="subaccin()"><b>Attach</b></button>
+        <button type="button" class="btn btn-primary" (click)="detach()"><b>Detach</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Alert End -->
+
+<!-- Room Route start-->
+<div class="modal modal-open" id="roomrout" data-backdrop="static" data-keyboard="false" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style=" margin-top: 2%;width:150%;margin-left: -15%">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Room Routing</h4>
+        <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+      </div>
+
+      <div class="modal-body">
+      
+          <div class="panel panel-default">
+            <div class="row" style="margin:20px">
+              <div class="col-lg-2 col-md-2">
+                <label > Currency</label>
+              </div>
+              <div class="col-lg-3 col-md-3">
+                <div class="input-group">
+                 <select name="" id="" style="width:13em;height:34px">
+                   <option value="">USD</option>
+                   <option value="">EUR</option>
+                   <option value="">AUD</option>
+                   <option value="">GBP</option>
+                 </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin:20px">
+              <table class="table table-hover table-bordered" >
+                <thead style="background-color:#0077B5;color:white;">
+                  <tr>
+                    <th colspan="2">Date</th>
+                    <th>Rate Code</th>
+                    <th>Room Revenue</th>
+                    <th>Packages</th>
+                    <th>Total</th>
+                    <th>Generates</th>
+                    <th>Grand total</th>
+                  </tr>
+                </thead>
+                <tbody style="background-color:white;">
+                  <tr *ngFor="let listdata of listrate" (click)="selectEdit(listdata)">
+                    <td>{{listdata.Days}}</td>
+                    <td>{{listdata.Date}}</td>
+                    <td>{{listdata.RateCode}}</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                    <td>0</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                    <td>0</td>
+                    <td>{{listdata.RoomRevenue}}</td>
+                  </tr>
+                  <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total</b></td>
+                    <td>{{StayTotal}}</td>
+                    <td><b>stay Total</b></td>
+                    <td>{{StayTotal}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           <div class="row" style="margin:10px 20px 10px 20px">
+            <label>Exchange Rate</label>
+            <div class="input-group">
+              <textarea name="Exchange" id="" rows="1" cols="134" style="height:34px">{{rate}}</textarea>            
+             </div>
+           </div>
+           <div class="row" style="margin:10px 20px 20px 20px">
+            <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-info" style="min-width:100%"> Long Info</button></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-primary" style="min-width:100%"> Details</button></div>
+            <div class="col-lg-2 col-md-2"><button class="btn btn-danger" style="min-width:100%" data-dismiss="modal"> Close</button></div>
+            <div class="col-lg-3 col-md-3"></div>
+           </div>
+          </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Alert End -->
+
+<!-- Accompany Guest start-->
+<div class="modal fade" id="trasactions" data-backdrop="static" data-keyboard="false" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content"  style=" margin-top: 5%;width:150%;margin-left: -15%">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Transaction Codes</h4>
+        <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Alert End -->
 <div>
   <div class="wrapper">
 
@@ -2020,12 +2215,6 @@
             </div>
           </div><!-- column 1 for 1 row -->
           <!-- <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  -->
-
-
-
-
-
-
         </div>
         <!--End of row-->
         <br>
@@ -2086,7 +2275,7 @@
 
           <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
             <div class="panel">
-              <div class="panel-body" data-toggle="modal" data-target="#queue" (click)="queueProfile()">
+              <div class="panel-body" data-toggle="modal" data-target="#queue">
                 <div class="text-center">
                   <img src="assets/images/800px_COLOURBOX11070120.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
                 </div>
@@ -2213,10 +2402,66 @@
             </div>
           </div><!-- column 1 for 1 row -->
 
+          <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
+          <!--Changes-->
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+            <div class="panel">
+              <div class="panel-body" data-toggle="modal" data-target="#acc">
+                <div class="text-center">
+                  <img src="assets/images/acc.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+                </div>
+                <h4 align="center"> Accompany </h4>
+                <p align="center"><small> Guset Accompany</small></p>
+              </div>
+              <div class="panel-footer">
+                <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Guset Email</small></p>
+                <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Guest Alert!</small></p>
+              </div>
+            </div>
+          </div><!-- column 1 for 1 row -->
+
+
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+            <div class="panel">
+              <div class="panel-body" data-toggle="modal" data-target="#roomrout">
+                <div class="text-center">
+                  <img src="assets/images/roomplan.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+                </div>
+                <h4 align="center"> Rate Summary</h4>
+                <p align="center"><small>Rate Details</small></p>
+              </div>
+              <div class="panel-footer">
+                <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Rate Summary</small></p>
+                <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Rate
+                    Alert </small></p>
+              </div>
+            </div>
+          </div><!-- column 1 for 1 row -->
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+            <div class="panel">
+              <div class="panel-body" data-toggle="modal" data-target="#traces">
+                <div class="text-center">
+                  <img src="assets/images/calendar.jpg" alt="alert" style="border-radius:50%; border:solid 8px lightgray ;">
+                </div>
+                <h4 align="center"> Calendar</h4>
+                <p align="center"><small>Calender Event</small></p>
+              </div>
+              <div class="panel-footer">
+                <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Event List</small></p>
+                <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Calendar Status!</small></p>
+              </div>
+            </div>
+          </div><!-- column 1 for 1 row -->
+
+          <div class="col-md-5 col-sm-5 col-lg-5 col-xl-5"></div>
         </div>
 
 
-        <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
+
 
       </div><!-- container End-->
     </div>
