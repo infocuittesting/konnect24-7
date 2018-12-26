@@ -26,6 +26,7 @@
       </div>
       </div>
       <div *ngIf="resv == true">
+        <div class="container-fluid">  
         <div class="panel panel-default">
             <div style="margin:40px 20px 20px 20px ">
              <table class="table table-bordered  table-hover tableBodyScroll panshadow">
@@ -37,71 +38,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr>    
-                                       <td style="width:138px;">siva</td>        
-                                       <td style="width:138px;">100</td>         
-                                       <td style="width:120px;">India</td>       
-                                    </tr>
-                                    <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">siva</td>        
-                                        <td style="width:138px;">100</td>         
-                                        <td style="width:120px;">India</td>       
-                                     </tr>                                                            
+                                    <tr *ngFor="let list of getcheck ;let i=index" (click)="selected(list,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">    
+                                       <td style="width:148px;">{{list.pf_firstname}}</td>        
+                                       <td style="width:148px;">{{list.res_room}}</td>         
+                                       <td style="width:120px;">{{list.pf_individual_country}}</td>       
+                                    </tr>                                   
                             </tbody>
              </table>
             </div>
 
         <div style="text-align:center" >
-        <button class="btn btn-info" style="width:12%; margin-left:10%;" > Resv </button>    
+        <button class="btn btn-info" style="width:12%; margin-left:10%;" (click)="loadendofdayResv('Resv')"> Resv </button>    
         <button class="btn btn-success"style="width:12%" > Print  </button>    
-        <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Edit </button>   
+        <button  class="btn btn-warning" style="width:12%" (click)="loadendofday('Edit')">Edit </button>   
         <button class="btn btn-info " style="width:12%" > Close </button>   
       </div>
+       </div>
        </div>
       </div>
       <div *ngIf="profile == true">
@@ -172,105 +124,15 @@
                          </tr>
                     </thead>
                     <tbody>
-                        <tr>    
-                            <td style="width:138px;">100</td>        
-                            <td style="width:138px;">siva</td>         
-                            <td style="width:120px;">18-12-2018</td>
-                            <td style="width:120px;">18-12-2018</td>
-                            <td style="width:120px;">1000</td>
-                            <td style="width:120px;">single</td>
-                            <td style="width:120px;">Infocuit</td>
-                            <td style="width:120px;">programer</td>
-      
-                         </tr>
-                         <tr>    
-                            <td style="width:138px;">100</td>        
-                            <td style="width:138px;">siva</td>         
-                            <td style="width:120px;">18-12-2018</td>
-                            <td style="width:120px;">18-12-2018</td>
-                            <td style="width:120px;">1000</td>
-                            <td style="width:120px;">single</td>
-                            <td style="width:120px;">Infocuit</td>
-                            <td style="width:120px;">programer</td>
-         
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-             
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-             
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-             
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-                   
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td> 
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-              
-                          </tr>  
-                          <tr>    
-                              <td style="width:138px;">100</td>        
-                              <td style="width:138px;">siva</td>         
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">18-12-2018</td>
-                              <td style="width:120px;">1000</td>
-                              <td style="width:120px;">single</td>
-                              <td style="width:120px;">Infocuit</td>
-                              <td style="width:120px;">programer</td>
-              
-                          </tr>                                   
-                  
+                        
+                            <tr *ngFor="let notcheckval of notcheck ;let i=index" (click)="selectednotcheck(list,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">    
+                                    <td style="width:148px;">{{notcheckval.res_room}}</td>        
+                                    <td style="width:148px;">{{notcheckval.pf_firstname}}</td>         
+                                    <td style="width:120px;">{{notcheckval.res_arrival}}</td>
+                                    <td style="width:120px;">{{notcheckval.res_depature}}</td>
+                                    <td style="width:120px;">{{notcheckval.res_guest_balance}}</td>
+                                    <td style="width:120px;">{{notcheckval.res_guest_status}}</td>     
+                                 </tr>       
                     </tbody>
                   </table>
                   <br>
@@ -294,7 +156,7 @@
         <div class="container-fluid">
             <div class="panel panel-default panshadow">
                 <div class="row" style="margin:60px 20px 60px 20px">
-                   <div align="center">Sivanandha Started Gurukulam all over the World</div> 
+                   <div align="center">Sivanandha Started at {{businessdate}} Gurukulam all over the World</div> 
                 </div>
             </div>
         </div>    
@@ -309,11 +171,11 @@
                           <label for="" style="margin-top: 6px;"> Business Date</label>
                       </div>
                           <div class="col-md-2">
-                          <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                          <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;" [(ngModel)]="businessdate">    
                   </div>
               
                       <div class="col-md-2">
-                       <label for="email" style="margin-top: 6px;" style="    margin-top: 10px;margin-left: -55px;">User</label>  
+                       <label for="email" style="margin-top: 6px;" style="  margin-top: 10px;margin-left: -55px;">User</label>  
                     </div>
                        <div class="col-md-2">
                        <input type="text" class="form-control" id="tax"  name="text" style="margin-left: -175px;">
@@ -328,8 +190,24 @@
                  
                   </div><br>
                   <div class="row" style="margin:10px">
-                    <div class="col-lg-8 " >
-                      <textarea class="panshadow" name="text" id="text" cols="100%" rows="20"></textarea>
+                    <div class="col-lg-8 panel panel-default panshadow" >
+                        <div class="row" style="margin:20px">
+                            <table class="table table-borderd" *ngFor="let list of posting">
+                                <thead>
+                                    <tr>
+                                        <th>Room: {{list.room}} <span style="margin-left:110px">Name: {{list.name}}</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{list.posting}} <span style="margin-left:180px">Completed</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                     <div class="col-lg-2" style="float: bottom">
                     <button class="btn btn-info" style="width:100%;" > Cancel </button>    
@@ -352,7 +230,7 @@
                                   <label for="" style="margin-top: 6px;"> Business Date</label>
                               </div>
                                   <div class="col-md-2">
-                                  <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                                  <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;" [(ngModel)]="businessdate">    
                           </div>
                       
                               <div class="col-md-2">
@@ -377,82 +255,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <tr>    
-                                           <td style="width:138px;">Reservation no show</td>        
-                                           <td style="width:138px;">1</td>         
-                                           <td style="width:120px;">03:20:20</td>       
-                                           <td style="width:120px;">03:20:20</td>       
-                                           <td style="width:120px;">Completed</td>       
-                                        </tr>
-                                        <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td> 
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>  
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>      
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>       
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>       
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>      
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>      
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>       
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>      
-                                         </tr>  
-                                         <tr>    
-                                                <td style="width:138px;">Reservation no show</td>        
-                                                <td style="width:138px;">1</td>         
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">03:20:20</td>       
-                                                <td style="width:120px;">Completed</td>      
-                                         </tr>                                                            
+                                    <tr *ngFor="let listadd of runadd ;let i=index" (click)="selectedcash(listadd,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">
+                                           <td style="width:138px;">{{listadd.Run_additional_procedure}}</td>        
+                                           <td style="width:138px;">{{listadd.Iteration}}</td>         
+                                           <td style="width:120px;">{{listadd.start_time}}</td>       
+                                           <td style="width:120px;">{{listadd.end_time}}</td>       
+                                           <td style="width:120px;">{{listadd.Status}}</td>       
+                                        </tr>                                                           
                                 </tbody>
                               </table>
                      </div></div>              
@@ -490,49 +299,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr>    
+                                <tr *ngFor="let listprint of runprint ;let i=index" (click)="selectprint(listprint,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">
                                        <td style="width:138px;">on Night Audit</td>        
                                        <td style="width:138px;">Running</td>               
-                                    </tr>
-                                    <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td> 
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>  
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>      
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>      
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>      
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>      
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>       
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>      
-                                     </tr>  
-                                     <tr>    
-                                        <td style="width:138px;">on Night Audit</td>        
-                                        <td style="width:138px;">Running</td>       
-                                     </tr>                                                            
+                                    </tr>                                                         
                             </tbody>
                           </table>
                  </div></div>              

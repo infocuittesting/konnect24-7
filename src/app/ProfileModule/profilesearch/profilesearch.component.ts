@@ -86,6 +86,7 @@ public options = [];
   comm3={};
   viplist={};
   nationality={};
+  public endof:any;
 
 
  onSelect(val){
@@ -114,6 +115,14 @@ update(inputt):void {
 
 
   ngOnInit() {
+
+    if(this.session.retrieve("EndofDay_checkin") == "Edit"){
+      this.endof=this.session.retrieve('pf_id')
+    }else{
+      this.session.clear('EndofDay_checkin');
+    }
+    
+
     this.navtag= this.session.retrieve("navigate");
     
     console.log(this.session.retrieve("navigate"));
@@ -177,6 +186,10 @@ this.pService.communication1dropdown()
 this.comm3=resp.ReturnValue;
 });
 
+}
+
+ngOnDestroy(){
+  this.session.clear('EndofDay_checkin');
 }
 res=false;
 new=false;
