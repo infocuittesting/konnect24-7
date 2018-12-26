@@ -444,12 +444,57 @@ queueProfile(){
   });
 
 }
+//fixedrate checkbok value
+checkvalue(fixedrate){
+  if(fixedrate=="true"){
+    this.fixedrate=1;
+  }else{
+    this.fixedrate=0;
+  }
+}
 
 // fixed start
 
 public tra;
+public fixedrate;
+
 submitrate() {
-    this.pppService.Fixedrate()
+  if(this.Currency==null){
+    this.Currency="";
+  }
+  if(this.DiscAmount==null){
+    this.DiscAmount="";
+  }
+  if(this.Percentage==null){
+    this.Percentage="";
+  }
+  if(this.market==null){
+    this.market="";
+  }
+  if(this.Source==null){
+    this.Source="";
+  }
+  let body=
+  {
+   "Res_id":this.session.retrieve("id"),
+   "fixed_rate":this.fixedrate,
+   "RES_Arrival":this.Arrival,
+   "RES_Depature":this.Departure,
+   "RES_Adults":this.Adults,
+   "RES_Child":this.child,
+   "RES_Room_Type":this.RoomType,
+   "RES_RTC":this.RoomType,
+   "RES_Room":this.Room,
+   "RES_Rate_Code":this.Ratecode,
+   "RES_Rate":this.Rate,
+   "RES_Disc_Amount":this.DiscAmount,
+   "RES_Disc_perc":this.Percentage,
+   "RES_Disc_Reason":this.Discreasons,
+   "RES_Market":this.market,
+   "RES_Source":this.Source,
+   "RES_Currency":this.Currency
+   };
+    this.pppService.Fixedrate(body)
     .subscribe( (user333:any )=> {
       this.tra = user333.ReturnCode;
       if(this.tra=="RIS"){

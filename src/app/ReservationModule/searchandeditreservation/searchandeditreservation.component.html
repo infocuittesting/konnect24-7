@@ -133,33 +133,11 @@
                   <th style="width:155px" *ngIf="showMore==true"> CreditCard</th>            
                   <th style="width:90px" *ngIf="showMore==true"> Exp_Date</th>            
                   <th *ngIf="showMore==true"> Rate</th>
-<!-- 
-                  <th> Extension</th>
-
-                  <th> Group</th>
-                  <th> Packages</th>
-                  <th> Rtc</th>
-                  <th> Currency</th>
-                  <th> ETA</th>
-                  <th> Market</th>
-                  <th> Source</th>            
-                  <th> Origin</th>            
-                  <th> Payment</th>            
-                  <th> Guest_Balance</th>            
-                  <th> Disc_Amount</th>            
-                  <th> Disc_perc</th>  
-                  <th> Disc_Reason</th>            
-                  <th> Specials</th>            
-                  <th> Comments</th>            
-                  <th> Item_Inv</th>             -->
-                            
                 </tr>
         </thead>
         <tbody>
           <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-          <!-- <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
-          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
             <td style="width:50px">{{i+1}}</td> 
             <td style="width:160px"> {{searched.pf_firstname|titlecase}}</td>
             <td style="width:110px"> {{searched.res_arrival}} </td> 
@@ -177,28 +155,18 @@
             <td style="width:155px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
             <td style="width:90px" *ngIf="showMore==true"> {{searched.res_exp_date}}</td>     
             <td *ngIf="showMore==true"> {{searched.res_rate}}</td>     
-<!-- 
-            <td></td>     
-            <td> {{searched.res_packages}}</td>     
-            <td> {{searched.res_rtc |titlecase}}</td>     
-            <td> {{searched.res_currency |titlecase}}</td>     
-            <td> {{searched.res_eta}}</td>
-            <td> {{searched.res_market |titlecase}}</td> 
-            <td> {{searched.res_source |titlecase}}</td>     
-            <td> {{searched.res_origin |titlecase}}</td>     
-            <td> {{searched.res_payment |titlecase}}</td>     
-            <td> {{searched.res_guest_balance}}</td>     
-            <td> {{searched.res_disc_amount}}</td>     
-            <td> {{searched.res_disc_perc}}</td>
-            <td> {{searched.res_disc_reason |titlecase}}</td>     
-            <td> {{searched.res_specials |titlecase}}</td>     
-            <td> {{searched.res_comments |titlecase}}</td>     
-            <td> {{searched.res_item_inv}}</td> -->
           </tr>
                                                                                                                             
         </tbody>
       </table>
-
+   <div class="row">
+     <div class="col-md-3 col-lg-2" *ngIf="showhide==true">
+       <button class="btn btn-danger btn-sm">{{privilege[0].privileges_desc}}</button>
+     </div>
+     <div class="col-md-3 col-lg-2" *ngIf="showfix==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" >Fixed Rate</button>
+    </div>
+   </div>
   </div>
   <br>
   <div class="container-fluid">
@@ -371,3 +339,46 @@
           </div>
         </div> 
         <!-- Accept End -->                
+
+             <!-- fixedrate start-->
+             <div class="modal fade" id="fixrate" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Fixed Rate</h4>
+                  </div>
+                  <div class="modal-body">
+                   <table class="table table-bordered table-hover tableBodyScroll">
+                    <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                        <th style="width:150px">Arrival</th>
+                        <th style="width:150px">Departure</th>
+                        <th style="width:150px">Adult</th>
+                        <th style="width:150px">Child</th>
+                        <th style="width:150px">Room_Type</th>
+                        <th>Rate</th>
+                    </tr>                  
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of fixrate">
+                          <td style="width:150px">{{data.res_arrival}}</td>
+                          <td style="width:150px">{{data.res_depature}}</td>
+                          <td style="width:150px">{{data.res_adults}}</td>
+                          <td style="width:150px">{{data.res_child}}</td>
+                          <td style="width:150px">{{data.res_room_type}}</td>
+                          <td>{{data.res_rate}}</td>
+                      </tr>
+                    </tbody>
+                   </table>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                  </div>
+                </div>
+                
+              </div>
+            </div> 
+            <!-- fixed rate End -->       

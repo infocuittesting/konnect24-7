@@ -411,32 +411,12 @@ getcredittype():  Observable<object[]> {
 }
 
 // Fixed rate
-Fixedrate():  Observable<object[]> {  
+Fixedrate(param):  Observable<object[]> {  
   const headers = new Headers();
    headers.append('Content-Type','application/json');
    const options = new RequestOptions({ headers: headers });
-   console.log('working');
-   let body=
-   {
-    "Res_id":this.session.retrieve("id"),
-    "RES_Arrival":this.session.retrieve("arrival"),
-    "RES_Depature":this.session.retrieve("departure"),
-    "RES_Adults":this.session.retrieve("Adults".toString()),
-    "RES_Child":this.session.retrieve("child".toString()),
-    "RES_Room_Type":this.session.retrieve("RoomType"),
-    "RES_RTC":this.session.retrieve("RoomType"),
-    "RES_Room":this.session.retrieve("Room"),
-    "RES_Rate_Code":this.session.retrieve("Ratecode"),
-    "RES_Rate":this.session.retrieve("rate"),
-    "RES_Disc_Amount":this.session.retrieve("DiscAmount"),
-    "RES_Disc_perc":this.session.retrieve("percentage"),
-    "RES_Disc_Reason":this.session.retrieve("Discreasons"),
-    "RES_Market":this.session.retrieve("market"),
-    "RES_Source":this.session.retrieve("source"),
-    "RES_Currency":this.session.retrieve("Currency")
-    };
-    console.log(JSON.stringify(body));
-   return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_UpdateFixedRateReservation',body,options)
+  console.log(".........",param)
+   return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_UpdateFixedRateReservation',param,options)
       .map(this.extractData)
 }
 

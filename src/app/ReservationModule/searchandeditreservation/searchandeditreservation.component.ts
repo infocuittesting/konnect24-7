@@ -18,11 +18,12 @@ export class SearchandeditreservationComponent implements OnInit {
 
   public searchandedit =[];
   public arry=[];
+  public privilege;
 
   constructor(private pService:SearchandeditreservationService,private route:Router,public session:SessionStorageService) { }
   showMore=false;
   ngOnInit() {
-      
+     
   this.pService.searchedit()
   .subscribe((resp: any) => {
    this.searchandedit=resp.ReturnValue;
@@ -140,12 +141,48 @@ option=true;
 public reinstate;
 public resid;
 public name;
+public showhide=false;
+public showfix=false;
+public pristatus;
+public fixrate:any[];
 selectindex=null;
+
 selectMembersEdit(details,index){
 console.log(details)  
 this.selectindex=index;
 this.reinstate=details.res_guest_status;
 this.resid=details.res_id;
+
+//privilleges Glow
+this.pService.privileges(this.resid)
+.subscribe((resp: any) => {
+ this.privilege=resp.ReturnValue;
+ this.pristatus=resp.Status;
+ if(this.pristatus=="Success"){
+ if(this.privilege.length!=0){
+  this.showhide=true;
+ }else if(this.privilege.length==0){
+  this.showhide=false;
+ }
+ }
+
+});
+
+  //fixedrate to glow
+  this.pService.Fixed(this.resid)
+  .subscribe((resp: any) => {
+   this.fixrate=resp.ReturnValue;
+   this.pristatus=resp.Status;
+   if(this.pristatus=="Success"){
+   if(this.fixrate.length!=0){
+    this.showfix=true;
+   }else if(this.fixrate.length==0){
+    this.showfix=false;
+   }
+   }
+  
+  });
+
 this.name=details.pf_firstname;
 if(this.resid==details.res_id){
   this.new=true;
