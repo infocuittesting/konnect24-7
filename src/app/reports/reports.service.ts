@@ -35,10 +35,10 @@ export class ReportsService {
    getroomdetails(startdate,enddate): Observable<object[]> {
       
     let body = {
-
       "from_date": startdate,
       "to_date": enddate
-    } 
+    }
+     
     const headers = new Headers({ 'Content-Type': 'application/json' })
     const options = new RequestOptions({ headers: headers });
 

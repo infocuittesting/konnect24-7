@@ -31,7 +31,28 @@ export class SearchandeditreservationService {
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }
-  
+  //get glow of privilege buttom
+  privileges(parm):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={"res_id":parm}
+   
+    return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryGuestPrivileges',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+    //get glow of fixed buttom
+    Fixed(parm):  Observable<object[]> {
+       
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers });
+      let body={"res_id":parm}
+     
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryFixedRateReservation',body,options)
+         .map(this.extractData)
+         //.catch(this.handleErrorObservable);
+    }
   cancel(input:any):  Observable<object[]> {    
     const headers = new Headers();
      headers.append('Content-Type','application/json');
