@@ -25,7 +25,7 @@ export class RoomassignmentComponent implements OnInit {
       this.showMore=false;
     }
   // Room Unassign
-  public status;
+  status;
   unassignProfile(){
      let inputparms={
        "Res_id":this.session.retrieve("rmid"),
@@ -57,12 +57,15 @@ checkinProfile(){
     "Res_unique_id":this.session.retrieve("uniq")
 
   }
-  
+  console.log(inputparms)
   this.RoomassignmentService.checkinProfile(inputparms)
    .subscribe((resp: any) => {
     this.status=resp.ReturnCode;
     if(this.status=="RUS"){
       this.status="The Check is conformed for "+this.Name;
+    }
+    else if(this.status=="AGS"){
+      this.status=resp.alertvalue[0].res_alert_description;
     }
   });
 

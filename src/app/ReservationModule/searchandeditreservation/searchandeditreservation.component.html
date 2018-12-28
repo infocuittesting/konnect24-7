@@ -136,7 +136,7 @@
                 </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
+          <tr *ngFor="let searched of searchandedit|searchfilter:{pf_firstname: queryString }|searchfilter:{pf_firstname: query}|searchfilter:{res_source: qsource} ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:50px">{{i+1}}</td> 
             <td style="width:160px"> {{searched.pf_firstname|titlecase}}</td>
@@ -160,11 +160,17 @@
         </tbody>
       </table>
    <div class="row">
-     <div class="col-md-3 col-lg-2" *ngIf="showhide==true">
+     <div class="col-md-2 col-lg-2" *ngIf="showhide==true">
        <button class="btn btn-danger btn-sm">{{privilege[0].privileges_desc}}</button>
      </div>
-     <div class="col-md-3 col-lg-2" *ngIf="showfix==true">
+     <div class="col-md-2 col-lg-2" *ngIf="showfix==true">
       <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" >Fixed Rate</button>
+    </div>
+    <div class="col-md-2 col-lg-2" *ngIf="showhidenotes==true">
+      <button class="btn btn-danger btn-sm" >Notes</button>
+    </div>
+    <div class="col-md-2 col-lg-2" *ngIf="showhidepreferences==true">
+      <button class="btn btn-danger btn-sm" > Preferences</button>
     </div>
    </div>
   </div>

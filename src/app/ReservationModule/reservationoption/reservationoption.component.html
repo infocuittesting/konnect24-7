@@ -597,22 +597,18 @@
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
               <input type="date" [min]="Arrival" class="form-control" placeholder="" aria-describedby="basic-addon1"
-                [(ngModel)]="fixed.Fixed_Charges_Begin_Date" style="width:160px; ">
+                [(ngModel)]="fixed.Fixed_Charges_Begin_Date" (change)="tansact(fixed.Fixed_Charges_Begin_Date,fixed.Fixed_Charges_End_Date)" style="width:160px; ">
             </div>
             <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
               <input type="date" [min]="fixed.Fixed_Charges_Begin_Date" [max]="Departure" class="form-control"
-                placeholder="" aria-describedby="basic-addon1" [(ngModel)]="fixed.Fixed_Charges_End_Date">
+                placeholder="" aria-describedby="basic-addon1" [(ngModel)]="fixed.Fixed_Charges_End_Date" (change)="tansact(fixed.Fixed_Charges_Begin_Date,fixed.Fixed_Charges_End_Date)">
             </div>
             <br>
             <label>TransactionCode</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;" [class.has-error]="tans.touched && tans.invalid">
-              <select style="height:32px;width:160px;" [(ngModel)]="fixed.Fixed_Charges_Transaction_Code" required
-                class="form-control" name="TransactionCode" #tans="ngModel">
-                <option *ngFor="let ctc of listtc" [ngValue]="ctc.transaction_description">
-                  {{ctc.transaction_description}} </option>
-              </select>
-            <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-option-horizontal"></i></span>             
+              <input style="height:32px;width:160px;" [(ngModel)]="Fixed_Charges_Transaction_Code" required class="form-control" name="TransactionCode" #tans="ngModel">
+            <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;" data-toggle="modal" data-target="#fixcharge"><i class="glyphicon glyphicon-option-horizontal"></i></span>             
               <div *ngIf="tans.touched && !tans.valid && tans.errors?.required" ngClass="{ 'has-error' : !tans.valid && submitAttempt }"></div>
             </div>
             <br>
@@ -626,7 +622,7 @@
             <label>Amount</label> <label style="margin-left:300px;">Quantity</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
-              <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1" [(ngModel)]="fixed.Fixed_Charges_Amount">
+              <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1" [(ngModel)]="Fixed_Charges_Amount">
             </div>
             <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-list"></i></span>
@@ -668,7 +664,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="fix(fixed)" data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok"
+        <button type="button" class="btn btn-success" (click)="fix(fixed,Fixed_Charges_Transaction_Code,Fixed_Charges_Amount)" data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok"
             style="padding-left:5px;"></span></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove"
             style="padding-left:5px;"></span></button>
@@ -680,7 +676,7 @@
 <!-- fixed charges End -->
 
 <!-- Fixed charges resp start-->
-<div class="modal fade" id="" role="dialog">
+<div class="modal fade" id="fixcharge" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -690,8 +686,30 @@
         <h4 class="modal-title"> Fixed charges</h4>
       </div>
       <div class="modal-body">
-
-        <p align="center"><b>{{fixs}}</b></p>
+        <div class="panel panel-default" style="margin:20px;">
+          <div style="margin:20px">
+              <table class="table table-hover table-border">
+                  <thead style="background-color: #0077B5; color: white;">
+                    <tr>
+                      <th>Seq.</th>
+                      <th> Transaction code</th>
+                      <th> Transaction description</th>
+                      <th> Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let listsct of trans; let i=index" (click)="selecttrans(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                      <td>{{i+1}}</td>
+                      <td>{{listsct.package_code}}</td>
+                      <td>{{listsct.short_description}}</td>
+                      <td>{{listsct.price}}</td>
+                    </tr>
+  
+                  </tbody>
+  
+                </table>
+          </div>
+        </div>       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" style="padding-left:5px;" data-dismiss="modal"><b>Close</b><span
@@ -909,6 +927,12 @@
                               <b>Out Of Service</b>
                             </div>
                           </div>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <label for="">Room Type</label>
+                              <input type="text" name="roomtype" id="" [(ngModel)]="RoomType">
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -939,7 +963,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let housekeepinglist of house; let i = index " (click)="selected(housekeepinglist,i)"
+                  <tr *ngFor="let housekeepinglist of house |searchfilter:{rm_room_type: RoomType }; let i = index " (click)="selected(housekeepinglist,i)"
                     [ngClass]="{'backGroundColor':i==selectindexs}">
                     <td>{{i+1}}</td>
                     <td>{{housekeepinglist.rm_room}}</td>
@@ -1017,6 +1041,7 @@
         <h4 class="modal-title">Room Move</h4>
         <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
       </div>
+      <form id="myformm" #myformm="ngForm" >
       <div class="modal-body">
         <div class="container" style="width:100%;">
           <div style="margin-top: 30px;">
@@ -1024,6 +1049,7 @@
             <div class="panel panel-primary" style="margin-top: -43px;">
               <div class="panel-body" style="max-height: 71px;margin-top: -19px;">
                 <div class="row" style="margin-top: 11px;">
+
                   <div class="col-md-2"> <label><b> Move_To_Room </b></label></div>
                   <div class="col-md-6">
                     <div class="input-group">
@@ -1040,6 +1066,49 @@
               </div>
             </div>
           </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" [disabled]="!myformm.valid" data-toggle="modal" data-target="#roomhousekeepstatus" data-dismiss="modal" ><b>OK</b><span
+            class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove"
+            style="padding-left:5px;"></span></button>
+      </div>
+    </form>
+    </div>
+
+  </div>
+</div>
+<!-- Room Move -->
+<!-- room move -->
+<div class="modal modal-open" id="roomhousekeepstatus" data-backdrop="static" data-keyboard="false" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:136%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- <h4 class="modal-title">Room Move</h4> -->
+        <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
+      </div>
+      <div class="modal-body">
+        <div class="container" style="width:100%;">
+ 
+            <div class="panel panel-primary" style="margin: 30px;">
+              <div class="panel-body">
+                <div class="row" align="center" style="margin:20px">
+                  <p> Change room status for room {{Room}} from inspected to </p>
+                </div>  
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2"> <button class="btn btn-success" (click)="statusroom('inspected')">Inspected</button></div>
+                  <div class="col-md-2"> <button class="btn btn-info" (click)="statusroom('pickup')"> Pickup</button></div>
+                  <div class="col-md-2"> <button class="btn btn-primary" (click)="statusroom('clean')">Clean</button></div>
+                  <div class="col-md-2"> <button class="btn btn-danger" (click)="statusroom('dirty')">Dirty</button></div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+            </div>
         </div>
 
       </div>

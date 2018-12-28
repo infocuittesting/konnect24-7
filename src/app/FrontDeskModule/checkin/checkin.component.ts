@@ -51,18 +51,28 @@ filterDatefrmList(startDate,endDate){
   
 }
   //checkin
-  status={};
-
+  status;
+  returnmsg;
 checkinProfile(){
   let inputparms={
     "Res_id":this.session.retrieve("id"),
     "pf_id":this.session.retrieve("id1"),
     "Res_unique_id":this.session.retrieve("uniq")
   }
-  
+  console.log(inputparms);
   this.checkinService.checkinProfile(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.Return;
+    this.status=resp.ReturnCode;
+    if(this.status=="RUS"){
+      this.status="The Checkin is conformed for"+this.firstname;
+    }
+    else if(this.status=="AGS"){
+      this.status=resp.alertvalue[0].res_alert_description;
+    }
+    this.checkinService.searchedit()
+    .subscribe((resp: any) => {
+     this.searchandedit=resp.ReturnValue;
+   });
   });
 
 }
@@ -70,13 +80,6 @@ checkinProfile(){
     this.checkinService.searchedit()
     .subscribe((resp: any) => {
      this.searchandedit=resp.ReturnValue;
-     //filter on page load
-     //searchandedit,
-//     let filteronstart = this.searchandedit.filter(
-  //    m => new Date(m.res_arrival) >= new Date(this.startDate) && new Date(m.res_arrival) <= new Date(this.endDate)
-    //  );
-      //  console.log(filteronstart);
-        //this.searchandedit = filteronstart;
    });
   
   }

@@ -182,9 +182,9 @@ alertsub(inputt) {
      //Fixed charges options 
     fixed:any=[];     
     public fixs;
-     fix(inputt) {
-       console.log("Fixed charges workinggggggg",inputt);
-         this.pppService.Fixedcharges(inputt)
+     fix(inputt,param1,param2) {
+       console.log("Fixed charges workinggggggg",inputt,param1,param2);
+         this.pppService.Fixedcharges(inputt,param1,param2)
          .subscribe(( user333:any )=> {
           this.fixs=user333.ReturnCode;
           if(this.fixs =="RIS"){
@@ -242,10 +242,23 @@ this.pppService.waitli(input)
   }
 });
 }
+public tatus:any;
+statusroom(param){
+  if(param=="inspected"){
+    this.tatus="inspected";
+  }else if(param=="dirty"){
+    this.tatus="dirty";
+  }else if(param=="clean"){
+    this.tatus="clean";
+  }else if(param="pickup"){
+    this.tatus="pickup";
+  }
+  console.log("test",this.tatus)
+}
 //waitlist start
 
 submitroom(input){
-this.pppService.Roommove(input)
+this.pppService.Roommove(input,this.tatus)
 .subscribe((user333:any )=> {
   this.waitlist = user333.ReturnCode;
   if(this.waitlist=="RIS"){
@@ -268,7 +281,13 @@ submittrace(input) {
    }
 
 // Trace End
-
+public trans:any;
+tansact(startdate,enddate){
+  this.pppService.fixtansaction(startdate,enddate)
+  .subscribe(( user333:any )=> {
+    this.trans = user333.ReturnValue;
+    });
+}
 // deposite start
 
 resdepos={};
@@ -708,6 +727,15 @@ this.pppService.getprivileges()
    });
    
 
+  }
+
+  public Fixed_Charges_Transaction_Code:any;
+  public Fixed_Charges_Amount;
+   selectin=null;
+  selecttrans(listsct,i){
+    this.selectin=i;
+    this.Fixed_Charges_Transaction_Code=listsct.package_code;
+    this.Fixed_Charges_Amount=listsct.price;
   }
   // room move
   public rmroom;

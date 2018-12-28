@@ -52,7 +52,7 @@ export class ReservationService {
              "RES_Party":"", 
              "RES_Currency":input.RES_Currency,
              "RES_Disc_perc":input.RES_Disc_perc,
-             "PF_Firstname":this.session.retrieve("pf_fname")+ this.session.retrieve("Pf_lastname"),
+             "PF_Firstname":this.session.retrieve("pf_fname")+" "+ this.session.retrieve("Pf_lastname"),
              "PF_Mobileno": this.session.retrieve("pf_mobileno"),
              "pf_id": this.session.retrieve("pf_id")
             };      

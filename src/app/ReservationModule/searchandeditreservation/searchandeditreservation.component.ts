@@ -142,9 +142,14 @@ public reinstate;
 public resid;
 public name;
 public showhide=false;
+public showhidepreferences=false;
+public showhidenotes=false;
 public showfix=false;
 public pristatus;
 public fixrate:any[];
+public notes;
+public preferences;
+public pfid;
 selectindex=null;
 
 selectMembersEdit(details,index){
@@ -152,7 +157,7 @@ console.log(details)
 this.selectindex=index;
 this.reinstate=details.res_guest_status;
 this.resid=details.res_id;
-
+this.pfid=details.pf_id;
 //privilleges Glow
 this.pService.privileges(this.resid)
 .subscribe((resp: any) => {
@@ -163,6 +168,36 @@ this.pService.privileges(this.resid)
   this.showhide=true;
  }else if(this.privilege.length==0){
   this.showhide=false;
+ }
+ }
+
+});
+
+//Notes Glow
+this.pService.Notes(this.pfid)
+.subscribe((resp: any) => {
+ this.notes=resp.ReturnValue;
+ this.pristatus=resp.Status;
+ if(this.pristatus=="Success"){
+ if(this.notes.length!=0){
+  this.showhidenotes=true;
+ }else if(this.notes.length==0){
+  this.showhidenotes=false;
+ }
+ }
+
+});
+
+//Prefernece Glow
+this.pService.Preferences(this.pfid)
+.subscribe((resp: any) => {
+ this.preferences=resp.ReturnValue;
+ this.pristatus=resp.Status;
+ if(this.pristatus=="Success"){
+ if(this.preferences.length!=0){
+  this.showhidepreferences=true;
+ }else if(this.preferences.length==0){
+  this.showhidepreferences=false;
  }
  }
 
