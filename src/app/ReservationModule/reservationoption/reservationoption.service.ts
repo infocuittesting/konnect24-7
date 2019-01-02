@@ -41,14 +41,14 @@ alert(input:any):  Observable<object[]> {
 }
 
 // Fixed reservatipn
-     Fixedcharges(input:any):  Observable<object[]> {  
+     Fixedcharges(input,param1,param2):  Observable<object[]> {  
       const headers = new Headers();
        headers.append('Content-Type','application/json');
-       const options = new RequestOptions({ headers: headers });
-       console.log('working');
-       let body={ "Res_id":this.session.retrieve("id"),"Res_unique_id":this.session.retrieve("uniq"), "Fixed_Charges_Begin_Date":input.Fixed_Charges_Begin_Date, "Fixed_Charges_End_Date":input.Fixed_Charges_End_Date,"Fixed_Charges_Transaction_Code":input.Fixed_Charges_Transaction_Code,"Fixed_Charges_Article_Code":input.Fixed_Charges_Article_Code,
-       "Fixed_Charges_Amount":input.Fixed_Charges_Amount,"Fixed_Charges_Quantity":input.Fixed_Charges_Quantity, "Fixed_Charges_Supplement":input.Fixed_Charges_Supplement,"Fixed_Charges_Occurrence":input.Fixed_Charges_Occurrence
+       const options = new RequestOptions({ headers: headers }); 
+       let body={ "Res_id":this.session.retrieve("id"),"Res_unique_id":this.session.retrieve("uniq"), "Fixed_Charges_Begin_Date":input.Fixed_Charges_Begin_Date, "Fixed_Charges_End_Date":input.Fixed_Charges_End_Date,"Fixed_Charges_Transaction_Code":param1,"Fixed_Charges_Article_Code":input.Fixed_Charges_Article_Code,
+       "Fixed_Charges_Amount":param2,"Fixed_Charges_Quantity":input.Fixed_Charges_Quantity, "Fixed_Charges_Supplement":input.Fixed_Charges_Supplement,"Fixed_Charges_Occurrence":input.Fixed_Charges_Occurrence
       };
+      console.log('working',body);
        return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_Insert_UpdateFixedChargesReservation',body,options)
           .map(this.extractData)
    }
@@ -110,15 +110,18 @@ waitli(input:any):  Observable<object[]> {
 }
 
 //room move
-Roommove(input:any):  Observable<object[]> {    
+Roommove(input:any,tatus):  Observable<object[]> {    
   const headers = new Headers();
    headers.append('Content-Type','application/json');
    const options = new RequestOptions({ headers: headers });
    let par={
 "Res_id":this.session.retrieve("id"),
 "Res_unique_id":this.session.retrieve("uniq"),
-"Res_room":input.toString()
+"Res_room":input.toString(),
+"Old_Room":this.session.retrieve("Room"),
+"old_room_status":tatus
    }
+   console.log("iputtesttttt",par)
    return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_UPDATE_RoomMove',par,options)
       .map(this.extractData)
 }
@@ -134,6 +137,19 @@ Roommove(input:any):  Observable<object[]> {
        .map(this.extractData)
 }
 
+// gettranaction data
+fixtansaction(startdate,enddate):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+    {
+      "package_from":startdate,
+      "package_to":enddate
+    }
+  console.log("eeeeeeeee",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
+     .map(this.extractData)
+}
 
 
 // accompany data

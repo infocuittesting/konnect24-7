@@ -54,6 +54,7 @@ public class1;
 public room;
 public search = [];
 public list=[];
+public returnmsg;
 someData = []
 
 roomtype;
@@ -87,7 +88,18 @@ checkinProfile(){
   
   this.pService.checkinProfile(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.Return;
+    this.status=resp.ReturnCode;
+    this.returnmsg=resp.alertvalue;
+    if(this.status=="RUS"){
+      this.status="The Checkin is conformed for "+this.name;
+    }
+    else if(this.status=="AGS"){
+      this.status=resp.alertvalue[0].res_alert_description;
+    }
+    this.pService.checkin()
+    .subscribe((resp: any) => {
+     this.search=resp.ReturnValue;
+   });
   });
 
 }
@@ -122,10 +134,11 @@ this.pService.roomclassdropdown()
 }
 edbutn=true;
 flag = false;
-
+name;
 selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
+this.name=details.pf_firstname;
 this.session.store("id",details.res_id.toString());
 this.session.store("id1",details.pf_id.toString());
 this.session.store("id2",details.res_room.toString());

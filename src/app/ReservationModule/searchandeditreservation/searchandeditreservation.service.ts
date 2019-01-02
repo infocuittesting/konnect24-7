@@ -53,6 +53,28 @@ export class SearchandeditreservationService {
          .map(this.extractData)
          //.catch(this.handleErrorObservable);
     }
+        //get glow of Notes buttom
+        Notes(parm):  Observable<object[]> {
+       
+          const headers = new Headers({'Content-Type':'application/json'})
+          const options = new RequestOptions({ headers: headers });
+          let body={"pf_id":parm}
+         console.log(body)
+          return this.http.post('https://hotel360.herokuapp.com/HOTEL_FD_GET_SELECT_QueryNotes',body,options)
+             .map(this.extractData)
+             //.catch(this.handleErrorObservable);
+        }
+          //get glow of pefernece buttom
+          Preferences(parm):  Observable<object[]> {
+       
+            const headers = new Headers({'Content-Type':'application/json'})
+            const options = new RequestOptions({ headers: headers });
+            let body={"pf_id":parm}
+           console.log(body)
+            return this.http.post('https://hotel360.herokuapp.com/HOTEL_FD_GET_SELECT_Querypreference',body,options)
+               .map(this.extractData)
+               //.catch(this.handleErrorObservable);
+          }      
   cancel(input:any):  Observable<object[]> {    
     const headers = new Headers();
      headers.append('Content-Type','application/json');
