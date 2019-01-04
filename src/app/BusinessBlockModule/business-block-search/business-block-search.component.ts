@@ -21,7 +21,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   public showMore;
   public ClearAll=[];
   public filterdata=[];
- 
+
   
   public =[];
   blc = true;
@@ -38,10 +38,11 @@ export class BusinessBlockSearchComponent implements OnInit {
 
 
   ngOnInit() {
-     this. blocksearch.bsearchtable()
+     this.blocksearch.bsearchtable()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
-      this.someData=resp.ReturnValue;
+      this.someData=this.tableschanges;
+      console.log("online pasgss",this.someData)
     });
 
     
@@ -57,13 +58,23 @@ export class BusinessBlockSearchComponent implements OnInit {
     });
 
   }
-  
-  
-  onSel(val){
+  // dropdown status filter
+  onSelect(val){
     console.log(val);
-    this.tableschanges = this.someData.filter(x => x.status == val)
-    this.tableschanges=this.filterdata.filter(x => x.status == val)
+      this.tableschanges = this.someData.filter(x => x.status == val)
+      console.log("onselect",this.tableschanges)
+      // this.tableschanges=this.filterdata.filter(x => x.status == val)
   }
+
+  // onSelectblockname(val){
+  //   this.tableschanges = this.someData.filter(x => x.block_name == val)
+  // }
+  
+  // onSel(val){
+  //   console.log(val);
+  //   this.tableschanges = this.someData.filter(x => x.status == val)
+  //   this.tableschanges=this.filterdata.filter(x => x.status == val)
+  // }
   //show more
   showMoreBut(){
     this.showMore=true;
@@ -73,10 +84,11 @@ export class BusinessBlockSearchComponent implements OnInit {
     this.showMore=false;
   } 
   cleartab(){
-    this. blocksearch.bsearchtable()
+    this.blocksearch.bsearchtable()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
-      this.someData=resp.ReturnValue;
+      // this.someData=resp.ReturnValue;
+      console.log("clearall button",this.tableschanges)
     });
 
   }
@@ -98,6 +110,7 @@ export class BusinessBlockSearchComponent implements OnInit {
           this.filterdata=selectedMembers;
     }else {
       this.tableschanges = this.tableschanges;
+      console.log("datefilter",this.tableschanges )
     }
     
   }

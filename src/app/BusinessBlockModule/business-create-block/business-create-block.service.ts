@@ -106,14 +106,15 @@ Inventorydropdown():Observable<object[]> {
      .map(this.extractData)
 
 }
-
+// HOTEL_REVENUE_MANAGEMENT_POST_SELECT_RATECODE
+// Profile/profileratecode
 // Ratecode Dropdown..............................
 Ratecodedropdown():Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
  
-  return this.http.get('https://hotel360.herokuapp.com/Profile/profileratecode ',options)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_RATECODE',options)
      .map(this.extractData)
 
 }
@@ -140,14 +141,14 @@ BlockTypedropdown():Observable<object[]> {
 
 }
 // create businessBlock................................
-CreateBusinessBlock(block):Observable<object[]> {
-  console.log("servicets",block)
+CreateBusinessBlock(block,rmid1,print_block,suppress,gurateeds):Observable<object[]> {
+  console.log("servicets",block,rmid1)
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
     "Definite":
            {
-            "pf_id":this.session.retrieve("id".toString()),
+            "pf_id":this.session.retrieve("pf_id").toString(),
             "block_status_id":block.statusblock,
             "block_name":block.blocknames,
             "market_id":block.marketcode,
@@ -166,9 +167,9 @@ CreateBusinessBlock(block):Observable<object[]> {
             "cutoff_days":block.cut_days,
             " inventory_control_id ":block.inventorys,
             "ratecode_id":block.ratecodes,
-            "print_rate":block.print_rate,
-			      "suppress_rate":block.suppress,
-			      "packages":"tttty",
+            "print_rate":print_block,
+			      "suppress_rate":suppress,
+			      "packages":rmid1 !=null ? rmid1 : "",
             "trace_code":block.tracess,
             "follow_date":block.followdates
 			     
@@ -187,7 +188,7 @@ CreateBusinessBlock(block):Observable<object[]> {
 "Catering":
              {
           
-             "guranteed":block.guranteeds,
+             "guranteed":gurateeds,
              "attenders":block.attender,
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
@@ -206,11 +207,12 @@ CreateBusinessBlock(block):Observable<object[]> {
 				}
 }
   
- 
+ console.log("body details",body)
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_BusinessBlockDefinite ',body,options)
      .map(this.extractData)
 
 }
+// HOTEL_BBL_POST_INSERT_BusinessBlockDefinite
 // select_grid_data():  Observable<object[]> {   
 //     const headers = new Headers({'Content-Type':'application/json'})
 //     const options = new RequestOptions({ headers: headers });

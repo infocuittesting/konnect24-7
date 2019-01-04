@@ -42,6 +42,9 @@ ReservationsListComponent(resvlist,index)
       this.selectindex = index;
     this.blockid = resvlist.res_block_code;
     this.rmtype  = resvlist.res_room_type;
+    this.session.store("pf_id",resvlist.pf_id)
+    this.session.store("res_unique_id",resvlist.pf_id)
+    console.log("testttt",resvlist.pf_id,resvlist.pf_id)
     if(this.blockid == resvlist.res_block_code && this.rmtype == "PM"){
        this.gro = false;
     }
@@ -55,4 +58,22 @@ ReservationsListComponent(resvlist,index)
     
     console.log("successfully select the record",resvlist.res_block_code,typeof(resvlist.res_block_code))
 }
+loadeditprofile(params)
+{
+  if(params == "block_Profile_edit"){
+    this.session.store("BlockProfile","block_Profile_edit");
+    this.session.store("blocknav",params);    
+  }
+  this.route.navigate(['psearch/']);
+
+}
+loadeditreservation(params){
+  if(params == "block_resv_edit"){
+    this.session.store("Blockresv","block_resv_edit");
+    // this.session.store("blocknav",params);    
+  }
+  this.route.navigate(['searchedit/']);
+
+}
+
 }

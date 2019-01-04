@@ -27,10 +27,14 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
+public package_list = [];
 
 
 public block:any={};
 public createblock:any;
+public print_block:any;
+public suppress:any;
+public gurateeds:any;
 public blocksuccess: string;
 public blockids:any=" ";
 public block_name:any=" ";
@@ -74,7 +78,7 @@ arriveDepartureDateFun(arrDate,depDate){
     console.log("contact val",this.contact_val )
     this.group_val = this.session.retrieve("Groupval");
     console.log("grop val",this.group_val )
-    this.pfids =this.session.retrieve("id");
+    this.pfids =this.session.retrieve("pf_id");
 console.log("come to block",this.pfids);
     // block status sropdown.....................
     this.session.clear("agentval");
@@ -146,8 +150,8 @@ this.businessblock.Inventorydropdown()
 //  Ratecode Dropdown.............................
 this.businessblock.Ratecodedropdown()
 .subscribe((resp: any) => {
-    this.ratecode=resp.ReturnValue;
-     console.log(this.ratecode);
+    this.ratecode=resp.Return;
+     console.log("**********************",this.ratecode);
  });
 // Reservation type dropdown......................
  this.businessblock.Resetypedropdown()
@@ -195,35 +199,38 @@ this.businessblock.BlockTypedropdown()
 
 
   blockheader(block){
+    console.log("checkbox button",block.print_rate,block.suppress,block.guranteeds)
     if(block.print_rate == true)
     {
-        block.print_rate = "1"
+        this.print_block = "1"
     }
     else
     {
-        block.print_rate = "0"
+        this.print_block = "0"
     }
     if(block.suppress == true)
     {
-        block.suppress = "1"
+        this.suppress = "1"
     }
     else{
-        block.suppress = "0"
+        this.suppress = "0"
     }
     if(block.guranteeds == true)
     {
-        block.guranteeds = "1"
+        this.gurateeds = "1"
 
     }
     else{
-        block.guranteeds = "0"
+        this.gurateeds = "0"
     }
-
+    console.log("checkbox button",this.print_block,this.suppress,this.gurateeds)
     this.start=block.startdate;
     this.end=block.enddate;
     this.night=block.nights;
     this.totalroomsperday = block.roomsperday;
-    this.businessblock.CreateBusinessBlock(block)
+    // this.package_list.push(this.rmid1)
+    console.log("ids is came",this.selected_id1)
+    this.businessblock.CreateBusinessBlock(block,this.selected_id1,this.print_block,this.suppress,this.gurateeds)
     
 
 .subscribe((resp: any) => {
@@ -278,7 +285,7 @@ this.businessblock.BlockTypedropdown()
     }
     this.rmcodes = this.selected_code.toString();
     this.rmid1 = this.selected_id1.toString();
-    console.log("selected id", this.rmid1);
+    console.log("selected id", this.rmid1,this.selected_id1);
     console.log("selected code", this.rmcodes);
 
   }

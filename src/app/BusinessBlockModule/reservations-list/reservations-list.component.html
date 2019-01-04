@@ -7,7 +7,7 @@
           <table class="table table-bordered table-hover fixtab"  >
             <thead style="background-color: #0077B5;color:white;">
               <tr>
-                <th>Reservation ID</th>
+                <th>Seq</th>
                 
                 <th>Arrival</th>
                 <th>Departure</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
               <tr *ngFor= "let resvlist of querypay;let i = index"  (click)="ReservationsListComponent(resvlist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-                <td>{{resvlist.res_id}}</td>
+                <td>{{i+1}}</td>
                 
                 <td>{{resvlist.res_arrival}}</td>
                 <td>{{resvlist.res_depature}}</td>
@@ -52,9 +52,11 @@
                     <button class="btn btn-success"routerLink="/business" style="width:100%">New</button>
                   </div>
                   <div class="col-md-2">
-                      <button class="btn btn-body"routerLink="/bcreate" style="width:100%">Edit</button>
+                      <button class="btn btn-body" (click)="loadeditprofile('block_Profile_edit')" style="width:100%">Profile</button>
                     </div>
-  
+                    <div class="col-md-2">
+                      <button class="btn btn-success" (click)="loadeditreservation('block_resv_edit')" style="width:100%">Resv</button>
+                    </div>
                     <div class="col-md-2">
                         <button class="btn btn-danger"routerLink="/mains" style="width:100%">Close</button>
                       </div>
