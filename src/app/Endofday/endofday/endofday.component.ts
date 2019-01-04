@@ -63,42 +63,33 @@ export class EndofdayComponent implements OnInit {
   public pf_mobileno
 
   ngOnInit() {
-  
-     this.EndofdayService.countrycheck()
-     .subscribe((resp: any) => {
-      this.checkvalue=resp.ReturnValue;
-      this.getcheck=resp.ReturnValue;
-    });
-
-    this.EndofdayService.notcheckout()
-    .subscribe((resp: any) => {
-     this.notcheck=resp.ReturnValue;
-   });
-
-   this.EndofdayService.businessdate()
-   .subscribe((resp: any) => {
-    this.businessdate=resp.Date;
-  });
-
-  this.EndofdayService.postingrooms()
-  .subscribe((resp: any) => {
-   this.posting=resp.ReturnValue;
- });
-
- this.EndofdayService.runaddtional()
- .subscribe((resp: any) => {
-  this.runadd=resp.ReturnValue;
-});
-
-this.EndofdayService.runprint()
-.subscribe((resp: any) => {
- this.runprint=resp.ReturnValue;
-});
-  
    
   }
+  public edit = true;
+  flag_edit = false;
+  selectindex=null;
+  res_id:string;
+  res_room:string;
+  selectednotcheck(details,index){
+    this.res_id = details.res_id;
+    this.res_room = details.res_room;
+    console.log("res_iddd",this.res_id)
+    console.log("res_room",this.res_room)
 
+
+  }
   selected(details,index){
+
+    if(this.flag_edit==false){
+      this.flag_edit=true;
+      this.edit=true;
+      this.selectindex=index; 
+    }else{
+          this.flag_edit=true;
+          this.selectindex=null;
+          this.edit=false;
+    }
+
     this.pf_id = details.pf_id;
     console.log("tttt",this.pf_id)
     this.session.store("pf_id",details.pf_id);
@@ -137,10 +128,16 @@ this.EndofdayService.runprint()
  
   }
 
+  public dropdown:any;
   showhiderestriction(param){
 
     if (param == "Reservation") {
       this.resv = true;
+      this.EndofdayService.countrycheck()
+      .subscribe((resp: any) => {
+       this.checkvalue=resp.ReturnValue;
+       this.getcheck=resp.ReturnValue;
+     });
     }
     else {
       this.resv = false;
@@ -148,6 +145,17 @@ this.EndofdayService.runprint()
     }
     if (param == "Profile") {
       this.profile = true;
+      this.EndofdayService.notcheckout()
+      .subscribe((resp: any) => {
+       this.notcheck=resp.ReturnValue;
+     });
+
+     this.EndofdayService.dropdown()
+     .subscribe((resp: any) => {
+      this.dropdown=resp.ReturnValue;
+    });
+
+     
     }
     else {
       this.profile = false;
@@ -155,6 +163,10 @@ this.EndofdayService.runprint()
     }
     if (param == "FrontDesk") {
       this.FrontDesk = true;
+      this.EndofdayService.businessdate()
+      .subscribe((resp: any) => {
+       this.businessdate=resp.Date;
+     });
     }
     else {
       this.FrontDesk = false;
@@ -162,6 +174,11 @@ this.EndofdayService.runprint()
     }
     if (param == "RoomManagement") {
       this.RoomManagement = true;
+      this.EndofdayService.postingrooms()
+      .subscribe((resp: any) => {
+       this.posting=resp.ReturnValue;
+     });
+
     }
     else {
       this.RoomManagement = false;
@@ -169,6 +186,11 @@ this.EndofdayService.runprint()
     }
     if (param == "Cashiering") {
       this.Cashiering = true;
+      this.EndofdayService.runaddtional()
+      .subscribe((resp: any) => {
+       this.runadd=resp.ReturnValue;
+     });
+
     }
     else {
       this.Cashiering = false;
@@ -176,6 +198,12 @@ this.EndofdayService.runprint()
     }
     if (param == "Printfinalrate") {
       this.Printfinalrate = true;
+      this.EndofdayService.runprint()
+      .subscribe((resp: any) => {
+      this.runprint=resp.ReturnValue[1].room_repport_file;
+      console.log("testttttt",this.runprint)
+});
+  
     }
     else {
       this.Printfinalrate = false;
@@ -231,5 +259,22 @@ this.EndofdayService.runprint()
       }
       this.route.navigate(['reservation/']);
     }
+
+
+    public endofday:any;
+    public checkoutresp:any;
+
+    Checkout(){
+      let body={
+        "res_id":this.res_id.toString(),
+        "res_room":this.res_room.toString()
+      }
+     this.EndofdayService.Checkout(body)
+     .subscribe((resp: any) => {
+      this.endofday=resp.StatusCode;
+      this.toaster.success("Traces is Updated successfully");
+    });
+   
+   }
 
 }

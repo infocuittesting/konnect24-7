@@ -193,133 +193,134 @@
       </div>
   </div>
   <br>
-  
+
   <div class="row">
   
-  
-  <div class="col-md-6">
-          <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-        <legend style="margin-left:5px" ><b>Components</b></legend>
-  
-        <div class="row">
-              <div class="col-md-1"></div>
-                <div class="col-md-2" >
-                        <label style="margin-left:-35px" >
-                        <input type="checkbox" [value]="negotiated" class="form-control" name="nego" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Negotiated" ><b>Negotiated</b></label>
-                </div>
-                
-                <div class="col-md-2">
-                       <label style="margin-left:-8px" >
-                        <input type="checkbox" [value]="Rate" class="form-control" name="Rate" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Rate" > <b>PrintRate</b></label>
-                </div>
-                <div class="col-md-2">
-                    <label style="margin-left:-15px"  >
-                <input type="checkbox" [value]="Membership" class="form-control" name="Membership" style="width:15px;height:15px;margin-left:32px;" [(ngModel)]="editblock.Membership" ><b>Membership</b></label>
-                </div>
-                <div class="col-md-2">
-                    <label >
-                            <input type="checkbox" [value]="discount"  class="form-control" name="discount" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.discount"><b>Discount</b> </label>        
-                   
-                </div>
-                <div class="col-md-2">
-                    <label >
-                            <input type="checkbox" [value]="Day"  class="form-control" name="Day" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.Day"><b>DayUse</b>                   
-                    </label>
-                </div>
-              <div class="col-md-1"></div>
-                
-          </div>
-          <div class="row">   
-                 <div class="col-md-1"></div>
-                 
-                <div class="col-md-2">
-                    <label style="margin-left:-35px"  >
-                            <input type="checkbox" [value]="Complimentary"  class="form-control" name="Complimentary" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.Complimentary" ><b>Complimentary</b>                    
-                    </label>
-                </div>
-                <div class="col-md-2">
-                        <label style="margin-left:-8px"  >
-                                <input type="checkbox" [value]="House"  class="form-control" name="House" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.House" ><b>HouseUse</b>                           
-                        </label>
-                    </div>
-                <div class="col-md-2" >
-                            <label style="margin-left:-15px" >
-                                    <input type="checkbox" [value]="Suppress"  class="form-control" name="Suppress" style="width:15px;height:15px;margin-left:30px" [(ngModel)]="editblock.Suppress"><b>SuppressRate</b>                              
-                            </label>
-                </div>
-                <div class="col-md-2">
-                        <label>
-                                <input type="checkbox" [value]="Type"  class="form-control" name="Type" style="width:15px;height:15px;margin-left:17px" [(ngModel)]="editblock.Type"> <b>DayType</b>                            
-                        </label>
-                </div>
-                <div class="col-md-2">
-                      <label style="margin-left:-3px" >
-                              <input type="checkbox" [value]="Package"  class="form-control" name="Package" style="width:15px;height:15px;margin-left:18px" [(ngModel)]="editblock.Package"> <b>Package</b>                            
-                      </label>
-              </div>
-  
-              <div class="col-md-2">
-  
-              </div>
-              <div class="col-md-1"></div>
-  
     
-        </div></div>
-      </div>
-        
-  <div class="col-md-6">
-  
-          <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-        <legend style="margin-left:5px" ><b>Sell Controls</b></legend>
-        <div class="row" style="margin-top:-10px">
-            <div class="col-md-4" >
-                <div class="form-group" [class.has-error]="mini.touched && mini.invalid">
-                  <b style="margin-left:10px">MinStayThrough</b>
-                      <input type="text" id="mini" class="form-control" pattern="^[0-9]+$" ngModel name="mini" #mini="ngModel" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="editblock.Minimum_stay_through" required>                
-                      <div *ngIf="mini.touched && !mini.valid && mini.errors?.required " ngClass="{ 'has-error' : !mini.valid && submitAttempt }">
-                         
-                  </div></div></div>
-            <div class="col-md-4">
-                  <div class="form-group" [class.has-error]="max.touched && max.invalid">
-                  <b>MinOccupancy</b>
-                  <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_stay_through" required>
-                  <div *ngIf="max.touched && !max.valid && max.errors?.required " ngClass="{ 'has-error' : !max.valid && submitAttempt }">
-                                             
-              </div></div></div>
-              <div class="col-md-4">
-                      <div class="form-group" [class.has-error]="Advance.touched && Advance.invalid">
-                      <b>MinAdvanceBooking</b>
-                      <input type="text" id="Advance"  class="form-control" pattern="^[0-9]+$" ngModel name="Advance" #Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Minimum_Advance_Booking" required>                        
-                       <div *ngIf="Advance.touched && !Advance.valid && Advance.errors?.required " ngClass="{ 'has-error' : !Advance.valid && submitAttempt }">
-                      
-                  </div></div></div>
+    <div class="col-md-6">
+            <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+          <legend style="margin-left:5px" ><b>Components</b></legend>
+    
+          <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <label style="margin-left:-35px">
+                    <input type="checkbox" [value]="negotiated" id ="negotiateds" name="nego" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Negotiated"><b>Negotiated</b></label>
+                </div>
+                  
+                  <div class="col-md-2">
+                         <label style="margin-left:-8px" >
+                          <input type="checkbox" [value]="Rate"  name="Rate" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Rate" > <b>PrintRate</b></label>
+                  </div>
+                  <div class="col-md-2">
+                      <label style="margin-left:-15px"  >
+                  <input type="checkbox" [value]="Membership"  name="Membership" style="width:15px;height:15px;margin-left:32px;" [(ngModel)]="editblock.Membership" ><b>Membership</b></label>
+                  </div>
+                  <div class="col-md-2">
+                      <label >
+                              <input type="checkbox" [value]="discount"  name="discount" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.discount"><b>Discount</b> </label>        
+                     
+                  </div>
+                  <div class="col-md-2">
+                      <label >
+                              <input type="checkbox" [value]="Day"  name="Day" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.Day"><b>DayUse</b>                   
+                      </label>
+                  </div>
+                <div class="col-md-1"></div>
+                  
+            </div>
+            <div class="row">   
+                   <div class="col-md-1"></div>
+                   
+                  <div class="col-md-2">
+                      <label style="margin-left:-35px"  >
+                              <input type="checkbox" [value]="Complimentary"  name="Complimentary" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.Complimentary" ><b>Complimentary</b>                    
+                      </label>
+                  </div>
+                  <div class="col-md-2">
+                          <label style="margin-left:-8px"  >
+                                  <input type="checkbox" [value]="House"  name="House" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.House" ><b>HouseUse</b>                           
+                          </label>
+                      </div>
+                  <div class="col-md-2" >
+                              <label style="margin-left:-15px" >
+                                      <input type="checkbox" [value]="Suppress" name="Suppress" style="width:15px;height:15px;margin-left:30px" [(ngModel)]="editblock.Suppress"><b>SuppressRate</b>                              
+                              </label>
+                  </div>
+                  <div class="col-md-2">
+                          <label>
+                                  <input type="checkbox" [value]="Type" name="Type" style="width:15px;height:15px;margin-left:17px" [(ngModel)]="editblock.Type"> <b>DayType</b>                            
+                          </label>
+                  </div>
+                  <div class="col-md-2">
+                        <label style="margin-left:-3px" >
+                                <input type="checkbox" [value]="Package"  name="Package" style="width:15px;height:15px;margin-left:18px" [(ngModel)]="editblock.Package"> <b>Package</b>                            
+                        </label>
+                </div>
+    
+                <div class="col-md-2">
+    
+                </div>
+                <div class="col-md-1"></div>
+    
+      
+          </div>
         </div>
-        <div class="row" >
-              <div class="col-md-4" style="margin-top: -13px;margin-bottom: -10px;">
-                  <div class="form-group" [class.has-error]="Occupancy.touched && Occupancy.invalid">                
-                  <b style="margin-left:10px">MaxStayThrough</b> 
-                  <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="editblock.Minimum_Occupancy" required>
-                  <div *ngIf="Occupancy.touched && !Occupancy.valid && Occupancy.errors?.required " ngClass="{ 'has-error' : !Occupancy.valid && submitAttempt }">
-              
-              </div></div></div>
-              <div class="col-md-4" style="margin-top: -13px">
-                  <div class="form-group" [class.has-error]="Maximum_Advance.touched && Maximum_Advance.invalid">                                
-                  <b>MaxiOccupancy</b>
-                  <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Advance_Booking" required>                               
-                  <div *ngIf="Maximum_Advance.touched && !Maximum_Advance.valid && Maximum_Advance.errors?.required " ngClass="{ 'has-error' : !Maximum_Advance.valid && submitAttempt }">            
-              </div></div></div>
-              <div class="col-md-4" style="margin-top: -13px">
-                  <div class="form-group" [class.has-error]="Maximum_Occupancy.touched && Maximum_Occupancy.invalid">                                                
-                  <b>MaxiAdvanceBooking</b>
-                  <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Occupancy" required>                               
-                  <div *ngIf="Maximum_Occupancy.touched && !Maximum_Occupancy.valid && Maximum_Occupancy.errors?.required " ngClass="{ 'has-error' : !Maximum_Occupancy.valid && submitAttempt }">            
-             
-              </div></div></div>
-              
-         </div>
-         </div>
-      </div>
-  </div>
+        </div>
+          
+    <div class="col-md-6">
+    
+            <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+          <legend style="margin-left:5px" ><b>Sell Controls</b></legend>
+          <div class="row" style="margin-top:-10px">
+              <div class="col-md-4" >
+                  <div class="form-group" [class.has-error]="mini.touched && mini.invalid">
+                    <b style="margin-left:10px">MinStayThrough</b>
+                        <input type="text" id="mini" class="form-control" pattern="^[0-9]+$" ngModel name="mini" #mini="ngModel" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="editblock.Minimum_stay_through" required>                
+                        <div *ngIf="mini.touched && !mini.valid && mini.errors?.required " ngClass="{ 'has-error' : !mini.valid && submitAttempt }">
+                           
+                    </div></div></div>
+              <div class="col-md-4">
+                    <div class="form-group" [class.has-error]="max.touched && max.invalid">
+                    <b>MinOccupancy</b>
+                    <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_stay_through" required>
+                    <div *ngIf="max.touched && !max.valid && max.errors?.required " ngClass="{ 'has-error' : !max.valid && submitAttempt }">
+                                               
+                </div></div></div>
+                <div class="col-md-4">
+                        <div class="form-group" [class.has-error]="Advance.touched && Advance.invalid">
+                        <b>MinAdvanceBooking</b>
+                        <input type="text" id="Advance"  class="form-control" pattern="^[0-9]+$" ngModel name="Advance" #Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Minimum_Advance_Booking" required>                        
+                         <div *ngIf="Advance.touched && !Advance.valid && Advance.errors?.required " ngClass="{ 'has-error' : !Advance.valid && submitAttempt }">
+                        
+                    </div></div></div>
+          </div>
+          <div class="row" >
+                <div class="col-md-4" style="margin-top: -13px;margin-bottom: -10px;">
+                    <div class="form-group" [class.has-error]="Occupancy.touched && Occupancy.invalid">                
+                    <b style="margin-left:10px">MaxStayThrough</b> 
+                    <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="editblock.Minimum_Occupancy" required>
+                    <div *ngIf="Occupancy.touched && !Occupancy.valid && Occupancy.errors?.required " ngClass="{ 'has-error' : !Occupancy.valid && submitAttempt }">
+                
+                </div></div></div>
+                <div class="col-md-4" style="margin-top: -13px">
+                    <div class="form-group" [class.has-error]="Maximum_Advance.touched && Maximum_Advance.invalid">                                
+                    <b>MaxiOccupancy</b>
+                    <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Advance_Booking" required>                               
+                    <div *ngIf="Maximum_Advance.touched && !Maximum_Advance.valid && Maximum_Advance.errors?.required " ngClass="{ 'has-error' : !Maximum_Advance.valid && submitAttempt }">            
+                </div></div></div>
+                <div class="col-md-4" style="margin-top: -13px">
+                    <div class="form-group" [class.has-error]="Maximum_Occupancy.touched && Maximum_Occupancy.invalid">                                                
+                    <b>MaxiAdvanceBooking</b>
+                    <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Occupancy" required>                               
+                    <div *ngIf="Maximum_Occupancy.touched && !Maximum_Occupancy.valid && Maximum_Occupancy.errors?.required " ngClass="{ 'has-error' : !Maximum_Occupancy.valid && submitAttempt }">            
+               
+                </div></div></div>
+                
+           </div>
+           </div>
+        </div>
+    </div>
           </div>
              </div> 
   
@@ -327,7 +328,7 @@
   
             
            </div>
-    s
+    
            <div class="container-fluid">
              <div class="row">
                 
@@ -1126,18 +1127,18 @@
               </div> 
               <div class="modal-body">
                 <div class="table-responsive">
-                      <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <table class="table-hover table-bordered table-striped tableBodyScroll" style="width:100%;">
                         <thead style="background-color: #0077B5; color: white">
-                          <th>X</th>
-                          <th> Room Type</th>
+                          <th style="width:30px">X</th>
+                          <th style="width:120px"> Room Type</th>
                           <th> Description</th>
                          
                         </thead>
                         <tbody>
                               <tr *ngFor="let rlist of room">
-                              <td> <input type="checkbox" name="rm_type" id="" (checked)="exist(rlist)" (click)="toggleSelection(rlist)"> </td>                                
+                              <td style="width:30px"> <input type="checkbox" name="rm_type" id="" (checked)="exist(rlist)" (click)="toggleSelection(rlist)"> </td>                                
                               <!-- <td>{{rlist.id}}</td> -->
-                              <td>{{rlist.type}} </td>
+                              <td style="width:120px">{{rlist.type}} </td>
                               <td>{{rlist.description}}</td>
                           </tr>
                           
@@ -1169,22 +1170,22 @@
           </div>
           <div class="modal-body">
               <div class="table-responsive">
-                  <table class="table-hover table-bordered table-striped" style="width:100%;">
+                  <table class="table-hover table-bordered table-striped tableBodyScroll" style="width:100%;">
                       <thead style="background-color: #0077B5; color: white">
-                      <th>X</th>
-                      <th>Code</th>
-                      <th>Description</th>
-                      <th>currency</th>
+                      <th style="width:30px">X</th>
+                      <th style="width:100px">Code</th>
+                      <th style="width:130px">Description</th>
+                      <th style="width:160px">currency</th>
                       
                       </thead>
                       <tbody>
                       <tr *ngFor="let Packagemodel of revenueroom">
-                              <td> 
+                              <td style="width:30px"> 
                                   <input type="checkbox"  id="one" (checked)="exist1(Packagemodel)" (click)="toggleSelection1(Packagemodel)">                                          
                               </td>
-                              <td >{{Packagemodel.package_code}}</td>
-                              <td>{{Packagemodel.package_code_description}} </td>
-                              <td>{{Packagemodel.package_code_currency}}</td>
+                              <td style="width:100px" >{{Packagemodel.package_code}}</td>
+                              <td style="width:130px">{{Packagemodel.package_code_description}} </td>
+                              <td style="width:145px">{{Packagemodel.package_code_currency}}</td>
                          
                       </tr>
                       
@@ -1214,19 +1215,17 @@
                   </div>
                   <div class="modal-body">
                   <div class="table-responsive">
-                      <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <table class="table-hover table-bordered table-striped tableBodyScroll" style="width:100%;">
                           <thead style="background-color: #0077B5; color: white">
-                              <th>X</th>
-                              
-                              <th> Room Type</th> 
+                              <th style="width:20px">X</th>
+                              <th style="width:130px"> Room Type</th> 
                               <th> Description</th>
                               
                           </thead> 
                           <tbody> 
                               <tr *ngFor="let pack of room">
-                                  <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
-                                 
-                                  <td>{{pack.type}} </td>
+                                  <td style="width:20px"> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
+                                  <td style="width:130px">{{pack.type}} </td>
                                   <td>{{pack.description}}</td>
                               </tr>
                               
@@ -1283,19 +1282,19 @@
               </div>
               <div class="modal-body">
                 <div class="table-responsive">
-                      <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <table class="table-hover table-bordered table-striped tableBodyScroll" style="width:100%;">
                         <thead style="background-color: #0077B5; color: white">
-                              <th>X</th>
-                              <th>Code</th>
-                              <th>Description</th>
+                              <th style="width:30px">X</th>
+                              <th style="width:100px">Code</th>
+                              <th style="width:290px">Description</th>
                               <th>currency</th>
                               
                         </thead>
                         <tbody>
                           <tr *ngFor="let rmtype of revenueroom">
-                              <td> <input type="checkbox" (checked)="exist3(rmtype)" (click)="toggleSelection3(rmtype)"> </td>                                
-                              <td >{{rmtype.package_code}}</td>
-                              <td>{{rmtype.package_code_description}} </td>
+                              <td style="width:30px"> <input type="checkbox" (checked)="exist3(rmtype)" (click)="toggleSelection3(rmtype)"> </td>                                
+                              <td  style="width:100px">{{rmtype.package_code}}</td>
+                              <td style="width:290px">{{rmtype.package_code_description}} </td>
                               <td>{{rmtype.package_code_currency}}</td>
                           </tr>
                           
