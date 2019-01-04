@@ -14,9 +14,9 @@
           <div class ="col-md-3">
               
               <div class="form-group" style="width:82%;">
-                  <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
-                  <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
-                </div>
+                  <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name"  required>
+                  <!-- <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
+                </div> -->
               </div>
             </div>
           <div class="col-md-2"><label for="room" style="margin-top: 27px;margin-left: -134px;">Start Date</label></div>
@@ -30,7 +30,7 @@
               <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
               <div class ="col-md-3">
              <div class="form-group" style="width:82%;">
-          <select class="form-control input-sm" name="Status"id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSel(status)" >
+          <select class="form-control input-sm" name="Status"id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelect(status)"  >
             <option *ngFor="let option of roomtype" 
              [ngValue]="option.status"> 
              {{option.status}}</option>
@@ -43,10 +43,10 @@
      <div class="row">
         <div class ="col-md-2"> <label for="room">Block Code</label></div>
     <div class ="col-md-3" style="margin-left: -89px;">
-      <div class="form-group" style="width:82%;" [class.has-error]="Block.touched && Block.invalid">
+      <div class="form-group" style="width:82%;" >
       <input type="text"name="BlockCode"id="BlockCode" class="form-control input-sm" [(ngModel)]="BlockCode" #Block="ngModel" required >
-      <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
-      </div>
+      <!-- <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
+      </div> -->
   </div>
    </div>
    <div class="col-md-2 "><label for="room" style="margin-left: -42px;">End Date</label></div>
@@ -89,6 +89,7 @@
           <th style="width:100px">StartDate</th>
           <th style="width:65px">Nights</th>
           <th style="width:100px">EndDate</th>
+          <th style="width:65px">Rooms</th>
           <!-- <th> RoomsperDay</th>
           <th> MeetingSpaceSize</th>
           <th> MeetingSpaceType</th> -->
@@ -105,13 +106,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let array of tableschanges | filterdata: Name :'block_name'|filterdata: BlockCode :'block_code';let i=index"
+        <tr *ngFor="let array of tableschanges |filterdata: Name  :'block_name' |filterdata: BlockCode:'block_code' ;let i=index"
          (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:40px">{{i+1}}</td>
             <td style="width:80px">{{array.block_id}}</td>
             <td style="width:100px">{{array.start_date}}</td>
             <td style="width:65px">{{array.nights}}</td>
             <td style="width:100px">{{array.end_date}}</td>
+            <td style="width:65px">{{array.total_rooms_perday}}</td>
             <!-- <td>{{array.rooms_per_day}}</td>
             <td>{{array.meeting_space_size}}</td>
             <td>{{array.meeting_space_type}}</td> -->
@@ -150,7 +152,8 @@
    <button class="btn btn-warning"  routerLink = "/editblock" style="width:100%" [disabled]=blc >Edit</button>
    </div>
  <div class="col-md-2">
-   <button class="btn btn-danger"style="width:100%" data-toggle="modal" data-target="#groupoptions" [disabled]=grop>Group Options</button>
+    <button class="btn btn-danger"style="width:100%" routerLink = "/mains">Close</button>
+   <!-- <button class="btn btn-danger"style="width:100%" data-toggle="modal" data-target="#groupoptions" [disabled]=grop>Close</button> -->
  </div>
 </div>
 </div>

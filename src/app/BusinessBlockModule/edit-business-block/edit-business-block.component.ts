@@ -51,10 +51,54 @@ export class EditBusinessBlockComponent implements OnInit {
     public acc_com;
     public account_name;
     public Travel_Agent;
+    public revenueroom =[];
     public source_name;
     public Contact_name;
     public Group_name;
+    public package_value = " ";
+    public packages_code_bind=[]
+    selected_id1 = [];
+  selected_code = [];
+  idx1: any;
+  public packages_details:any;
+  public package_details_value:any;
+  public rmid1:any;
+  public rmcodes:any;
+  public selected1=[];
+  exist1(item) {
+    this.selected1.indexOf(item) > -1;
+  }
+  toggleSelection1(item) {
+    this.idx1 = this.selected1.indexOf(item);
+    // this.room_type += item.type
+    console.log("string", item)
+    if (this.idx1 > -1) {
+      this.selected1.splice(this.idx1, 1);
+      this.selected_id1.splice(this.idx1, 1);
+      this.selected_code.splice(this.idx1, 1);
+
+    }
+    else {
+      this.selected1.push(item);
+      this.selected_id1.push(item.package_code_id);
+      this.selected_code.push(item.package_code);
+
+    }
+    this.rmcodes = this.selected_code.toString();
+    this.rmid1 = this.selected_id1.toString();
+    console.log("selected id", this.rmid1,this.selected_id1);
+    console.log("selected code", this.rmcodes);
+
+  }
+  
     ngOnInit() {
+
+         //packages
+ this.editblockservice.revenuepackages()
+ .subscribe((resp: any) => {
+   this.revenueroom = resp.Return;
+   console.log("package value",this.revenueroom)
+ });
         // block status sropdown.....................
         this.editblockservice.blockstatusdropdown()
             .subscribe((resp: any) => {
@@ -113,7 +157,7 @@ export class EditBusinessBlockComponent implements OnInit {
         //  Ratecode Dropdown.............................
         this.editblockservice.Ratecodedropdown()
             .subscribe((resp: any) => {
-                this.ratecode = resp.ReturnValue;
+                this.ratecode = resp.Return;
                 console.log(this.ratecode);
             });
         // Reservation type dropdown......................
@@ -132,10 +176,35 @@ export class EditBusinessBlockComponent implements OnInit {
         //  Query Editblock ....................................
         this.editblockservice.QueryEditblock()
             .subscribe((resp: any) => {
+                this.packages_code_bind=resp.packages;
+                console.log("packages details",this.packages_code_bind)
+                for (var i = 0; i < this.packages_code_bind.length; i++)
+                {
+                 this.packages_details = this.packages_code_bind[i]['package_code']
+                //  this.packages_details = this.packages_details.split(0)
+                
+                 //  console.log(this.roomdetails)
+                 //  this.amentiesss = this.amenitiestemp.amenitie.slice(0,3);
+                 //  this.amentiesss = this.amentiesss.slice(0,3);
+                 //  console.log(this.amentiesss)
+                //   console.log(this.packages_details)
+                if (this.package_value == " "){
+                   this.package_value += this.packages_details.toString() 
+                }
+                else{
+                    this.package_value += ","+this.packages_details.toString() 
+                }
+                console.log("*",this.package_value) 
+                // this.package_details_value.push(this.package_value)
+                // this.package_value = this.package_value.concat(this.package_value)
+                // this.package_value = this.package_value.replace(',','')
+                // console.log("00",this.package_value)
+                }
+                console.log(this.package_value)
                 this.queryedit = resp.ReturnValue;
                 this.profile_types = resp.profiletype;
                 this.account_name = resp.accountname;
-                if(this.profile_types == "company"){
+                if(this.profile_types == "Company"){
                       this.acc_com = this.account_name;
                       console.log("company account name")
                 }
@@ -215,8 +284,8 @@ export class EditBusinessBlockComponent implements OnInit {
         this.Inventorydetails = this.inventory.filter(
             inventoryde => inventoryde.inventory_control   === block.inventory_control );  
         this.ratecodedetails = this.ratecode.filter(
-            rateco => rateco.ratecode   === block.ratecode );  
-            // console.log("rate code is worked",this.ratecodedetails[0].id)
+            rateco => rateco.rate_code   === block.ratecode );  
+            console.log("rate code is worked",this.ratecodedetails[0].ratecode_id)
         this.paymentdetails = this.payment.filter(
             paymnt => paymnt.payment_description   === block.payment_description );  
         this.meetingspacedetails = this.meetingsizetype.filter(
@@ -235,6 +304,7 @@ export class EditBusinessBlockComponent implements OnInit {
                        "start_date":block.start_date ,
                        "end_date":block.end_date,
                        "nights":block.nights.toString(),
+                       "block_name":block.block_name !=null ? block.block_name:"",
                        "block_type":this.blocktypedetails.length > 0? this.blocktypedetails[0].id.toString() : ""
                       },
                "Rooms":   {
@@ -243,7 +313,7 @@ export class EditBusinessBlockComponent implements OnInit {
                       "cutoff_date":block.cutoff_date !=null ? block.cutoff_date.toString() : "",
                       "cutoff_days":block.cutoff_days != null ? block.cutoff_days.toString():"",
                       "inventory_control_id ":this.Inventorydetails.length > 0 ? this.Inventorydetails[0].inventory_control_id.toString() : "",
-                      "ratecode_id":this.ratecodedetails.length > 0 ? this.ratecodedetails[0].id.toString() : "",
+                      "ratecode_id":this.ratecodedetails.length > 0 ? this.ratecodedetails[0].ratecode_id.toString() : "",
                       "print_rate":block.print_rate !=null ? block.print_rate.toString() : "",
                       "suppress_rate":block.suppress !=null ? block.suppress.toString():"",
                       "packages":block.packages !=null ? block.packages.toString() : "",
