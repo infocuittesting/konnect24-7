@@ -14,7 +14,7 @@ export class ProfilestatisticsService {
  const headers = new Headers({'Content-Type':'application/json'})
  const options = new RequestOptions({ headers: headers })
  let body={
-   "pf_id":this.session.retrieve("profile_id")
+   "pf_id":this.session.retrieve("pf_id")
  }
  return this.http.post('https://hotel360.herokuapp.com/Profile/QueryProfileStatistics',body,options)
     .map(this.extractData)
