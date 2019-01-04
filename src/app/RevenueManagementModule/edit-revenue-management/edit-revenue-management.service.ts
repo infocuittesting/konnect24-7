@@ -219,7 +219,7 @@ export class EditRevenueManagementService {
        "packages_id":packagesids,
        "rate_tier_id":tab
     }
-    console.log(JSON.stringify(body));
+    console.log("testtttt",JSON.stringify(body));
 
     return this.http.post('http://hotel360.herokuapp.com/HOTEL_REM_POST_UPDATE_RATE_DETAILS',body,options)
        .map(this.extractData)
@@ -269,7 +269,7 @@ export class EditRevenueManagementService {
   }
 
   
-  console.log(JSON.stringify(body));
+  console.log("testttttt",JSON.stringify(body));
     return this.http.post('http://hotel360.herokuapp.com/HOTEL_REM_POST_INSERT_RATE_DETAILS',body,options)
        .map(this.extractData)
 

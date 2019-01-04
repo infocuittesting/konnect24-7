@@ -1176,7 +1176,6 @@
                       <th style="width:100px">Code</th>
                       <th style="width:130px">Description</th>
                       <th style="width:160px">currency</th>
-                      
                       </thead>
                       <tbody>
                       <tr *ngFor="let Packagemodel of revenueroom">
@@ -1184,9 +1183,8 @@
                                   <input type="checkbox"  id="one" (checked)="exist1(Packagemodel)" (click)="toggleSelection1(Packagemodel)">                                          
                               </td>
                               <td style="width:100px" >{{Packagemodel.package_code}}</td>
-                              <td style="width:130px">{{Packagemodel.package_code_description}} </td>
-                              <td style="width:145px">{{Packagemodel.package_code_currency}}</td>
-                         
+                              <td style="width:130px">{{Packagemodel.short_description}} </td>
+                              <td style="width:145px">{{Packagemodel.currency}}</td>
                       </tr>
                       
                       </tbody>
@@ -1294,8 +1292,8 @@
                           <tr *ngFor="let rmtype of revenueroom">
                               <td style="width:30px"> <input type="checkbox" (checked)="exist3(rmtype)" (click)="toggleSelection3(rmtype)"> </td>                                
                               <td  style="width:100px">{{rmtype.package_code}}</td>
-                              <td style="width:290px">{{rmtype.package_code_description}} </td>
-                              <td>{{rmtype.package_code_currency}}</td>
+                              <td style="width:290px">{{rmtype.short_description}} </td>
+                              <td>{{rmtype.currency}}</td>
                           </tr>
                           
                         </tbody>

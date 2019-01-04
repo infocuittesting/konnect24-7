@@ -97,7 +97,7 @@
                 <td style="width:40px"> {{i+1}}</td> 
                 <td style="width:170px">  {{searched.pf_firstname}}</td>
                 <td style="width:60px"> {{searched.res_room}} </td>
-                <td style="width:90px" [ngClass]="{'colorchange':searched.rm_room_status=='dirty','colorchange_clean':searched.rm_room_status=='Clean','colorchange_Inspected':searched.rm_room_status=='Inspected','colorchange_Pickup':searched.rm_room_status=='Pick Up','colorchange_ofs':searched.rm_room_status=='Out Of Service','colorchange_ofo':searched.rm_room_status=='Out Of Order'}"> {{searched.rm_room_status}}</td>              
+                <td style="width:90px" [ngClass]="{'colorchange':searched.rm_room_status=='Dirty','colorchange_clean':searched.rm_room_status=='Clean','colorchange_Inspected':searched.rm_room_status=='Inspected','colorchange_Pickup':searched.rm_room_status=='Pick Up','colorchange_ofs':searched.rm_room_status=='Out Of Service','colorchange_ofo':searched.rm_room_status=='Out Of Order'}"> {{searched.rm_room_status}}</td>              
                 <td style="width:105px" *ngIf="showMore!=true"> {{searched.res_arrival}} </td> 
                 <td style="width:130px" *ngIf="showMore!=true"> {{searched.res_depature}} </td>
                 <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
