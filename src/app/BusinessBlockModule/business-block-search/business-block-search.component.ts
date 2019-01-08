@@ -56,7 +56,20 @@ export class BusinessBlockSearchComponent implements OnInit {
     this.roomtype=resp.ReturnValue;
     //  console.log(this.roomtype);
     });
+  
 
+  }
+
+  blocknamecheck(Name){
+    if (Name == this.tableschanges['block_name'])
+    {
+      console.log("its worfdsd",this.tableschanges['block_name'])
+       return true;
+       
+    }
+    else{
+      return false;
+    }
   }
   // dropdown status filter
   onSelect(val){

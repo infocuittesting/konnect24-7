@@ -14,7 +14,7 @@
           <div class ="col-md-3">
               
               <div class="form-group" style="width:82%;">
-                  <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name"  required>
+                  <input type="text" id="Names" name="Names"(change) ="blocknamecheck(Name)"style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name"  required>
                   <!-- <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
                 </div> -->
               </div>
@@ -106,7 +106,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let array of tableschanges |filterdata: Name  :'block_name' |filterdata: BlockCode:'block_code' ;let i=index"
+        <tr *ngFor="let array of tableschanges |filterdata: Name :'block_name' |filterdata: BlockCode:'block_code' ;let i=index"
          (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:40px">{{i+1}}</td>
             <td style="width:80px">{{array.block_id}}</td>
@@ -118,11 +118,11 @@
             <td>{{array.meeting_space_size}}</td>
             <td>{{array.meeting_space_type}}</td> -->
             <!-- <td>{{array.attendess}}</td> -->
-            <td style="width:100px">{{array.block_code|titlecase }}</td>
+            <td style="width:100px">{{array?.block_code|titlecase }}</td>
             <td style="width:100px">{{array.status|titlecase }}</td>
             <td style="width:80px">{{array.pf_id|titlecase }}</td>
             <td style="width:90px">{{array.rate_description|titlecase }}</td>
-            <td style="width:150px" *ngIf="showMore!=true">{{array.block_name|titlecase }}</td>
+            <td style="width:150px" *ngIf="showMore!=true">{{array?.block_name|titlecase }}</td>
             <td *ngIf="showMore!=true">{{array.marketgroup_description|titlecase }}</td>
             <td  style="width: 120px"*ngIf="showMore==true">{{array.sourcedescription|titlecase }}</td>
             <td *ngIf="showMore==true">{{array.owner|uppercase}}</td>
