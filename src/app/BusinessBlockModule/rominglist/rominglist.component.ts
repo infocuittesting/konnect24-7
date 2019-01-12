@@ -23,7 +23,7 @@ public show_room_type=[];
     this.roomlistservice.QueryRoomtypeGrid()
   .subscribe((resp: any) => {
           this.roomsgrid=resp.Return_value;
-       
+          console.log("QueryRoomtypeGrid",this.roomsgrid);
           // console.log("type",item[].available_rooms)
           for (var item of this.roomsgrid){
                 //  console.log("type",this.i.type)  
@@ -31,9 +31,9 @@ public show_room_type=[];
                 console.log("type",item.available_rooms)
                 this.room_type_count.push(item.type,item.available_rooms) 
                 this.show_room_type.push(item.type)
-                console.log("diiiiiiiiiii",this.show_room_type)
+                console.log("aravinth",this.show_room_type)
           }
-          console.log("QueryRoomtypeGrid",this.roomsgrid);
+          
           console.log("list",this.room_type_count)
           
        });  
@@ -63,21 +63,23 @@ public j:number;
 public k:number;
 public edit_key;
 public res_details=[];
+// room type screennnnn
 size(roomtype){
   console.log("selected room type",roomtype)
   if (this.room_type_count[0] == roomtype){
     console.log("roomtype",roomtype,this.room_type_count.indexOf(roomtype))
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1  
     this.roomsgrid[0].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
+    console.log("first",this.room_type_count)
     if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
       // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
       // this.i = this.room_type_count.indexOf(roomtype)+2     
-      // console.log(this.i)
+      console.log("first if condition",this.room_type_count)
     }
   }
   else if(this.room_type_count[2] == roomtype){
-    console.log("roomtype",roomtype)
+    console.log("roomtype okay",roomtype)
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
     this.roomsgrid[1].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
 
@@ -85,11 +87,11 @@ size(roomtype){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
       // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
 
-      // console.log(";alksdjfa;lskdsdkj")
+      console.log(";alksdjfa;lskdsdkj",this.show_room_type)
    }
   }
   else if(this.room_type_count[4] == roomtype){
-    console.log("roomtype",roomtype)
+    console.log("roomtype else",roomtype)
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
     this.roomsgrid[2].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
 
@@ -97,11 +99,12 @@ size(roomtype){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
       // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
        
-      // console.log(";alksdjfa;lskdsdkj")
+      console.log("last if condition",this.room_type_count)
    }
   }
   
   console.log("list1111",this.room_type_count)
+  console.log("wrong roo type",this.show_room_type)
   console.log("final room grid.********8",this.roomsgrid)
 }
 
@@ -188,6 +191,13 @@ saveRows(index,rooms){
   
   this.savedetails[index].editFlag=false;
   
+}
+
+// delete rows
+deleterows(index,room){
+  this.savedetails.splice(index,1);
+  this.savedetails1.splice(index,1);
+ console.log("delete content",this.savedetails,this.savedetails1)
 }
 // CREATE GROUP RESERVATION
 public groupresv;

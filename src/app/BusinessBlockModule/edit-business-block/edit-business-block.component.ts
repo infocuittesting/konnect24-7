@@ -65,6 +65,9 @@ export class EditBusinessBlockComponent implements OnInit {
   public rmid1:any;
   public rmcodes:any;
   public selected1=[];
+  public print_rates:any;
+  public suppress_rates:any;
+  public guranted_block:any;
   exist1(item) {
     this.selected1.indexOf(item) > -1;
   }
@@ -242,31 +245,33 @@ export class EditBusinessBlockComponent implements OnInit {
     ratecodedetails:any;
     paymentdetails:any;
     meetingspacedetails:any;
+    
     editblockheader(block) {
+        console.log(block.print_rate,block.suppress_rate,block.guranteed)
             if(block.print_rate == true)
             {
-                block.print_rate = "1"
+               this.print_rates = "1"
             }
             else
             {
-                block.print_rate = "0"
+               this.print_rates = "0"
             }
-            if(block.suppress == true)
+            if(block.suppress_rate == true)
             {
-                block.suppress = "1"
+                this.suppress_rates = "1"
             }
             else{
-                block.suppress = "0"
+              this.suppress_rates = "0"
             }
             if(block.guranteeds == true)
             {
-                block.guranteeds = "1"
+                this.guranted_block = "1"
 
             }
             else{
-                block.guranteeds = "0"
+                this.guranted_block = "0"
             }
-
+console.log("checkbo values",this.guranted_block,this.print_rates,this.suppress_rates)
         this.orginSelectedDetail = this.origin.filter(
             orgn => orgn.origindescription === block.origindescription);
             // console.log("orginSelectedDetail ++"+this.orginSelectedDetail !=null ? this.orginSelectedDetail[0].id : null);
@@ -314,8 +319,8 @@ export class EditBusinessBlockComponent implements OnInit {
                       "cutoff_days":block.cutoff_days != null ? block.cutoff_days.toString():"",
                       "inventory_control_id ":this.Inventorydetails.length > 0 ? this.Inventorydetails[0].inventory_control_id.toString() : "",
                       "ratecode_id":this.ratecodedetails.length > 0 ? this.ratecodedetails[0].ratecode_id.toString() : "",
-                      "print_rate":block.print_rate !=null ? block.print_rate.toString() : "",
-                      "suppress_rate":block.suppress !=null ? block.suppress.toString():"",
+                      "print_rate":this.print_rates !=null ? this.print_rates.toString() : "",
+                      "suppress_rate":this.suppress_rates !=null ? this.suppress_rates.toString():"",
                       "packages":block.packages !=null ? block.packages.toString() : "",
                              
                       "follow_date":block.follow_date !=null ? block.follow_date.toString():""
@@ -334,7 +339,7 @@ export class EditBusinessBlockComponent implements OnInit {
                   "Catering":
                        {
                        "block_id":this.session.retrieve("blockid").toString(),
-                       "guranteed":block.guranteeds != null ? block.guranteeds.toString() : "",
+                       "guranteed":this.guranted_block != null ? this.guranted_block.toString() : "",
                        "attenders":block.attenders !=null ? block.attenders.toString() : "",
                        "info_board":block.info_board !=null ? block.info_board.toString():"",
                         "contract_no":block.contract_no !=null ? block.contract_no.toString():"",

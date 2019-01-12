@@ -310,16 +310,16 @@
                       </div>
                     </div>
                     <div class="col-md-2" style="margin-top: -45px;">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"
+                      <div class="form-group">
+                        <input type="checkbox" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"  [checked]="true" 
                           [(ngModel)]="editblock.print_rate">
-                        <label class="custom-control-label" for="customCheck">Print Rate</label>
+                        <label >Print Rate</label>
                       </div>
                       <br>
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"
+                      <div class="form-group">
+                        <input type="checkbox" id="" name="example2" style="margin-left: 14px;zoom:1.5;"  [checked]="true" 
                           [(ngModel)]="editblock.suppress_rate">
-                        <label class="custom-control-label" for="customCheck">Suppress Rate</label>
+                        <label  >Suppress Rate</label>
                       </div>
                     </div>
   
@@ -378,7 +378,7 @@
                         </div>
                         <div class="col-md-2" style="margin-top: 14px;">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox" name="checkbox" style="zoom:1.5" [(ngModel)]="editblock.guranteed">
+                            <input type="checkbox" class="custom-control-input" id="checkbox" name="checkbox" style="zoom:1.5"  [checked]="true" [(ngModel)]="editblock.guranteed">
                             <label for="checkbox">Guranteed</label>
                           </div>
   
