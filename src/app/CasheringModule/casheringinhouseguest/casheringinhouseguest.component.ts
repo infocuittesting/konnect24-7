@@ -347,8 +347,14 @@ onSelect(val){
   this.housetable = this.orderr.filter(x => x.res_res_type == val)
 } 
 
+public mainroom:string;
+public mainpersonname:string
+public company:string
 clear(){
 
+  this.mainroom=''
+  this.mainpersonname=''
+  this.company=''
   this.cashinservice.inhousetable()
   .subscribe((resp: any) => {
 

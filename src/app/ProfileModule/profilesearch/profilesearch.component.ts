@@ -266,11 +266,23 @@ this.session.store("pf_individual_country",details.pf_individual_country);
 this.session.store("pf_individual_vip",details.pf_individual_vip);
 this.session.store("dateofbirth",details.pf_date_of_birth)
 
+this.session.store("postalcode",details.pf_postalcode)
+this.session.store("companyaddress",details.pf_company_address)
+this.session.store("businessaddress",details.pf_business_address)
+this.session.store("city",details.pf_city)
+this.session.store("state",details.pf_company_state)
+this.session.store("profiletype",details.pf_type)
 
 console.log("guruuuuuuuuuuu",details.pf_account);
 
 
+// individualprofile
+
+
+
+
+
 }
-  
+   
 
 }

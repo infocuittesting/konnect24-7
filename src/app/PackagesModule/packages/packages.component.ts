@@ -96,8 +96,9 @@ export class PackagesComponent implements OnInit {
   this.session.store("id",detapack.package_code_id);
 
   //this.id=details.package_code_id;
-//this.session.store("ids",detailspack.package_code_id);
+  //this.session.store("ids",detailspack.package_code_id);
   //this.codesr=this.detapack.package_code_id;
+  
   console.log("idddddddd",detapack.package_code_id);
   }
 }
