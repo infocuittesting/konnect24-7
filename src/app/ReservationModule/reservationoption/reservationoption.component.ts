@@ -635,12 +635,6 @@ this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
    });
 
 
-     this.pppService.gettransaction()
-   .subscribe((resp: any) => {
-     this.listtc=resp.ReturnValue;
-   });
-
-
 //Get privileges
 this.pppService.getprivileges()
 .subscribe((resp: any) => {

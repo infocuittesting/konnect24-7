@@ -31,12 +31,12 @@
                   <tr *ngFor="let housekeepinglist of house ; let i = index">
                     <td >{{i+1}}</td>
                     <td>{{housekeepinglist.rm_room}}</td>
-                    <td>{{housekeepinglist.rm_room_type}}</td>
-                    <td>{{housekeepinglist.rm_room_status}}</td>
-                    <td>{{housekeepinglist.rm_fo_status}}</td>
-                    <td>{{housekeepinglist.rm_reservation_status}}</td>
-                    <td>{{housekeepinglist.rm_floor}}</td>
-                    <td>{{housekeepinglist.rm_room_class}}</td>
+                    <td>{{housekeepinglist.rm_room_type |titlecase}}</td>
+                    <td>{{housekeepinglist.rm_room_status |titlecase}}</td>
+                    <td>{{housekeepinglist.rm_fo_status |titlecase}}</td>
+                    <td>{{housekeepinglist.rm_reservation_status |titlecase}}</td>
+                    <td>{{housekeepinglist.rm_floor |titlecase}}</td>
+                    <td>{{housekeepinglist.rm_room_class |titlecase}}</td>
                     <td>{{housekeepinglist.rm_am_pm}}</td>
                     <td>{{housekeepinglist.rm_features}}</td>
                    </tr>
@@ -178,9 +178,9 @@
 <div class="row">
 
 <div class="col-lg-3" style="margin-left:20px">
-<input type="checkbox" [(ngModel)]="checkboxflg.checkcln" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcln,'clean')" name="clean"><b style="padding-left:10px;">Clean</b><br>
-<input type="checkbox" [(ngModel)]="checkboxflg.checkDir" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkDir,'dirty')" name="dirty"><b style="padding-left:10px;">Dirty</b><br>
-<input type="checkbox" [(ngModel)]="checkboxflg.checkpkup" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkpkup,'pick up')" name="pickup"><b style="padding-left:10px;">Pick Up</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkcln" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcln,('clean'&&'Clean'))" name="clean"><b style="padding-left:10px;">Clean</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkDir" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkDir,('dirty'&&'Dirty'))" name="dirty"><b style="padding-left:10px;">Dirty</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkpkup" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkpkup,('pick up'&&'Pick up'))" name="pickup"><b style="padding-left:10px;">Pick Up</b><br>
 </div>
 <input type="checkbox" [(ngModel)]="checkboxflg.checkser" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkser,'Out Of Service')" name="outofservice"><b style="padding-left:10px;">Out Of Service</b><br>
 <input type="checkbox" [(ngModel)]="checkboxflg.checkord" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkord,'Out Of Order')" name="outoforder"><b style="padding-left:10px;">Out Of Order</b><br>
@@ -194,8 +194,8 @@
 </div>
 
 <div class="col-lg-4" id="div2">
-<input type="checkbox" [(ngModel)]="checkboxflg.checkvac" (change)="filtercheckboxData1(checkboxflg.checkvac,'vaccant')"><b style="padding-left:10px;">Vaccant</b><br>
-<input type="checkbox" [(ngModel)]="checkboxflg.checkocc" (change)="filtercheckboxData1(checkboxflg.checkocc,'occupied')"><b style="padding-left:10px;">Occupied</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkvac" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkvac,'vaccant')"><b style="padding-left:10px;">Vaccant</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkocc" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkocc,'occupied')"><b style="padding-left:10px;">Occupied</b><br>
 
 </div>
 </div><br>
@@ -240,14 +240,14 @@
   
   <td style="width:30px"><input type="checkbox" (checked)="exist(housekeepinglist)" (click)="toggleSelection(housekeepinglist)"></td>
   <td>{{housekeepinglist.rm_room}}</td>
-  <td>{{housekeepinglist.rm_room_type}}</td>
-  <td>{{housekeepinglist.rm_room_status}}</td>
-  <td>{{housekeepinglist.rm_fo_status}}</td>
-  <td>{{housekeepinglist.rm_reservation_status}}</td>
-  <td>{{housekeepinglist.rm_floor}}</td>
-  <td>{{housekeepinglist.rm_room_class}}</td>
-  <td>{{housekeepinglist.rm_am_pm}}</td>
-  <td>{{housekeepinglist.rm_features}}</td>
+  <td>{{housekeepinglist.rm_room_type |titlecase}}</td>
+  <td>{{housekeepinglist.rm_room_status |titlecase}}</td>
+  <td>{{housekeepinglist.rm_fo_status |titlecase}}</td>
+  <td>{{housekeepinglist.rm_reservation_status |titlecase}}</td>
+  <td>{{housekeepinglist.rm_floor |titlecase}}</td>
+  <td>{{housekeepinglist.rm_room_class |titlecase}}</td>
+  <td>{{housekeepinglist.rm_am_pm }}</td>
+  <td>{{housekeepinglist.rm_features }}</td>
  </tr>
 
 </tbody>
@@ -264,7 +264,7 @@
 
 <button type="button" class="btn btn-warning" style="width:13%;" data-toggle="modal" data-target="#myModal"><b>Report</b></button>
 
-<button type="button" class="btn btn-primary" style="width:13%;" disabled><b>Statistics</b></button>
+<button type="button" class="btn btn-primary" style="width:13%;" data-toggle="modal" data-target="#statistics"><b>Statistics</b></button>
 
 <button type="button" class="btn btn-success" style="width:13%;" (click)="roomassign()" routerLink="/roomassignment" (click)="cleardata()" [disabled]=ok><b>Ok</b></button>
 
@@ -279,3 +279,139 @@
 
 
 
+<!-- Statistics Start-->
+
+<div class="modal modal-open" id="statistics" role="dialog">
+  <div class="modal-dialog">
+  
+  <!-- Modal content-->
+  <div class="modal-content" style="width:180%;height:80%;margin-left: -35%;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+     <h4>Connect 24/7 Hotel</h4>
+    </div>
+    <div class="modal-body">
+    <div class="row" style="margin:20px">
+      <div class="col-md-6">
+        <label for="">Totals</label>
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr>
+              <th>Total Rooms</th>
+              <td>{{statistics.Total_Rooms}}</td>
+            </tr>
+            <tr>
+              <th>Total Clean</th>
+              <td>{{statistics.Total_Clean}}</td>
+            </tr>
+            <tr>
+              <th>Total Dirty</th>
+              <td>{{statistics.Total_Dirty}}</td>
+            </tr>
+            <tr>
+              <th>Total Inspected</th>
+              <td>{{statistics.Total_Inspected}}</td>
+            </tr>
+            <tr>
+              <th>Total Out Of Order</th>
+              <td>{{statistics.Total_oo}}</td>
+            </tr>
+            <tr>
+              <th>Total Out of Service</th>
+              <td>{{statistics.Total_os}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <label for="">Details</label>
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr>
+              <th>Not Reserved-Clean</th>
+              <td>{{statistics.nres_clean}}</td>
+            </tr>
+            <tr>
+              <th>Not Reserved-Dirty</th>
+              <td>{{statistics.nres_dirty}}</td>
+            </tr>
+            <tr>
+              <th>Not Reserved-Inspected</th>
+              <td>{{statistics.nres_insp}}</td>
+            </tr>
+            <tr>
+              <th>Not Reserved-Out of Service</th>
+              <td>{{statistics.nres_os}}</td>
+            </tr>
+            <tr>
+              <th>Reserved-Clean</th>
+              <td>{{statistics.res_clean}}</td>
+            </tr>
+            <tr>
+              <th>Reserved-Dirty</th>
+              <td>{{statistics.res_dirty}}</td>
+            </tr>
+            <tr>
+              <th>Reserved-Inspected</th>
+              <td>{{statistics.res_insp}}</td>
+            </tr>
+            <tr>
+              <th>Reserved-Out of Service</th>
+              <td>{{statistics.res_os}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <div class="col-md-6">
+        <div class="input-group">
+          <label for=""><input type="checkbox" name="" id=""> Include Pseudo Meeting Rooms</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+      <button type="button" class="btn btn-info" data-dismiss="modal" style="width:100%"><b>Refresh</b></button>
+      </div>
+      <div class="col-md-2">
+      <button type="button" class="btn btn-success" data-toggle="modal" style="width:100%" data-target="#reportchanges" data-dismiss="modal"><b>Report</b></button>
+      </div>
+      <div class="col-md-2">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:100%"><b>Close</b></button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  </div>
+  <!-- Statistics end -->
+
+  <!---Report statistics response-->
+
+<div class="modal fade" id="reportchanges" role="dialog">
+    <div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4>Report Parameters</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+        <b > Housekeeping Details</b>          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="text-center">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Preview</b></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Print</b></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>File</b></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+    </div>
+    <!-- Report statistics -->

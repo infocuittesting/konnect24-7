@@ -352,15 +352,6 @@ getdepartment():  Observable<object[]> {
      .map(this.extractData)
 }
 
-
-// transaction code
-gettransaction():  Observable<object[]> {       
-  const headers = new Headers({'Content-Type':'application/json'})
-  const options = new RequestOptions({ headers: headers });
-  return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Transaction_code')
-     .map(this.extractData)
-}
-
 //Room Type
 getroomtype():  Observable<object[]> {       
   const headers = new Headers({'Content-Type':'application/json'})

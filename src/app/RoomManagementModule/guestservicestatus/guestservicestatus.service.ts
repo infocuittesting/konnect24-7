@@ -38,6 +38,30 @@ export class GuestservicestatusService {
 
   }
 
+  //guest service insert
+  insertsatus(inputt:any):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   let body={   "rm_room":inputt.rm_room,"rm_service_status":inputt.rm_service_status}
+    console.log("testservicesstaus",body)
+    return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_UpdateGuestServiceStatus',body,options)
+       .map(this.extractData)
+
+  }
+
+//update guest service status
+  updatesatus(inputt:any):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   let body={   "rm_room":inputt.rm_room,"rm_service_status":inputt.rm_service_status}
+    console.log("testservicesstaus",body)
+    return this.http.post('https://hotel360.herokuapp.com/hotel_rm_post_Update_guestservicestatus',body,options)
+       .map(this.extractData)
+
+  }
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

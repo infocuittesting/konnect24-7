@@ -16,7 +16,7 @@ postandgetdata(input:any):  Observable<object[]> {
    const options = new RequestOptions({ headers: headers });
    console.log('working');
    let body={"rm_room":input.rm_room.toString(),"rm_status":input.rm_status,"rm_from_date":input.rm_from_date,"rm_through_date":input.rm_through_date,
-   "rm_return_as":input.rm_return_as,"rm_reason":input.rm_reason,"rm_description":input.rm_description
+   "rm_return_as":input.status,"rm_mainteanance_reason":input.rm_reason,"rm_mainteanance_remarks":input.rm_description
   };
    console.log(body);
    return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateoutoforderservice',body,options)
@@ -46,6 +46,17 @@ outofOrder():  Observable<object[]> {
 
   }
 
+  //return status
+  room():  Observable<object[]> {
+       
+   const headers = new Headers({'Content-Type':'application/json'})
+   const options = new RequestOptions({ headers: headers })
+  
+   return this.http.post('https://hotel360.herokuapp.com/Select_RoomStatus',options)
+      .map(this.extractData)
+
+ }
+
   roomclassdropdown():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -55,6 +66,16 @@ outofOrder():  Observable<object[]> {
        .map(this.extractData)
 
   }
+
+  statusdropdown():  Observable<object[]> {
+       
+   const headers = new Headers({'Content-Type':'application/json'})
+   const options = new RequestOptions({ headers: headers })
+  
+   return this.http.post('https://hotel360.herokuapp.com/Select_RoomStatus',options)
+      .map(this.extractData)
+
+ }
 
 
   orderlisting1():  Observable<object[]> {
@@ -77,15 +98,6 @@ outofOrder():  Observable<object[]> {
 
   }
 
-  servicelisting():  Observable<object[]> {
-       
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers })
-   
-    return this.http.post('https://hotel360.herokuapp.com/select_room_service_status',options)
-       .map(this.extractData)
-
-  }
 
 
   orderlisting2():  Observable<object[]> {
@@ -99,17 +111,17 @@ outofOrder():  Observable<object[]> {
   }
 
 
-  updateroomoutoforder(input:any):  Observable<object[]> {
+  updateroomoutoforder(input):  Observable<object[]> {
        
     const headers = new Headers();
      headers.append('Content-Type','application/json');
      const options = new RequestOptions({ headers: headers });
      console.log('working');
      let body={
-        "RM_Room":this.session.retrieve("id1"),
+        "rm_room":input.rm_room.toString(),
         // "rm_room":input.rm_room.toString(),
-        "RM_Status":input.rm_status,"RM_From_Date":input.rm_from_date,"RM_Through_Date":input.rm_through_date,
-        "RM_Return_As":input.rm_return_as,"RM_Reason":input.rm_reason,"RM_Description":input.rm_description
+        "rm_status":input.rm_status,"rm_from_date":input.rm_from_date,"rm_through_date":input.rm_through_date,
+        "rm_return_as":input.rm_return_as,"rm_mainteanance_reason":input.rm_mainteanance_reason,"rm_mainteanance_remarks":input.rm_mainteanance_remarks
     };
     console.log(body);
      return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Update_Updateoutoforderservices',body,options)
@@ -126,10 +138,10 @@ outofOrder():  Observable<object[]> {
      const options = new RequestOptions({ headers: headers });
      console.log('working');
      let body={
-        "rm_room":this.session.retrieve("id1")   
+        "rm_room":input.toString() 
     };
-    
-     return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Delete_Deleteoutoforderservice',body,options)
+     console.log(body)
+     return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Delete_DeleteRoomMaintenance',body,options)
         .map(this.extractData)
         //.catch(this.handleErrorObservable);
   }

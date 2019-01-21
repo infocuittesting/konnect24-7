@@ -131,7 +131,7 @@
 
                     <div class="col-lg-1">
 
-                      <input name="OutOfOrder" type="checkbox" [(ngModel)]="checkboxflg.checkordr" (change)="filtercheckboxData(checkboxflg.checkordr,'out of order')"
+                      <input name="OutOfOrder" type="checkbox" [(ngModel)]="checkboxflg.checkordr" (change)="filtercheckboxData(checkboxflg.checkordr,'Out Of Order')"
                         style="width:15px;height:15px;">
                     </div>
 
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="col-lg-1">
-                      <input type="checkbox" name="OutOfService" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,'out of service')"
+                      <input type="checkbox" name="OutOfService" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,'Out Of Service')"
                         style="width:15px;height:15px;">
                     </div>
 
@@ -165,88 +165,28 @@
             <thead style="background-color:#0077B5;color:white;">
               <tr>
                 <!-- <th>X</th> -->
-                <th>Room</th>
-                <th>Status</th>
-                <th>From Date</th>
-                <th>Through Date</th>
-                <th>Return As</th>
-                <th>Reason</th>
-                <th>Description</th>
+                <th style="width:100px">Room</th>
+                <th style="width:170px">Status</th>
+                <th style="width:170px">From Date</th>
+                <th style="width:170px">Through Date</th>
+                <th style="width:170px">Return As</th>
+                <th style="width:170px">Reason</th>
+                <th >Description</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let outoforderservicelist of order|filterdata:date:'rm_from_date'; let i= index;" (click)="selectOrdersEdit(outoforderservicelist,i)"
                 [ngClass]="{'backGroundColor':i==selectindex}">
                 <!-- <td><input type="checkbox"></td> -->
-                <td>{{outoforderservicelist?.rm_room}}</td>
-                <td>{{outoforderservicelist?.rm_status}}</td>
-                <td>{{outoforderservicelist?.rm_from_date}}</td>
-                <td>{{outoforderservicelist?.rm_through_date}}</td>
-                <td>{{outoforderservicelist?.rm_return_as}}</td>
-                <td>{{outoforderservicelist?.rm_reason}}</td>
-                <td>{{outoforderservicelist?.rm_description}}</td>
+                <td style="width:100px">{{outoforderservicelist?.rm_room}}</td>
+                <td style="width:170px">{{outoforderservicelist?.rm_status}}</td>
+                <td style="width:170px">{{outoforderservicelist?.rm_from_date}}</td>
+                <td style="width:170px">{{outoforderservicelist?.rm_through_date}}</td>
+                <td style="width:170px">{{outoforderservicelist?.rm_return_as}}</td>
+                <td style="width:170px">{{outoforderservicelist?.rm_mainteanance_reason}}</td>
+                <td>{{outoforderservicelist?.rm_mainteanance_remarks}}</td>
 
               </tr>
-
-              <!-- <tr>
-              
-              <td></td>
-              <td></td> 
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            
-            </tr> -->
-              <!-- <tr>
-             
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            
-            </tr> -->
-
-              <!-- <tr>
-             
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            
-            </tr> -->
-              <!-- 
-            <tr>
-             
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            
-            </tr> -->
-              <!-- <tr>
-            
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            
-            </tr> -->
-
-
             </tbody>
           </table>
 
@@ -258,16 +198,16 @@
 
             <button type="button" class="btn btn-default" style=" margin-left: 2%; width:150px;"><b>Details</b></button>
 
-            <button type="button" class="btn btn-warning" style="width:150px;"><b>Resv.</b></button>
+            <button type="button" class="btn btn-warning" style="width:150px;" routerLink="reservation"><b>Resv.</b></button>
 
             <button type="button" class="btn btn-success" style="width:150px;"><b>Copy</b></button>
 
             <button type="button" class="btn btn-primary" style="width:150px;" data-toggle="modal" data-target="#oos"><b>New</b></button>
 
-            <button type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#oosupdate"><b>Edit</b></button>
+            <button type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#oosupdate" [disabled]="edit"><b>Edit</b></button>
 
-            <button type="button" class="btn btn-warning" style="width:150px;" (click)="delete(user)" data-toggle="modal" data-target="#deleteorderservice"
-              data-dismiss="modal"><b>Delete</b></button>
+            <button type="button" class="btn btn-warning" style="width:150px;" (click)="delete()" data-toggle="modal" data-target="#deleteorderservice"
+              data-dismiss="modal"[disabled]="dele"><b>Delete</b></button>
 
             <button type="button" class="btn btn-danger" style="width:150px;" routerLink="/mains"><b>Close</b></button>
 
@@ -281,7 +221,7 @@
 </body>
 
 
-<div class="modal fade" id="oosupdate" data-backdrop="static" data-keyboard="false" role="dialog">
+<div class="modal modal-open" id="oosupdate" data-backdrop="static" data-keyboard="false" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -302,25 +242,6 @@
           </div>
         </div><br>
 
-        <!-- <div class="row">
-            <div class="col-lg-2"><b>From Room</b></div>
-  
-            <div class="col-lg-2">
-                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;">
-                    <option *ngFor="let outoforderlist of orderlist" [ngValue] = "outoforderlist.rm_room">{{outoforderlist.rm_room}} </option>
-                      </select>
-                   </div>
-  
-             <div class="col-lg-1"></div>
-  
-            <div class="col-lg-3"><b>To Room</b></div>
-  
-            <div class="col-lg-2">
-                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;" (ngModelChange)="onSelect1(ordertoroom)">
-                    <option *ngFor="let outofordertolist of ordertolist" [ngValue] = "outofordertolist.rm_room">{{outofordertolist.rm_room}} </option>
-                      </select>
-                    </div>
-   </div><br> -->
 
 
         <div class="row">
@@ -350,7 +271,7 @@
           <div class="col-lg-2">
 
             <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user2.rm_status">
-              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.room_service_status">{{outoforderservicelist.room_service_status}}
+              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.status">{{outoforderservicelist.status}}
                 </option>
             </select>
           </div>
@@ -361,12 +282,7 @@
           <div class="col-lg-2">
 
             <select required style="height:34px;width:400%;color:black;border-radius:4px;" [(ngModel)]="user2.rm_return_as">
-              <option value="Dirty">Dirty</option>
-              <option value="Clean">Clean</option>
-              <option value="Inspected">Inspected</option>
-              <option value="PickUp">PickUp</option>
-              <option value="Out Of Order">Out Of Order</option>
-              <option value="Out Of Service">Out Of Service</option>
+             <option *ngFor="let selectroomlist of room" [ngValue] ="selectroomlist.status">{{selectroomlist.status}} </option>
             </select>
           </div>
         </div><br>
@@ -376,7 +292,7 @@
 
           <div class="col-lg-2">
             <div class="input-group">
-              <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user2.rm_reason">
+              <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user2.rm_mainteanance_reason">
                 <option *ngFor="let outoforderreason of reasonlist" [ngValue]="outoforderreason.mainteanance_reason">{{outoforderreason.mainteanance_reason}}
                   </option>
               </select>
@@ -391,7 +307,7 @@
           <div class="col-lg-2"><b>Remarks</b></div>
           <div class="col-lg-2">
 
-            <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user2.rm_description"></textarea>
+            <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user2.rm_mainteanance_remarks"></textarea>
           </div>
         </div><br>
 
@@ -410,7 +326,7 @@
 
 
 
-<div class="modal fade" id="oos" role="dialog">
+<div class="modal modal-open" id="oos" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -430,28 +346,6 @@
             </div>
           </div>
         </div><br>
-
-        <!-- <div class="row">
-            <div class="col-lg-2"><b>From Room</b></div>
-  
-            <div class="col-lg-2">
-                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;">
-                    <option *ngFor="let outoforderlist of orderlist" [ngValue] = "outoforderlist.rm_room">{{outoforderlist.rm_room}} </option>
-                      </select>
-                   </div>
-  
-             <div class="col-lg-1"></div>
-  
-            <div class="col-lg-3"><b>To Room</b></div>
-  
-            <div class="col-lg-2">
-                <select  required style="height:34px;color:black;border-radius:4px;width:180%;color:black;"  (ngModelChange)="onSelect1(ordertoroom)">
-                    <option *ngFor="let outofordertolist of ordertolist" [ngValue] = "outofordertolist.rm_room">{{outofordertolist.rm_room}} </option>
-                      </select>
-                    </div>
-   </div><br> -->
-
-
         <div class="row">
           <div class="col-lg-2"><b>From Date</b></div>
 
@@ -479,7 +373,7 @@
           <div class="col-lg-2">
 
             <select required style="height:34px;color:black;border-radius:4px;width:400%;color:black;" [(ngModel)]="user.rm_status">
-              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.room_service_status">{{outoforderservicelist.room_service_status}}
+              <option *ngFor="let outoforderservicelist of servicelist" [ngValue]="outoforderservicelist.status">{{outoforderservicelist.status}}
                 </option>
             </select>
           </div>
@@ -489,13 +383,8 @@
           <div class="col-lg-2"><b>Return Status</b></div>
           <div class="col-lg-2">
 
-            <select required style="height:34px;width:400%;color:black;border-radius:4px;" [(ngModel)]="user.rm_return_as">
-              <option value="Dirty">Dirty</option>
-              <option value="Clean">Clean</option>
-              <option value="Inspected">Inspected</option>
-              <option value="PickUp">PickUp</option>
-              <option value="Out Of Order">Out Of Order</option>
-              <option value="Out Of Service">Out Of Service</option>
+            <select name="" required style="height:34px;width:400%;color:black;border-radius:4px;" [(ngModel)]="user.status">
+             <option *ngFor="let selectroomlist of room" [ngValue] ="selectroomlist.status">{{selectroomlist.status}} </option>
             </select>
           </div>
         </div><br>

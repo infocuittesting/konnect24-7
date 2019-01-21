@@ -13,14 +13,17 @@ export class HousekeepingService {
 
     
       gethousekeepingdata():  Observable<object[]> {
-       
-        // const headers = new Headers({'Content-Type':'application/json'})
-        // const options = new RequestOptions({ headers: headers });
-       
-      
+
         return this.http.get('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_QueryRoomList')
+           .map(this.extractData)     
+      }
+      
+      //getstatistics
+      getstatisticsdata():  Observable<object[]> {
+
+        return this.http.get('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_QueryRoomStatistics')
            .map(this.extractData)
-           //.catch(this.handleErrorObservable);
+          
       }
             
       getroomlist(body):  Observable<object[]> {

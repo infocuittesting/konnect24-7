@@ -19,11 +19,16 @@ export class SearchandeditreservationComponent implements OnInit {
   public searchandedit =[];
   public arry=[];
   public privilege;
-
+  public resof:any;
   constructor(private pService:SearchandeditreservationService,private route:Router,public session:SessionStorageService) { }
   showMore=false;
   ngOnInit() {
-     
+     if(this.session.retrieve("Blockresv")=="block_resv_edit"){
+       this.resof = this.session.retrieve('res_unique_id')
+     }
+     else{
+       this.session.clear('Blockresv')
+     }
   this.pService.searchedit()
   .subscribe((resp: any) => {
    this.searchandedit=resp.ReturnValue;
@@ -34,6 +39,9 @@ this.pService.reasondropdown()
  this.arry=resp.ReturnValue;
 });
 
+}
+ngOnDestroy(){
+  this.session.clear('Blockresv')
 }
 
   //show more
@@ -68,7 +76,11 @@ subcancel(inputt):void {
     },
     );  
    }
-
+   public queryString;
+//clear
+clearinput(){
+  this.queryString="";
+}
 
 public reinstates;
 public reinreturn;

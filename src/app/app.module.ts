@@ -88,6 +88,8 @@ import { RoomhistoryComponent } from './RoomManagementModule/roomhistory/roomhis
 import { GuestservicestatusComponent } from './RoomManagementModule/guestservicestatus/guestservicestatus.component';
 import { OutoforderserviceComponent } from './RoomManagementModule/outoforderservice/outoforderservice.component';
 import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roommaintain.component';
+import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roomoccupancy.component';
+import { TurndownmanagementComponent } from './RoomManagementModule/turndownmanagement/turndownmanagement.component';
 
 //Account receivable
 import { NewaraccountComponent } from './Accountreceivable/newaraccount/newaraccount.component';
@@ -101,13 +103,11 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 
 //End of day Module
 import { EndofdayComponent } from './Endofday/endofday/endofday.component';
-import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roomoccupancy.component';
 
 @NgModule({
     declarations: [
         AppComponent,
 
-        FilterdataPipe,
         // DateFormatPipe,
         MonthpickerComponent,
         YearpickerComponent,
@@ -134,6 +134,8 @@ import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roo
         RoomdiscrepanciesComponent,
         QueueroomComponent,
         HousekeepingComponent,
+        RoomoccupancyComponent,
+        TurndownmanagementComponent,
 
         //Front Desk
         ArrivalComponent,
@@ -147,10 +149,11 @@ import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roo
         BillingComponent,
         CasheringinhouseguestComponent,
         FoliohistoryComponent,
-      //reports
-      ReportsComponent,
-        //BusinessBlock
+       
+        //reports
+        ReportsComponent,
 
+        //BusinessBlock
         BlockRangeSettingComponent,
         BusinessBlockGridCurrentComponent,
         BusinessBlockOptionsComponent,
@@ -193,10 +196,10 @@ import { RoomoccupancyComponent } from './RoomManagementModule/roomoccupancy/roo
 
         //filterpipe
         SearchfilterPipe,
+        FilterdataPipe,
 
+        //End of day
         EndofdayComponent,
-
-        RoomoccupancyComponent
 
     ],
     imports: [

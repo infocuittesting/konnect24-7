@@ -16,82 +16,10 @@ import { ToasterServiceService } from '../../toaster-service.service';
   providers:[ RoommaintainService ]
 })
 export class RoommaintainComponent implements OnInit {
-
-  public main =[ 
-  //   {
-  //   "rm_room": 103,
-  //   "rm_room_type": "KSGS",
-  //   "rm_room_status": "clean",
-  //   "rm_fo_status": "",
-  //   "rm_mainteanance_reason": "deepclean",
-  //   "rm_last_change": "world wide widgets",
-  //   "emp_firstname": "sruthi",
-  //   "emp_lastname": "sundaram",
-  //   "rm_resolvedon": "madurai",
-  //   "rm_resolvedby": "India",
-  //   "rm_mainteanance_remarks": 621005,
-  //  },
-  
-  //  {
-  //   "rm_room": 105,
-  //   "rm_room_type": "KSGS",
-  //   "rm_room_status": "clean",
-  //   "rm_fo_status": "",
-  //   "rm_mainteanance_reason": "deepclean",
-  //   "rm_last_change": "world wide widgets",
-  //   "emp_firstname": "suhasini",
-  //   "emp_lastname": "sundaram",
-  //   "rm_resolvedon": "madurai",
-  //   "rm_resolvedby": "India",
-  //   "rm_mainteanance_remarks": 621005,
-  //  },
-  
-  //  {
-  //   "rm_room": 106,
-  //   "rm_room_type": "KSGS",
-  //   "rm_room_status": "clean",
-  //   "rm_fo_status": "",
-  //   "rm_mainteanance_reason": "deepclean",
-  //   "rm_last_change": "world wide widgets",
-  //   "emp_firstname": "daisy",
-  //   "emp_lastname": "veroni",
-  //   "rm_resolvedon": "madurai",
-  //   "rm_resolvedby": "India",
-  //   "rm_mainteanance_remarks": 621005,
-  //  },
-
-  //  {
-  //   "rm_room": 107,
-  //   "rm_room_type": "KSGS",
-  //   "rm_room_status": "clean",
-  //   "rm_fo_status": "",
-  //   "rm_mainteanance_reason": "deepclean",
-  //   "rm_last_change": "world wide widgets",
-  //   "emp_firstname": "pavithra",
-  //   "emp_lastname": "sundaram",
-  //   "rm_resolvedon": "madurai",
-  //   "rm_resolvedby": "India",
-  //   "rm_mainteanance_remarks": 621005,
-  //  },
-
-  //  {
-  //   "rm_room": 108,
-  //   "rm_room_type": "KSGS",
-  //   "rm_room_status": "clean",
-  //   "rm_fo_status": "",
-  //   "rm_mainteanance_reason": "deepclean",
-  //   "rm_last_change": "world wide widgets",
-  //   "emp_firstname": "swathi",
-  //   "emp_lastname": "s",
-  //   "rm_resolvedon": "madurai",
-  //   "rm_resolvedby": "India",
-  //   "rm_mainteanance_remarks": 621005,
-  //  },
-  
-  
-  
-
-  ];
+  public resolut:boolean=true;
+  public dele:boolean=true;
+  public edit:boolean=true;
+  public main =[];
   roomclass=[];
 
   roomcard=[];
@@ -104,7 +32,7 @@ export class RoommaintainComponent implements OnInit {
      }
 
   user={};
-  user1={};
+  user1:any=[];
   user2={};
   user35={};
  
@@ -116,7 +44,7 @@ roomcard1=[];
 roomcard3=[];
 resolving=[];
 
-     submit(inputt):void {
+     submit(inputt) {
        // console.log('sruthi',inputt,'kanu');
         this.maintainService.postandgetdata (inputt)
         .subscribe(( user333:any)=> {
@@ -147,6 +75,7 @@ resolving=[];
                 this.Success(this.roomcard1);
                 {
                   console.log("checking return value is success or not")
+                  this.resolut=true;this.edit=true;this.dele=true;
                   this.maintainService.roommaintenance()
                   .subscribe((resp: any) => {
                   this.main = resp.ReturnValue;
@@ -157,14 +86,15 @@ resolving=[];
                 }
 
 
-          delete(inputt):void {
+          delete():void {
             // console.log('sruthi',inputt,'kanu');
-                 this.maintainService.deleteroommaintenance(inputt)
+                 this.maintainService.deleteroommaintenance(this.param)
                  .subscribe(( user337:any)=> {
                    this.user37 = user337;
                    this.roomcard3=user337.Return;
                    if(user337.Return == "Record Deleted Successfully"){
                     console.log("checking return value is success or not")
+                    this.resolut=true;this.edit=true;this.dele=true;  
                     this.maintainService.roommaintenance()
                     .subscribe((resp: any) => {
                     this.main = resp.ReturnValue;
@@ -175,21 +105,33 @@ resolving=[];
                    }
 
 
-                resolveroom(inputt):void {
+                resolveroom():void {
                   // console.log('sruthi',inputt,'kanu');
-                       this.maintainService.resolveroom(inputt)
+                       this.maintainService.resolveroom1(this.param)
                        .subscribe(( user336:any)=> {
                          this.user36 = user336;
                          this.resolving=user336.Return;
+                         this.resolut=true;this.edit=true;this.dele=true;
                        },
                         );  
                          }
 
-reason = [];
-room = [];
-
+public reason = [];
+public room = [];
+public arr=[];
+public roomstatus:any=[];
+public servicelist:any=[];
   ngOnInit() {
 
+     //retunstatus
+ 
+ this.maintainService.room()
+ .subscribe((resp: any) => {
+  this.arr=resp.ReturnValue;
+  this.roomstatus = this.arr.slice(0,4)
+  this.servicelist=this.arr.slice(4,6)
+  console.log("valueeee",this.roomstatus)
+});
       
   this.maintainService.roommaintenance()
   .subscribe((resp: any) => {
@@ -221,14 +163,22 @@ console.log("res");
   }
 
   
-
+public param;
   selectindex=null;
 public deleteDataDetails:any;
 selectMembersMaintain(details,index){
 this.selectindex=index;
 this.deleteDataDetails=details;
 this.session.store("id8",details.rm_room.toString());
+this.param=details.rm_room.toString();
+this.user1=details;
+if(this.param==details.rm_room){
+  this.dele=false;
+  this.resolut=false;
+  this.edit=false;
 }
+}
+
 
 checkboxflg=[];
 count=0;

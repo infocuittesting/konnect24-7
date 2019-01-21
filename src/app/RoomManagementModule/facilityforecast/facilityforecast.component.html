@@ -1,79 +1,65 @@
 <div class="wrapper">
   <div class="content-wrapper">
     <br>
-<div class="container-fluid">
- <div class="panel panel-default" >
-   <div class="panel-body">
-  <div class="row">
-  
-    <div class="col-lg-2">
-    <b>Start Date</b>
-  
-    </div>
-  
-    <div class="col-lg-2">
-  
-        <div class="input-group">
-            <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input type="date" class="form-control"></div>
-      </div>
-  
-      <div class="col-lg-1"></div>
-      <div class="col-lg-2">
-  
-          <b>Facility Tasks</b>
-      </div>
-  
-  
-      <div class="col-lg-2">
-  
-          <select required style="height:30px;border-radius:4px;width:150%;color:black;">
-              <option value = "select1">TOTCL,LTOUCH,COMAREA </option>
-              <option value = "Goa">TOTCL,LTOUCH,COMAREA</option>
-              <option value = "New Delhi">TOTCL,LTOUCH,COMAREA</option>
-              
-              
-              </select>
-      </div>
-  
-      <div class="col-lg-1"></div>
-  
-      <div class="col-lg-2">
-          <button type="button" class="btn btn-info"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button>
-        </div>
-  
-  </div><br>
-  
-</div>
-  
-  
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
 
-</div>
-  </div>
-  
-  <div class="container-fluid" >
-      
-      <table class="table table-bordered table-hover table-responsive" >
+            <div class="col-lg-2">
+              <b>Start Date</b>
+
+            </div>
+
+            <div class="col-lg-2">
+
+              <div class="input-group">
+                <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input type="date" class="form-control" name="startdate" [(ngModel)]="startdate" (change)="getfacility(startdate)"></div>
+            </div>
+
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+
+              <b>Facility Tasks</b>
+            </div>
+
+
+            <div class="col-lg-2">
+
+              <select required style="height:30px;border-radius:4px;width:150%;color:black;">
+                <option value="select1">TOTCL,LTOUCH,COMAREA </option>
+                <option value="Goa">TOTCL,LTOUCH,COMAREA</option>
+                <option value="New Delhi">TOTCL,LTOUCH,COMAREA</option>
+
+
+              </select>
+            </div>
+
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-info"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button>
+            </div>
+          </div><br>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="container-fluid">
+
+      <table class="table table-bordered table-hover table-responsive">
         <thead style="background-color:#0077B5;color:white;">
           <tr>
             <th rowspan="2"></th>
-            <th><input type="text" value="Sunday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" value="Monday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-          <th><input type="text" value="Tuesday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" value="Wednesday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-          <th><input type="text" value="Thursday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" value="Friday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:115px;padding:5px;"></th>
-          <th><input type="text" value="Saturday" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:115px;padding:5px;"></th>
-        </tr>
-          
-           <tr>
-             <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-        <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
-            <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:115px;padding:5px;"></th>
-            <th><input type="text" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:115px;padding:5px;"></th>
+            <th *ngFor="let daylist of facilityforecast"><input type="text" [(ngModel)]="daylist.days" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
+          </tr>
+
+          <tr>
+            <th *ngFor="let daylist of facilityforecast"><input type="text" [(ngModel)]="daylist.date" style="height:25px;background-color:white;color:#0077B5;border-radius:4px;width:120px;padding:5px;"></th>
           </tr>
         </thead>
         <tbody style="background-color:white;">
@@ -81,141 +67,113 @@
             <td style="background-color:#0077B5;color:white;"><b>Total Room Reserved</b></td>
             <td>1</td>
             <td>0</td>
-         <td>0</td>
             <td>0</td>
             <td>0</td>
-         <td>0</td>
             <td>0</td>
-        
+            <td>0</td>
+            <td>0</td>
+
           </tr>
           <tr>
             <td style="background-color:#0077B5;color:white;"><b>Occupancy %</b></td>
             <td>00.65</td>
             <td>00.00</td>
-         <td>00.00</td>
             <td>00.00</td>
             <td>00.00</td>
-         <td>00.00</td>
+            <td>00.00</td>
+            <td>00.00</td>
             <td>00.00</td>
           </tr>
-        <tr>
+          <tr>
             <td style="background-color:#0077B5;color:white;"><b>Arrival Rooms</b></td>
-            <td>1</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
-            <td>0</td>
-         <td>1</td>
-            <td>0</td>
+            <td *ngFor="let datalist of facilityforecast">{{datalist.values.arrival_rooms}}</td>
           </tr>
-         <tr>
+          <tr>
             <td style="background-color:#0077B5;color:white;"><b>Stay Over</b></td>
             <td>1</td>
             <td>0</td>
-         <td>0</td>
             <td>0</td>
             <td>0</td>
-         <td>0</td>
+            <td>0</td>
+            <td>0</td>
             <td>0</td>
           </tr>
-           <tr>
+          <tr>
             <td style="background-color:#0077B5;color:white;"><b>Departure Rooms</b></td>
-             <td>1</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
+            <td *ngFor="let datalist of facilityforecast">{{datalist.values.depature_rooms}}</td>
           </tr>
-           <tr>
-               <td style="background-color:#0077B5;color:white;"><b>Adults In House</b></td>
-             <td>1</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
+          <tr>
+            <td style="background-color:#0077B5;color:white;"><b>Adults In House</b></td>
+            <td *ngFor="let datalist of facilityforecast">{{datalist.values.adult_inhouse}}</td>
           </tr>
-           <tr>
+          <tr>
             <td style="background-color:#0077B5;color:white;"><b>Children In House</b></td>
-             <td>1</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
-            <td>0</td>
-         <td>0</td>
-            <td>0</td>
+            <td *ngFor="let datalist of facilityforecast">{{datalist.values.child_inhouse}}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  
+
     <div class="container-fluid">
-      
-        <table class="table table-bordered table-hover table-responsive">
-          <thead style="background-color:#0077B5;color:white;">
-          
-            
-             <tr>
-               <th style="width:3%;"><input type="checkbox"></th>
-              <th style="width:15%;">Total Cleaning</th>  
-              <th>0</th>
-              <th>1</th>
-          <th>0</th>
-              <th>0</th>
-              <th>0</th>
-            <th>0</th> 
-           <th>0</th>
-            </tr>
-          </thead>
-          <tbody style="background-color:white;">
-          
-           
-             <tr style="height:40px;">
-              <td><input type="checkbox"></td>
-              <td>Total Cleaning</td>
-              <td></td>
-           <td></td>
-              <td></td>
-              <td></td>
-          <td></td>
-           <td></td>
-              <td></td>
-            </tr>
-       
-    
-             <tr style="height:40px;">
-              <td><input type="checkbox"></td>
-              <td></td>
-              <td></td>
-           <td></td>
-              <td></td>
-              <td></td>
-           <td></td>
-              <td></td>
-           <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <div class="container-fluid">
+
+      <table class="table table-bordered table-hover table-responsive">
+        <thead style="background-color:#0077B5;color:white;">
+
+
+          <tr>
+            <th style="width:3%;"><input type="checkbox"></th>
+            <th style="width:10%;">Total Cleaning</th>
+            <th *ngFor="let datalist of facilityforecast">{{datalist.values.depature_rooms}}</th>            
+          </tr>
+        </thead>
+        <tbody style="background-color:white;">
+
+
+          <tr style="height:40px;">
+            <td><input type="checkbox"></td>
+            <td>Total Cleaning</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+
+          <tr style="height:40px;">
+            <td><input type="checkbox"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-8"></div>
         <div class="col-lg-2">
-  <button type="button" class="btn btn-warning" style="width:100%;"><b>Report</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button>
-           
+          <button type="button" class="btn btn-warning" style="width:100%;"><b>Report</b><span class="glyphicon glyphicon-file"
+              style="padding-left:5px;"></span></button>
+
         </div>
-  
+
         <div class="col-lg-2">
-  
-            <button type="button" class="btn btn-danger" style="width:100%;"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          <button type="button" class="btn btn-danger" style="width:100%;"><b>Close</b><span class="glyphicon glyphicon-remove"
+              style="padding-left:5px;"></span></button>
         </div>
-  
+
       </div>
-  
-      </div>
+
     </div>
   </div>
+</div>

@@ -17,7 +17,7 @@ export class GuestservicestatusComponent implements OnInit {
 
   @ViewChild('myModal') content:ElementRef;
 
-
+  
   public  downloadPDF(){
 
   let  l = {
@@ -55,7 +55,7 @@ export class GuestservicestatusComponent implements OnInit {
   public guestservice=[];
   public guestserviceData=[];
   public guestserviceData1=[];
-
+  public user=[];
 
   onSelect7(val){
     console.log(val);
@@ -83,19 +83,11 @@ export class GuestservicestatusComponent implements OnInit {
  this.guestService.guestservicestatus()
  .subscribe((resp: any) => {
   this.guestservice=resp.ReturnValue;
-});
-
-this.guestService.guestservicestatus()
-.subscribe((resp: any) => {
- this.guestserviceData=resp.ReturnValue;
-});
-
-
-this.guestService.guestservicestatus()
-.subscribe((resp: any) => {
- this.guestserviceData1=resp.ReturnValue;
+  this.guestserviceData=this.guestservice;
+  this.guestserviceData1=this.guestservice;
 });
   }
+
 //CHECKBOX FILTERING
    checkboxflg=[];
   count=0;
@@ -132,4 +124,49 @@ this.guestService.guestservicestatus()
   }
   //END OF CHECKBOX
 
+  //selected row
+  public servestatus:boolean=true;
+  public selectindex=null;
+  public roomno:string="";
+  public servicestatusss;
+  selectrow(details,index){
+    this.selectindex=index;
+    this.roomno=details.rm_room;
+    this.servicestatusss=details.rm_service_status;
+    this.user=details;
+    //show hid of button
+    if(this.roomno=details.rm_room){
+      this.servestatus=false;
+    }
+  }
+  //Submit guset services status
+  public state;
+  submit(param){
+    console.log(this.roomno,this.servicestatusss);
+    if(this.roomno!==""&& this.servicestatusss==null ){
+      this.guestService.insertsatus(param).subscribe((resp:any)=>{
+        this.state=resp.ReturnCode;
+        if(this.state=="RIS"){
+          this.roomno="";this.user=[];this.servestatus=true;
+          this.guestService.guestservicestatus()
+.subscribe((resp: any) => {
+ this.guestservice=resp.ReturnValue;
+});
+        }
+      })
+    }
+    else{
+      this.guestService.updatesatus(param).subscribe((resp:any)=>{
+        this.state=resp.ReturnCode;
+        if(this.state=="RUS"){
+          this.roomno="";this.user=[];this.servestatus=true;
+          this.guestService.guestservicestatus()
+.subscribe((resp: any) => {
+ this.guestservice=resp.ReturnValue;
+});
+
+        } 
+      })
+    }
+  }
 }
