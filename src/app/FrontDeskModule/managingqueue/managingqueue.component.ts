@@ -15,6 +15,17 @@ export class ManagingqueueComponent implements OnInit {
   
   @ViewChild('report') content:ElementRef;
 
+  // clear
+
+  public queryString:string;
+  public roomtype:string;
+
+
+  clear(){
+    this.queryString=''
+    this.roomtype=''
+    this.roomno=''
+  }
   public  downloadPDF(){
 
   let  l = {
@@ -56,8 +67,6 @@ public search = [];
 public list=[];
 public returnmsg;
 someData = []
-
-roomtype;
 
 onSelect(val){
   console.log(val.toLowerCase());

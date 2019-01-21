@@ -243,9 +243,9 @@
                 <div class="col-md-2">
                   <b>Rate Code</b>
                   <div class="form-group">
-                    <select class="form-control input-sm"  name="ratecode" style="margin-top: 5px; width: 163px;"[(ngModel)]="block.ratecodes"[value]="rates">
-                        <option value="" hidden></option> 
-                        <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.id">{{selectratecode.ratecode}} </option>
+                    <select class="form-control input-sm"  name="rate_code" style="margin-top: 5px; width: 163px;"[(ngModel)]="block.ratecodes"[value]="rates">
+                        <!-- <option value="" hidden></option>  -->
+                        <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.ratecode_id">{{selectratecode.rate_code}}</option>
                     
                     </select>
                   </div>
@@ -312,15 +312,17 @@
                         <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate" style="margin-top: -5px;">
                       </div>
                     </div>
+                    <!-- style="margin-left: 14px;zoom:1.5;" -->
                     <div class="col-md-2" style="margin-top: -45px;">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" >
-                          <label class="custom-control-label" for="customCheck">Print Rate</label>
+                        <div class="form-group">
+                          <!-- <input type="checkbox" style="margin-left: 14px;zoom:1.5;" (change)="block.print_rate = $event.target.checked ? 'Y' : 'N'"  [checked]="block.print_rate == 'Y'" /> -->
+                          <input  type="checkbox" style="margin-left: 14px;zoom:1.5;" name="print_rates"  [checked]="true" [value]="print_rate" [(ngModel)]="block.print_rate" >
+                          <label >Print Rate</label>
                         </div>
                         <br>
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" >
-                          <label class="custom-control-label" for="customCheck">Suppress Rate</label>
+                        <div class="form-group">
+                          <input type="checkbox" style="margin-left: 14px;zoom:1.5;"  name="suppress_rates"   [value]="suppress"  [checked]="true" [(ngModel)]="block.suppress" >
+                          <label >Suppress Rate</label>
                         </div>
                       </div>
                   
@@ -378,9 +380,9 @@
                           </div>
                         </div>
                         <div class="col-md-2" style="margin-top: 14px;">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox"name="checkbox" style="zoom:1.5" [(ngModel)]="block.guranteeds">
-                            <label for="checkbox">Guranteed</label>
+                          <div class="form-group">
+                            <input type="checkbox"  name="gurantee" style="zoom:1.5" [checked]="true" [(ngModel)]="block.guranteeds">
+                            <label>Guranteed</label>
                           </div>
     
                         </div>
@@ -441,7 +443,7 @@
                       <div class="col-md-2">
                         <div class="form-group">
                         <label for="name">Total Rooms Per Day</label>
-                        <input type="text" class="form-control input-sm" name="roomsperdays"[(ngModel)]="block.roomsperday" [value]="roomsper">
+                        <input type="number" name="roomsperdays"[(ngModel)]="block.roomsperday" [value]="roomsper">
                         </div>
                       </div>
                       <!-- <div class="col-md-3">
@@ -770,8 +772,8 @@
                                             
                                 </td>
                                 <td >{{Packagemodel.package_code}}</td>
-                                <td>{{Packagemodel.package_code_description}} </td>
-                                <td>{{Packagemodel.package_code_currency}}</td>
+                                <td>{{Packagemodel.short_description}} </td>
+                                <td>{{Packagemodel.currency}}</td>
                            
                         </tr>
                         

@@ -102,7 +102,7 @@ Ratecodedropdown():Observable<object[]> {
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
  
-  return this.http.get('https://hotel360.herokuapp.com/Profile/profileratecode ',options)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_RATECODE ',options)
      .map(this.extractData)
 
 }
@@ -114,6 +114,16 @@ Resetypedropdown():Observable<object[]> {
   const options = new RequestOptions({ headers: headers })
  
   return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Restype ',options)
+     .map(this.extractData)
+
+}
+// packages
+revenuepackages():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Packages',options)
      .map(this.extractData)
 
 }

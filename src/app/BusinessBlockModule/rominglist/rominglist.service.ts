@@ -22,6 +22,7 @@ GroupReservation(savedetails1):Observable<object[]> {
        .map(this.extractData)
   
   } 
+  // room grid screen
   updateroom(roomsgrid):Observable<object[]> {
     // console.log("", )
     const headers = new Headers({'Content-Type':'application/json'})
@@ -76,10 +77,8 @@ query_grid_data():  Observable<object[]> {
 
 
   private extractData(res: Response) {
-    //alert('hai20')
     console.log('res========---===='+res);
     let body = res.json();
-    //alert(JSON.stringify(body))
     console.log(JSON.stringify(body));
         return body;
         

@@ -17,7 +17,6 @@ export class PackagesComponent implements OnInit {
   public detailspacks:any={};
   constructor(private PackagesService:PackagesService,private route:Router,public session:SessionStorageService ) { this.pack=this.sort;}
   
-
   onSelect(val){
     console.log(val);
     this.pack = this.sort.filter(x => x.package_code == val)
@@ -35,7 +34,6 @@ export class PackagesComponent implements OnInit {
   .subscribe((resp: any) => {
    this.pack=resp.Return_values;
    this.sort=resp.Return_values;
-  
    //this.session.store("ids",this.detailspack.package_code_id);
   console.log("settttttttt",this.codesr);
   });
@@ -66,7 +64,6 @@ export class PackagesComponent implements OnInit {
    });
   }
  
-
   loadpack(param){
     if(param == "New"){
       this.session.store("packcode",param)
@@ -96,8 +93,9 @@ export class PackagesComponent implements OnInit {
   this.session.store("id",detapack.package_code_id);
 
   //this.id=details.package_code_id;
-//this.session.store("ids",detailspack.package_code_id);
+  //this.session.store("ids",detailspack.package_code_id);
   //this.codesr=this.detapack.package_code_id;
+  
   console.log("idddddddd",detapack.package_code_id);
   }
 }

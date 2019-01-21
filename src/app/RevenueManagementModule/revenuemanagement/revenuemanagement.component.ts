@@ -79,8 +79,6 @@ export class RevenuemanagementComponent implements OnInit {
 
     console.log(this.cond);
 
-
-
     if (input.discount == true) {
       input.discount = "1";
       console.log("one")
@@ -406,8 +404,6 @@ export class RevenuemanagementComponent implements OnInit {
           this.editblock.type = this.edit_data_bind.package_code;
 
           console.log("checkkkkkkkkk" + this.editblock.ratecode);
-
-
 
         }
 

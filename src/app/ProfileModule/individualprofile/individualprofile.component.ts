@@ -30,7 +30,7 @@ public navtag;
 public checkpftype;
 
   constructor(private IndividualService:IndividualService,private route:Router,public session:SessionStorageService) { }
-public user={};
+public user:any=[];
   public individual;
   individual1 = {};
   user33={};
@@ -185,9 +185,31 @@ this.IndividualService.pftypedropdown()
  });
 
 
+ this.user.PF_Firstname=this.session.retrieve('pf_fname')
+ this.user.PF_Lastname=this.session.retrieve('pf_lastname')
+ this.user.PF_Language=this.session.retrieve('pf_language')
+
+ this.user.PF_Title=this.session.retrieve('PF_Title')
+ this.user.PF_Mobileno=this.session.retrieve('pf_mobileno')
+ this.user.PF_Individual_Country=this.session.retrieve('pf_individual_country')
+
+ this.user.PF_Date_Of_Birth=this.session.retrieve('dateofbirth')
+ this.user.PF_Postalcode=this.session.retrieve('postalcode')
+ this.user.PF_Individual_Address=this.session.retrieve('companyaddress')
+
+ this.user.PF_Home_Address=this.session.retrieve('businessaddress')
+ this.user.PF_Individual_City=this.session.retrieve('city')
+ this.user.PF_Individual_State=this.session.retrieve('state')
+
+ this.user.PF_Type=this.session.retrieve('profiletype')
 
 }
 
+ngOnDestroy(){
+  this.session.clear(this.user);
+}
+
+public PF_Firstname:any;
 cleardata(){
   this.user = '';
   }

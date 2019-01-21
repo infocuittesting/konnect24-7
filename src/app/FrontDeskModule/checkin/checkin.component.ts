@@ -17,6 +17,7 @@ export class CheckinComponent implements OnInit {
   public searchandedit =[];
   public firstname:any;
   public arrival:any;
+  public queryString:string;
 
 
 
@@ -28,6 +29,11 @@ export class CheckinComponent implements OnInit {
   public endDate = new Date().toJSON().split('T')['0'];
 
   showMore;
+
+  //clear
+clear(){
+  this.queryString = "";
+}
 
     //show more
     showMoreBut(){

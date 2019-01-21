@@ -112,7 +112,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="name">Blocks Name</label>
-                      <input type="text"  class="form-control" name="blockname" [value]="editblock.block_name" style="height: 30px;">
+                      <input type="text"  class="form-control" name="blockname" [value]="editblock.block_name" [(ngModel)]= "editblock.block_name"style="height: 30px;">
                     </div>
   
                   </div>
@@ -253,7 +253,7 @@
                       <div class="form-group">
                         <select class="form-control input-sm" name="ratecode name" style="margin-top: 4px;" [(ngModel)]="editblock.ratecode">
                           <option value="" hidden></option>
-                          <option *ngFor="let selectratecode of ratecode" [ngValue]="selectratecode.ratecode">{{selectratecode.ratecode}} </option>
+                          <option *ngFor="let selectratecode of ratecode" [ngValue]="selectratecode.rate_code">{{selectratecode.rate_code}} </option>
   
                         </select>
                       </div>
@@ -288,7 +288,9 @@
                     <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Packages</label>
-                        <input type="text" class="form-control input-sm" name="packages" id="" [(ngModel)]="editblock.packages">
+                        <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack" > <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
+              
+                        <input type="text" class="form-control input-sm" name="packages"   id="" [(ngModel)]="package_value" [value]="rmcodes" >
                       </div>
                     </div>
   
@@ -308,16 +310,16 @@
                       </div>
                     </div>
                     <div class="col-md-2" style="margin-top: -45px;">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"
+                      <div class="form-group">
+                        <input type="checkbox" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"  [checked]="true" 
                           [(ngModel)]="editblock.print_rate">
-                        <label class="custom-control-label" for="customCheck">Print Rate</label>
+                        <label >Print Rate</label>
                       </div>
                       <br>
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"
+                      <div class="form-group">
+                        <input type="checkbox" id="" name="example2" style="margin-left: 14px;zoom:1.5;"  [checked]="true" 
                           [(ngModel)]="editblock.suppress_rate">
-                        <label class="custom-control-label" for="customCheck">Suppress Rate</label>
+                        <label  >Suppress Rate</label>
                       </div>
                     </div>
   
@@ -376,7 +378,7 @@
                         </div>
                         <div class="col-md-2" style="margin-top: 14px;">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox" name="checkbox" style="zoom:1.5" [(ngModel)]="editblock.guranteed">
+                            <input type="checkbox" class="custom-control-input" id="checkbox" name="checkbox" style="zoom:1.5"  [checked]="true" [(ngModel)]="editblock.guranteed">
                             <label for="checkbox">Guranteed</label>
                           </div>
   
@@ -753,3 +755,53 @@
 </div>
 </div>
 
+    <!-- package model -->
+    
+    <div class="modal fade" id="rateheadpack" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+      <div class="vertical-alignment-helper">   
+      <div class="modal-dialog vertical-align-center" role="document">
+          <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="table-responsive">
+                  <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                      <th>Code</th>
+                      <th>Description</th>
+                      <th>currency</th>
+                      <th>X</th>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let Packagemodel of revenueroom">
+                              <td> 
+                                  <input type="checkbox" name="checdetailsll" id="one" (checked)="exist1(Packagemodel)" (click)="toggleSelection1(Packagemodel)">
+                                          
+                              </td>
+                              <td >{{Packagemodel.package_code}}</td>
+                              <td>{{Packagemodel.short_description}} </td>
+                              <td>{{Packagemodel.currency}}</td>
+                         
+                      </tr>
+                      
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+  
+          </div>
+          </div>
+      </div>
+      </div>  
+  </div>

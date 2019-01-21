@@ -67,7 +67,7 @@
               <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
             </div>
             <div class="col-md-2" style="margin-top: 18px;">
-              <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
+              <button class="btn btn-warning" style="width: 100%" (click)="clear()">Clear </button>   
             </div>
             <div class="col-md-2" style="margin-top: 18px;">
               <button class="btn btn-success" style="width: 100%" (click)="loadcheckin('Walk-in')">Walk-in </button>   
@@ -117,33 +117,11 @@
                     <th style="width:120px" *ngIf="showMore==true"> Confirm No</th>
                     <th style="width:150px" *ngIf="showMore==true"> CreditCard</th>            
                     <th style="width:80px" *ngIf="showMore==true"> Exp Date</th>            
-                    <th *ngIf="showMore==true"> Rate</th>
-  <!-- 
-                    <th> Extension</th>
-  
-                    <th> Group</th>
-                    <th> Packages</th>
-                    <th> Rtc</th>
-                    <th> Currency</th>
-                    <th> ETA</th>
-                    <th> Market</th>
-                    <th> Source</th>            
-                    <th> Origin</th>            
-                    <th> Payment</th>            
-                    <th> Guest_Balance</th>            
-                    <th> Disc_Amount</th>            
-                    <th> Disc_perc</th>  
-                    <th> Disc_Reason</th>            
-                    <th> Specials</th>            
-                    <th> Comments</th>            
-                    <th> Item_Inv</th>             -->
-                              
+                    <th *ngIf="showMore==true"> Rate</th>                              
                   </tr>
           </thead>
           <tbody>
-            <!-- <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
-            (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
-            <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+            <tr *ngFor="let searched of (searchandedit|searchfilter: {pf_firstname :queryString}) ; let i = index" 
             (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
               <td style="width:50px">{{i+1}}</td> 
               <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>

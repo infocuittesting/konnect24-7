@@ -48,9 +48,9 @@
             </div>
 
         <div style="text-align:center" >
-        <button class="btn btn-info" style="width:12%; margin-left:10%;" (click)="loadendofdayResv('Resv')"> Resv </button>    
+        <button class="btn btn-info" style="width:12%; margin-left:10%;" (click)="loadendofdayResv('Resv')" [disabled]=edit> Resv </button>    
         <button class="btn btn-success"style="width:12%" > Print  </button>    
-        <button  class="btn btn-warning" style="width:12%" (click)="loadendofday('Edit')">Edit </button>   
+        <button  class="btn btn-warning" style="width:12%" (click)="loadendofday('Edit')" [disabled]=edit>Edit </button>   
         <button class="btn btn-info " style="width:12%" > Close </button>   
       </div>
        </div>
@@ -82,18 +82,10 @@
             
                    <div class="col-md-2">
                       <label for="res">Pay. Type</label>
-                      <select name="res_type" class="form-control" id="res_type" [(ngModel)]="restype">
-                        <option *ngFor="let res of res_type_list" [ngValue]="res.restype_description">{{res.restype_description}}</option>
+                      <select name="res_type" class="form-control" id="res_type">
+                        <option *ngFor="let paydrop of dropdown" [ngValue]="paydrop.payment_description">{{paydrop.payment_description}}</option>
                       </select>
-                      </div>
-                                  <div class="col-md-2">
-                                  <label for="email"> Party</label>
-                                  <input type="text" class="form-control" id="vip" name="vip" [(ngModel)]="vip">
-                          </div>
-                          <div class="col-md-2">
-                                  <label for="email"> Company</label>                 
-                              <input id="type" type="text" class="form-control" name="date"style="border-radius:5px;" [(ngModel)]="qdate">
-                          </div>    
+                      </div> 
                 </div>
             
                   <div class="row">
@@ -113,38 +105,39 @@
             <table class="table table-bordered table-hover tableBodyScroll panshadow">
                     <thead>    
                         <tr class="table table-default" style="background-color: #0077B5;color: white ">
-                          <th style="width:170px"> Room</th>
-                          <th style="width:60px"> Name</th>
-                          <th style="width:90px"> Arrival</th>
-                          <th style="width:130px"> Departure</th>
-                          <th style="width:60px"> Balance </th>
-                          <th style="width:60px"> Status </th>                        
-                          <th style="width:60px"> Company </th>
-                          <th style="width:60px"> Group </th>
+                          <th style="width:145px"> Room</th>
+                          <th style="width:145px"> Name</th>
+                          <th style="width:140px"> Arrival</th>
+                          <th style="width:180px"> Departure</th>
+                          <th style="width:140px"> Balance </th>
+                          <th style="width:140px"> Status </th>                        
+                          <th style="width:140px"> Company </th>
+                          <th > Group </th>
                          </tr>
                     </thead>
                     <tbody>
                         
-                            <tr *ngFor="let notcheckval of notcheck ;let i=index" (click)="selectednotcheck(list,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">    
-                                    <td style="width:148px;">{{notcheckval.res_room}}</td>        
-                                    <td style="width:148px;">{{notcheckval.pf_firstname}}</td>         
-                                    <td style="width:120px;">{{notcheckval.res_arrival}}</td>
-                                    <td style="width:120px;">{{notcheckval.res_depature}}</td>
-                                    <td style="width:120px;">{{notcheckval.res_guest_balance}}</td>
-                                    <td style="width:120px;">{{notcheckval.res_guest_status}}</td>     
+                            <tr *ngFor="let notcheckval of notcheck ;let i=index" (click)="selectednotcheck(notcheckval,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">    
+                                    <td style="width:145px;">{{notcheckval.res_room}}</td>        
+                                    <td style="width:145px;">{{notcheckval.pf_firstname}}</td>         
+                                    <td style="width:140px;">{{notcheckval.res_arrival}}</td>
+                                    <td style="width:180px;">{{notcheckval.res_depature}}</td>
+                                    <td style="width:140px;">{{notcheckval.res_guest_balance}}</td>
+                                    <td  style="width:140px">{{notcheckval.res_guest_status}}</td> 
+                                    <td  style="width:140px"></td>  
+                                    <td> </td>  
                                  </tr>       
                     </tbody>
                   </table>
                   <br>
-                  
                   <div class="row" style="margin-top: -15px;"> 
-                    <button class="btn btn-info" style="width:11%; margin-left:5%;" > Search </button>    
-                    <button class="btn btn-Warning"style="width:11%"> Advanced</button>    
-                    <button class="btn btn-primary disabled" style="width:11%"> Clear </button>     
-                    <button class="btn btn-default" style="width:11%"> Res</button>   
-                    <button class="btn btn-success" style="width:11%"> Billing </button>   
-                    <button class="btn btn-danger" style="width:11%" > C/O Zero</button>   
-                    <button class="btn btn-danger" style="width:11%" > Checkout</button>   
+                    <button class="btn btn-info" style="width:11%; margin-left:5%;" disabled> Search </button>    
+                    <button class="btn btn-Warning"style="width:11%" disabled> Advanced</button>    
+                    <button class="btn btn-primary disabled" style="width:11%" disabled> Clear </button>     
+                    <button class="btn btn-default" style="width:11%" disabled> Res</button>   
+                    <button class="btn btn-success" style="width:11%" disabled> Billing </button>   
+                    <button class="btn btn-danger" style="width:11%" disabled> C/O Zero</button>   
+                    <button class="btn btn-danger" style="width:11%" (click)="Checkout()"> Checkout</button>   
                     <button class="btn btn-danger" style="width:11%" > Close</button>   
                     </div>
         </div></div>
@@ -277,7 +270,7 @@
                               <label for="" style="margin-top: 6px;"> Business Date</label>
                           </div>
                               <div class="col-md-2">
-                              <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;">    
+                              <input type="date" class="form-control" id="tax" name="tax" style="width: 105%;margin-left: -60px;" [(ngModel)]="businessdate">    
                       </div>
                   
                           <div class="col-md-2">
@@ -294,22 +287,21 @@
                       <table class="table table-bordered  table-hover tableBodyScroll panshadow" style="margin-top: -20px">
                             <thead>
                                 <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
-                                    <th style="width:138px;"> RoomName</th> 
-                                    <th style="width:120px;"> Status</th>
+                                    <th style="width:5px;"> Room</th> 
+                                    <th style="width:150px;"> Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let listprint of runprint ;let i=index" (click)="selectprint(listprint,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">
-                                       <td style="width:138px;">on Night Audit</td>        
-                                       <td style="width:138px;">Running</td>               
-                                    </tr>                                                         
+                            
+                                        <tr *ngFor="let listprint of runprint ;let i=index" (click)="selectprint(listprint,i)" [ngClass]="{'backGroundColor':i=='selectindex'}">
+                                                <td style="width:5px;">{{listprint.res_room}}</td>        
+                                                <td style="width:150px;">{{listprint.res_guest_status}}</td>               
+                                             </tr>                                                            
                             </tbody>
                           </table>
                  </div></div>              
                   </div>
     </div>
-
-
       </div>
 
 </div>

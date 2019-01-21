@@ -87,7 +87,7 @@ public options = [];
   viplist={};
   nationality={};
   public endof:any;
-
+  public blockof:any;
 
  onSelect(val){
   console.log(val);
@@ -121,7 +121,12 @@ update(inputt):void {
     }else{
       this.session.clear('EndofDay_checkin');
     }
-    
+    if(this.session.retrieve("BlockProfile") == "block_Profile_edit"){
+      this.blockof = this.session.retrieve('pf_id')
+    }
+    else{
+      this.session.clear('BlockProfile');
+    }
 
     this.navtag= this.session.retrieve("navigate");
     
@@ -190,6 +195,7 @@ this.comm3=resp.ReturnValue;
 
 ngOnDestroy(){
   this.session.clear('EndofDay_checkin');
+  this.session.clear('BlockProfile');
 }
 res=false;
 new=false;
@@ -255,16 +261,28 @@ this.session.store("pf_language",details.pf_language);
 this.session.store("pf_title",details.pf_title);
 this.session.store("profileid",details.pf_id);
 
-this.session.store("pf_mobileno",details.pf_mobileno.toString());
+this.session.store("pf_mobileno",details.pf_mobileno);
 this.session.store("pf_individual_country",details.pf_individual_country);
 this.session.store("pf_individual_vip",details.pf_individual_vip);
 this.session.store("dateofbirth",details.pf_date_of_birth)
 
+this.session.store("postalcode",details.pf_postalcode)
+this.session.store("companyaddress",details.pf_company_address)
+this.session.store("businessaddress",details.pf_business_address)
+this.session.store("city",details.pf_city)
+this.session.store("state",details.pf_company_state)
+this.session.store("profiletype",details.pf_type)
 
 console.log("guruuuuuuuuuuu",details.pf_account);
 
 
+// individualprofile
+
+
+
+
+
 }
-  
+   
 
 }

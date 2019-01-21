@@ -68,7 +68,6 @@ export class EditRevenueManagementComponent implements OnInit {
     console.log(this.currentTab);
   }
 
-
   editratedetaills: any = {};
   cat_id: any;
   rateheadalert: any;
@@ -153,7 +152,6 @@ export class EditRevenueManagementComponent implements OnInit {
       this.EditRevenuemanagement.updateratedetail( this.rmid2, this.rmid3, this.currentTab, editratedetaills, this.ratedetail.ratedaysid,this.roomsidrate,this.packagesids)
         .subscribe((resp: any) => {
           this.ratedetvar = resp.ReturnCode;
-
           if (this.ratedetvar == 'RUS') {
             this.ratedetalert = "ratetier updated successfully";
           }

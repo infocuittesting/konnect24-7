@@ -71,6 +71,24 @@ runprint():  Observable<object[]> {
     //.catch(this.handleErrorObservable);
 }
 
+dropdown():  Observable<object[]> {
+       
+ return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Payment')
+    .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+}
+
+Checkout(inputt:any):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+ return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_RESERVATION_STATUS',inputt,options)
+    .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+}
+
+
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

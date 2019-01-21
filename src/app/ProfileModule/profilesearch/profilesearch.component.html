@@ -130,8 +130,8 @@
        </tr>
      </thead>
      <tbody>
-       <tr  *ngFor="let profilesearch of profile1 | filterdata: endof :'pf_id'| filterdata: queryString :'pf_firstname'| filterdata: lastname :'pf_lastname'| filterdata: city :'pf_city'
-      | filterdata: postal :'pf_postalcode' |  filterdata: mobile :'pf_mobileno'; let i = index " 
+       <tr  *ngFor="let profilesearch of profile1 | filterdata:blockof :'pf_id'|filterdata: endof :'pf_id'| searchfilter: {pf_firstname :queryString} | searchfilter: {pf_lastname :lastname}| searchfilter: {pf_city :city}
+      | searchfilter: {pf_postalcode :postal} |  searchfilter: {pf_mobileno :mobile}; let i = index " 
       (click)="selectMembersEdit(profilesearch,i)" [ngClass]="{'backGroundColor':i==selectindex}">
        <td style="width:40px">{{i+1}}</td>
        <td style="width:120px">{{profilesearch?.pf_firstname |titlecase}}</td>

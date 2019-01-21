@@ -43,6 +43,9 @@
                 <option *ngFor="let litsclss of class1" [ngValue]="litsclss.class">{{litsclss.class}}</option>
               </select>
             </div>
+            <div class="col-lg-2">
+              <button type="reset" class="btn btn-danger" style="height: 35px;width: 110px;margin-top: 23px" (click)="clear()"><b>Clear</b></button>
+              </div>
             <div class="col-md-1"></div>
 
           </div>

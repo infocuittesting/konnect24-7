@@ -196,7 +196,7 @@
                         <label>CHECKOUT</label>
                       </div>
                       <div class="col-md-1 col-sm-1 col-xs-1">
-                        <button type="reset" class="btn btn-success" style="border-radius: 6px;margin-top: 0px;width: 115px;height: 30px;" (click)="clear()">
+                        <button class="btn btn-success" style="border-radius: 6px;margin-top: 0px;width: 115px;height: 30px;" (click)="clear()">
                           <b>Clear</b>
                         </button>
                       </div>
@@ -311,7 +311,7 @@
               </thead>
               <tbody>
 
-                <tr *ngFor="let dell of housetable |filterdata: mainpersonname :'pf_firstname' |  filterdata: mainroom :'res_room'|  filterdata: company :'Company';let i=index "
+                <tr *ngFor="let dell of housetable |searchfilter: {pf_firstname :mainpersonname} |  searchfilter: {res_room :mainroom}|  searchfilter: {Company :company};let i=index "
                   (click)="selectMembersEdit(dell,i)" [ngClass]="{'backGroundColor':i==selectindex}">
                   <td>{{dell?.res_room}}</td>
                   <td>{{dell?.pf_firstname}}</td>
@@ -462,7 +462,7 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="row" *ngIf="showdiv=='1'">

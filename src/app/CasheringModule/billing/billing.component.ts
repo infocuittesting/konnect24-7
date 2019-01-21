@@ -281,7 +281,7 @@ addRows(add)
         "emp_id":"2",
     
       });
-      console.log("amount", add.Amount,typeof( add.Amount))
+      console.log("windowwwwwwww", add.Windowno)
 
       this.totalPos += 1;
       this.totalamt += Number(add.Amount)*Number(add.Qty);
@@ -320,13 +320,13 @@ saveroomDetails(postdetails)
        this.navtbl=resp.ReturnValue1;
        this.windowbal=resp.ReturnValue2;
        console.log("return  value 111111111111111111")
-       console.log(this.navtbl)
+       console.log("ttttttttt",this.navtbl)
        //seperating values for window1 and window2 
        this.vaal1=[];
        this.vaal2=[];
        for(let seperat of this.navtbl){
          
-         if (seperat['post_window']==1){
+         if (seperat['post_window']==101){
            this.vaal1.push(seperat) //for window1
          }
          else
