@@ -20,14 +20,14 @@ export class RoomconditionService {
        //.catch(this.handleErrorObservable);
   }
 
-  insertRoomcondition(input:any):  Observable<object[]> {
+  insertRoomcondition(input,param):  Observable<object[]> {
     // console.log('kannu',input)     
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers:headers,});
   
     let body=
           {
-            "rm_room":this.session.retrieve("id"),
+            "rm_room":param.toString(),
            "rm_condition":input.rm_condition,
           }
   
@@ -37,14 +37,14 @@ export class RoomconditionService {
   }
   
 
-  updateRoomcondition(input:any):  Observable<object[]> {
+  updateRoomcondition(input,param):  Observable<object[]> {
     // console.log('kannu',input)     
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers:headers,});
   
     let body=
           {
-            "rm_room":this.session.retrieve("id"),
+            "rm_room":param.toString(),
            "rm_condition":input,
           }
   

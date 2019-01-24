@@ -140,10 +140,9 @@
             <input type="checkbox" name="Skips" [(ngModel)]="checkboxflg.checkskip" (change)="filtercheckboxData(checkboxflg.checkskip,'skip')"><b style="padding-left:10px;">Skips</b><br>
             <input type="checkbox" name="Persondic" [(ngModel)]="checkboxflg.checkper" (change)="filtercheckboxData(checkboxflg.checkper,'person')"><b style="padding-left:10px;">Person Discrepancy</b><br>
     </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         <div class="row">
-            <div class="col-lg-2"><b>Floor</b></div>
+            <div class="col-lg-3"><b>Floor</b></div>
             <div class="col-lg-2">  
               <select  required style="height:34px;color:black;border-radius:4px;width:700%;color:black;" [(ngModel)]="roomfloor">
                 <option *ngFor="let floorlisting of floor" [ngValue] = "floorlisting.floor">{{ floorlisting.floor}} </option>
@@ -152,16 +151,16 @@
   
                 </div><br><br>
     
-                <div class="col-lg-2"><b>Room</b></div>
+                <div class="col-lg-3"><b>Room</b></div>
                 <div class="col-lg-2">  
-                        <select  required style="height:34px;color:black;border-radius:4px;width:700%;color:black;" [(ngModel)]="roommanagement" (ngModelChange)="onSelect2(roommanagement)">
+                        <select  required name="room" style="height:34px;color:black;border-radius:4px;width:700%;color:black;" [(ngModel)]="roommanagement" (change)="onSelect2(roommanagement)">
                                 <option *ngFor="let discrelist of list" [ngValue] = "discrelist.rm_room">{{discrelist.rm_room}} </option>
                                   </select>
                     </div><br><br>
     
-                    <div class="col-lg-2"><b>Room Class</b></div>
+                    <div class="col-lg-3"><b>Room Class</b></div>
                     <div class="col-lg-2">  
-                            <select  required style="height:34px;color:black;border-radius:4px;width:700%;color:black;" [(ngModel)]="roommanagement1" (ngModelChange)="onSelect2(roommanagement1)">
+                            <select  required name="roomclass" style="height:34px;color:black;border-radius:4px;width:700%;color:black;" [(ngModel)]="roommanagement1" (change)="onSelect3(roommanagement1)">
                                     <option *ngFor="let roomclasses of class1" [ngValue] = "roomclasses.class">{{roomclasses.class}} </option>
                                       </select>
                         </div>

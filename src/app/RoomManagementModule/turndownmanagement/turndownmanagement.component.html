@@ -1,0 +1,116 @@
+<div class="wrapper">
+  <div class="content-wrapper">
+    <br>
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+            <div class="col-md-4">
+                <b><u>Turndown Status</u></b> <br>
+                <label for=""><input type="checkbox" [(ngModel)]="checkboxflg.request" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.request,'Requested')" name="" id=""> Requested</label><br>
+                <label for=""><input type="checkbox" [(ngModel)]="checkboxflg.notrequest" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.notrequest,'Not Requested')" name="" id=""> Not Requested</label><br>
+                <label for=""><input type="checkbox" [(ngModel)]="checkboxflg.completed" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.completed,'Completed')" name="" id=""> Completed</label>
+            </div> 
+            
+            <div class="col-md-4">
+                <b><u>Reservation Status</u></b><br>
+                <label for=""><input type="checkbox" name="" id="" [(ngModel)]="checkboxflg.arrivals" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.arrivals,'Arrivals')"> Arrivals</label><br>
+                <label for=""><input type="checkbox" name="" id="" [(ngModel)]="checkboxflg.arrived"  [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.arrived,'Arrived')"> Arrived</label><br>
+                <label for=""><input type="checkbox" name="" id="" [(ngModel)]="checkboxflg.stayover" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.stayover,'Stay Over')"> Stay Over</label>
+            </div>   
+            <div class="col-md-2">
+              <br><br>
+              <button class="btn btn-info" (click)="cleardata(checkboxflg.request,checkboxflg.notrequest,checkboxflg.completed)">Clear All</button>
+            </div>          
+            <div class="col-md-2"></div>
+            </div>
+        </div>
+      </div>
+      <div>
+        <table class="table table-bordered table-hover table-responsive">
+          <thead style="background-color:#0077B5;color:white;">
+            <tr>
+              <th>Seq</th>
+              <th>Room</th>
+              <th>Room Types</th>
+              <th>Room Status</th>
+              <th>Room Class</th>
+              <th>Name</th>
+              <th>Reservation Status</th>
+              <th>Turndown Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let datalsit of turndown let i=index;" (click)="select(datalsit,i)">
+              <td>{{i+1}}</td>
+              <td>{{datalsit.room}}</td>
+              <td>{{datalsit.roomtype}}</td>
+              <td>{{datalsit.roomstatus}}</td>
+              <td>{{datalsit.roomclass}}</td>
+              <td>{{datalsit.pf_firstname}}</td>
+              <td>{{datalsit.reservation_status}}</td>
+              <td>{{datalsit.turndown_status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-2">
+              <button class="btn btn-info" style="width:100%" data-toggle="modal" [disabled]="turnmodal" data-target="#Turndownstatus"> Turndown Status</button>
+            </div>
+          <div class="col-md-2">
+            <button class="btn btn-success" style="width:100%" routerLink="/reservation"> Reservation</button>
+          </div>
+          <div class="col-md-2">
+              <button class="btn btn-primary" style="width:100%"> Report</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger" style="width:100%" routerLink="/mains"> Close</button>
+              </div>
+          <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+</div>     
+
+<!-- turndown Status start-->
+<div class="modal fade" id="Turndownstatus" role="dialog" vertical-align="center">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content " style="margin-top: 30%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" align="center">Turndown Status</h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+           <div class="col-md-2"></div>
+           <div class="col-md-3">
+             <label for="">Turndown Status</label>
+           </div>
+           <div class="col-md-5">
+             <div class="input-group">
+               <select required style="height:34px;color:black;border-radius:4px;width:160px;color:black;" [(ngModel)]="user">
+                 <option *ngFor="let list of dropdown" [ngValue] ="list.turndownstatus">{{list.turndownstatus}}</option>
+               </select>
+             </div>
+           </div>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-4"></div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-info" data-dismiss="modal" (click)="insertturndown(user)">OK</button>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <!-- turndown Status End-->

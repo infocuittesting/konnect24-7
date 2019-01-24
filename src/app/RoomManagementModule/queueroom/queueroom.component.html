@@ -24,13 +24,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let queueroom of queue;let i = index">
+              <tr *ngFor="let queueroom of queuerooms;let i = index">
                 <td><input type="checkbox"></td>
                 <td>{{queueroom?.rm_qtime}}</td>
                 <td>{{queueroom?.res_room}}</td>
-                <td>{{queueroom?.rm_room_type}}</td>
-                <td>{{queueroom?.rm_room_status}}</td>
-                <td>{{queueroom?.rm_fo_status}}</td>
+                <td>{{queueroom?.res_room_type}}</td>
+                <td>{{queueroom?.roomstatus}}</td>
+                <td>{{queueroom?.frontoffice}}</td>
                 <td>{{queueroom?.pf_firstname}}</td>
                 <td>{{queueroom?.rm_vip}}</td>
 
@@ -141,7 +141,7 @@
               </div>
 
               <div class="col-md-2">
-                <select required style="height:34px;;border-radius:4px;width:100%;" [(ngModel)]="rm_room_type" (ngModelChange)="onSelect(rm_room_type)">
+                <select required style="height:34px;;border-radius:4px;width:100%;" [(ngModel)]="rm_room_type" >
                   <option *ngFor="let selectlist of listroom" [ngValue]="selectlist.type">{{selectlist.type}} </option>
                 </select>
               </div>
@@ -153,12 +153,15 @@
               </div>
 
               <div class="col-md-2">
-                <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="queueroom" (change)="onSelect1(queueroom)">
+                <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="queueroom" >
                   <option *ngFor="let selectroomlist of room" [ngValue]="selectroomlist.rm_room">{{selectroomlist.rm_room}}
                     </option>
                 </select>
               </div>
-
+              <div class="col-md-1"></div>
+              <div class="col-md-2">
+                <button class="btn btn-success" (click)="cleardata()">Clear All</button>
+              </div>
 
               <!-- <div class="col-lg-2" style="padding-left:250px;">
       <button type="button" class="btn btn-warning"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button>
@@ -197,7 +200,7 @@
                   <div class="col-lg-2">
                     <input type="text">
                   </div>
-
+                  
                 </div>
 
               </div>
@@ -232,13 +235,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let queueroom of queuerooms;let i = index">
+                  <tr *ngFor="let queueroom of queuerooms|searchfilter:{res_room_type:rm_room_type}|searchfilter:{res_room:queueroom};let i = index">
                     <td><input type="checkbox"></td>
                     <td>{{queueroom?.rm_qtime}}</td>
                     <td>{{queueroom?.res_room}}</td>
-                    <td>{{queueroom?.rm_room_type}}</td>
-                    <td>{{queueroom?.rm_room_status}}</td>
-                    <td>{{queueroom?.rm_fo_status}}</td>
+                    <td>{{queueroom?.res_room_type}}</td>
+                    <td>{{queueroom?.roomstatus}}</td>
+                    <td>{{queueroom?.frontoffice}}</td>
                     <td>{{queueroom?.pf_firstname}}</td>
                     <td>{{queueroom?.rm_vip}}</td>
 

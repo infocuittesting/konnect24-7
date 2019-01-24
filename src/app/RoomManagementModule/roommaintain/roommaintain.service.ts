@@ -11,6 +11,17 @@ export class RoommaintainService {
 
   constructor(private http: Http,public session:SessionStorageService  ) { }
 
+  //return status
+  room():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   
+    return this.http.post('https://hotel360.herokuapp.com/Select_RoomStatus',options)
+       .map(this.extractData)
+ 
+  }
+
 
   roommaintenance():  Observable<object[]> {
        
@@ -29,8 +40,9 @@ export class RoommaintainService {
     const headers = new Headers();
      headers.append('Content-Type','application/json');
      const options = new RequestOptions({ headers: headers });
-     console.log('working');
-     let body={"rm_room":input.rm_room.toString(),"rm_mainteanance_reason":input.rm_mainteanance_reason,"rm_mainteanance_remarks":input.rm_mainteanance_remarks
+     console.log(input);
+     let body={"rm_room":input.rm_room.toString(),"rm_mainteanance_reason":input.rm_mainteanance_reason,"rm_mainteanance_remarks":input.rm_mainteanance_remarks,
+     "rm_return_as":input.rm_return_as,"rm_status":input.rm_status,
     };
     
      return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroommaintenance',body,options)
@@ -45,10 +57,10 @@ export class RoommaintainService {
    const options = new RequestOptions({ headers: headers });
    console.log('working');
    let body={
-      "rm_room":this.session.retrieve("id8"),
+      "rm_room":input.rm_room,
       // "rm_room":input.rm_room.toString(),
-     "rm_mainteanance_reason":input.rm_mainteanance_reason,
-     "rm_mainteanance_remarks":input.rm_mainteanance_remarks
+     "rm_mainteanance_reason":input.rm_mainteanance_reason,"rm_mainteanance_remarks":input.rm_mainteanance_remarks,
+     "rm_return_as":input.rm_return_as,"rm_status":input.rm_status,
   };
   
    return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroommaintenance',body,options)
@@ -57,14 +69,14 @@ export class RoommaintainService {
 }
 
 
-resolveroom(input:any):  Observable<object[]> {
+resolveroom1(input:any):  Observable<object[]> {
        
   const headers = new Headers();
    headers.append('Content-Type','application/json');
    const options = new RequestOptions({ headers: headers });
    console.log('working');
    let body={
-    "rm_room":this.session.retrieve("id8"),
+    "rm_room":input,
   };
   
    return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Update_ResolveRoomMaintenance',body,options)
@@ -80,7 +92,7 @@ deleteroommaintenance(input:any):  Observable<object[]> {
    const options = new RequestOptions({ headers: headers });
    console.log('working');
    let body={
-    "rm_room":this.session.retrieve("id8"),
+    "rm_room":input,
   };
   
    return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Delete_DeleteRoomMaintenance',body,options)

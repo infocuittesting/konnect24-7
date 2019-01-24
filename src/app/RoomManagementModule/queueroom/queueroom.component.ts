@@ -42,39 +42,21 @@ export class QueueroomComponent implements OnInit {
     doc.save('test.pdf');
   }
  public queuerooms:any=[];
-  public queue=[
-    { rm_qtime: "101", rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "sruthi",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", pf_firstname: "sneha",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "103", rm_room_type: "ksbn", rm_room_status: "out of order", rm_fo_status: "occupied", pf_firstname: "satheesh",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "104", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "occupied", pf_firstname: "daisy",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "105", rm_room_type: "sjsn", rm_room_status: "inspected", rm_fo_status: "occupied", pf_firstname: "banu",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "106", rm_room_type: "sdbu", rm_room_status: "pick up", rm_fo_status: "vaccant", pf_firstname: "aravindh",rm_vip:"" },
-    { rm_qtime: "101", rm_room: "107", rm_room_type: "comb", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "siva",rm_vip:"" },
-
-  ];
+  public queue=[];
   public listroom=[];
   public room=[];
-  qroom = [
-    // { rm_qtime: "101", rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "sruthi",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", pf_firstname: "sneha",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "103", rm_room_type: "ksbn", rm_room_status: "out of order", rm_fo_status: "occupied", pf_firstname: "satheesh",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "104", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "occupied", pf_firstname: "daisy",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "105", rm_room_type: "sjsn", rm_room_status: "inspected", rm_fo_status: "occupied", pf_firstname: "banu",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "106", rm_room_type: "sdbu", rm_room_status: "pick up", rm_fo_status: "vaccant", pf_firstname: "aravindh",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "107", rm_room_type: "comb", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "siva",rm_vip:"" },
-  ];
-  qroom1 = [
-    // { rm_qtime: "101", rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "sruthi",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", pf_firstname: "sneha",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "103", rm_room_type: "ksbn", rm_room_status: "out of order", rm_fo_status: "occupied", pf_firstname: "satheesh",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "104", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "occupied", pf_firstname: "daisy",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "105", rm_room_type: "sjsn", rm_room_status: "inspected", rm_fo_status: "occupied", pf_firstname: "banu",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "106", rm_room_type: "sdbu", rm_room_status: "pick up", rm_fo_status: "vaccant", pf_firstname: "aravindh",rm_vip:"" },
-    // { rm_qtime: "101", rm_room: "107", rm_room_type: "comb", rm_room_status: "clean", rm_fo_status: "vaccant", pf_firstname: "siva",rm_vip:"" },
-  ];
+  qroom = [];
+  qroom1 = [];
+  public rm_room_type;
+  public queueroom;
   constructor(private pService: QueueroomService,private route:Router) { 
     // this.queue = this.qroom;
     this.queuerooms = this.qroom;
+  }
+
+  cleardata(){
+   this.rm_room_type="";
+   this.queueroom="";
   }
 
   onSelect(val){
@@ -89,11 +71,6 @@ export class QueueroomComponent implements OnInit {
     this.queuerooms = this.qroom1.filter(x => x.rm_room == val)
   }
 
-  // onSelect3(val){
-  //   val = val.toLowerCase();
-  //   console.log(val);
-  //   this.queue = this.qroom2.filter(x => x.rm_room == val)
-  // }
 
   ngOnInit() {
     this.pService.getqueueroom()

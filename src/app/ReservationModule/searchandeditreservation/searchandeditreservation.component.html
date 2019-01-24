@@ -92,7 +92,7 @@
              </div>
  
              <div class="col-md-2">
-               <button type="reset"  class="btn btn-danger" style="width: 91px;height: 33px;margin-left: 24pc;">Clear</button>
+               <button class="btn btn-danger" style="width: 91px;height: 33px;margin-left: 24pc;" (click)="clearinput()">Clear</button>
              </div> 
        </div>
       <br>
@@ -136,8 +136,8 @@
                 </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let searched of searchandedit|searchfilter:{pf_firstname: queryString }|searchfilter:{pf_firstname: query}|searchfilter:{res_source: qsource} ; let i = index" 
-          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+          <tr *ngFor="let searched of searchandedit|searchfilter:{pf_firstname: queryString }|searchfilter:{res_unique_id: resof }|searchfilter:{pf_firstname: query}|searchfilter:{res_source: qsource} ; let i = index" 
+          (click)="selectMembersEdit(searched,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:50px">{{i+1}}</td> 
             <td style="width:160px"> {{searched.pf_firstname|titlecase}}</td>
             <td style="width:110px"> {{searched.res_arrival}} </td> 
@@ -160,17 +160,17 @@
         </tbody>
       </table>
    <div class="row">
-     <div class="col-md-2 col-lg-2" *ngIf="showhide==true">
+     <div class="col-md-1 col-lg-1" *ngIf="showhide==true">
        <button class="btn btn-danger btn-sm">{{privilege[0].privileges_desc}}</button>
      </div>
-     <div class="col-md-2 col-lg-2" *ngIf="showfix==true">
+     <div class="col-md-1 col-lg-1" *ngIf="showfix==true">
       <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" >Fixed Rate</button>
     </div>
-    <div class="col-md-2 col-lg-2" *ngIf="showhidenotes==true">
-      <button class="btn btn-danger btn-sm" >Notes</button>
+    <div class="col-md-1 col-lg-1" *ngIf="showhidenotes==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#notes">Notes</button>
     </div>
-    <div class="col-md-2 col-lg-2" *ngIf="showhidepreferences==true">
-      <button class="btn btn-danger btn-sm" > Preferences</button>
+    <div class="col-md-1 col-lg-1" *ngIf="showhidepreferences==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#preference"> Preferences</button>
     </div>
    </div>
   </div>
@@ -387,4 +387,84 @@
                 
               </div>
             </div> 
-            <!-- fixed rate End -->       
+            <!-- fixed rate End --> 
+
+               <!-- Notes start-->
+               <div class="modal fade" id="notes" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> Notes</h4>
+                    </div>
+                    <div class="modal-body">
+                     <table class="table table-bordered table-hover tableBodyScroll">
+                      <thead>
+                      <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                          <th style="width:50px">Seq</th>
+                          <th style="width:210px">Notes Type</th>
+                          <th style="width:210px">Notes</th>
+                          <th style="width:210px">Description</th>
+                          <th> Date</th>
+                      </tr>                  
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of notes let i=index">
+                            <td style="width:50px">{{i+1}}</td>
+                            <td style="width:210px">{{data.pf_note_type}}</td>
+                            <td style="width:210px">{{data.pf_note_title}}</td>
+                            <td style="width:210px">{{data.pf_note_description}}</td>
+                            <td >{{data.pf_notes_date}}</td>
+                        </tr>
+                      </tbody>
+                     </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div> 
+              <!-- Notes End -->            
+
+               <!-- Preference start-->
+               <div class="modal fade" id="preference" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> Preference</h4>
+                    </div>
+                    <div class="modal-body">
+                     <table class="table table-bordered table-hover tableBodyScroll">
+                      <thead>
+                      <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                          <th style="width:50px">Seq</th>
+                          <th style="width:260px">Guest Preference</th>
+                          <th style="width:260px">Preference Group</th>
+                          <th>Description</th>
+                      </tr>                  
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of preferences let i=index">
+                            <td style="width:50px">{{i+1}}</td>
+                            <td style="width:260px">{{data.pf_guest_preference}}</td>
+                            <td style="width:260px">{{data.pf_preference_group}}</td>
+                            <td>{{data.pf_preference_description}}</td>          
+                        </tr>
+                      </tbody>
+                     </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div> 
+              <!-- Preferences End -->                          

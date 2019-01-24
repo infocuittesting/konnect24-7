@@ -76,13 +76,28 @@ export class ReservationComponent implements OnInit {
 
   user:any={};
   //date difference 
-  arriveDepartureDateFun(arrDate,depDate){
+  arriveDepartureDateFun(arrDate,depDate,){
     if(arrDate!=null && depDate!=null){
   const daydiff = moment(arrDate).diff(moment(depDate), "days");
   this.user.RES_Nights=Math.abs(daydiff);
     }
   }
 
+
+  public ratequery:any;
+  modalchange(RES_Arrival,RES_Depature,RES_Adults){
+   let body ={
+    "arrival_date":RES_Arrival,
+    "departure_date":RES_Depature,
+    "adults":RES_Adults
+   }
+   this.ReservationService.RateQuery(body)
+   .subscribe( (resp:any) => {
+     
+     this.ratequery = resp.Return;
+    });
+
+  }
   
  public usera;
  public confim;

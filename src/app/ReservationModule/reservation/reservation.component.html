@@ -159,7 +159,7 @@
                     <div class="col-lg-2" style="padding-left:55px;">
                       <div class="input-group" [class.has-error]="arrivaldate.touched && arrivaldate.invalid">
                         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="date" [min]="date" name="arrival" #arrivaldate="ngModel" required class="form-control"
+                        <input type="date"  name="arrival" #arrivaldate="ngModel" required class="form-control"
                           placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Arrival"
                           (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel" /></div>
                       <div *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors?.required " ngClass="{ 'has-error' : !arrivaldate.valid && submitAttempt }"></div>
@@ -234,7 +234,7 @@
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;" [class.has-error]="adult.touched && adult.invalid">
                         <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_Adults" #adult="ngModel" required>
+                          [(ngModel)]="user.RES_Adults" (change)="modalchange(user.RES_Arrival,user.RES_Depature,user.RES_Adults)" #adult="ngModel" required>
                         <div *ngIf="adult.touched && !adult.valid && adult.errors?.required  && adult.errors.pattern"
                           ngClass="{ 'has-error' : !adult.valid && submitAttempt }"></div>
                       </div>

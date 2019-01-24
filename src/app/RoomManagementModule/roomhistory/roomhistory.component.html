@@ -12,14 +12,9 @@
                             </div>
 
                             <div class="col-lg-2">
-                                <select required style="height:32px;width:258px;border-radius:4px;color:black;">
-                                    <option value="select1">select 1 </option>
-                                    <option value="Goa">USD</option>
-                                    <option value="New Delhi">INR</option>
-                                    <option value="Bangalore">POUND</option>
-                                    <option value="Mumbai">EURO</option>
-                                </select>
-
+                                <select required style="height:32px;width:258px;border-radius:4px;color:black;" [(ngModel)]="rm_room_type">
+                                    <option *ngFor="let selectlist of listroom" [ngValue]="selectlist.rm_room">{{selectlist.rm_room}} </option>
+                                  </select>
                             </div>
 
                             <div class="col-lg-2"></div>
@@ -32,7 +27,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i
                                             class="glyphicon glyphicon-calendar"></i></span>
-                                    <input type="date" class="form-control" style="width:220px;">
+                                    <input type="date" class="form-control" name="departuredate" style="width:220px;"[(ngModel)]="deptdate">
                                 </div>
                             </div>
                         </div><br>
@@ -48,14 +43,13 @@
                             <div class="col-lg-2">
                                 <div class="input-group">
                                     <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    <input type="text" class="form-control" style="width:220px;">
+                                    <input type="text" class="form-control" name="creditcard" style="width:220px;" [(ngModel)]="creditcard">
                                 </div>
                             </div>
 
-                            <div class="col-lg-5"></div>
+                            <div class="col-lg-4"></div>
                             <div class="col-lg-2">
-                                <button type="button" class="btn btn-info"><b>Search</b><span class="glyphicon glyphicon-search"
-                                        style="padding-left:5px;"></span></button>
+                                <button type="button" class="btn btn-info" style="width:260px;" (click)="clearfield()"><b>Clear All</b></button>
                             </div>
                         </div><br>
                     </div>
@@ -72,89 +66,25 @@
                             <th>Name</th>
                             <th>Arrival</th>
                             <th>Departure</th>
-                            <th>Prs</th>
                             <th>Rate code</th>
-                            <th>Revenue</th>
+                            <th>Creditcard Numbe</th>
                             <th>Rate</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr *ngFor="let datalist of roomhistory|searchfilter:{res_room: rm_room_type}|searchfilter:{res_depature:deptdate}
+                        |searchfilter:{res_creditcard_number:creditcard}" >
+                            <td>{{datalist.res_room}}</td>
+                            <td>{{datalist.pf_firstname}}</td>
+                            <td>{{datalist.res_arrival}}</td>
+                            <td>{{datalist.res_depature}}</td>
+                            <td>{{datalist.res_rate_code}}</td>
+                            <td>{{datalist.res_creditcard_number}}</td>
+                            <td>{{datalist.res_rate}}</td>
                         </tr>
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr style="height:40px;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+       
                     </tbody>
                 </table>
-
-
             </div>
 
             <div class="container-fluid">
@@ -166,7 +96,7 @@
 
 
                     <div class="col-lg-2">
-                        <button type="button" class="btn btn-info" style="width:100%;"><b>Profile</b><span class="glyphicon glyphicon-user"
+                        <button type="button" class="btn btn-info" style="width:100%;" routerLink="profile"><b>Profile</b><span class="glyphicon glyphicon-user"
                                 style="padding-left:5px;"></span></button>
                     </div>
 
@@ -176,7 +106,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <button type="button" class="btn btn-primary" style="width:100%;"><b>Revenue</b><span class="glyphicon glyphicon-user"
+                        <button type="button" class="btn btn-primary" style="width:100%;" routerLink="revenueratecode"><b>Revenue</b><span class="glyphicon glyphicon-user"
                                 style="padding-left:5px;"></span></button>
                     </div>
 

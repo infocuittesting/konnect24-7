@@ -44,66 +44,14 @@ export class RoomdiscrepanciesComponent implements OnInit {
     console.log(val);
     this.room = this.qroom2.filter(x => x.rm_room == val)
   }
+  onSelect3(val){
+    // val = val.toLowerCase();
+    console.log(val);
+    this.room = this.qroom2.filter(x => x.rm_room_class == val)
+  }
 
   public qroom2 = [];
-  public room = [
-    // {
-    //   "rm_room": 106,
-    //   "rm_room_type": "KSGS",
-    //   "rm_room_status": "clean",
-    //   "rm_hk_status": "",
-    //   "rm_fo_status": "deepclean",
-    //   "rm_fo_person": "6",
-    //   "rm_hk_person": "9",
-    //   "rm_room_discrepancy": "person",
-    //  },
-  
-    //  {
-    //   "rm_room": 106,
-    //   "rm_room_type": "KSGS",
-    //   "rm_room_status": "clean",
-    //   "rm_hk_status": "vaccant",
-    //   "rm_fo_status": "vaccant",
-    //   "rm_fo_person": "3",
-    //   "rm_hk_person": "5",
-    //   "rm_room_discrepancy": "person",
-    //  },
-  
-    //  {
-    //   "rm_room": 105,
-    //   "rm_room_type": "KSGS",
-    //   "rm_room_status": "clean",
-    //   "rm_hk_status": "vaccant",
-    //   "rm_fo_status": "vaccant",
-    //   "rm_fo_person": "3",
-    //   "rm_hk_person": "5",
-    //   "rm_room_discrepancy": "skip",
-    //  },
-  
-    //  {
-    //   "rm_room": 105,
-    //   "rm_room_type": "KSGS",
-    //   "rm_room_status": "clean",
-    //   "rm_hk_status": "vaccant",
-    //   "rm_fo_status": "vaccant",
-    //   "rm_fo_person": "3",
-    //   "rm_hk_person": "5",
-    //   "rm_room_discrepancy": "skip",
-    //  },
-  
-    //  {
-    //   "rm_room": 105,
-    //   "rm_room_type": "KSGS",
-    //   "rm_room_status": "clean",
-    //   "rm_hk_status": "vaccant",
-    //   "rm_fo_status": "vaccant",
-    //   "rm_fo_person": "3",
-    //   "rm_hk_person": "5",
-    //   "rm_room_discrepancy": "skip",
-    //  },
-  
-  
-  ];
+  public room = [];
 
   public list = [];
   public class1 = [];
@@ -120,13 +68,7 @@ export class RoomdiscrepanciesComponent implements OnInit {
     this.pService.getroomdiscrepencies()
     .subscribe((resp: any) => {
     this.room=resp.ReturnValue;
-   
-    });
-
-    this.pService.getroomdiscrepencies()
-    .subscribe((resp: any) => {
     this.qroom2=resp.ReturnValue;
-   
     });
 
     this.pService.roomdropdown()

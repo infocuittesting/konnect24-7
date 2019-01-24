@@ -45,47 +45,7 @@ export class HousekeepingComponent implements OnInit {
     this.session.clear();
   }
 
-house = [
-
-
-    //  { rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "101", rm_room_type: "kngn", rm_room_status: "clean", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-
-    //  { rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "102", rm_room_type: "kngs", rm_room_status: "dirty", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-    //  { rm_room: "103", rm_room_type: "kngn", rm_room_status: "pick up", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "103", rm_room_type: "kngn", rm_room_status: "pick up", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "103", rm_room_type: "kngn", rm_room_status: "pick up", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "104", rm_room_type: "kngn", rm_room_status: "inspected", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-
-
-    //  { rm_room: "105", rm_room_type: "kngn", rm_room_status: "out of order", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "105", rm_room_type: "kngn", rm_room_status: "out of order", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "105", rm_room_type: "kngn", rm_room_status: "out of order", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-
-    //  { rm_room: "106", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    // { rm_room: "106", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-    //  { rm_room: "106", rm_room_type: "kngn", rm_room_status: "out of service", rm_fo_status: "vaccant", rm_reservation_status: "icha", rm_floor: "3rd floor", rm_room_class: "icha", rm_am_pm: "20", rm_features: "20", },
-
-
-  ];
+house = [];
 
 
 
@@ -106,7 +66,7 @@ user={};
    }
   public rmid:any;
   public rmtype:any;
-
+  public statistics:any;
   
   ngOnInit() {
 
@@ -116,6 +76,11 @@ user={};
         this.house = resp.ReturnValue;
 
       });
+    //statistic table
+    this.roomService.getstatisticsdata()
+    .subscribe((resp: any) => {
+      this.statistics = resp.ReturnValue;
+    });  
 
       this.roomService.roomdropdown1()
       .subscribe((resp: any) => {
@@ -140,7 +105,7 @@ selectandClearAll(flag){
  }else if(flag=='sel'){
    this.chkFlag=true;
    this.checkselectClr=true;
-   this.filtercheckboxList=['clean','inspected','dirty','out of service','out of order','pick up'];
+   this.filtercheckboxList=['clean','inspected','dirty','out of service','out of order','pick up','vaccant','occupied'];
  }
  if(this.chkFlag==true){
    if(this.copy.length>0){
