@@ -103,14 +103,14 @@
   <div class="col-md-10">
   <button type="button" class="btn btn-info" style="width:110px" data-target="#invoice" data-toggle="modal">
   New</button>
-  <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px" [disabled]="enablebut">Edit</button>
+  <button type="button" class="btn btn-success" style="width:110px;margin-left: 10px" disabled>Edit</button>
   <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Invoice" [disabled]="enablebut">Invoice</button>
   <button type="button" class="btn btn-warning" style="width:110px;margin-left: 10px" data-target="#payment"
   data-toggle="modal" [disabled]="enablebut">Payment</button>
   <button type="button" class="btn btn-primary" style="width:110px;margin-left: 10px" data-target="#Compress1"
-  data-toggle="modal">Compress</button>
+  data-toggle="modal" disabled>Compress</button>
   <button type="button" class="btn btn-info" style="width:110px;margin-left: 10px" routerLink="/Accountoptions">Options</button>
-  <button type="button" class="btn btn-danger" style="width:110px;margin-left: 10px">close</button>
+  <button type="button" class="btn btn-danger" style="width:110px;margin-left: 10px" routerLink="/newaraccount">close</button>
   </div>
   <div class="col-md-1"></div>
   </div>
@@ -124,7 +124,7 @@
  <!-- New Invoice start-->
  <div class="modal modal-open" id="invoice" role="dialog">
   <div class="modal-dialog">
- 
+  
   <!-- Modal content-->
   <div class="modal-content">
   <div class="modal-header">
@@ -290,7 +290,6 @@
   <i style="cursor: pointer;" *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true" (click)="editrows(i,room)"></i>
   <i style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true" (click)="saveButton(i,room)"></i>
   </span></td>
- 
  
   </tr>
  

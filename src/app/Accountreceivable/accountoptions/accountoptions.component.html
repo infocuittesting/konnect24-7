@@ -3,9 +3,9 @@
     <div class="container-fluid">
       <div class="row">
         <!--Account setup-->
-        <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
-          <div class="panel">
-            <div class="panel-body" data-toggle="modal" data-target="#alert">
+        <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2" >
+          <div class="panel panel-default ">
+            <div class="panel-body " data-toggle="modal" data-target="#alert">
               <div class="text-center">
                 <img src="assets/images/settings.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
               </div>
@@ -16,6 +16,7 @@
               <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Account Setting!</small></p>
               <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Change Setting!</small></p>
             </div>
+          
           </div>
         </div>
         <!-- Account setup End -->
@@ -295,6 +296,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Pay History</h4>
       </div>
+      <form #paymentForm="ngForm">
       <div class="modal-body">
        <div class="container-fluid">
          <div class="card">
@@ -312,6 +314,11 @@
               <input type="text" class="form-control" id="invoiceno" name="invoiceno" [(ngModel)]="Invoiceno">
             </div>
           </div>
+
+          <div class="col-md-3">
+            <button type="reset" class="btn btn-warning" style="margin-bottom:-55px;width:85px">Clear</button>
+            </div>
+
          </div>
         </div>
         <br>
@@ -340,6 +347,7 @@
          </div>
        </div>
       </div>
+    </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
       </div>
@@ -576,6 +584,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Traces</h4>
           </div>
+          <form #newtracesform=ngForm>
           <div class="modal-body">
            <div class="continer">
              <div class="card">
@@ -583,13 +592,13 @@
               <div class="col-md-3">
                  <label for="name">Date</label>
                 <div class="form-group">
-                  <input type="date" class="from-control" id="date" name="date">
+                  <input type="date" class="from-control" id="date" name="date" [(ngModel)]="tdate">
                 </div>
               </div>
               <div class="col-md-3">
                   <label for="name">Account Name</label>
                  <div class="form-group">
-                   <input type="text" class="from-control" id="date" name="date">
+                   <input type="text" class="from-control" id="date" name="accname" [(ngModel)]="accname">
                  </div>
                </div>
                   <div class="col-md-2">
@@ -608,6 +617,11 @@
                         </div>
                   
                       </div>
+                      <div class="col-md-3">
+                        <button class="btn btn-danger" style="width: 45%;margin-top: 20px;margin-left: 20px;" (click)="refereshtab();"> Clear All </button>   
+                     </div>
+
+                     
              </div>
             </div>
             <br>
@@ -624,7 +638,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let traces_table_value of acc_trace_val ;let i=index "
+                  <tr *ngFor="let traces_table_value of acc_trace_val | searchfilter :{trace_on:tdate} | searchfilter :{emp_firstname:accname} ;let i=index "
                   (click)="selecttracesvalue(traces_table_value,i)" [ngClass]="{'backGroundColor':i==traceselectindex}">
                     <td>{{traces_table_value.emp_firstname}}</td>
                     <td>{{traces_table_value.trace_on}}</td>
@@ -639,10 +653,11 @@
             </div>
            </div>
           </div>
+        </form>
           <div class="modal-footer">
             <div class="row" align="center">
-              <button type="button" class="btn btn-primary" style="width:100px;">Resolve All</button>
-              <button type="button" class="btn btn-warning" style="width:100px;">Resolve</button>
+              <button type="button" class="btn btn-primary" style="width:100px;" disabled>Resolve All</button>
+              <button type="button" class="btn btn-warning" style="width:100px;" disabled>Resolve</button>
               <button type="button" class="btn btn-success"style="width:100px;" data-toggle="modal" data-target="#tracesnew" >New</button>
               <button type="button" class="btn btn-default"  style="width:100px;" data-toggle="modal" data-target="#edittrace" [disabled]=disabltrace>Edit</button>
               <button type="button" class="btn btn-danger"  style="width:100px;" [disabled]=disabltrace (click)="deletetracefun()">Delete</button>
@@ -650,7 +665,6 @@
           </div>
           </div>
         </div>
-    
       </div>
     </div>
 
@@ -914,12 +928,15 @@
               <input type="test" class="form-control" id="name" name="date">
             </div>
            </div>
+           <input type="test" class="form-control" id="name" name="title" [(ngModel)]="newnotes.title" required>
           </div> -->
           <div class="row">
               <div class="col-md-3" style="margin-left: 128px;">
               <div class="form-group">
                 <label for="name">Notes Title</label>
-                <input type="test" class="form-control" id="name" name="title" [(ngModel)]="newnotes.title" required>
+                <select id="name" name="newmarkt" [(ngModel)]="newnotes.title" required style="height: 37px;width: 260px;margin-top: -10px">
+                    <option *ngFor="let mark of notes_titles" [ngValue]="mark.notetype">{{mark.notetype}}</option>
+                    </select>
               </div>
              </div>
             </div>
@@ -951,7 +968,6 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Edit Modal</h4>
-        <h4 class="modal-title">Edit Notes</h4>
       </div>
       <div class="modal-body">
        <div class="container">
@@ -975,9 +991,17 @@
               <div class="col-md-3" style="margin-left: 128px;">
               <div class="form-group">
                 <label for="name">Notes Title</label>
-                <input type="test" class="form-control" id="name" name="title" [(ngModel)]="editnotetitle">
               </div>
              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3" style="margin-left: 128px;">
+                <div class="form-group">
+                    <select id="name" name="newmarkt" [(ngModel)]="editnotetitle" required style="height: 37px;width: 260px;margin-top: -10px">
+                        <option *ngFor="let mark of notes_titles" [ngValue]="mark.notetype">{{mark.notetype}}</option>
+                        </select>
+                </div>
+              </div>
             </div>
             <div class="row">
                 <div class="col-md-3" style="margin-left: 128px;">

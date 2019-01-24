@@ -32,8 +32,10 @@ export class AccountoptionsComponent implements OnInit {
   public Transfer=[]
   public market_val=[]
   public filterdata=[]
+  public notes_titles=[]
  
   public yearview_val=[]
+
   
   
   public traces_account_name:any
@@ -101,6 +103,11 @@ export class AccountoptionsComponent implements OnInit {
     this.AccountoptionsService.ar_notes_table()
     .subscribe((resp: any) => {
     this.notes_tabl_val=resp.ReturnValue;
+    });
+
+    this.AccountoptionsService.notes_title()
+    .subscribe((resp: any) => {
+    this.notes_titles=resp.ReturnValue;
     });
 
     this.AccountoptionsService.yearview_table()
@@ -200,7 +207,17 @@ console.log("trave id after clicking the value",this.trace_id)
    });
    });
   }
-
+// refersh daata function 
+public accname:any;
+public tdate:any;
+refereshtab(){
+  this.accname=""
+  this.tdate=""
+  this.AccountoptionsService.acc_traces_table()
+  .subscribe((resp: any) => {
+   this.acc_trace_val=resp.ReturnValue;  
+ });
+}
   deletetracefun(){
     this.AccountoptionsService.Trace_delete(this.trace_id)
     .subscribe((resp: any) => {
