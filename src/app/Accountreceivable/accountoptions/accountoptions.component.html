@@ -368,6 +368,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Transfer</h4>
         </div>
+        <form #newtracesform=ngForm>
         <div class="modal-body">
         <div class="container-fluid">
           <div class="card" >
@@ -375,25 +376,25 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="name">Account Name</label>
-                <input type="text" class="from-group" id="Account name" name="name" [(ngModel)]="accountname">
+                <input type="text" class="from-group" id="Accounta" name="nameb" [(ngModel)]="accountname">
               </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">From Account No</label>
-                  <input type="text" class="from-group" id="Account name" name="name"  [(ngModel)]="accountno" >
+                  <input type="text" class="from-group" id="Accountnamec" name="named"  [(ngModel)]="accountno" >
                 </div>
               </div>
               <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">To Account No</label>
-                    <input type="text" class="from-group" id="Account name" name="name"  [(ngModel)]="accountno">
+                    <input type="text" class="from-group" id="Accountnamee" name="namef"  [(ngModel)]="accountnoto">
                   </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                       <label for="name">Account Type</label>
-                      <select  class="from-control input-sm" id="Account name" name="name" style="width: 146px;" [(ngModel)]="accounttype" (change)="onSel(accounttype)">
+                      <select  class="from-control input-sm" id="Accountnameg" name="nameh" style="width: 146px;" [(ngModel)]="accounttype" (change)="onSel(accounttype)">
                         <option *ngFor="let option of market_val" 
                         [ngValue]="option.account_type"> 
                         {{option.account_type}}</option>
@@ -405,23 +406,30 @@
               <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">Amount</label>
-                    <input type="number" class="from-group" id="Account name" name="name" [(ngModel)]="amount">
+                    <input type="number" class="from-group" id="Accountnamei" name="namej" [(ngModel)]="amount">
                   </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                       <label for="name">Text</label>
-                      <input type="text" class="from-group" id="Account name" name="name">
+                      <input type="text" class="from-group" id="Accountnamek" name="namel">
                     </div>
                   </div>
                   <div class="col-md-3">
                       <div class="form-group">
                         <label for="name">Supplement</label>
-                        <input type="text" class="from-group" id="Account name" name="name">
+                        <input type="text" class="from-group" id="Accountnamem" name="namen">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <button type="reset" class="btn btn-danger" style="margin-top: 18px;width: 65%;">Clear All</button>
                       </div>
                     </div>
                   </div>
+                
                 </div>
+              
                     <div class="row">
                     <div class="col-md-3">
                         <div class="radio" >
@@ -441,6 +449,7 @@
                           </div>
                     </div>
                   </div>
+              
                   <div class="row">
                     <table class="table table-bordered table-hover">
                       <thead class="table" style="background-color: #0077B5;color: white">
@@ -454,7 +463,7 @@
                        </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let Transfer of tableschanges_new   | filterdata: accountname :'contact' | filterdata: amount :'account_balance';let i=index "
+                        <tr *ngFor="let Transfer of tableschanges_new   | filterdata: accountname :'contact'  | filterdata: accountno :'account_number'  | filterdata: amount :'account_balance';let i=index "
                         (click)="selectTransEdit(Transfer,i)" [ngClass]="{'backGroundColor':i==selectindex}"
                          [contextmenu]="[contextmenu,{item:item}]">
                           <td>{{Transfer.contact}}</td>
@@ -471,6 +480,8 @@
           
         </div>
         </div>
+      </form>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#transferresponse" style="width: 60px;">Ok</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
