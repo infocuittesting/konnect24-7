@@ -220,6 +220,17 @@ ar_notes_table():  Observable<object[]> {
   
   }
 
+  notes_title():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })   
+ 
+   
+    return this.http.get('https://hotel360.herokuapp.com/Profile/profilenotetype',options)
+       .map(this.extractData)
+  
+  }
+
   accounttype_dropdown():  Observable<object[]> {    
     let body={}
        return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountTypeDropdown',body)
