@@ -14,7 +14,28 @@ private chart: any;
   public getroomdetails=[] ;
   public cancelcount=[];
   public modifycount; 
+  public getcard;
+
+  //dashboard.card
+  public checkin;
+  public checkout;
+  public reservation;
+  public roomavailable;
+  public dueout;
+  public arrival;
   ngOnInit() {
+
+    //dashboard cout panel
+    this.StarterService.getcard().subscribe((resp:any) =>{
+      this.getcard=resp.ReturnValue;
+      this.checkin=resp.ReturnValue[1].count;
+      this.reservation=resp.ReturnValue[4].count;
+      this.roomavailable=resp.ReturnValue[3].count;
+      this.checkout=resp.ReturnValue[5].count;
+      this.dueout=resp.ReturnValue[2].count;
+      this.arrival=resp.ReturnValue[0].count;
+    })
+
     this.StarterService.statisticsDetails()
     .subscribe((resp: any) => {
       // if (resp.ServiceStatus == 'Success') {
