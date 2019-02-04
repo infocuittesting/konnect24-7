@@ -11,7 +11,7 @@
                               <b>Rate code</b>
                               </div>
                               <div class="col-sm-3">
-                              <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="editratedetaills.ratecodedrop" >
+                              <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="editratedetaills.ratecodedrop" (click)="newratecode(editratedetaills.ratecodedrop)" >
 -                                    <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
                               </select>
                               </div>
@@ -285,10 +285,10 @@
                             </thead>
                             <tbody style="font-size:12px;">
                                 <ng-container *ngFor="let dettable of ratedettabl; let i=index">
-                              <tr *ngIf="dettable.rate_tier_id == currentTab" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                              <tr *ngIf="dettable.advanced_details.rate_tier_id == currentTab" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
                                   <td>{{dettable.start_date}}</td>     
                                   <td>{{dettable.end_date}} </td>
-                                  <td>{{dettable.rooms_id}}</td>
+                                  <td> <span  *ngFor="let roomnametest of dettable.rooms"> {{roomnametest.roomstype}}, </span></td>
                               </tr></ng-container>
                             </tbody>
                           </table>

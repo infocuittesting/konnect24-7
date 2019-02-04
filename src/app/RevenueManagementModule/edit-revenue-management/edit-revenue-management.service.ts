@@ -99,19 +99,31 @@ export class EditRevenueManagementService {
 
   }
 
-  getallvalues():  Observable<object[]> {
+  getallvalues(ratecodeid):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "ratecode_id":this.session.retrieve("ratecodeedit")
+      //"ratecode_id":this.session.retrieve("ratecodeedit")
+      "ratecode_id":ratecodeid
+
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
        .map(this.extractData)
 
   }
 
+  getallvalues1(param):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body={
+      "ratecode_id":param
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
+       .map(this.extractData)
 
+  }
   allvalues():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -185,7 +197,7 @@ export class EditRevenueManagementService {
 
   }
 
-  updateratedetail(rmid2,rmid3,tab,editratedetaills:any,ratedaysid,roomsidrate,packagesids):  Observable<object[]> {
+  updateratedetail(rmid2,rmid3,tab,editratedetaills:any,ratedaysid,roomsidrate,packagesids,ratedetails_id_new):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -204,18 +216,18 @@ export class EditRevenueManagementService {
             "fri":editratedetaills.fri,
             "sat":editratedetaills.sat,
         },
-        "rate_days_id":ratedaysid,
-        "one_adult_amount":editratedetaills.one_adult_amount,
-       "two_adult_amount":editratedetaills.two_adult_amount,
-       "three_adult_amount":editratedetaills.three_adult_amount,
-       "four_adult_amount":editratedetaills.four_adult_amount,
-       "extra_adult_amount":editratedetaills.extra_adult_amount,
-       "one_child_amount":editratedetaills.one_child_amount,
-       "two_child_amount":editratedetaills.two_child_amount,
-       "extra_child_amount":editratedetaills.extra_child_amount,
+        "ratecode_id":ratedetails_id_new,
+        "one_adult_rate":editratedetaills.one_adult_amount,
+       "two_adult_rate":editratedetaills.two_adult_amount,
+       "three_adult_rate":editratedetaills.three_adult_amount,
+       "four_adult_rate":editratedetaills.four_adult_amount,
+       "extra_adult_rate":editratedetaills.extra_adult_amount,
+       "one_child_rate":editratedetaills.one_child_amount,
+       "two_child_rate":editratedetaills.two_child_amount,
+       "extra_child_rate":editratedetaills.extra_child_amount,
        "room_types":rmid2,
        "rooms_id":roomsidrate ,
-       "package":"",
+       "package":[0],
        "packages_id":packagesids,
        "rate_tier_id":tab
     }
@@ -231,6 +243,7 @@ export class EditRevenueManagementService {
  const options = new RequestOptions({ headers: headers })
  let body={
    "ratecode_id":this.session.retrieve("ratecodeedit")
+   //"ratecode_id":ratecodeid
  }
  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
     .map(this.extractData)
@@ -255,14 +268,14 @@ export class EditRevenueManagementService {
           "fri":editratedetaills.fri,
           "sat":editratedetaills.sat
       },
-      "one_adult_amount":editratedetaills.one_adult_amount,
-     "two_adult_amount":editratedetaills.two_adult_amount,
-     "three_adult_amount":editratedetaills.three_adult_amount,
-     "four_adult_amount":editratedetaills.four_adult_amount,
-     "extra_adult_amount":editratedetaills.extra_adult_amount,
-     "one_child_amount":editratedetaills.one_child_amount,
-     "two_child_amount":editratedetaills.two_child_amount,
-     "extra_child_amount":editratedetaills.extra_child_amount,
+      "one_adult_rate":editratedetaills.one_adult_amount,
+     "two_adult_rate":editratedetaills.two_adult_amount,
+     "three_adult_rate":editratedetaills.three_adult_amount,
+     "four_adult_rate":editratedetaills.four_adult_amount,
+     "extra_adult_rate":editratedetaills.extra_adult_amount,
+     "one_child_rate":editratedetaills.one_child_amount,
+     "two_child_rate":editratedetaills.two_child_amount,
+     "extra_child_rate":editratedetaills.extra_child_amount,
      "room_types":rmid2,
      "package":[0],
      "rate_tier_id":tab

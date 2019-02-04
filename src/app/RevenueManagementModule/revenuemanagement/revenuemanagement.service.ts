@@ -3,6 +3,7 @@ import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { SessionStorageService } from "ngx-webstorage";
+import { Options } from 'selenium-webdriver/opera';
 
 
 @Injectable()
@@ -44,7 +45,7 @@ export class RevenuemanagementService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_MARKET_SELECT',options)
+    return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Market')
        .map(this.extractData)
 
   }
@@ -54,7 +55,7 @@ export class RevenuemanagementService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_MARKET_SOURCE_SELECT',options)
+    return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_Source')
        .map(this.extractData)
 
   }
@@ -75,7 +76,7 @@ export class RevenuemanagementService {
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Seasoncode',options)
        .map(this.extractData)
 
-  }
+  } 
   roomtypesdropdown():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -104,12 +105,12 @@ export class RevenuemanagementService {
 
   }
 
-  deletenego(ratecodeid):  Observable<object[]> {
+  deletenego(delete_nego_id):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "negotiated_code_id":ratecodeid.toString()
+      "negotiated_code_id":delete_nego_id
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_DELETE_Negotiated_Rate',body,options)
        .map(this.extractData)
@@ -131,12 +132,14 @@ export class RevenuemanagementService {
   }
  
 
- getallvalues():  Observable<object[]> {
+ getallvalues(ratecodeid):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "ratecode_id":this.session.retrieve("ratecodeedit")
+      //"ratecode_id":this.session.retrieve("ratecodeedit")
+      "ratecode_id":ratecodeid
+
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
        .map(this.extractData)
@@ -187,7 +190,7 @@ export class RevenuemanagementService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.get('http://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Negotiated_Rate',options)
+    return this.http.get('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Negotiated_Rate',options)
        .map(this.extractData)
 
   }
@@ -325,14 +328,14 @@ export class RevenuemanagementService {
             "fri":input.fri,
             "sat":input.sat
         },
-        "one_adult_amount":input.one_adult_amount,
-       "two_adult_amount":input.two_adult_amount,
-       "three_adult_amount":input.three_adult_amount,
-       "four_adult_amount":input.four_adult_amount,
-       "extra_adult_amount":input.extra_adult_amount,
-       "one_child_amount":input.one_child_amount,
-       "two_child_amount":input.two_child_amount,
-       "extra_child_amount":input.extra_child_amount,
+        "one_adult_rate":input.one_adult_amount,
+       "two_adult_rate":input.two_adult_amount,
+       "three_adult_rate":input.three_adult_amount,
+       "four_adult_rate":input.four_adult_amount,
+       "extra_adult_rate":input.extra_adult_amount,
+       "one_child_rate":input.one_child_amount,
+       "two_child_rate":input.two_child_amount,
+       "extra_child_rate":input.extra_child_amount,
        "room_types":rmid2,
        "package":rmid3,
        "rate_tier_id":0
@@ -364,15 +367,15 @@ export class RevenuemanagementService {
             "fri":user.fri,
             "sat":user.sat
         },
-        "rate_days_id":ratedetail.ratedaysid,
-        "one_adult_amount":user.one_adult_amount,
-       "two_adult_amount":user.two_adult_amount,
-       "three_adult_amount":user.three_adult_amount,
-       "four_adult_amount":user.four_adult_amount,
-       "extra_adult_amount":user.extra_adult_amount,
-       "one_child_amount":user.one_child_amount,
-       "two_child_amount":user.two_child_amount,
-       "extra_child_amount":user.extra_child_amount,
+        "ratecode_id":ratedetail.ratedetails_id,
+        "one_adult_rate":user.one_adult_amount,
+       "two_adult_rate":user.two_adult_amount,
+       "three_adult_rate":user.three_adult_amount,
+       "four_adult_rate":user.four_adult_amount,
+       "extra_adult_rate":user.extra_adult_amount,
+       "one_child_rate":user.one_child_amount,
+       "two_child_rate":user.two_child_amount,
+       "extra_child_rate":user.extra_child_amount,
        "room_types":rmid2,
        "rooms_id":ratedetail.roomsid ,
        "package":rmid3,

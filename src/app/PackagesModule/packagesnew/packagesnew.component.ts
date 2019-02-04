@@ -20,6 +20,7 @@ export class PackagesnewComponent implements OnInit {
   public rhythmdropdown;
   public calculatedropdown;
   public Seasoncodedropdown;
+  public Packages_dropdown:any;
   public iteminventorydropdown;
   public iventryname;
   public item_inventory_selected_id;
@@ -125,6 +126,11 @@ export class PackagesnewComponent implements OnInit {
     this.PackagesnewService.Seasoncode()
       .subscribe((resp: any) => {
         this.Seasoncodedropdown = resp.Return;
+      });
+
+      this.PackagesnewService.Packages_dropdown()
+      .subscribe((resp: any) => {
+        this.Packages_dropdown = resp.Return_values;
       });
 
     this.PackagesnewService.Iteminventory()

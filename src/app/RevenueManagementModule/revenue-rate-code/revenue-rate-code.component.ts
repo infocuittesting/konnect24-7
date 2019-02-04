@@ -33,17 +33,17 @@ export class RevenueRateCodeComponent implements OnInit {
   ngOnInit() {
     this.RevenueRateCodeService.selratecode()
     .subscribe((resp: any) => {
-     this.mainratecode=resp.Rate_header;
+     this.mainratecode=resp.records;
      console.log("maintable",this.mainratecode)
    });
    
    this.RevenueRateCodeService.selratecode()
    .subscribe((resp: any) => {
-    this.someData=resp.Rate_header;
+    this.someData=resp.records;
   });
    this.RevenueRateCodeService.ratecodedropdown()
     .subscribe((resp: any) => {
-     this.ratcode=resp.Rate_header;
+     this.ratcode=resp.records;
      console.log("ratecode",this.ratcode)
    });
 
@@ -139,7 +139,7 @@ export class RevenueRateCodeComponent implements OnInit {
   clear(){
     this.RevenueRateCodeService.selratecode()
     .subscribe((resp: any) => {
-     this.mainratecode=resp.Rate_header;
+     this.mainratecode=resp.records;
      this.mainratecode
    });
   }

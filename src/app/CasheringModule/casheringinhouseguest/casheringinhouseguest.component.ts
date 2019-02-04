@@ -142,9 +142,21 @@ siva=true
   }
 public balnc=[];  
 public checkname; 
+public lambreturn:any;
+public pristatus:any;
+public showhide=false;
+public Res_unique_id_getting:any;
+public Res_id_getting:any;
 selectindex=null;
 selectMembersEdit(details,index)
 {
+
+      
+      this.Res_id_getting = details.res_id
+      this.Res_unique_id_getting = details.res_unique_id
+      console.log("Res_id_getting",this.Res_id_getting,this.Res_unique_id_getting)
+
+
       this.selectindex=index;
       // condition for checkout button
       console.log("statussssssssssssssssss",details);
@@ -193,6 +205,21 @@ selectMembersEdit(details,index)
       // this.session.store("rte",details.res_rate);
       // this.session.store("persn",details.res_adults);
       this.checkname=details.Name;
+
+      // alert id getting 
+      this.cashinservice.lampalert(this.Res_id_getting,this.Res_unique_id_getting)
+      .subscribe((resp: any) => {
+      this.lambreturn=resp.ReturnValue;
+      this.pristatus=resp.Status;
+      if(this.pristatus=="Success"){
+      if(this.lambreturn.length!=0){
+      this.showhide=true;
+      }else if(this.lambreturn.length==0){
+      this.showhide=false;
+ }
+ }
+
+});
 }
 
 private month:any;
