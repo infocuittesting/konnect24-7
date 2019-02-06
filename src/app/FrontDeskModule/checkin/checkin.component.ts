@@ -209,11 +209,11 @@ public pf_mobileno
   //this.session.store("res_room",details.res_room.toString());
 
   this.session.store("id1",details.pf_id.toString());
-  this.session.store("id2",details.res_room.toString());
+  this.session.store("Room",details.res_room.toString());
   
   
   console.log("res_iddddddddd",details.res_id)
-  console.log("id2",details.res_room)
+  console.log("Room",details.res_room)
   console.log("uniq",details.res_unique_id)
   
 }

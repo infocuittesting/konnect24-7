@@ -71,14 +71,13 @@ export class ReservationoptionComponent implements OnInit {
   public StayTotal;
   public listprivileges;
   public rate;
-  find={};
-
+  public find={};
+  public fixrate=[];
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
    Success(message){
     //  console.log("message",message);
      this.toasterService.success(message);
    }
-
     //filter data in table  using checkbox
     checkboxflg=[];
     count=0;
@@ -314,7 +313,6 @@ submitdep(inputt):void {
    }
 
    //upadte Deposit
-   resdepos1={};
 submitdep1(inputt):void {
     this.pppService.depositupdate(inputt)
     .subscribe( (user333:any) => {
@@ -327,6 +325,7 @@ submitdep1(inputt):void {
         this.deptarry=resp.ReturnValue;
         console.log(this.deptarry)
       });
+      this.resdepos1=[];
     },
 
             );  
@@ -445,7 +444,7 @@ queno:any;
 queueProfile(){
   let inputparms={
     "Res_id":this.session.retrieve("id"),
-    "rm_room":this.session.retrieve("id2"),
+    "rm_room":this.session.retrieve("Room").toString(),
     "Res_unique_id":this.session.retrieve("uniq")
   }
 
@@ -457,74 +456,166 @@ queueProfile(){
       this.queno=resp.Return;
     }else{
       this.status=resp.Return;
-      this.queno="Queue Number is"+ resp.QueueNumber;
+      this.queno="Queue Number is "+ resp.QueueNumber;
     }
     
   });
 
 }
+
 //fixedrate checkbok value
 checkvalue(fixedrate){
-  if(fixedrate=="true"){
+  console.log(fixedrate)
+  if(fixedrate==true){
     this.fixedrate=1;
+    console.log(this.fixedrate)
   }else{
     this.fixedrate=0;
+    console.log(this.fixedrate)
   }
 }
+
+//fixed rate new and edit button enable 
+public frnew:boolean=false;
+public fredit:boolean=true;
+public Fixed_rate_id:any;
+selectfr(details){
+  console.log(details)
+this.Fixed_rate_id = details.fixed_rate_id;
+this.fixedrate = details.fixed_rate;
+if(this.fixedrate == 0){
+  this.fixedrate = false;
+}else if(this.fixedrate == 1){
+  this.fixedrate=true;
+}
+
+if(this.Fixed_rate_id==details.fixed_rate_id){
+  this.fredit=false;
+  this.frnew=true;
+}
+}
+
 
 // fixed start
 
 public tra;
-public fixedrate;
+public fixedrate:any;
 
 submitrate() {
-  if(this.Currency==null){
-    this.Currency="";
+  if((typeof this.Fixed_rate_id == "undefined") || (this.Fixed_rate_id.length == '0')){
+    if(this.Currency==null){
+      this.Currency="";
+    }
+    if(this.DiscAmount==null){
+      this.DiscAmount="";
+    }
+    if(this.Percentage==null){
+      this.Percentage="";
+    }
+    if(this.market==null){
+      this.market="";
+    }
+    if(this.Source==null){
+      this.Source="";
+    }
+    let body=
+    {
+     "Res_id":this.session.retrieve("id"),
+     "fixed_rate":this.fixedrate,
+     "RES_Arrival":this.Arrival,
+     "RES_Depature":this.Departure,
+     "RES_Adults":this.Adults,
+     "RES_Child":this.child,
+     "RES_Room_Type":this.RoomType,
+     "RES_RTC":this.RoomType,
+     "RES_Room":this.Room,
+     "RES_Rate_Code":this.Ratecode,
+     "RES_Rate":this.Rate,
+     "RES_Disc_Amount":this.DiscAmount,
+     "RES_Disc_perc":this.Percentage,
+     "RES_Disc_Reason":this.Discreasons,
+     "RES_Market":this.market,
+     "RES_Source":this.Source,
+     "RES_Currency":this.Currency
+     };
+     console.log("test",body)
+      this.pppService.Fixedrate(body)
+      .subscribe( (user333:any )=> {
+        this.tra = user333.ReturnCode;
+        if(this.tra=="RIS"){
+          this.tra="Fixed Rate is created for "+this.Name;
+          console.log("working fine",this.tra)
+          this.Success(this.tra);
+          console.log("workinggggggg")
+          this.pppService.Fixed(this.Id)
+          .subscribe((resp: any) => {
+            this.fixrate = resp.ReturnValue;
+          })
+        }
+      },
+        );  
+        this.route.navigate(['reservationoption/']);
   }
-  if(this.DiscAmount==null){
-    this.DiscAmount="";
+  else if(this.Fixed_rate_id != '0'){
+    if(this.Currency==null){
+      this.Currency="";
+    }
+    if(this.DiscAmount==null){
+      this.DiscAmount="";
+    }
+    if(this.Percentage==null){
+      this.Percentage="";
+    }
+    if(this.market==null){
+      this.market="";
+    }
+    if(this.Source==null){
+      this.Source="";
+    }
+    let body=
+    {
+     "Res_id":this.session.retrieve("id"),
+     "fixed_rate":this.fixedrate,
+     "RES_Arrival":this.Arrival,
+     "RES_Depature":this.Departure,
+     "RES_Adults":this.Adults,
+     "RES_Child":this.child,
+     "RES_Room_Type":this.RoomType,
+     "RES_RTC":this.RoomType,
+     "RES_Room":this.Room,
+     "RES_Rate_Code":this.Ratecode,
+     "RES_Rate":this.Rate,
+     "RES_Disc_Amount":this.DiscAmount,
+     "RES_Disc_perc":this.Percentage,
+     "RES_Disc_Reason":this.Discreasons,
+     "RES_Market":this.market,
+     "RES_Source":this.Source,
+     "RES_Currency":this.Currency,
+     "Fixed_rate_id":this.Fixed_rate_id
+     };
+     console.log("test",body)
+      this.pppService.Fixedrateedit(body)
+      .subscribe( (user333:any )=> {
+        this.tra = user333.ReturnCode;
+        if(this.tra=="RUS"){
+          this.tra="Fixed Rate is Updated for "+this.Name;
+          console.log("working fine",this.tra)
+          this.Success(this.tra);
+          console.log("workinggggggg")
+          this.pppService.Fixed(this.Id)
+          .subscribe((resp: any) => {
+            this.fixrate = resp.ReturnValue;
+          })
+          this.Fixed_rate_id="";
+          this.fixedrate="";  
+          this.frnew=false;
+          this.fredit=true
+        }
+      },
+        );  
+        this.route.navigate(['reservationoption/']);
   }
-  if(this.Percentage==null){
-    this.Percentage="";
-  }
-  if(this.market==null){
-    this.market="";
-  }
-  if(this.Source==null){
-    this.Source="";
-  }
-  let body=
-  {
-   "Res_id":this.session.retrieve("id"),
-   "fixed_rate":this.fixedrate,
-   "RES_Arrival":this.Arrival,
-   "RES_Depature":this.Departure,
-   "RES_Adults":this.Adults,
-   "RES_Child":this.child,
-   "RES_Room_Type":this.RoomType,
-   "RES_RTC":this.RoomType,
-   "RES_Room":this.Room,
-   "RES_Rate_Code":this.Ratecode,
-   "RES_Rate":this.Rate,
-   "RES_Disc_Amount":this.DiscAmount,
-   "RES_Disc_perc":this.Percentage,
-   "RES_Disc_Reason":this.Discreasons,
-   "RES_Market":this.market,
-   "RES_Source":this.Source,
-   "RES_Currency":this.Currency
-   };
-    this.pppService.Fixedrate(body)
-    .subscribe( (user333:any )=> {
-      this.tra = user333.ReturnCode;
-      if(this.tra=="RIS"){
-        this.tra="Fixed Rate is created for "+this.Name;
-        console.log("working fine",this.tra)
-        this.Success(this.tra);
-        console.log("workinggggggg")
-      }
-    },
-      );  
-      this.route.navigate(['reservationoption/']);
+  
    }
 //accompany insert
 public acco;
@@ -614,6 +705,10 @@ this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
     // this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
     // { val:false, values:"Pre Stay Charging"}]
 
+    this.pppService.Fixed(this.Id)
+    .subscribe((resp: any) => {
+      this.fixrate = resp.ReturnValue;
+    })
  this.pppService.getchaTables1()
    .subscribe((resp: any) => {
      this.tableschanges=resp.ReturnValue;
@@ -760,9 +855,11 @@ this.session.store("id1",details.pf_id);
 
 //deposit
 public dedit=true;
-public did
+public did;
+public resdepos1=[];
 selectMembersdeposit(details,index){
 this.selectindex=index;
+this.resdepos1=details;
 this.did=details.deposit_id;
 if(this.did=details.deposit_id){
   this.dedit=false;

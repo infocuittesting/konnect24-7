@@ -19,7 +19,9 @@ color: black;
     padding-top: 60px;
 	margin-top:50px;
 }
-
+.small-box{
+    height: 120px;
+}
 .sidebar{
 position:fixed;
 height:100%;

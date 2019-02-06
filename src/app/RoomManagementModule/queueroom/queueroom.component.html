@@ -184,21 +184,22 @@
                   <div class="col-lg-1">
                     <b>Current</b>
                   </div>
-                  <div class="col-lg-1">
-                    <input type="text">
-                  </div>
                   <div class="col-lg-2">
+                    <input type="text" style="height:34px;color:black;border-radius:4px;width:100%;color:black;" 
+                    name="current" class="form-control" [value]="now" [(ngModel)]="now" required disabled>
+                  </div>
+                  <div class="col-lg-1">
 
                   </div>
                   <div class="col-lg-1">
                     <b>Actual</b>
                   </div>
-                  <div class="col-lg-1">
-                    <input type="text">
-                  </div>
-                  <div class="col-lg-2"></div>
                   <div class="col-lg-2">
-                    <input type="text">
+                    <input type="text" style="height:34px;color:black;border-radius:4px;width:100%;color:black;" class="form-control" [(ngModel)]="actual">
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-2">
+                    <input type="text" style="height:34px;color:black;border-radius:4px;width:100%;color:black;" name="totalroom" class="form-control" [(ngModel)]="queue.room_type_totel">
                   </div>
                   
                 </div>
@@ -235,7 +236,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let queueroom of queuerooms|searchfilter:{res_room_type:rm_room_type}|searchfilter:{res_room:queueroom};let i = index">
+                  <tr *ngFor="let queueroom of queuerooms|searchfilter:{res_room_type:rm_room_type}|searchfilter:{res_room:queueroom};let i = index" 
+                  (click)="selectrow(queueroom)">
                     <td><input type="checkbox"></td>
                     <td>{{queueroom?.rm_qtime}}</td>
                     <td>{{queueroom?.res_room}}</td>

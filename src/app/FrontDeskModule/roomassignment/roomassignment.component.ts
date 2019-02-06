@@ -100,11 +100,14 @@ selectindex=null;
 edbutn=true;
 checkin = true;
 flag = false;
-flag_chin = false
+flag_chin = false;
+public pfid;notes;pristatus;preferences;
+public showhidenotes = false;
+public showhidepreferences = false;
 selectMembersEdit(details,index){
 this.selectindex=index;
 this.rmrsid=details.res_id;
-
+this.pfid=details.pf_id;
 if(details.res_guest_status=="due in" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out"){
   this.flag_chin=true;
   this.checkin=true;
@@ -142,8 +145,35 @@ this.session.store("rmid",details.res_id.toString());
 this.session.store("rmpfid",details.pf_id.toString());
 this.session.store("uniq",details.res_unique_id.toString());
 
+
+    //Notes Glow
+    this.RoomassignmentService.Notes(this.pfid)
+      .subscribe((resp: any) => {
+        this.notes = resp.ReturnValue;
+        this.pristatus = resp.Status;
+        if (this.pristatus == "Success") {
+          if (this.notes.length != 0) {
+            this.showhidenotes = true;
+          } else if (this.notes.length == 0) {
+            this.showhidenotes = false;
+          }
+        }
+
+      });
+
+    //Prefernece Glow
+    this.RoomassignmentService.Preferences(this.pfid)
+      .subscribe((resp: any) => {
+        this.preferences = resp.ReturnValue;
+        this.pristatus = resp.Status;
+        if (this.pristatus == "Success") {
+          if (this.preferences.length != 0) {
+            this.showhidepreferences = true;
+          } else if (this.preferences.length == 0) {
+            this.showhidepreferences = false;
+          }
+        }
+      });
+
 }
-
-
-
 }

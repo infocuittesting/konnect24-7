@@ -41,8 +41,8 @@ export class RoommaintainComponent implements OnInit {
   user37={};
 
 roomcard1=[];
-roomcard3=[];
-resolving=[];
+public roomcard3;
+public resolving;
 
      submit(inputt) {
        // console.log('sruthi',inputt,'kanu');
@@ -86,13 +86,13 @@ resolving=[];
                 }
 
 
-          delete():void {
+          delete() {
             // console.log('sruthi',inputt,'kanu');
                  this.maintainService.deleteroommaintenance(this.param)
                  .subscribe(( user337:any)=> {
                    this.user37 = user337;
-                   this.roomcard3=user337.Return;
                    if(user337.Return == "Record Deleted Successfully"){
+                    this.roomcard3="The Room No "+this.param+" Record is Deleted";
                     console.log("checking return value is success or not")
                     this.resolut=true;this.edit=true;this.dele=true;  
                     this.maintainService.roommaintenance()
@@ -110,10 +110,15 @@ resolving=[];
                        this.maintainService.resolveroom1(this.param)
                        .subscribe(( user336:any)=> {
                          this.user36 = user336;
-                         this.resolving=user336.Return;
-                         this.resolut=true;this.edit=true;this.dele=true;
-                       },
-                        );  
+                         if(user336.ReturnCode=="RUS"){
+                          this.resolving = "The Room No "+this.param+" is Resolved"
+                          this.resolut=true;this.edit=true;this.dele=true;
+                          this.maintainService.roommaintenance()
+                          .subscribe((resp: any) => {
+                           this.main=resp.ReturnValue;
+                        });
+                         }
+                       });  
                          }
 
 public reason = [];
@@ -136,8 +141,6 @@ public servicelist:any=[];
   this.maintainService.roommaintenance()
   .subscribe((resp: any) => {
    this.main=resp.ReturnValue;
-   console.log("workinggggggggggggggggggggg",this.main)
-
 });
 
 this.maintainService.roomclassdropdown()
@@ -148,16 +151,12 @@ this.maintainService.roomclassdropdown()
 
   this.maintainService.reasondropdown()
    .subscribe((resp: any) => {
-     this.reason=resp.ReturnValue;
-console.log("res");
-  
+     this.reason=resp.ReturnValue;  
 });
 
 this.maintainService.roomdropdown()
 .subscribe((resp: any) => {
   this.room=resp.ReturnValue;
-console.log("res");
-
 });
 
   }

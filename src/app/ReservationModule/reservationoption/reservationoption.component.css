@@ -85,3 +85,6 @@ height:160px;
 		overflow: auto !important;
 		padding-right: 0px !important;
 	}
+	.modal-header{
+		background-color:#0077B5;color:white;
+	}

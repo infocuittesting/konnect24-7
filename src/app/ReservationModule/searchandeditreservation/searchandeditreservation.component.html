@@ -172,6 +172,9 @@
     <div class="col-md-1 col-lg-1" *ngIf="showhidepreferences==true">
       <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#preference"> Preferences</button>
     </div>
+    <div class="col-md-1 col-lg-1" *ngIf="showhidereser==true">
+      <button class="btn btn-danger btn-sm" (click)="cancledue()" > {{duedatevali}}</button>
+    </div>
    </div>
   </div>
   <br>
@@ -203,7 +206,7 @@
 
 
      <!-- cancel start-->
-     <div class="modal fade" id="cancel" role="dialog">
+     <div class="modal modal-open" id="cancel" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
       
@@ -250,7 +253,7 @@
     <!-- cancel End -->   
 
          <!-- cancel start-->
-         <div class="modal fade" id="cancel1" role="dialog">
+         <div class="modal modal-open" id="cancel1" role="dialog">
           <div class="modal-dialog">
           
             <!-- Modal content-->
@@ -275,7 +278,7 @@
 
 
          <!-- Reinstate start-->
-         <div class="modal fade" id="reinstate" role="dialog">
+         <div class="modal modal-open" id="reinstate" role="dialog">
             <div class="modal-dialog">
             
               <!-- Modal content-->
@@ -299,7 +302,7 @@
           <!-- reinstate End -->   
 
          <!-- reinstate start-->
-         <div class="modal fade" id="reinstate1" role="dialog">
+         <div class="modal modal-open" id="reinstate1" role="dialog">
             <div class="modal-dialog">
             
               <!-- Modal content-->
@@ -330,7 +333,7 @@
             <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"> Aceept Waitlist</h4>
+                <h4 class="modal-title"> Accept Waitlist</h4>
               </div>
               <div class="modal-body">
     

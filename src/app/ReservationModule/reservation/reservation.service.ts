@@ -12,8 +12,8 @@ export class ReservationService {
         private http: Http,public session:SessionStorageService
       ) {}
         
-      postandgetdata(input:any):  Observable<object[]> {
-      
+      postandgetdata(input,parm):  Observable<object[]> {
+       
         const headers = new Headers();
          headers.append('Content-Type','application/json');
          const options = new RequestOptions({ headers: headers });
@@ -33,7 +33,7 @@ export class ReservationService {
              "RES_Block_Code":"", 
              "RES_Res_Type":input.RES_Res_Type, 
              "RES_Market":input.RES_Market, 
-             "RES_Source":input.RES_Source,
+             "RES_Source":" ",
              "RES_Origin":input.RES_Origin,
              "RES_Payment":input.RES_Payment,
              "RES_RTC":input.RES_RTC,
@@ -46,23 +46,23 @@ export class ReservationService {
              "RES_Comments":"",
              "RES_Item_Inv":"",
              "RES_Extension":"",
-             "RES_Rate_Code":"",
+             "RES_Rate_Code":input.RES_Rate_Code,
              "RES_ETA":input.RES_ETA,
-             "RES_Block":"",
+             "RES_Block":parm,
              "RES_Party":"", 
              "RES_Currency":input.RES_Currency,
              "RES_Disc_perc":input.RES_Disc_perc,
-             "PF_Firstname":this.session.retrieve("pf_fname")+" "+ this.session.retrieve("Pf_lastname"),
-             "PF_Mobileno": this.session.retrieve("pf_mobileno"),
-             "pf_id": this.session.retrieve("pf_id")
+             "PF_Firstname":this.session.retrieve("fname")+" "+ this.session.retrieve("lastname"),
+             "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+             "pf_id": this.session.retrieve("pfid")
             };      
 
-          console.log(JSON.stringify(body));
+          console.log(body);
          return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_UpdateNewReservation',body,options)
             .map(this.extractData)
             //.catch(this.handleErrorObservable);
      }
-    getwaitdata(input:any):  Observable<object[]> {
+    getwaitdata(input,parm):  Observable<object[]> {
       
       const headers = new Headers();
        headers.append('Content-Type','application/json');
@@ -82,7 +82,7 @@ export class ReservationService {
          "RES_Block_Code":"", 
          "RES_Res_Type":input.RES_Res_Type, 
          "RES_Market":input.RES_Market, 
-         "RES_Source":input.RES_Source,
+         "RES_Source":"",
          "RES_Origin":input.RES_Origin,
          "RES_Payment":input.RES_Payment,
          "RES_RTC":input.RES_RTC,
@@ -95,15 +95,15 @@ export class ReservationService {
          "RES_Comments":"",
          "RES_Item_Inv":"",
          "RES_Extension":"",
-         "RES_Rate_Code":"",
+         "RES_Rate_Code":input.RES_Rate_Code,
          "RES_ETA":input.RES_ETA,
-         "RES_Block":"",
+         "RES_Block":parm,
          "RES_Party":"", 
          "RES_Currency":input.RES_Currency,
          "RES_Disc_perc":input.RES_Disc_perc,
-         "PF_Firstname":this.session.retrieve("pf_fname")+" "+ this.session.retrieve("Pf_lastname"),
-         "PF_Mobileno": this.session.retrieve("pf_mobileno"),
-         "pf_id": this.session.retrieve("pf_id")
+         "PF_Firstname":this.session.retrieve("fname")+" "+ this.session.retrieve("lastname"),
+         "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+         "pf_id": this.session.retrieve("pfid")
         };
       
        return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_WaitlistReservation',body,options)

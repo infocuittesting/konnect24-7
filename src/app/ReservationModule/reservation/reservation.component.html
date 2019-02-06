@@ -50,88 +50,100 @@
 
                     <b>Last Name</b>
                     <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
                       <input type="text" name="Last Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Pf_lastname"
-                        #lastName="ngModel"></div>
+                        #lastName="ngModel">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
                     <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid && lastName.errors.pattern"
                       style="width:478px;">last name should contain only alphabets </div>
                   </div>
 
                   <div class="col-lg-3">
-                    <b>Language</b>
+                    <b>Title</b>
                     <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                      <input type="text" name="Language" class="form-control" [(ngModel)]="Pf_language"></div>
+                      <input type="text" name="Title" class="form-control" [(ngModel)]="Pf_title">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
                   </div>
-                  <div class="col-lg-3">
-                    <b>Contact</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                      <input type="text" name="Contact" class="form-control"></div>
-                  </div>
-
-                </div>
-
-                <div class="row">
                   <div class="col-lg-3">
                     <b>Phone</b>
                     <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
                       <input type="text" name="Phone" pattern="^(0|[1-9][0-9]*)$" class="form-control" [(ngModel)]="PF_Mobileno"
-                        #phone="ngModel"></div>
+                        #phone="ngModel">
+                        <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+                      </div>
                     <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid && phone.errors.pattern" style="width:205px;">phone
                       number should contain only numbers </div>
 
                   </div>
-                  <div class="col-lg-3">
-                    <b>Title</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Title" class="form-control" [(ngModel)]="Pf_title"></div>
-                  </div>
-                  <div class="col-lg-3">
-                    <b>Group</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
-                      <input type="text" name="Group" class="form-control"></div>
-                  </div>
-                  <div class="col-lg-3">
-                    <b>Source</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
-                      <input type="text" name="Source" class="form-control" [(ngModel)]="res_source"></div>
-                  </div>
+                  
+                </div>
 
+                <div class="row">
+                  <div class="col-lg-3">
+                    <b>Country</b>
+                    <div class="input-group">
+                      <input type="text" name="Country" class="form-control" [(ngModel)]="Pf_country">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <b>Language</b>
+                    <div class="input-group">
+                      <input type="text" name="Language" class="form-control" [(ngModel)]="Pf_language">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <b>VIP</b>
+                    <div class="input-group">
+                      <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip">
+                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <b>Contact</b>
+                    <div class="input-group">
+                      <input type="text" name="Contact" [(ngModel)]="contact" class="form-control">
+                      <span class="input-group-addon"  style="background-color:#0077B5;color:white;" (click)="test4(contact)" ><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                    </div>
+                  </div>
                 </div>
 
 
                 <div class="row" style="margin-top: 10;">
-                  <div class="col-lg-3">
-                    <b>Country</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                      <input type="text" name="Country" class="form-control" [(ngModel)]="Pf_country"></div>
-                  </div>
+
                   <div class="col-lg-3">
                     <b>Company</b>
                     <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
-                      <input type="text" name="company" class="form-control"></div>
+                      <input type="text" name="compa" [(ngModel)]="company" class="form-control">
+                      <span class="input-group-addon"  style="background-color:#0077B5;color:white;" (click)="test(company)"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                    </div>
                   </div>
 
                   <div class="col-lg-3">
                     <b>Agent</b>
                     <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
-                      <input type="text" name="Agent" class="form-control"></div>
+                      <input type="text" name="Agent" [(ngModel)]="TravelAgent" class="form-control">
+                      <span class="input-group-addon"  style="background-color:#0077B5;color:white;" (click)="test1(TravelAgent)" ><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <b>Group</b>
+                    <div class="input-group">
+                      <input type="text" name="Group" [(ngModel)]="group" class="form-control">
+                      <span class="input-group-addon"  style="background-color:#0077B5;color:white;" (click)="test2(group)" ><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <b>Source</b>
+                    <div class="input-group">
+                      <input type="text" name="Source" class="form-control" [(ngModel)]="res_source">
+                      <span class="input-group-addon"  style="background-color:#0077B5;color:white;" (click)="test3(res_source)"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+                    </div>
                   </div>
 
-                  <div class="col-lg-3">
-                    <b>VIP</b>
-                    <div class="input-group">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip"></div>
-                  </div>
+
                 </div>
               </form>
             </div>
@@ -159,7 +171,7 @@
                     <div class="col-lg-2" style="padding-left:55px;">
                       <div class="input-group" [class.has-error]="arrivaldate.touched && arrivaldate.invalid">
                         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="date"  name="arrival" #arrivaldate="ngModel" required class="form-control"
+                        <input type="date" name="arrival" #arrivaldate="ngModel" required class="form-control"
                           placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Arrival"
                           (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel" /></div>
                       <div *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors?.required " ngClass="{ 'has-error' : !arrivaldate.valid && submitAttempt }"></div>
@@ -234,7 +246,8 @@
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;" [class.has-error]="adult.touched && adult.invalid">
                         <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_Adults" (change)="modalchange(user.RES_Arrival,user.RES_Depature,user.RES_Adults)" #adult="ngModel" required>
+                          [(ngModel)]="user.RES_Adults" (change)="modalchange(user.RES_Arrival,user.RES_Depature,user.RES_Adults)"
+                          #adult="ngModel" required>
                         <div *ngIf="adult.touched && !adult.valid && adult.errors?.required  && adult.errors.pattern"
                           ngClass="{ 'has-error' : !adult.valid && submitAttempt }"></div>
                       </div>
@@ -253,7 +266,8 @@
 
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;">
-                        <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate" disabled>
+                        <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate"
+                          disabled>
                         <span class="input-group-addon" style="background-color:#0077B5;color:white;" data-toggle="modal"
                           data-target="#ratequery"><i class="glyphicon glyphicon-option-horizontal"></i></span>
                       </div>
@@ -278,7 +292,7 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;">
-                        <input type="text" name="rtc" required style="width:216px;height:34px;border-radius:4px;color:black;"
+                        <input type="text" name="rtc" class="form-control" required style="width:216px;height:34px;border-radius:4px;color:black;"
                           [(ngModel)]="user.RES_RTC" disabled>
                       </div>
 
@@ -291,8 +305,8 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;" [class.has-error]="ratecode.touched && ratecode.invalid">
-                        <input type="text"  class="form-control" name="ratecodes" style="width:216px;height:34px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel"required disabled>
+                        <input type="text" class="form-control" name="ratecodes" style="width:216px;height:34px;border-radius:4px;color:black;"
+                          [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel" required disabled>
                         <div *ngIf="ratecode.touched && !ratecode.valid && ratecode.errors?.required  && ratecode.errors.pattern"
                           ngClass="{ 'has-error' : !ratecode.valid && submitAttempt }"></div>
                       </div>
@@ -728,7 +742,7 @@
                 </tr>
               </tbody>
             </table>
-            
+
             <div class="row" style="margin:0px 20px 20px 10px">
               <label for="">info</label>
               <div class="input-group">

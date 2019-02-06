@@ -30,7 +30,7 @@ mobile:string;
 
 navigatepages(){
   this.navtag = this.session.retrieve("navigate");
-  // this.navtag1 = this.session.retrieve("navigate1");
+   this.navtag1 = this.session.retrieve("test");
   if(this.navtag == "Rev"){
     this.route.navigate(['reservation/']);
   }
@@ -43,6 +43,14 @@ navigatepages(){
   else if(this.navtag =="Revopt"){
     this.route.navigate(['reservationoption/']);
   }
+
+   if((this.navtag1=="Company")||(this.navtag1=="Travel Agent")||(this.navtag1=="Source")||(this.navtag1=="Group")||
+   (this.navtag1=="Contact")){
+    this.route.navigate(['reservation/']);
+    this.session.clear("test");
+
+  }
+
   // else if(this.navtag == "agentBlock"){
     
   //   console.log("agent navigate to blov")
@@ -115,7 +123,7 @@ update(inputt):void {
 
 
   ngOnInit() {
-
+   
     if(this.session.retrieve("EndofDay_checkin") == "Edit"){
       this.endof=this.session.retrieve('pf_id')
     }else{
@@ -136,6 +144,12 @@ update(inputt):void {
    this.profile1=resp.ReturnValue;
 
  });
+if(this.session.retrieve("test") != undefined){
+  this.pftypeselection=this.session.retrieve("test");
+}else{
+  this.pftypeselection="";
+}
+
 
  this.pService.getprofile()
  .subscribe((resp: any) => {
@@ -273,14 +287,23 @@ this.session.store("city",details.pf_city)
 this.session.store("state",details.pf_company_state)
 this.session.store("profiletype",details.pf_type)
 
-console.log("guruuuuuuuuuuu",details.pf_account);
+if(details.pf_type == "Individual"){
+this.session.store("pfid",details.pf_id);
+this.session.store("fname",details.pf_firstname);
+this.session.store("lastname",details.pf_lastname);
+this.session.store("language",details.pf_language);
+this.session.store("mobileno",details.pf_mobileno);
+this.session.store("title",details.pf_title);
+this.session.store("individual_country",details.pf_individual_country);
+this.session.store("individual_vip",details.pf_individual_vip);
+}
 
-
+if((details.pf_type == "Contact")||(details.pf_type == "Group")||(details.pf_type == "Source")
+||(details.pf_type == "Travel Agent"||(details.pf_type == "Company"))){
+this.session.store("profiletype",details.pf_type)
+this.session.store("profileid",details.pf_id);
+}
 // individualprofile
-
-
-
-
 
 }
    

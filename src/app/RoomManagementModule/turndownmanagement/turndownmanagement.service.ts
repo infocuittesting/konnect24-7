@@ -12,7 +12,7 @@ export class TurndownmanagementService {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });   
-    return this.http.post('https://hotel360.herokuapp.com/hotel_rm_post_Select_Turndown_management',options)
+    return this.http.get('https://hotel360.herokuapp.com/hotel_rm_post_Select_Turndown_management')
        .map(this.extractData)
   }
   insertturndown(param,inputt):Observable<object[]> {

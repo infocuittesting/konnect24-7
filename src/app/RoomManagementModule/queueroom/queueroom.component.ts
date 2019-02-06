@@ -1,12 +1,9 @@
 import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 
 import { QueueroomService } from "./queueroom.service";
-import { Route } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
-import { LowerCasePipe } from '@angular/common';
 import * as jsPDF from 'jspdf';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-queueroom',
@@ -16,6 +13,7 @@ import * as jsPDF from 'jspdf';
 
 
 })
+
 export class QueueroomComponent implements OnInit {
 
 
@@ -46,6 +44,7 @@ export class QueueroomComponent implements OnInit {
   public listroom=[];
   public room=[];
   qroom = [];
+  public now;
   qroom1 = [];
   public rm_room_type;
   public queueroom;
@@ -73,6 +72,13 @@ export class QueueroomComponent implements OnInit {
 
 
   ngOnInit() {
+
+    //current time
+    setInterval(()=>{
+      this.now =  moment().format("HH:mm:ss");
+    },1000);
+  
+
     this.pService.getqueueroom()
     .subscribe((resp: any) => {
     this.queuerooms=resp.ReturnValue;
@@ -104,4 +110,20 @@ export class QueueroomComponent implements OnInit {
    
   }
 
+  //select row to show time;
+  public queutime;
+  public actual;
+  selectrow(details){
+    this.queutime=details.rm_qtime;
+    if(this.queutime==details.rm_qtime){
+      console.log(typeof this.queutime)
+    }
+  }
+
+  ngOnDestroy(){
+
+    if(this.now){
+      clearInterval(this.now);
+    }
+  }
 }
