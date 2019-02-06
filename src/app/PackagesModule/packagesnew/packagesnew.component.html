@@ -173,7 +173,9 @@
                     <div class="col-md-2">
                       <label for="package">Package Code</label>
                       <div class="input-group">
-                        <input name="Package" id="package" style="height:34px;width: 170px;" [(ngModel)]="val.package_code_id">
+                          <select name="Package" id="Package" style="height:34px;width: 150px;" [(ngModel)]="val.package_code_id">
+                              <option *ngFor="let Packages_dropdown_arr of Packages_dropdown" [ngValue]="Packages_dropdown_arr.package_code_id">{{Packages_dropdown_arr.package_code}}</option>
+                            </select>
                       </div>
                     </div>
                     <div class="col-md-2">

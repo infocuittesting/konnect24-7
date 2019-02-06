@@ -189,7 +189,7 @@ getcredit(insertdata:any):  Observable<object[]> {
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
 
-  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryReservationCreditcard',insertdata,options)
+  return this.http.post('https://hotel360.herokuapp.com/Profile/QueryProfileCreditcard',insertdata,options)
      .map(this.extractData)
 }
 

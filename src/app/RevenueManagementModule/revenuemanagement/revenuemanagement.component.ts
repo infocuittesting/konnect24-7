@@ -217,6 +217,7 @@ export class RevenuemanagementComponent implements OnInit {
 
   }
 
+  public ratecodedrop;
   ratedetalert: any;
   ratedetins(ratecodedrop, user) {
     this.cond = this.session.retrieve("ratecodenav");
@@ -340,6 +341,7 @@ export class RevenuemanagementComponent implements OnInit {
   public roomidd = [];
   public edit_data_bind: any = [];
   public cond_clear: any;
+  public ratedettabl_one :any;
   falg4newEdit: any = false;
   editblock: any = {};
   editblockk: any = {};
@@ -364,18 +366,20 @@ export class RevenuemanagementComponent implements OnInit {
           this.edbutt = true;
           this.edit_data_bind = [];
         } else {
-          this.edit_data_bind = resp.Rate_header[0];
+          this.edit_data_bind = resp.records[0];
           // this.price = resp.Rate_header[0];
           console.log("^^^^^^^^^^^^^^^^^^^^^^^" + JSON.stringify(this.edit_data_bind));
           // this.editblock.ratecodedropset =  this.edit_data_bind.rate_code;
-          this.editblock.ratecodedrop = this.edit_data_bind.rate_code;
+          this.ratecodedrop = this.edit_data_bind.ratecode_id;
           this.editblock.ratecode = this.edit_data_bind.rate_code;
           this.editblock.descrp = this.edit_data_bind.rate_description;
           this.editblock.beginselldate = this.edit_data_bind.begin_sell_date;
           this.editblock.endselldate = this.edit_data_bind.end_sell_date;
           this.editblock.ratecategoryid = this.edit_data_bind.ratecategory_id;
-          this.editblock.market_id = this.edit_data_bind.market_id;
-          this.editblock.source_id = this.edit_data_bind.source_id;
+
+          this.editblock.market_id = this.edit_data_bind.marketgroup;
+          this.editblock.source_id = this.edit_data_bind.sourcecode;
+
           this.editblock.Minimum_stay_through = this.edit_data_bind.min_stay;
           this.editblock.Maximum_stay_through = this.edit_data_bind.max_stay;
           this.editblock.Minimum_Advance_Booking = this.edit_data_bind.min_advance_book;
@@ -391,19 +395,20 @@ export class RevenuemanagementComponent implements OnInit {
           this.editblock.Complimentary = this.edit_data_bind.complimentary;
           this.editblock.House = this.edit_data_bind.house_use;
           this.editblock.Suppress = this.edit_data_bind.suppress_rate;
-          this.editblock.Type = this.edit_data_bind.day_type;
+          //this.editblock.Type = this.edit_data_bind.day_type;
           this.editblock.Package = this.edit_data_bind.package;
 
 
 
 
-          this.edit_data_bind = resp.Rate_header_room_types[0];
-          this.editblock.roomtype = this.edit_data_bind.room_type;
+          this.edit_data_bind = resp.records[0].rooms[0];
+          //console.log("checkkkkkkkkk" + JSON.stringify(this.edit_data_bind));
+          this.editblock.roomtype = this.edit_data_bind.type;
 
-          this.edit_data_bind = resp.Rate_header_packages[0];
+          this.edit_data_bind = resp.records[0].packages[0];
           this.editblock.type = this.edit_data_bind.package_code;
 
-          console.log("checkkkkkkkkk" + this.editblock.ratecode);
+          console.log("checkkkkkkkkk" + this.edit_data_bind);
 
         }
 
@@ -412,7 +417,7 @@ export class RevenuemanagementComponent implements OnInit {
 
     this.RevenuemanagementService.ratecodedropdown()
       .subscribe((resp: any) => {
-        this.price = resp.Rate_header;
+        this.price = resp.records;
         //this.prc = resp.Return;
 
         //this.price = resp.Rate_header[0];
@@ -422,12 +427,12 @@ export class RevenuemanagementComponent implements OnInit {
 
     this.RevenuemanagementService.marketdropdown()
       .subscribe((resp: any) => {
-        this.shop = resp.Return;
+        this.shop = resp.ReturnValue;
       });
 
     this.RevenuemanagementService.sourcedropdown()
       .subscribe((resp: any) => {
-        this.src = resp.Return;
+        this.src = resp.ReturnValue;
       });
 
     this.RevenuemanagementService.currencydropdown()
@@ -457,15 +462,32 @@ export class RevenuemanagementComponent implements OnInit {
         this.negotiatecode = resp.Return;
       });
 
-
-    this.RevenuemanagementService.getallvalues()
+      if (this.session.retrieve("ratecodenav") == "Edit") {
+      this.RevenuemanagementService.getallvalues(this.session.retrieve("ratecodeedit"))
       .subscribe((resp: any) => {
-        this.ratedettabl = resp.Rate_details;
+        this.ratedettabl = resp.records[0].rate_details;
+        //this.ratedettabl_one = resp.records[0].rate_details[0].advanced_details;
+        //this.ratedettabl = resp.records[0];
+
+        //alert(JSON.stringify(this.ratedettabl[0].ratecode_id));
         //this.ratedettabl = resp.room_types[0];
         //this.ratedettabl = resp.room_types;
-        console.log("oooooooooooooooo" + this.ratedettabl);
+        console.log("oooooooooooooooo" +JSON.stringify(this.ratedettabl_one));
 
       });
+    }
+  }
+  newratecode(param){
+    this.RevenuemanagementService.getallvalues(param)
+    .subscribe((resp: any) => {
+      this.ratedettabl = resp.records[0].rate_details;
+
+      //alert(JSON.stringify(this.ratedettabl[0].ratecode_id));
+      //this.ratedettabl = resp.room_types[0];
+      //this.ratedettabl = resp.room_types;
+      console.log("oooooooooooooooo" +JSON.stringify(this.ratedettabl));
+
+    });
   }
 
   onSelect(val) {
@@ -526,6 +548,8 @@ export class RevenuemanagementComponent implements OnInit {
   }
 
   ratecodeid: any = {};
+  public deleteratecode:any;
+  public delete_nego_id :any;
   selectindex = null;
   edbut = true;
   delbut = true;
@@ -537,12 +561,14 @@ export class RevenuemanagementComponent implements OnInit {
     this.delbut = false;
     this.selectindex = index;
     this.bgsd.rateecode = details.ratecode_id;
+    this.deleteratecode = details.ratecode_id;
+    this.delete_nego_id = details.negotiated_code_id;
     this.bgsd.beginn = details.negotiate_begin_sell_date;
     this.bgsd.endsell = details.negotiate_end_sell_date;
     //this.ratecodeid = details.negotiate_end_sell_date;
 
 
-    console.log("ratecode id for delete", this.bgsd.rateecode, this.bgsd.beginn, this.bgsd.endsell);
+    console.log("ratecode id for delete", this.delete_nego_id, this.bgsd.beginn, this.bgsd.endsell);
 
 
   }
@@ -556,34 +582,39 @@ export class RevenuemanagementComponent implements OnInit {
   public edit_data_binding: any = [];
   public deleteids = [];
   editratedetail: any = {};
+  public ratedetails_id :any;
   selectMembers1(detailss, indexx) {
+    this.ratedetails_id = detailss.ratecode_id;
+    console.log("siva",this.ratedetails_id)
     if (this.session.retrieve("ratecodenav") == "New") {
       this.edit_data_bind = {};
     }
     else {
 
-      this.editratedetail.seasoncod = detailss.season_code;
+      this.editratedetail.seasoncod = detailss.advanced_details.season_code_id;
       this.editratedetail.start_date = detailss.start_date;
       this.editratedetail.end_date = detailss.end_date;
-      this.editratedetail.mon = detailss.mon;
-      this.editratedetail.tue = detailss.tue;
-      this.editratedetail.wed = detailss.wed;
-      this.editratedetail.thu = detailss.thu;
-      this.editratedetail.fri = detailss.fri;
-      this.editratedetail.sat = detailss.sat;
-      this.editratedetail.sun = detailss.sun;
-      this.editratedetail.one_adult_amount = detailss.one_adult_amount;
-      this.editratedetail.two_adult_amount = detailss.two_adult_amount;
-      this.editratedetail.three_adult_amount = detailss.three_adult_amount;
-      this.editratedetail.four_adult_amount = detailss.four_adult_amount;
-      this.editratedetail.extra_adult_amount = detailss.extra_adult_amount;
-      this.editratedetail.one_child_amount = detailss.one_child_amount;
-      this.editratedetail.two_child_amount = detailss.two_child_amount;
-      this.editratedetail.extra_child_amount = detailss.extra_child_amount;
+      this.editratedetail.mon = detailss.advanced_details.days[0].mon;
+      this.editratedetail.tue = detailss.advanced_details.days[0].tue;
+      this.editratedetail.wed = detailss.advanced_details.days[0].wed;
+      this.editratedetail.thu = detailss.advanced_details.days[0].thu;
+      this.editratedetail.fri = detailss.advanced_details.days[0].fri;
+      this.editratedetail.sat = detailss.advanced_details.days[0].sat;
+      this.editratedetail.sun = detailss.advanced_details.days[0].sun;
+      this.editratedetail.one_adult_amount = detailss.advanced_details.one_adult_rate;
+      this.editratedetail.two_adult_amount = detailss.advanced_details.two_adult_rate;
+      this.editratedetail.three_adult_amount = detailss.advanced_details.three_adult_rate;
+      this.editratedetail.four_adult_amount = detailss.advanced_details.four_adult_rate;
+      this.editratedetail.extra_adult_amount = detailss.advanced_details.extra_adult_rate;
+      this.editratedetail.one_child_amount = detailss.advanced_details.one_child_rate;
+      this.editratedetail.two_child_amount = detailss.advanced_details.two_child_rate;
+      this.editratedetail.extra_child_amount = detailss.advanced_details.extra_child_rate;
 
 
-      this.editratedetail.packdet = detailss.packages_id;
-      this.editratedetail.roomtypedet = detailss.room_type;
+      this.editratedetail.packdet = detailss.advanced_details.packages[0].package_code;
+      console.log("shammmmmmm",JSON.stringify(this.editratedetail.packdet))
+
+      this.editratedetail.roomtypedet = detailss.advanced_details.rooms[0].roomstype;
       console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.editratedetail));
     }
 
@@ -620,8 +651,8 @@ export class RevenuemanagementComponent implements OnInit {
   negodelalert: any;
   //delete negotiated values
   negodel() {
-    console.log(this.ratecodeid)
-    this.RevenuemanagementService.deletenego(this.ratecodeid)
+    console.log(this.delete_nego_id)
+    this.RevenuemanagementService.deletenego(this.delete_nego_id)
       .subscribe((resp: any) => {
         this.delret = resp.ReturnCode;
         console.log(this.delret);
@@ -662,12 +693,12 @@ export class RevenuemanagementComponent implements OnInit {
       });
 
 
-    this.RevenuemanagementService.getallvalues()
+    this.RevenuemanagementService.getallvalues(this.session.retrieve("ratecodeedit"))
       .subscribe((resp: any) => {
         console.log("select ratedetailssssssssss", this.ratedettabll, this.room_types)
         this.ratedettabl = resp.Rate_details;
-        //this.ratedettabll = resp.Return;
-        this.room_types = resp.room_types;
+        this.ratedettabll = resp.Return;
+        //this.room_types = resp.room_types;
 
         this.roomtyp = resp.room_types;
         console.log("select ratedetails", this.ratedettabl, this.roomtyp)
