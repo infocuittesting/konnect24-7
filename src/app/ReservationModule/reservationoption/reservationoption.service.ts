@@ -196,9 +196,9 @@ export class ReservationoptionService {
     const headers = new Headers({ 'Content-Type': 'application/json' })
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryReservationCreditcard', insertdata, options)
-      .map(this.extractData)
-  }
+  return this.http.post('https://hotel360.herokuapp.com/Profile/QueryProfileCreditcard',insertdata,options)
+     .map(this.extractData)
+}
 
   // insert credit
   insertcredit(input: any): Observable<object[]> {

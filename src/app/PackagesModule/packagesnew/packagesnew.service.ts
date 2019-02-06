@@ -18,6 +18,17 @@ export class PackagesnewService {
     //.catch(this.handleErrorObservable);
   }
 
+  // Package details package drop down
+
+  Packages_dropdown():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_PAC_POST_SELECT_Packages_All',options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+
   //transaction
   Transactiondropdown(): Observable<object[]> {
 
@@ -105,8 +116,8 @@ export class PackagesnewService {
       "attributes_id": parseInt(input.attributes_id),
       "sell_separate": input.sell_separate,
       "post_next_day": input.post_next_day,
-      "posting_rhythm_id": input.posting_rhythm_id,
-      "calculate_rule_id": input.calculate_rule_id,
+      "posting_rhythm_id": input.postingrhythm,
+      "calculate_rule_id": input.calculateruleid,
       "valid_time_from": input.validtimefrom,
       "valid_time_to": input.valid_time_to,
       "item_inventory_selected_id": [parseInt(item_inventory_selected_id)]
@@ -137,8 +148,8 @@ export class PackagesnewService {
       "attributes_id": parseInt(input.attributes_id),
       "sell_separate": input.sell_separate,
       "post_next_day": input.post_next_day,
-      "posting_rhythm_id": input.posting_rhythm_id,
-      "calculate_rule_id": input.calculate_rule_id,
+      "posting_rhythm_id": input.postingrhythm,
+      "calculate_rule_id": input.calculateruleid,
       "valid_time_from": input.validtimefrom,
       "valid_time_to": input.valid_time_to,
       "item_id": input.item_id,

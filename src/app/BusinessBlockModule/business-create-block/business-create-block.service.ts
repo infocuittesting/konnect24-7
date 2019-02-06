@@ -140,6 +140,33 @@ BlockTypedropdown():Observable<object[]> {
      .map(this.extractData)
 
 }
+
+// gettranaction data
+packagetransaction(startdate,enddate):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+    {
+      "package_from":startdate,
+      "package_to":enddate
+    }
+  console.log("eeeeeeeee",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
+     .map(this.extractData)
+}
+// package betwen date
+packagebetweendate(startdate,endate):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+    {
+      "package_from":startdate,
+      "package_to":endate
+    }
+  console.log("eeeeeeeee",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
+     .map(this.extractData)
+}
 // create businessBlock................................
 CreateBusinessBlock(block,rmid1,print_block,suppress,gurateeds):Observable<object[]> {
   console.log("servicets",block,rmid1)
@@ -171,7 +198,8 @@ CreateBusinessBlock(block,rmid1,print_block,suppress,gurateeds):Observable<objec
 			      "suppress_rate":suppress,
 			      "packages":rmid1 !=null ? rmid1 : "",
             "trace_code":block.tracess,
-            "follow_date":block.followdates
+            "follow_date":block.followdates,
+            "decision_date":block.decision_dates
 			     
             },
 "Block_details":
@@ -193,7 +221,6 @@ CreateBusinessBlock(block,rmid1,print_block,suppress,gurateeds):Observable<objec
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
              "onsite_name":block.onsite,
-             
 			       "followup_date":block.follow_dates
 			      
 			 

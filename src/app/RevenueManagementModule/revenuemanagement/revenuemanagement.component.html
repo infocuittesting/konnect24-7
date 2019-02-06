@@ -12,7 +12,7 @@
                                           </div>
                                           <div class="col-sm-3">
                                               <div class="form-group">
-                                                  <select name="rtc" class="form-control input-sm"  [(ngModel)]="ratecodedrop"  style="width:120px;height: 26px;" >
+                                                  <select name="rtc" class="form-control input-sm"  [(ngModel)]="ratecodedrop"  style="width:120px;height: 26px;" (click)="newratecode(ratecodedrop)">
                                                       <option value="" hidden></option>
                                                       <option *ngFor="let rtcod of price" [ngValue] = "rtcod.ratecode_id">{{rtcod.rate_code}}</option>  
                                                   </select>
@@ -92,7 +92,7 @@
                                           <b>Market</b>
                                           <select name="mar" id="mar" ngModel  #mar="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.market_id" required>
                                               <option value="" hidden></option>
-                                              <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
+                                              <option  *ngFor="let list of shop" [ngValue] = "list.id">{{list.marketgroup}}</option>  
                                           </select>
                                           <div *ngIf="mar.touched && !mar.valid && mar.errors?.required " ngClass="{ 'has-error' : !mar.valid && submitAttempt }">                                                                             
                                       </div></div></div>                
@@ -102,7 +102,7 @@
                                         <b>Source</b>
                                         <select name="sour1" id="sour1" ngModel  #sour1="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.source_id" required>
                                           <option value="" hidden></option>  
-                                          <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
+                                          <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.id">{{sourlist.sourcecode}}</option> 
                                         </select>
                                         <div *ngIf="sour1.touched && !sour1.valid && sour1.errors?.required " ngClass="{ 'has-error' : !sour1.valid && submitAttempt }">                                                                                                                   
                                        </div></div></div>
@@ -601,10 +601,10 @@
                                   </tr>
                                 </thead>
                                 <tbody style="font-size:12px;" *ngFor="let dettable of ratedettabl; let i=index">
-                                  <tr  *ngIf="dettable.rate_tier_id == 0" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                                  <tr  *ngIf="dettable.advanced_details.rate_tier_id == 0" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
                                       <td>{{dettable.start_date}}</td>     
                                       <td>{{dettable.end_date}} </td>
-                                      <td>{{dettable.rooms_id}}</td>
+                                      <td> <span  *ngFor="let roomnametest of dettable.rooms"> {{roomnametest.roomstype}}, </span></td>
                                   </tr>
                                 </tbody>
                               </table>

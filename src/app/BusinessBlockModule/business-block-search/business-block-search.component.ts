@@ -21,8 +21,21 @@ export class BusinessBlockSearchComponent implements OnInit {
   public showMore;
   public ClearAll=[];
   public filterdata=[];
-
-  
+ public notesglow;
+public printstatus;
+public showhidenotes=false;
+public followupglow;
+public followstatus;
+public showhiddenfollow=false;
+public cutoffglow;
+public cutoffstatus;
+public showhidencutoff=false;
+public cutoffdatestatus;
+public roominlistglow;
+public roomingliststatus;
+public showhiddenroominglist;
+public rooming_status;
+public queryString:any;
   public =[];
   blc = true;
   grop = true;
@@ -175,8 +188,75 @@ if(this.flag==false){
     //   this.option=true;
     // }
 
+//Notes Glow
+this.blocksearch.Notes(this.Blockid)
+.subscribe((resp: any) => {
+  this.notesglow=resp.ReturnValue;
+  console.log("notes lamp",this.notesglow)
+  this.printstatus=resp.Status;
+  if(this.printstatus=="Success"){
+  if(this.notesglow.length!=0){
+   this.showhidenotes=true;
+  }else if(this.notesglow.length==0){
+   this.showhidenotes=false;
+  }
+  }
+ 
+ });
 
+//  followup group
+this.blocksearch.followupgroup(this.Blockid)
+.subscribe((resp: any) => {
+  this.followupglow=resp.Return;
+  console.log("followupglow lamp",this.followupglow)
+  this.followstatus=resp.ReturnCode;
+  if(this.followstatus=="RV"){
+   this.showhiddenfollow=true;
+  }else if(this.followstatus=="RIV"){
+   this.showhiddenfollow=false;
+  }
+  
+ 
+ });
 
+//  cutoff date group
+this.blocksearch.cutoffdate(this.Blockid)
+.subscribe((resp: any) => {
+  this.cutoffglow=resp.ReturnCode;
+  console.log("cutoff lamp",this.followupglow)
+  this.cutoffstatus=resp.ReturnCode;
+  if(this.cutoffstatus=="RV"){
+   this.showhidencutoff=true;
+   this.cutoffdatestatus="Valid"
+  }else if(this.cutoffstatus=="RIV"){
+   this.showhidencutoff=true;
+   this.cutoffdatestatus="Invalid"
+  }
+  else if (this.cutoffstatus=="NOR"){
+    this.showhidencutoff=false;
+  }
+  
+ 
+ });
+// rooming list due
+this.blocksearch.rooming_list_due(this.Blockid)
+.subscribe((resp: any) => {
+  this.roominlistglow=resp.Return;
+  console.log("roominglist lamp",this.roominlistglow)
+  this.roomingliststatus=resp.ReturnCode;
+  if(this.roomingliststatus=="RV"){
+   this.showhiddenroominglist=true;
+   this.rooming_status="Valid"
+  }else if(this.roomingliststatus=="RIV"){
+   this.showhiddenroominglist=false;
+   this.rooming_status="Invalid"
+  }
+  else if (this.roomingliststatus=="NOR"){
+    this.showhiddenroominglist=false;
+  }
+  
+ 
+ });
 // business block valuee...............................................
    this.session.store("blockid",details.block_id.toString());
   this.session.store("blockname",details.block_name.toString());
@@ -190,40 +270,7 @@ if(this.flag==false){
   this.session.store("businessDet",details);
   console.log("start date and end date",details.start_date.toString(),details.end_date.toString(),details.nights.toString())
 
-//  this.session.store("pf_account",details.pf_account);
-//  this.session.store("start_date",details.start_date);
-//  this.session.store("end_date",details.end_date);
-//  this.session.store("origindescription",details.origindescription);
-//  this.session.store("status",details.status);
-//  this.session.store("marketgroup_description",details.marketgroup_description);
-//  this.session.store("block_type",details.block_type);
-//  this.session.store("owner",details.owner);
-//  this.session.store("sourcedescription",details.sourcedescription);
-//  this.session.store("nights",details.nights);
-//  this.session.store("block_code",details.block_code);
-//  this.session.store("restype_description",details.restype_description);
-//  this.session.store("rate_description",details.rate_description);
-//  this.session.store("packages",details.packages);
-//  this.session.store("cutoff_date",details.cutoff_date);
-//  this.session.store("cutoff_days",details.cutoff_days);
-//  this.session.store("follow_date",details.follow_date);
-//  this.session.store("inventory_control",details.inventory_control);
-//  this.session.store("print_rate",details.print_rate);
-//  this.session.store("suppress_rate",details.suppress_rate);
-//  this.session.store("attenders",details.attenders);
-//  this.session.store("info_board",details.info_board);
-//  this.session.store("contract_no",details.contract_no);
-//  this.session.store("onsite_name",details.onsite_name);
-//  this.session.store("followup_date",details.followup_date);
-//  this.session.store("payment_description",details.payment_description);
-//  this.session.store("commission",details.commission);
-//  this.session.store("rooming_list_duedate",details.rooming_list_duedate);
-//  this.session.store("arrivaltime",details.arrivaltime);
-//  this.session.store("depaturetime",details.depaturetime);
-//  this.session.store("meeting_space",details.meeting_space);
-//  this.session.store("size_type",details.size_type);
-//  this.session.store("attendess",details.attendess);
-//  this.session.store("")
+
 
 }
 

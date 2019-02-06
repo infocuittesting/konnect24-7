@@ -8,14 +8,14 @@ import { SessionStorageService } from "ngx-webstorage";
 export class BusinessBlockOptionsService {
 
   constructor(private http: Http,public session:SessionStorageService) { }
-  insertbusinessblock(args:any): Observable<object[]> {
+  insertbusinessblock(args:any,nowdate): Observable<object[]> {
     const headers = new Headers();
      headers.append('Content-Type','application/json');
      const options = new RequestOptions({ headers: headers });
      let body=
      {
       "block_id":this.session.retrieve("blockid"),
-      "notes_date":args.notesdate,
+      "notes_date":nowdate,
       "notes_type":args.notetype,
       "title":args.title,
       "description":args.description,    

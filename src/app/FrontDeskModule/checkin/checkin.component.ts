@@ -128,6 +128,11 @@ public pf_mobileno
   flag_edit = false;
   public option=true;
   flag_chin=false;
+  public lambreturn:any;
+  public pristatus:any;
+  public showhide=false;
+  public Res_id_getting:any;
+  public Res_unique_id_getting:any;
   public resid;
   selectindex=null;
   selectMembersEdit(details,index){
@@ -135,6 +140,11 @@ public pf_mobileno
     //if(this.resid == details.res_id){
      // this.option=true;
     //}else
+
+    this.Res_id_getting = details.res_id
+      this.Res_unique_id_getting = details.res_unique_id
+      console.log("Res_id_getting",this.Res_id_getting,this.Res_unique_id_getting)
+
     if(this.flag_edit==false){
       this.flag_edit=true;
       this.edit=true;
@@ -161,6 +171,21 @@ public pf_mobileno
 
   this.selectindex=index;
   this.resid=details.res_id;
+  
+       // alert id getting 
+       this.checkinService.lampalert(this.Res_id_getting,this.Res_unique_id_getting)
+       .subscribe((resp: any) => {
+       this.lambreturn=resp.ReturnValue;
+       this.pristatus=resp.Status;
+       if(this.pristatus=="Success"){
+       if(this.lambreturn.length!=0){
+       this.showhide=true;
+       }else if(this.lambreturn.length==0){
+       this.showhide=false;
+  }
+  }
+  
+  });
   
 //reservation screen edit button 
   this.firstname = details.pf_firstname;
@@ -215,6 +240,9 @@ public pf_mobileno
   console.log("res_iddddddddd",details.res_id)
   console.log("Room",details.res_room)
   console.log("uniq",details.res_unique_id)
+
+
+  
   
 }
 loadcheckin(params){

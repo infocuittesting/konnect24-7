@@ -178,7 +178,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="room">End date</label>
-                      <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="editblock.end_date">
+                      <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="editblock.end_date" (change)="packagedatas(editblock.start_date,editblock.end_date)">
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -326,7 +326,12 @@
                   </div>
                   <div class="row">
   
-  
+                      <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="name">Decision Date</label>
+                            <input type="date" class="form-control input-sm" [(ngModel)]="editblock.decision_date">
+                          </div>
+                        </div>
   
                   </div>
                 </div>

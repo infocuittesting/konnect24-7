@@ -172,7 +172,7 @@
             <div class="input-group" style="padding-left: 6px;;margin-top: -1px; margin-left: -50px;">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
                 <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:157px;" [(ngModel)]="block.enddate"
-                (change)="arriveDepartureDateFun(block.startdate,block.enddate)" #departuredate="ngModel" required/></div>
+                (change)="arriveDepartureDateFun(block.startdate,block.enddate)" (change)="packagedatas(block.startdate,block.enddate)"  #departuredate="ngModel" required/></div>
                 <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
               </div>
          
@@ -290,7 +290,7 @@
                     <label>packages</label>
                       <div class="input-group">
                        <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack" > <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
-                      <input type="text"  class="form-control input-sm" name="packages"  style="width:59%;height: 30px;" [(ngModel)]="block.type"   [value]="rmcodes" > 
+                      <input type="text"  class="form-control input-sm" name="packages"   style="width:59%;height: 30px;" [(ngModel)]="block.type"   [value]="rmcodes" > 
                        <!-- <input name="omg" class="form-control input-sm" [(ngModel)]="editblock.types" type="text" [value]="rmcodes" [(ngModel)]="editblock.type"> -->
                              <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                          <!-- </select> -->
@@ -300,6 +300,9 @@
                   <div class="col-md-2" style="margin-left: -87px;">
                     <div class="form-group" >
                       <label for="name">Inventory control</label>
+                      <!-- <span class="input-group-addon" data-toggle="modal" data-target="#iteminventory" > <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
+                      <input type="text"  class="form-control input-sm" name="inventory"  style="width:59%;height: 30px;" [(ngModel)]="block.inventorys"   [value]="rmcodes" > 
+                        -->
                       <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" [value]="invcl">
                           <option value="" hidden></option> 
                           <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control_id">{{selectinventory.inventory_control}} </option>
@@ -312,6 +315,7 @@
                         <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate" style="margin-top: -5px;">
                       </div>
                     </div>
+                    
                     <!-- style="margin-left: 14px;zoom:1.5;" -->
                     <div class="col-md-2" style="margin-top: -45px;">
                         <div class="form-group">
@@ -329,7 +333,12 @@
                 </div>
                 <div class="row">
                   
-                  
+                       <div class="col-md-2">
+                          <div class="form-group" style="margin-left: 14px;">
+                          <label for="name">Decision Date</label>
+                          <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.decision_dates" [value]="decisodate">
+                          </div>
+                        </div>
                  
                 </div>
               </div>
@@ -373,6 +382,12 @@
                         <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.follow_dates" [value]="flwupdate">
                         </div>
                       </div>
+                      <!-- <div class="col-md-2">
+                          <div class="form-group" style="margin-left: 14px;">
+                          <label for="name">Decision Date</label>
+                          <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.decision_dates" [value]="decisodate">
+                          </div>
+                        </div> -->
                       <div class="col-md-2">
                           <div class="form-group">
                             <label for="name">Info-Board</label>
@@ -794,3 +809,4 @@
         </div>
         </div>  
     </div>
+    <!-- item inventory modal -->

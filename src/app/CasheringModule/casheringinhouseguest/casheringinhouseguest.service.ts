@@ -125,6 +125,23 @@ export class CasheringinhouseguestService {
       //.catch(this.handleErrorObservable);
  }
 
+ // lamp alert 
+ lampalert(Res_id_getting,Res_unique_id_getting):  Observable<object[]> {
+       
+   const headers = new Headers({'Content-Type':'application/json'})
+   const options = new RequestOptions({ headers: headers });
+   let body =
+   {
+      "Res_id":Res_id_getting,
+      "Res_unique_id":Res_unique_id_getting
+      
+   }
+  console.log(JSON.stringify(body));
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_GET_SELECT_QueryAlertReservation',body,options)
+     .map(this.extractData)
+     //.catch(this.handleErrorObservable);
+ }
+
  paymentcodedropdown():  Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})
