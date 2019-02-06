@@ -72,7 +72,7 @@ size(roomtype){
     this.roomsgrid[0].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
     console.log("first",this.room_type_count)
     if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
-      this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
+       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
       // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
       // this.i = this.room_type_count.indexOf(roomtype)+2     
       console.log("first if condition",this.room_type_count)
@@ -119,6 +119,7 @@ UpdateRoomingList(){
 }
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
+
   if( roomtype!=null)
   {
  
@@ -136,7 +137,7 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
           "pf_firstname":Names,
           "editFlag":false
       });  
-
+console.log("first room type array",this.savedetails)
       this.savedetails1.push({
         // "business_id":this.session.retrieve("business_id")     
           "res_arrival":this.session.retrieve("arrive"),

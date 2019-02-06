@@ -39,8 +39,8 @@ export class BusinessBlockOptionsComponent implements OnInit {
    }
 
  insertnotes(args){
-   console.log(args);
-   this.blockservice.insertbusinessblock(args)
+   console.log("notes value",args,this.now);
+   this.blockservice.insertbusinessblock(args,this.now)
    .subscribe((resp: any) => {
     this.return=resp.ReturnCode;
   

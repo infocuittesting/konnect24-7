@@ -290,7 +290,15 @@ this.businessblock.BlockTypedropdown()
 
   }
   
-  
+//   package data etween date
+packagedatas(startdate,enddate){
+    console.log("dates",startdate,enddate)
+    this.businessblock.packagebetweendate(startdate,enddate)
+    .subscribe((resp: any) => {
+        this.revenueroom = resp.ReturnValue;
+        console.log("package between values value",this.revenueroom)
+      });
+}
 // create paymaster for resv button.............................................
 //   CreatePaymaster(){
 //       console.log("going to reservation button",this.blockids,typeof(this.blockids));

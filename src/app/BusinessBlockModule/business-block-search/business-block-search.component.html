@@ -134,6 +134,20 @@
 </div>
 </form>
 <br>
+<div class="row">
+    <div class="col-md-1 col-lg-1" *ngIf="showhidenotes==true">
+        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#notes">Notes</button>
+      </div>
+      <div class="col-md-1 col-lg-1" *ngIf="showhiddenfollow==true">
+          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#followup">Follow Group</button>
+        </div>
+        <div class="col-md-1 col-lg-1" *ngIf="showhidencutoff==true">
+            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cutoff">cutoffdate {{cutoffdatestatus}}</button>
+          </div>
+          <div class="col-md-1 col-lg-1" *ngIf="showhiddenroominglist==true">
+              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#roominglist">roominglist </button>
+            </div>
+</div>
 <div class ="container-fluid">
   <div class="row">
     <div class="col-md-2">
@@ -265,5 +279,47 @@
             
           </div>
       </div>
-  
+  <!-- Notes start-->
+  <div class="modal fade" id="notes" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Notes</h4>
+          </div>
+          <div class="modal-body">
+           <table class="table table-bordered table-hover tableBodyScroll">
+            <thead>
+            <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                <th style="width:50px">Seq</th>
+                <th style="width:210px">Notes Type</th>
+                <th style="width:210px">Notes</th>
+                <th style="width:210px">Description</th>
+                <th> Date</th>
+            </tr>                  
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of notesglow let i=index">
+                  <td style="width:50px">{{i+1}}</td>
+                  <td style="width:210px">{{data.notetype}}</td>
+                  <td style="width:210px">{{data.title}}</td>
+                  <td style="width:210px">{{data.description}}</td>
+                  <td >{{data.notes_date}}</td>
+              </tr>
+            </tbody>
+           </table>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- Notes End -->    
+    
+    <!-- followwup group -->
+    
 

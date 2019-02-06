@@ -20,7 +20,60 @@ export class BusinessBlockSearchService {
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }
+// Notes Glow
+  Notes(blockid):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+      "block_id":blockid
+    }
+   console.log("block notesssssssss glow",blockid)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_Business_Block_Notes',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
 
+  // follow up group
+  followupgroup(blockid):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+      "block_id":blockid
+    }
+   console.log("block followupgroup glow",blockid)
+    return this.http.post('https://hotel360.herokuapp.com/Hotel_PMS_Select_BlockFollowupDecisiondate',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+  // cutoffdate group
+
+  cutoffdate(blockid):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+      "block_id":blockid
+    }
+   console.log("block followupgroup glow",blockid)
+    return this.http.post('https://hotel360.herokuapp.com/Hotel_PMS_Select_Blockcutoffdatecutoffdays',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+// rooming list duedate
+rooming_list_due(blockid):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+    "block_id":blockid
+  }
+ console.log("block followupgroup glow",blockid)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_PMS_Select_Roominglistdue_date',body,options)
+     .map(this.extractData)
+     //.catch(this.handleErrorObservable);
+}
 //Blockstatus
 
 blockstatus():  Observable<object[]> {   

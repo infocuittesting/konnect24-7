@@ -99,7 +99,7 @@ export class EditBusinessBlockComponent implements OnInit {
          //packages
  this.editblockservice.revenuepackages()
  .subscribe((resp: any) => {
-   this.revenueroom = resp.Return;
+   this.revenueroom = resp.ReturnValue;
    console.log("package value",this.revenueroom)
  });
         // block status sropdown.....................
@@ -321,9 +321,10 @@ console.log("checkbo values",this.guranted_block,this.print_rates,this.suppress_
                       "ratecode_id":this.ratecodedetails.length > 0 ? this.ratecodedetails[0].ratecode_id.toString() : "",
                       "print_rate":this.print_rates !=null ? this.print_rates.toString() : "",
                       "suppress_rate":this.suppress_rates !=null ? this.suppress_rates.toString():"",
-                      "packages":block.packages !=null ? block.packages.toString() : "",
+                      "packages":this.selected_id1 !=null ? this.selected_id1:"",
                              
-                      "follow_date":block.follow_date !=null ? block.follow_date.toString():""
+                      "follow_date":block.follow_date !=null ? block.follow_date.toString():"",
+                      "decision_date":block.decision_date != null ?block.decision_date.toString():""
                       
                       },
                  "Block_details":
@@ -415,6 +416,14 @@ console.log("checkbo values",this.guranted_block,this.print_rates,this.suppress_
     //   });
     // }
 
-
+//   package data etween date
+packagedatas(startdate,enddate){
+    console.log("dates",startdate,enddate)
+    this.editblockservice.packagebetweendate(startdate,enddate)
+    .subscribe((resp: any) => {
+        this.revenueroom = resp.ReturnValue;
+        console.log("package between values value",this.revenueroom)
+      });
+}
 
 }

@@ -122,8 +122,10 @@ revenuepackages():  Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
- 
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Packages',options)
+  let body={ "package_from":this.session.retrieve("starts".toString()),
+  "package_to":this.session.retrieve("ends".toString())}
+ console.log("packge inputs are",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
      .map(this.extractData)
 
 }
@@ -198,6 +200,20 @@ Edit_grid_data(params:any):Observable<object[]> {
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',params,options)
      .map(this.extractData)
 
+}
+
+// package betwen date
+packagebetweendate(startdate,endate):  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+    {
+      "package_from":startdate,
+      "package_to":endate
+    }
+  console.log("eeeeeeeee",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
+     .map(this.extractData)
 }
 // select_grid_data():  Observable<object[]> {   
 //   const headers = new Headers({'Content-Type':'application/json'})

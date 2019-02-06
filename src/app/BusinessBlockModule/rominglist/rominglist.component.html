@@ -70,19 +70,15 @@
         
                               <td><label *ngIf="room.editFlag==false">{{room.res_nights}}</label>
                                 <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_nights" [value]="res_nights" disabled></td>
-                                <!-- <td>
-                                  <select name="room_select"  style="width:100%;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_room_type" >
-                                   <option  *ngFor="let roomtype of show_room_type" [ngValue] = "res_room_type" *ngIf="room.editFlag==false">{{room.res_room_type}}</option>
-                                  </select>
-                                 </td> -->
-                                 <td >
+                      
+                                 <!-- <td >
                                   <select name="room_type"  style="width:100%;" [(ngModel)]="room.res_room_type"  >
                                    <option  *ngFor="let roomtype of show_room_type" [ngValue] = "room.res_room_type" >{{roomtype}}</option>
                                   </select>
-                                 </td>
-                              <!-- <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
-                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_room_type"></td>
-         -->
+                                 </td> -->
+                               <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_room_type" disabled></td>
+         
                               <td ><label *ngIf="room.editFlag==false">{{room.res_adults}}</label>
                                 <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_adults"></td>
         
