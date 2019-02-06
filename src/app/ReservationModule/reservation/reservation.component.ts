@@ -89,8 +89,9 @@ export class ReservationComponent implements OnInit {
    let body ={
     "arrival_date":RES_Arrival,
     "departure_date":RES_Depature,
-    "adults":RES_Adults
+    "adults":parseInt(RES_Adults)
    }
+   console.log(body)
    this.ReservationService.RateQuery(body)
    .subscribe( (resp:any) => {
      
@@ -266,10 +267,6 @@ else{
       },1000);
       console.log(this.now);
       console.log(this.Pf_language);
-      this.ReservationService.getratecode()
-      .subscribe((resp: any) => {
-        this.tableschanges=resp.ReturnValue;
-      });
        
       this.ReservationService.getrestype()
       .subscribe((resp: any) => {
@@ -285,11 +282,6 @@ else{
       .subscribe((resp: any) => {
         this.origin=resp.ReturnValue;
       });      
-
-      this.ReservationService.getroomtype()
-      .subscribe((resp: any) => {
-        this.roomtype=resp.ReturnValue;
-      }); 
       
       this.ReservationService.getpayment()
       .subscribe((resp: any) => {
@@ -325,5 +317,18 @@ else{
 //Clearing session
 // this.session.clear();
     }
+
+    //Select
+selectrow(detail){
+  this.user.RES_Rate_Code=detail.rate_code;
+  console.log(this.user.RES_Rate_Code)
+}
+selectdata(details){
+  this.user.RES_Rate=details.rate;
+  this.user.RES_Room_Type=details.roomstype;
+  this.user.RES_RTC=details.roomstype;
+
+
+}
 }
 

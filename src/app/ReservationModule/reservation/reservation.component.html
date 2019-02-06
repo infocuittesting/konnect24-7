@@ -253,7 +253,7 @@
 
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;">
-                        <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate">
+                        <input name="rate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Rate" disabled>
                         <span class="input-group-addon" style="background-color:#0077B5;color:white;" data-toggle="modal"
                           data-target="#ratequery"><i class="glyphicon glyphicon-option-horizontal"></i></span>
                       </div>
@@ -265,11 +265,8 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;" [class.has-error]="type.touched && type.invalid">
-                        <select name="roomtype" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_Room_Type" #type="ngModel" required>
-                          <option *ngFor="let roomtypelist of roomtype" [ngValue]="roomtypelist.type">
-                            {{roomtypelist.type}}</option>
-                        </select>
+                        <input type="text" name="roomtype" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;"
+                          [(ngModel)]="user.RES_Room_Type" #type="ngModel" required disabled>
                         <div *ngIf="type.touched && !type.valid && type.errors?.required  && type.errors.pattern"
                           ngClass="{ 'has-error' : !type.valid && submitAttempt }"></div>
                       </div>
@@ -281,11 +278,8 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;">
-                        <select name="rtc" required style="width:216px;height:34px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_RTC">
-                          <option *ngFor="let roomtypelist of roomtype" [ngValue]="roomtypelist.type">
-                            {{roomtypelist.type}}</option>
-                        </select>
+                        <input type="text" name="rtc" required style="width:216px;height:34px;border-radius:4px;color:black;"
+                          [(ngModel)]="user.RES_RTC" disabled>
                       </div>
 
                     </div>
@@ -297,11 +291,8 @@
                     </div>
                     <div class="col-lg-2">
                       <div class="input-group" style="padding-left:40px;" [class.has-error]="ratecode.touched && ratecode.invalid">
-                        <select required class="form-control" name="ratecodes" style="width:216px;height:34px;border-radius:4px;color:black;"
-                          [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel">
-                          <option *ngFor="let tablelist of tableschanges" [ngValue]="tablelist.ratecode">
-                            {{tablelist.ratecode}}</option>
-                        </select>
+                        <input type="text"  class="form-control" name="ratecodes" style="width:216px;height:34px;border-radius:4px;color:black;"
+                          [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel"required disabled>
                         <div *ngIf="ratecode.touched && !ratecode.valid && ratecode.errors?.required  && ratecode.errors.pattern"
                           ngClass="{ 'has-error' : !ratecode.valid && submitAttempt }"></div>
                       </div>
@@ -722,165 +713,18 @@
                   <th> KNGN</th>
                   <th> KNGS</th>
                   <th> KSBN</th>
-                  <th> KSBS</th>
                   <th> SJSN</th>
+                  <th> KSBS</th>
                   <th> SDBN</th>
                   <th> SJBS</th>
-                  <th> COMP</th>
-                </tr>
-                <tr>
-                  <th colspan="3"> Include Overbooking </th>
-                  <th> 32</th>
-                  <th> 32</th>
-                  <th> 32</th>
-                  <th> 10</th>
-                  <th> 20</th>
-                  <th> 30</th>
-                  <th> 27</th>
-                  <th> </th>
-                </tr>
-                <tr>
-                  <th colspan="3"> Include Overbooking </th>
-                  <th> 32</th>
-                  <th> 27</th>
-                  <th> 18</th>
-                  <th> 25</th>
-                  <th> 10</th>
-                  <th> 10</th>
-                  <th> 25</th>
-                  <th> 0</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td> HONEY </td>
+                <tr *ngFor="let itemdata of ratequery" (click)="selectrow(itemdata)">
+                  <td> {{itemdata.rate_code}} </td>
                   <td> USD</td>
                   <td> Pkg.</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> 189</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> RACK </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 100</td>
-                  <td> 100</td>
-                  <td> 120</td>
-                  <td> 120</td>
-                  <td> 130</td>
-                  <td> 100</td>
-                  <td> 130</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> CORP </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 90</td>
-                  <td> 90</td>
-                  <td> 110</td>
-                  <td> 110</td>
-                  <td> 120</td>
-                  <td> 90</td>
-                  <td> 120</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> OROU </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 75</td>
-                  <td> 75</td>
-                  <td> 95</td>
-                  <td> 95</td>
-                  <td> 105</td>
-                  <td> 75</td>
-                  <td> 105</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> AAAI </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 90</td>
-                  <td> 90</td>
-                  <td> 100</td>
-                  <td> 100</td>
-                  <td> 117</td>
-                  <td> 90</td>
-                  <td> 117</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> BEST </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 90</td>
-                  <td> 90</td>
-                  <td> 100</td>
-                  <td> 100</td>
-                  <td> 117</td>
-                  <td> 90</td>
-                  <td> 117</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> AARP </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 90</td>
-                  <td> 90</td>
-                  <td> 100</td>
-                  <td> 100</td>
-                  <td> 117</td>
-                  <td> 90</td>
-                  <td> 117</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> VAC </td>
-                  <td> USD</td>
-                  <td> Pkg.</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> 700</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> EMRP </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> 40</td>
-                  <td> 40</td>
-                  <td> 50</td>
-                  <td> 60</td>
-                  <td> 65</td>
-                  <td> 40</td>
-                  <td> 65</td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td> COMP </td>
-                  <td> USD</td>
-                  <td> </td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> SR</td>
-                  <td> </td>
+                  <td *ngFor="let item of itemdata.rates" (click)="selectdata(item)"> {{item.rate}}</td>
                 </tr>
               </tbody>
             </table>
