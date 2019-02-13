@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from './modal.service';
 import { ProfilesearchService } from '../profilesearch/profilesearch.service';
-
 import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as moment from 'moment';
 import { ToasterServiceService } from '../../toaster-service.service'; 
-
-
-
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 
@@ -84,7 +80,7 @@ getcreditexpiry(){
     user3 ={};
     user5 ={};
   public  mbc={};
-    cu1:any ={};
+    cu1:any=[];
   public card;
   public profilenego;
   public profilenegotes;
@@ -110,8 +106,8 @@ getcreditexpiry(){
   user25={};
   futurereservation={};
   public updatenotes;
-  nup:any={};
-  noup:any={};
+  nup:any=[];
+  noup:any=[];
   user13={};
   ratecode = {};
   someData1 = [];
@@ -119,7 +115,7 @@ getcreditexpiry(){
   user15 = {};
   user16 = {};
   // profile2 ={};
-  user7 ={};
+  user7:any=[];
   user39:any ={};
   clist ={};
   
@@ -221,19 +217,17 @@ getcreditexpiry(){
               this.card=user339.ReturnCode;
               if(this.card=="RUS"){
                 this.card="CreditCard is Updated "
+                let paramss={
+                  "pf_id":this.session.retrieve("id"),
+               }
+               
+                this.pppService.getCreditcard(paramss)
+                .subscribe((resp: any) => {
+                  this.credit=resp.ReturnValue;             
+              });
+                this.cu1=[];
               }
-              let paramss={
-                "pf_id":this.session.retrieve("id"),
-             }
-             
-              this.pppService.getCreditcard(paramss)
-              .subscribe((resp: any) => {
-                this.credit=resp.ReturnValue;
-                console.log("creditcard details");
-                 console.log(this.credit);
-             
-            });
-              this.cu1="";
+
             },
              );  
               }
@@ -241,29 +235,40 @@ getcreditexpiry(){
      
 
      negoinsert(inputt):void {
-
-      console.log(inputt);
         this.pppService.insertNegotiated (inputt)
         .subscribe(( user334:any)=> {
           this.user34 = user334;
           this.profilenego=user334.ReturnCode;
           if(this.profilenego=="RIS"){
             this.profilenego="The Negotiated Rate is Add for the Guest";
+            let paramss={
+              "pf_id":this.session.retrieve("id"),
+           }
+            this.pppService.getNegotiated(paramss)
+            .subscribe((resp: any) => {
+              this.negotes=resp.ReturnValue;
+          });
           }
         },
         );  
                        
        }
 
-       negoupdate(inputt):void {
-
-        console.log(inputt);
+       negoupdate(inputt) {
           this.pppService.updateNegotiated(inputt)
           .subscribe(( user134:any)=> {
             this.user24 = user134;
             this.profilenegotes=user134.ReturnCode;
             if(this.profilenegotes=="RUS"){
               this.profilenegotes="The Negotiated Rate is Updated for the Guest";
+              let paramss={
+                "pf_id":this.session.retrieve("id"),
+             }
+              this.pppService.getNegotiated(paramss)
+              .subscribe((resp: any) => {
+                this.negotes=resp.ReturnValue; 
+            });
+              this.nup=[];
             }
           },
           );  
@@ -284,11 +289,9 @@ getcreditexpiry(){
               let paramss={
                 "pf_id":this.session.retrieve("id"),
              }
-             
               this.pppService.getNotes(paramss)
               .subscribe((resp: any) => {
                 this.notes=resp.ReturnValue;
-             
             })
             }
           },
@@ -296,9 +299,7 @@ getcreditexpiry(){
                          
          }
 
-         notesupdate(inputt):void {
-
-          console.log(inputt);
+         notesupdate(inputt) {
           inputt.PF_Notes_Date= this.now;
             this.pppService.updateNotes(inputt)
             .subscribe(( user235:any)=> {
@@ -309,21 +310,18 @@ getcreditexpiry(){
                 let paramss={
                   "pf_id":this.session.retrieve("id"),
                }
-               
                 this.pppService.getNotes(paramss)
                 .subscribe((resp: any) => {
                   this.notes=resp.ReturnValue;
-               
               })
+              this.noup=[];
               }
             },
             );  
                            
            }
 
-         preferinsert(inputt):void {
-
-          console.log(inputt);
+         preferinsert(inputt){
             this.pppService.insertPrefer(inputt)
             .subscribe((user336:any)=> {
               this.user36 = user336;
@@ -334,9 +332,7 @@ getcreditexpiry(){
                 console.log("workingggggggggg",this.profileprefer)
                 let paramss={
                   "pf_id":this.session.retrieve("id"),
-                 
                }
-               
                 this.pppService.getPreferences(paramss)
                 .subscribe((resp: any) => {
                   this.prefer=resp.ReturnValue;
@@ -349,8 +345,6 @@ getcreditexpiry(){
 
 
            preferupdate(inputt){
-
-            console.log(inputt);
               this.pppService.updatePrefer(inputt)
               .subscribe((user339:any)=> {
                 this.user39 = user339;
@@ -360,13 +354,12 @@ getcreditexpiry(){
                   this.Success(this.profileprefer1);
                   let paramss={
                     "pf_id":this.session.retrieve("id"),
-                   
                  }
-                 
                   this.pppService.getPreferences(paramss)
                   .subscribe((resp: any) => {
                     this.prefer=resp.ReturnValue;
                 });
+                this.user7=[];
                 }
               },
               );  
@@ -405,8 +398,7 @@ negotesClick(flag){
   this.pppService.getNegotiated(paramss)
   .subscribe((resp: any) => {
     this.negotes=resp.ReturnValue;
-   console.log(this.negotes);
- 
+    this.negotes1=resp.ReturnValue;
 });
 }
 
@@ -673,11 +665,6 @@ let paramss={
   
 }
 
-this.pppService.getNegotiated(paramss)
-.subscribe((resp: any) => {
-this.negotes1=resp.ReturnValue;
-});
-
 
 this.pppService.Preferences(paramss)
 .subscribe((resp: any) => {
@@ -748,6 +735,8 @@ public deleteDataDetails:any;
 selectMembersCredit(details,index){
 this.selectindex=index;
 this.cid=details.cc_id;
+this.cu1.PF_Creditcard_No=details.pf_creditcard_no;
+this.cu1.PF_Card_Type=details.pf_card_type;
 if(this.cid==details.cc_id)
 {
 this.edit=false;
@@ -765,6 +754,9 @@ noteedit=true;
 notedelete=true;
 selectMembersNotes(details,index){
 this.noteid=details.notes_id;
+this.noup.PF_Note_Type=details.pf_note_type;
+this.noup.PF_Note_Title=details.pf_note_title;
+this.noup.PF_Note_Description=details.pf_note_description
 if(this.noteid==details.notes_id){
   this.noteedit=false;
   this.notedelete=false;
@@ -785,6 +777,9 @@ negotedelete=true;
 public deleteDataDetails2:any;
 selectMembersNegotes(details,index){
   this.negoteid=details.negotiate_id;
+  this.nup.PF_Rate_Code=details.pf_rate_code;
+  this.nup.PF_Start_Sell_Date=details.pf_start_sell_date;
+  this.nup.PF_End_Sell_Date=details.pf_end_sell_date;
   if(this.negoteid==details.negotiate_id){
     this.negoteedit=false;
     this.negotedelete=false;
@@ -805,6 +800,9 @@ prefdelete=true;
 public deleteDataDetails4:any;
 selectMembersPrefer(details,index){
   this.prefid=details.negotiate_id;
+  this.user7.PF_Preference_Group=details.pf_preference_group;
+  this.user7.PF_Preference_Description=details.pf_preference_description;
+  this.user7.PF_Guest_Preference=details.pf_guest_preference;
   if(this.prefid==details.negotiate_id){
     this.prefedit=false;
     this.prefdelete=false;

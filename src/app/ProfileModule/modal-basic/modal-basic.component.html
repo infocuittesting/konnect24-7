@@ -120,35 +120,7 @@
 
   </div>
 </div>
-
-
-
-
-<!---Alertinsert for negotiated response-
   
-  <div class="modal fade" id="negoresponse" role="dialog">
-    <div class="modal-dialog">
-    
-   
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-         <h4>Connect 24/7 Hotel</h4>
-        </div>
-        <div class="modal-body">
-        <b align="center">{{ profilenego}}</b>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-        </div>
-      </div>
-      
-    </div>
-  </div> -->  
-  
-  
-   <!--Alertupdate for negotiated response-->
-
 
 <div class="modal modal-open" id="negoupdateresponse" role="dialog">
   <div class="modal-dialog">
@@ -496,12 +468,6 @@
                   <td>{{creditlist.pf_expiration_date}}</td>
 
                 </tr>
-
-                <!-- <tr *ngIf="prefer==null || prefer.length==0">
-                                <td colspan="5">No data available</td>
-                          </tr>              -->
-
-
               </tbody>
 
             </table>
@@ -545,14 +511,6 @@
           </div>
           <form #rese="ngForm">
             <div class="modal-body">
-
-              <!-- <div class="input-group">
-        <div class="col-sm-6" ><b>Creditcard Type</b></div>
-        <div class="col-sm-6" style="padding-left:24px;">          
-          <input type="text" class="form-control"  style="width:200px;" [(ngModel)]="mbc.PF_Card_Type">
-       </div>
-      </div><br> -->
-
               <div class="input-group">
                 <!-- <div class="row"> -->
                 <div class="col-md-5"><b>Creditcard Number</b></div>
@@ -920,51 +878,23 @@
             <table class="table table-hover table-bordered" style=" width:95%; margin-left: 2%;">
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
-
                   <th style="text-align: center;">Note Type</th>
                   <th style="text-align: center;">Note Title</th>
-
-
-
+                  <th style="text-align: center"> Description</th>
                 </tr>
               </thead>
               <tbody style="background-color:white;">
                 <tr *ngFor="let notelist of notes; let i=index;" (click)="selectMembersNotes(notelist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-
-
-                  <td>{{notelist?.pf_note_type}}
-
-                  </td>
-
-                  <td>{{notelist?.pf_note_title}}
-
-                  </td>
-
-
-
-
+                  <td>{{notelist?.pf_note_type}}</td>
+                  <td>{{notelist?.pf_note_title}}</td>
+                  <td>{{notelist?.pf_note_description}}</td>
                 </tr>
-
                 <tr *ngIf="notes==null || notes.length==0">
                   <td colspan="4">No data available</td>
                 </tr>
-
               </tbody>
             </table>
-            <table>
-              <tr>
-                <td style="padding-left:20px;"><b>Description</b></td>
-              </tr>
-              <tr>
-                <!-- <td style="padding-left:20px;">
-              <textarea rows="4" cols="100">
-                   {{notelist.pf_note_description}} 
-          </textarea></td>  -->
-              </tr>
-            </table>
-
           </div>
-
         </div>
 
         <!-- Modal footer -->
@@ -1141,9 +1071,6 @@
               </select>
 
             </td>
-
-
-
             <td style="padding-left:25px;"><input type="checkbox"></td>
 
             <td><b style="font-size: 15px">Show Active</b></td>
@@ -1160,37 +1087,15 @@
                   <th>Rate Code</th>
                   <th>Start Sell</th>
                   <th>End Sell Date</th>
-
-
-
-
-
                 </tr>
               </thead>
               <tbody style="background-color:white;">
                 <tr *ngFor="let negotiatedlist of negotes; let i=index;" (click)="selectMembersNegotes(negotiatedlist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-
-
                   <td>{{i+1}}</td>
-
-                  <td>{{negotiatedlist?.pf_rate_code}}
-
-                  </td>
-
-
-                  <td>{{negotiatedlist?.pf_start_sell_date}}
-
-                  </td>
-
-
-                  <td>{{negotiatedlist?.pf_end_sell_date}}
-
-                  </td>
-
-
+                  <td>{{negotiatedlist?.pf_rate_code}}</td>
+                  <td>{{negotiatedlist?.pf_start_sell_date}}</td>
+                  <td>{{negotiatedlist?.pf_end_sell_date}}</td>
                 </tr>
-
-
                 <tr *ngIf="negotes==null || negotes.length==0">
                   <td colspan="5">No data available</td>
                 </tr>
@@ -1296,7 +1201,6 @@
           <div class="input-group">
             <div class="col-sm-6"><b>Rate Code</b></div>
             <div class="col-sm-6" style="padding-left:12px;">
-              <!-- <input type="text" class="form-control"  style="width:200px;" [(ngModel)]="nup.PF_Rate_Code"> -->
               <select name="ratecodeupdate" [(ngModel)]="nup.PF_Rate_Code" (change)="onSelect(nup.PF_Rate_Code)" required style="height:34px;width:200px;color:black;">
                 <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.ratecode">
                   {{negotiatedratecode.ratecode}}
@@ -1474,16 +1378,6 @@
               </select>
             </div>
           </div><br>
-
-          <!-- <div class="input-group">
-        <div class="col-sm-6"><b>PreferencesgroupDesc</b></div>
-        <div class="col-sm-6" style="padding-left:20px;">          
-          <input type="text" class="form-control"  [(ngModel)]="user3.pf_preference_group_desc" style="width:200px;">
-        </div>
-      </div> -->
-
-
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" (click)="preferinsert(user3)" 
@@ -1543,13 +1437,6 @@
               </select>
             </div>
           </div><br>
-
-          <!-- <div class="input-group">
-        <div class="col-sm-6"><b>PreferencesgroupDesc</b></div>
-        <div class="col-sm-6" style="padding-left:20px;">          
-          <input type="text" class="form-control"  [(ngModel)]="user3.pf_preference_group_desc" style="width:200px;">
-        </div>
-      </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" (click)="preferupdate(user7)" 
@@ -1577,14 +1464,6 @@
             <h4 class="modal-title">Add Credit Card Details here</h4>
           </div>
           <div class="modal-body">
-  
-            <!-- <div class="input-group">
-          <div class="col-sm-6" ><b>Creditcard Type</b></div>
-          <div class="col-sm-6" style="padding-left:24px;">          
-            <input type="text" class="form-control"  style="width:200px;" [(ngModel)]="mbc.PF_Card_Type">
-         </div>
-        </div><br> -->
-  
             <div class="input-group">
               <!-- <div class="row"> -->
               <div class="col-md-5"><b>Creditcard Number</b></div>

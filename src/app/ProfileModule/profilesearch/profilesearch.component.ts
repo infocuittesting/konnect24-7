@@ -97,10 +97,10 @@ public options = [];
   public endof:any;
   public blockof:any;
 
- onSelect(val){
-  console.log(val);
-  this.profile1 = this.someData.filter(x => x.pf_type == val)
-}
+//  onSelect(val){
+//   console.log(val);
+//   this.profile1 = this.someData.filter(x => x.pf_type == val)
+// }
 showMore;
   //show more
   showMoreBut(){

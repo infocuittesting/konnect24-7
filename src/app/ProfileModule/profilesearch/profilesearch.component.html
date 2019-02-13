@@ -59,7 +59,7 @@
    <div class="col-lg-4">
      <b>View By</b>
      <div class="input-group">
-     <select [(ngModel)]="pftypeselection" (ngModelChange)="onSelect(pftypeselection)" style="width:255px;height:30px;color:black;"> 
+     <select [(ngModel)]="pftypeselection" style="width:255px;height:30px;color:black;"> 
       <option *ngFor="let option of options" 
               [ngValue]="option.profiletype"> 
               {{option.profiletype}}
