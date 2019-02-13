@@ -268,6 +268,7 @@ if(this.checkpftype == "Travel Agent"){
   else if(this.checkpftype == "Group"){
     this.session.store("Groupval",details.pf_account);
   }
+  this.session.store("id",details.pf_id);
 this.session.store("pf_id",details.pf_id);
 this.session.store("pf_fname",details.pf_firstname);
 this.session.store("pf_lastname",details.pf_lastname);

@@ -281,6 +281,15 @@ getcreditexpiry(){
             if(this.profilenotes=="RIS"){
               this.profilenotes="Special Notes is Add for the Guest";
               this.Success(this.profilenotes);
+              let paramss={
+                "pf_id":this.session.retrieve("id"),
+             }
+             
+              this.pppService.getNotes(paramss)
+              .subscribe((resp: any) => {
+                this.notes=resp.ReturnValue;
+             
+            })
             }
           },
           );  
@@ -297,6 +306,15 @@ getcreditexpiry(){
               this.updatenotes=user235.ReturnCode;
               if(this.updatenotes=="RUS"){
                 this.updatenotes="The Notes is Updated for the Guest";
+                let paramss={
+                  "pf_id":this.session.retrieve("id"),
+               }
+               
+                this.pppService.getNotes(paramss)
+                .subscribe((resp: any) => {
+                  this.notes=resp.ReturnValue;
+               
+              })
               }
             },
             );  
@@ -314,6 +332,15 @@ getcreditexpiry(){
                 this.profileprefer="Preferences is Add for the Guest";
                 this.Success(this.profileprefer);
                 console.log("workingggggggggg",this.profileprefer)
+                let paramss={
+                  "pf_id":this.session.retrieve("id"),
+                 
+               }
+               
+                this.pppService.getPreferences(paramss)
+                .subscribe((resp: any) => {
+                  this.prefer=resp.ReturnValue;
+              });
               }
             },
             );  
@@ -331,6 +358,15 @@ getcreditexpiry(){
                 if(this.profileprefer1=="RUS"){
                   this.profileprefer1="The Preferences is Updated for the Guest";
                   this.Success(this.profileprefer1);
+                  let paramss={
+                    "pf_id":this.session.retrieve("id"),
+                   
+                 }
+                 
+                  this.pppService.getPreferences(paramss)
+                  .subscribe((resp: any) => {
+                    this.prefer=resp.ReturnValue;
+                });
                 }
               },
               );  
@@ -429,8 +465,6 @@ preferenceClick(flag){
   this.pppService.getPreferences(paramss)
   .subscribe((resp: any) => {
     this.prefer=resp.ReturnValue;
-  console.log(this.prefer);
- 
 });
 }
 
@@ -543,8 +577,6 @@ deletenotesClick(){
   this.pppService.getNotes(paramss)
   .subscribe((resp: any) => {
     this.notes=resp.ReturnValue;
-    console.log("creditcard details");
-     console.log(this.notes);
  
 })
 });
@@ -644,7 +676,6 @@ let paramss={
 this.pppService.getNegotiated(paramss)
 .subscribe((resp: any) => {
 this.negotes1=resp.ReturnValue;
-console.log("negotes1 service after insert"+this.negotes1)
 });
 
 

@@ -687,7 +687,14 @@ selectEdit(details){
 this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
 }
 // privil:any;
+show:boolean=false;
   ngOnInit() {
+    if((this.Room == 0)||(this.Room == undefined)){
+      this.show=false;
+    }else{
+      this.show=true;
+    }
+    
     if(this.aname==null && this.lastnam==null){
       this.aname=" ";
       this.lastnam=" ";

@@ -31,7 +31,6 @@
 
                     <b> First Name *</b>
                     <div class="input-group">
-                      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
                       <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"
                         [(ngModel)]="PF_Firstname" #firstName="ngModel" [value]="PF_Firstname | titlecase" required>
                       <span class="input-group-btn">
@@ -199,7 +198,7 @@
               </div>
               <div class="row">
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>No.of_Rooms *</b>
+                  <b>No.of Rooms *</b>
                   <div class="input-group" style="width:100%" [class.has-error]="roomno.touched && roomno.invalid">
                     <input type="text" name="noofrooms" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Number_Of_Rooms" #roomno="ngModel" required>
@@ -237,7 +236,7 @@
 
               <div class="row">
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Room_Types</b>
+                  <b>Room Types</b>
                   <div class="input-group" style="width:100%" [class.has-error]="type.touched && type.invalid">
                     <input type="text" name="roomtype" class="form-control" style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Room_Type" #type="ngModel" required disabled>
@@ -252,7 +251,7 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Rate_Code</b>
+                  <b>Rate Code</b>
                   <div class="input-group" style="width:100%" [class.has-error]="ratecode.touched && ratecode.invalid">
                     <input type="text" class="form-control" name="ratecodes" style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel" required disabled>
@@ -387,7 +386,7 @@
 
               <div class="row">
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Item_Inv.</b>
+                  <b>Item Inv.</b>
                   <div class="input-group" style="width:100%">
                     <input name="item" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Item_Inv">
@@ -401,7 +400,7 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Guest_Bal.</b>
+                  <b>Guest Bal.</b>
                   <div class="input-group" style="width:100%">
                     <input type="text" name="guestbal" class="form-control" style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Guest_Balance">
@@ -421,7 +420,7 @@
 
               <div class="row">
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Credit_Card</b>
+                  <b>Credit Card</b>
                   <div class="input-group" style="width:100%" [class.has-error]="creditcards.touched && creditcards.invalid">
                     <input name="creditcard" type="text" minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$"
                       class="form-control" style="height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Creditcard_Number"
@@ -431,7 +430,7 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Expire_Date</b>
+                  <b>Expire Date</b>
                   <div class="input-group row" style="width:100%">
                     <div class="col-lg-6">
                       <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Month"
