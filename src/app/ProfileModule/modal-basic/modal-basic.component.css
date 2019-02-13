@@ -64,3 +64,7 @@ height:160px;
     margin: 0 auto;
 }
 
+.modal-header{
+    background-color:#0077B5;color:white;
+    text-align: left;
+}
