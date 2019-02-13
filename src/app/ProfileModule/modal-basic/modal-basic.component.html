@@ -981,8 +981,8 @@
             <div class="col-sm-6" style="padding-left:12px;">
               <select name="ratecodeupdate" [(ngModel)]="nup.PF_Rate_Code" (change)="onSelect(nup.PF_Rate_Code)"
                 required style="height:34px;width:200px;color:black;">
-                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.ratecode">
-                  {{negotiatedratecode.ratecode}}
+                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.rate_code">
+                  {{negotiatedratecode.rate_code}}
                 </option>
               </select>
             </div>
