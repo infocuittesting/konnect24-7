@@ -19,10 +19,10 @@ export class ModalService {
         const headers = new Headers({'Content-Type':'application/json'})
         const options = new RequestOptions({ headers: headers });
         
-       
+       console.log(JSON.stringify(insertdata))
         return this.http.post('http://hotel360.herokuapp.com/Profile/QueryProfileAcitivitylog',insertdata,options)
            .map(this.extractData)
-           //.catch(this.handleErrorObservable);
+           //.catch(this.handleErrorObservable);        
     }
 
     credicardtype():  Observable<object[]> {
@@ -110,7 +110,7 @@ export class ModalService {
       const options = new RequestOptions({ headers: headers });
       
      
-      return this.http.get('https://hotel360.herokuapp.com/Profile/profileratecode ')
+      return this.http.get('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_SelectRatesetupAll')
          .map(this.extractData)
          //.catch(this.handleErrorObservable);
   }

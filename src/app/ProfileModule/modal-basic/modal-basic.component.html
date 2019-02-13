@@ -1132,8 +1132,8 @@
             <td style="padding-left:30px;"><b style="font-size: 15px">Rate Code</b></td>
             <td style="padding-left:15px;">
               <select name="filtertypeselection" [(ngModel)]="typeselection" (change)="onSelect(typeselection)" required style="height:30px;width:130px;color:black;">
-                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.ratecode">
-                  {{negotiatedratecode.ratecode}}
+                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.rate_code">
+                  {{negotiatedratecode.rate_code}}
                 </option>
               </select>
 
@@ -1240,8 +1240,8 @@
             <div class="col-sm-6" style="padding-left:12px;">
               <!-- <input type="text" class="form-control"  style="width:200px;" [(ngModel)]="user2.pf_rate_code"> -->
               <select name="ratecodeinsert" [(ngModel)]="user2.pf_rate_code" style="height:34px;width:200px;color:black;">
-                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.ratecode">
-                  {{negotiatedratecode.ratecode}}
+                <option *ngFor="let negotiatedratecode of rate" [ngValue]="negotiatedratecode.rate_code">
+                  {{negotiatedratecode.rate_code}}
                 </option>
               </select>
 

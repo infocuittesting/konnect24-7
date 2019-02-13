@@ -252,6 +252,18 @@ getcreditexpiry(){
           }
         },
         );  
+
+        let paramss={
+          "pf_id":this.session.retrieve("pf_id"),
+        
+       }
+       
+        this.pppService.getNegotiated(paramss)
+        .subscribe((resp: any) => {
+          this.negotes=resp.ReturnValue;
+         console.log(this.negotes);
+       
+      });
                        
        }
 
@@ -284,7 +296,20 @@ getcreditexpiry(){
             }
           },
           );  
-                         
+
+          let paramss={
+            "pf_id":this.session.retrieve("id"),
+            
+         }
+         
+          this.pppService.getNotes(paramss)
+          .subscribe((resp: any) => {
+            this.notes=resp.ReturnValue;
+            this.notes1=this.notes;
+           console.log(this.credit);
+         
+        });
+                        
          }
 
          notesupdate(inputt):void {
@@ -343,7 +368,7 @@ changeClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
   
  }
  
@@ -362,7 +387,7 @@ negotesClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
   
  }
  
@@ -384,7 +409,7 @@ futureClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
   
  }
  
@@ -403,7 +428,7 @@ historyClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
   
  }
  
@@ -422,7 +447,7 @@ preferenceClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
    
  }
  
@@ -441,7 +466,7 @@ notesClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
     
  }
  
@@ -474,7 +499,7 @@ deletecreditClick(){
   }
 
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.getCreditcard(paramss)
@@ -506,7 +531,7 @@ deletenegotesClick(){
   }
 
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.getNegotiated(paramss)
@@ -537,7 +562,7 @@ deletenotesClick(){
     console.log("workingggggggggggg",this.delcard2)
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.getNotes(paramss)
@@ -569,7 +594,7 @@ deletepreferClick(){
     this.Success(this.delcard7);
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.getPreferences(paramss)
@@ -594,8 +619,8 @@ deletepreferClick(){
 
 this.pppService.ratecodedropdown()
    .subscribe((resp: any) => {
-     this.rate=resp.ReturnValue;
-console.log("res");
+     this.rate=resp.records;
+console.log("res",this.rate);
   
 });
 
