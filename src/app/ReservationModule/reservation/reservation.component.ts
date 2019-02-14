@@ -18,7 +18,7 @@ import * as moment from 'moment';
 export class ReservationComponent implements OnInit {
 
   // public navtag:any={};
-  public PF_Firstname;
+  public PF_Firstname:any;
   public Pf_lastname;
   public Pf_language;
   public PF_Mobileno;
@@ -157,7 +157,9 @@ export class ReservationComponent implements OnInit {
     this.creditcard_expiry = this.month + "/" + this.year;
     inputt.RES_Exp_Date = this.creditcard_expiry;
     inputt.RES_ETA = this.now;
-    this.ReservationService.postandgetdata(inputt, this.compid)
+
+    if((this.session.retrieve("reservationedit")==null)||(this.session.retrieve("reservationedit")==undefined)){
+      this.ReservationService.postandgetdata(inputt, this.compid)
       .subscribe((resp: any) => {
 
         this.user33 = resp;
@@ -186,6 +188,35 @@ export class ReservationComponent implements OnInit {
         this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
         this.session.clear();
       });
+    }
+    else if(this.session.retrieve("reservationedit")=='resevedit'){
+      // edit update service
+      this.ReservationService.postandgetdataedit(inputt, this.compid,this.resid,this.uniquid,this.pfid)
+      .subscribe((resp: any) => {
+        this.user33 = resp;
+        this.confim = resp.ConfirmationNumber;
+        this.usera = resp.ReturnCode;
+        if (this.usera == "RUS") {
+          this.usera = "Reservation is Edited for " + this.PF_Firstname;
+        } else if (resp.Status == "Failure") {
+          this.usera = "Room Type or Date is not declared";
+        }
+        
+        this.user = " ";
+        this.PF_Firstname = "";
+        this.Pf_lastname = "";
+        this.Pf_language = "";
+        this.PF_Mobileno = "";
+        this.Pf_title = "";
+        this.Pf_country = "";
+        this.Pf_vip = "";
+        this.compid = "";
+        this.company = ""; this.TravelAgent = ""; this.group = "";this.res=[]; 
+        this.contact = ""; this.res_source = "";this.resid="";this.uniquid="";this.pfid="";
+        this.session.clear();
+      })
+    }
+
     this.route.navigate(['reservation/']);
   }
 
@@ -222,7 +253,7 @@ export class ReservationComponent implements OnInit {
 
   //group market value
   public company; TravelAgent; group; contact;
-  public compid;
+  public compid;res=[];resid:any;uniquid;pfid;
   ngOnInit() {
     console.log("tesaaaaaaaaaaaa", this.session.retrieve("profiletype"))
 
@@ -354,7 +385,7 @@ export class ReservationComponent implements OnInit {
       this.user.RES_Specials = this.session.retrieve("res_specials");
       this.user.RES_Item_Inv = this.session.retrieve("res_item_inv");
       this.user.PF_Mobileno = this.session.retrieve("pf_mobileno");
-
+      
     }
 
 
@@ -368,6 +399,41 @@ export class ReservationComponent implements OnInit {
     this.Pf_title = this.session.retrieve("title");
     this.Pf_country = this.session.retrieve("individual_country");
     this.Pf_vip = this.session.retrieve("individual_vip");
+    if(this.session.retrieve("reservationedit")=='resevedit')
+    {
+      this.res.push(this.session.retrieve("editval"));
+
+      this.user.RES_Arrival = this.res[0].res_arrival;
+      this.user.RES_Depature = this.res[0].res_depature;
+      this.user.RES_Nights = this.res[0].res_nights;
+      this.user.RES_Adults = this.res[0].res_adults;
+      this.user.RES_child = this.session.retrieve("res_child");
+      this.user.RES_Number_Of_Rooms = this.res[0].res_number_of_rooms;
+      this.user.RES_Room_Type = this.res[0].res_room_type;
+      this.user.RES_Rate_Code = this.res[0].res_rate_code;
+      this.user.RES_Rate = this.res[0].res_rate;
+      this.RES_packages = this.res[0].res_packages;
+      this.user.RES_Block_Code = this.res[0].res_block_code;
+      this.user.RES_RTC = this.res[0].res_rtc;
+
+      this.res_extension = this.res[0].res_extension;
+      this.user.RES_Currency = this.res[0].res_currency;
+      this.user.RES_Res_Type = this.res[0].res_res_type;
+      this.user.RES_Market = this.res[0].res_market;
+      this.user.RES_Source = this.session.retrieve("resource");
+      this.user.RES_Origin = this.res[0].res_origin;
+      this.user.RES_Payment = this.res[0].res_payment;
+      this.user.RES_Creditcard_Number = this.res[0].res_creditcard_number;
+      this.user.RES_Guest_Balance = this.res[0].res_guest_balance;
+      this.user.RES_Disc_Amount = this.res[0].res_disc_amount;
+      this.user.RES_Disc_perc = this.res[0].res_disc_perc;
+      this.user.RES_Disc_Reason = this.res[0].res_disc_reason;
+      this.user.RES_Specials = this.res[0].res_specials;
+      this.user.RES_Item_Inv = this.res[0].res_item_inv;
+      this.resid=this.res[0].res_id;
+      this.uniquid=this.res[0].res_unique_id;
+      this.pfid=this.res[0].pf_id;
+    }
     //setInterval timer for ETA input field
     console.log(this.PF_Firstname, this.Pf_lastname, this.Pf_language, this.PF_Mobileno, this.Pf_title, this.Pf_country, this.Pf_vip);
     setInterval(() => {
@@ -440,5 +506,8 @@ export class ReservationComponent implements OnInit {
   }
   // navigating to profile
 
+
+  //Reservation edit
+  
 }
 

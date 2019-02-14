@@ -181,19 +181,14 @@
   <div class="container-fluid">
    <div class="row" >
      
-        <button type="button" class="btn btn-primary"routerLink="/reservation" style="width:140px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
-        
-              <button type="button" class="btn btn-danger"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>
-
-               <button type="button" class="btn btn-warning"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#reinstate" data-dismiss="modal" [disabled]=rein ><b>Reinstate</b></button>
-
-               <button type="button" class="btn btn-info"routerLink="/psearch" style="width:140px;margin-left: 5px;"  [disabled]=profile ><b>Profile</b></button>
-
-               <button routerLink="/reservationoption" class="btn btn-primary"  style="width:140px;margin-left: 5px;"  [disabled]=option ><b>Options</b></button>
-
-               <button type="button" class="btn btn-success" (click)="subaccp()" data-toggle="modal" data-target="#accept"style="width:140px;margin-left: 5px;" [disabled]=wait ><b>Accept Waitlist</b></button>
-
-               <button type="button" class="btn btn-danger" routerLink="/mains"  style="width:140px;margin-left: 5px;"><b>Close</b></button>
+        <button type="button" class="btn btn-primary" routerLink="/reservation" style="width:125px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
+        <button type="button" class="btn btn-warning" (click)="resevedit('resevedit')"style="width:125px;margin-left: 15px;"  [disabled]=edit ><b>Edit</b></button>
+        <button type="button" class="btn btn-danger"  style="width:125px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>
+        <button type="button" class="btn btn-warning"  style="width:125px;margin-left: 5px;" data-toggle="modal" data-target="#reinstate" data-dismiss="modal" [disabled]=rein ><b>Reinstate</b></button>
+        <button type="button" class="btn btn-info"routerLink="/psearch" style="width:125px;margin-left: 5px;"  [disabled]=profile ><b>Profile</b></button>
+        <button routerLink="/reservationoption" class="btn btn-primary"  style="width:125px;margin-left: 5px;"  [disabled]=option ><b>Options</b></button>
+        <button type="button" class="btn btn-success" (click)="subaccp()" data-toggle="modal" data-target="#accept"style="width:125px;margin-left: 5px;" [disabled]=wait ><b>Accept Waitlist</b></button>
+        <button type="button" class="btn btn-danger" routerLink="/mains"  style="width:125px;margin-left: 5px;"><b>Close</b></button>
 
    </div>
   <br>

@@ -62,6 +62,64 @@ export class ReservationService {
             .map(this.extractData)
             //.catch(this.handleErrorObservable);
      }
+     
+     //Edit reservation
+     postandgetdataedit(input,parm,resid,uniquid,pfid):  Observable<object[]> {
+       
+      const headers = new Headers();
+       headers.append('Content-Type','application/json');
+       const options = new RequestOptions({ headers: headers });
+       if(input.RES_Child==undefined){
+        input.RES_Child="";
+       }
+       let body=
+        {
+          "RES_Arrival":input.RES_Arrival,
+          "RES_Depature":input.RES_Depature,  
+          "RES_Nights":input.RES_Nights.toString(),
+          "RES_Adults":input.RES_Adults.toString(), 
+          "RES_Child":input.RES_Child,  
+          "RES_Number_Of_Rooms":input.RES_Number_Of_Rooms.toString(),
+           "RES_Room_Type":input.RES_Room_Type,
+           "RES_Room":"0", 
+           "RES_Rate":input.RES_Rate.toString(),
+           "RES_Packages":"",
+           "RES_Block_Code":"", 
+           "RES_Res_Type":input.RES_Res_Type, 
+           "RES_Market":input.RES_Market, 
+           "RES_Source":" ",
+           "RES_Origin":input.RES_Origin,
+           "RES_Payment":input.RES_Payment,
+           "RES_RTC":input.RES_RTC,
+           "RES_Creditcard_Number":input.RES_Creditcard_Number,
+           "RES_Exp_Date":input.RES_Exp_Date,
+           "RES_Guest_Balance":input.RES_Guest_Balance.toString(),
+           "RES_Disc_Amount":input.RES_Disc_Amount.toString(),
+           "RES_Disc_Reason":"",
+           "RES_Specials":"",
+           "RES_Comments":"",
+           "RES_Item_Inv":"",
+           "RES_Extension":"",
+           "RES_Rate_Code":input.RES_Rate_Code,
+           "RES_ETA":input.RES_ETA,
+           "RES_Block":parm,
+           "RES_Party":"", 
+           "RES_Currency":input.RES_Currency,
+           "RES_Disc_perc":input.RES_Disc_perc.toString(),
+           "PF_Firstname":this.session.retrieve("fname"),
+           "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+           "Res_guest_status":"",
+           "pf_id": pfid,
+           "res_id":resid.toString(),
+           "res_unique_id":uniquid.toString()
+          };      
+
+        console.log(body);
+       return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_UPDATE_UpdateReservation',body,options)
+          .map(this.extractData)
+   }
+
+     //wait setvice call
     getwaitdata(input,parm):  Observable<object[]> {
       
       const headers = new Headers();
