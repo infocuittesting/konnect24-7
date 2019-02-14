@@ -201,6 +201,7 @@ import { EndofdayComponent } from './Endofday/endofday/endofday.component';
         //End of day
         EndofdayComponent,
 
+
     ],
     imports: [
         BrowserModule,

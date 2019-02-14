@@ -21,136 +21,136 @@
   <div class="wrapper">
 
     <div class="content-wrapper">
-      <div class="container-fluid"  style="padding-top:9px;">
+      <div class="container-fluid" style="padding-top:9px;">
         <div class="panel panel-default">
           <div class="panel-body" style="max-height: 218px;">
-        
-              <form action="" #loginForm="ngForm">
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-12">
 
-                    <b> First Name *</b>
-                    <div class="input-group">
-                      <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"
-                        [(ngModel)]="PF_Firstname" #firstName="ngModel" [value]="PF_Firstname | titlecase" required>
-                      <span class="input-group-btn">
-                        <button class="btn btn-primary btn" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"
-                            style="margin-top: -5px;"></i></button>
-                      </span>
+            <form action="" #loginForm="ngForm">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
 
-                    </div>
-                    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.pattern"
-                      style="width:420px;">first name should contain only alphabets </div>
-                    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.required"
-                      style="width:420px;">first name is required </div>
-                  </div>
-
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-
-                    <b>Last Name</b>
-                    <div class="input-group">
-                      <input type="text" name="Last Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Pf_lastname"
-                        #lastName="ngModel">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid && lastName.errors.pattern"
-                      style="width:478px;">last name should contain only alphabets </div>
-                  </div>
-
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Title</b>
-                    <div class="input-group">
-                      <input type="text" name="Title" class="form-control" [(ngModel)]="Pf_title">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Phone</b>
-                    <div class="input-group">
-                      <input type="text" name="Phone" pattern="^(0|[1-9][0-9]*)$" class="form-control" [(ngModel)]="PF_Mobileno"
-                        #phone="ngModel">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid && phone.errors.pattern" style="width:205px;">phone
-                      number should contain only numbers </div>
+                  <b> First Name *</b>
+                  <div class="input-group">
+                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="PF_Firstname"
+                      #firstName="ngModel" [value]="PF_Firstname | titlecase" required>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary btn" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"
+                          style="margin-top: -5px;"></i></button>
+                    </span>
 
                   </div>
+                  <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.pattern"
+                    style="width:420px;">first name should contain only alphabets </div>
+                  <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.required"
+                    style="width:420px;">first name is required </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12">
+
+                  <b>Last Name</b>
+                  <div class="input-group">
+                    <input type="text" name="Last Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Pf_lastname"
+                      #lastName="ngModel">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid && lastName.errors.pattern"
+                    style="width:478px;">last name should contain only alphabets </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Title</b>
+                  <div class="input-group">
+                    <input type="text" name="Title" class="form-control" [(ngModel)]="Pf_title">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Phone</b>
+                  <div class="input-group">
+                    <input type="text" name="Phone" pattern="^(0|[1-9][0-9]*)$" class="form-control" [(ngModel)]="PF_Mobileno"
+                      #phone="ngModel">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid && phone.errors.pattern" style="width:205px;">phone
+                    number should contain only numbers </div>
 
                 </div>
 
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Country</b>
-                    <div class="input-group">
-                      <input type="text" name="Country" class="form-control" [(ngModel)]="Pf_country">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                    </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Country</b>
+                  <div class="input-group">
+                    <input type="text" name="Country" class="form-control" [(ngModel)]="Pf_country">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
                   </div>
-                  <div class="col-lg-3">
-                    <b>Language</b>
-                    <div class="input-group">
-                      <input type="text" name="Language" class="form-control" [(ngModel)]="Pf_language">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <b>Language</b>
+                  <div class="input-group">
+                    <input type="text" name="Language" class="form-control" [(ngModel)]="Pf_language">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>VIP</b>
-                    <div class="input-group">
-                      <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>VIP</b>
+                  <div class="input-group">
+                    <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Contact</b>
-                    <div class="input-group">
-                      <input type="text" name="Contact" [(ngModel)]="contact" class="form-control">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test4(contact)"><i
-                          class="glyphicon glyphicon-option-horizontal"></i></span>
-                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Contact</b>
+                  <div class="input-group">
+                    <input type="text" name="Contact" [(ngModel)]="contact" class="form-control">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test4(contact)"><i
+                        class="glyphicon glyphicon-option-horizontal"></i></span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-top: 10;">
+
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Company</b>
+                  <div class="input-group">
+                    <input type="text" name="compa" [(ngModel)]="company" class="form-control">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test(company)"><i
+                        class="glyphicon glyphicon-option-horizontal"></i></span>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Agent</b>
+                  <div class="input-group">
+                    <input type="text" name="Agent" [(ngModel)]="TravelAgent" class="form-control">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test1(TravelAgent)"><i
+                        class="glyphicon glyphicon-option-horizontal"></i></span>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Group</b>
+                  <div class="input-group">
+                    <input type="text" name="Group" [(ngModel)]="group" class="form-control">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test2(group)"><i
+                        class="glyphicon glyphicon-option-horizontal"></i></span>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <b>Source</b>
+                  <div class="input-group">
+                    <input type="text" name="Source" class="form-control" [(ngModel)]="res_source">
+                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test3(res_source)"><i
+                        class="glyphicon glyphicon-option-horizontal"></i></span>
                   </div>
                 </div>
 
 
-                <div class="row" style="margin-top: 10;">
+              </div>
+            </form>
 
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Company</b>
-                    <div class="input-group">
-                      <input type="text" name="compa" [(ngModel)]="company" class="form-control">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test(company)"><i
-                          class="glyphicon glyphicon-option-horizontal"></i></span>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Agent</b>
-                    <div class="input-group">
-                      <input type="text" name="Agent" [(ngModel)]="TravelAgent" class="form-control">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test1(TravelAgent)"><i
-                          class="glyphicon glyphicon-option-horizontal"></i></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Group</b>
-                    <div class="input-group">
-                      <input type="text" name="Group" [(ngModel)]="group" class="form-control">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test2(group)"><i
-                          class="glyphicon glyphicon-option-horizontal"></i></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12">
-                    <b>Source</b>
-                    <div class="input-group">
-                      <input type="text" name="Source" class="form-control" [(ngModel)]="res_source">
-                      <span class="input-group-addon" style="background-color:#0077B5;color:white;" (click)="test3(res_source)"><i
-                          class="glyphicon glyphicon-option-horizontal"></i></span>
-                    </div>
-                  </div>
-
-
-                </div>
-              </form>
-            
           </div>
         </div>
       </div>
@@ -163,11 +163,11 @@
 
               <div class="row">
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b >Arrival *</b>
+                  <b>Arrival *</b>
                   <div class="input-group" style="width:100%" [class.has-error]="arrivaldate.touched && arrivaldate.invalid">
                     <input type="date" name="arrival" #arrivaldate="ngModel" required class="form-control" placeholder="Enter your User Name"
-                      style="height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Arrival"
-                      (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel" />
+                      style="height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)"
+                      #arrivaldate="ngModel" />
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
@@ -192,7 +192,7 @@
                   <b>Room No </b>
                   <div class="input-group" style="width:100%">
                     <input type="text" name="roomno" class="form-control" style="height:34px;border-radius:4px;color:black;"
-                      disabled> 
+                      disabled>
                   </div>
                 </div>
               </div>
@@ -208,7 +208,7 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Adults</b>
+                  <b>Adults *</b>
                   <div class="input-group" [class.has-error]="adult.touched && adult.invalid" style="width:100%">
                     <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Adults" (change)="modalchange(user.RES_Arrival,user.RES_Depature,user.RES_Adults)"
@@ -262,7 +262,8 @@
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
                   <b>Extension</b>
                   <div class="input-group" style="width:100%">
-                    <input type="text" name="extension" class="form-control" required style="height:34px;border-radius:4px;color:black;" [(ngModel)]="res_extension" disabled>
+                    <input type="text" name="extension" class="form-control" required style="height:34px;border-radius:4px;color:black;"
+                      [(ngModel)]="res_extension" disabled>
                   </div>
                 </div>
               </div>
@@ -331,7 +332,7 @@
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
                   <b>Block Code</b>
-                  <div class="input-group" style="width:100%" >
+                  <div class="input-group" style="width:100%">
                     <input type="text" name="blockcode" class="form-control" required style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="user.RES_Block_Code" disabled>
                   </div>
@@ -344,42 +345,10 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Disc.Amount</b>
-                  <div class="input-group" style="width:100%">
-                    <input name="amount" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
-                      [(ngModel)]="user.RES_Disc_Amount">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Disc.%</b>
-                  <div class="input-group" style="width:100%">
-                    <input name="pecentage" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
-                      [(ngModel)]="user.RES_Disc_perc">
-                  </div>
-                </div>
-                <div class="col-md-lg-3 col-md-3 col-sm-12">
                   <b>Packages</b>
                   <div class="input-group" style="width:100%">
                     <input name="Packages" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
                       [(ngModel)]="RES_packages" disabled>
-                  </div>
-                </div>
-                <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Special</b>
-                  <div class="input-group" style="width:100%">
-                    <input name="special" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
-                      [(ngModel)]="user.RES_Specials">
-
-                  </div>
-                </div>
-                <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Comments</b>
-                  <div class="input-group" style="width:100%">
-                    <textarea name="comments" id="" class="form-control" style="height:34px;border-radius:4px;color:black;" rows="1"
-                      [(ngModel)]="user.RES_Comments"></textarea>
                   </div>
                 </div>
               </div>
@@ -400,6 +369,23 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
+                  <b>Special</b>
+                  <div class="input-group" style="width:100%">
+                    <input name="special" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
+                      [(ngModel)]="user.RES_Specials">
+                  </div>
+                </div>
+                <div class="col-md-lg-3 col-md-3 col-sm-12">
+                  <b>Comments</b>
+                  <div class="input-group" style="width:100%">
+                    <textarea name="comments" id="" class="form-control" style="height:34px;border-radius:4px;color:black;"
+                      rows="1" [(ngModel)]="user.RES_Comments"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-lg-3 col-md-3 col-sm-12">
                   <b>Guest Bal.</b>
                   <div class="input-group" style="width:100%">
                     <input type="text" name="guestbal" class="form-control" style="height:34px;border-radius:4px;color:black;"
@@ -413,6 +399,20 @@
                       [(ngModel)]="user.RES_Currency">
                       <option *ngFor="let cl of getc" [ngValue]="cl.currency">{{cl.currency}}</option>
                     </select>
+                  </div>
+                </div>
+                <div class="col-md-lg-3 col-md-3 col-sm-12">
+                  <b>Disc.%</b>
+                  <div class="input-group" style="width:100%">
+                    <input name="pecentage" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
+                      [(ngModel)]="user.RES_Disc_perc">
+                  </div>
+                </div>
+                <div class="col-md-lg-3 col-md-3 col-sm-12">
+                  <b>Disc.Amount</b>
+                  <div class="input-group" style="width:100%">
+                    <input name="amount" type="text" class="form-control" required style="height:34px;border-radius:4px;color:black;"
+                      [(ngModel)]="user.RES_Disc_Amount">
                   </div>
                 </div>
               </div>
@@ -430,7 +430,7 @@
                   </div>
                 </div>
                 <div class="col-md-lg-3 col-md-3 col-sm-12">
-                  <b>Expire Date</b>
+                  <b>Expire Date *</b>
                   <div class="input-group row" style="width:100%">
                     <div class="col-lg-6">
                       <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Month"
@@ -447,7 +447,7 @@
 
             </div>
           </div>
-          
+
           <div class="row">
 
             <div class="col-lg-2">
