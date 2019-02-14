@@ -203,7 +203,9 @@ selectandClearAll(flag){
     console.log(body);
     this.roomService.roomassign(body)
     .subscribe(( user233:any)=> {
-    
+    if(user233.ReturnCode=="RUS"){
+      this.route.navigate(['roomassignment/']);
+    }
 
     }); 
 
