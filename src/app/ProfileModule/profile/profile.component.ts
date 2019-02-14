@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
         this.session.store("id",user333.profileid);
         console.log("id valuesssssssssssssssssss",user333.profileid);
         if(this.profile=="RIS"){
-           this.profile="The Company Profile is successfully"+user333.PF_Firstname;
+           this.profile="The Company Profile is successfully"+user333.PF_Account;
         
         console.log("create company success",this.checkpftype,typeof(this.checkpftype))
         if(this.checkpftype == "Travel Agent"){
@@ -77,7 +77,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileService.updateCompanyProfile(input1)
       .subscribe((resp: any) => {
         if(resp.ReturnCode=='RUS'){
-        this.profile="The Profile is Updated for "+input1.PF_Firstname;
+        this.profile="The Profile is Updated for "+input1.PF_Account;
       }
       this.session.clear()
      });

@@ -86,11 +86,9 @@ export class ProfileService {
          "PF_Company_State":input.PF_Company_State,
          "PF_Id":this.session.retrieve('pf_id')
      };
-         console.log(body);
+         console.log('testtttttttttttt',JSON.stringify(body))
  
-        
-       
-        return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfileRecord',input,options)
+        return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfileRecord',body,options)
            .map(this.extractData)
            //.catch(this.handleErrorObservable);
       }

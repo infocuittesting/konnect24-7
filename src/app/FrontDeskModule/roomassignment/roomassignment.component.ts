@@ -38,12 +38,11 @@ export class RoomassignmentComponent implements OnInit {
     this.status=resp.ReturnCode;
     if(this.status=="RUS"){
       this.status="The room number "+this.room +" is unassigned for "+this.Name;
-    }
-    
-    this.RoomassignmentService.searchedit()
+      this.RoomassignmentService.searchedit()
     .subscribe((resp: any) => {
      this.searchandedit=resp.ReturnValue;
    });
+    }  
    this.Name.clear();
    this.room.clear();
   });
@@ -63,6 +62,10 @@ checkinProfile(){
     this.status=resp.ReturnCode;
     if(this.status=="RUS"){
       this.status="The Check is conformed for "+this.Name;
+      this.RoomassignmentService.searchedit()
+  .subscribe((resp: any) => {
+   this.searchandedit=resp.ReturnValue;
+ });
     }
     else if(this.status=="AGS"){
       this.status=resp.alertvalue[0].res_alert_description;
