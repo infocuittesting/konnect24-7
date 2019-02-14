@@ -343,7 +343,7 @@
                                               </div>
                                               <div class="col-lg-3">
                                                   <div class="input-group" [class.has-error]="communitype3.touched && communitype3.invalid">
-                                                      <input type="email"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype3" #communitype3="ngModel" required>
+                                                      <input type="text"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype3" #communitype3="ngModel" required>
                                             <div *ngIf="communitype3.touched && !communitype3.valid && communitype3.errors?.required && communitype3.errors.pattern " ngClass="{ 'has-error' : !communitype3.valid && submitAttempt }"></div>
                                           </div>
                                               </div>

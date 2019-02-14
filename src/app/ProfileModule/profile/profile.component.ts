@@ -31,6 +31,8 @@ export class ProfileComponent implements OnInit {
   user33={};
   public profile;
   submit(input1) {
+    console.log('session',this.session.retrieve('profile_edit_nav'))
+    if((this.session.retrieve('profile_edit_nav')==null) || (this.session.retrieve('profile_edit_nav')==undefined)){   
       console.log("input in submit function",input1)
       this.ProfileService.postandgetdata (input1)
       .subscribe(( user333:any)=> {
@@ -40,7 +42,7 @@ export class ProfileComponent implements OnInit {
         this.session.store("id",user333.profileid);
         console.log("id valuesssssssssssssssssss",user333.profileid);
         if(this.profile=="RIS"){
-           this.profile="The Company Profile is successfully"+user333.profileid;
+           this.profile="The Company Profile is successfully"+user333.PF_Firstname;
         
         console.log("create company success",this.checkpftype,typeof(this.checkpftype))
         if(this.checkpftype == "Travel Agent"){
@@ -70,6 +72,17 @@ export class ProfileComponent implements OnInit {
           console.log("else else else")
         }
       });  
+    }
+    else{
+      this.ProfileService.updateCompanyProfile(input1)
+      .subscribe((resp: any) => {
+        if(resp.ReturnCode=='RUS'){
+        this.profile="The Profile is Updated for "+input1.PF_Firstname;
+      }
+      this.session.clear()
+     });
+    
+    }
                     
      }
 
@@ -96,16 +109,6 @@ export class ProfileComponent implements OnInit {
      });
    }
    
-   updateCompanyProfile(){
-    let inputparms={
-
-
-   }
-  this.ProfileService.updateCompanyProfile(inputparms)
-  .subscribe((resp: any) => {
-   this.servicestatus=resp.ServiceStatus;
- });
-}
 
 cleardata(){
   this.user=' ';

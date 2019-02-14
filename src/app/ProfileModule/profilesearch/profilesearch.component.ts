@@ -207,6 +207,14 @@ this.comm3=resp.ReturnValue;
 
 }
 
+profileedit(params){
+    
+  if(params == "ProfileEdit"){
+    this.session.store("profile_edit_nav",params);
+  }
+  this.route.navigate(['profilestatistics/']);
+}
+
 ngOnDestroy(){
   this.session.clear('EndofDay_checkin');
   this.session.clear('BlockProfile');

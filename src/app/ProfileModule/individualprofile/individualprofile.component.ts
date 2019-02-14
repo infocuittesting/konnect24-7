@@ -38,6 +38,7 @@ public user:any=[];
   // value:any;
   submit(inputt):any {
     console.log(inputt);
+    if((this.session.retrieve('profile_edit_nav')==null) || (this.session.retrieve('profile_edit_nav')==undefined)){
       this.IndividualService.postandgetdata (inputt)
       .subscribe(( user333:any)=> {
         this.user33 = user333;
@@ -77,45 +78,26 @@ public user:any=[];
           this.session.store("pf_individual_vip",inputt.PF_Individual_VIP);
           // this.navigatepages();
         }
-      });  
+      }); 
+    }
+
+    else{
+      this.IndividualService.updateIndividualProfile(inputt)
+      .subscribe((resp: any) => {
+        if(resp.ReturnCode=='RUS'){
+        this.individual="The Profile is Updated for "+inputt.PF_Firstname;
+      }
+      this.session.clear()
+     });
+    
+    }
      }
 
-
-    //  navigatepages(){
-    //   this.navtag = this.session.retrieve("navigate");
-    //   if(this.navtag == "Rev"){
-    //     this.route.navigate(['reservation/']);
-    //   }
-    //   else if(this.navtag == "Block"){
-    //     this.route.navigate(['bcreate/']);
-    //   }
-    // }
 
 
      servicestatus=[];
 
    
-     
-   updateIndividualProfile(){
-    let inputparms={
-     "PF_Firstname":"aravindh",
-        "PF_Mobileno":"34545",
-        "PF_Individual_Address":"Oxon Hill, MD, USA",
-        "PF_Home_Address":"Oxon Hill, MD, USA",	
-        "PF_City":"newyork",	
-        "PF_Postalcode":"621334",	
-        "PF_Individual_Country":"america",	
-        "PF_Individual_State":"hawaii"
-      
-        
-
-   }
-  this.IndividualService.updateIndividualProfile(inputparms)
-  .subscribe((resp: any) => {
-   this.servicestatus=resp.ServiceStatus;
- });
-
-}
 
 ngOnInit()
 {
@@ -205,9 +187,9 @@ this.IndividualService.pftypedropdown()
 
 }
 
-ngOnDestroy(){
-  this.session.clear(this.user);
-}
+//ngOnDestroy(){
+ // this.session.clear(this.user);
+//}
 
 public PF_Firstname:any;
 cleardata(){

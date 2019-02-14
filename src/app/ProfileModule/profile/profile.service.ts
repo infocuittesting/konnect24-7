@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { SessionStorageService } from "ngx-webstorage";
 
 @Injectable()
 export class ProfileService { 
 
     constructor (
-        private http: Http
+        private http: Http,
+        public session:SessionStorageService
       ) {}
 
         
@@ -18,13 +20,26 @@ export class ProfileService {
          const options = new RequestOptions({ headers: headers });
          console.log('working');
          let body={  
-        "PF_Account":input.PF_Account,"PF_Company_Address":input.PF_Company_Address,
-        "PF_Business_Address":input.PF_Business_Address,"PF_Postalcode":input.PF_Postalcode.toString(),"PF_Owner":input.PF_Owner,
-        "PF_Territory":input.PF_Territory,"PF_Type":input.PF_Type,"PF_AR_Number":input.PF_AR_Number,"PF_City":input.PF_City,
-        "PF_Ref_Currency":input.PF_Ref_Currency,"PF_Company_Communication1":input.PF_Company_Communication1,"PF_Company_Communication2":input.PF_Company_Communication2,"PF_Company_Communication3":input.PF_Company_Communication3,
-        "PF_Company_Commtype1":input.PF_Company_Commtype1,"PF_Company_Commtype2":input.PF_Company_Commtype2,"PF_Company_Commtype3":input.PF_Company_Commtype3,"PF_Company_Country":input.PF_Company_Country,"PF_Company_State":input.PF_Company_State,
+        "PF_Account":input.PF_Account,
+        "PF_Company_Address":input.PF_Company_Address,
+        "PF_Business_Address":input.PF_Business_Address,
+        "PF_Postalcode":input.PF_Postalcode.toString(),
+        "PF_Owner":input.PF_Owner,
+        "PF_Territory":input.PF_Territory,
+        "PF_Type":input.PF_Type,
+        "PF_AR_Number":input.PF_AR_Number,
+        "PF_City":input.PF_City,
+        "PF_Ref_Currency":input.PF_Ref_Currency,
+        "PF_Company_Communication1":input.PF_Company_Communication1,
+        "PF_Company_Communication2":input.PF_Company_Communication2,
+        "PF_Company_Communication3":input.PF_Company_Communication3,
+        "PF_Company_Commtype1":input.PF_Company_Commtype1,
+        "PF_Company_Commtype2":input.PF_Company_Commtype2,
+        "PF_Company_Commtype3":input.PF_Company_Commtype3,
+        "PF_Company_Country":input.PF_Company_Country,
+        "PF_Company_State":input.PF_Company_State,
     };
-        console.log(body);
+        console.log('testtttttttt',JSON.stringify(body));
          return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfile',input,options)
             .map(this.extractData)
             //.catch(this.handleErrorObservable);
@@ -46,13 +61,36 @@ export class ProfileService {
       }
 
 
-      updateCompanyProfile(insertdata:any):  Observable<object[]> {
+      updateCompanyProfile(input:any):  Observable<object[]> {
        
         const headers = new Headers({'Content-Type':'application/json'})
         const options = new RequestOptions({ headers: headers });
+        let body={  
+         "PF_Account":input.PF_Account,
+         "PF_Company_Address":input.PF_Company_Address,
+         "PF_Business_Address":input.PF_Business_Address,
+         "PF_Postalcode":input.PF_Postalcode.toString(),
+         "PF_Owner":input.PF_Owner,
+         "PF_Territory":input.PF_Territory,
+         "PF_Type":input.PF_Type,
+         "PF_AR_Number":input.PF_AR_Number,
+         "PF_City":input.PF_City,
+         "PF_Ref_Currency":input.PF_Ref_Currency,
+         "PF_Company_Communication1":input.PF_Company_Communication1,
+         "PF_Company_Communication2":input.PF_Company_Communication2,
+         "PF_Company_Communication3":input.PF_Company_Communication3,
+         "PF_Company_Commtype1":input.PF_Company_Commtype1,
+         "PF_Company_Commtype2":input.PF_Company_Commtype2,
+         "PF_Company_Commtype3":input.PF_Company_Commtype3,
+         "PF_Company_Country":input.PF_Company_Country,
+         "PF_Company_State":input.PF_Company_State,
+         "PF_Id":this.session.retrieve('pf_id')
+     };
+         console.log(body);
+ 
         
        
-        return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateProfileRecordCompany',insertdata,options)
+        return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfileRecord',input,options)
            .map(this.extractData)
            //.catch(this.handleErrorObservable);
       }

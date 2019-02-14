@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { SessionStorageService } from "ngx-webstorage";
 
 @Injectable()
 export class IndividualService { 
 
     constructor (
-        private http: Http
+        private http: Http,
+        public session:SessionStorageService
       ) {}
 
         
@@ -16,8 +18,9 @@ export class IndividualService {
         const headers = new Headers();
          headers.append('Content-Type','application/json');
          const options = new RequestOptions({ headers: headers });
-         console.log('working');
-         let body={"PF_Firstname":input.PF_Firstname, 
+         
+         let body={
+         "PF_Firstname":input.PF_Firstname, 
          "PF_Lastname":input.PF_Lastname, 
          "PF_Language":input.PF_Language,
          "PF_Title":input.PF_Title,
@@ -41,6 +44,7 @@ export class IndividualService {
          "PF_Individual_Commtype2":input.PF_Individual_Commtype2,
          "PF_Individual_Commtype3":input.PF_Individual_Commtype3
        };
+       console.log('testtttttt',JSON.stringify(body))
         
          return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateIndividualProfile',body,options)
             .map(this.extractData)
@@ -50,13 +54,38 @@ export class IndividualService {
 
     
 
-    updateIndividualProfile(insertdata:any):  Observable<object[]> {
+    updateIndividualProfile(input:any):  Observable<object[]> {
        
       const headers = new Headers({'Content-Type':'application/json'})
       const options = new RequestOptions({ headers: headers });
       
-     
-      return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateIndividualProfileRecord',insertdata,options)
+      let body={
+        "PF_Firstname":input.PF_Firstname, 
+        "PF_Lastname":input.PF_Lastname, 
+        "PF_Language":input.PF_Language,
+        "PF_Title":input.PF_Title,
+        "PF_Mobileno":input.PF_Mobileno,
+        "PF_Individual_Address":input.PF_Individual_Address,
+        "PF_Home_Address":input.PF_Home_Address,
+        "PF_City":input.PF_City,
+        "PF_Postalcode":input.PF_Postalcode,
+        "PF_Individual_Country":input.PF_Individual_Country,
+        "PF_Individual_State":input.PF_Individual_State,
+        "PF_Salutation":" ",
+        "PF_Individual_VIP":input.PF_Individual_VIP,
+        "PF_Nationality":input.PF_Nationality,
+        "PF_Date_Of_Birth":input.PF_Date_Of_Birth,
+        "PF_Type":input.PF_Type,
+        "PF_Passport":input.PF_Passport,
+        "PF_Individual_Communication1":input.PF_Individual_Communication1,
+        "PF_Individual_Communication2":input.PF_Individual_Communication2,
+        "PF_Individual_Communication3":input.PF_Individual_Communication3,
+        "PF_Individual_Commtype1":input.PF_Individual_Commtype1,
+        "PF_Individual_Commtype2":input.PF_Individual_Commtype2,
+        "PF_Individual_Commtype3":input.PF_Individual_Commtype3,
+        "PF_Id":this.session.retrieve('pf_id')
+      };
+      return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateIndividualProfileRecord',body,options)
          .map(this.extractData)
          //.catch(this.handleErrorObservable);
     }
