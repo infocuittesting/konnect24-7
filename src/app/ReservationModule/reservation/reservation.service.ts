@@ -33,7 +33,7 @@ export class ReservationService {
              "RES_Block_Code":"", 
              "RES_Res_Type":input.RES_Res_Type, 
              "RES_Market":input.RES_Market, 
-             "RES_Source":" ",
+             "RES_Source":input.RES_Source,
              "RES_Origin":input.RES_Origin,
              "RES_Payment":input.RES_Payment,
              "RES_RTC":input.RES_RTC,
@@ -41,10 +41,10 @@ export class ReservationService {
              "RES_Exp_Date":input.RES_Exp_Date,
              "RES_Guest_Balance":input.RES_Guest_Balance,
              "RES_Disc_Amount":input.RES_Disc_Amount,
-             "RES_Disc_Reason":"",
-             "RES_Specials":"",
-             "RES_Comments":"",
-             "RES_Item_Inv":"",
+             "RES_Disc_Reason":input.RES_Disc_Reason,
+             "RES_Specials":input.RES_Specials,
+             "RES_Comments":input.RES_Comments,
+             "RES_Item_Inv":input.RES_Item_Inv,
              "RES_Extension":"",
              "RES_Rate_Code":input.RES_Rate_Code,
              "RES_ETA":input.RES_ETA,
@@ -69,25 +69,27 @@ export class ReservationService {
       const headers = new Headers();
        headers.append('Content-Type','application/json');
        const options = new RequestOptions({ headers: headers });
-       if(input.RES_Child==undefined){
-        input.RES_Child="";
-       }
+       if(input.RES_Child==undefined){input.RES_Child="";}if(input.RES_Adults==undefined){input.RES_Adults="";}
+       if(input.RES_Nights==undefined){input.RES_Nights="";}if(input.RES_Number_Of_Rooms==undefined){input.RES_Number_Of_Rooms="";}
+       if(input.RES_Rate==undefined){input.RES_Rate="";}if(input.RES_Source==undefined){input.RES_Source="";}
+       if(input.RES_Disc_Reason==undefined){input.RES_Disc_Reason="";}if(input.RES_Specials==undefined){input.RES_Specials="";}
+       if(input.RES_Comments==undefined){input.RES_Comments="";}if(input.RES_Item_Inv==undefined){input.RES_Item_Inv="";}       
        let body=
         {
           "RES_Arrival":input.RES_Arrival,
           "RES_Depature":input.RES_Depature,  
           "RES_Nights":input.RES_Nights.toString(),
           "RES_Adults":input.RES_Adults.toString(), 
-          "RES_Child":input.RES_Child,  
+          "RES_Child":input.RES_Child.toString(),  
           "RES_Number_Of_Rooms":input.RES_Number_Of_Rooms.toString(),
            "RES_Room_Type":input.RES_Room_Type,
-           "RES_Room":"0", 
+           "RES_Room":input.RES_Room.toString(), 
            "RES_Rate":input.RES_Rate.toString(),
            "RES_Packages":"",
            "RES_Block_Code":"", 
            "RES_Res_Type":input.RES_Res_Type, 
            "RES_Market":input.RES_Market, 
-           "RES_Source":" ",
+           "RES_Source":input.RES_Source ,
            "RES_Origin":input.RES_Origin,
            "RES_Payment":input.RES_Payment,
            "RES_RTC":input.RES_RTC,
@@ -95,10 +97,10 @@ export class ReservationService {
            "RES_Exp_Date":input.RES_Exp_Date,
            "RES_Guest_Balance":input.RES_Guest_Balance.toString(),
            "RES_Disc_Amount":input.RES_Disc_Amount.toString(),
-           "RES_Disc_Reason":"",
-           "RES_Specials":"",
-           "RES_Comments":"",
-           "RES_Item_Inv":"",
+           "RES_Disc_Reason":input.RES_Disc_Reason,
+           "RES_Specials":input.RES_Specials,
+           "RES_Comments":input.RES_Comments,
+           "RES_Item_Inv":input.RES_Item_Inv,
            "RES_Extension":"",
            "RES_Rate_Code":input.RES_Rate_Code,
            "RES_ETA":input.RES_ETA,

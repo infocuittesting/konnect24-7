@@ -73,7 +73,7 @@ checkinProfile(){
       this.status="The Checkin is conformed for"+this.firstname;
     }
     else if(this.status=="AGS"){
-      this.status=resp.alertvalue[0].res_alert_description;
+      this.status="The Checkin is conformed for"+this.firstname;
     }
     this.checkinService.searchedit()
     .subscribe((resp: any) => {

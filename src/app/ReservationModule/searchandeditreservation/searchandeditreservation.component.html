@@ -160,8 +160,8 @@
         </tbody>
       </table>
    <div class="row">
-     <div class="col-md-1 col-lg-1" *ngIf="showhide==true">
-       <button class="btn btn-danger btn-sm">{{privilege[0].privileges_desc}}</button>
+     <div  *ngIf="showhide==true">
+       <button class="btn btn-danger btn-sm"  *ngFor="let item of privilege" style="margin-left:15px">{{item.privileges_desc}}</button>
      </div>
      <div class="col-md-1 col-lg-1" *ngIf="showfix==true">
       <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" >Fixed Rate</button>

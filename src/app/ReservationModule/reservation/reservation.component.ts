@@ -154,6 +154,12 @@ export class ReservationComponent implements OnInit {
     if (this.compid == undefined) {
       this.compid = "";
     }
+    if(this.month==undefined){
+      this.month="";
+    }
+    if(this.year==undefined){
+      this.year="";
+    }
     this.creditcard_expiry = this.month + "/" + this.year;
     inputt.RES_Exp_Date = this.creditcard_expiry;
     inputt.RES_ETA = this.now;
@@ -211,7 +217,7 @@ export class ReservationComponent implements OnInit {
         this.Pf_country = "";
         this.Pf_vip = "";
         this.compid = "";
-        this.company = ""; this.TravelAgent = ""; this.group = "";this.res=[]; 
+        this.company = ""; this.TravelAgent = ""; this.group = "";this.res=""; 
         this.contact = ""; this.res_source = "";this.resid="";this.uniquid="";this.pfid="";
         this.session.clear();
       })
@@ -253,7 +259,7 @@ export class ReservationComponent implements OnInit {
 
   //group market value
   public company; TravelAgent; group; contact;
-  public compid;res=[];resid:any;uniquid;pfid;
+  public compid;res:any;resid:any;uniquid;pfid;
   ngOnInit() {
     console.log("tesaaaaaaaaaaaa", this.session.retrieve("profiletype"))
 
@@ -401,38 +407,39 @@ export class ReservationComponent implements OnInit {
     this.Pf_vip = this.session.retrieve("individual_vip");
     if(this.session.retrieve("reservationedit")=='resevedit')
     {
-      this.res.push(this.session.retrieve("editval"));
+      this.res=this.session.retrieve("editval");
 
-      this.user.RES_Arrival = this.res[0].res_arrival;
-      this.user.RES_Depature = this.res[0].res_depature;
-      this.user.RES_Nights = this.res[0].res_nights;
-      this.user.RES_Adults = this.res[0].res_adults;
-      this.user.RES_child = this.session.retrieve("res_child");
-      this.user.RES_Number_Of_Rooms = this.res[0].res_number_of_rooms;
-      this.user.RES_Room_Type = this.res[0].res_room_type;
-      this.user.RES_Rate_Code = this.res[0].res_rate_code;
-      this.user.RES_Rate = this.res[0].res_rate;
-      this.RES_packages = this.res[0].res_packages;
-      this.user.RES_Block_Code = this.res[0].res_block_code;
-      this.user.RES_RTC = this.res[0].res_rtc;
-
-      this.res_extension = this.res[0].res_extension;
-      this.user.RES_Currency = this.res[0].res_currency;
-      this.user.RES_Res_Type = this.res[0].res_res_type;
-      this.user.RES_Market = this.res[0].res_market;
-      this.user.RES_Source = this.session.retrieve("resource");
-      this.user.RES_Origin = this.res[0].res_origin;
-      this.user.RES_Payment = this.res[0].res_payment;
-      this.user.RES_Creditcard_Number = this.res[0].res_creditcard_number;
-      this.user.RES_Guest_Balance = this.res[0].res_guest_balance;
-      this.user.RES_Disc_Amount = this.res[0].res_disc_amount;
-      this.user.RES_Disc_perc = this.res[0].res_disc_perc;
-      this.user.RES_Disc_Reason = this.res[0].res_disc_reason;
-      this.user.RES_Specials = this.res[0].res_specials;
-      this.user.RES_Item_Inv = this.res[0].res_item_inv;
-      this.resid=this.res[0].res_id;
-      this.uniquid=this.res[0].res_unique_id;
-      this.pfid=this.res[0].pf_id;
+      this.user.RES_Arrival = this.res.res_arrival;
+      this.user.RES_Depature = this.res.res_depature;
+      this.user.RES_Nights = this.res.res_nights;
+      this.user.RES_Adults = this.res.res_adults;
+      this.user.RES_Child = this.res.res_child;
+      this.user.RES_Number_Of_Rooms = this.res.res_number_of_rooms;
+      this.user.RES_Room_Type = this.res.res_room_type;
+      this.user.RES_Rate_Code = this.res.res_rate_code;
+      this.user.RES_Rate = this.res.res_rate;
+      this.RES_packages = this.res.res_packages;
+      this.user.RES_Block_Code = this.res.res_block_code;
+      this.user.RES_RTC = this.res.res_rtc;
+      this.user.RES_Room = this.res.res_room;
+      this.res_extension = this.res.res_extension;
+      this.user.RES_Currency = this.res.res_currency;
+      this.user.RES_Res_Type = this.res.res_res_type;
+      this.user.RES_Market = this.res.res_market;
+      this.user.RES_Source = this.res.res_source;
+      this.user.RES_Origin = this.res.res_origin;
+      this.user.RES_Payment = this.res.res_payment;
+      this.user.RES_Comments=this.res.res_comments;
+      this.user.RES_Creditcard_Number = this.res.res_creditcard_number;
+      this.user.RES_Guest_Balance = this.res.res_guest_balance;
+      this.user.RES_Disc_Amount = this.res.res_disc_amount;
+      this.user.RES_Disc_perc = this.res.res_disc_perc;
+      this.user.RES_Disc_Reason = this.res.res_disc_reason;
+      this.user.RES_Specials = this.res.res_specials;
+      this.user.RES_Item_Inv = this.res.res_item_inv;
+      this.resid=this.res.res_id;
+      this.uniquid=this.res.res_unique_id;
+      this.pfid=this.res.pf_id;
     }
     //setInterval timer for ETA input field
     console.log(this.PF_Firstname, this.Pf_lastname, this.Pf_language, this.PF_Mobileno, this.Pf_title, this.Pf_country, this.Pf_vip);
