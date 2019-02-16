@@ -14,7 +14,7 @@
         <p align="center">{{profile}}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="navigatepages()"><b>Close</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="group.reset()"><b>Close</b></button>
         </div>
         </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="panel panel-primary"style="border-color: lightgray">
             <div class="panel-heading"><b>Address Information</b><b style="margin-left:50% ">Internal Information</b></div>
             <div class="panel-body">
-              <form action="" #group="ngForm">
+              <form id="group" #group="ngForm">
     <div class="row">
     
     <div class="col-lg-6">
@@ -269,7 +269,7 @@
     <div class="col-lg-3"></div>
     
     <div class="col-lg-2">
-    <button type="button" class="btn btn-info" (click)="submit(user)" style="width:160px;" data-toggle="modal" data-target="#myModal1"><b>Ok</b></button>
+    <button type="button" class="btn btn-info" (click)="submit(user)" style="width:160px;" data-toggle="modal" data-target="#myModal1" [disabled]="!group.valid"><b>Ok</b></button>
     </div>
     <div class="col-lg-2">
     <button type="button" class="btn btn-primary" style="width:160px;" (click)="cleardata()"><b>Reset</b></button>

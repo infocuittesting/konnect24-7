@@ -217,6 +217,7 @@ getcreditexpiry(){
               this.card=user339.ReturnCode;
               if(this.card=="RUS"){
                 this.card="CreditCard is Updated "
+                this.Success(this.card)
                 let paramss={
                   "pf_id":this.session.retrieve("id"),
                }
@@ -273,6 +274,7 @@ getcreditexpiry(){
             this.profilenegotes=user134.ReturnCode;
             if(this.profilenegotes=="RUS"){
               this.profilenegotes="The Negotiated Rate is Updated for the Guest";
+              this.Success(this.profilenegotes)
               let paramss={
                 "pf_id":this.session.retrieve("id"),
              }
@@ -332,6 +334,7 @@ getcreditexpiry(){
               this.updatenotes=user235.ReturnCode;
               if(this.updatenotes=="RUS"){
                 this.updatenotes="The Notes is Updated for the Guest";
+                this.Success(this.updatenotes)
                 let paramss={
                   "pf_id":this.session.retrieve("id"),
                }

@@ -13,7 +13,7 @@
       <p align="center"><b>{{individual}}</b></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="navigatepages()"><b>Close</b></button>
+        <button type="reset" class="btn btn-danger" data-dismiss="modal" (click)="myformm.reset()"><b>Close</b></button>
       </div>
     </div>
     
@@ -51,7 +51,7 @@
         
       </ul>
   </div><br>
-<form action="">
+  <form id="myformm" #myformm="ngForm" >
   <div class="container-fluid">
     <div class="panel panel-primary" style="border-color: lightgray">
 					<div class="panel-heading" ><b>Address Information</b><b style="margin-left:50% ">Internal Information</b></div>
@@ -370,7 +370,7 @@
          
 
           <div class="col-lg-2">
-              <button type="button" class="btn btn-success" style="width:160px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal" [disabled]="(!firstName.valid && !firstName.untouched ) || (!address.valid && !address.untouched) || (!pf.valid && !pf.untouched)"><b>Ok</b></button>
+              <button type="button" class="btn btn-success" style="width:160px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal" [disabled]="!myformm.valid"><b>Ok</b></button>
  </div>
           
           <div class="col-lg-2">

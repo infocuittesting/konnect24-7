@@ -139,10 +139,10 @@
        <td style="width:100px">{{profilesearch?.pf_language  |titlecase}}</td>
        <td style="width:50px">{{profilesearch?.pf_title |titlecase}}</td>
        <td style="width:120px">{{profilesearch?.pf_mobileno}}</td>
-       <td style="width:160px" *ngIf="showMore!=true">{{profilesearch?.pf_company_address }}</td>
+       <td style="width:160px" *ngIf="showMore!=true">{{profilesearch?.address_one }}</td>
        <td style="width:85px" *ngIf="showMore!=true">{{profilesearch?.pf_city |titlecase}}</td>
-       <td style="width:120px" *ngIf="showMore!=true">{{profilesearch?.pf_company_country |titlecase}}</td>
-       <td *ngIf="showMore!=true">{{profilesearch?.pf_company_state |titlecase}}</td>
+       <td style="width:120px" *ngIf="showMore!=true">{{profilesearch?.country |titlecase}}</td>
+       <td *ngIf="showMore!=true">{{profilesearch?.state |titlecase}}</td>
        <td style="width:80px" *ngIf="showMore==true">{{profilesearch?.pf_individual_vip |titlecase}}</td>
        <td style="width:120px" *ngIf="showMore==true">{{profilesearch?.pf_type}}</td>
        <td style="width:85px" *ngIf="showMore==true">{{profilesearch?.pf_ref_currency}}</td>

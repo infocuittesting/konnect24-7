@@ -45,6 +45,7 @@ public user:any=[];
         this.individual=user333.ReturnCode;
         if(this.individual=="RIS"){
           this.individual="The Profile is Created for "+inputt.PF_Firstname+" "+inputt.PF_Lastname;
+          this.session.clear()
           // let key = "individualprofile";
           // this.value = inputt;
 
@@ -69,13 +70,13 @@ public user:any=[];
           // else if(this.checkpftype == "Group"){
           //   this.session.store("Groupval",inputt.PF_Type);
           // }
-          this.session.store("pf_fname",inputt.PF_Firstname);
-          this.session.store("pf_lastname",inputt.PF_Lastname);
-          this.session.store("pf_language",inputt.PF_Language);
-          this.session.store("pf_title",inputt.PF_Title);
-          this.session.store("pf_mobileno",inputt.PF_Mobileno.toString());
-          this.session.store("pf_individual_country",inputt.PF_Individual_Country);
-          this.session.store("pf_individual_vip",inputt.PF_Individual_VIP);
+          //this.session.store("pf_fname",inputt.PF_Firstname);
+          //this.session.store("pf_lastname",inputt.PF_Lastname);
+          //this.session.store("pf_language",inputt.PF_Language);
+          //this.session.store("pf_title",inputt.PF_Title);
+          //this.session.store("pf_mobileno",inputt.PF_Mobileno.toString());
+          //this.session.store("pf_individual_country",inputt.PF_Individual_Country);
+          //this.session.store("pf_individual_vip",inputt.PF_Individual_VIP);
           // this.navigatepages();
         }
       }); 
@@ -98,6 +99,8 @@ public user:any=[];
      servicestatus=[];
 
    
+     public testing_val:any;
+     public listtypes:any;
 
 ngOnInit()
 {
@@ -163,27 +166,42 @@ this.IndividualService.communication1dropdown()
 
 this.IndividualService.pftypedropdown()
   .subscribe((resp: any) => {
-   this.listtype=resp.ReturnValue;
+   this.listtypes=resp.ReturnValue;
+  this.listtype = this.listtypes.slice(5)
+  console.log('arrayvalllllllllll',this.listtype)
+
  });
 
+ this.testing_val = this.session.retrieve('profile_details')
+ console.log('testttttttt',this.testing_val)
 
- this.user.PF_Firstname=this.session.retrieve('pf_fname')
- this.user.PF_Lastname=this.session.retrieve('pf_lastname')
- this.user.PF_Language=this.session.retrieve('pf_language')
+ this.user.PF_Firstname=this.testing_val.pf_firstname
+ this.user.PF_Lastname=this.testing_val.pf_lastname
+ this.user.PF_Language=this.testing_val.pf_language
 
- this.user.PF_Title=this.session.retrieve('PF_Title')
- this.user.PF_Mobileno=this.session.retrieve('pf_mobileno')
- this.user.PF_Individual_Country=this.session.retrieve('pf_individual_country')
+ this.user.PF_Title=this.testing_val.pf_title
+ this.user.PF_Mobileno=this.testing_val.pf_mobileno
+ this.user.PF_Individual_Country=this.testing_val.pf_individual_country
 
- this.user.PF_Date_Of_Birth=this.session.retrieve('dateofbirth')
- this.user.PF_Postalcode=this.session.retrieve('postalcode')
- this.user.PF_Individual_Address=this.session.retrieve('companyaddress')
+ this.user.PF_Date_Of_Birth=this.testing_val.pf_date_of_birth
+ this.user.PF_Postalcode=this.testing_val.pf_postalcode
+ this.user.PF_Individual_Address=this.testing_val.pf_individual_address
 
- this.user.PF_Home_Address=this.session.retrieve('businessaddress')
- this.user.PF_Individual_City=this.session.retrieve('city')
- this.user.PF_Individual_State=this.session.retrieve('state')
+ this.user.PF_Home_Address=this.testing_val.address_one
+ this.user.PF_Individual_City=this.testing_val.pf_individual_country
+ this.user.PF_Individual_State=this.testing_val.pf_individual_state
+ this.user.PF_Passport = this.testing_val.pf_passport
 
- this.user.PF_Type=this.session.retrieve('profiletype')
+ this.user.PF_Type = this.testing_val.pf_type
+ this.user.PF_Individual_VIP = this.testing_val.pf_individual_vip
+ this.user.PF_Nationality = this.testing_val.pf_nationality
+ this.user.PF_Individual_Communication1 = this.testing_val.pf_individual_commtype1
+ this.user.PF_Individual_Communication2 = this.testing_val.pf_individual_commtype2
+ this.user.PF_Individual_Communication3 = this.testing_val.pf_individual_commtype3
+
+
+
+ 
 
 }
 

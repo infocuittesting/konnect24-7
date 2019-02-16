@@ -20,24 +20,8 @@
 </div>
 
 <!---Alertupdate for creditcard response-->
-<div class="modal modal-open" id="cardupdateresponse" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" c lass="close" data-dismiss="modal">&times;</button>
-        <h4>Connect 24/7 Hotel</h4>
-      </div>
-      <div class="modal-body">
-        <b align="center">{{card}}</b>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-      </div>
-    </div>
 
-  </div>
-</div>
-<!---Alertdelete for creditcard response-->
+
 
 <div class="modal modal-open" id="carddeleteresponse" role="dialog">
   <div class="modal-dialog">
@@ -99,24 +83,7 @@
 </div>
 <!---Alertinsert for negotiated response-->
 
-<!--Alertupdate for negotiated response-->
-<div class="modal modal-open" id="negoupdateresponse" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4>Connect 24/7 Hotel</h4>
-      </div>
-      <div class="modal-body">
-        <b align="center">{{ profilenegotes}}</b>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-      </div>
-    </div>
-  </div>
-</div>
-<!---Alertdelete for negotiated response-->
+
 
 <div class="modal modal-open" id="negodeleteresponse" role="dialog">
   <div class="modal-dialog">
@@ -154,23 +121,6 @@
 </div>
 <!---Alertinsert for notes response-->
 
-<div class="modal modal-open" id="notesupdateresponse" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4>Connect 24/7 Hotel</h4>
-      </div>
-      <div class="modal-body">
-        <b align="center">{{updatenotes}}</b>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-      </div>
-    </div>
-  </div>
-</div>
-<!---Alertdelete for notes response-->
 
 <div class="modal modal-open" id="notesdeleteresponse" role="dialog">
   <div class="modal-dialog">
@@ -839,7 +789,7 @@
             </div><br>
           </div>
           <div class="modal-footer">
-            <button type="reset" class="btn btn-success" (click)="notesupdate(noup)" data-toggle="modal" data-target="#notesupdateresponse"
+            <button type="reset" class="btn btn-success" (click)="notesupdate(noup)" 
               data-dismiss="modal"><b>Ok</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
@@ -1002,7 +952,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="negoupdate(nup)" data-toggle="modal" data-target="#negoupdateresponse"
+          <button type="button" class="btn btn-success" (click)="negoupdate(nup)" data-toggle="modal"
             data-dismiss="modal"><b>Ok</b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
@@ -1076,7 +1026,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert3" style="width:91px;">Add
             New</button>
-          <button type="button" class="btn btn-secondary" (click)="deletepreferClick(flag)" data-dismiss="modal"
+          <button type="button" class="btn btn-secondary" (click)="deletepreferClick(flag)"
             [disabled]=prefdelete style="width:91px;">Delete</button>
           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update4" [disabled]=prefedit
             style="width:91px;">Edit</button>
@@ -1232,8 +1182,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="update(cu1)" data-toggle="modal" data-target="#cardupdateresponse"
-            data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-success" (click)="update(cu1)" data-dismiss="modal"><b>Ok</b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
       </div>
