@@ -149,7 +149,7 @@ export class ReservationComponent implements OnInit {
   public usera;
   public confim;
   user33 = {};
-  submit(inputt): void {
+  submit(inputt,param): void {
 
     if (this.compid == undefined) {
       this.compid = "";
@@ -174,25 +174,37 @@ export class ReservationComponent implements OnInit {
         if (this.usera == "RIS") {
           this.usera = "Reservation is Created for " + this.PF_Firstname + " " + this.Pf_lastname;
           this.confim = "The Confirmation Number is:" + this.confim;
+          param.reset();
+          this.PF_Firstname = "";
+          this.Pf_lastname = "";
+          this.Pf_language = "";
+          this.PF_Mobileno = "";
+          this.Pf_title = "";
+          this.Pf_country = "";
+          this.Pf_vip = "";
+          this.compid = "";
+          this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
+          this.session.clear();
 
+        }else if (this.usera == "RAE"){
+          this.usera = "Reservation is Already Exist";
+          param.reset();
+          this.PF_Firstname = "";
+          this.Pf_lastname = "";
+          this.Pf_language = "";
+          this.PF_Mobileno = "";
+          this.Pf_title = "";
+          this.Pf_country = "";
+          this.Pf_vip = "";
+          this.compid = "";
+          this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
+          this.session.clear();
         } else if (resp.Status == "Failure") {
           this.usera = "Room Type or Date is not declared";
         }
-        else {
-          this.usera = "Reservation is Already Exist";
-        }
+        
 
-        this.user = " ";
-        this.PF_Firstname = "";
-        this.Pf_lastname = "";
-        this.Pf_language = "";
-        this.PF_Mobileno = "";
-        this.Pf_title = "";
-        this.Pf_country = "";
-        this.Pf_vip = "";
-        this.compid = "";
-        this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
-        this.session.clear();
+
       });
     }
     else if(this.session.retrieve("reservationedit")=='resevedit'){
@@ -231,7 +243,7 @@ export class ReservationComponent implements OnInit {
     if (this.compid == undefined) {
       this.compid = "";
     }
-    this.ReservationService.getwaitdata(inputt, this.compid)
+    this.ReservationService.getwaitdata(inputt, this.compid,this.PF_Mobileno)
       .subscribe((resp: any) => {
         this.user1 = resp.ReturnCode;
         if (this.user1 == "RIS") {
@@ -264,7 +276,7 @@ export class ReservationComponent implements OnInit {
     console.log("tesaaaaaaaaaaaa", this.session.retrieve("profiletype"))
 
     if (this.session.retrieve("profiletype") == 'Company') {
-      this.company = "Company";
+      this.company = this.session.retrieve("typeaccount")
       if (this.session.retrieve("profileid") == null) {
         this.compid = ""
       }
@@ -275,7 +287,7 @@ export class ReservationComponent implements OnInit {
 
     }
     if (this.session.retrieve("profiletype") == 'Travel Agent') {
-      this.TravelAgent = "Travel Agent";
+      this.TravelAgent = this.session.retrieve("typeaccount")
       if (this.session.retrieve("profileid") == null) {
         this.compid = ""
       } else {
@@ -284,7 +296,7 @@ export class ReservationComponent implements OnInit {
       }
     }
     if (this.session.retrieve("profiletype") == 'Contact') {
-      this.contact = "Contact";
+      this.contact = this.session.retrieve("typeaccount");
       if (this.session.retrieve("profileid") == null) {
         this.compid = ""
       } else {
@@ -293,7 +305,7 @@ export class ReservationComponent implements OnInit {
       }
     }
     if (this.session.retrieve("profiletype") == 'Source') {
-      this.res_source = "Source";
+      this.res_source = this.session.retrieve("typeaccount");
       if (this.session.retrieve("profileid") == null) {
         this.compid = ""
       } else {
@@ -302,7 +314,7 @@ export class ReservationComponent implements OnInit {
       }
     }
     if (this.session.retrieve("profiletype") == 'Group') {
-      this.group = "Group";
+      this.group =this.session.retrieve("typeaccount");
       if (this.session.retrieve("profileid") == null) {
         this.compid = ""
       } else {

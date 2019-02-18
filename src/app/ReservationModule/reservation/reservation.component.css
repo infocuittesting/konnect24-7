@@ -5,3 +5,11 @@ tr{
     background-color:#0077B5 !important;
     color:white !important;
     }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+     
+      margin: 0;
+    }    

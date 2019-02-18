@@ -301,10 +301,7 @@
 
 <!-- TESTING 2 -->
 <!--Credit card insert-->
-<div class="modal modal-open" id="insert" data-backdrop="static" data-keyboard="false" role="dialog" style="padding-right: 17px;position:fixed;top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;">
+<div class="modal modal-open" id="insert" data-backdrop="static" data-keyboard="false" role="dialog">
 
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center modal-md">
@@ -314,58 +311,55 @@
           <h4 class="modal-title">Add Credit Card Details here...</h4>
         </div>
         <form action="">
-          <div class="modal-body">
-            <div class="container" style="width:100%;">
-
-              <br>
-              <form action="">
-                <div class="input-group">
-                  <div class="col-sm-6"><b>Creditcard Type</b></div>
-                  <div class="col-sm-6" style="padding-left:24px;">
-                    <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
-                      <select name="Creditcardtype" style="width:200px;" [(ngModel)]="ic.pf_card_type" class="form-control"
-                        #creditcardno="ngModel" required>
-                        <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
-                      </select>
-                      <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcardno.valid && submitAttempt }"></div>
+            <div class="modal-body">
+              <div class="container" style="width:100%;">
+                <br>
+                <form action="">
+                  <div class="input-group">
+                    <div class="col-sm-6"><b>Creditcard Type</b></div>
+                    <div class="col-sm-6" style="padding-left:24px;">
+                      <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
+                        <select name="Creditcardtype" class="form-control" #creditcardno="ngModel" style="width:200px;"
+                          [(ngModel)]="ic.pf_card_type" required>
+                          <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
+                        </select>
+                        <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>
+                      </div>
+                    </div>
+                  </div><br>
+  
+                  <div class="input-group">
+                    <div class="col-sm-6"><b>Creditcard Number</b></div>
+                    <div class="col-sm-6" style="padding-left:17px;">
+                      <div class="input-group" [class.has-error]="creditcards.touched && creditcards.invalid">
+                        <input name="CredicardNumber" onKeyPress="if(this.value.length==16) return false;"  type="number" class="form-control"  [(ngModel)]="ic.pf_creditcard_no" style="width:200px;"
+                          #creditcards="ngModel" required>
+                        <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length"
+                          ngClass="{ 'has-error' : !creditcards.valid && submitAttempt }"></div>
+                      </div>
+                    </div>
+                  </div><br>
+  
+                  <div class="input-group">
+                    <div class="col-sm-6"><b>ExpiryDate</b></div>
+                    <div class="col-sm-3" style="padding-left:25px;">
+                      <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="ic.PF_Expiration_Month"
+                        style="width:100%;"> </app-monthpicker>
+                    </div>
+                    <div class="col-sm-3" style="padding-left:32px;">
+                      <app-yearpicker name="ExpiryDate" (change)="onYearChange($event.target.value)" [(ngModel)]="ic.PF_Expiration_Year"
+                        style="width:100%;"></app-yearpicker>
                     </div>
                   </div>
-                </div><br>
-
-                <div class="input-group">
-                  <div class="col-sm-6"><b>Creditcard Number</b></div>
-                  <div class="col-sm-6" style="padding-left:17px;">
-                    <div class="input-group" [class.has-error]="creditcards.touched && creditcards.invalid">
-                      <input type="text" name="CredicardNumber" class="form-control" class="form-control" minlength="16"
-                        maxlength="16" pattern="^(0|[0-9][0-9]*)$" [(ngModel)]="ic.pf_creditcard_no" style="width:200px;"
-                        #creditcards="ngModel" required>
-                      <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length"
-                        ngClass="{ 'has-error' : !creditcards.validcreditcards && submitAttempt }"></div>
-                    </div>
-                  </div>
-                </div><br>
-
-                <div class="input-group">
-                  <div class="col-sm-6"><b>ExpiryDate</b></div>
-                  <div class="col-sm-3" style="padding-left:25px;">
-                    <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="ic.PF_Expiration_Month"
-                      style="width:100%;"> </app-monthpicker>
-                  </div>
-                  <div class="col-sm-3" style="padding-left:32px;">
-                    <app-yearpicker name="ExpiryDate" (change)="onYearChange($event.target.value)" [(ngModel)]="ic.PF_Expiration_Year"
-                      style="width:100%;"></app-yearpicker>
-                  </div>
-                </div><br>
-              </form>
-
+                  <br>
+                </form>
+              </div>
             </div>
-            <!-- </form> -->
-          </div>
-          <div class="modal-footer">
-            <button type="reset" class="btn btn-success" (click)="submit(ic)" data-dismiss="modal"><b>Ok</b></button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-          </div>
-        </form>
+            <div class="modal-footer">
+              <button type="reset" class="btn btn-success" (click)="submit(ic)" data-dismiss="modal"><b>Ok</b></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+            </div>
+          </form>
       </div>
     </div>
   </div>
@@ -428,10 +422,8 @@
                 <br>
               </form>
             </div>
-            <!-- </form> -->
           </div>
           <div class="modal-footer">
-            <!-- <button type="button" class="btn-btn-success" data-dismiss="madal" (click)="sbmit1(ic1)">Ok</button> -->
             <button type="reset" class="btn btn-success" (click)="submit1(ic1)" data-dismiss="modal"><b>Ok</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
@@ -564,7 +556,7 @@
             <label>Begin Date</label> <label style="margin-left:285px;">End Date</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input type="date" [min]="Arrival" class="form-control" placeholder="" aria-describedby="basic-addon1"
+              <input type="date" [min]="Arrival" [max]="Departure" class="form-control" placeholder="" aria-describedby="basic-addon1"
                 [(ngModel)]="fixed.Fixed_Charges_Begin_Date" (change)="tansact(fixed.Fixed_Charges_Begin_Date,fixed.Fixed_Charges_End_Date)"
                 style="width:160px; ">
             </div>
@@ -577,7 +569,7 @@
             <label>TransactionCode</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;" [class.has-error]="tans.touched && tans.invalid">
               <input style="height:32px;width:160px;" [(ngModel)]="Fixed_Charges_Transaction_Code" required class="form-control"
-                name="TransactionCode" #tans="ngModel">
+                name="TransactionCode" #tans="ngModel" disabled>
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"
                 data-toggle="modal" data-target="#fixcharge"><i class="glyphicon glyphicon-option-horizontal"></i></span>
               <div *ngIf="tans.touched && !tans.valid && tans.errors?.required" ngClass="{ 'has-error' : !tans.valid && submitAttempt }"></div>
@@ -593,7 +585,7 @@
             <label>Amount</label> <label style="margin-left:300px;">Quantity</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
-              <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1" [(ngModel)]="Fixed_Charges_Amount">
+              <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1" [(ngModel)]="Fixed_Charges_Amount" disabled>
             </div>
             <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-list"></i></span>
@@ -669,7 +661,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let listsct of trans; let i=index" (click)="selecttrans(listsct,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
+                <tr *ngFor="let listsct of trans; let i=index" (click)="selecttrans(listsct,i)" [ngClass]="{'backgroundcolor':i==selectin}">
                   <td>{{i+1}}</td>
                   <td>{{listsct.package_code}}</td>
                   <td>{{listsct.short_description}}</td>
@@ -1737,14 +1729,14 @@
                 <label> From Date </label>
                 <div class="input-group">
                   <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                  <input type="date" name="FromDate" id="email" class="form-control" style="width:160px;" [(ngModel)]="find.traces_from_date"></div>
+                  <input type="date" [min]=Arrival [max]="Departure" name="FromDate" id="email" class="form-control" style="width:160px;" [(ngModel)]="find.traces_from_date"></div>
               </div>
 
               <div class="col-md-4">
                 <label>To Date</label>
                 <div class="input-group">
                   <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                  <input type="date" name="todate" id="email" class="form-control" style="width:160px;" [(ngModel)]="find.traces_to_date"></div>
+                  <input type="date" [min]=Arrival [max]="Departure" name="todate" id="email" class="form-control" style="width:160px;" [(ngModel)]="find.traces_to_date"></div>
               </div>
 
 
@@ -2298,23 +2290,6 @@
             </div>
           </div><!-- column 1 for 1 row -->
 
-          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
-            <div class="panel">
-              <div class="panel-body" data-toggle="modal" data-target="#queue">
-                <div class="text-center">
-                  <img src="assets/images/800px_COLOURBOX11070120.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
-                </div>
-                <h4 align="center"> Queue </h4>
-                <p align="center"><small>Reservation Queue</small></p>
-              </div>
-              <div class="panel-footer">
-                <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reserve Queue
-                    list</small></p>
-                <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Queue Alert!</small></p>
-              </div>
-            </div>
-          </div><!-- column 1 for 1 row -->
-
           <!--Changes-->
           <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
             <div class="panel">
@@ -2333,6 +2308,24 @@
             </div>
           </div><!-- column 1 for 1 row -->
 
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+              <div class="panel">
+                <div class="panel-body" data-toggle="modal" data-target="#fixedrate">
+                  <div class="text-center">
+                    <img src="assets/images/fixed-rate.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+                  </div>
+                  <h4 align="center"> Fixed Rate</h4>
+                  <p align="center"><small>Fixed Rates</small></p>
+                </div>
+                <div class="panel-footer">
+                  <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Fixed Rate
+                      conf.</small></p>
+                  <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Fixed Rate
+                      Alert </small></p>
+                </div>
+              </div>
+            </div><!-- column 1 for 1 row -->
+
           <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
 
         </div>
@@ -2340,23 +2333,6 @@
         <br>
         <div class="row">
           <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
-          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
-            <div class="panel">
-              <div class="panel-body" data-toggle="modal" data-target="#fixedrate">
-                <div class="text-center">
-                  <img src="assets/images/fixed-rate.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
-                </div>
-                <h4 align="center"> Fixed Rate</h4>
-                <p align="center"><small>Fixed Rates</small></p>
-              </div>
-              <div class="panel-footer">
-                <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Fixed Rate
-                    conf.</small></p>
-                <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Fixed Rate
-                    Alert </small></p>
-              </div>
-            </div>
-          </div><!-- column 1 for 1 row -->
           <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
             <div class="panel">
               <div class="panel-body" data-toggle="modal" data-target="#traces">
@@ -2426,6 +2402,24 @@
               </div>
             </div>
           </div><!-- column 1 for 1 row -->
+          
+
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+              <div class="panel">
+                <div class="panel-body" data-toggle="modal" data-target="#roomrout">
+                  <div class="text-center">
+                    <img src="assets/images/roomplan.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+                  </div>
+                  <h4 align="center"> Rate Summary</h4>
+                  <p align="center"><small>Rate Details</small></p>
+                </div>
+                <div class="panel-footer">
+                  <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Rate Summary</small></p>
+                  <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Rate
+                      Alert </small></p>
+                </div>
+              </div>
+            </div><!-- column 1 for 1 row -->
           <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
         </div>
 
@@ -2434,22 +2428,23 @@
 
 
 
-          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
-            <div class="panel">
-              <div class="panel-body" data-toggle="modal" data-target="#roomrout">
-                <div class="text-center">
-                  <img src="assets/images/roomplan.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+          <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2" *ngIf="show==true">
+              <div class="panel">
+                <div class="panel-body" data-toggle="modal" data-target="#queue">
+                  <div class="text-center">
+                    <img src="assets/images/800px_COLOURBOX11070120.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+                  </div>
+                  <h4 align="center"> Queue </h4>
+                  <p align="center"><small>Reservation Queue</small></p>
                 </div>
-                <h4 align="center"> Rate Summary</h4>
-                <p align="center"><small>Rate Details</small></p>
+                <div class="panel-footer">
+                  <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reserve Queue
+                      list</small></p>
+                  <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Queue Alert!</small></p>
+                </div>
               </div>
-              <div class="panel-footer">
-                <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Rate Summary</small></p>
-                <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Rate
-                    Alert </small></p>
-              </div>
-            </div>
-          </div><!-- column 1 for 1 row -->
+            </div><!-- column 1 for 1 row -->
+  
 
           <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2" *ngIf="show==true">
             <div class="panel">

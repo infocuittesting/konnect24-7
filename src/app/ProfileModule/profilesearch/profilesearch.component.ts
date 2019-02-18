@@ -309,8 +309,10 @@ this.session.store("individual_vip",details.pf_individual_vip);
 
 if((details.pf_type == "Contact")||(details.pf_type == "Group")||(details.pf_type == "Source")
 ||(details.pf_type == "Travel Agent"||(details.pf_type == "Company"))){
-this.session.store("profiletype",details.pf_type)
+this.session.store("profiletype",details.pf_type);
+this.session.store("typeaccount",details.pf_account)
 this.session.store("profileid",details.pf_id);
+console.log("accccccccccccccccc",this.session.retrieve("typeaccount"))
 }
 // individualprofile
 

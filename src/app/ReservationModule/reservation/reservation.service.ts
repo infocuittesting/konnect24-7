@@ -122,12 +122,11 @@ export class ReservationService {
    }
 
      //wait setvice call
-    getwaitdata(input,parm):  Observable<object[]> {
+    getwaitdata(input,parm,param):  Observable<object[]> {
       
       const headers = new Headers();
        headers.append('Content-Type','application/json');
        const options = new RequestOptions({ headers: headers });
-       console.log('working');
        let body={
         "RES_Arrival":input.RES_Arrival,
         "RES_Depature":input.RES_Depature,  
@@ -142,7 +141,7 @@ export class ReservationService {
          "RES_Block_Code":"", 
          "RES_Res_Type":input.RES_Res_Type, 
          "RES_Market":input.RES_Market, 
-         "RES_Source":"",
+         "RES_Source":input.RES_Source,
          "RES_Origin":input.RES_Origin,
          "RES_Payment":input.RES_Payment,
          "RES_RTC":input.RES_RTC,
@@ -150,10 +149,10 @@ export class ReservationService {
          "RES_Exp_Date":input.RES_Exp_Date,
          "RES_Guest_Balance":input.RES_Guest_Balance,
          "RES_Disc_Amount":input.RES_Disc_Amount,
-         "RES_Disc_Reason":"",
-         "RES_Specials":"",
-         "RES_Comments":"",
-         "RES_Item_Inv":"",
+         "RES_Disc_Reason":input.RES_Disc_Reason,
+         "RES_Specials":input.RES_Specials,
+         "RES_Comments":input.RES_Comments,
+         "RES_Item_Inv":input.RES_Item_Inv,
          "RES_Extension":"",
          "RES_Rate_Code":input.RES_Rate_Code,
          "RES_ETA":input.RES_ETA,
@@ -162,10 +161,10 @@ export class ReservationService {
          "RES_Currency":input.RES_Currency,
          "RES_Disc_perc":input.RES_Disc_perc,
          "PF_Firstname":this.session.retrieve("fname")+" "+ this.session.retrieve("lastname"),
-         "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+         "PF_Mobileno": param.toString(),
          "pf_id": this.session.retrieve("pfid")
         };
-      
+      console.log("tesrttttt",body)
        return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_WaitlistReservation',body,options)
           .map(this.extractData)
           //.catch(this.handleErrorObservable);

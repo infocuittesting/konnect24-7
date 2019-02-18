@@ -355,7 +355,7 @@ subdele() {
 
 
 // insertCredit start
-ic={}; 
+ic=[]; 
 public inscredit;
 submit(inputt) {
   console.log(inputt);
@@ -375,7 +375,7 @@ submit(inputt) {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
-         this.ic=" ";
+         this.ic=[];
       }
  
     });  
@@ -573,26 +573,32 @@ submitrate() {
     if(this.Source==null){
       this.Source="";
     }
+    if(this.fixedrate==true){
+      this.fixedrate= 1;
+    }
+    if(this.fixedrate==false){
+      this.fixedrate= 0;
+    }
     let body=
     {
      "Res_id":this.session.retrieve("id"),
      "fixed_rate":this.fixedrate,
      "RES_Arrival":this.Arrival,
      "RES_Depature":this.Departure,
-     "RES_Adults":this.Adults,
-     "RES_Child":this.child,
+     "RES_Adults":this.Adults.toString(),
+     "RES_Child":this.child.toString(),
      "RES_Room_Type":this.RoomType,
      "RES_RTC":this.RoomType,
-     "RES_Room":this.Room,
+     "RES_Room":this.Room.toString(),
      "RES_Rate_Code":this.Ratecode,
      "RES_Rate":this.Rate,
-     "RES_Disc_Amount":this.DiscAmount,
-     "RES_Disc_perc":this.Percentage,
+     "RES_Disc_Amount":this.DiscAmount.toString(),
+     "RES_Disc_perc":this.Percentage.toString(),
      "RES_Disc_Reason":this.Discreasons,
      "RES_Market":this.market,
      "RES_Source":this.Source,
      "RES_Currency":this.Currency,
-     "Fixed_rate_id":this.Fixed_rate_id
+     "Fixed_rate_id":this.Fixed_rate_id.toString()
      };
      console.log("test",body)
       this.pppService.Fixedrateedit(body)
