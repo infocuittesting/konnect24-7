@@ -33,6 +33,9 @@ export class CheckinComponent implements OnInit {
   //clear
 clear(){
   this.queryString = "";
+  //this.startDate = "";
+  //this.endDate = "";
+  
 }
 
     //show more
