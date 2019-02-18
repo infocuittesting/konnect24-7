@@ -192,7 +192,7 @@
                   <b>Room No </b>
                   <div class="input-group" style="width:100%">
                     <input type="text" name="roomno" class="form-control" style="height:34px;border-radius:4px;color:black;"
-                      disabled>
+                    [(ngModel)]="user.RES_Room"  disabled>
                   </div>
                 </div>
               </div>
@@ -324,8 +324,6 @@
                       #payment_description="ngModel">
                       <option *ngFor="let paymentlist of payment" [ngValue]="paymentlist.payment_description">{{paymentlist.payment_description}}</option>
                     </select>
-                    <span class="input-group-addon" style="background-color:#0077B5;color:white;" data-toggle="modal"
-                      data-target="#payment"><i class="glyphicon glyphicon-option-horizontal"></i></span>
                     <div *ngIf="payment_description.touched && !payment_description.valid && payment_description.errors?.required  && payment_description.errors.pattern"
                       ngClass="{ 'has-error' : !payment_description.valid && submitAttempt }"></div>
                   </div>
@@ -531,52 +529,7 @@
     </div>
   </div>
   <!--**********Respone msg of reervation end************* -->
-  <!-- ************************************************** -->
-
-  <!--***************************************************  -->
-  <!--**********payment modal start reervation************* -->
-  <div class="modal fade" id="payment" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <!-- <h4 class="modal-title">Modal Header</h4> -->
-        </div>
-        <div class="modal-body">
-          <div class="table-responsive">
-            <table class="table-hover table-bordered table-striped" style="width:100%;">
-              <thead style="background-color: #0077B5; color: white">
-                <th> X </th>
-                <th> Payment Type</th>
-                <th> tr.code</th>
-                <th> Description</th>
-                <th> </th>
-              </thead>
-              <tbody>
-                <tr *ngFor="let paymentlist of payment let i=index;">
-                  <td> {{i+1}} </td>
-                  <td> {{paymentlist.paymenttype}}</td>
-                  <td> {{paymentlist.transactioncode}}</td>
-                  <td> {{paymentlist.payment_description}}</td>
-                  <td> <input type="checkbox"> </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!--**********payment modalmsg of reervation end************* -->
-  <!-- ************************************************** -->
-
-  <!--***************************************************  -->
+  <!-- **************************************************  -->
   <!--**********payment modal start reervation************* -->
   <div class="modal fade" id="ratequery" role="dialog">
     <div class="modal-dialog">

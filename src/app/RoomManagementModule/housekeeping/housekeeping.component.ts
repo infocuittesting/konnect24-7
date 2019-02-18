@@ -205,6 +205,8 @@ selectandClearAll(flag){
     this.roomService.roomassign(body)
     .subscribe(( user233:any)=> {
     if(user233.ReturnCode=="RUS"){
+      this.roomlist="The Room Number "+this.hsid+" is Assigned Successfully"
+      this.Success(this.roomlist);
       this.route.navigate(['roomassignment/']);
     }
 

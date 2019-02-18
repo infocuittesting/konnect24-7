@@ -180,8 +180,8 @@ export class SearchandeditreservationComponent implements OnInit {
   public notes;
   public preferences;
   public pfid;
-  public duedatevali;
-  public selectindex = null;
+  public duedatevali;privilegess:any;
+  public selectindex = null;due;
 
   selectMembersEdit(details, index) {
     console.log(details)
@@ -207,15 +207,15 @@ export class SearchandeditreservationComponent implements OnInit {
 
 
 
-    //privilleges Glow
+    //Duedate Glow
     this.pService.duedate(this.resid)
       .subscribe((resp: any) => {
-        this.privilege = resp.ReturnCode;
-        if (this.privilege == "RV" || this.privilege == "RIV") {
+        this.due = resp.ReturnCode;
+        if (this.due == "RV" || this.due == "RIV") {
           this.showhidereser = true;
           this.duedatevali = resp.Return;
         } else
-          if (this.privilege == "NOR") {
+          if (this.due == "NOR") {
             this.showhidereser = false;
           }
 

@@ -319,6 +319,7 @@ submitdep1(inputt):void {
       this.resdepo = user333.ReturnCode;
       if(this.resdepo=="RUS"){
         this.resdepo=" Deposit is Updated For "+ this.Name;
+        this.Success(this.resdepo);
       }
       this.pppService.getdeposit()
       .subscribe((resp: any) => {
@@ -382,7 +383,7 @@ submit(inputt) {
    }
 
    // insertCredit start
-ic1={}; 
+ic1:any=[]; 
 submit1(inputt) {
   console.log(inputt);
   this.creditcard_expiry = this.month+"/"+this.year;
@@ -393,7 +394,7 @@ submit1(inputt) {
       if(this.inscredit == "RUS"){
         console.log(this.inscredit);
         this.inscredit = "Credit Card Updated for "+this.Name;
-        this.Success(this.ic1);
+        this.Success(this.inscredit);
         let paramss={
           "pf_id":this.session.retrieve("id1"),
        }
@@ -402,7 +403,7 @@ submit1(inputt) {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
-         this.ic1="";
+         this.ic1=[];
       }
  
     });  
@@ -848,6 +849,8 @@ public credid;
 selectMembersCredit(details,index){
 this.selectindex=index;
 this.credid=details.cc_id;
+this.ic1.pf_card_type=details.pf_card_type;
+this.ic1.pf_creditcard_no=details.pf_creditcard_no;
 if(this.credid==details.cc_id){
 this.deletes=false;
 this.edits=false;

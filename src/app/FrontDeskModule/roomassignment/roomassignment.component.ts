@@ -68,7 +68,7 @@ checkinProfile(){
  });
     }
     else if(this.status=="AGS"){
-      this.status=resp.alertvalue[0].res_alert_description;
+      this.status="The Check is conformed for "+this.Name;
     }
   });
 

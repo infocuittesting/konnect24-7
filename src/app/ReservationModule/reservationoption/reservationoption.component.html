@@ -262,7 +262,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let listsct of arrycdt; let i=index" (click)="selectMembersCredit(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                  <tr *ngFor="let listsct of arrycdt; let i=index" (click)="selectMembersCredit(listsct,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
                     <td>{{i+1}}</td>
                     <td>{{listsct.pf_card_type}}</td>
                     <td>{{listsct.pf_creditcard_no}}</td>
@@ -282,11 +282,11 @@
             <tr>
 
               <td style="padding-left:300px;"> <button type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target="#insert" data-dismiss="modal"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+                  data-target="#insert" ><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
               <td style="padding-left:5px;"> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert1"
-                  data-dismiss="modal" [disabled]=edits><b>Edit</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+                  [disabled]=edits><b>Edit</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
               <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="delcredit()"
-                  data-toggle="modal" data-target="#creditdel" data-dismiss="modal" [disabled]=deletes><b>Delete</b><span
+                  data-toggle="modal" data-target="#creditdel"  [disabled]=deletes><b>Delete</b><span
                     class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
               <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span
                     class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
@@ -362,8 +362,7 @@
             <!-- </form> -->
           </div>
           <div class="modal-footer">
-            <button type="reset" class="btn btn-success" (click)="submit(ic)" data-toggle="modal" data-target="#credin"
-              data-dismiss="modal"><b>Ok</b></button>
+            <button type="reset" class="btn btn-success" (click)="submit(ic)" data-dismiss="modal"><b>Ok</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
         </form>
@@ -443,32 +442,6 @@
 
 </div>
 <!--Credit Card insert end-->
-
-<!-- creditinsert response start-->
-<div class="modal fade" id="credin" role="dialog">
-  <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center modal-lg">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><b>Alert</b></h4>
-        </div>
-        <div class="modal-body">
-          <p align="center"><b> {{inscredit}}</b></p>
-        </div>
-
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!-- creditinsert response End -->
 
 <!-- creditdelete  response start-->
 <div class="modal fade" id="" role="dialog">
@@ -696,7 +669,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let listsct of trans; let i=index" (click)="selecttrans(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                <tr *ngFor="let listsct of trans; let i=index" (click)="selecttrans(listsct,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
                   <td>{{i+1}}</td>
                   <td>{{listsct.package_code}}</td>
                   <td>{{listsct.short_description}}</td>
@@ -961,7 +934,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let housekeepinglist of house |searchfilter:{rm_room_type: RoomType }; let i = index "
-                    (click)="selected(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindexs}">
+                    (click)="selected(housekeepinglist,i)" [ngClass]="{'backgroundcolor':i==selectindexs}">
                     <td>{{i+1}}</td>
                     <td>{{housekeepinglist.rm_room}}</td>
                     <td>{{housekeepinglist.rm_room_type}}</td>
@@ -1138,20 +1111,16 @@
               <thead style="background-color: steelblue; color: white;">
                 <tr>
                   <th> Sqe.</th>
-                  <th> Type</th>
                   <th> Deposit_Rule</th>
-                  <th> Percentage</th>
                   <th> Deposit Amount</th>
                   <th> Due Date</th>
                   <th> Comments</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let listsct of deptarry; let i=index" (click)="selectMembersdeposit(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                <tr *ngFor="let listsct of deptarry; let i=index" (click)="selectMembersdeposit(listsct,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
                   <td>{{i+1}}</td>
-                  <td>{{listsct.res_deposit_type}}</td>
                   <td>{{listsct.res_deposit_rule}}</td>
-                  <td>{{listsct.res_deposit_percentage}}</td>
                   <td>{{listsct.res_deposit_amount}}</td>
                   <td>{{listsct.res_due_date}}</td>
                   <td> {{listsct.res_deposit_comments}}</td>
@@ -1170,9 +1139,9 @@
           <tr>
 
             <td style="padding-left:300px;"> <button type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#deposit" data-dismiss="modal"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+                data-target="#deposit"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
             <td style="padding-left:5px;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deposit1"
-                data-dismiss="modal" [disabled]=dedit><b>Edit</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
+                [disabled]=dedit><b>Edit</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
             <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span
                   class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
           </tr>
@@ -1201,16 +1170,7 @@
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-7">
-              <form>
-
-                <div class="row">
-                  <div class="col-md-4"> <label for=""> Type</label></div>
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <input name="type" type="text" class="form-control" id="" [(ngModel)]="resdepos.RES_Deposit_Type">
-                    </div>
-                  </div>
-                </div>
+               <form action="" #loginForm="ngForm">
 
                 <div class="row">
                   <div class="col-md-4"> <label for=""> Deposit Rule</label></div>
@@ -1223,21 +1183,14 @@
                     </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-md-4"> <label for=""> Pecentage</label></div>
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <input type="text" name="Percentage" class="form-control" id="" [(ngModel)]="resdepos.RES_Deposit_Percentage">
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <div class="col-md-4"> <label for=""> Deposit Amount</label></div>
                   <div class="col-md-8">
-                    <div class="form-group">
-                      <input type="text" name="DepositAmount" class="form-control" id="" [(ngModel)]="resdepos.RES_Deposit_Amount">
+                    <div class="form-group" [class.has-error]="depamount.touched && depamount.invalid">
+                      <input type="text" name="DepositAmount" #depamount="ngModel" class="form-control" id="" [(ngModel)]="resdepos.RES_Deposit_Amount" pattern="^([1-9][0-9]*)$" required>
+                    </div>
+                    <div *ngIf="depamount.touched && !depamount.valid && depamount.errors?.required  && depamount.errors.pattern"
+                      ngClass="{ 'has-error' : !depamount.valid && submitAttempt }">
                     </div>
                   </div>
                 </div>
@@ -1268,7 +1221,7 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-success" style="margin-left: 70%;" data-dismiss="modal" (click)="submitdep(resdepos)"><b>Ok</b><span
+        <button type="button" class="btn btn-success" style="margin-left: 70%;" data-dismiss="modal" [disabled]="!loginForm.valid" (click)="submitdep(resdepos)"><b>Ok</b><span
             class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
         <button type="button" class="btn btn-danger" style="padding-left:5px;" data-dismiss="modal"><b>Close</b><span
             class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
@@ -1288,7 +1241,8 @@
     <div class="modal-content" style="margin-left:-20%; margin-top: 5%; width:150%;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"> Deposit</h4>
+        <h4 class="modal-title"> Deposit Edit</h4>
+        <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -1296,16 +1250,6 @@
             <div class="col-md-2"></div>
             <div class="col-md-7">
               <form>
-
-                <div class="row">
-                  <div class="col-md-4"> <label for=""> Type</label></div>
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <input name="type" type="text" class="form-control" id="" [(ngModel)]="resdepos1.res_deposit_type">
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <div class="col-md-4"> <label for=""> Deposit Rule</label></div>
                   <div class="col-md-8">
@@ -1317,16 +1261,6 @@
                     </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-md-4"> <label for=""> Pecentage</label></div>
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <input type="text" name="Percentage" class="form-control" id="" [(ngModel)]="resdepos1.res_deposit_percentage">
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <div class="col-md-4"> <label for=""> Deposit Amount</label></div>
                   <div class="col-md-8">
@@ -1374,32 +1308,6 @@
   </div>
 </div>
 <!-- Deposit End -->
-
-<!-- Deposit response start-->
-<div class="modal modal-open" id="depo" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"> Deposit</h4>
-      </div>
-      <div class="modal-body">
-
-        <p align="center"><b>{{resdepo}}</b></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" style="padding-left:5px;" data-dismiss="modal"><b>Close</b><span
-            class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- Deposit End -->
-
 
 <!-- party Start-->
 <div class="modal modal-open" id="party" role="dialog">
@@ -1572,9 +1480,9 @@
       </div>
       <div class="modal-footer">
         <div class="row text-center">
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#fixedrate1" data-dismiss="modal"
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#fixedrate1" 
             [disabled]="frnew"><b>New</b></button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#fixedrate1" data-dismiss="modal"
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#fixedrate1" 
             [disabled]="fredit"><b>Edit</b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
