@@ -24,10 +24,11 @@ export class ProfileComponent implements OnInit {
   public itl=[];
   public navtag;
   public checkpftype; 
+  public types:any;
 
 
   constructor(private ProfileService:ProfileService,private route:Router,public session:SessionStorageService) { }
-  public user={};
+  public user:any=[];
   user33={};
   public profile;
   submit(input1) {
@@ -42,7 +43,7 @@ export class ProfileComponent implements OnInit {
         this.session.store("id",user333.profileid);
         console.log("id valuesssssssssssssssssss",user333.profileid);
         if(this.profile=="RIS"){
-           this.profile="The Company Profile is successfully"+user333.PF_Account;
+           this.profile="The Company Profile is successfully"+input1.PF_Account;
         
         console.log("create company success",this.checkpftype,typeof(this.checkpftype))
         if(this.checkpftype == "Travel Agent"){
@@ -111,10 +112,16 @@ export class ProfileComponent implements OnInit {
    
 
 cleardata(){
-  this.user=' ';
+  this.user=[];
 }
+public arr_type=[]
+public testing_val:any;
+
 ngOnInit()
 {
+
+
+
   this.navtag= this.session.retrieve("navigate");
   this.ProfileService.countrydropdown()
   .subscribe((resp: any) => {
@@ -159,8 +166,34 @@ this.ProfileService.communication1dropdown()
 
 this.ProfileService.profile()
  .subscribe((resp: any) => {
-  this.type=resp.ReturnValue;
+  this.types=resp.ReturnValue;
+  this.type = this.types.slice(0,5)
+
+  console.log('arrayvalllllllllll',this.types.slice(0,5))
 });
+
+
+this.testing_val = this.session.retrieve('profile_details')
+  console.log('companeyyyyyy',this.testing_val.pf_account)
+
+  this.user.PF_Account = this.testing_val.pf_account
+  this.user.PF_Company_Address = this.testing_val.pf_company_address
+  this.user.PF_Business_Address = this.testing_val.pf_business_address
+  this.user.PF_City = this.testing_val.pf_city
+  this.user.PF_Postalcode = this.testing_val.pf_postalcode
+  this.user.PF_Company_Country = this.testing_val.pf_company_country
+  this.user.PF_Company_State = this.testing_val.pf_company_state
+  this.user.PF_Owner = this.testing_val.pf_owner
+  this.user.PF_Territory = this.testing_val.pf_territory
+  this.user.PF_Type = this.testing_val.pf_type
+  this.user.PF_Ref_Currency = this.testing_val.pf_ref_currency
+  this.user.PF_AR_Number = this.testing_val.pf_ar_number
+  this.user.PF_Company_Commtype1 = this.testing_val.pf_company_commtype1
+  this.user.PF_Company_Commtype2 = this.testing_val.pf_company_commtype2
+  this.user.PF_Company_Commtype3 = this.testing_val.pf_company_commtype3
+  this.user.PF_Company_Communication1 = this.testing_val.pf_company_communication1
+  this.user.PF_Company_Communication2 = this.testing_val.pf_company_communication2
+  this.user.PF_Company_Communication3 = this.testing_val.pf_company_communication3
 
 
 }

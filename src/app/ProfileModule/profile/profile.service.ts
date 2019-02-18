@@ -40,7 +40,7 @@ export class ProfileService {
         "PF_Company_State":input.PF_Company_State,
     };
         console.log('testtttttttt',JSON.stringify(body));
-         return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfile',input,options)
+         return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateCompanyProfile',body,options)
             .map(this.extractData)
             //.catch(this.handleErrorObservable);
      }

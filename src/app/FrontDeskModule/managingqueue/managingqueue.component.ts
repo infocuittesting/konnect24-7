@@ -19,12 +19,19 @@ export class ManagingqueueComponent implements OnInit {
 
   public queryString:string;
   public roomtype:string;
+  
 
 
   clear(){
     this.queryString=''
     this.roomtype=''
     this.roomno=''
+    this.roomclass=''
+    this.pService.checkin()
+    .subscribe((resp: any) => {
+     this.search=resp.ReturnValue;
+   });
+  
   }
   public  downloadPDF(){
 

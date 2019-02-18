@@ -210,9 +210,17 @@ this.comm3=resp.ReturnValue;
 profileedit(params){
     
   if(params == "ProfileEdit"){
+    if(this.checkpftype=='Individual'){
     this.session.store("profile_edit_nav",params);
+    this.session.store('profile_details',this.indi_profile);
+    this.route.navigate(['individualprofile/']);
+  }else{
+    this.session.store("profile_edit_nav",params);
+    this.session.store('profile_details',this.indi_profile);
+    this.route.navigate(['profile/']);
   }
-  this.route.navigate(['profilestatistics/']);
+  }
+  //this.route.navigate(['profilestatistics/']);
 }
 
 ngOnDestroy(){
@@ -227,7 +235,7 @@ edit=true;
 pfid;
 
 profile_id:any;
-
+public indi_profile:any
 selectindex=null;
 public checkpftype;
 selectMembersEdit(details,index){
@@ -276,25 +284,29 @@ if(this.checkpftype == "Travel Agent"){
   else if(this.checkpftype == "Group"){
     this.session.store("Groupval",details.pf_account);
   }
-  this.session.store("id",details.pf_id);
+
+  this.indi_profile = details
+this.session.store("id",details.pf_id);
 this.session.store("pf_id",details.pf_id);
-this.session.store("pf_fname",details.pf_firstname);
-this.session.store("pf_lastname",details.pf_lastname);
-this.session.store("pf_language",details.pf_language);
-this.session.store("pf_title",details.pf_title);
 this.session.store("profileid",details.pf_id);
 
-this.session.store("pf_mobileno",details.pf_mobileno);
-this.session.store("pf_individual_country",details.pf_individual_country);
-this.session.store("pf_individual_vip",details.pf_individual_vip);
-this.session.store("dateofbirth",details.pf_date_of_birth)
+this.session.store("pf_fname",details.pf_firstname);
+//this.session.store("pf_lastname",details.pf_lastname);
+//this.session.store("pf_language",details.pf_language);
+//this.session.store("pf_title",details.pf_title);
 
-this.session.store("postalcode",details.pf_postalcode)
-this.session.store("companyaddress",details.pf_company_address)
-this.session.store("businessaddress",details.pf_business_address)
-this.session.store("city",details.pf_city)
-this.session.store("state",details.pf_company_state)
-this.session.store("profiletype",details.pf_type)
+
+//this.session.store("pf_mobileno",details.pf_mobileno);
+//this.session.store("pf_individual_country",details.pf_individual_country);
+//this.session.store("pf_individual_vip",details.pf_individual_vip);
+//this.session.store("dateofbirth",details.pf_date_of_birth)
+
+//this.session.store("postalcode",details.pf_postalcode)
+//this.session.store("companyaddress",details.pf_company_address)
+//this.session.store("businessaddress",details.pf_business_address)
+//this.session.store("city",details.pf_city)
+//this.session.store("state",details.pf_company_state)
+//this.session.store("profiletype",details.pf_type)
 
 if(details.pf_type == "Individual"){
 this.session.store("pfid",details.pf_id);
