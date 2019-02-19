@@ -59,17 +59,18 @@
 <div class="container-fluid">
 <div class="panel panel-default">
   <div class="panel-body">  
+    <form action="" #res="ngForm">
         <b style="padding-left:70px;"><u>Room Status</u></b>
         <div class="row">
         <div class="col-lg-3">
        <input type="checkbox" name="cek" [(ngModel)]="checkboxflg.checkcln" (change)="filtercheckboxData(checkboxflg.checkcln,('clean'&&'Clean'))"><b style="padding-left:5px;">Clean</b><br>
-       <input type="checkbox" [(ngModel)]="checkboxflg.checkDir"  (change)="filtercheckboxData(checkboxflg.checkDir,('dirty'&&'Dirty'))"><b style="padding-left:5px;">Dirty</b><br>
-       <input type="checkbox" [(ngModel)]="checkboxflg.checkpkup" (change)="filtercheckboxData(checkboxflg.checkpkup,'pick up')"><b style="padding-left:5px;">Pick Up</b><br>
+       <input type="checkbox" name="dir" [(ngModel)]="checkboxflg.checkDir"  (change)="filtercheckboxData(checkboxflg.checkDir,('dirty'&&'Dirty'))"><b style="padding-left:5px;">Dirty</b><br>
+       <input type="checkbox" name="pik" [(ngModel)]="checkboxflg.checkpkup" (change)="filtercheckboxData(checkboxflg.checkpkup,'pick up')"><b style="padding-left:5px;">Pick Up</b><br>
         </div>
         <div class="col-lg-3">
-            <input type="checkbox" [(ngModel)]="checkboxflg.checkinp" (change)="filtercheckboxData(checkboxflg.checkinp,('inspected'&&'Inspected'))"><b style="padding-left:5px;">Inspected</b><br>
-            <input type="checkbox"  [(ngModel)]="checkboxflg.checkord" (change)="filtercheckboxData(checkboxflg.checkord,('out of order'&&'Out Of Order'))"><b style="padding-left:5px;">Out Of Order</b><br>
-            <input type="checkbox" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,('out of service'&&'Out Of Service'))"><b style="padding-left:5px;">Out Of Service</b><br>
+            <input type="checkbox" name="inp" [(ngModel)]="checkboxflg.checkinp" (change)="filtercheckboxData(checkboxflg.checkinp,('inspected'&&'Inspected'))"><b style="padding-left:5px;">Inspected</b><br>
+            <input type="checkbox" name="ord" [(ngModel)]="checkboxflg.checkord" (change)="filtercheckboxData(checkboxflg.checkord,('out of order'&&'Out Of Order'))"><b style="padding-left:5px;">Out Of Order</b><br>
+            <input type="checkbox" name="ser" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,('out of service'&&'Out Of Service'))"><b style="padding-left:5px;">Out Of Service</b><br>
           </div>
            <div class="col-lg-3">     
             <div class="col-lg-12">
@@ -80,7 +81,7 @@
                   </div><br><br>
              <div class="col-lg-12">
                 <b>Room</b>
-                <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="guestroom" (ngModelChange)="onSelect7(guestroom)">
+                <select name="room" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="guestroom" (ngModelChange)="onSelect7(guestroom)">
                     <option *ngFor="let guestlist of room" [ngValue] = "guestlist.rm_room">{{guestlist.rm_room}} </option>
                       </select>
                   </div>
@@ -88,14 +89,12 @@
       
            <div class="col-lg-3">
              <div style="margin-top:20px">
-                <button class="btn btn-warning"> Clear All</button>
+                <button class="btn btn-warning" (click)="refre();res.reset()" > Clear All</button>
              </div>
            </div>     
       
        </div>
-
-
-
+    </form>   
 </div>
 </div>
 </div>

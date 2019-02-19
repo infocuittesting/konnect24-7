@@ -1994,7 +1994,7 @@
               </tr>
             </thead>
             <tbody style="background-color:white;">
-              <tr *ngFor="let arrlist of listaccompay;" (click)="selectMembersEdit(arrlist)">
+              <tr *ngFor="let arrlist of listaccompay;" (click)="selectMembersEdit(arrlist)" [ngClass]="{'backgroundcolor':arrlist.accompanying_id==this.accid}">
                 <td>{{arrlist.accompanying_name}}</td>
                 <td>{{arrlist.accompanying_city}}</td>
                 <td>{{arrlist.accompanying_birthday}}</td>
@@ -2010,8 +2010,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" routerLink="/psearch" (click)="navi()" data-dismiss="modal"><b>Profile</b></button>
-        <button type="button" class="btn btn-info" (click)="subaccin()"><b>Attach</b></button>
-        <button type="button" class="btn btn-primary" (click)="detach()"><b>Detach</b></button>
+        <button type="button" class="btn btn-info" (click)="subaccin()" [disabled]="attach"><b>Attach</b></button>
+        <button type="button" class="btn btn-primary" (click)="detach()" [disabled]="detss" ><b>Detach</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
     </div>

@@ -87,6 +87,13 @@ export class GuestservicestatusComponent implements OnInit {
   this.guestserviceData1=this.guestservice;
 });
   }
+refre(){
+  this.guestService.guestservicestatus()
+  .subscribe((resp: any) => {
+   this.guestservice=resp.ReturnValue;
+ });
+}
+
 
 //CHECKBOX FILTERING
    checkboxflg=[];

@@ -695,7 +695,16 @@ this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
 }
 // privil:any;
 show:boolean=false;
+attach:boolean=true;
+detss:boolean=false;
   ngOnInit() {
+    if((this.profid!=null)||(this.profid!=null)){
+      this.attach=false;
+      this.detss=true;
+    }else{
+      this.attach=true;
+      this.detss=false;
+    }
     if((this.Room == 0)||(this.Room == undefined)){
       this.show=false;
     }else{
