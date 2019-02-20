@@ -165,7 +165,7 @@ export class ReservationComponent implements OnInit {
     inputt.RES_ETA = this.now;
 
     if((this.session.retrieve("reservationedit")==null)||(this.session.retrieve("reservationedit")==undefined)){
-      this.ReservationService.postandgetdata(inputt, this.compid)
+      this.ReservationService.postandgetdata(inputt, this.compid,this.PF_Mobileno)
       .subscribe((resp: any) => {
 
         this.user33 = resp;
@@ -209,7 +209,7 @@ export class ReservationComponent implements OnInit {
     }
     else if(this.session.retrieve("reservationedit")=='resevedit'){
       // edit update service
-      this.ReservationService.postandgetdataedit(inputt, this.compid,this.resid,this.uniquid,this.pfid)
+      this.ReservationService.postandgetdataedit(inputt, this.compid,this.resid,this.uniquid,this.pfid,param)
       .subscribe((resp: any) => {
         this.user33 = resp;
         this.confim = resp.ConfirmationNumber;
@@ -234,8 +234,53 @@ export class ReservationComponent implements OnInit {
         this.session.clear();
       })
     }
+    else if(this.session.retrieve("Frontdesk_checkin")=='Walkin'){
+      this.ReservationService.postandgetdata(inputt, this.compid,this.PF_Mobileno)
+      .subscribe((resp: any) => {
 
-    this.route.navigate(['reservation/']);
+        this.user33 = resp;
+        this.confim = resp.ConfirmationNumber;
+        this.usera = resp.ReturnCode;
+        if (this.usera == "RIS") {
+          this.usera = "Reservation is Created for " + this.PF_Firstname + " " + this.Pf_lastname;
+          this.confim = "The Confirmation Number is:" + this.confim;
+          param.reset();
+          this.PF_Firstname = "";
+          this.Pf_lastname = "";
+          this.Pf_language = "";
+          this.PF_Mobileno = "";
+          this.Pf_title = "";
+          this.Pf_country = "";
+          this.Pf_vip = "";
+          this.compid = "";
+          this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
+          this.session.clear();
+
+        }else if (this.usera == "RAE"){
+          this.usera = "Reservation is Already Exist";
+          param.reset();
+          this.PF_Firstname = "";
+          this.Pf_lastname = "";
+          this.Pf_language = "";
+          this.PF_Mobileno = "";
+          this.Pf_title = "";
+          this.Pf_country = "";
+          this.Pf_vip = "";
+          this.compid = "";
+          this.company = ""; this.TravelAgent = ""; this.group = ""; this.contact = ""; this.res_source = "";
+          this.session.clear();
+        } else if (resp.Status == "Failure") {
+          this.usera = "Room Type or Date is not declared";
+        }
+        
+
+
+      });
+      this.route.navigate(['checkin/']);
+
+    }
+
+    //this.route.navigate(['reservation/']);
   }
 
   submitwait(inputt): void {
@@ -324,7 +369,7 @@ export class ReservationComponent implements OnInit {
     }
 
     if (this.session.retrieve("Frontdesk_checkin") == "Edit") {
-      this.PF_Firstname = this.session.retrieve("pf_fname");
+      this.PF_Firstname = this.session.retrieve("fname");
       this.user.RES_Arrival = this.session.retrieve("res_arrival");
       this.user.RES_Depature = this.session.retrieve("depature");
       this.user.RES_Nights = this.session.retrieve("res_nights");
@@ -342,7 +387,7 @@ export class ReservationComponent implements OnInit {
       this.user.RES_Currency = this.session.retrieve("res_currency");
       this.user.RES_Res_Type = this.session.retrieve("res_res_type");
       this.user.RES_Market = this.session.retrieve("res_market");
-      this.res_source = this.session.retrieve("res_source");
+      this.user.RES_Source = this.session.retrieve("res_source");
       this.user.RES_Origin = this.session.retrieve("res_origin");
       this.user.RES_Payment = this.session.retrieve("res_payment");
       this.user.RES_Creditcard_Number = this.session.retrieve("res_creditcard_number");
@@ -355,7 +400,7 @@ export class ReservationComponent implements OnInit {
       this.user.RES_Disc_Reason = this.session.retrieve("res_disc_reason");
       this.user.RES_Specials = this.session.retrieve("res_specials");
       this.user.RES_Item_Inv = this.session.retrieve("res_item_inv");
-      this.user.PF_Mobileno = this.session.retrieve("pf_mobileno");
+      this.user.PF_Mobileno = this.session.retrieve("mobileno");
 
     }
     if (this.session.retrieve("Frontdesk_checkin") == "Walkin") {

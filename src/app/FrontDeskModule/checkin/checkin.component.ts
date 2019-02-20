@@ -221,6 +221,7 @@ public pf_mobileno
   this.res_specials = details.res_specials;
   this.res_item_inv = details.res_item_inv;
   this.pf_mobileno = details.pf_mobileno;
+
   
 
 
@@ -256,7 +257,7 @@ loadcheckin(params){
   }else if(params == "Edit"){
     this.session.store("Frontdesk_checkin","Edit");
     this.session.store("checknav",params);
-  this.session.store("pf_fname",this.firstname);
+  this.session.store("fname",this.firstname);
   this.session.store("res_arrival",this.arrival);
   this.session.store("depature",this.depature);
   this.session.store("res_nights",this.night);
@@ -287,7 +288,7 @@ loadcheckin(params){
   this.session.store("res_specials",this.res_specials)
   this.session.store("res_item_inv",this.res_item_inv)
 
-  this.session.store("pf_mobileno",this.pf_mobileno)
+  this.session.store("mobileno",this.pf_mobileno)
 
 
   
