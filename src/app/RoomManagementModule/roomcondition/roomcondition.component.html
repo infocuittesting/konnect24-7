@@ -72,17 +72,20 @@
       <div class="container-fluid">
         <div class="panel panel-default">
           <div class="panel-body">
+            <form action="" #temVarNa="ngForm" >
+              
+          
             <div class="row">
 
               <div class="col-lg-3">
                 <div class="col-lg-12">
-                  <input type="checkbox" [(ngModel)]="checkboxflg.notreser" (change)="filtercheckboxData(checkboxflg.notreser,'not reserved')"><b
+                  <input type="checkbox" name="notres" [(ngModel)]="checkboxflg.notreser" (change)="filtercheckboxData(checkboxflg.notreser,'not reserved')"><b
                     style="padding-left:10px;">NotReserved</b>
                 </div>
                 <div class="col-lg-12" style="margin-top:10px">
                   <b>Condition</b>
-                  <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
-                    [(ngModel)]="rctypeselection" (ngModelChange)="onSelect4(rctypeselection)">
+                  <select required name="con" style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
+                    [(ngModel)]="rctypeselection" (change)="onSelect4(rctypeselection)">
                     <option *ngFor="let conditionlist of condition" [ngValue]="conditionlist.rm_condition">{{conditionlist.rm_condition}}
                     </option>
                   </select>
@@ -91,14 +94,14 @@
 
               <div class="col-lg-3">
                 <div class="col-lg-12">
-                  <input type="checkbox" [(ngModel)]="checkboxflg.reser" (change)="filtercheckboxData(checkboxflg.reser,('reserved'&&'Reserved'))"><b
+                  <input type="checkbox" name="res" [(ngModel)]="checkboxflg.reser" (change)="filtercheckboxData(checkboxflg.reser,('reserved'&&'Reserved'))"><b
                     style="padding-left:10px;">Reserved</b>
                 </div>
                 <div class="col-lg-12" style="margin-top:10px">
 
                   <b>Room Class</b>
-                  <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
-                    [(ngModel)]="class" (ngModelChange)="onSelect5(class)">
+                  <select required name="roomclass" style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
+                    [(ngModel)]="testclass" (change)="onSelect6(testclass)">
                     <option *ngFor="let roomclasses of class" [ngValue]="roomclasses.class">{{roomclasses.class}}
                     </option>
                   </select>
@@ -107,13 +110,13 @@
 
               <div class="col-lg-3">
                 <div class="col-lg-12">
-                  <input type="checkbox" [(ngModel)]="checkboxflg.checkvacnt" (change)="filtercheckboxData(checkboxflg.checkvacnt,'vaccant')"><b
+                  <input type="checkbox" name="vac" [(ngModel)]="checkboxflg.checkvacnt" (change)="filtercheckboxData(checkboxflg.checkvacnt,'vaccant')"><b
                     style="padding-left:10px;">Vaccant</b>
                 </div>
                 <div class="col-lg-12" style="margin-top:10px">
                   <b>Room</b>
-                  <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
-                    [(ngModel)]="rooms" (ngModelChange)="onSelect5(rooms)">
+                  <select required name="room" style="height:34px;color:black;border-radius:4px;width:100%;color:black;"
+                    [(ngModel)]="rooms" (change)="onSelect5(rooms)">
                     <option *ngFor="let roomconditionlist of roomcondition" [ngValue]="roomconditionlist.rm_room">{{roomconditionlist.rm_room}}
                     </option>
                   </select>
@@ -121,14 +124,15 @@
               </div>
               <div class="col-lg-3">
                 <div class="col-lg-12">
-                  <input type="checkbox" [(ngModel)]="checkboxflg.checkocc" (change)="filtercheckboxData(checkboxflg.checkocc,'occupied')"><b
+                  <input type="checkbox" name="occ" [(ngModel)]="checkboxflg.checkocc" (change)="filtercheckboxData(checkboxflg.checkocc,'occupied')"><b
                     style="padding-left:10px;">Occupied</b>
                 </div>
                 <div class="col-lg-12" style="margin-top:30px">
-                  <button class="btn btn-info" style="width:100%">Clear All</button>
+                  <button class="btn btn-info" style="width:100%" (click)="clr(temVarNa)" >Clear All</button>
                 </div>
               </div>
             </div><br>
+          </form>
           </div>
         </div>
       </div>
@@ -145,6 +149,7 @@
               <th>FO Status</th>
               <th>Features</th>
               <th>Room Condition</th>
+              <th>Room Class</th>
               <!-- <th>Room Description</th> -->
             </tr>
           </thead>
@@ -158,6 +163,7 @@
               <td>{{roomcondition?.rm_fo_status |titlecase}}</td>
               <td>{{roomcondition?.rm_features |titlecase}}</td>
               <td>{{roomcondition?.rm_condition |titlecase}}</td>
+              <td>{{roomcondition?.rm_room_class }}</td>
             </tr>
 
 
