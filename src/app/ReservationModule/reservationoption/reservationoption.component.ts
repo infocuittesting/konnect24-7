@@ -644,7 +644,8 @@ subaccin(){
   this.pppService.accompanyinsert(body).subscribe((resp:any)=>{
   this.acco=resp.Returncode;
   if(this.acco=="RIS"){
-    this.acco="Accompany Guest is add Successfully";
+    this.acco="Accompany Guest is Attached Successfully";
+    this.Success(this.acco);
     this.session.clear("pf_fname");
     this.session.clear("pf_lastname");
   
@@ -667,6 +668,11 @@ subaccin(){
 public accid;
 selectMembersEdit(details){
   this.accid= details.accompanying_id;
+  if(this.accid==details.accompanying_id){
+    this.detss=false;    
+  }else{
+    this.detss=true;
+  }
 }
 
 //accompany Detach
@@ -681,6 +687,7 @@ detach(){
     this.detac=resp.Returncode;
     if(this.detac=="RDS"){
       this.acco="Accompany Guest is Detached Successfully ";
+      this.Success(this.acco);
       this.pppService.getaccompany()
       .subscribe((resp: any) => {
         this.listaccompay=resp.ReturnValue;
@@ -695,7 +702,14 @@ this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
 }
 // privil:any;
 show:boolean=false;
+attach:boolean=true;
+detss:boolean=true;
   ngOnInit() {
+    if((this.profid!=null)||(this.profid!=null)){
+      this.attach=false;
+    }else{
+      this.attach=true;
+    }
     if((this.Room == 0)||(this.Room == undefined)){
       this.show=false;
     }else{

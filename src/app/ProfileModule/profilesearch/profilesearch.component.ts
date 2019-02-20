@@ -286,20 +286,22 @@ if(this.checkpftype == "Travel Agent"){
   }
 
   this.indi_profile = details
-this.session.store("id",details.pf_id);
+// this.session.store("id",details.pf_id);
 this.session.store("pf_id",details.pf_id);
 this.session.store("profileid",details.pf_id);
 
 this.session.store("pf_fname",details.pf_firstname);
-//this.session.store("pf_lastname",details.pf_lastname);
+this.session.store("pf_lastname",details.pf_lastname);
+this.session.store("dateofbirth",details.pf_date_of_birth);
+this.session.store("pf_individual_country",details.pf_individual_country);
+
 //this.session.store("pf_language",details.pf_language);
 //this.session.store("pf_title",details.pf_title);
 
 
 //this.session.store("pf_mobileno",details.pf_mobileno);
-//this.session.store("pf_individual_country",details.pf_individual_country);
 //this.session.store("pf_individual_vip",details.pf_individual_vip);
-//this.session.store("dateofbirth",details.pf_date_of_birth)
+
 
 //this.session.store("postalcode",details.pf_postalcode)
 //this.session.store("companyaddress",details.pf_company_address)

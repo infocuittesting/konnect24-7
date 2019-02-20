@@ -43,7 +43,7 @@ export class ReservationComponent implements OnInit {
   public user1;
   public RES_packages;
 
-  public now: any;
+  
   public date: any = new Date().toJSON().split('T')[0];
   constructor(private ReservationService: ReservationService, private route: Router, public session: SessionStorageService) {
     // this.date = new Date().toISOString().slice(11,19);
@@ -162,7 +162,7 @@ export class ReservationComponent implements OnInit {
     }
     this.creditcard_expiry = this.month + "/" + this.year;
     inputt.RES_Exp_Date = this.creditcard_expiry;
-    inputt.RES_ETA = this.now;
+    
 
     if((this.session.retrieve("reservationedit")==null)||(this.session.retrieve("reservationedit")==undefined)){
       this.ReservationService.postandgetdata(inputt, this.compid,this.PF_Mobileno)
@@ -500,10 +500,6 @@ export class ReservationComponent implements OnInit {
     }
     //setInterval timer for ETA input field
     console.log(this.PF_Firstname, this.Pf_lastname, this.Pf_language, this.PF_Mobileno, this.Pf_title, this.Pf_country, this.Pf_vip);
-    setInterval(() => {
-      this.now = moment().format("HH:mm:ss");
-    }, 1000);
-    console.log(this.now);
     console.log(this.Pf_language);
 
     this.ReservationService.getrestype()

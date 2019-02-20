@@ -56,7 +56,7 @@ roomlist;
 roomlist1=[];
 user23={};
 user24={};
-user={};
+user:any=[];
 
 
   constructor(private roomService: HousekeepingService, private route: Router,public session:SessionStorageService,private toasterService:ToasterServiceService) { }
@@ -81,6 +81,7 @@ user={};
     this.roomService.getstatisticsdata()
     .subscribe((resp: any) => {
       this.statistics = resp.ReturnValue;
+      console.log("testttttt",this.statistics)
     });  
 
       this.roomService.roomdropdown1()
@@ -188,7 +189,7 @@ selectandClearAll(flag){
   public changeroomlist: string;
 
   public changeroom: number;
-  roomstatusradio(flag) {
+  sample(flag) {
     this.commonflag = flag;
     console.log(this.commonflag);
 
@@ -215,16 +216,16 @@ selectandClearAll(flag){
   }
 
   public updateroomstatus:any={};
-  housekeepingstatus(hsid,inputt) {
+  housekeepingstatus(inputt) {
 // ***********************************
-    console.log("hsid",hsid,inputt);
+    console.log("hsid",inputt,this.hsid);
     if (this.commonflag == 'roomlist') {
       
-      if(hsid.includes(",")){
+      if(this.hsid.includes(",")){
         console.log("More than One value is there");
         this.updateroomstatus =
         {
-          "Room_List":hsid,
+          "Room_List":this.hsid,
            "RM_Room_Status":inputt.RM_Room_Status
     
         }
@@ -233,7 +234,7 @@ selectandClearAll(flag){
         console.log(" One value is there");
         this.updateroomstatus =
         {
-          "RM_Room":hsid,
+          "RM_Room":this.hsid,
            "RM_Room_Status":inputt.RM_Room_Status
     
         }
@@ -299,6 +300,7 @@ toggleSelection(item){
 this.hsid=this.selected_id.toString();
  console.log("multiple selecttttttttttt",this.hsid);
  // this.hsid=this.hsid;
+ this.user.RM_Room=this.hsid
  this.roomid=item.rm_room.toString();
  if(this.roomid=item.rm_room){
    this.ok=false;

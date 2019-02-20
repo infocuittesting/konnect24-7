@@ -78,15 +78,16 @@
 </div>
 
 
-<div class="modal fade" id="change" role="dialog">
+<div class="modal fade" id="change" data-backdrop="static" data-keyboard="false" role="dialog">
 <div class="modal-dialog">
 
 <!-- Modal content-->
 <div class="modal-content">
 <div class="modal-header" style="background-color:#0077B5;color:white;">
-  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
   <h4 class="modal-title">Quick Change Room Status</h4>
 </div>
+<form action="" #res="ngForm">
 <div class="modal-body">
   <div class="row">
    <div class="col-lg-1">
@@ -98,7 +99,7 @@
    </div>
 
    <div class="col-lg-6">
-      <input type="text" [(ngModel)]="user.RM_Room">
+      <input type="text" name="Roomlist" [(ngModel)]="user.RM_Room" class="form-control">
    </div>
 
   </div><br>
@@ -113,7 +114,7 @@
      <b>From Room</b>
     </div>
    <div class="col-lg-2">
-      <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.From_Room">
+      <select class="form-control" name="fromroom" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.From_Room">
           <option *ngFor="let fromroomlist of fromroom" [ngValue] = "fromroomlist.rm_room">{{fromroomlist.rm_room}} </option>
             </select>
    </div>
@@ -123,7 +124,7 @@
       <b>To Room</b>
      </div>
     <div class="col-lg-2">
-        <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.To_Room">
+        <select class="form-control" name="toroom" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="user.To_Room">
             <option *ngFor="let toroomlist of toroom" [ngValue] = "toroomlist.rm_room">{{toroomlist.rm_room}} </option>
               </select>
     </div>
@@ -143,7 +144,7 @@
         </div>
 
         <div class="col-lg-6">
-           <select  required style="height:34px;width:100%;color:black;border-radius:4px;" [(ngModel)]="user.RM_Room_Status">
+           <select class="form-control" name="changeroom" required style="height:34px;width:100%;color:black;border-radius:4px;" [(ngModel)]="user.RM_Room_Status">
                <option value = "Clean" >Clean</option>
                <option value = "Dirty" >Dirty</option>
                <option value = "Inspected" >Inspected</option>
@@ -157,9 +158,10 @@
  
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="housekeepingstatus(user)"  data-dismiss="modal" style="width:91px;">OK</button>
-  <button type="button" class="btn btn-danger" data-dismiss="modal" style="width:91px;">Close</button>
+    <button type="button" class="btn btn-success" (click)="housekeepingstatus(user)" style="width:91px;">OK</button>
+  <button type="button" class="btn btn-danger" (click)="res.reset()" data-dismiss="modal" style="width:91px;">Close</button>
 </div>
+</form>
 </div>
 
 </div>
@@ -172,6 +174,7 @@
 <div class="container-fluid" >
 <div class="panel panel-default" >
   <div class="panel body" style="margin-bottom:0px; max-height: 100px;">
+  <form action="" #rese="ngForm">
   <div class="row">
 <div class="col-lg-6">
 <b  style="margin-left:20px"><u>Room Status</u></b>
@@ -194,8 +197,8 @@
 </div>
 
 <div class="col-lg-4" id="div2">
-<input type="checkbox" [(ngModel)]="checkboxflg.checkvac" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkvac,'vaccant')"><b style="padding-left:10px;">Vaccant</b><br>
-<input type="checkbox" [(ngModel)]="checkboxflg.checkocc" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkocc,'occupied')"><b style="padding-left:10px;">Occupied</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkvac" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkvac,'vacant')" name="vacants"><b style="padding-left:10px;">Vacant</b><br>
+<input type="checkbox" [(ngModel)]="checkboxflg.checkocc" [checked]="checkselectClr" (change)="filtercheckboxData1(checkboxflg.checkocc,'occupied')" name="occupieds"><b style="padding-left:10px;">Occupied</b><br>
 
 </div>
 </div><br>
@@ -208,9 +211,10 @@
         <button type="button" class="btn btn-success" style="width:100%;margin-top: -94px;" (click)="selectandClearAll('sel')"><b>Select All</b></button>
         </div>
         <div class="col-md-2">
-        <button type="button" class="btn btn-danger" style="width:100%;margin-top: -94px; margin-left: -20px;" (click)="selectandClearAll('clr')"><b>Clear All</b></button>
+        <button type="button" class="btn btn-danger" style="width:100%;margin-top: -94px; margin-left: -20px;" (click)="selectandClearAll('clr');rese.reset()"><b>Clear All</b></button>
         </div>
     </div>
+  </form>
     </div>
     </div>
     </div>
@@ -235,8 +239,7 @@
 </tr>
 </thead>
 <tbody>
-<tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index "
-(click)="selectMembersEdit(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+<tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index " [ngClass]="{'backGroundColor':i==selectindex}">
   
   <td style="width:30px"><input type="checkbox" (checked)="exist(housekeepinglist)" (click)="toggleSelection(housekeepinglist)"></td>
   <td>{{housekeepinglist.rm_room}}</td>

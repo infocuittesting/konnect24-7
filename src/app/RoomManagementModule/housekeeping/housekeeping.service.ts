@@ -3,6 +3,7 @@ import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { SessionStorageService } from "ngx-webstorage";
+import { Options } from 'selenium-webdriver/ie';
 
 @Injectable()
 export class HousekeepingService { 
@@ -20,8 +21,11 @@ export class HousekeepingService {
       
       //getstatistics
       getstatisticsdata():  Observable<object[]> {
+        
+        const headers = new Headers({'Content-Type':'application/json'})
+        const options = new RequestOptions({ headers: headers });
 
-        return this.http.get('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_QueryRoomStatistics')
+        return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_QueryRoomStatistics',options)
            .map(this.extractData)
           
       }
@@ -31,7 +35,7 @@ export class HousekeepingService {
         const headers = new Headers({'Content-Type':'application/json'})
         const options = new RequestOptions({ headers: headers });
      
-       console.log(body);
+       console.log("test romlist",body);
         return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Update_Updateroomstatus',body,options)
            .map(this.extractData)
            //.catch(this.handleErrorObservable);

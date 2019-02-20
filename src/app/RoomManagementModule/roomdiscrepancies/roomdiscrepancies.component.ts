@@ -63,6 +63,12 @@ export class RoomdiscrepanciesComponent implements OnInit {
      this.toasterService.success(message);
    }
 
+   refre(){
+   this.pService.getroomdiscrepencies()
+    .subscribe((resp: any) => {
+    this.room=resp.ReturnValue;
+    });
+  }
   ngOnInit() {
 
     this.pService.getroomdiscrepencies()
