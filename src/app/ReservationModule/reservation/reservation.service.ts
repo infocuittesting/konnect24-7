@@ -12,12 +12,15 @@ export class ReservationService {
         private http: Http,public session:SessionStorageService
       ) {}
         
-      postandgetdata(input,parm):  Observable<object[]> {
+      postandgetdata(input,parm,param):  Observable<object[]> {
        
         const headers = new Headers();
          headers.append('Content-Type','application/json');
          const options = new RequestOptions({ headers: headers });
          console.log('working');
+         if(param == null){
+           param = '';
+         }
          let body=
           {
             "RES_Arrival":input.RES_Arrival,
@@ -53,7 +56,7 @@ export class ReservationService {
              "RES_Currency":input.RES_Currency,
              "RES_Disc_perc":input.RES_Disc_perc,
              "PF_Firstname":this.session.retrieve("fname")+" "+ this.session.retrieve("lastname"),
-             "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+             "PF_Mobileno": param.toString(),
              "pf_id": this.session.retrieve("pfid")
             };      
 
@@ -64,7 +67,7 @@ export class ReservationService {
      }
      
      //Edit reservation
-     postandgetdataedit(input,parm,resid,uniquid,pfid):  Observable<object[]> {
+     postandgetdataedit(input,parm,resid,uniquid,pfid,param):  Observable<object[]> {
        
       const headers = new Headers();
        headers.append('Content-Type','application/json');
@@ -74,6 +77,9 @@ export class ReservationService {
        if(input.RES_Rate==undefined){input.RES_Rate="";}if(input.RES_Source==undefined){input.RES_Source="";}
        if(input.RES_Disc_Reason==undefined){input.RES_Disc_Reason="";}if(input.RES_Specials==undefined){input.RES_Specials="";}
        if(input.RES_Comments==undefined){input.RES_Comments="";}if(input.RES_Item_Inv==undefined){input.RES_Item_Inv="";}       
+       if(param == null){
+         param = '';
+       }
        let body=
         {
           "RES_Arrival":input.RES_Arrival,
@@ -109,7 +115,7 @@ export class ReservationService {
            "RES_Currency":input.RES_Currency,
            "RES_Disc_perc":input.RES_Disc_perc.toString(),
            "PF_Firstname":this.session.retrieve("fname"),
-           "PF_Mobileno": this.session.retrieve("mobileno").toString(),
+           "PF_Mobileno": param.toString(),
            "Res_guest_status":"",
            "pf_id": pfid,
            "res_id":resid.toString(),
