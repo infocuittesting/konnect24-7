@@ -67,6 +67,19 @@ export class NewaraccountComponent implements OnInit {
     
   }
 
+  resetfile(params){
+
+    params.reset();
+    this.NewaraccountService.ar_account_table()
+    .subscribe((resp: any) => {
+ 
+     this.res_table=resp.ReturnValue;
+     this.filterdata = this.res_table;
+     console.log("table valuessssssss",this.res_table)
+   });
+
+  }
+
 
 // filtering radio buttons in ar account screen
   radio_bt_fil(val){
