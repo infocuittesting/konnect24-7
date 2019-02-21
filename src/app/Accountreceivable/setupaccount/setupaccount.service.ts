@@ -15,11 +15,24 @@ export class SetupaccountService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });
     console.log('insert service working')
+    
+    if(input.permanent_account==true){
+      input.permanent_account=1
+    }else{
+      input.permanent_account=0
+    }
+
+    if(input.flagged==true){
+      input.flagged=1
+    }else{
+      input.flagged=0
+    }
+
 
     // console.log("pfid",this.id);
     let body=
           {
-            "profile_id":this.session.retrieve("id"),
+            "profile_id":this.session.retrieve("pf_id"),
             "account_type_id":(input.account_type_id),
             "credit_limit":input.credit_limit,
             "contact":String(input.contact),
@@ -33,10 +46,7 @@ export class SetupaccountService {
             "permanent_account":input.permanent_account,
             "currency_id":1,
             "flagged":input.flagged,
-            "created_by":1,
-          
-
-
+            "created_by":1,          
 }
 
 console.log("jsonnnnn",JSON.stringify(body));

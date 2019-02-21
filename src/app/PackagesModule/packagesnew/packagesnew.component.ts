@@ -236,7 +236,7 @@ export class PackagesnewComponent implements OnInit {
     this.selectindex = index;
     this.packid = detail.packages_details_id;
     this.val.package_code_id = detail.package_code_id;
-    this.val.season_code_id = detail.season_code;
+    this.val.season_code_id = detail.season_code_id;
     this.val.start_date = detail.start_date;
     this.val.end_date = detail.end_date;
     this.val.price = detail.price;

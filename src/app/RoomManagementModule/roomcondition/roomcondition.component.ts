@@ -37,7 +37,7 @@ export class RoomconditionComponent implements OnInit {
   user35 = {};
 
   roomData = [];
-  roomData1 = [];
+  roomData1 = []; testdata = [];
   onSelect4(val) {
     console.log(val);
     this.room = this.roomData.filter(x => x.rm_condition == val)
@@ -47,14 +47,20 @@ export class RoomconditionComponent implements OnInit {
     console.log(val);
     this.room = this.roomData1.filter(x => x.rm_room == val)
   }
+
+  onSelect6(val) {
+    console.log(val);
+    this.room = this.testdata.filter(x => x.rm_room_class == val)
+  }
+
   roomcondition = [];
   condition = [];
   class = [];
 
-  submit(inputt,param): void {
+  submit(inputt, param): void {
 
 
-    this.pService.insertRoomcondition(inputt,param)
+    this.pService.insertRoomcondition(inputt, param)
       .subscribe((user333: any) => {
         this.newroom = user333.ReturnCode;
         if (this.newroom == "RIS") {
@@ -70,10 +76,10 @@ export class RoomconditionComponent implements OnInit {
   }
 
 
-  update(inputt,param) {
+  update(inputt, param) {
 
 
-    this.pService.updateRoomcondition(inputt,param)
+    this.pService.updateRoomcondition(inputt, param)
       .subscribe((user334: any) => {
         this.newroom1 = user334.ReturnCode;
         if (this.newroom1 == "RUS") {
@@ -105,6 +111,14 @@ export class RoomconditionComponent implements OnInit {
       },
       );
   }
+  
+  clr(param) {
+    param.reset();
+    this.pService.getroomcondition()
+      .subscribe((resp: any) => {
+        this.room = resp.ReturnValue;
+      });
+  }
 
   ngOnInit() {
 
@@ -113,6 +127,7 @@ export class RoomconditionComponent implements OnInit {
         this.room = resp.ReturnValue;
         this.roomData = resp.ReturnValue;
         this.roomData1 = resp.ReturnValue;
+        this.testdata = resp.ReturnValue;
       });
 
     this.pService.roomdropdown()
@@ -179,7 +194,7 @@ export class RoomconditionComponent implements OnInit {
     if ((this.rmid = details.rm_room) && (this.rmc == null)) {
       this.new = true;
     }
-    
+
 
     if ((this.rmid = details.rm_room) && (this.rmc != null)) {
       this.edit = false;

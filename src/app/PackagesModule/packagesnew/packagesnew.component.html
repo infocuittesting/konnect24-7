@@ -29,7 +29,7 @@
                     <div class="col-md-3">
                       <label for="forecastgroup">Forecast Group</label>
                       <div class="input-group">
-                        <select name="ForeCast" id="forecastgroup" style="height:34px;width: 200px;" [(ngModel)]="packtables.forecast_code_id">
+                        <select name="ForeCast" id="forecastgroup" class="form-control" style="height:34px;width: 200px;" [(ngModel)]="packtables.forecast_code_id">
                           <option *ngFor="let list of foredropdown" [ngValue]="list.forecast_group_id">{{list.forecast_group_description}}</option>
                         </select>
                       </div>

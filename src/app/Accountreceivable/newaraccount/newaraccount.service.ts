@@ -12,7 +12,7 @@ export class NewaraccountService {
 
   ar_account_table():  Observable<object[]> {    
  let body={}
-    return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountSetup',body)
+    return this.http.get('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_AccountSetup')
        .map(this.extractData)
   }
 

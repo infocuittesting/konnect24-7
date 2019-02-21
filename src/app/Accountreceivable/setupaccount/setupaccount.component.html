@@ -31,7 +31,7 @@
         <div class="col-md-4" style="margin-left: -61px;" [class.has-error]="accountnosetup.touched && accountnosetup.invalid">
           <div class="form-group">
             <input type="text" id="accountno" name="accountno" class="form-control input-sm" [(ngModel)]="Account.account_number"
-              #accountnosetup="ngModel" required>
+              #accountnosetup="ngModel" required disabled>
             <div *ngIf="accountnosetup.touched && !accountnosetup.valid && accountnosetup.errors?.required " ngClass="{ 'has-error' : !accountnosetup.valid && submitAttempt }">
             </div>
           </div>
