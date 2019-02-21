@@ -260,7 +260,7 @@
                 <div class="col-md-2">
                   <div class="form-group" style="margin-top: -18px;margin-left: 5px;width: 100%;">
                     <label for="room">CutOff Days</label>
-                    <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days" [value]="cutdays">
+                    <input type="number" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days" [value]="cutdays">
                   </div>
                 </div>
                 
@@ -356,13 +356,13 @@
                       <div class="col-md-2">
                           <div class="form-group"style="margin-left:16px;">
                             <label for="room">Attendees</label>
-                            <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender" [value]="attdes">
+                            <input type="number"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender" [value]="attdes">
                           </div>
                         </div>
                     <div class="col-md-2">
                       <div class="form-group" style="margin-top:4px;">
                         <b>ContactNo</b>
-                        <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract" [value]="contract">
+                        <input type="number" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract" [value]="contract">
                       </div>
                       
                     </div>
@@ -578,7 +578,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="name">Meeting Size</label>
-                      <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes" [value]="meetsp">
+                      <input type="number" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes" [value]="meetsp">
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -597,7 +597,7 @@
                   <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Attendees</label>
-                        <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend" [value]="attdess1">
+                        <input type="number" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend" [value]="attdess1">
                       </div>
                     </div>
                   </div>

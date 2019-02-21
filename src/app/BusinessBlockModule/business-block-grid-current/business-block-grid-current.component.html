@@ -134,19 +134,19 @@
                                     <div class="col-md-4"> 
                                       <div class="form-group">
                                       <label for="name">Start Date</label>
-                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start" disabled>
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
                                       <label for="name">End Date</label>
-                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end" disabled>
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
                                       <label for="name">Nights</label>
-                                      <input type="text" class="form-control input-sm" name="Form" [(ngModel)]="nights">
+                                      <input type="text" class="form-control input-sm" name="Form" [(ngModel)]="nights" disabled>
                                     </div>
                                   </div>
                                       </div>
@@ -174,25 +174,25 @@
                                       <br>
                                       <div class="row">
                                           <div class="col-sm-1">
-                                            <label for="sun"><input type="checkbox" [value]="mon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.sunday"/> SUN</label>
+                                            <label for="sun"><input type="checkbox" [value]="mon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.sunday"disabled/> SUN</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"/> MON</label>
+                                              <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"disabled/> MON</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox" [value]="tue"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.tuesday"/> TUE</label>
+                                              <label for="mon"><input type="checkbox" [value]="tue"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.tuesday"disabled/> TUE</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox"[value]="wed"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.wednesday"/> WED</label>
+                                              <label for="mon"><input type="checkbox"[value]="wed"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.wednesday"disabled/> WED</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox" [value]="thu"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.thursday"/> THU</label>
+                                              <label for="mon"><input type="checkbox" [value]="thu"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.thursday"disabled/> THU</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox"[value]="fri"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.friday"/> FRI</label>
+                                              <label for="mon"><input type="checkbox"[value]="fri"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.friday"disabled/> FRI</label>
                                           </div>
                                           <div class="col-sm-1">
-                                              <label for="mon"><input type="checkbox" [value]="sat"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.saturday"/> SAT</label>
+                                              <label for="mon"><input type="checkbox" [value]="sat"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.saturday"disabled/> SAT</label>
                                           </div>
                                       </div>
                               </div>
