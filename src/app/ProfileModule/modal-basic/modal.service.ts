@@ -197,7 +197,7 @@ insertCreditcard(input:any):  Observable<object[]> {
 
   let body=
         {
-         "pf_id":this.session.retrieve("id"),
+         "pf_id":this.session.retrieve("pf_id"),
          "PF_Card_Type":input.PF_Card_Type,
    	    "PF_Creditcard_No":input.PF_Creditcard_No,
    	     "PF_Expiration_Date":input.PF_Expiration_Date
@@ -217,7 +217,7 @@ insertNotes(input:any):  Observable<object[]> {
   const options = new RequestOptions({ headers: headers });
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "PF_Note_Type":input.PF_Note_Type,
    "PF_Note_Title":input.PF_Note_Title,
   "PF_Note_Description":input.PF_Note_Description,
@@ -239,7 +239,7 @@ insertNegotiated(input:any):  Observable<object[]> {
 
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "pf_rate_code":input.pf_rate_code,
    "PF_Start_Sell_Date":input.PF_Start_Sell_Date,
    "PF_End_Sell_Date":input.PF_End_Sell_Date,
@@ -260,7 +260,7 @@ insertPrefer(input:any):  Observable<object[]> {
 
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "PF_Preference_Group":input.PF_Preference_Group,
    "PF_Preference_Description":input.PF_Preference_Description,
    "PF_Guest_Preference":input.PF_Guest_Preference,
@@ -302,18 +302,9 @@ updateCredit(input:any):  Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
-  // let body=
-  //       {
-  //        "pf_id":this.session.retrieve("id"),
-  //        "cc_id":this.session.retrieve("id1"),
-  //        "PF_Card_Type":input.PF_Card_Type,
-  //  	    "PF_Creditcard_No":input.PF_Creditcard_No,
-  //  	     "PF_Expiration_Date":input.PF_Expiration_Date
-  //  }
-
   let body=
         {
-         "pf_id":this.session.retrieve("id"),
+         "pf_id":this.session.retrieve("pf_id"),
          "cc_id":this.session.retrieve("id1"),
          "PF_Card_Type":input.PF_Card_Type,
    	    "PF_Creditcard_No":input.PF_Creditcard_No,
@@ -333,7 +324,7 @@ updateNegotiated(input:any):  Observable<object[]> {
   const options = new RequestOptions({ headers: headers });
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "negotiate_id":this.session.retrieve("id3"),
    "PF_Rate_Code":input.PF_Rate_Code,
    "PF_Start_Sell_Date":input.PF_Start_Sell_Date,
@@ -354,7 +345,7 @@ updatePrefer(input:any):  Observable<object[]> {
   
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "preference_id":this.session.retrieve("id4"),
    "PF_Preference_Group":input.PF_Preference_Group,
    "PF_Preference_Description":input.PF_Preference_Description,
@@ -373,7 +364,7 @@ updateNotes(input:any):  Observable<object[]> {
   const options = new RequestOptions({ headers: headers });
   let body=
   {
-   "pf_id":this.session.retrieve("id"),
+   "pf_id":this.session.retrieve("pf_id"),
    "notes_id":this.session.retrieve("id2"),
    "PF_Note_Type":input.PF_Note_Type,
    "PF_Note_Title":input.PF_Note_Title,

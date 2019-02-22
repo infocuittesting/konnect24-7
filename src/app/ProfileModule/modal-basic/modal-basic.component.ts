@@ -16,7 +16,7 @@ import { SessionStorageService } from "ngx-webstorage";
 })
 export class ModalBasicComponent implements OnInit {
   
-  public Id = this.session.retrieve("id");
+  public Id = this.session.retrieve("pf_id");
   public Name = this.session.retrieve("pf_fname");
 
   public now:any;
@@ -190,7 +190,7 @@ getcreditexpiry(){
         }
         
         let paramss={
-          "pf_id":this.session.retrieve("id"),
+          "pf_id":this.session.retrieve("pf_id"),
        }
        
         this.pppService.getCreditcard(paramss)
@@ -219,7 +219,7 @@ getcreditexpiry(){
                 this.card="CreditCard is Updated "
                 this.Success(this.card)
                 let paramss={
-                  "pf_id":this.session.retrieve("id"),
+                  "pf_id":this.session.retrieve("pf_id"),
                }
                
                 this.pppService.getCreditcard(paramss)
@@ -243,7 +243,7 @@ getcreditexpiry(){
           if(this.profilenego=="RIS"){
             this.profilenego="The Negotiated Rate is Add for the Guest";
             let paramss={
-              "pf_id":this.session.retrieve("id"),
+              "pf_id":this.session.retrieve("pf_id"),
            }
             this.pppService.getNegotiated(paramss)
             .subscribe((resp: any) => {
@@ -276,7 +276,7 @@ getcreditexpiry(){
               this.profilenegotes="The Negotiated Rate is Updated for the Guest";
               this.Success(this.profilenegotes)
               let paramss={
-                "pf_id":this.session.retrieve("id"),
+                "pf_id":this.session.retrieve("pf_id"),
              }
               this.pppService.getNegotiated(paramss)
               .subscribe((resp: any) => {
@@ -301,7 +301,7 @@ getcreditexpiry(){
               this.profilenotes="Special Notes is Add for the Guest";
               this.Success(this.profilenotes);
               let paramss={
-                "pf_id":this.session.retrieve("id"),
+                "pf_id":this.session.retrieve("pf_id"),
              }
               this.pppService.getNotes(paramss)
               .subscribe((resp: any) => {
@@ -312,7 +312,7 @@ getcreditexpiry(){
           );  
 
           let paramss={
-            "pf_id":this.session.retrieve("id"),
+            "pf_id":this.session.retrieve("pf_id"),
             
          }
          
@@ -336,7 +336,7 @@ getcreditexpiry(){
                 this.updatenotes="The Notes is Updated for the Guest";
                 this.Success(this.updatenotes)
                 let paramss={
-                  "pf_id":this.session.retrieve("id"),
+                  "pf_id":this.session.retrieve("pf_id"),
                }
                 this.pppService.getNotes(paramss)
                 .subscribe((resp: any) => {
@@ -359,7 +359,7 @@ getcreditexpiry(){
                 this.Success(this.profileprefer);
                 console.log("workingggggggggg",this.profileprefer)
                 let paramss={
-                  "pf_id":this.session.retrieve("id"),
+                  "pf_id":this.session.retrieve("pf_id"),
                }
                 this.pppService.getPreferences(paramss)
                 .subscribe((resp: any) => {
@@ -381,7 +381,7 @@ getcreditexpiry(){
                   this.profileprefer1="The Preferences is Updated for the Guest";
                   this.Success(this.profileprefer1);
                   let paramss={
-                    "pf_id":this.session.retrieve("id"),
+                    "pf_id":this.session.retrieve("pf_id"),
                  }
                   this.pppService.getPreferences(paramss)
                   .subscribe((resp: any) => {
@@ -689,7 +689,7 @@ this.pppService.preferencegroupdropdown()
   
 });
 let paramss={
-  "pf_id":this.session.retrieve("id"),
+  "pf_id":this.session.retrieve("Pf_id"),
   
 }
 
@@ -717,7 +717,7 @@ creditClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.getCreditcard(paramss)
@@ -737,7 +737,7 @@ deletesClick(flag){
     this.flagId=flag;
   }
   let paramss={
-    "pf_id":this.session.retrieve("id"),
+    "pf_id":this.session.retrieve("pf_id"),
  }
  
   this.pppService.deleterecordDelete(paramss)

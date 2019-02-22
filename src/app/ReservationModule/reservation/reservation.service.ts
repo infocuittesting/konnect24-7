@@ -128,7 +128,7 @@ export class ReservationService {
    }
 
      //wait setvice call
-    getwaitdata(input,parm,param):  Observable<object[]> {
+    getwaitdata(input,parm,param,PF_Firstname,Pf_lastname,):  Observable<object[]> {
       
       const headers = new Headers();
        headers.append('Content-Type','application/json');
@@ -166,7 +166,7 @@ export class ReservationService {
          "RES_Party":"", 
          "RES_Currency":input.RES_Currency,
          "RES_Disc_perc":input.RES_Disc_perc,
-         "PF_Firstname":this.session.retrieve("fname")+" "+ this.session.retrieve("lastname"),
+         "PF_Firstname":PF_Firstname+" "+Pf_lastname,
          "PF_Mobileno": param.toString(),
          "pf_id": this.session.retrieve("pfid")
         };

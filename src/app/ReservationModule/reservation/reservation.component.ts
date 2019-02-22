@@ -202,8 +202,6 @@ export class ReservationComponent implements OnInit {
         } else if (resp.Status == "Failure") {
           this.usera = "Room Type or Date is not declared";
         }
-        
-
 
       });
     }
@@ -288,7 +286,7 @@ export class ReservationComponent implements OnInit {
     if (this.compid == undefined) {
       this.compid = "";
     }
-    this.ReservationService.getwaitdata(inputt, this.compid,this.PF_Mobileno)
+    this.ReservationService.getwaitdata(inputt, this.compid,this.PF_Mobileno,this.PF_Firstname,this.Pf_lastname)
       .subscribe((resp: any) => {
         this.user1 = resp.ReturnCode;
         if (this.user1 == "RIS") {

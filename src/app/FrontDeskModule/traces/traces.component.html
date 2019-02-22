@@ -64,7 +64,7 @@
   </thead>
   <tbody>
           <tr *ngFor="let list of gettrace | searchfilter :{pf_firstname:name} | searchfilter :{traces_dept_code:trace_dept_code} | searchfilter :{traces_date:tdate} | resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
-          (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i=='selectindex'}"> 
+          (click)="selected(list,i)"  [ngClass]="{'backgroundcolor':i=='selectindex'}"> 
              <td style="width:40px;">{{i+1}}</td>    
              <td style="width:138px;">{{list.pf_firstname}}</td>        
              <td style="width:138px;">{{list.traces_date}}</td>         

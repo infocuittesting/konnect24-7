@@ -88,7 +88,7 @@
                </div>
                <br>
                <div class="col-md-2">
-                  <button type="button" class="btn btn-primary" routerLink="/advancedsearch" style="width: 91px;height: 33px;margin-left: 42pc;">Advanced</button>
+                  <button type="button" class="btn btn-primary" routerLink="/advancedsearch" style="width: 91px;height: 33px;margin-left: 42pc;" disabled>Advanced</button>
              </div>
  
              <div class="col-md-2">
@@ -160,19 +160,21 @@
         </tbody>
       </table>
    <div class="row">
-     <div  *ngIf="showhide==true">
-       <button class="btn btn-danger btn-sm"  *ngFor="let item of privilege" style="margin-left:15px">{{item.privileges_desc}}</button>
-     </div>
-     <div class="col-md-1 col-lg-1" *ngIf="showfix==true">
-      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" >Fixed Rate</button>
+     <div *ngFor="let item of privilege">
+       <div class="col-md-2 col-lg-2"  *ngIf="showhide==true">
+        <button class="btn btn-danger btn-sm" style="width:130px">{{item.privileges_desc}}</button>
+      </div>
     </div>
-    <div class="col-md-1 col-lg-1" *ngIf="showhidenotes==true">
-      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#notes">Notes</button>
+     <div class="col-md-2 col-lg-2" *ngIf="showfix==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#fixrate" style="width:130px" >Fixed Rate</button>
     </div>
-    <div class="col-md-1 col-lg-1" *ngIf="showhidepreferences==true">
-      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#preference"> Preferences</button>
+    <div class="col-md-2 col-lg-2" *ngIf="showhidenotes==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#notes" style="width:130px">Notes</button>
     </div>
-    <div class="col-md-1 col-lg-1" *ngIf="showhidereser==true">
+    <div class="col-md-2 col-lg-2" *ngIf="showhidepreferences==true">
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#preference" style="width:130px"> Preferences</button>
+    </div>
+    <div class="col-md-2 col-lg-2" *ngIf="showhidereser==true">
       <button class="btn btn-danger btn-sm" (click)="cancledue()" > {{duedatevali}}</button>
     </div>
    </div>

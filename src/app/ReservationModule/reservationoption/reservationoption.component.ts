@@ -701,7 +701,7 @@ selectEdit(details){
 this.rate=details.RateCode +" Rate $10 flat off standard rate" ;
 }
 // privil:any;
-show:boolean=false;
+show:boolean=false;showque:boolean=false;
 attach:boolean=true;
 detss:boolean=true;
   ngOnInit() {
@@ -716,6 +716,11 @@ detss:boolean=true;
       this.show=true;
     }
     
+    if((this.Room != 0) && ((this.Status == "arrival")||(this.Status == "due in"))){
+      this.showque=true;
+    }else{
+      this.showque=false;
+    }
     if(this.aname==null && this.lastnam==null){
       this.aname=" ";
       this.lastnam=" ";

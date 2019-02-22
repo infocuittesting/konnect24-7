@@ -30,9 +30,9 @@ private chart: any;
       this.getcard=resp.ReturnValue;
       this.checkin=resp.ReturnValue[1].count;
       this.reservation=resp.ReturnValue[4].count;
-      this.roomavailable=resp.ReturnValue[3].count;
-      this.checkout=resp.ReturnValue[5].count;
-      this.dueout=resp.ReturnValue[2].count;
+      this.roomavailable=resp.ReturnValue[5].count;
+      this.checkout=resp.ReturnValue[2].count;
+      this.dueout=resp.ReturnValue[3].count;
       this.arrival=resp.ReturnValue[0].count;
     })
 
