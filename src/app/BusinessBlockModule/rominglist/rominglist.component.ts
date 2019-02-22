@@ -120,7 +120,7 @@ UpdateRoomingList(){
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
 
-  if( roomtype!=null)
+  if( roomtype!=null && Names!=null && adult !=null && child !=null)
   {
  
 
@@ -131,7 +131,7 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
           "res_nights":this.session.retrieve("nightss").toString(),
           "res_adults":adult,
           "res_child":child,
-          "res_number_of_rooms":numberofrooms,
+          "res_number_of_rooms":"1",
           "res_room_type":roomtype,
           "res_block_code":this.session.retrieve("blockid"),
           "pf_firstname":Names,
@@ -145,7 +145,7 @@ console.log("first room type array",this.savedetails)
           "res_nights":this.session.retrieve("nightss").toString(),
           "res_adults":adult.toString(),
           "res_child":child.toString(),
-          "res_number_of_rooms":numberofrooms,
+          "res_number_of_rooms":"1",
           "res_room_type":roomtype,
           "res_block_code":this.session.retrieve("blockid"),
           "pf_firstname":Names,
