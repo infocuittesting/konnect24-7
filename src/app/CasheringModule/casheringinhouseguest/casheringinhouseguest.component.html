@@ -318,7 +318,7 @@
 
                   <td>{{dell?.res_arrival}}</td>
                   <td>{{dell?.res_depature}}</td>
-                  <td>{{dell?.res_guest_balance}}</td>
+                  <td>{{dell?.balance}}</td>
                   <td>{{dell?.res_guest_status}}</td>
                   <td>{{dell?.res_res_type}}</td>
 
@@ -330,8 +330,14 @@
             </table>
             <div class="row">
               <div class="col-md-1 col-lg-1" *ngIf="showhide==true">
-                <button class="btn btn-danger btn-sm">{{lambreturn[0].res_alert_description}}</button>
+                <button class="btn btn-danger btn-sm">{{lambreturn[0].res_alert_area}}</button>
               </div>
+     
+              <div *ngFor="let privilege of privilegesreturn">
+              <div class="col-md-1 col-lg-1" *ngIf="showhideprivileges==true">
+                <button class="btn btn-danger btn-sm" style="width:140px;" >{{privilege.privileges_desc}}</button>
+              </div>
+            </div>
             </div>
 
           </div>
@@ -455,7 +461,7 @@
                       <b>Amount</b>
                     </div>
                     <div class="col-sm-6">
-                      <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="balnc">
+                      <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="balnc" disabled>
                     </div>
                   </div>
                   <div class="col-sm-3" style="color:#0077B5;" style="margin-top: 8px;">
