@@ -111,7 +111,7 @@ selectMembersEdit(details,index){
 this.selectindex=index;
 this.rmrsid=details.res_id;
 this.pfid=details.pf_id;
-if(details.res_guest_status=="due in" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out"){
+if(details.res_guest_status=="waitlist" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out" || details.res_guest_status=="checkin"){
   this.flag_chin=true;
   this.checkin=true;
   this.selectindex=index; 

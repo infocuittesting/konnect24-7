@@ -64,7 +64,7 @@ export class RoomconditionComponent implements OnInit {
       .subscribe((user333: any) => {
         this.newroom = user333.ReturnCode;
         if (this.newroom == "RIS") {
-          this.newroom = " The Room Condition is Generated for " + this.rmid;
+          this.newroom = " The Room Condition is Generated for " + param;
           this.Success(this.newroom);
           this.pService.getroomcondition()
             .subscribe((resp: any) => {

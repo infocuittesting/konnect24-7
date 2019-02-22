@@ -28,9 +28,9 @@ export class RoomconditionService {
     let body=
           {
             "rm_room":param.toString(),
-           "rm_condition":input.rm_condition,
+           "rm_condition":input,
           }
-  
+  console.log("Tesss",body)
    return this.http.post('http://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroomcondition',body,options)
        .map(this.extractData)
        //.catch(this.handleErrorObservable);

@@ -93,7 +93,7 @@
   </thead>
   <tbody>
         <tr *ngFor="let searched of searchandedit | searchfilter :{pf_firstname:queryString}| searchfilter :{res_room_type:qrtype}| searchfilter :{res_res_type:restype} | searchfilter :{pf_individual_vip:vip} | searchfilter :{res_arrival:qdate}; let i = index"
-         (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+         (click)="selectMembersEdit(searched,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
                 <td style="width:40px"> {{i+1}}</td> 
                 <td style="width:170px">  {{searched.pf_firstname}}</td>
                 <td style="width:60px"> {{searched.res_room}} </td>

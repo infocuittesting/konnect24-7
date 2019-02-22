@@ -158,7 +158,7 @@ public pf_mobileno
           this.edit=false;
     }
      
-    if(details.res_guest_status=="due in" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out" && this.resid == details.res_id){
+    if(this.resid == details.res_id && details.res_guest_status=="waitlist" || details.res_guest_status=="reserved" || details.res_guest_status=="no show" || details.res_guest_status=="Check out" || details.res_guest_status=="due out" || details.res_guest_status=="checkin"){
       this.flag_chin=true;
       this.chin=true;
       this.option=false;
