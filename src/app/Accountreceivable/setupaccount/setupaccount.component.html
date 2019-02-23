@@ -1,5 +1,6 @@
 <div class="wrapper">
   <div class="content-wrapper">
+      <form action="" #setupaccount="ngForm"> 
     <br>
     <div class="container-fluid">
       <div class="row">
@@ -148,7 +149,7 @@
     <br>
     <div class="row">
       <div class="col-md-2">
-        <label>country/State</label>
+        <label>State/country</label>
       </div>
       <div class="col-md-3" [class.has-error]="statesetup.touched && countrysetup.invalid">
         <select class="form-control input-sm" id="state" name="state" style="margin-left: -60px;" [(ngModel)]="Account.state_id"
@@ -254,18 +255,14 @@
           <button  *ngIf="showupdate==true" type="button" class="btn btn-warning" Style="width:80%;" data-toggle="modal" data-target="#update"
           (click)="update1(Account)">update</button>
         <button *ngIf="showupdate!=true"btype="button" class="btn btn-success" Style="width:80%;" data-toggle="modal" data-target="#myModal"
-          (click)="update(Account)">OK</button>
+          (click)="update(Account)" [disabled]="!setupaccount.valid">OK</button>
       </div>
       <div class="col-md-2">
         <button type="button" class="btn btn-danger" Style="width:80%;" routerLink="/newaraccount">Close</button>
       </div>
     </div>
-
-
-
-
   </div>
-
+</form>
 </div>
 </div>
 
@@ -282,7 +279,7 @@
         <p align="center"><b>{{setupdate}}</b></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="reset" class="btn btn-default" data-dismiss="modal" (click)="setupaccount.reset()">Close</button>
       </div>
     </div>
 

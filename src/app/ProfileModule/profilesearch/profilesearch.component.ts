@@ -42,6 +42,8 @@ navigatepages(){
   }
   else if(this.navtag =="Revopt"){
     this.route.navigate(['reservationoption/']);
+  }else if(this.session.retrieve("araccount") == "new"){
+    this.route.navigate(['Setupaccount/']);
   }
 
    if((this.navtag1=="Company")||(this.navtag1=="Travel Agent")||(this.navtag1=="Source")||(this.navtag1=="Group")||
