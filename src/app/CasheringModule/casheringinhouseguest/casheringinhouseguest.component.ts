@@ -80,7 +80,10 @@ public successmsg:any;
 public failuremsg:any;
 public zerosuccessmsg:any;
 public zerofailuremsg:any;
-
+public privilegesreturn;
+public privilegesstatus;
+public privilegesbind;
+public showhideprivileges;
 disone=true
 distwo=true
 siva=true
@@ -150,29 +153,38 @@ public Res_id_getting:any;
 selectindex=null;
 selectMembersEdit(details,index)
 {
-
+    
       
       this.Res_id_getting = details.res_id
       this.Res_unique_id_getting = details.res_unique_id
+      this.session.store("arr",details.res_arrival.toString());
+      this.session.store("depar",details.res_depature.toString());
+      this.session.store("guest_status",details.res_guest_status);
+      this.session.store("accuratebalance",details.balance);
+          console.log("ession valuw",details.res_arrival,details.balance)
       console.log("Res_id_getting",this.Res_id_getting,this.Res_unique_id_getting)
 
 
       this.selectindex=index;
       // condition for checkout button
       console.log("statussssssssssssssssss",details);
-      if(details.res_guest_balance!=0 && details.res_guest_status=="due out"){
+      if(details.balance!=0 && details.res_guest_status=="due out"){
         this.distwo=false;
+        console.log("cashiering check status",details.res_guest_balance,details.res_guest_status)
       }
       else{
         this.disone=true;
+        console.log("cashiering check status else",details.res_guest_balance,details.res_guest_status)
       }
       // condition for checkout zero button
-      if(details.res_guest_balance==0 && details.res_guest_status=="due out"){
+      if(details.balance <=0 && details.res_guest_status=="due out"){
+        console.log("status,balance",details.res_guest_balance,details.res_guest_status)
         this.disone=false;
         this.distwo=true;
       }
       else{
         this.disone=true;
+        console.log("status,balance,else",details.res_guest_balance,details.res_guest_status)
       }
 
       // condition for billing button
@@ -190,7 +202,7 @@ selectMembersEdit(details,index)
       // else{
       //   this.disthree=true;
       // }
-      this.balnc=details.res_guest_balance;
+      this.balnc=details.balance;
       this.session.store("id",details.res_room.toString());
       this.session.store("id1",details.res_id.toString());
       this.session.store("name",details.pf_firstname);
@@ -198,8 +210,7 @@ selectMembersEdit(details,index)
       this.session.store("expdate",details.res_exp_date);
       // for displaying
       // this.session.store("balanc",details.res_guest_balance);
-      // this.session.store("arr",details.res_arrival);
-      // this.session.store("depar",details.res_depature);
+ 
       // this.session.store("gstat",details.res_guest_status);
       // this.session.store("rtcd",details.res_rate_code);
       // this.session.store("rte",details.res_rate);
@@ -220,8 +231,20 @@ selectMembersEdit(details,index)
  }
 
 });
+// privileges alert
+this.cashinservice.lampprivilegest(this.Res_id_getting)
+      .subscribe((resp: any) => {
+      this.privilegesreturn=resp.ReturnValue;
+      this.privilegesstatus=resp.Status;
+      if(this.privilegesstatus=="Success"){
+      if(this.privilegesreturn.length!=0){
+      this.showhideprivileges=true;
+      }else if(this.privilegesreturn.length==0){
+      this.showhideprivileges=false;
 }
-
+      }
+    });
+  }
 private month:any;
 private year:any;
 onMonthChange(month:any){
@@ -317,6 +340,12 @@ checkoutfun(){
     this.zerovar = resp.ReturnCode;
     if(this.zerovar=="RUS"){
       this.zerosuccessmsg="successfully checked out";
+      this.cashinservice.inhousetable()
+      .subscribe((resp: any) => {
+    
+       this.housetable=resp.ReturnValue;
+       // console.log(this.housetable);
+     });
     }
     else{
       this.zerofailuremsg="Unable to update";

@@ -59,7 +59,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <button class="btn btn-success" style="width:92%;margin-left: 92px;" (click)="cleartab();ClearAll.reset()">Clear All</button>
+        <button class="btn btn-success" style="width:92%;margin-left: 92px;" (click)="cleartab(startDate,endDate)">Clear All</button>
       </div>
      </div>
     </div>
@@ -106,7 +106,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let array of tableschanges |filterdata: Name :'block_name' |filterdata: BlockCode:'block_code' ;let i=index"
+        <tr *ngFor="let array of tableschanges |searchfilter:{block_name: Name}|searchfilter:{block_code:BlockCode} ;let i=index"
          (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:40px">{{i+1}}</td>
             <td style="width:80px">{{array.block_id}}</td>

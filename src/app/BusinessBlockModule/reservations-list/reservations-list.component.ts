@@ -43,8 +43,8 @@ ReservationsListComponent(resvlist,index)
     this.blockid = resvlist.res_block_code;
     this.rmtype  = resvlist.res_room_type;
     this.session.store("pf_id",resvlist.pf_id)
-    this.session.store("res_unique_id",resvlist.pf_id)
-    console.log("testttt",resvlist.pf_id,resvlist.pf_id)
+    this.session.store("res_unique_id",resvlist.res_unique_id)
+    console.log("testttt",resvlist.pf_id,resvlist.res_unique_id)
     if(this.blockid == resvlist.res_block_code && this.rmtype == "PM"){
        this.gro = false;
     }

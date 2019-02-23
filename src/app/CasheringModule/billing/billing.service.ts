@@ -216,6 +216,44 @@ roomdropdown():  Observable<object[]> {
 
 }
 
+// package betwen date
+packagebetweendate():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+    {
+      "package_from":this.session.retrieve("arr"),
+      "package_to":this.session.retrieve("depar")
+    }
+  console.log("eeeeeeeee",body)
+  return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_SELECT_QueryTransactioncodeCode',body,options)
+     .map(this.extractData)
+}
+
+// Reinstate Reservation
+Reinstatereservation():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body=
+  {
+    "res_id":this.session.retrieve("id1"),
+    "res_room":this.session.retrieve("id")
+    }
+  console.log("reinstate",body)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_UpdateReinstateRervaiton',body,options)
+     .map(this.extractData)
+}
+
+
+inhousetable():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.get('https://hotel360.herokuapp.com/HOTEL_CAH_POST_SELECT_QUERYINHOUSERECORD')
+     .map(this.extractData)
+
+}
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

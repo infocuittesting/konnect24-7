@@ -32,6 +32,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
  public roomtype=[];
  public reason=[];
  public now;
+ public args={};
   constructor(private blockservice:BusinessBlockOptionsService,private route:Router,public session:SessionStorageService,private toasterService:ToasterServiceService ) { }
   Success(message){
     //  console.log("message",message);
@@ -40,18 +41,25 @@ export class BusinessBlockOptionsComponent implements OnInit {
 
  insertnotes(args){
    console.log("notes value",args,this.now);
+   console.log("check type",typeof args)
    this.blockservice.insertbusinessblock(args,this.now)
    .subscribe((resp: any) => {
     this.return=resp.ReturnCode;
   
     if(this.return == "RIS"){
+
       this.notenumber="The notes is created for block id "+this.session.retrieve("blockid");
       console.log("service working fine");
+      args.notetype=" ";
+      args.title =" ";
+      args.description=" ";
       this.Success(this.notenumber);
     }
     else{
       console.log("service failure");
     }
+
+    
   });
   
  }

@@ -142,6 +142,21 @@ export class CasheringinhouseguestService {
      //.catch(this.handleErrorObservable);
  }
 
+// lamp for privileges
+lampprivilegest(Res_id_getting):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body =
+  {
+    "res_id":Res_id_getting
+  
+  }
+ console.log(JSON.stringify(body));
+ return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryGuestPrivileges',body,options)
+    .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+}
  paymentcodedropdown():  Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})

@@ -75,7 +75,7 @@
         <tbody>
 
           <tr *ngFor="let checkin of search | searchfilter :{res_room_type:roomtype} | searchfilter: {pf_firstname:queryString} | searchfilter: {res_room:roomno} | searchfilter: {roomclass:roomclass}; let i = index"
-            (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backgroundcolor':i==selectindex}">
             <td style="width:50px;"> {{i+1}}</td>
             <td style="width:150px;"> {{checkin.pf_firstname}}</td>
             <td style="width:75px;"> {{checkin.rm_qtime}}</td>

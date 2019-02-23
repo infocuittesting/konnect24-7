@@ -16,7 +16,7 @@
                     <div class="col-md-2">
                       <label for="room">Balance</label>
                       <div class="form-group">
-                        <input type="text" name="balance1" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="tryitem.res_guest_balance"
+                        <input type="text" name="balance1" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="correctbalnce"
                           disabled>
                       </div>
 
@@ -201,8 +201,8 @@
                       [contextmenu]="[contextmenu, {item: item}]">
 
                       <td>{{item.posting_date}}</td>
-                      <td *ngIf="showMore!=true">{{item.posting_code}}</td>
-                      <td *ngIf="showMore!=true">{{item.posting_code_description}}</td>
+                      <td *ngIf="showMore!=true">{{item.package_code}}</td>
+                      <td *ngIf="showMore!=true">{{item.short_description}}</td>
                       <td *ngIf="showMore==true">{{item.posting_amount}}</td>
                       <td *ngIf="showMore!=true">{{item.checkno}}</td>
                       <td *ngIf="showMore==true">{{item.posting_quantity}}</td>
@@ -267,8 +267,8 @@
                     <tr *ngFor="let itemm of vaal2; let i=index" (click)="vaalvaalfunc(itemm,i)" [ngClass]="{'backGroundColor':i==sidx}" [contextmenu]="[contextmenu, {itemm: itemm}]">
 
                       <td>{{itemm.posting_date}}</td>
-                      <td *ngIf="showMore1!=true">{{itemm.posting_code}}</td>
-                      <td *ngIf="showMore1!=true">{{itemm.posting_code_description}}</td>
+                      <td *ngIf="showMore1!=true">{{itemm.package_code}}</td>
+                      <td *ngIf="showMore1!=true">{{itemm.short_description}}</td>
                       <td *ngIf="showMore1==true">{{itemm.posting_amount}}</td>
                       <td *ngIf="showMore1!=true">{{itemm.checkno}}</td>
                       <td *ngIf="showMore1==true">{{itemm.posting_quantity}}</td>
@@ -305,7 +305,7 @@
             <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;" disabled><b>Settlement</b></button>
 
             <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal"
-              disabled><b>Reinstate</b></button>
+             [disabled]=reinstatetrue ><b>Reinstate</b></button>
 
             <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
 
@@ -391,18 +391,18 @@
                   </tr>
                   <tr>
                     <td>
-                      <select style="width:100%;" [(ngModel)]="add.Code">
-                        <option *ngFor="let ratecdlist of pscd_dd" [ngValue]="ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                      <select style="width:100%;" [(ngModel)]="add.package_code_id">
+                        <option *ngFor="let ratecdlist of packagearray" [ngValue]="ratecdlist.package_code">{{ratecdlist.package_code}}</option>
                       </select>
                     </td>
-                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
+                    <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.package_code_id" disabled/></td>
                     <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Amount" /></td>
                     <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Qty" /></td>
                     <td>
                       <select style="width: 100%;height: 25px;" [(ngModel)]="add.Windowno">
                         <option value="" hidden>select value</option>
-                        <option value="101">1</option>
-                        <option value="102">2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                       </select>
                       <!-- <input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Windowno"/> -->
                     </td>
@@ -460,8 +460,8 @@
                     <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
                       <select style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window">
                         <option value="" hidden>select value</option>
-                        <option value="101">1</option>
-                        <option value="102">2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                       </select>
                       <!-- <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"> -->
                     </td>
@@ -851,10 +851,10 @@
                     <div class="form-group" [class.has-error]="edarval.touched && !edarval.valid">
                       <select style="width:70%;height:100%;" name="arrcode" class="form-control" #edarval="ngModel" [(ngModel)]="ed_arcode" required>
                         <option value="" hidden>select value</option>
-                        <option value="101">1</option>
-                        <option value="102">2</option>
-                        <option value="103">3</option>
-                        <option value="104">4</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                       </select>
                       <div *ngIf="edarval.touched && !edarval.valid && edarval.errors.required" ngClass="{ 'has-error' : !edarval.valid && submitAttempt }">
                       </div>
@@ -1074,7 +1074,7 @@
           <p>Are you sure want to reinstate? </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="reinstatereservation()">OK</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>

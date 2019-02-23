@@ -242,7 +242,7 @@
                 <div class="col-lg-4">
                   <div class="input-group">
                     <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-                    <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="rmc">
+                    <select name="romm condition"equired style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="rmc">
                       <option *ngFor="let conditionlist of condition" [ngValue]="conditionlist.rm_condition">{{conditionlist.rm_condition}}
                       </option>
                     </select>
@@ -296,7 +296,7 @@
           <div class="col-lg-4">
             <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-              <select required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="rmc">
+              <select name="roomcondition" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="rmc">
                 <option *ngFor="let conditionlist of condition" [ngValue]="conditionlist.rm_condition">{{conditionlist.rm_condition}}
                 </option>
               </select>

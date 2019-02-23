@@ -44,10 +44,13 @@ public postdetails=[];
 public showdetails=[];
 public pscd_dd=[];
 public paycode=[];
-
-
+reinstatetrue=true;
+public statuscheck;
 public expdt:any;
-
+public reinstatestatus:any;
+public reinstatesucces:any;
+public packagearray=[];
+public correctbalnce;
 add={};
 resty=[];
 vaal1:any=[];
@@ -200,7 +203,8 @@ transfertowindow(args)
            console.log("payment inputs",selected,currency,amount,ref,supp,this.expdt)
    
          this.letter=resp.ReturnCode;
-        //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
+         console.log("letterrrrrrrrrrrrworking",this.letter);
+
          if(this.letter=="RIS"){
            this.paysuccessmsg="payment was done successfully";
            console.log("workingggggggggggggggggg",this.paysuccessmsg)
@@ -220,9 +224,12 @@ transfertowindow(args)
           console.log("payment inputs other than credit card",selected,currency,amount,ref,supp)
 
         this.letter=resp.ReturnCode;
-      //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
+
+        // console.log("letter success mea")
+       console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
         if(this.letter=="RIS"){
           this.paysuccessmsg="payment was done successfully";
+          this.Success(this.paysuccessmsg);
         }
         else{
           this.payfailuremsg="Unable to update";
@@ -243,19 +250,19 @@ public codeidarr=[];
 public affFlagg=false;
 addRows(add)
 {
-  if(add.Code!=null && add.Amount!=null && add.Qty!=null && add.Windowno!=null )
+  if(add.package_code_id!=null && add.Amount!=null && add.Qty!=null && add.Windowno!=null )
   {
     
-  this.codeidarr = this.pscd_dd.filter(
-           orgn => orgn.posting_code_description === add.Code);
+  this.codeidarr = this.packagearray.filter(
+           orgn => orgn.package_code === add.package_code_id);
 
-           console.log("codeeeee_desssss",this.codeidarr,this.codeidarr[0].posting_code_id);
+           console.log("codeeeee_desssss",this.codeidarr,this.codeidarr[0].package_code_id);
       // console.log("totalpos and totalamt",this.totalPos,this.totalamt)
 
       this.showdetails.push({
         // "business_id":this.session.retrieve("business_id"),
-        "Post_code_id":this.codeidarr[0].posting_code,
-        "Post_des":add.Code,
+        "Post_code_id":this.codeidarr[0].package_code_id,
+        "Post_des":add.package_code_id,
         "Posting_amount":add.Amount,
         "Posting_quantity":add.Qty,
         "Post_window":add.Windowno,
@@ -269,7 +276,7 @@ addRows(add)
 
       this.postdetails.push({
         // "business_id":this.session.retrieve("business_id"),
-        "Post_code_id":this.codeidarr[0].posting_code_id,
+        "Post_code_id":this.codeidarr[0].package_code_id,
         // "Post_des":add.Description,
         "Posting_amount":add.Amount,
         "Posting_quantity":add.Qty,
@@ -285,7 +292,7 @@ addRows(add)
 
       this.totalPos += 1;
       this.totalamt += Number(add.Amount)*Number(add.Qty);
-
+      console.log("Total posting amount",this.totalamt)
       this.add={};
       // console.log("postdetails",this.postdetails);
   }
@@ -326,7 +333,7 @@ saveroomDetails(postdetails)
        this.vaal2=[];
        for(let seperat of this.navtbl){
          
-         if (seperat['post_window']==101){
+         if (seperat['post_window']==1){
            this.vaal1.push(seperat) //for window1
          }
          else
@@ -356,7 +363,9 @@ editrows(index,room){
   console.log("showpostroom",room)
   this.showdetails[index].editFlag=true;
   this.totalPos  -= 1;
-  this.totalamt -= Number(room.Amount)*Number(room.Qty);
+  console.log("posting",room.Amount,room.Qty)
+  this.totalamt -= Number(room.Posting_amount)*Number(room.Posting_quantity);
+  console.log("edit total posting",this.totalamt)
   // this.postdetails[index].editFlag=true;
   // this.postdetails.splice(index,1);
 }
@@ -368,8 +377,8 @@ saveButton(index,room){
   // delete room.editFlag;
   console.log("room details savebutton after delete flag",room)
   this.totalPos += 1;
-  this.totalamt += Number(room.Amount)*Number(room.Qty);
-
+  this.totalamt += Number(room.Posting_amount)*Number(room.Posting_quantity);
+  console.log("save button total charges",this.totalamt)
   this.postdetails[index]['Posting_amount'] = room.Posting_amount;
   this.postdetails[index]['Posting_quantity'] = room.Posting_quantity;
   this.postdetails[index]['Post_window'] = room.Post_window;
@@ -393,6 +402,28 @@ clearpost(){
 ngOnInit() {
 
   // posting history
+  this.statuscheck = this.session.retrieve("guest_status");
+  this.correctbalnce = this.session.retrieve("accuratebalance");
+
+  console.log("reinsrtateeeeeeeeeeeeeeeeee",this.statuscheck, this.correctbalnce)
+  if ( this.statuscheck == "Check out"){
+    this.reinstatetrue = false;
+    console.log("status working fine")
+  }
+  else{
+    this.reinstatetrue=true;
+  }
+
+
+  // package dropdown
+  this.cashbillservice.packagebetweendate()
+  .subscribe((resp: any) => {
+      this.packagearray = resp.ReturnValue;
+  
+      console.log("package values",this.packagearray,typeof(this.packagearray));
+      
+
+    });
   this.cashbillservice.gethistorylog()
   .subscribe((resp: any) => {
       this.house = resp.History;
@@ -653,6 +684,22 @@ getcreditexpiry(){
     }
   }
 
+// Reinstate checkout reservation
+reinstatereservation(){
+  this.cashbillservice.Reinstatereservation()
+  .subscribe((resp: any) => {
+   this.reinstatestatus=resp.ReturnCode;
+   console.log("reinstate retuen value",this.reinstatestatus)
+   if (this.reinstatestatus == "RUS"){
+     this.Success("Reservation reinstated successfully")
+     this.navigat['res_guest_status']='due out';
+     console.log("navigation ddddd",this.navigat['res_guest_status'])
 
+   }
+   else{
+     this.Success("Reinstate reservation for only checkout reservation")
+   }
+ });
+}
 
 }

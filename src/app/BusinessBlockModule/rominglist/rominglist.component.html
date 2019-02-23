@@ -42,10 +42,10 @@
                              </select>
                             </td>
                             <!-- <td><input style="width: 100%;height: 25px;"  name = "roomtype" type="text" [(ngModel)]="roomtype" /></td> -->
-                            <td><input style="width: 100%;height: 25px;"  name = "adult" type="text" [(ngModel)]="adult" /></td>
+                            <td><input style="width: 100%;height: 25px;"  name = "adult" type="number" [(ngModel)]="adult" /></td>
   
-                            <td><input style="width: 100%;height: 25px;"  name = "child" type="text" [(ngModel)]="child" /></td>
-                            <td><input style="width:100px;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms"/></td>
+                            <td><input style="width: 100%;height: 25px;"  name = "child" type="number" [(ngModel)]="child" /></td>
+                            <td><input style="width:100px;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms" disabled/></td>
                             
                             <td><input style="width: 100%;height: 25px;"  name = "rooms" type="text" [(ngModel)]="rooms" disabled /></td>
                             <td><input style="width: 100%;height: 25px;"  name = "blockid" type="text" [(ngModel)]="blockid" [value]="blockid" disabled/></td>
@@ -83,10 +83,10 @@
                                 <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_adults"></td>
         
                               <td ><label *ngIf="room.editFlag==false">{{room.res_child}}</label>
-                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_child"></td>
+                                <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_child"></td>
         
                               <td ><label *ngIf="room.editFlag==false">{{room.res_number_of_rooms}}</label>
-                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_number_of_rooms"></td>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_number_of_rooms" disabled></td>
                                 
                               <td ><label *ngIf="room.editFlag==false">{{room.res_rooms}}</label>
                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_rooms" disabled></td>

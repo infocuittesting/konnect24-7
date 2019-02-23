@@ -36,6 +36,12 @@ public roomingliststatus;
 public showhiddenroominglist;
 public rooming_status;
 public queryString:any;
+public Name:any;
+public BlockCode:any;
+public status:any;
+// public startDate:any;
+// public endDate:any;
+
   public =[];
   blc = true;
   grop = true;
@@ -109,7 +115,17 @@ public queryString:any;
   showLessBut(){
     this.showMore=false;
   } 
-  cleartab(){
+  cleartab(startDate,endDate){
+    console.log("=hi thisssssssssssssssssssssss")
+    console.log("checking type od ",typeof startDate)
+    this.Name="";
+    this.BlockCode="";
+    startDate=null;
+    endDate=null;
+    // this.startDate="";
+    this.status="";
+    // this.endDate="";
+    // param.reset();
     this.blocksearch.bsearchtable()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
@@ -127,6 +143,7 @@ public queryString:any;
   // filter the from to to
 
   filterDatefrmList(startDate,endDate){
+    console.log("startdate",startDate,endDate)
     if(startDate!=null && endDate!=null){
       let selectedMembers = this.tableschanges.filter(
         m => new Date(m.start_date) >= new Date(startDate) && new Date(m.start_date) <= new Date(endDate)
@@ -143,7 +160,7 @@ public queryString:any;
 
   
 
-public status;
+
 public reinstate;
 public Blockid;
 public blockname;
