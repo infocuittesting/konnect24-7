@@ -84,6 +84,9 @@ public privilegesreturn;
 public privilegesstatus;
 public privilegesbind;
 public showhideprivileges;
+checkselectClr:boolean;
+
+public restyp:any;
 disone=true
 distwo=true
 siva=true
@@ -369,10 +372,12 @@ filtercheckboxList:any=[];
 filtercheckboxData(ngmodel, flag) {
   if (ngmodel == true) {
        this.filtercheckboxList.push(flag);
+       console.log("fileter checkbox",this.filtercheckboxList)
   }else{
     for(var i=0;i<this.filtercheckboxList.length;i++){
       if(flag==this.filtercheckboxList[i]){
         this.filtercheckboxList.splice(i,1);
+        console.log("else filter checkbox",this.filtercheckboxList)
         break;
       }
     }
@@ -411,6 +416,10 @@ clear(){
   this.mainroom=''
   this.mainpersonname=''
   this.company=''
+  this.restyp=''
+  this.filtercheckboxList=[];
+  this.checkselectClr=false;
+  console.log("clear log",this.checkselectClr)
   this.cashinservice.inhousetable()
   .subscribe((resp: any) => {
 
