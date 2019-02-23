@@ -152,7 +152,7 @@ radio_bt_fil(val){
     this.curdate=this.datePipe.transform(this.curdate,'yyyy-MM-dd')
     // console.log("current date",this.curdate)
 
-    this.AccountoptionsService.acc_traces_new(newtrace,this.curdate)
+    this.AccountoptionsService.acc_traces_new(newtrace)
     .subscribe((resp: any) => {
       this.insertresp=resp.ReturnCode
       if(this.insertresp=='RIS'){
@@ -192,7 +192,7 @@ console.log("trave id after clicking the value",this.trace_id)
     this.curdate=this.datePipe.transform(this.curdate,'yyyy-MM-dd')
     // console.log("current date",this.curdate)
 
-    this.AccountoptionsService.acc_traces_edit(createdon,trace_txt,this.curdate)
+    this.AccountoptionsService.acc_traces_edit(createdon,trace_txt)
     .subscribe((resp: any) => {
       this.insertresp=resp.ReturnCode
       if(this.insertresp=='RUS'){
@@ -249,9 +249,9 @@ transferfun(){
   .subscribe((resp: any) => {
     this.insertresp=resp.ReturnCode
     console.log("transfer service working fine",this.insertresp)
-    if(this.insertresp=='RIS'){
-      var message="Transfer Successfully"
-      // this.toasterService.success(message);
+    if(this.insertresp == 'RIS'){
+       var message ="Transfer Successfully";
+       this.toasterService.success(message);
     }
 
  });

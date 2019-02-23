@@ -25,7 +25,7 @@ export class AccountoptionsService {
   }
 
   // insert new traces
-  acc_traces_new(traceinput,curdate):  Observable<object[]> {
+  acc_traces_new(traceinput):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -36,7 +36,6 @@ export class AccountoptionsService {
     "trace_text":traceinput.tracetxt,
     "acc_resolved_on":"",
     "acc_resolved_by":"",
-    "created_on":curdate,
     "created_by":1
   }
   console.log("insert trace json inputs",body)
@@ -51,7 +50,7 @@ export class AccountoptionsService {
           .map(this.extractData)
      }
 
-  acc_traces_edit(createdon,trace_txt,curdate):  Observable<object[]> {
+  acc_traces_edit(createdon,trace_txt):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -62,7 +61,6 @@ export class AccountoptionsService {
     "trace_text":trace_txt,
     "acc_resolved_on":"",
     "acc_resolved_by":"",
-    "created_on":curdate,
     "created_by":1
   }
   console.log("update trace json inputs",body)

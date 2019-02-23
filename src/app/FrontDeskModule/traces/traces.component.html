@@ -154,7 +154,7 @@
                   <b>Dept.Code</b>
                   <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
                     <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;" class="form-control"
-                      [(ngModel)]="trace.dept_code" #creditcardno="ngModel">
+                      [(ngModel)]="trac.dept_code" #creditcardno="ngModel">
                       <option *ngFor="let codedep of gettracedrop" >{{codedep.department}}</option>
                     </select>
                     <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>

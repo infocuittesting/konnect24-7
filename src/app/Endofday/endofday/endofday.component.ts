@@ -129,14 +129,19 @@ export class EndofdayComponent implements OnInit {
   }
 
   public dropdown:any;
+  public message:any;
   showhiderestriction(param){
 
     if (param == "Reservation") {
       this.resv = true;
       this.EndofdayService.countrycheck()
       .subscribe((resp: any) => {
+        if(resp.ReturnValue.length == 0){
+          this.message = "Today Record is Empty"
+        }else{
        this.checkvalue=resp.ReturnValue;
        this.getcheck=resp.ReturnValue;
+        }
      });
     }
     else {
@@ -147,7 +152,11 @@ export class EndofdayComponent implements OnInit {
       this.profile = true;
       this.EndofdayService.notcheckout()
       .subscribe((resp: any) => {
+        if(resp.ReturnValue.length == 0){
+          this.message = "Today Record is Empty"
+        }else{
        this.notcheck=resp.ReturnValue;
+      }
      });
 
      this.EndofdayService.dropdown()

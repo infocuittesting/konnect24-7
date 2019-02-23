@@ -65,6 +65,7 @@ public deptdrop:any;
 
   flag = false;
   ednew =true;
+  newval = false
 
   selected(details,index){
     this.selectindex=index;
@@ -89,12 +90,14 @@ public deptdrop:any;
   if(this.flag==false){
     this.flag=true;
     this.ednew=false;
+    this.newval = true;
     this.selectindex=index; 
   
   }else{
     this.flag=false;
       this.selectindex=null;
       this.ednew=true;
+      this.newval = false;
   }
   
   
@@ -161,6 +164,7 @@ Insertguest(trac){
     "traces_dept_code":trac.dept_code,
     "traces_trace_text":trac.straces_text
   }
+  console.log('testttttttt',body)
  this.TracesService.Insertguest(body)
  .subscribe((resp: any) => {
   this.deletetrace=resp.ReturnCode;

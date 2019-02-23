@@ -28,6 +28,7 @@
       <div *ngIf="resv == true">
         <div class="container-fluid">  
         <div class="panel panel-default">
+            <label><p style="margin-left: 380px;margin-top: 24px;color: red">{{message}}</p></label>
             <div style="margin:40px 20px 20px 20px ">
              <table class="table table-bordered  table-hover tableBodyScroll panshadow">
                             <thead>
@@ -86,6 +87,7 @@
                         <option *ngFor="let paydrop of dropdown" [ngValue]="paydrop.payment_description">{{paydrop.payment_description}}</option>
                       </select>
                       </div> 
+                        <label><p style="margin-left: 100px;margin-top: 24px;color: red">{{message}}</p></label>
                 </div>
             
                   <div class="row">
@@ -185,21 +187,18 @@
                   <div class="row" style="margin:10px">
                     <div class="col-lg-8 panel panel-default panshadow" >
                         <div class="row" style="margin:20px">
-                            <table class="table table-borderd" *ngFor="let list of posting">
-                                <thead>
-                                    <tr>
-                                        <th>Room: {{list.room}} <span style="margin-left:110px">Name: {{list.name}}</span></th>
-                                    </tr>
-                                </thead>
+                            <table class="table table-borderd tableBodyScroll">
+                              
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let list of posting">
+                                            <th>Room: {{list.room}} <span style="margin-left:70px">Name: {{list.name}}</span></th>
+                                            
                                         <td>
                                             {{list.posting}} <span style="margin-left:180px">Completed</span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                     <div class="col-lg-2" style="float: bottom">
