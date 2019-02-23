@@ -164,7 +164,8 @@ selectMembersEdit(details,index)
       this.session.store("depar",details.res_depature.toString());
       this.session.store("guest_status",details.res_guest_status);
       this.session.store("accuratebalance",details.balance);
-          console.log("ession valuw",details.res_arrival,details.balance)
+      this.session.store("companyname",details.pf_account)
+          console.log("ession valuw",details.res_arrival,details.balance,details.pf_account)
       console.log("Res_id_getting",this.Res_id_getting,this.Res_unique_id_getting)
 
 
