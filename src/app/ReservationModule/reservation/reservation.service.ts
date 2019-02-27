@@ -128,7 +128,7 @@ export class ReservationService {
    }
 
      //wait setvice call
-    getwaitdata(input,parm,param,PF_Firstname,Pf_lastname,):  Observable<object[]> {
+    getwaitdata(input,parm,param,PF_Firstname,Pf_lastname):  Observable<object[]> {
       
       const headers = new Headers();
        headers.append('Content-Type','application/json');

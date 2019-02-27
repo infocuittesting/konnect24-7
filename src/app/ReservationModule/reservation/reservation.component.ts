@@ -55,7 +55,7 @@ export class ReservationComponent implements OnInit {
       this.route.navigate(['checkin/']);
 
     }
-    this.session.clear();
+    // this.session.clear();
   }
 
   test(company) {
@@ -271,8 +271,6 @@ export class ReservationComponent implements OnInit {
           this.usera = "Room Type or Date is not declared";
         }
         
-
-
       });
       this.route.navigate(['checkin/']);
 
