@@ -81,7 +81,9 @@ export class ReservationService {
        if(input.RES_Disc_Amount==undefined||input.RES_Disc_Amount==null){input.RES_Disc_Amount="";}if(input.RES_Disc_perc==undefined||input.RES_Disc_perc==null){input.RES_Disc_perc="";}
        if(input.RES_Creditcard_Number==undefined||input.RES_Creditcard_Number==null){input.RES_Creditcard_Number="";}if(input.RES_Currency==undefined||input.RES_Currency==null){input.RES_Currency="";}
        if(input.RES_Payment == null){input.RES_Payment = '';}if(input.RES_Room == null||input.RES_Room == undefined){input.RES_Room = '';}
-       if(input.RES_RTC == null||input.RES_RTC == undefined){input.RES_RTC = '';}  if(input.RES_ETA == null||input.RES_ETA == undefined){input.RES_ETA = '';} 
+       if(input.RES_RTC == null||input.RES_RTC == undefined){input.RES_RTC = '';}  if(input.RES_ETA == null||input.RES_ETA == undefined){input.RES_ETA = '';}
+       if(input.RES_Res_Type == null||input.RES_Res_Type == undefined){input.RES_Res_Type = '';} 
+       if(input.RES_Origin == null||input.RES_Origin == undefined){input.RES_Origin = '';} if(input.RES_Market == null||input.RES_Market == undefined){input.RES_Market = '';}
        let body=
         {
           "RES_Arrival":input.RES_Arrival,
