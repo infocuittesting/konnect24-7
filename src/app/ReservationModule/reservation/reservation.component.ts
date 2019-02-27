@@ -41,7 +41,7 @@ export class ReservationComponent implements OnInit {
   public marketpro = [];
 
   public user1;
-  public RES_packages;
+  public RES_packages;comid:any;
 
   
   public date: any = new Date().toJSON().split('T')[0];
@@ -126,16 +126,14 @@ export class ReservationComponent implements OnInit {
 
   public ratequery: any;
   modalchange(RES_Arrival, RES_Depature, RES_Adults) {
-    if (this.session.retrieve("profileid") == null) {
-      var comid = "";
-    } else {
-      comid = this.session.retrieve("profileid").toString();
-    }
+   if(this.compid==null){
+     this.comid="";
+   }
     let body = {
       "arrival_date": RES_Arrival,
       "departure_date": RES_Depature,
       "adults": parseInt(RES_Adults),
-      "com_pf_id": comid
+      "com_pf_id": this.comid.toString()
     }
     console.log(body)
     this.ReservationService.RateQuery(body)
@@ -207,7 +205,7 @@ export class ReservationComponent implements OnInit {
     }
     else if(this.session.retrieve("reservationedit")=='resevedit'){
       // edit update service
-      this.ReservationService.postandgetdataedit(inputt, this.compid,this.resid,this.uniquid,this.pfid,param)
+      this.ReservationService.postandgetdataedit(inputt, this.compid,this.resid,this.uniquid,this.pfid,this.PF_Mobileno)
       .subscribe((resp: any) => {
         this.user33 = resp;
         this.confim = resp.ConfirmationNumber;
@@ -217,7 +215,7 @@ export class ReservationComponent implements OnInit {
         } else if (resp.Status == "Failure") {
           this.usera = "Room Type or Date is not declared";
         }
-        
+        param.reset();
         this.user = " ";
         this.PF_Firstname = "";
         this.Pf_lastname = "";
@@ -461,7 +459,8 @@ export class ReservationComponent implements OnInit {
     if(this.session.retrieve("reservationedit")=='resevedit')
     {
       this.res=this.session.retrieve("editval");
-
+      console.log("My testtttttttt",this.res)
+      this.comid=""
       this.user.RES_Arrival = this.res.res_arrival;
       this.user.RES_Depature = this.res.res_depature;
       this.user.RES_Nights = this.res.res_nights;
@@ -493,6 +492,13 @@ export class ReservationComponent implements OnInit {
       this.resid=this.res.res_id;
       this.uniquid=this.res.res_unique_id;
       this.pfid=this.res.pf_id;
+    }
+
+    // ratequery
+    if (this.session.retrieve("profiletype") == "Individual") {
+      this.comid = "";
+    } else if(this.session.retrieve("profiletype") != "Individual"){
+      this.comid = this.session.retrieve("profileid");
     }
     //setInterval timer for ETA input field
     console.log(this.PF_Firstname, this.Pf_lastname, this.Pf_language, this.PF_Mobileno, this.Pf_title, this.Pf_country, this.Pf_vip);

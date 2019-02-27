@@ -72,14 +72,16 @@ export class ReservationService {
       const headers = new Headers();
        headers.append('Content-Type','application/json');
        const options = new RequestOptions({ headers: headers });
-       if(input.RES_Child==undefined){input.RES_Child="";}if(input.RES_Adults==undefined){input.RES_Adults="";}
-       if(input.RES_Nights==undefined){input.RES_Nights="";}if(input.RES_Number_Of_Rooms==undefined){input.RES_Number_Of_Rooms="";}
-       if(input.RES_Rate==undefined){input.RES_Rate="";}if(input.RES_Source==undefined){input.RES_Source="";}
-       if(input.RES_Disc_Reason==undefined){input.RES_Disc_Reason="";}if(input.RES_Specials==undefined){input.RES_Specials="";}
-       if(input.RES_Comments==undefined){input.RES_Comments="";}if(input.RES_Item_Inv==undefined){input.RES_Item_Inv="";}       
-       if(param == null){
-         param = '';
-       }
+       if(input.RES_Child==undefined||input.RES_Child==null){input.RES_Child="";}if(input.RES_Adults==undefined||input.RES_Adults==null){input.RES_Adults="";}
+       if(input.RES_Nights==undefined||input.RES_Nights==null){input.RES_Nights="";}if(input.RES_Number_Of_Rooms==undefined||input.RES_Number_Of_Rooms==null){input.RES_Number_Of_Rooms="";}
+       if(input.RES_Rate==undefined||input.RES_Rate==null){input.RES_Rate="";}if(input.RES_Source==undefined||input.RES_Source==null){input.RES_Source="";}
+       if(input.RES_Disc_Reason==undefined||input.RES_Disc_Reason==null){input.RES_Disc_Reason="";}if(input.RES_Specials==undefined||input.RES_Specials==null){input.RES_Specials="";}
+       if(input.RES_Comments==undefined||input.RES_Comments==null){input.RES_Comments="";}if(input.RES_Item_Inv==undefined||input.RES_Item_Inv==null){input.RES_Item_Inv="";}       
+       if(param == null){param = ''; }if(input.RES_Guest_Balance==undefined||input.RES_Guest_Balance==null){input.RES_Guest_Balance="";}
+       if(input.RES_Disc_Amount==undefined||input.RES_Disc_Amount==null){input.RES_Disc_Amount="";}if(input.RES_Disc_perc==undefined||input.RES_Disc_perc==null){input.RES_Disc_perc="";}
+       if(input.RES_Creditcard_Number==undefined||input.RES_Creditcard_Number==null){input.RES_Creditcard_Number="";}if(input.RES_Currency==undefined||input.RES_Currency==null){input.RES_Currency="";}
+       if(input.RES_Payment == null){input.RES_Payment = '';}if(input.RES_Room == null||input.RES_Room == undefined){input.RES_Room = '';}
+       if(input.RES_RTC == null||input.RES_RTC == undefined){input.RES_RTC = '';}  if(input.RES_ETA == null||input.RES_ETA == undefined){input.RES_ETA = '';} 
        let body=
         {
           "RES_Arrival":input.RES_Arrival,
@@ -122,7 +124,7 @@ export class ReservationService {
            "res_unique_id":uniquid.toString()
           };      
 
-        console.log(body);
+        console.log(JSON.stringify(body));
        return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_UPDATE_UpdateReservation',body,options)
           .map(this.extractData)
    }

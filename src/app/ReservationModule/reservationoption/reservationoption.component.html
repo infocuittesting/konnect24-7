@@ -308,7 +308,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add Credit Card Details here...</h4>
         </div>
-        <form action="">
+        <form action="" #res="ngForm">
             <div class="modal-body">
               <div class="container" style="width:100%;">
                 <br>
@@ -354,7 +354,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-success" (click)="submit(ic)" data-dismiss="modal"><b>Ok</b></button>
+              <button type="reset" class="btn btn-success" (click)="submit(ic,res)" data-dismiss="modal"><b>Ok</b></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
             </div>
           </form>

@@ -356,7 +356,7 @@ subdele() {
 // insertCredit start
 ic=[]; 
 public inscredit;
-submit(inputt) {
+submit(inputt,param) {
   console.log(inputt);
   this.creditcard_expiry = this.month+"/"+this.year;
   inputt.pf_expiration_date = this.creditcard_expiry
@@ -374,7 +374,8 @@ submit(inputt) {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
-         this.ic=[];
+         
+         this.ic=[];param.reset();
       }
  
     });  
