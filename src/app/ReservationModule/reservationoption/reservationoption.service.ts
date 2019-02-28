@@ -126,7 +126,7 @@ export class ReservationoptionService {
       "Res_id": this.session.retrieve("id"),
       "Res_unique_id": this.session.retrieve("uniq"),
       "Res_room": input.toString(),
-      "Old_Room": this.session.retrieve("Room"),
+      "Old_Room": this.session.retrieve("Room").toString(),
       "old_room_status": tatus
     }
     console.log("iputtesttttt", par)

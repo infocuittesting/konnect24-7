@@ -97,8 +97,6 @@
              <div class="col-md-2"></div>
        </div>
       </form>
-      <br>
-	   
       </form>
   </div>
 </div>
@@ -137,7 +135,7 @@
                   <th *ngIf="showMore==true"> Rate</th>
                 </tr>
         </thead>
-        <tbody>
+        <tbody style="font-size: 11px">
           <tr *ngFor="let searched of searchandedit|searchfilter:{pf_firstname: queryString }|searchfilter:{res_unique_id: resof }|searchfilter:{pf_firstname: query}|searchfilter:{res_source: qsource} ; let i = index" 
           (click)="selectMembersEdit(searched,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
             <td style="width:50px">{{i+1}}</td> 

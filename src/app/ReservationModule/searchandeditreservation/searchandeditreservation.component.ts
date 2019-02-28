@@ -60,7 +60,7 @@ export class SearchandeditreservationComponent implements OnInit {
   public user3;
   public cansl;
   subcancel(inputt) {
-    this.pService.cancel(inputt)
+    this.pService.cancel(inputt,this.uniq_id)
       .subscribe((resp: any) => {
         this.user3 = resp.ReturnCode;
         if (this.user3 == "RIS") {
@@ -95,7 +95,7 @@ export class SearchandeditreservationComponent implements OnInit {
   subrein() {
     let body = {
       "res_id": this.session.retrieve("id"),
-      "res_unique_id": this.session.retrieve("uniq"),
+      "res_unique_id": this.uniq_id,
       "RES_Room_Type": this.session.retrieve("RoomType"),
       "RES_Arrival": this.session.retrieve("arrival"),
       "RES_Depature": this.session.retrieve("departure"),
@@ -186,13 +186,14 @@ export class SearchandeditreservationComponent implements OnInit {
   public preferences;
   public pfid;
   public duedatevali; privilegess: any;
-  public selectindex = null; due;
+  public selectindex = null; due;uniq_id:any;
 
   selectMembersEdit(details, index) {
     console.log(details)
     this.selectindex = index;
     this.reinstate = details.res_guest_status;
     this.resid = details.res_id;
+    this.uniq_id=details.res_unique_id;
     this.pfid = details.pf_id;
 
     //privilleges Glow
@@ -211,14 +212,16 @@ export class SearchandeditreservationComponent implements OnInit {
       });
 
 
-
     //Duedate Glow
-    this.pService.duedate(this.resid)
+    this.pService.duedate(this.resid,this.uniq_id)
       .subscribe((resp: any) => {
         this.due = resp.ReturnCode;
-        if (this.due == "RV" || this.due == "RIV") {
+        if (this.due == "RV") {
           this.showhidereser = true;
-          this.duedatevali = resp.Return;
+          this.duedatevali = "Deposit";
+        } else if (this.due == "RIV") {
+          this.showhidereser = true;
+          this.duedatevali = "Cancel Deposit";
         } else
           if (this.due == "NOR") {
             this.showhidereser = false;
@@ -329,7 +332,7 @@ export class SearchandeditreservationComponent implements OnInit {
 
   // CAncel Due Date
   cancledue() {
-    this.pService.duecancel(this.resid)
+    this.pService.duecancel(this.resid,this.uniq_id)
       .subscribe((resp: any) => {
         resp.ReturnValue;
       })

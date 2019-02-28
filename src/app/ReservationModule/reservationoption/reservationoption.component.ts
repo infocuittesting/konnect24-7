@@ -259,8 +259,9 @@ submitroom(input){
 this.pppService.Roommove(input,this.tatus)
 .subscribe((user333:any )=> {
   this.waitlist = user333.ReturnCode;
-  if(this.waitlist=="RIS"){
-    this.waitlist=" Waitlist Reason is created for "+this.Name;
+  if(this.waitlist=="RUS"){
+    this.waitlist=user333.RoomMove;
+    this.Success(this.waitlist);
   }
 });
 }
@@ -552,6 +553,10 @@ submitrate() {
           .subscribe((resp: any) => {
             this.fixrate = resp.ReturnValue;
           })
+        }
+        else if(this.tra=="AE"){
+          this.tra="Fixed Rate is Already Exist for "+this.Name;
+          this.Success(this.tra);
         }
       },
         );  

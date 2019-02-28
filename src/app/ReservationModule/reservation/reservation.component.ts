@@ -557,14 +557,18 @@ export class ReservationComponent implements OnInit {
   // }
 
   //Select
+  public ratecodess;
+  roomtypess:any;
   selectrow(detail) {
     this.user.RES_Rate_Code = detail.rate_code;
     console.log(this.user.RES_Rate_Code)
+    this.ratecodess = detail.rate_code;
   }
   selectdata(details) {
     this.user.RES_Rate = details.rate;
     this.user.RES_Room_Type = details.roomstype;
     this.user.RES_RTC = details.roomstype;
+    this.roomtypess=", "+details.roomstype+" $10 Flat off standard rate";
   }
   // navigating to profile
 
