@@ -302,7 +302,7 @@
                                             <div class="col-md-3"  >
                                               <div class="form-group" [class.has-error]="tota_room==true"  style="width: 100px;" >
                                                 <label for="name">Total Rooms</label>
-                                                <input type="number" class="form-control input-sm" name="total_room" value="{{(Occupency1+Occupency2+Occupency3+Occupency4)}}"  [(ngModel)]="totalrooms">
+                                                <input type="number" class="form-control input-sm" name="total_room" value="{{(Occupency1+Occupency2+Occupency3+Occupency4)}}"  [(ngModel)]="totalrooms" disabled>
                                                 <div *ngIf="tota_room==true"  ngClass="{ 'has-error' : tota_room==true}"></div>
                                               </div>
                                             </div>
@@ -310,7 +310,7 @@
                                             <div class="col-md-3">
                                                <div class="form-group"style="margin-left: 78px;width: 100px;">
                                                  <label for="name">Add.Rate</label>
-                                                 <input type="number" class="form-control input-sm" name="add_rate"value="{{Rate4+Rate3+Rate2+Rate1}}" [(ngModel)]="addrates">
+                                                 <input type="number" class="form-control input-sm" name="add_rate"value="{{Rate4+Rate3+Rate2+Rate1}}" [(ngModel)]="addrates" disabled>
                                                </div>
                                              </div>
                                            </div>
@@ -564,7 +564,7 @@
                                 <div class="col-md-3"  >
                                   <div class="form-group" [class.has-error]="tota_room==true"  style="width: 100px;" >
                                     <label for="name">Total Rooms</label>
-                                    <input type="number" class="form-control input-sm" name="edit_total_room" value="{{editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four}}"  [(ngModel)]="editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four">
+                                    <input type="number" class="form-control input-sm" name="edit_total_room" value="{{editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four}}"  [(ngModel)]="editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four" disabled>
                                     <div *ngIf="tota_room==true"  ngClass="{ 'has-error' : tota_room==true}"></div>
                                   </div>
                                 </div>
