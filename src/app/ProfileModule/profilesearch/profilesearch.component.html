@@ -109,8 +109,8 @@
 
  <div class="container-fluid">
    <table class="table table-bordered table-hover tableBodyScroll">
-     <thead style="background-color:#0077B5;color:white;">
-       <tr>
+     <thead>
+       <tr style="background-color:#0077B5;color:white;">
           <th style="width:40px">No</th>
           <th style="width:120px">FirstName</th>
           <th style="width:120px">LastName</th>
@@ -128,7 +128,7 @@
         
        </tr>
      </thead>
-     <tbody>
+     <tbody style="font-size: 12px">
        <tr  *ngFor="let profilesearch of profile1 | filterdata:blockof :'pf_id'|filterdata: endof :'pf_id'| searchfilter: {pf_firstname :queryString} | searchfilter: {pf_lastname :lastname}| searchfilter: {pf_city :city}
       | searchfilter: {pf_postalcode :postal} |  searchfilter: {pf_mobileno :mobile} |  searchfilter: {pf_type :pftypeselection}; let i = index " 
       (click)="selectMembersEdit(profilesearch,i)" [ngClass]="{'backGroundColor':i==selectindex}">

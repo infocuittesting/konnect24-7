@@ -40,20 +40,21 @@ export class SearchandeditreservationService {
 
   //get glow of duedate buttom
 
-  duedate(parm): Observable<object[]> {
+  duedate(parm,param): Observable<object[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' })
     const options = new RequestOptions({ headers: headers });
-    let body = { "res_id": parm, "res_unique_id": this.session.retrieve("uniq") }
+    let body = { "res_id": parm, "res_unique_id": param }
+    console.log("doue",body)
     return this.http.post('https://hotel360.herokuapp.com/Hotel_PMS_Select_DepositDueDate', body, options)
       .map(this.extractData)
   }
 
   //get glow of duedate buttom
 
-  duecancel(parm): Observable<object[]> {
+  duecancel(parm,param): Observable<object[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' })
     const options = new RequestOptions({ headers: headers });
-    let body = { "res_id": parm, "res_unique_id": this.session.retrieve("uniq") }
+    let body = { "res_id": parm, "res_unique_id": param }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_SELECT_QueryDeposit', body, options)
       .map(this.extractData)
   }
@@ -94,19 +95,20 @@ export class SearchandeditreservationService {
   
   //Cancel reservation
 
-  cancel(input: any): Observable<object[]> {
+  cancel(input: any,param): Observable<object[]> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     let body = {
       "Res_id": this.session.retrieve("id"),
-      "Res_unique_id": this.session.retrieve("uniq"),
+      "Res_unique_id": param,
       "Cancel_reason": input.Cancel_reason,
       "Cancel_description": input.Cancel_description,
       "Res_Arrival": this.session.retrieve("arrival"),
       "Res_Depature": this.session.retrieve("departure"),
       "Res_Room_Type": this.session.retrieve("RoomType")
     };
+    console.log(body)
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_CancelReservation', body, options)
       .map(this.extractData)
   }
@@ -118,6 +120,7 @@ export class SearchandeditreservationService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
+    console.log(input)
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_ReinstateReservation', input, options)
       .map(this.extractData)
   }

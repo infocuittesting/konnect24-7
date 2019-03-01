@@ -27,7 +27,7 @@ public money=[];
 public roomnum=[];
 public windowvar=[];
 public billing:any;
-
+public companyname:any;
 public letter:any;
 public successmsg:any;
 public failuremsg:any;
@@ -404,7 +404,7 @@ ngOnInit() {
   // posting history
   this.statuscheck = this.session.retrieve("guest_status");
   this.correctbalnce = this.session.retrieve("accuratebalance");
-
+  this.companyname = this.session.retrieve("companyname")
   console.log("reinsrtateeeeeeeeeeeeeeeeee",this.statuscheck, this.correctbalnce)
   if ( this.statuscheck == "Check out"){
     this.reinstatetrue = false;

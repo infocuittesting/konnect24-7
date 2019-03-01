@@ -142,7 +142,7 @@
                     <label style="margin-top: -5px"><b><u>Status</u></b></label>
                   </div>
                 </div>
-
+                <form action="" #clearcheck="ngForm">
                 <div class="row">
 
                   <div class="col-md-6">
@@ -196,7 +196,7 @@
                         <label>CHECKOUT</label>
                       </div>
                       <div class="col-md-1 col-sm-1 col-xs-1">
-                        <button class="btn btn-success" style="border-radius: 6px;margin-top: 0px;width: 115px;height: 30px;" (click)="clear()">
+                        <button class="btn btn-success" style="border-radius: 6px;margin-top: 0px;width: 115px;height: 30px;" (click)="clear($event.target.checked);clearcheck.reset()">
                           <b>Clear</b>
                         </button>
                       </div>
@@ -289,6 +289,8 @@
                   </div>
 
                 </div>
+              </form>
+
               </form>
 
           </div>

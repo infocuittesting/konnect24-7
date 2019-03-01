@@ -73,10 +73,10 @@ checkinProfile(){
    .subscribe((resp: any) => {
     this.status=resp.ReturnCode;
     if(this.status=="RUS"){
-      this.status="The Checkin is conformed for"+this.firstname;
+      this.status="The Checkin is conformed for "+this.firstname;
     }
     else if(this.status=="AGS"){
-      this.status="The Checkin is conformed for"+this.firstname;
+      this.status="The Checkin is conformed for "+this.firstname;
     }
     this.checkinService.searchedit()
     .subscribe((resp: any) => {

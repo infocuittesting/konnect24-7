@@ -60,7 +60,7 @@ export class SearchandeditreservationComponent implements OnInit {
   public user3;
   public cansl;
   subcancel(inputt) {
-    this.pService.cancel(inputt)
+    this.pService.cancel(inputt,this.uniq_id)
       .subscribe((resp: any) => {
         this.user3 = resp.ReturnCode;
         if (this.user3 == "RIS") {
@@ -78,8 +78,13 @@ export class SearchandeditreservationComponent implements OnInit {
   }
   public queryString;
   //clear
-  clearinput() {
+  clearinput(param) {
     this.queryString = "";
+    param.reset();
+    this.pService.searchedit()
+      .subscribe((resp: any) => {
+        this.searchandedit = resp.ReturnValue;
+      });
   }
 
 
@@ -90,7 +95,7 @@ export class SearchandeditreservationComponent implements OnInit {
   subrein() {
     let body = {
       "res_id": this.session.retrieve("id"),
-      "res_unique_id": this.session.retrieve("uniq"),
+      "res_unique_id": this.uniq_id,
       "RES_Room_Type": this.session.retrieve("RoomType"),
       "RES_Arrival": this.session.retrieve("arrival"),
       "RES_Depature": this.session.retrieve("departure"),
@@ -168,7 +173,7 @@ export class SearchandeditreservationComponent implements OnInit {
   public profile = false;
   public option = true;
   public reinstate;
-  public resid;resedit;
+  public resid; resedit;
   public name;
   public showhide = false;
   public showhidepreferences = false;
@@ -180,14 +185,15 @@ export class SearchandeditreservationComponent implements OnInit {
   public notes;
   public preferences;
   public pfid;
-  public duedatevali;privilegess:any;
-  public selectindex = null;due;
+  public duedatevali; privilegess: any;
+  public selectindex = null; due;uniq_id:any;
 
   selectMembersEdit(details, index) {
     console.log(details)
     this.selectindex = index;
     this.reinstate = details.res_guest_status;
     this.resid = details.res_id;
+    this.uniq_id=details.res_unique_id;
     this.pfid = details.pf_id;
 
     //privilleges Glow
@@ -206,14 +212,16 @@ export class SearchandeditreservationComponent implements OnInit {
       });
 
 
-
     //Duedate Glow
-    this.pService.duedate(this.resid)
+    this.pService.duedate(this.resid,this.uniq_id)
       .subscribe((resp: any) => {
         this.due = resp.ReturnCode;
-        if (this.due == "RV" || this.due == "RIV") {
+        if (this.due == "RV") {
           this.showhidereser = true;
-          this.duedatevali = resp.Return;
+          this.duedatevali = "Deposit";
+        } else if (this.due == "RIV") {
+          this.showhidereser = true;
+          this.duedatevali = "Cancel Deposit";
         } else
           if (this.due == "NOR") {
             this.showhidereser = false;
@@ -275,7 +283,7 @@ export class SearchandeditreservationComponent implements OnInit {
       this.new = false;
       this.profile = false;
       this.option = true;
-      this.edit =true;
+      this.edit = true;
     }
     if (this.reinstate == "cancel") {
       this.rein = false;
@@ -317,36 +325,36 @@ export class SearchandeditreservationComponent implements OnInit {
     this.session.store("DiscAmount", details.res_disc_amount);
     this.session.store("Currency", details.res_currency);
     this.session.store("res_number_of_rooms", details.res_number_of_rooms);
-    this.resedit=details;
+    this.resedit = details;
 
-    
+
   }
 
   // CAncel Due Date
   cancledue() {
-    this.pService.duecancel(this.resid)
+    this.pService.duecancel(this.resid,this.uniq_id)
       .subscribe((resp: any) => {
         resp.ReturnValue;
       })
   }
 
-  resevedit(param){
-    if(param=="resevedit"){
-      this.session.store("reservationedit",param)
+  resevedit(param) {
+    if (param == "resevedit") {
+      this.session.store("reservationedit", param)
+      this.session.store("fname", this.resedit.pf_firstname);
+      this.session.store("lastname", this.resedit.pf_lastname);
+      this.session.store("language", this.resedit.pf_language);
+      this.session.store("mobileno", this.resedit.pf_mobileno);
+      this.session.store("title", this.resedit.pf_title);
+      this.session.store("individual_country", this.resedit.pf_individual_country);
+      this.session.store("individual_vip", this.resedit.pf_individual_vip);
+      this.session.store("editval", this.resedit);
+      this.session.store("res_child", this.resedit.res_child);
+      this.session.store("resource", this.resedit.res_source)
+      console.log("my testt", this.session.retrieve("editval"));
       this.route.navigate(['reservation/']);
-      this.session.store("fname",this.resedit.pf_firstname);
-      this.session.store("lastname",this.resedit.pf_lastname);
-      this.session.store("language",this.resedit.pf_language);
-      this.session.store("mobileno",this.resedit.pf_mobileno);
-      this.session.store("title",this.resedit.pf_title);
-      this.session.store("individual_country",this.resedit.pf_individual_country);
-      this.session.store("individual_vip",this.resedit.pf_individual_vip);
-      this.session.store("editval",this.resedit);
-      this.session.store("res_child",this.resedit.res_child);
-      this.session.store("resource",this.resedit.res_source)
-      console.log("my testt",this.session.retrieve("editval"));
     }
-    
+
   }
 
 

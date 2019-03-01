@@ -259,8 +259,9 @@ submitroom(input){
 this.pppService.Roommove(input,this.tatus)
 .subscribe((user333:any )=> {
   this.waitlist = user333.ReturnCode;
-  if(this.waitlist=="RIS"){
-    this.waitlist=" Waitlist Reason is created for "+this.Name;
+  if(this.waitlist=="RUS"){
+    this.waitlist=user333.RoomMove;
+    this.Success(this.waitlist);
   }
 });
 }
@@ -356,7 +357,7 @@ subdele() {
 // insertCredit start
 ic=[]; 
 public inscredit;
-submit(inputt) {
+submit(inputt,param) {
   console.log(inputt);
   this.creditcard_expiry = this.month+"/"+this.year;
   inputt.pf_expiration_date = this.creditcard_expiry
@@ -374,7 +375,8 @@ submit(inputt) {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
-         this.ic=[];
+         
+         this.ic=[];param.reset();
       }
  
     });  
@@ -551,6 +553,10 @@ submitrate() {
           .subscribe((resp: any) => {
             this.fixrate = resp.ReturnValue;
           })
+        }
+        else if(this.tra=="AE"){
+          this.tra="Fixed Rate is Already Exist for "+this.Name;
+          this.Success(this.tra);
         }
       },
         );  

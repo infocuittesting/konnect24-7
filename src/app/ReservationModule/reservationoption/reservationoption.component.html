@@ -117,7 +117,6 @@
               <table class="table table-hover table-bordered">
                 <thead style="background-color:#0077B5;color:white;">
                   <tr>
-                    <th> </th>
                     <th> User</th>
                     <th> Time</th>
                     <th> Date</th>
@@ -127,7 +126,6 @@
                 </thead>
                 <tbody style="background-color:white;">
                   <tr *ngFor="let tablelist of tableschanges">
-                    <th> <input type="checkbox"></th>
                     <td>{{tablelist.emp_firstname}}</td>
                     <td> {{tablelist.res_log_time}}</td>
                     <td> {{tablelist.res_log_date}}</td>
@@ -310,7 +308,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add Credit Card Details here...</h4>
         </div>
-        <form action="">
+        <form action="" #res="ngForm">
             <div class="modal-body">
               <div class="container" style="width:100%;">
                 <br>
@@ -356,7 +354,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-success" (click)="submit(ic)" data-dismiss="modal"><b>Ok</b></button>
+              <button type="reset" class="btn btn-success" (click)="submit(ic,res)" data-dismiss="modal"><b>Ok</b></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
             </div>
           </form>
@@ -574,13 +572,13 @@
                 data-toggle="modal" data-target="#fixcharge"><i class="glyphicon glyphicon-option-horizontal"></i></span>
               <div *ngIf="tans.touched && !tans.valid && tans.errors?.required" ngClass="{ 'has-error' : !tans.valid && submitAttempt }"></div>
             </div>
-            <br>
+            <!-- <br>
             <label>Article Code</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
               <input type="text" class="form-control" placeholder="Article code" aria-describedby="basic-addon1"
                 [(ngModel)]="fixed.Fixed_Charges_Article_Code">
-            </div>
+            </div> -->
             <br>
             <label>Amount</label> <label style="margin-left:300px;">Quantity</label>
             <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
@@ -598,7 +596,7 @@
               <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
               <input type="text" class="form-control" placeholder="content" aria-describedby="basic-addon1" [(ngModel)]="fixed.Fixed_Charges_Supplement">
             </div>
-            <br>
+            <!-- <br>
             <legend style="margin-top:5px;"> </legend>
 
             <span><input type="radio" id="radio1" name="Fixed_Charges_Occurrence" [(ngModel)]="fixed.Fixed_Charges_Occurrence"
@@ -622,7 +620,7 @@
 
 
             <span><input type="radio" id="radio6" name="Fixed_Charges_Occurrence" [(ngModel)]="fixed.Fixed_Charges_Occurrence"
-                value="Yearly" /><label for="radio6">Yearly</label></span>
+                value="Yearly" /><label for="radio6">Yearly</label></span> -->
           </div>
         </div>
       </div>
@@ -1846,12 +1844,12 @@
                           [(ngModel)]="waitls.RES_Waitlist_Priority"></td>
 
                     </tr><br>
-                    <tr>
+                    <!-- <tr>
                       <td><b>Telephone No.</b></td>
                       <td style="padding-left:60px;">
                         <input name="waitlisttelephonenumber" type="text" required style="height:30px;border-radius:4px;width:240px;"
                           [(ngModel)]="waitls.RES_Waitlist_Telephoneno"></td>
-                    </tr>
+                    </tr> -->
                   </table><br><br>
                 </div>
                 <div class="col-md-4">
@@ -1930,7 +1928,7 @@
       <div class="modal-body">
         <div class="container" style="width: 100%; margin-top: -39px;">
           <div style="margin-top: 30px;">
-            <table class="tableBodyScroll table-hover table-bordered" style="width: 100%;">
+            <table class="table tableBodyScroll table-hover table-bordered" style="width: 100%;">
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
                   <th>Name</th>
@@ -2036,21 +2034,6 @@
 
         <div class="panel panel-default">
           <div class="row" style="margin:20px">
-            <div class="col-lg-2 col-md-2">
-              <label> Currency</label>
-            </div>
-            <div class="col-lg-3 col-md-3">
-              <div class="input-group">
-                <select name="" id="" style="width:13em;height:34px">
-                  <option value="">USD</option>
-                  <option value="">EUR</option>
-                  <option value="">AUD</option>
-                  <option value="">GBP</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row" style="margin:20px">
             <table class="table table-hover table-bordered">
               <thead style="background-color:#0077B5;color:white;">
                 <tr>
@@ -2093,13 +2076,11 @@
               <textarea name="Exchange" id="" rows="1" cols="134" style="height:34px">{{rate}}</textarea>
             </div>
           </div>
-          <div class="row" style="margin:10px 20px 20px 20px">
-            <div class="col-lg-3 col-md-3"></div>
-            <div class="col-lg-2 col-md-2"><button class="btn btn-info" style="min-width:100%"> Long Info</button></div>
-            <div class="col-lg-2 col-md-2"><button class="btn btn-primary" style="min-width:100%"> Details</button></div>
+          <div class="row" style="margin:10px 20px 10px 20px">
+            <div class="col-lg-5 col-md-5"></div>
             <div class="col-lg-2 col-md-2"><button class="btn btn-danger" style="min-width:100%" data-dismiss="modal">
                 Close</button></div>
-            <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-5 col-md-5"></div>
           </div>
         </div>
 

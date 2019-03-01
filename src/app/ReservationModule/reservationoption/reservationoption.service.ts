@@ -50,8 +50,8 @@ export class ReservationoptionService {
     headers.append('Content-Type', 'application/json');
     const options = new RequestOptions({ headers: headers });
     let body = {
-      "Res_id": this.session.retrieve("id"), "Res_unique_id": this.session.retrieve("uniq"), "Fixed_Charges_Begin_Date": input.Fixed_Charges_Begin_Date, "Fixed_Charges_End_Date": input.Fixed_Charges_End_Date, "Fixed_Charges_Transaction_Code": param1, "Fixed_Charges_Article_Code": input.Fixed_Charges_Article_Code,
-      "Fixed_Charges_Amount": param2, "Fixed_Charges_Quantity": input.Fixed_Charges_Quantity, "Fixed_Charges_Supplement": input.Fixed_Charges_Supplement, "Fixed_Charges_Occurrence": input.Fixed_Charges_Occurrence
+      "Res_id": this.session.retrieve("id"), "Res_unique_id": this.session.retrieve("uniq"), "Fixed_Charges_Begin_Date": input.Fixed_Charges_Begin_Date, "Fixed_Charges_End_Date": input.Fixed_Charges_End_Date, "Fixed_Charges_Transaction_Code": param1, "Fixed_Charges_Article_Code":"",
+      "Fixed_Charges_Amount": param2, "Fixed_Charges_Quantity": input.Fixed_Charges_Quantity, "Fixed_Charges_Supplement": input.Fixed_Charges_Supplement, "Fixed_Charges_Occurrence":""
     };
     console.log('working', body);
     return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_Insert_UpdateFixedChargesReservation', body, options)
@@ -109,9 +109,10 @@ export class ReservationoptionService {
       "Res_unique_id": this.session.retrieve("uniq"),
       "RES_Waitlist_Reason": input.RES_Waitlist_Reason,
       "RES_Waitlist_Priority": input.RES_Waitlist_Priority,
-      "RES_Waitlist_Telephoneno": input.RES_Waitlist_Telephoneno,
+      "RES_Waitlist_Telephoneno": "",
       "RES_Waitlist_Description": input.RES_Waitlist_Description
     }
+    console.log("working",par)
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_WaitlistReason', par, options)
       .map(this.extractData)
   }
@@ -125,7 +126,7 @@ export class ReservationoptionService {
       "Res_id": this.session.retrieve("id"),
       "Res_unique_id": this.session.retrieve("uniq"),
       "Res_room": input.toString(),
-      "Old_Room": this.session.retrieve("Room"),
+      "Old_Room": this.session.retrieve("Room").toString(),
       "old_room_status": tatus
     }
     console.log("iputtesttttt", par)

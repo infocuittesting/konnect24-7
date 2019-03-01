@@ -310,7 +310,7 @@ this.session.store("pf_individual_country",details.pf_individual_country);
 //this.session.store("businessaddress",details.pf_business_address)
 //this.session.store("city",details.pf_city)
 //this.session.store("state",details.pf_company_state)
-//this.session.store("profiletype",details.pf_type)
+this.session.store("profiletype",details.pf_type)
 
 if(details.pf_type == "Individual"){
 this.session.store("pfid",details.pf_id);

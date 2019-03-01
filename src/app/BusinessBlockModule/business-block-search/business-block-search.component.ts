@@ -120,11 +120,10 @@ public status:any;
     console.log("checking type od ",typeof startDate)
     this.Name="";
     this.BlockCode="";
-    startDate=null;
-    endDate=null;
-    // this.startDate="";
+
+    startDate="";
     this.status="";
-    // this.endDate="";
+    endDate="";
     // param.reset();
     this.blocksearch.bsearchtable()
     .subscribe((resp: any) => {

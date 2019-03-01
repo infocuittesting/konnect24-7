@@ -84,6 +84,9 @@ public privilegesreturn;
 public privilegesstatus;
 public privilegesbind;
 public showhideprivileges;
+checkselectClr:boolean;
+
+public restyp:any;
 disone=true
 distwo=true
 siva=true
@@ -161,7 +164,8 @@ selectMembersEdit(details,index)
       this.session.store("depar",details.res_depature.toString());
       this.session.store("guest_status",details.res_guest_status);
       this.session.store("accuratebalance",details.balance);
-          console.log("ession valuw",details.res_arrival,details.balance)
+      this.session.store("companyname",details.pf_account)
+          console.log("ession valuw",details.res_arrival,details.balance,details.pf_account)
       console.log("Res_id_getting",this.Res_id_getting,this.Res_unique_id_getting)
 
 
@@ -369,10 +373,12 @@ filtercheckboxList:any=[];
 filtercheckboxData(ngmodel, flag) {
   if (ngmodel == true) {
        this.filtercheckboxList.push(flag);
+       console.log("fileter checkbox",this.filtercheckboxList)
   }else{
     for(var i=0;i<this.filtercheckboxList.length;i++){
       if(flag==this.filtercheckboxList[i]){
         this.filtercheckboxList.splice(i,1);
+        console.log("else filter checkbox",this.filtercheckboxList)
         break;
       }
     }
@@ -411,6 +417,10 @@ clear(){
   this.mainroom=''
   this.mainpersonname=''
   this.company=''
+  this.restyp=''
+  this.filtercheckboxList=[];
+  this.checkselectClr=false;
+  console.log("clear log",this.checkselectClr)
   this.cashinservice.inhousetable()
   .subscribe((resp: any) => {
 
