@@ -377,7 +377,7 @@ export class RevenuemanagementComponent implements OnInit {
           this.editblock.endselldate = this.edit_data_bind.end_sell_date;
           this.editblock.ratecategoryid = this.edit_data_bind.ratecategory_id;
 
-          this.editblock.market_id = this.edit_data_bind.marketgroup;
+          this.editblock.market_id = this.edit_data_bind.id;
           this.editblock.source_id = this.edit_data_bind.sourcecode;
 
           this.editblock.Minimum_stay_through = this.edit_data_bind.min_stay;
@@ -395,20 +395,39 @@ export class RevenuemanagementComponent implements OnInit {
           this.editblock.Complimentary = this.edit_data_bind.complimentary;
           this.editblock.House = this.edit_data_bind.house_use;
           this.editblock.Suppress = this.edit_data_bind.suppress_rate;
-          //this.editblock.Type = this.edit_data_bind.day_type;
+          this.editblock.currencycodeid = this.edit_data_bind.currency_code_id;
           this.editblock.Package = this.edit_data_bind.package;
 
 
 
+          // room type id push array
+          this.edit_data_bind = resp.records[0].rooms;
+          for(var a = 0;a<this.edit_data_bind.length;a++){
+            this.arrpushroom.push(this.edit_data_bind[a].id)
+          }
+          this.rmid = this.arrpushroom
+          console.log("testttttttt" + JSON.stringify(this.rmid));
+          //rooms type name push array
+          this.edit_data_bind = resp.records[0].rooms;
+          for(var a = 0;a<this.edit_data_bind.length;a++){
+            this.arrpushname.push(this.edit_data_bind[a].type)
+          }
+          this.rmtype = this.arrpushname
+          console.log("nameeeeeeee" + JSON.stringify(this.rmtype));
 
-          this.edit_data_bind = resp.records[0].rooms[0];
-          //console.log("checkkkkkkkkk" + JSON.stringify(this.edit_data_bind));
-          this.editblock.roomtype = this.edit_data_bind.type;
+          this.edit_data_bind = resp.records[0].packages;
+          for(var i = 0; i<this.edit_data_bind.length; i++){
+            this.arrpush.push(this.edit_data_bind[i].package_code_id)
 
-          this.edit_data_bind = resp.records[0].packages[0];
-          this.editblock.type = this.edit_data_bind.package_code;
+          }
+          this.rmid1 = this.arrpush;
+          // package name push array
+          for(var i = 0; i<this.edit_data_bind.length; i++){
+            this.arrpushpackid.push(this.edit_data_bind[i].package_code)
 
-          console.log("checkkkkkkkkk" + this.edit_data_bind);
+          }
+          this.rmcode = this.arrpushpackid;
+          console.log("checkkkkkkkkk" +JSON.stringify(this.rmcode));
 
         }
 
@@ -466,12 +485,6 @@ export class RevenuemanagementComponent implements OnInit {
       this.RevenuemanagementService.getallvalues(this.session.retrieve("ratecodeedit"))
       .subscribe((resp: any) => {
         this.ratedettabl = resp.records[0].rate_details;
-        //this.ratedettabl_one = resp.records[0].rate_details[0].advanced_details;
-        //this.ratedettabl = resp.records[0];
-
-        //alert(JSON.stringify(this.ratedettabl[0].ratecode_id));
-        //this.ratedettabl = resp.room_types[0];
-        //this.ratedettabl = resp.room_types;
         console.log("oooooooooooooooo" +JSON.stringify(this.ratedettabl_one));
 
       });
@@ -482,9 +495,6 @@ export class RevenuemanagementComponent implements OnInit {
     .subscribe((resp: any) => {
       this.ratedettabl = resp.records[0].rate_details;
 
-      //alert(JSON.stringify(this.ratedettabl[0].ratecode_id));
-      //this.ratedettabl = resp.room_types[0];
-      //this.ratedettabl = resp.room_types;
       console.log("oooooooooooooooo" +JSON.stringify(this.ratedettabl));
 
     });
@@ -496,6 +506,11 @@ export class RevenuemanagementComponent implements OnInit {
   }
   public repeat: any = {};
   public repeatflag = 1;
+  public arrpush=[];
+  public arrpushpackid=[];
+  public arrpushroom = [];
+  public arrpushname = [];
+
 
   repeatingpaste(){
     this.editratedetail = this.repeat;
@@ -574,7 +589,15 @@ export class RevenuemanagementComponent implements OnInit {
   }
 
   //ratedetails table selection  
+  public ratedetroomid=[];
+  public ratedetroomname=[];
+  public ratedetpackid=[];
+  public ratedetpackname=[];
 
+  public ratetemp=[];
+  public ratepackid_temp=[];
+  public ratepacktemp=[];
+  public ratetemp_name = [];
   ratedetail: any = {};
   ratedetidvar = [];
   strtdt = [];
@@ -584,7 +607,28 @@ export class RevenuemanagementComponent implements OnInit {
   editratedetail: any = {};
   public ratedetails_id :any;
   selectMembers1(detailss, indexx) {
+    this.ratedetroomid=[];
+    this.ratedetroomname=[];
+    this.ratedetpackid=[];
+    this.ratedetpackname=[];
+    this.editratedetail={}
     this.ratedetails_id = detailss.ratecode_id;
+    this.selectindexx=indexx,
+    //////////////
+    this.selectindexx = indexx;
+    this.deleteids = detailss.rate_details_id;
+    //this.packageidset=detailss.packages_id;
+    this.ratedetail.ratedetailid = detailss.rate_details_id;
+    this.ratedetail.roomsid = detailss.rooms[0].rooms_id;
+    this.ratedetail.packageid = detailss.packages[0].packages_id;
+    this.ratedetail.ratedaysid = detailss.rate_days_id;
+    this.ratedetail.ratetierid = detailss.rate_tier_id;
+    this.ratedetail.ratedetails_id = this.ratedetails_id
+    console.log("tettttttttttttttttt" + this.ratedetail.ratedetailid, this.ratedetail.roomsid, this.ratedetail.packageid)
+    console.log("detailsiddddddd" +JSON.stringify(detailss))
+    console.log('rooms_id',detailss.rooms[0].rooms_id)
+    console.log('packages_id',detailss.packages[0].packages_id)
+    ///////////
     console.log("siva",this.ratedetails_id)
     if (this.session.retrieve("ratecodenav") == "New") {
       this.edit_data_bind = {};
@@ -594,6 +638,46 @@ export class RevenuemanagementComponent implements OnInit {
       this.editratedetail.seasoncod = detailss.advanced_details.season_code_id;
       this.editratedetail.start_date = detailss.start_date;
       this.editratedetail.end_date = detailss.end_date;
+      
+
+      // pack id push
+      this.ratepacktemp = detailss.advanced_details.packages;
+      
+      for(var i=0;i<this.ratepacktemp.length;i++){
+        this.ratedetpackid.push(this.ratepacktemp[i].package_code_id)
+      }
+      this.rmid3 = this.ratedetpackid
+      console.log("shammmmmmm",JSON.stringify(this.rmid3))
+      
+      // pack name push
+      this.ratepackid_temp = detailss.advanced_details.packages;
+      
+      for(var i=0;i<this.ratepackid_temp.length;i++){
+        this.ratedetpackname.push(this.ratepackid_temp[i].package_code)
+      }
+      this.rmcode3 = this.ratedetpackname
+      console.log("shammmmmmm",JSON.stringify(this.rmcode3))
+
+      this.ratetemp = detailss.advanced_details.rooms;
+      for(var i=0;i<this.ratetemp.length;i++){
+        this.ratedetroomid.push(this.ratetemp[i].roomid)
+      }
+      this.rmid2 = this.ratedetroomid
+      // name push
+      this.ratetemp_name = detailss.advanced_details.rooms;
+      for(var i=0;i<this.ratetemp.length;i++){
+        
+        this.ratedetroomname.push(this.ratetemp[i].roomstype)
+      }
+      this.rmtype2 = this.ratedetroomname;
+      //this.editratedetail.roomtypedet = this.rmtype2
+      console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.rmtype2));
+      
+      
+      
+
+     // this.ratedetroomid.length = 0;
+      //this.ratedetroomname.length = 0;
       this.editratedetail.mon = detailss.advanced_details.days[0].mon;
       this.editratedetail.tue = detailss.advanced_details.days[0].tue;
       this.editratedetail.wed = detailss.advanced_details.days[0].wed;
@@ -609,25 +693,10 @@ export class RevenuemanagementComponent implements OnInit {
       this.editratedetail.one_child_amount = detailss.advanced_details.one_child_rate;
       this.editratedetail.two_child_amount = detailss.advanced_details.two_child_rate;
       this.editratedetail.extra_child_amount = detailss.advanced_details.extra_child_rate;
-
-
-      this.editratedetail.packdet = detailss.advanced_details.packages[0].package_code;
-      console.log("shammmmmmm",JSON.stringify(this.editratedetail.packdet))
-
-      this.editratedetail.roomtypedet = detailss.advanced_details.rooms[0].roomstype;
-      console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.editratedetail));
+      
     }
 
-    this.selectindexx = indexx;
-    this.deleteids = detailss.rate_details_id;
-    //this.packageidset=detailss.packages_id;
-    this.ratedetail.ratedetailid = detailss.rate_details_id;
-    this.ratedetail.roomsid = detailss.rooms_id;
-    this.ratedetail.packageid = detailss.packages_id;
-    this.ratedetail.ratedaysid = detailss.rate_days_id;
-    this.ratedetail.ratetierid = detailss.rate_tier_id;
-    console.log("tettttttttttttttttt" + this.ratedetail.ratedetailid, this.ratedetail.roomsid, this.ratedetail.packageid, this.ratedetail.ratedaysid, this.ratedetail.ratetierid)
-    console.log("detailsiddddddd" + this.deleteids)
+   
     // if (this.session.retrieve("ratecodenav") == "New") {   
     //   this.edit_data_binding = [];
     // } else {
@@ -643,7 +712,8 @@ export class RevenuemanagementComponent implements OnInit {
     // this.session.store("packagesid",detailss.packages_id);  
     //this.session.store("ratetierid",detailss.rate_tier_id);  
 
-
+ 
+      
   }
 
 
@@ -852,4 +922,12 @@ export class RevenuemanagementComponent implements OnInit {
 
   }
 
+  ratedetails_ref(){
+  this.RevenuemanagementService.getallvalues(this.session.retrieve("ratecodeedit"))
+      .subscribe((resp: any) => {
+        this.ratedettabl = resp.records[0].rate_details;
+        console.log("oooooooooooooooo" +JSON.stringify(this.ratedettabl));
+
+      });
+    } 
 }

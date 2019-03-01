@@ -285,7 +285,7 @@ export class RevenuemanagementService {
           "currency_code_id":4,
           "exchange_type_id":3,
           "tax_inc":0,
-          "tranction_detail_id":12
+          "tranction_detail_id":this.session.retrieve("tranction_detail_id")
       },
       "components":{
           "package":input.Package,
@@ -377,7 +377,7 @@ export class RevenuemanagementService {
        "two_child_rate":user.two_child_amount,
        "extra_child_rate":user.extra_child_amount,
        "room_types":rmid2,
-       "rooms_id":ratedetail.roomsid ,
+       "rooms_id":ratedetail.roomsid,
        "package":rmid3,
        "packages_id":ratedetail.packageid,
        "rate_tier_id":0

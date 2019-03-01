@@ -188,16 +188,20 @@ this.IndividualService.pftypedropdown()
  this.user.PF_Individual_Address=this.testing_val.pf_individual_address
 
  this.user.PF_Home_Address=this.testing_val.address_one
- this.user.PF_Individual_City=this.testing_val.pf_individual_country
+ this.user.PF_Individual_City=this.testing_val.pf_city
  this.user.PF_Individual_State=this.testing_val.pf_individual_state
  this.user.PF_Passport = this.testing_val.pf_passport
 
  this.user.PF_Type = this.testing_val.pf_type
  this.user.PF_Individual_VIP = this.testing_val.pf_individual_vip
  this.user.PF_Nationality = this.testing_val.pf_nationality
- this.user.PF_Individual_Communication1 = this.testing_val.pf_individual_commtype1
- this.user.PF_Individual_Communication2 = this.testing_val.pf_individual_commtype2
- this.user.PF_Individual_Communication3 = this.testing_val.pf_individual_commtype3
+ this.user.PF_Individual_Communication1 = this.testing_val.pf_individual_communication1
+ this.user.PF_Individual_Communication2 = this.testing_val.pf_individual_communication2
+ this.user.PF_Individual_Communication3 = this.testing_val.pf_individual_communication3
+
+ this.user.PF_Individual_Commtype1 = this.testing_val.pf_individual_commtype1
+ this.user.PF_Individual_Commtype2 = this.testing_val.pf_individual_commtype2
+ this.user.PF_Individual_Commtype3 = this.testing_val.pf_individual_commtype3
 
 
 

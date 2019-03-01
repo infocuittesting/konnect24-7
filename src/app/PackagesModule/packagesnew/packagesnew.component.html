@@ -55,7 +55,7 @@
                           <option *ngFor="let item of transactiondropdown" [ngValue]="item.transaction_code_id">{{item.transaction_code_description}}</option>
                         </select>
                       </div>
-                    </div>
+                     </div>
                     <div class="col-md-3">
                       <label for="tax">Tax Inclusive</label>
                       <div class="input-group">
@@ -73,7 +73,7 @@
                     <div class="col-md-3">
                       <label>Alternates</label>
                       <div class="input-group">
-                        <input name="Alternative" class="form-control" style="height:34px;width:201px" [(ngModel)]="packtables.Alternates" [value]="Altername">
+                        <input name="Alternative" class="form-control" style="height:34px;width:201px" [(ngModel)]="packtables.Alternates" [value]="Altername" disabled>
                         <span class="input-group-btn">
                           <button class="btn btn-default" style="height:34px" data-toggle="modal" data-target="#Alter"><i
                               class="glyphicon glyphicon-option-horizontal"></i></button>
@@ -143,7 +143,7 @@
                     <div class="col-md-3">
                       <label for="item">Item Inventory</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="Item" id="item" [(ngModel)]="packtables.item_inventory_selected_id" [value]="iventryname">
+                        <input type="text" class="form-control" name="Item" id="item" [(ngModel)]="packtables.item_inventory_selected_id" [value]="iventryname" disabled>
                         <span class="input-group-btn">
                           <button class="btn btn-default" style="height:34px" data-toggle="modal" data-target="#Iteminventory"><i
                               class="glyphicon glyphicon-option-horizontal"></i></button>

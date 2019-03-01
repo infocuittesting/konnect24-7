@@ -111,7 +111,7 @@ export class PackagesnewService {
       "short_description": input.short_description,
       "description": input.description,
       "transaction_code_id": input.transaction_code_id,
-      "alternates": [parseInt(Alternates)],
+      "alternates":Alternates,
       "currency_id": input.currencys,
       "attributes_id": parseInt(input.attributes_id),
       "sell_separate": input.sell_separate,
@@ -120,7 +120,7 @@ export class PackagesnewService {
       "calculate_rule_id": input.calculateruleid,
       "valid_time_from": input.validtimefrom,
       "valid_time_to": input.valid_time_to,
-      "item_inventory_selected_id": [parseInt(item_inventory_selected_id)]
+      "item_inventory_selected_id": item_inventory_selected_id
     }
     console.log(JSON.stringify(body));
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_PAC_POST_INSERT_Packages', body, options)
@@ -143,7 +143,7 @@ export class PackagesnewService {
       "description": input.description,
       "transaction_code_id": input.transaction_code_id,
       "alternate_id": input.alternate_id,
-      "alternates": [parseInt(Alternates)],
+      "alternates": Alternates,
       "currency_id": input.currencys,
       "attributes_id": parseInt(input.attributes_id),
       "sell_separate": input.sell_separate,
@@ -153,7 +153,7 @@ export class PackagesnewService {
       "valid_time_from": input.validtimefrom,
       "valid_time_to": input.valid_time_to,
       "item_id": input.item_id,
-      "item_inventory_selected_id": [parseInt(item_inventory_selected_id)]
+      "item_inventory_selected_id": item_inventory_selected_id
     }
     console.log(JSON.stringify(body));
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_PAC_POST_UPDATE_Packages', body, options)

@@ -149,7 +149,7 @@ export class EditRevenueManagementComponent implements OnInit {
         });
     }
     else {
-      this.EditRevenuemanagement.updateratedetail( this.rmid2, this.rmid3, this.currentTab, editratedetaills, this.ratedetail.ratedaysid,this.roomsidrate,this.packagesids,this.ratedetails_id_new)
+      this.EditRevenuemanagement.updateratedetail( this.rmid2, this.rmid3, this.currentTab, editratedetaills, this.ratedetail.ratedaysid,this.roomsidrate,this.packagesids,this.ratedetails_id_new,this.ratedetail)
         .subscribe((resp: any) => {
           this.ratedetvar = resp.ReturnCode;
           if (this.ratedetvar == 'RUS') {
@@ -191,10 +191,11 @@ export class EditRevenueManagementComponent implements OnInit {
 
         } else {
           this.edit_data_bind = resp.records[0];
+          console.log("idddddddd",this.edit_data_bind)
           //this.price = resp.records[0];
 
           this.editratedetaills.ratecodedrop = this.edit_data_bind.rate_code;
-          this.editblock.ratecode = this.edit_data_bind.rate_code;
+          //this.editblock.ratecode = this.edit_data_bind.rate_code;
 
           this.editblock.descrp = this.edit_data_bind.rate_description;
           this.editblock.beginselldate = this.edit_data_bind.begin_sell_date;
@@ -345,6 +346,11 @@ export class EditRevenueManagementComponent implements OnInit {
   ratedetail: any = {};
   public edit_data_binding: any = [];
   public edit_data_bind: any = [];
+  public ratetemp=[];
+  public ratedetroomid = [];
+  public ratetemp_name = [];
+  public ratedetroomname = [];
+
   ratedetidvar = [];
   room_types = [];
   deleteids = [];
@@ -353,6 +359,32 @@ export class EditRevenueManagementComponent implements OnInit {
   selectindexx = null
   public ratedetails_id_new:any;
   selectMembers1(detailss, indexx) {
+    this.editratedetaills = {}
+    this.ratedetroomid = [];
+    this.ratedetroomname = [];
+
+    ////////////////
+    this.selectindexx = indexx;
+    this.deleteids = detailss.rate_details_id;
+    this.roomsidrate = detailss.rooms_id;
+    this.packagesids = detailss.packages_id;
+    this.ratedetail.ratedetailid = detailss.rate_details_id;
+    this.ratedetail.roomsid = detailss.rooms_id;
+    this.ratedetail.packageid = detailss.packages_id;
+    this.ratedetail.ratedaysid = detailss.rate_days_id;
+    this.ratedetail.ratetierid = detailss.rate_tier_id;
+
+    this.ratedetails_id_new = detailss.ratecode_id;
+    this.ratedetail.rate_details_id = detailss.rate_details_id
+    this.ratedetail.rooms_id = detailss.rooms[0].rooms_id;
+    this.ratedetail.packages_id = detailss.advanced_details.packages_id;
+
+    console.log('detailsssssss',JSON.stringify(detailss.advanced_details))
+    console.log('ratecode idd',this.ratedetails_id_new)
+    console.log('rate details id',this.ratedetail.rate_details_id)
+    console.log('rooms id rate', this.ratedetail.rooms_id)
+    console.log('packages id',this.ratedetail.packages_id)
+    ////////////
     if (this.session.retrieve("ratecodenav") == "New") {
       this.edit_data_bind = {};
     }
@@ -360,6 +392,27 @@ export class EditRevenueManagementComponent implements OnInit {
       this.editratedetaills.seasoncod = detailss.advanced_details.season_code_id;
       this.editratedetaills.start_date = detailss.start_date;
       this.editratedetaills.end_date = detailss.end_date;
+      
+      //this.editratedetaills.roomtypedet = detailss.advanced_details.rooms;
+
+      this.ratetemp = detailss.advanced_details.rooms;
+      for(var i=0;i<this.ratetemp.length;i++){
+        this.ratedetroomid.push(this.ratetemp[i].roomid)
+      }
+      this.rmid2 = this.ratedetroomid
+      // name push
+      this.ratetemp_name = detailss.advanced_details.rooms;
+      for(var i=0;i<this.ratetemp.length;i++){
+        
+        this.ratedetroomname.push(this.ratetemp[i].roomstype)
+      }
+      this.rmtype2 = this.ratedetroomname;
+      //this.editratedetail.roomtypedet = this.rmtype2
+      console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.rmtype2));
+
+      // this.editratedetaills.roomtypedet = detailss.rooms_id;
+      console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.editratedetaills));
+
       this.editratedetaills.mon = detailss.advanced_details.days[0].mon;
       this.editratedetaills.tue = detailss.advanced_details.days[0].tue;
       this.editratedetaills.wed = detailss.advanced_details.days[0].wed;
@@ -376,22 +429,10 @@ export class EditRevenueManagementComponent implements OnInit {
       this.editratedetaills.one_child_amount = detailss.advanced_details.one_child_rate;
       this.editratedetaills.two_child_amount = detailss.advanced_details.two_child_rate;
       this.editratedetaills.extra_child_amount = detailss.advanced_details.extra_child_rate;
-      this.editratedetaills.roomtypedet = detailss.advanced_details.rooms[0].roomstype;
-      // this.editratedetaills.roomtypedet = detailss.rooms_id;
-      console.log("ratecodeiddddddddddddddd" + JSON.stringify(this.editratedetaills));
+
     }
 
-    this.selectindexx = indexx;
-    this.deleteids = detailss.rate_details_id;
-    this.roomsidrate = detailss.rooms_id;
-    this.packagesids = detailss.packages_id;
-    this.ratedetail.ratedetailid = detailss.rate_details_id;
-    this.ratedetail.roomsid = detailss.rooms_id;
-    this.ratedetail.packageid = detailss.packages_id;
-    this.ratedetail.ratedaysid = detailss.rate_days_id;
-    this.ratedetail.ratetierid = detailss.rate_tier_id;
-
-    this.ratedetails_id_new = detailss.ratedetails_id
+    
 
     // this.session.store("ratedaysid",detailss.rate_days_id);  
     // this.session.store("roomsid",detailss.rooms_id);  

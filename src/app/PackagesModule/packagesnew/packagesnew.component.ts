@@ -63,8 +63,7 @@ export class PackagesnewComponent implements OnInit {
 
     }
     this.iventryname = this.selected_name.toString();
-    this.item_inventory_selected_id = this.selected_id.toString();
-
+    this.item_inventory_selected_id = this.selected_id;
   }
 
   // table select item Alternative
@@ -94,11 +93,24 @@ export class PackagesnewComponent implements OnInit {
       this.selected_name1.push(item.package_code);
 
     }
-    this.Alternates = this.selected_id1.toString();
+    this.Alternates = this.selected_id1;
     this.Altername = this.selected_name1.toString();
 
-
+console.log('push idddd',this.selected_id1)
   }
+
+  public temp = [];
+  public temp_name = [];
+  public altid = [];
+  public altname = [];
+
+  public temp_one = [];
+  public temp_two = [];
+  public item_id = [];
+  public item_name = [];
+
+  public alternates_selected_id = [];
+  public new_item_inventory_selected_id = [];
 
   ngOnInit() {
 
@@ -156,21 +168,62 @@ export class PackagesnewComponent implements OnInit {
           this.editpack_details = resp.Package_header[0];
           this.packtables.packagecode = this.editpack_details.package_code;
           this.packtables.short_description = this.editpack_details.short_description;
-          this.packtables.forecast_code_id = this.editpack_details.forecast_group_description;
+          this.packtables.forecast_code_id = this.editpack_details.forecast_group_id;
           this.packtables.description = this.editpack_details.description;
-          this.packtables.transactioncodeid = this.editpack_details.transaction_code_description;
-          this.packtables.currencys = this.editpack_details.currency;
-          this.packtables.Alternates = this.editpack_details.alternates_selected_id;
+          this.packtables.transaction_code_id = this.editpack_details.transaction_code_id;
+          this.packtables.currencys = this.editpack_details.id;
+
+          this.alternates_selected_id = this.editpack_details.alternates_selected_id;
+          this.new_item_inventory_selected_id = this.editpack_details.item_inventory_selected_id;
+
           this.packtables.validtimefrom = this.editpack_details.valid_time_from;
-          this.packtables.postingrhythm = this.editpack_details.posting_rhythm_desctiption;
+          this.packtables.postingrhythm = this.editpack_details.posting_rhythm_id;
           this.packtables.attributes_id = this.editpack_details.attributes_id;
           this.packtables.post_next_day = this.editpack_details.post_next_day;
           this.packtables.valid_time_to = this.editpack_details.valid_time_to;
-          this.packtables.calculateruleid = this.editpack_details.calculate_rule_description;
+          this.packtables.calculateruleid = this.editpack_details.calculate_rule_id;
           this.packtables.sell_separate = this.editpack_details.sell_separate;
-          this.packtables.item_inventory_selected_id = this.editpack_details.item_inventory_selected_id;
-          this.packtables.package_code_id = this.editpack_details.package_code_id;
-          // this.packtables.item_inventory_selected_id = this.editpack_details.item_inventory_selected_id;
+          
+          //this.packtables.item_inventory_selected_id = this.editpack_details.item_inventory_selected_id;
+
+          this.temp = resp.alternates;
+          for(var i=0;i<this.temp.length;i++){
+            this.altid.push(this.temp[i].package_code_id)
+          }
+
+          this.Alternates = this.altid
+
+          console.log('pack',resp)
+          console.log('pack',this.Alternates)
+
+          //alternates name push
+          this.temp_name = resp.alternates;
+          for(var i=0;i<this.temp_name.length;i++){
+            this.altname.push(this.temp_name[i].package_code)
+          }
+
+          this.Altername = this.altname
+          console.log('pack',this.Altername)
+
+          // item inventary
+
+          this.temp_one = resp.item_inventory;
+          for(var i=0;i<this.temp_one.length;i++){
+            this.item_id.push(this.temp_one[i].item_inventory_id)
+          }
+
+          this.item_inventory_selected_id = this.item_id
+          console.log('packidddddddd',this.item_id)
+
+          this.temp_two = resp.item_inventory;
+          for(var i=0;i<this.temp_two.length;i++){
+            this.item_name.push(this.temp_two[i].item_name)
+          }
+
+          this.iventryname = this.item_name
+          console.log('item',this.iventryname)
+
+          
           // this.packtables.alternates_selected_id = this.editpack_details.alternates_selected_id;
           //this.attributes_id=this.editpack_details.attributes_id;
 
@@ -205,8 +258,8 @@ export class PackagesnewComponent implements OnInit {
           }
         });
     }else if(this.packnegos == "Edit"){
-      inputt.alternate_id = this.packtables.Alternates;
-      inputt.item_id = this.packtables.item_inventory_selected_id;
+      inputt.alternate_id = this.alternates_selected_id;
+      inputt.item_id = this.new_item_inventory_selected_id;
       this.PackagesnewService.EditPackages(inputt, this.Alternates, this.item_inventory_selected_id)
         .subscribe((resp: any) => {
           this.pack = resp.ReturnCode;

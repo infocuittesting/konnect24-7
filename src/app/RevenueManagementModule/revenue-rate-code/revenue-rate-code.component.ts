@@ -114,9 +114,10 @@ export class RevenueRateCodeComponent implements OnInit {
     this.session.store("roomsid",details.rooms_id);  
     this.session.store("tranctioncodeid",details.tranction_code_id);  
     this.session.store("sellid",details.sell_id);  
-    this.session.store("componentsid",details.components_id);  
+    this.session.store("componentsid",details.components_id);
+    this.session.store("tranction_detail_id",details.tranction_detail_id)  
     
-    
+    console.log('testttttt',details.tranction_detail_id  )
    console.log("ratecodeeeeeeeeeeeeeeeeeeeeeeeeee",details.ratecode_id,this.ratecdid)
   }else{
     this.flag=false;

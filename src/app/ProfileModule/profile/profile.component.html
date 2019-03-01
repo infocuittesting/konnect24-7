@@ -160,8 +160,9 @@
     </div>
     
     <div class="col-lg-3">
-    <div class="input-group">
-        <input type="text" id="territory" name="territory" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory"></div>
+    <div class="input-group" [class.has-error]="Types2.touched && Types2.invalid">
+        <input type="text" id="territory" name="territory" pattern="^[0-9]+$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory" #Types2="ngModel" required></div>
+        <div *ngIf="Types2.touched && !Types2.valid && Types2.errors?.required" ngClass="{ 'has-error' : !Types2.valid && submitAttempt }"></div>
     </div>
     </div>
     

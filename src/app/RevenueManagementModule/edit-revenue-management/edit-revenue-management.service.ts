@@ -197,13 +197,13 @@ export class EditRevenueManagementService {
 
   }
 
-  updateratedetail(rmid2,rmid3,tab,editratedetaills:any,ratedaysid,roomsidrate,packagesids,ratedetails_id_new):  Observable<object[]> {
+  updateratedetail(rmid2,rmid3,tab,editratedetaills:any,ratedaysid,roomsidrate,packagesids,ratedetails_id_new,ratedetail):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
-        "rate_details_id":editratedetaills.ratecodedrop,
+        "rate_details_id":ratedetail.rate_details_id,
         "season_code_id":editratedetaills.seasoncod,
         "start_date":editratedetaills.start_date,
         "end_date":editratedetaills.end_date,
@@ -226,9 +226,9 @@ export class EditRevenueManagementService {
        "two_child_rate":editratedetaills.two_child_amount,
        "extra_child_rate":editratedetaills.extra_child_amount,
        "room_types":rmid2,
-       "rooms_id":roomsidrate ,
+       "rooms_id":ratedetail.rooms_id,
        "package":[0],
-       "packages_id":packagesids,
+       "packages_id":ratedetail.packages_id,
        "rate_tier_id":tab
     }
     console.log("testtttt",JSON.stringify(body));

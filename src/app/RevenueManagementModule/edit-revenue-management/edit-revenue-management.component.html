@@ -274,7 +274,7 @@
                       <div class="scroll">
                           <div  >
                         
-                          <table class="table table-bordered table-hover" style="width:100%;">
+                          <table class="table table-bordered table-hover tableBodyScroll" style="width:100%;">
                           
                             <thead style="background-color:#0077B5;color:white;">
                               <tr>
@@ -294,7 +294,7 @@
                           </table>
                       </div>
                   </div>
-                        </div><br><br>
+                        </div>
                         <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-bottom:15px"> 
                               <legend style="margin-left:5px" >Attributes</legend>
                               <div class="panel-body"  style="margin-bottom:-10px;margin-bottom:-0.5px;">
@@ -388,19 +388,19 @@
               </div>
               <div class="modal-body">
               <div class="table-responsive">
-                  <table class="table-hover table-bordered table-striped" style="width:100%;">
+                  <table class="table-hover table-bordered table-striped tableBodyScroll" style="width:100%;">
                       <thead style="background-color: #0077B5; color: white">
-                          <th>X</th>
-                          <th> Room Type</th> 
+                          <th style="width:20px">X</th>
+                          <th style="width:130px"> Room Type</th> 
                           <th> Description</th>
                           
                       </thead> 
                       <tbody> 
                           <tr *ngFor="let pack of room">
-                              <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
+                              <td style="width:20px"> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
                               
-                              <td>{{pack.type}} </td>
-                              <td>{{pack.description}}</td>
+                              <td  style="width:130px">{{pack.type}} </td>
+                              <td >{{pack.description}}</td>
                           </tr>
                           
                       </tbody>

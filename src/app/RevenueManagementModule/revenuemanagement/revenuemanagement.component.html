@@ -591,7 +591,7 @@
                          <div class="table-responsive"  style="margin-top:0px">
                           <div>
                             
-                              <table class="table table-bordered table-hover" style="width:100%;">
+                              <table class="table table-bordered table-hover tableBodyScroll" style="width:100%;">
                               
                                 <thead style="background-color:#0077B5;color:white;">
                                   <tr>
@@ -600,16 +600,18 @@
                                     <th>Room Types</th>
                                   </tr>
                                 </thead>
-                                <tbody style="font-size:12px;" *ngFor="let dettable of ratedettabl; let i=index">
+                                <tbody style="font-size:12px;">
+                                 <ng-container *ngFor="let dettable of ratedettabl; let i=index">
                                   <tr  *ngIf="dettable.advanced_details.rate_tier_id == 0" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
                                       <td>{{dettable.start_date}}</td>     
                                       <td>{{dettable.end_date}} </td>
                                       <td> <span  *ngFor="let roomnametest of dettable.rooms"> {{roomnametest.roomstype}}, </span></td>
                                   </tr>
+                                </ng-container>
                                 </tbody>
                               </table>
                           </div>
-                            </div><br><br>
+                            </div>
                             <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-bottom:15px"> 
                                   <legend style="margin-left:5px" >Attributes</legend>
                                   <div class="panel-body"  style="margin-bottom:-10px;">
@@ -826,7 +828,7 @@
               
                   
               <div class="modal-footer">
-                  <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                  <button type="button" class="btn btn-info" (click)="ratedetails_ref()" data-dismiss="modal">OK</button>
               </div>  
               </div>
           
