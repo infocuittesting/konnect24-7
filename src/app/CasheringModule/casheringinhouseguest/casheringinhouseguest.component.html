@@ -316,13 +316,13 @@
                 <tr *ngFor="let dell of housetable |searchfilter: {pf_firstname :mainpersonname} |  searchfilter: {res_room :mainroom}|  searchfilter: {Company :company};let i=index "
                   (click)="selectMembersEdit(dell,i)" [ngClass]="{'backGroundColor':i==selectindex}">
                   <td>{{dell?.res_room}}</td>
-                  <td>{{dell?.pf_firstname}}</td>
+                  <td>{{dell?.pf_firstname|titlecase}}</td>
 
                   <td>{{dell?.res_arrival}}</td>
                   <td>{{dell?.res_depature}}</td>
                   <td>{{dell?.balance}}</td>
-                  <td>{{dell?.res_guest_status}}</td>
-                  <td>{{dell?.res_res_type}}</td>
+                  <td>{{dell?.res_guest_status |titlecase}}</td>
+                  <td>{{dell?.res_res_type |titlecase}}</td>
 
                 </tr>
 

@@ -288,19 +288,20 @@ checkoutpost(arg1,balnc)
           this.successmsg="payment was done successfully";
           console.log("workinggggggggggggggggg",this.successmsg)
           this.Success(this.successmsg);
-        }
-        else   
-        {
-          this.failuremsg="Unable to update";
-        }
-        })
-         //refresh
+                  //refresh
          this.cashinservice.inhousetable()
          .subscribe((resp: any) => {
    
          this.housetable=resp.ReturnValue;
          // console.log(this.housetable);
          });
+        }
+        else   
+        {
+          this.failuremsg="Unable to update";
+        }
+        })
+ 
        });  
         
        
@@ -313,17 +314,18 @@ checkoutpost(arg1,balnc)
       if(this.letter=="RIS")
       {
         this.successmsg="payment was done successfully";
+        this.cashinservice.inhousetable()
+        .subscribe((resp: any) => {
+  
+        this.housetable=resp.ReturnValue;
+        // console.log(this.housetable);
+        });
       }
       else   
       {
         this.failuremsg="Unable to update";
       }
-      this.cashinservice.inhousetable()
-      .subscribe((resp: any) => {
 
-      this.housetable=resp.ReturnValue;
-      // console.log(this.housetable);
-      });
       })
       
       
