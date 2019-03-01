@@ -28,6 +28,14 @@ export class StarterService {
         .map(this.extractData)
     }  
 
+    //card details
+    getpanel(): Observable<object[]> {
+      const headers = new Headers({ 'Content-Type': 'application/json' })
+      const options = new RequestOptions({ headers: headers });
+      return this.http.get('https://hotel360.herokuapp.com/Today_booking_and_today_arrival_reservation')
+        .map(this.extractData)
+    } 
+
   
   private extractData(res: Response) {
     //alert('hai20')

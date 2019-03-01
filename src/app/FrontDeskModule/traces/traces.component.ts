@@ -48,7 +48,16 @@ public deptdrop:any;
     }
   }
 
-  
+  public name:any;
+  public tdate:any;
+  public trace_dept_code:any;
+  cleandata(){
+    this.name="";
+    this.tdate="";
+    this.trace_dept_code="";
+    this.checkValue=false;
+    this.checkboxValue=false;
+  }
 
   // selected from table
   public resid:any;

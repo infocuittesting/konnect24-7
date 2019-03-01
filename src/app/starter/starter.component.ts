@@ -23,6 +23,7 @@ private chart: any;
   public roomavailable;
   public dueout;
   public arrival;
+  public rese:any;arriv:any;
   ngOnInit() {
 
     //dashboard cout panel
@@ -34,6 +35,12 @@ private chart: any;
       this.checkout=resp.ReturnValue[2].count;
       this.dueout=resp.ReturnValue[3].count;
       this.arrival=resp.ReturnValue[0].count;
+    })
+
+    //dashboard panel
+    this.StarterService.getpanel().subscribe((resp:any) =>{
+      this.rese=resp.Today_booked_reservation;
+      this.arriv = resp.Today_arrival;
     })
 
     this.StarterService.statisticsDetails()

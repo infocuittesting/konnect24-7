@@ -16,7 +16,7 @@ export class FacilityforecastService {
     
       "start_date":param
   }
-   
+   console.log(body)
     return this.http.post('https://hotel360.herokuapp.com/Hotel_RM_Post_SELECT_FacilityForecast',body,options)
        .map(this.extractData)
   }

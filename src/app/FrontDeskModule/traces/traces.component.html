@@ -23,7 +23,7 @@
                 <select name="depcode" id="depcode" style="width:150px;height:35px;border-radius:4px;" class="form-control"
                 [(ngModel)]="trace_dept_code">
                 <option></option>
-                <option *ngFor="let depcode of deptdrop" >{{depcode.department}}</option>
+                <option *ngFor="let depcode of deptdrop">{{depcode.department}}</option>
               </select>
         </div>
         <div class="col-md-2" style="margin-top: 30px">          
@@ -34,7 +34,7 @@
            </div>
            
        <div class="col-md-2" style="margin-top: 26px"> 
-            <button class="btn btn-success" style="width: 100%">All </button>  
+            <button class="btn btn-success" style="width: 100%" (click)="cleandata()">Clear All </button>  
        </div>       
 
           
@@ -155,6 +155,7 @@
                   <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
                     <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;" class="form-control"
                       [(ngModel)]="trac.dept_code" #creditcardno="ngModel">
+                      <option></option>
                       <option *ngFor="let codedep of gettracedrop" >{{codedep.department}}</option>
                     </select>
                     <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>
@@ -232,6 +233,7 @@
                   <div class="input-group" [class.has-error]="modelcode.touched && modelcode.invalid">
                     <select name="modelcode" id="modelcode" required style="width:200px;height:30px;border-radius:4px;" class="form-control"
                       [(ngModel)]="deptmodel" #modelcode="ngModel">
+                      <option></option>
                       <option *ngFor="let codedep of gettracedrop" >{{codedep.department}}</option>
                     </select>
                     <div *ngIf="modelcode.touched && !modelcode.valid && modelcode.errors?.required" ngClass="{ 'has-error' : !modelcode.valid && submitAttempt }"></div>
