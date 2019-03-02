@@ -78,6 +78,11 @@ import { SetupaccountComponent } from './../Accountreceivable/setupaccount/setup
 //End of day
 import { EndofdayComponent } from './../Endofday/endofday/endofday.component';
 
+// Configuration
+import { GeneralconfigurationComponent } from './../ConfigurationModule/generalconfiguration/generalconfiguration.component';
+import { RoomconfigurationComponent } from './../ConfigurationModule/roomconfiguration/roomconfiguration.component';
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -150,7 +155,11 @@ import { EndofdayComponent } from './../Endofday/endofday/endofday.component';
       {path:"Setupaccount",component:SetupaccountComponent},
 
       //end of day
-      {path:'endofday',component: EndofdayComponent}
+      {path:'endofday',component: EndofdayComponent},
+
+      // Configuration
+      {path:'GeneralConfiguration',component: GeneralconfigurationComponent }, 
+      {path:'RoomConfiguration',component: RoomconfigurationComponent }
     ])
   ],
   declarations: [],
@@ -163,4 +172,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
-InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent, RoomoccupancyComponent,TurndownmanagementComponent]
+InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent, RoomoccupancyComponent,TurndownmanagementComponent,GeneralconfigurationComponent,RoomconfigurationComponent]

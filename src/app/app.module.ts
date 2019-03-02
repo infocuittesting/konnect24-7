@@ -104,6 +104,10 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 //End of day Module
 import { EndofdayComponent } from './Endofday/endofday/endofday.component';
 
+// Configuration
+import { GeneralconfigurationComponent } from './ConfigurationModule/generalconfiguration/generalconfiguration.component';
+import { RoomconfigurationComponent } from './ConfigurationModule/roomconfiguration/roomconfiguration.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -200,6 +204,10 @@ import { EndofdayComponent } from './Endofday/endofday/endofday.component';
 
         //End of day
         EndofdayComponent,
+        
+        // Configuration
+        GeneralconfigurationComponent,
+        RoomconfigurationComponent,
 
 
     ],
