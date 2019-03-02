@@ -15,6 +15,7 @@ invoice_table():  Observable<object[]> {
   "account_no":this.session.retrieve("account_number"),
   "invoice_no":this.session.retrieve("invoice_no")
  }
+ console.log('bill',body)
     return this.http.post('http://hotel360.herokuapp.com/HOTEL_AR_POST_SELECT_Billingpost',body)
        .map(this.extractData)
   }
@@ -48,7 +49,7 @@ invoice_table():  Observable<object[]> {
     postingcodedropdown():  Observable<object[]> {      
       const headers = new Headers({'Content-Type':'application/json'})
       const options = new RequestOptions({ headers: headers })       
-      return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_PAC_POST_SELECT_Packages_All',options)
           .map(this.extractData)
     
     }

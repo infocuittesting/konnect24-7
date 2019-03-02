@@ -20,9 +20,9 @@ export class EndofdayService {
 
   countrycheck():  Observable<object[]> {
        
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers });
-   return this.http.post('https://hotel360.herokuapp.com/Hotel_END_OF_Day_POST_countrycheck',options)
+    //const headers = new Headers({'Content-Type':'application/json'})
+    //const options = new RequestOptions({ headers: headers });
+   return this.http.get('https://hotel360.herokuapp.com/Hotel_END_OF_Day_POST_countrycheck')
       .map(this.extractData)
       //.catch(this.handleErrorObservable);
  }

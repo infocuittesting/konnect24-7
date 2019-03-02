@@ -51,7 +51,7 @@ export class AccountmaintenanceService {
     postingcodedropdown():  Observable<object[]> {      
       const headers = new Headers({'Content-Type':'application/json'})
       const options = new RequestOptions({ headers: headers })       
-      return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_PAC_POST_SELECT_Packages_All',options)
           .map(this.extractData)
     
     }

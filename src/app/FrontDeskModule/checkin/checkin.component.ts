@@ -25,17 +25,22 @@ export class CheckinComponent implements OnInit {
 
   constructor(private checkinService:CheckinService,private route:Router,public session:SessionStorageService) { }
   //to show today date
-  public startDate = new Date().toJSON().split('T')['0'];
-  public endDate = new Date().toJSON().split('T')['0'];
-
+  //public startDate = new Date().toJSON().split('T')['0'];
+  //public endDate = new Date().toJSON().split('T')['0'];
+  public startDate :any;
+  public endDate:any;
   showMore;
 
   //clear
 clear(){
   this.queryString = "";
-  //this.startDate = "";
-  //this.endDate = "";
-  
+  this.startDate = "";
+  this.endDate = "";
+  this.searchandedit=[];
+  this.checkinService.searchedit()
+  .subscribe((resp: any) => {
+   this.searchandedit=resp.ReturnValue;
+ });
 }
 
     //show more
@@ -47,18 +52,21 @@ clear(){
       this.showMore=false;
     }
 // between dates arrival
-filterDatefrmList(startDate,endDate){
-  if(startDate!=null && endDate!=null){
+
+
+filterDatefrmList(startDate, endDate) {
+  if (startDate != null && endDate != null) {
     let selectedMembers = this.searchandedit.filter(
       m => new Date(m.res_arrival) >= new Date(startDate) && new Date(m.res_arrival) <= new Date(endDate)
-      );
-        console.log(selectedMembers);
-        this.searchandedit = selectedMembers;
-  }else {
+    );
+    console.log(selectedMembers);
+    this.searchandedit = selectedMembers;
+  } else {
     this.searchandedit = this.searchandedit;
   }
-  
+
 }
+
   //checkin
   status;
   returnmsg;

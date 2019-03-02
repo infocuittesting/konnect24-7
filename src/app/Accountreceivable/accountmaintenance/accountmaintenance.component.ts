@@ -70,8 +70,8 @@ export class AccountmaintenanceComponent implements OnInit {
  
    this.AccountmaintenanceService.postingcodedropdown()
 .subscribe((resp: any) => {
-       this.pscd_dd=resp.ReturnValue;
-        console.log("posting code dropdown",this.pscd_dd);
+       this.pscd_dd=resp.Return_values;
+        console.log("posting code dropdownnnnnnnnnnn",this.pscd_dd);
 });
     
   // payment type in payment button
@@ -299,14 +299,14 @@ paycode={}
 {
       
     this.codeidarr = this.pscd_dd.filter(
-            orgn => orgn.posting_code_description === add.Code);
+            orgn => orgn.short_description === add.Code);
 
-            console.log("codeeeee_desssss",this.codeidarr,this.codeidarr[0].posting_code_id);
+            console.log("codeeeee_desssss",this.codeidarr,this.codeidarr[0].package_code_id);
         // console.log("totalpos and totalamt",this.totalPos,this.totalamt)
 
         this.showdetails.push({
           // "business_id":this.session.retrieve("business_id"),
-          "Post_code_id":this.codeidarr[0].posting_code,
+          "Post_code_id":this.codeidarr[0].package_code_id,
           "Post_des":add.Code,
           "Posting_amount":add.Amount,
           "Posting_quantity":add.Qty,
@@ -322,7 +322,7 @@ paycode={}
         this.postdetails.push({
           // "business_id":this.session.retrieve("business_id"),
           "account_no":this.session.retrieve("account_number"),
-          "Post_code_id":String(this.codeidarr[0].posting_code_id),
+          "Post_code_id":String(this.codeidarr[0].package_code_id),
           // "Post_des":add.Description,
           "Posting_amount":add.Amount,
           "Posting_quantity":add.Qty,

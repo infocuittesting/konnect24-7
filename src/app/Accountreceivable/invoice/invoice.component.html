@@ -254,7 +254,7 @@
               <tr>
                 <td>
                   <select style="width:100%;" [(ngModel)]="add.Code">
-                    <option *ngFor="let ratecdlist of pscd_dd" [ngValue]="ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                    <option *ngFor="let ratecdlist of pscd_dd" [ngValue]="ratecdlist.short_description">{{ratecdlist.package_code}}</option>
                   </select>
                 </td>
                 <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
