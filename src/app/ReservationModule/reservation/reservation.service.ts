@@ -18,9 +18,8 @@ export class ReservationService {
          headers.append('Content-Type','application/json');
          const options = new RequestOptions({ headers: headers });
          console.log('working');
-         if(param == null){
-           param = '';
-         }
+         if(param == null){param = ''; }if(input.RES_Adults==null||input.RES_Adults == undefined){input.RES_Adults = "0" }
+         if(input.RES_Child==null||input.RES_Child == undefined){input.RES_Child = "0" }if(input.RES_Number_Of_Rooms==undefined||input.RES_Number_Of_Rooms==null){input.RES_Number_Of_Rooms="1";}
          let body=
           {
             "RES_Arrival":input.RES_Arrival,
@@ -72,8 +71,8 @@ export class ReservationService {
       const headers = new Headers();
        headers.append('Content-Type','application/json');
        const options = new RequestOptions({ headers: headers });
-       if(input.RES_Child==undefined||input.RES_Child==null){input.RES_Child="";}if(input.RES_Adults==undefined||input.RES_Adults==null){input.RES_Adults="";}
-       if(input.RES_Nights==undefined||input.RES_Nights==null){input.RES_Nights="";}if(input.RES_Number_Of_Rooms==undefined||input.RES_Number_Of_Rooms==null){input.RES_Number_Of_Rooms="";}
+       if(input.RES_Child==undefined||input.RES_Child==null){input.RES_Child="0";}if(input.RES_Adults==undefined||input.RES_Adults==null){input.RES_Adults="";}
+       if(input.RES_Nights==undefined||input.RES_Nights==null){input.RES_Nights="";}if(input.RES_Number_Of_Rooms==undefined||input.RES_Number_Of_Rooms==null){input.RES_Number_Of_Rooms="1";}
        if(input.RES_Rate==undefined||input.RES_Rate==null){input.RES_Rate="";}if(input.RES_Source==undefined||input.RES_Source==null){input.RES_Source="";}
        if(input.RES_Disc_Reason==undefined||input.RES_Disc_Reason==null){input.RES_Disc_Reason="";}if(input.RES_Specials==undefined||input.RES_Specials==null){input.RES_Specials="";}
        if(input.RES_Comments==undefined||input.RES_Comments==null){input.RES_Comments="";}if(input.RES_Item_Inv==undefined||input.RES_Item_Inv==null){input.RES_Item_Inv="";}       
