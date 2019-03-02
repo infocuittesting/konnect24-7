@@ -55,8 +55,8 @@ overflow-x:auto;
     -webkit-transition-delay: 500ms; /* Safari */
 	    transition-delay: 500ms;
 		
-	}		
-	
+    }		
+    
 	li #b1:hover  {
     -ms-transform: rotate(40deg); /* IE 9 */
     -webkit-transform: rotate(40deg); /* Safari */
@@ -65,6 +65,9 @@ overflow-x:auto;
 	 transition-duration: 1s;
 }	
 
+.panel-body{
+height: 300px;
+}
 
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);/*!
  *   AdminLTE v2.0.1

@@ -137,6 +137,27 @@ public company;
       if(this.editbil=="RUS")
       {
         this.editsuccessmsg="payment was updated successfully";
+           // to refresh the page after transferred
+     this.cashbillservice.inhousetobilling()
+     .subscribe((resp: any) => {
+       this.navigat = resp.ReturnValue;
+       this.navtbl=resp.ReturnValue1;
+       this.windowbal=resp.ReturnValue2;
+      
+       //seperating values for window1 and window2 
+       this.vaal1=[];
+       this.vaal2=[];
+       for(let seperat of this.navtbl){
+         
+         if (seperat['post_window']==1){
+           this.vaal1.push(seperat) //for window1
+         }
+         else{
+           this.vaal2.push(seperat)  //for window2
+ 
+         }
+       }
+     });
       }
       else
       {
@@ -692,7 +713,28 @@ reinstatereservation(){
    console.log("reinstate retuen value",this.reinstatestatus)
    if (this.reinstatestatus == "RUS"){
      this.Success("Reservation reinstated successfully")
-     this.navigat['res_guest_status']='due out';
+        // to refresh the page after transferred
+        this.cashbillservice.inhousetobilling()
+        .subscribe((resp: any) => {
+          this.navigat = resp.ReturnValue;
+          this.navtbl=resp.ReturnValue1;
+          this.windowbal=resp.ReturnValue2;
+         
+          //seperating values for window1 and window2 
+          this.vaal1=[];
+          this.vaal2=[];
+          for(let seperat of this.navtbl){
+            
+            if (seperat['post_window']==1){
+              this.vaal1.push(seperat) //for window1
+            }
+            else{
+              this.vaal2.push(seperat)  //for window2
+    
+            }
+          }
+        });
+    //  this.navigat['res_guest_status']='due out';
      console.log("navigation ddddd",this.navigat['res_guest_status'])
 
    }

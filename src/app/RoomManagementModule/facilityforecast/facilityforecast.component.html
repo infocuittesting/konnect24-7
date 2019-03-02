@@ -89,13 +89,7 @@
           </tr>
           <tr>
             <td style="background-color:#0077B5;color:white;"><b>Stay Over</b></td>
-            <td>1</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td *ngFor="let datalist of facilityforecast">{{datalist.values.stay_over}}</td>
           </tr>
           <tr>
             <td style="background-color:#0077B5;color:white;"><b>Departure Rooms</b></td>
@@ -109,11 +103,16 @@
             <td style="background-color:#0077B5;color:white;"><b>Children In House</b></td>
             <td *ngFor="let datalist of facilityforecast">{{datalist.values.child_inhouse}}</td>
           </tr>
+          <tr>
+              
+              <th style="background-color:#0077B5;color:white;">Total Cleaning</th>
+              <th style="background-color:#0077B5;color:white;"*ngFor="let datalist of facilityforecast">{{datalist.values.Total_cleaning}}</th>            
+            </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
 
       <table class="table table-bordered table-hover table-responsive">
         <thead style="background-color:#0077B5;color:white;">
@@ -122,39 +121,11 @@
           <tr>
             <th style="width:3%;"><input type="checkbox"></th>
             <th style="width:10%;">Total Cleaning</th>
-            <th *ngFor="let datalist of facilityforecast">{{datalist.values.depature_rooms}}</th>            
+            <th *ngFor="let datalist of facilityforecast">{{datalist.values.Total_cleaning}}</th>            
           </tr>
         </thead>
-        <tbody style="background-color:white;">
-
-
-          <tr style="height:40px;">
-            <td><input type="checkbox"></td>
-            <td>Total Cleaning</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-
-          <tr style="height:40px;">
-            <td><input type="checkbox"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
       </table>
-    </div>
+    </div> -->
 
     <div class="container-fluid">
       <div class="row">
@@ -167,7 +138,7 @@
 
         <div class="col-lg-2">
 
-          <button type="button" class="btn btn-danger" style="width:100%;"><b>Close</b><span class="glyphicon glyphicon-remove"
+          <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b><span class="glyphicon glyphicon-remove"
               style="padding-left:5px;"></span></button>
         </div>
 

@@ -299,12 +299,16 @@ submitdep(inputt):void {
       if(this.resdepo=="RIS"){
         this.resdepo=" Deposit is Add For "+ this.Name;
         this.Success(this.resdepo);
-      }
-      this.pppService.getdeposit()
+        this.pppService.getdeposit()
       .subscribe((resp: any) => {
         this.deptarry=resp.ReturnValue;
         console.log("workinggggggg",this.deptarry)
       });
+      }else if(this.resdepo=="CND"){
+        this.resdepo="Cant able to Deposit after Check-In";
+        this.Success(this.resdepo);
+      }
+      
  this.resdepos=" ";
     },
 

@@ -119,8 +119,8 @@ export class SearchandeditreservationComponent implements OnInit {
 
 
   //Accept Waitlist
-  public AcceptState;
-  public Acceptreturn;
+  public AcceptState;AcceptStates;
+  public Acceptreturn; Acceptreturns;
   subaccp() {
     let body = {
       "Res_id": this.session.retrieve("id"),
@@ -136,17 +136,19 @@ export class SearchandeditreservationComponent implements OnInit {
         this.AcceptState = acceptwaitlist.ConfirmationNumber;
         this.Acceptreturn = acceptwaitlist.ReturnCode;
         if (this.Acceptreturn == "RIS") {
-          this.Acceptreturn = "The Waitlist is Moved to Reservation for " + this.name;
-          this.AcceptState = "The Reservation Number is " + acceptwaitlist.ConfirmationNumber;
+          this.Acceptreturns = "The Waitlist is Moved to Reservation for " + this.name;
+          this.AcceptStates = "The Reservation Number is " + acceptwaitlist.ConfirmationNumber;
           this.pService.searchedit()
             .subscribe((resp: any) => {
               this.searchandedit = resp.ReturnValue;
             });
+        } 
+        else if(this.Acceptreturn=="RODND"){
+          this.AcceptStates ="The Room is Not Declare for the Date"
         }
         this.name = "";
       },
       );
-    this.Acceptreturn = "The Waitlist is Not Accepted Room is Not Available";
   }
 
 
