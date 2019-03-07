@@ -1,3 +1,1231 @@
-<p>
-  generalconfiguration works!
-</p>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <br>
+    <div class="container-fluid">
+      <div class="panel-default">
+        <form action="">
+          <table class="table table-bordered table-hover">
+            <thead class="table table-default">
+              <tr>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="test" value="test"
+                    (change)="select(test)">Preference</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="credit" value="credit"
+                    (change)="select(credit)"> Credit Card</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="restype" value="res"
+                    (change)="select(restype)"> Reservation Type</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="alertcode" value="alertcode"
+                    (change)="select(alertcode)"> Alert Code</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="alertareas" value="alertar"
+                    (change)="select(alertareas)"> Alert Area</th>
+              </tr>
+              <tr>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="sourcess" value="sourcess"
+                    (change)="select(sourcess)"> Source</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="depart" value="depart"
+                    (change)="select(depart)"> Department</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="cance" value="cance"
+                    (change)="select(cance)"> Cancel Reason</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="pri" value="pri" (change)="select(pri)">
+                  Privileges</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="wait" value="wait" (change)="select(wait)">
+                  Waitlist Reason</th>
+              </tr>
+              <tr>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="rooms" value="rooms"
+                    (change)="select(rooms)"> Room Type</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="roomclass" value="roomclass"
+                    (change)="select(roomclass)"> Room Class</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="roomcon" value="roomcon"
+                    (change)="select(roomcon)"> Room Condition</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="maint" value="maint"
+                    (change)="select(maint)"> Mainteanance Reason</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="rmno" value="rmno" (change)="select(rmno)">
+                  Room No</th>
+              </tr>
+              <tr>
+
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="pay" value="pay" (change)="select(pay)">
+                  Payment Adjustment</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="ratecat" value="ratecat"
+                    (change)="select(ratecat)"> Rate Category</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="season" value="season"
+                    (change)="select(season)"> Season Code</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="market" value="market"
+                    (change)="select(market)"> Market</th>
+                <th><input type="radio" name="optioratio" id="" [(ngModel)]="origin" value="origin"
+                    (change)="select(origin)"> Origin</th>
+              </tr>
+            </thead>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <!-- ************************************ -->
+    <!-- Preference start -->
+    <div class="container-fluid" *ngIf="test==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #restest="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Prefernecegroup </label>
+                  <input type="text" name="prefgroup" id="" class="form-control"
+                    [(ngModel)]="configscr.preferencegroup">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Prefernecegroup Description</label>
+                  <input class="form-control" type="text" name="prefderc" id=""
+                    [(ngModel)]="configscr.preferencegroup_desc">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inpref(configscr,restest)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary; let i=index" style="background-color: #0077B5;color: white">
+                      <th>Prefernecegroup</th>
+                      <th>Preferencegroup_Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of preftable">
+                      <td>{{item.prefernecegroup}}</td>
+                      <td>{{item.preferencegroup_desc}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Preference -->
+
+
+    <!-- ************************************ -->
+    <!-- Credit Card start -->
+    <div class="container-fluid" *ngIf="credit==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action=""  #resced="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> CreditCard Description </label>
+                  <input class="form-control" type="text" name="prefderc" id="" [(ngModel)]="creditcard_description">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="incredit(creditcard_description,resced)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th>Credit Card Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of crdtable">
+                      <td>{{item.creditcard_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Credit card -->
+
+
+    <!-- ************************************ -->
+    <!-- Reservation Type start -->
+    <div class="container-fluid" *ngIf="res==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #rese="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Reservation Type </label>
+                  <input type="text" name="restype" id="" class="form-control" [(ngModel)]="conf.restype">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Reservation Type Description</label>
+                  <input class="form-control" type="text" name="resderc" id="" [(ngModel)]="conf.restype_description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inrestype(conf,rese)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary; let i=index" style="background-color: #0077B5;color: white">
+                      <th>Reservation Type</th>
+                      <th>Reservation Type Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of restable">
+                      <td>{{item.restype}}</td>
+                      <td>{{item.restype_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Reservation type -->
+
+    <!-- ************************************ -->
+    <!-- Alert start -->
+    <div class="container-fluid" *ngIf="alertcode==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resal="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Alert Code </label>
+                  <input class="form-control" type="text" name="prefderc" id="" [(ngModel)]="alertcodesss">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inalert(alertcodesss,resal)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Alert Code</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of arttable">
+                      <td>{{item.alertcode}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Alert -->
+
+    <!-- ************************************ -->
+    <!-- Alert start area -->
+    <div class="container-fluid" *ngIf="alertar==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resaa="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Alert Area</label>
+                  <input class="form-control" type="text" name="prefderc" id="" [(ngModel)]="alertarea">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inalertar(alertarea,resaa)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Alert Area</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of alertartable">
+                      <td>{{item.alertarea}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Alert area -->
+
+
+    <!-- ************************************ -->
+    <!-- Source start -->
+    <div class="container-fluid" *ngIf="sourcess==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resso="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Source Code </label>
+                  <input type="text" name="sourcecode" id="" class="form-control" [(ngModel)]="configso.sourcecode">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Source Description</label>
+                  <input class="form-control" type="text" name="sourcederc" id=""
+                    [(ngModel)]="configso.sourcedescription">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inso(configso,resso)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary; let i=index" style="background-color: #0077B5;color: white">
+                      <th>Source Code</th>
+                      <th>Source Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of sortable">
+                      <td>{{item.sourcecode}}</td>
+                      <td>{{item.sourcedescription}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Source -->
+
+    <!-- ************************************ -->
+    <!-- Department start -->
+    <div class="container-fluid" *ngIf="depart==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resdep="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Department </label>
+                  <input class="form-control" type="text" name="prefderc" id="" [(ngModel)]="department">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="indept(department,resdep)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th>Department</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of deptable">
+                      <td>{{item.department}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Department -->
+
+    <!-- ************************************ -->
+    <!-- Cancel Reason start -->
+    <div class="container-fluid" *ngIf="cance==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #rescan="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Cancel Reason </label>
+                  <input class="form-control" type="text" name="cancelreason" id="" [(ngModel)]="reason">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="incan(reason,rescan)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Cancel Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of cantable">
+                      <td>{{item.reason}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End cancel reason -->
+
+    <!-- ************************************ -->
+    <!-- Privileges start -->
+    <div class="container-fluid" *ngIf="pri==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #respr="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Privileges Description </label>
+                  <input class="form-control" type="text" name="privilegesdescription" id=""
+                    [(ngModel)]="privileges_desc">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inpri(privileges_desc,respr)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Privileges Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of pritable">
+                      <td>{{item.privileges_desc}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Priviliges -->
+
+    <!-- ************************************ -->
+    <!-- Waitlist start -->
+    <div class="container-fluid" *ngIf="wait==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #reswl="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Waitlist Reason </label>
+                  <input class="form-control" type="text" name="waitlist" id="" [(ngModel)]="waitlist_reason">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inwait(waitlist_reason,reswl)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Waitlist Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of waittable">
+                      <td>{{item.waitlist_reason}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Waitlist -->
+
+    <!-- ************************************ -->
+    <!-- Room Type start -->
+    <div class="container-fluid" *ngIf="rooms==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resrt="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Room Type </label>
+                  <input type="text" name="roomtype" id="" class="form-control" [(ngModel)]="confroom.type">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Room Description</label>
+                  <input class="form-control" type="text" name="roomderc" id="" [(ngModel)]="confroom.description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inroom(confroom,resrt)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary; let i=index" style="background-color: #0077B5;color: white">
+                      <th>Room Type</th>
+                      <th>Room Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of roomtable">
+                      <td>{{item.type}}</td>
+                      <td>{{item.description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Room type -->
+
+    <!-- ************************************ -->
+    <!-- room class start -->
+    <div class="container-fluid" *ngIf="roomclass==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resrc="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Room class </label>
+                  <input class="form-control" type="text" name="waitlist" id="" [(ngModel)]="class">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inrmclass(class,resrc)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Room Class</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of rmclasstable">
+                      <td>{{item.class}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End room class -->
+
+    <!-- ************************************ -->
+    <!-- Room condition start -->
+    <div class="container-fluid" *ngIf="roomcon==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resrc="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Room Condition </label>
+                  <input type="text" name="roomtype" id="" class="form-control" [(ngModel)]="confroomcon.rm_condition">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Room Condition Description</label>
+                  <input class="form-control" type="text" name="roomderc" id=""
+                    [(ngModel)]="confroomcon.rm_condition_description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inroomcon(confroomcon,resrc)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary; let i=index" style="background-color: #0077B5;color: white">
+                      <th>Room Condition</th>
+                      <th>Room Condition Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of roomcontable">
+                      <td>{{item.rm_condition}}</td>
+                      <td>{{item.rm_condition_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Room Condition -->
+
+    <!-- ************************************ -->
+    <!-- maintainance reason start -->
+    <div class="container-fluid" *ngIf="maint==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resmt="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label for=""> Mainteanance Reason </label>
+                  <input class="form-control" type="text" name="waitlist" id="" [(ngModel)]="mainteanance_reason">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inmaint(mainteanance_reason,resmt)"> Save </button>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Mainteanance Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mainttable">
+                      <td>{{item.mainteanance_reason}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End maintainance-->
+
+    <!-- ************************************ -->
+    <!-- Payment start -->
+    <div class="container-fluid" *ngIf="pay==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #respay="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Payment Reason </label>
+                  <input type="text" name="payment" id="" class="form-control" [(ngModel)]="confpay.reason_code">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> payment Description</label>
+                  <input class="form-control" type="text" name="paymentderc" id=""
+                    [(ngModel)]="confpay.reason_description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inpay(confpay,respay)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th>Payment Reason</th>
+                      <th>Payment Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of paytable">
+                      <td>{{item.reason_code}}</td>
+                      <td>{{item.reason_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End payment -->
+
+    <!-- ************************************ -->
+    <!-- Rate Category start -->
+    <div class="container-fluid" *ngIf="ratecat==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resrc="ngForm">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="input-group">
+                  <label for=""> Rate Class </label>
+                  <input type="text" name="rateclass" id="" class="form-control" [(ngModel)]="confrc.rate_class">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="input-group">
+                  <label for=""> Rate Category</label>
+                  <input type="text" name="ratecat" id="" class="form-control" [(ngModel)]="confrc.rate_category">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="input-group">
+                  <label for=""> Rate Category Description</label>
+                  <input class="form-control" type="text" name="ratederc" id=""
+                    [(ngModel)]="confrc.rate_category_decription">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inrc(confrc,resrc)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Rate Class</th>
+                      <th> Rate Category</th>
+                      <th> Rate Category Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of rctable">
+                      <td>{{item.rate_class}}</td>
+                      <td>{{item.rate_category}}</td>
+                      <td>{{item.rate_category_decription}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Rate Category -->
+
+    <!-- ************************************ -->
+    <!-- Season Code start -->
+    <div class="container-fluid" *ngIf="season==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resse="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Season code </label>
+                  <input type="text" name="seasoncode" id="" class="form-control" [(ngModel)]="confss.season_code">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Season code Description</label>
+                  <input class="form-control" type="text" name="seasonderc" id=""
+                    [(ngModel)]="confss.season_code_description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inss(confss,resse)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th>Season Code</th>
+                      <th>Season Code Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of sstable">
+                      <td>{{item.season_code}}</td>
+                      <td>{{item.season_code_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Season Code -->
+
+    <!-- ************************************ -->
+    <!-- Season Code start -->
+    <div class="container-fluid" *ngIf="market==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resmk="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Market Group </label>
+                  <input type="text" name="marketgroup" id="" class="form-control" [(ngModel)]="confmk.marketgroup">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Season code Description</label>
+                  <input class="form-control" type="text" name="markderc" id=""
+                    [(ngModel)]="confmk.marketgroup_description">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inmk(confmk,resmk)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th>Market Group</th>
+                      <th>Market Group Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of mktable">
+                      <td>{{item.marketgroup}}</td>
+                      <td>{{item.marketgroup_description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Season Code -->
+
+    <!-- ************************************ -->
+    <!-- Season Code start -->
+    <div class="container-fluid" *ngIf="origin==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #resor="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Origin Code </label>
+                  <input type="text" name="oricode" id="" class="form-control" [(ngModel)]="confori.origincode">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="input-group">
+                  <label for=""> Origin Code Description</label>
+                  <input class="form-control" type="text" name="oridesciption" id=""
+                    [(ngModel)]="confori.origindescription">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inori(confori,resor)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                      <th> Origin Code</th>
+                      <th> Origin Code Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of oritable">
+                      <td>{{item.origincode}}</td>
+                      <td>{{item.origindescription}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Season Code -->
+
+    <!-- ************************************ -->
+    <!-- Rate Category start -->
+    <div class="container-fluid" *ngIf="rmno==true">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #res="ngForm">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room No </label>
+                  <input type="text" name="roomno" id="" class="form-control" [(ngModel)]="confrmno.rm_room">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Reservation Status </label>
+                  <input type="text" name="reservastatus" id="" class="form-control"
+                    [(ngModel)]="confrmno.rm_reservation_status">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Type</label>
+                  <select name="roomtype" id="" class="form-control" [(ngModel)]="confrmno.rm_room_type">
+                    <option *ngFor="let item of roomtable">{{item.type}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Status</label>
+                  <select class="form-control" name="ratederc" id="" [(ngModel)]="confrmno.rm_room_status">
+                    <option value="Clean">Clean</option>
+                    <option value="Dirty">Dirty</option>
+                    <option value="Inspected">Inspected</option>
+                    <option value="Pick Up">Pick Up</option>
+                    <option value="Out Of Order">Out Of Order</option>
+                    <option value="Out Of Service">Out Of Service</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Fo Status</label>
+                  <select name="roomfostatus" id="" class="form-control" [(ngModel)]="confrmno.rm_fo_status">
+                    <option *ngFor="let item of fotable">{{item.hkstatus_description}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Fo person </label>
+                  <input type="text" name="foperson" id="" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Am/Pm </label>
+                  <input type="text" name="rmampm" id="" class="form-control" [(ngModel)]="confrmno.rm_am_pm">
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Features </label>
+                  <input type="text" name="features" id="" class="form-control" [(ngModel)]="confrmno.rm_features">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Class</label>
+                  <select name="roomclass" id="" class="form-control" [(ngModel)]="confrmno.rm_room_class">
+                    <option *ngFor="let item of rmclasstable">{{item.class}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Floor </label>
+                  <select name="rmfloor" id="" class="form-control" [(ngModel)]="confrmno.rm_floor">
+                    <option *ngFor="let item of fltable">{{item.floor}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Hk Status</label>
+                  <select name="roomfostatus" id="" class="form-control" [(ngModel)]="confrmno.rm_hk_status">
+                    <option *ngFor="let item of fotable">{{item.hkstatus_description}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="input-group">
+                    <label for=""> Hk person </label>
+                    <input type="text" name="hkperson" id="" class="form-control" disabled>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inrmno(confrmno,res)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                  <table class="table table-bordered table-responsive table-hover">
+                      <thead style="background-color:#0077B5;color:white;">
+                      <tr>
+                        <th>Room</th>
+                        <th>Room Type</th>
+                        <th>Room Status</th>
+                        <th>FO status</th>
+                        <th>Resv_Status</th>
+                        <th>Floor</th>
+                        <th>Room Class</th>
+                        <th>AM/PM</th>
+                        <th>Features</th>
+                        
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let housekeepinglist of house" >
+                        <td>{{housekeepinglist.rm_room}}</td>
+                        <td>{{housekeepinglist.rm_room_type |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_room_status |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_fo_status |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_reservation_status |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_floor |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_room_class |titlecase}}</td>
+                        <td>{{housekeepinglist.rm_am_pm }}</td>
+                        <td>{{housekeepinglist.rm_features }}</td>
+                       </tr>
+                      
+                      </tbody>
+                      </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Rate Category -->
+
+  </div>
+</div>
