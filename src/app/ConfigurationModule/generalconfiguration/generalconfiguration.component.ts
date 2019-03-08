@@ -26,7 +26,7 @@ export class GeneralconfigurationComponent implements OnInit {
   public crdtable: any; restable: any; arttable: any; alertartable: any; sortable: any; cantable: any; mainttable: any;
   public deptable: any; pritable: any; waittable: any; roomtable: any; rmclasstable: any; roomcontable: any; house: any;
   public configscr = []; conf = []; configso = []; confroom = []; confroomcon = []; confpay = []; confrc = [];
-  public confss = []; confmk = []; confori = []; confrmno = [];
+  public confss = []; confmk = []; confori = [];
 
   ngOnInit() {
 
@@ -149,6 +149,7 @@ export class GeneralconfigurationComponent implements OnInit {
       .subscribe((resp: any) => {
         this.fotable = resp.ReturnValue;
       });
+
     // Get floor
     this.GeneralconfigurationService.floor()
       .subscribe((resp: any) => {
@@ -376,20 +377,20 @@ export class GeneralconfigurationComponent implements OnInit {
       });
   }
 
-  //insert Room config
-  inrmno(param, par) {
-    this.GeneralconfigurationService.instrmno(param)
-      .subscribe((resp: any) => {
-        par.reset();
-        if (resp.ReturnCode == "RIS") {
-          this.Success("The Room Configuration is Done");
-          this.GeneralconfigurationService.gethousekeepingdata()
-            .subscribe((resp: any) => {
-              this.house = resp.ReturnValue;
-            });
-        }
-      });
-  }
+    //insert Maintainance
+    infl(param, par) {
+      this.GeneralconfigurationService.instfl(param)
+        .subscribe((resp: any) => {
+          par.reset();
+          if (resp.ReturnCode == "RIS") {
+            this.Success("The Room Maintainance Reason is Created");
+            this.GeneralconfigurationService.floor()
+              .subscribe((resp: any) => {
+                this.fltable = resp.ReturnValue;
+              });
+          }
+        });
+    }
 
   //insert Payment
   inpay(param, par) {

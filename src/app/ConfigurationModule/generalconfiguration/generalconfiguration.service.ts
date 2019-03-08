@@ -329,6 +329,18 @@ export class GeneralconfigurationService {
       .map(this.extractData)
   }
 
+   //insert Floor configuration buttom
+   instfl(parm): Observable<object[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' })
+    const options = new RequestOptions({ headers: headers });
+    let body = {
+      "floor": parm
+    }
+    console.log(JSON.stringify(body))
+    return this.http.post('https://hotel360.herokuapp.com/insert_floor', body, options)
+      .map(this.extractData)
+  }
+
    //insert room config buttom
    instrmno(parm): Observable<object[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' })
