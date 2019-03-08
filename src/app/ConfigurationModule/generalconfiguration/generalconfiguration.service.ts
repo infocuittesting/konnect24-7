@@ -301,7 +301,7 @@ export class GeneralconfigurationService {
       "class": parm
     }
     console.log(JSON.stringify(body))
-    return this.http.post('https://hotel360.herokuapp.com/insert_room_type', body, options)
+    return this.http.post('https://hotel360.herokuapp.com/Insert_Class', body, options)
       .map(this.extractData)
   }
 
