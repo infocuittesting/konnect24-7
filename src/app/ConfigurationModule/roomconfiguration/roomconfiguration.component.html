@@ -1,3 +1,164 @@
-<p>
-  roomconfiguration works!
-</p>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <br>
+    <!-- ************************************ -->
+    <!-- Rate Category start -->
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form action="" #res="ngForm">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room No </label>
+                  <input type="text" name="roomno" id="" class="form-control" [(ngModel)]="confrmno.rm_room">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Reservation Status </label>
+                  <input type="text" name="reservastatus" id="" class="form-control"
+                    [(ngModel)]="confrmno.rm_reservation_status">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Room Type</label>
+                  <select name="roomtype" id="" class="form-control" [(ngModel)]="confrmno.rm_room_type">
+                    <option value=""></option>
+                    <option *ngFor="let item of roomtable">{{item.type}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Room Status</label>
+                  <select class="form-control" name="ratederc" id="" [(ngModel)]="confrmno.rm_room_status">
+                    <option value="Clean">Clean</option>
+                    <option value="Dirty">Dirty</option>
+                    <option value="Inspected">Inspected</option>
+                    <option value="Pick Up">Pick Up</option>
+                    <option value="Out Of Order">Out Of Order</option>
+                    <option value="Out Of Service">Out Of Service</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Room Fo Status</label>
+                  <select name="roomfostatus" id="" class="form-control" [(ngModel)]="confrmno.rm_fo_status">
+                    <option value=""></option>
+                    <option *ngFor="let item of fotable">{{item.hkstatus_description}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Room Fo person </label>
+                  <input type="text" name="foperson" id="" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Am/Pm </label>
+                  <input type="text" name="rmampm" id="" class="form-control" [(ngModel)]="confrmno.rm_am_pm">
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Features </label>
+                  <input type="text" name="features" id="" class="form-control" [(ngModel)]="confrmno.rm_features">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Room Class</label>
+                  <select name="roomclass" id="" class="form-control" [(ngModel)]="confrmno.rm_room_class">
+                    <option value=""></option>
+                    <option *ngFor="let item of rmclasstable">{{item.class}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Floor </label>
+                  <select name="rmfloor" id="" class="form-control" [(ngModel)]="confrmno.rm_floor">
+                    <option value=""></option>
+                    <option *ngFor="let item of fltable">{{item.floor}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="min-width:100%">
+                  <label for=""> Room Hk Status</label>
+                  <select name="roomfostatus" id="" class="form-control" [(ngModel)]="confrmno.rm_hk_status">
+                    <option value=""></option>
+                    <option *ngFor="let item of fotable">{{item.hkstatus_description}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="input-group">
+                  <label for=""> Hk person </label>
+                  <input type="text" name="hkperson" id="" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div style="margin-top:25px">
+                  <button class="btn btn-success" (click)="inrmno(confrmno,res)"> Save </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-bordered table-responsive table-hover">
+                  <thead style="background-color:#0077B5;color:white;">
+                    <tr>
+                      <th>Room</th>
+                      <th>Room Type</th>
+                      <th>Room Status</th>
+                      <th>FO status</th>
+                      <th>Resv_Status</th>
+                      <th>Floor</th>
+                      <th>Room Class</th>
+                      <th>AM/PM</th>
+                      <th>Features</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let housekeepinglist of house">
+                      <td>{{housekeepinglist.rm_room}}</td>
+                      <td>{{housekeepinglist.rm_room_type |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_room_status |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_fo_status |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_reservation_status |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_floor |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_room_class |titlecase}}</td>
+                      <td>{{housekeepinglist.rm_am_pm }}</td>
+                      <td>{{housekeepinglist.rm_features }}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Room Config -->
+  </div>
+</div>
