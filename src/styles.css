@@ -2,3 +2,7 @@
 tbody{
     font-size: 12px;
 }
+.content-wrapper{
+    max-height: 100% !important;
+    min-height: auto !important;
+}

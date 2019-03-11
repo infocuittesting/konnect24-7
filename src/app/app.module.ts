@@ -48,13 +48,11 @@ import { ContextmenuModule } from 'ng2-contextmenu';
 //reports
 import { ReportsComponent } from './reports/reports.component';
 //BusinessBlockModule
-import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
 import { BusinessBlockOptionsComponent } from './BusinessBlockModule/business-block-options/business-block-options.component';
 import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-block-search/business-block-search.component';
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
-import { EditGridRoomsComponent } from './BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component';
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component';
 import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
@@ -158,13 +156,11 @@ import { RoomconfigurationComponent } from './ConfigurationModule/roomconfigurat
         ReportsComponent,
 
         //BusinessBlock
-        BlockRangeSettingComponent,
         BusinessBlockGridCurrentComponent,
         BusinessBlockOptionsComponent,
         BusinessBlockSearchComponent,
         BusinessCreateBlockComponent,
         EditBusinessBlockComponent,
-        EditGridRoomsComponent,
         GroupOptionsComponent,
         InquriprocessComponent,
         QueryReservationListComponent,

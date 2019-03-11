@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="content-wrapper">
   
-      <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
-              <div class="panel panel-primary">
+      <div class="container-fluid" style="padding-top:20px;">
+              <div class="panel panel-primary martop">
                       <div class="panel-body">
                           <form id="ratecode" #ratecodeform=ngForm>
                          <div class="row">
@@ -55,60 +55,61 @@
                       </form>
                       </div>
                   </div> 
+                  <div class="table-responsive" style="padding-top:20px;">
+                    <div >
+                            <form id="ratecode" #ratecodeform1=ngForm>
+                        <table class="table table-bordered table-hover" style="width:100%;">
+                          <thead style="background-color:#0077B5;color:white;">
+                            <tr>
+                                <th>Rate Code</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Start sell Date</th>
+                                <th>End Sell Date</th>
+                            </tr>
+                          </thead>
+                          <tbody style="font-size: 12px">                                 
+                              <tr *ngFor="let mainrate of mainratecode | filterdata: seldate :'begin_sell_date'; let i=index "  (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
+                                  <td>{{mainrate?.rate_code}}</td>     
+                                  <td>{{mainrate?.rate_description}} </td>
+                                  <td>{{mainrate?.rate_category}}</td>
+                                  <td>{{mainrate?.begin_sell_date}}</td>
+                                  <td>{{mainrate?.end_sell_date}}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                        </form>
+                    </div>
+                 
+                  </div>
+                
+                  <br>
+                  <div class="row" style="margin-left: 12px;">
+                                  
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-success" style="width:100%;" [disabled]=okbutn><b>Ok</b></button>
+                      </div>
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-primary" style="width:100%;" disabled><b>Copy</b></button>
+                      </div>
+                       <div class="col-md-2">
+                          <button type="button" class="btn btn-info" (click)="loadrevenue('New')" [disabled]=edbutns style="width:100%;"><b>New</b></button>
+                      </div>
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-primary" style="width:100%;" [disabled]=edbutn (click)="loadrevenue('Edit')"><b>Edit</b></button>
+                      </div>
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-warning" style="width:100%;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
+                      </div>
+                      <div class="col-md-2">
+                          <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
+                      </div>
+                      <!-- <div class="col-md-2">
+                          <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
+                      </div> -->
+                  </div>           
       </div>
-      <div class="table-responsive" style="padding-top:20px;padding-left:50px;margin-top: -15px">
-          <div >
-                  <form id="ratecode" #ratecodeform1=ngForm>
-              <table class="table table-bordered table-hover" style="width:100%;">
-                <thead style="background-color:#0077B5;color:white;">
-                  <tr>
-                      <th>Rate Code</th>
-                      <th>Description</th>
-                      <th>Category</th>
-                      <th>Start sell Date</th>
-                      <th>End Sell Date</th>
-                  </tr>
-                </thead>
-                <tbody style="font-size: 12px">                                 
-                    <tr *ngFor="let mainrate of mainratecode | filterdata: seldate :'begin_sell_date'; let i=index "  (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
-                        <td>{{mainrate?.rate_code}}</td>     
-                        <td>{{mainrate?.rate_description}} </td>
-                        <td>{{mainrate?.rate_category}}</td>
-                        <td>{{mainrate?.begin_sell_date}}</td>
-                        <td>{{mainrate?.end_sell_date}}</td>
-                    </tr>
-                </tbody>
-              </table>
-              </form>
-          </div>
-       
-        </div>
-      
-        <br>
-        <div class="row" style="margin-left: 12px;">
-                        
-            <div class="col-md-2">
-                <button type="button" class="btn btn-success" style="width:100%;" [disabled]=okbutn><b>Ok</b></button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" style="width:100%;" disabled><b>Copy</b></button>
-            </div>
-             <div class="col-md-2">
-                <button type="button" class="btn btn-info" (click)="loadrevenue('New')" [disabled]=edbutns style="width:100%;"><b>New</b></button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary" style="width:100%;" [disabled]=edbutn (click)="loadrevenue('Edit')"><b>Edit</b></button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-warning" style="width:100%;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
-            </div>
-            <!-- <div class="col-md-2">
-                <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
-            </div> -->
-        </div>
+
   </div>
 </div>
 

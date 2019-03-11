@@ -13,7 +13,7 @@
 
   <div class="wrapper">
     <!-- Main Header -->
-    <header class="main-header">
+    <header class="main-header" style="position:fixed !important;min-width:100% !important;">
 
       <!-- Logo -->
       <a href="#" class="logo">
@@ -186,7 +186,7 @@
     </header>
 
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar" style="max-height:100% !important;overflow-y:auto;position:fixed;">
 
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
@@ -203,7 +203,7 @@
           </div>
         </div>
 
-        <!-- search form (Optional) -->
+        <!-- search form (Optional) 
         <form action="#" method="get" class="sidebar-form">
           <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -213,11 +213,12 @@
             </span>
           </div>
         </form>
-        <!-- /.search form -->
+          <li class="header">HEADER</li>
+
+         /.search form -->
 
         <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-          <li class="header">HEADER</li>
+        <ul class="sidebar-menu" >
           <!-- Optionally, you can add icons to the links -->
 
           <li class="active"><a routerLink="/mains"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
@@ -325,7 +326,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a routerLink="/newaraccount">New AR Account</a></li>
-              <li><a>Search Block</a></li>
             </ul>
           </li>
           <!-- Account Receivable End -->
@@ -348,7 +348,7 @@
       <!-- /.sidebar -->
     </aside>
     <!-- Content Wrapper. Contains page content -->
-    <router-outlet></router-outlet>
+    <router-outlet style="margin-top:100px;"></router-outlet>
     <!-- /.content-wrapper -->
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

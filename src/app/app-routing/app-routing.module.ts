@@ -63,10 +63,8 @@ import { InquriprocessComponent } from './../BusinessBlockModule/inquriprocess/i
 import { BusinessBlockGridCurrentComponent } from './../BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
 import { ReservationsListComponent } from './../BusinessBlockModule/reservations-list/reservations-list.component';
 import { GroupOptionsComponent } from './../BusinessBlockModule/group-options/group-options.component';
-import { BlockRangeSettingComponent } from './../BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { EditBusinessBlockComponent } from './../BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent} from './../BusinessBlockModule/query-reservation-list/query-reservation-list.component'
-import { EditGridRoomsComponent } from './../BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component'; 
 
 //Account receivable
 import { NewaraccountComponent } from './../Accountreceivable/newaraccount/newaraccount.component';
@@ -142,10 +140,8 @@ import { RoomconfigurationComponent } from './../ConfigurationModule/roomconfigu
       { path: "grid", component: BusinessBlockGridCurrentComponent },
       { path: "reservationlist", component: ReservationsListComponent },
       { path: "grouplist", component: GroupOptionsComponent },
-      { path: "blockrange", component: BlockRangeSettingComponent },
       { path: "editblock", component: EditBusinessBlockComponent },
       { path: "queryreservation", component: QueryReservationListComponent },
-      { path: "editgrid", component: EditGridRoomsComponent },
       
       // Account receivable
       { path:"newaraccount",component:NewaraccountComponent},
@@ -168,8 +164,8 @@ import { RoomconfigurationComponent } from './../ConfigurationModule/roomconfigu
 export class AppRoutingModule { }
 export const routingComponents = [IndividualprofileComponent,ReservationComponent,ModalBasicComponent,ReservationoptionComponent,StarterComponent,
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
-,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,EditGridRoomsComponent,EditBusinessBlockComponent,
+,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,EditBusinessBlockComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,
 RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent,NewaraccountComponent,AccountmaintenanceComponent,
 InvoiceComponent,AccountoptionsComponent,SetupaccountComponent,ProfilestatisticsComponent, EndofdayComponent, RoomoccupancyComponent,TurndownmanagementComponent,GeneralconfigurationComponent,RoomconfigurationComponent]
