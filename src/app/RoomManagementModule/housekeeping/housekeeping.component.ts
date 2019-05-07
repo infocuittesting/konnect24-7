@@ -42,9 +42,9 @@ export class HousekeepingComponent implements OnInit {
     doc.save('test.pdf');
   }
 
-  cleardata(){
-    this.session.clear();
-  }
+  // cleardata(){
+  //   this.session.clear();
+  // }
 
 house = [];
 
@@ -209,6 +209,7 @@ selectandClearAll(flag){
       this.roomlist="The Room Number "+this.hsid+" is Assigned Successfully"
       this.Success(this.roomlist);
       this.route.navigate(['roomassignment/']);
+    this.session.clear();
     }
 
     }); 
@@ -287,7 +288,7 @@ toggleSelection(item){
  this.idx=this.selected.indexOf(item);
  console.log(this.idx);
  // this.room_type += item.type
-
+this.selected_id=[];
  if(this.idx>-1){
    this.selected.splice(this.idx,1);
    this.selected_id.splice(this.idx,1);
