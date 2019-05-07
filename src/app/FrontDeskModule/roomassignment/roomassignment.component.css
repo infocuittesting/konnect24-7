@@ -1,4 +1,4 @@
-wrapper{
+.wrapper{
     height:100%;
 }
 table{
@@ -9,8 +9,8 @@ table{
 
    .tableBodyScroll tbody {
     display:block;
-    height: 330px;
-    max-height:330px;
+    height: 310px;
+    max-height:310px;
     overflow-y:scroll;
     table-layout:fixed;
     }
@@ -41,3 +41,6 @@ table{
    .colorchange_ofs{
        color: pink
    }
+   .martop{
+    margin-top: 50px;
+} 

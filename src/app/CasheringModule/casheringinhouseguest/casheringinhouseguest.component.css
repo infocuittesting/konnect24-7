@@ -12,7 +12,7 @@
    
     .tableBodyScroll tbody {
         display:block;
-        height:220px;
+        height:190px;
         overflow-y:scroll;
         table-layout:fixed;
         }
@@ -20,4 +20,8 @@
         display:table;
         width:100%;
         table-layout:fixed;
+        }
+
+        .martop{
+            margin-top: 40px;
         }
