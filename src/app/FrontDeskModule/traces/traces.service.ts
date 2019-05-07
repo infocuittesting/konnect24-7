@@ -69,11 +69,11 @@ export class TracesService {
 
   private extractData(res: Response) {
     //alert('hai20')
-    console.log('res========---===='+res);
-    let body = res.json();   
-    //alert(JSON.stringify(body))
-    console.log(JSON.stringify(body));
-        return body;
+    // console.log('res========---===='+res);
+    return res.json();   
+    // //alert(JSON.stringify(body))
+    // console.log(JSON.stringify(body));
+        // return body;
     }
 
 }
